@@ -114,7 +114,17 @@
   .nav-links a.rlink { cursor: pointer; }
   .nav-links a.active { color: var(--ink); }
   .nav-links a.active::after { content: ""; display: block; height: 1.5px; background: var(--gold); margin-top: 3px; border-radius: 2px; }
-  @media (max-width: 720px){ .nav-links a:not(.btn){ display:none; } }
+  .hamburger { display: none; background: none; border: 0; color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; padding: 6px 4px; }
+  .mobile-menu { display: none; flex-direction: column; padding: 4px 28px 18px; background: var(--ground); border-top: 1px solid var(--hairline); }
+  .mobile-menu a { text-decoration: none; color: var(--ink); font-size: 17px; padding: 15px 2px; border-bottom: 1px solid var(--hairline); }
+  .mobile-menu a.active { color: var(--gold); }
+  .mobile-menu a.mm-apply { border: 0; margin-top: 16px; text-align: center; color: #17120a; padding: 15px 20px; }
+  @media (max-width: 720px){
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .mobile-menu.open { display: flex; }
+  }
+  @media (min-width: 721px){ .mobile-menu { display: none !important; } }
 
   /* ---- hero ---- */
   .hero { position: relative; padding: 96px 0 72px; }
@@ -348,9 +358,19 @@
         <a href="#/platform" class="rlink">Platform</a>
         <a href="#/pricing" class="rlink">Pricing</a>
         <a href="#/resources" class="rlink">Resources</a>
+        <a href="#/faq" class="rlink">FAQ</a>
         <a href="#/about" class="rlink">About</a>
         <a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary">Apply</a>
       </div>
+      <button class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+    <div class="mobile-menu">
+      <a href="#/platform" class="rlink">Platform</a>
+      <a href="#/pricing" class="rlink">Pricing</a>
+      <a href="#/resources" class="rlink">Resources</a>
+      <a href="#/faq" class="rlink">FAQ</a>
+      <a href="#/about" class="rlink">About</a>
+      <a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary mm-apply">Apply to work with us</a>
     </div>
   </nav>
 
@@ -867,6 +887,8 @@
 
 <script>
   (function () {
+    var menu = document.querySelector('.mobile-menu');
+    var burger = document.querySelector('.hamburger');
     function activePage(){ var h = location.hash; return (h.indexOf('#/') === 0) ? (h.slice(2) || 'home') : 'home'; }
     function route(){
       var page = activePage();
@@ -876,10 +898,21 @@
         el.style.display = show ? '' : 'none';
         if (show) { el.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); }); }
       });
-      document.querySelectorAll('.nav-links a.rlink').forEach(function(a){
+      document.querySelectorAll('.rlink').forEach(function(a){
         a.classList.toggle('active', a.getAttribute('href') === '#/' + page);
       });
+      if (menu) menu.classList.remove('open');
+      if (burger) burger.setAttribute('aria-expanded', 'false');
       window.scrollTo(0, 0);
+    }
+    if (burger && menu) {
+      burger.addEventListener('click', function(){
+        var open = menu.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      menu.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){ menu.classList.remove('open'); });
+      });
     }
     window.addEventListener('hashchange', function(){ if (location.hash.indexOf('#/') === 0) route(); });
     route();
