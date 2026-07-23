@@ -238,6 +238,73 @@
   .shot .cap p { font-size: 15px; color: #c4beb4; margin: 8px 0 0; line-height: 1.5; }
   .shot .cap p b { color: #fff; font-weight: 600; }
 
+  /* trust strip */
+  .trust { border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .trust .wrap { display: flex; align-items: center; gap: 22px 40px; flex-wrap: wrap; justify-content: center; padding: 24px 28px; }
+  .trust .lab { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+  .trust .logos { display: flex; gap: 14px 30px; flex-wrap: wrap; align-items: center; justify-content: center; }
+  .trust .logos span { font-family: var(--display); font-size: 1.15rem; color: var(--ink-soft); letter-spacing: -.01em; opacity: .9; }
+  @media (max-width: 680px){ .trust .wrap { flex-direction: column; gap: 16px; } }
+
+  /* how it works */
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  @media (max-width: 820px){ .steps { grid-template-columns: 1fr; } }
+  .step { border: 1px solid var(--hairline); border-radius: 16px; padding: 28px; background: var(--surface); }
+  .step .no { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--gold); }
+  .step h3 { font-size: 1.3rem; margin: 14px 0 10px; }
+  .step p { color: var(--ink-soft); font-size: 14.5px; }
+
+  /* quote */
+  .quote { border-left: 2px solid var(--gold); padding: 6px 0 6px 28px; max-width: 64ch; }
+  .quote p { font-family: var(--display); font-weight: 300; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); line-height: 1.3; }
+  .quote .by { margin-top: 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .quote .by b { color: var(--gold); font-weight: 600; }
+
+  /* faq */
+  .faq { max-width: 820px; }
+  .faq details { border-bottom: 1px solid var(--hairline); }
+  .faq summary { cursor: pointer; list-style: none; padding: 20px 0; font-size: 1.1rem; font-family: var(--display); font-weight: 300; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; color: var(--gold); font-size: 1.4rem; line-height: 1; }
+  .faq details[open] summary::after { content: "\2013"; }
+  .faq .a { color: var(--ink-soft); font-size: 15px; padding: 0 0 22px; max-width: 72ch; line-height: 1.6; }
+
+  /* resources */
+  .guides { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 900px; }
+  .guide { border: 1px solid var(--hairline); border-radius: 16px; background: var(--surface); overflow: hidden; }
+  .guide summary { cursor: pointer; list-style: none; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px; }
+  .guide summary::-webkit-details-marker { display: none; }
+  .guide .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .guide h3 { font-size: 1.25rem; }
+  .guide .sum { color: var(--ink-soft); font-size: 14.5px; }
+  .guide[open] summary { border-bottom: 1px solid var(--hairline); }
+  .guide .body { padding: 20px 26px 26px; color: var(--ink-soft); font-size: 15px; line-height: 1.65; }
+  .guide .body p { margin: 0 0 12px; }
+  .guide .body b { color: var(--ink); }
+
+  /* fat footer */
+  .footer2 .cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; padding: 56px 28px 30px; max-width: var(--maxw); margin: 0 auto; }
+  @media (max-width: 760px){ .footer2 .cols { grid-template-columns: 1fr 1fr; } }
+  .footer2 h5 { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 14px; font-weight: 500; }
+  .footer2 .cols a { display: block; color: var(--ink-soft); text-decoration: none; font-size: 14px; margin-bottom: 10px; }
+  .footer2 .cols a:hover { color: var(--ink); }
+  .footer2 .col-brand p { color: var(--ink-soft); font-size: 14px; margin: 14px 0 0; max-width: 34ch; }
+  .foot-legal { border-top: 1px solid var(--hairline); }
+  .foot-legal .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 20px 28px; max-width: var(--maxw); margin: 0 auto; }
+  .foot-legal p { font-size: 12px; color: var(--ink-faint); max-width: 72ch; }
+
+  /* testimonials */
+  .tcards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  @media (max-width: 820px){ .tcards { grid-template-columns: 1fr; } }
+  .tcard { border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; background: var(--surface); display: flex; flex-direction: column; gap: 16px; }
+  .tcard p { font-size: 15px; color: var(--ink); line-height: 1.55; }
+  .tcard .who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+  .tcard .av { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); color: #241a08; background: radial-gradient(circle at 32% 28%, var(--gold-lift), var(--gold-deep) 78%); font-size: 15px; }
+  .tcard .nm { font-weight: 650; font-size: 14.5px; }
+  .tcard .rl2 { font-size: 12.5px; color: var(--ink-faint); }
+  .tcard .stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; }
+  .ph-note { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 18px; }
+
   /* founders */
   .founders { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   @media (max-width: 820px){ .founders { grid-template-columns: 1fr; } }
@@ -270,6 +337,7 @@
       <div class="nav-links">
         <a href="#/platform" class="rlink">Platform</a>
         <a href="#/pricing" class="rlink">Pricing</a>
+        <a href="#/resources" class="rlink">Resources</a>
         <a href="#/about" class="rlink">About</a>
         <a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary">Apply</a>
       </div>
@@ -297,6 +365,15 @@
     </div>
   </header>
 
+  <section class="trust" data-page="home platform">
+    <div class="wrap">
+      <span class="lab">Works with the tools you already sell on</span>
+      <div class="logos">
+        <span>TikTok Shop</span><span>Shopify</span><span>Amazon</span><span>Stripe</span><span>QuickBooks</span>
+      </div>
+    </div>
+  </section>
+
   <section class="band" id="problem" data-page="home">
     <div class="wrap">
       <div class="band-head reveal">
@@ -323,6 +400,20 @@
           <p>Five years of "I'll deal with it later" ends one way. The following dies, the IRS takes the rest. It's the single most common ending in this industry — and the most preventable.</p>
           <svg class="spark" viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M0 8 C40 10 70 26 100 30 C130 34 160 37 200 38" fill="none" stroke="var(--crit)" stroke-width="2"/></svg>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" data-page="home">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">How it works</span>
+        <h2>Three steps to never worrying about this again.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="no">Step 01</div><h3>Apply</h3><p>A short call to see where your money is and whether Midas is a fit. We take on a limited number of creators at a time.</p></div>
+        <div class="step reveal"><div class="no">Step 02</div><h3>Connect &amp; onboard</h3><p>Hook up the platforms you earn on — TikTok Shop, Shopify, Stripe, brand-deal income. We build the full picture in days, not months.</p></div>
+        <div class="step reveal"><div class="no">Step 03</div><h3>We run it</h3><p>Tax, books, cash planning and wealth — handled. You get a monthly check-in and a number you can trust, and you get back to creating.</p></div>
       </div>
     </div>
   </section>
@@ -551,6 +642,96 @@
     </div>
   </section>
 
+  <section class="band" data-page="home">
+    <div class="wrap">
+      <div class="quote reveal">
+        <p>"I've watched creators go from millions to nothing — not because the money stopped, but because no one built anything under it. That's the entire reason Midas exists."</p>
+        <div class="by">Founding partner · <b>a decade managing top TikTok talent</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" data-page="home">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">What creators say</span>
+        <h2>Creators who stopped guessing.</h2>
+      </div>
+      <div class="tcards reveal">
+        <div class="tcard">
+          <div class="stars">★★★★★</div>
+          <p>"I used to dread tax season. Now I know my numbers cold, and my money's actually working instead of sitting in checking waiting to get spent."</p>
+          <div class="who"><span class="av">JD</span><div><div class="nm">Jordan D.</div><div class="rl2">TikTok Shop · beauty</div></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars">★★★★★</div>
+          <p>"My income swings hard month to month. They set up the buffer so a slow month doesn't send me into a panic — that alone was worth it."</p>
+          <div class="who"><span class="av">MR</span><div><div class="nm">Maya R.</div><div class="rl2">Creator · lifestyle</div></div></div>
+        </div>
+        <div class="tcard">
+          <div class="stars">★★★★★</div>
+          <p>"First time I've actually understood my margin per product. Turns out my best-seller was barely making money. We fixed it in a week."</p>
+          <div class="who"><span class="av">DK</span><div><div class="nm">Devin K.</div><div class="rl2">Shopify · apparel</div></div></div>
+        </div>
+      </div>
+      <p class="ph-note reveal">Sample testimonials shown for layout — real founding-creator quotes replace these before launch.</p>
+    </div>
+  </section>
+
+  <section class="band" id="faq" data-page="home faq">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">FAQ</span>
+        <h2>The questions creators actually ask.</h2>
+      </div>
+      <div class="faq reveal">
+        <details><summary>Is this just an accountant?</summary><div class="a">No. An accountant files your taxes once a year and disappears. Midas is a full financial team — bookkeeping, tax strategy, cash planning and wealth management — that understands how creator income behaves and stays with you all year.</div></details>
+        <details><summary>I don't have a "business." I just make content. Does this still apply?</summary><div class="a">Especially then. The creators who get hurt are the ones who never treated it like a business until the tax bill or the slow month arrived. We build the structure around what you already do.</div></details>
+        <details><summary>What if my income is all over the place?</summary><div class="a">That's the norm, and it's exactly what we plan for — setting money aside in the big months so the zero months don't wipe you out, without ever touching predatory loans.</div></details>
+        <details><summary>Do I have to change how I get paid?</summary><div class="a">No. We connect to the platforms you already earn on — TikTok Shop, Shopify, Stripe, brand deals — and work from there.</div></details>
+        <details><summary>How much does it cost?</summary><div class="a">Compass (done-with-you) is $5,000/year. Copilot (done-for-you) is percentage-based — we're paid on the assets we manage and a share of what we save you, so we only win when you do.</div></details>
+        <details><summary>How do I start?</summary><div class="a">Apply for a short call. We take on a limited number of creators at a time to keep the service genuinely high-touch.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" data-page="resources">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Resources</span>
+        <h2>Guides for creators who want to keep what they make.</h2>
+        <p>Plain-English playbooks — no jargon, no gatekeeping. More added as we go.</p>
+      </div>
+      <div class="guides reveal">
+        <details class="guide">
+          <summary><span class="tag">Tax · 6 min read</span><h3>The creator's tax-season checklist</h3><span class="sum">What to set aside, what to track, and how to make sure your first big year doesn't end in a bill you can't pay.</span></summary>
+          <div class="body">
+            <p><b>Set aside as you earn, not at the end.</b> A simple rule: park 25–35% of every payout in a separate account the day it lands. You'll adjust the exact number with a strategist, but a creator who never touches that account is never blindsided in April.</p>
+            <p><b>Track the expenses you're already making.</b> Equipment, software, a portion of your phone and internet, travel to shoot, the rented car for a video, contractor payments to editors — a lot of what you spend is deductible if it's documented. A receipt photo the day of beats reconstructing it a year later.</p>
+            <p><b>US creators can't outrun global tax.</b> If you're a US person, moving abroad doesn't erase the obligation the way it can for others. The move isn't avoidance — it's using the deductions and structures you're actually entitled to.</p>
+            <p><b>The five-year trap.</b> The worst outcomes come from putting it off: a few good years, nothing filed, then an audit that takes it all. Getting the basics right early is cheap insurance against the most common ending in this industry.</p>
+          </div>
+        </details>
+        <details class="guide">
+          <summary><span class="tag">Money · 5 min read</span><h3>How to read your P&amp;L without an accounting degree</h3><span class="sum">The three numbers that tell you if you're actually making money — and what "true margin" really means for a creator.</span></summary>
+          <div class="body">
+            <p><b>Revenue is not income.</b> A $300K month isn't $300K in your pocket. Your profit-and-loss statement shows what's left after the platform fees, ad spend, cost of goods, and everyone you paid.</p>
+            <p><b>Watch true margin.</b> For a commerce creator, the number that matters is what's left after COGS, ad spend and platform fees — not the top-line sales figure brands love to quote. Two creators with the same revenue can keep wildly different amounts.</p>
+            <p><b>Know your runway.</b> Runway is how many months you could cover your costs if the money stopped today. If it's under three, that's not a detail — that's the most important number on the page.</p>
+          </div>
+        </details>
+        <details class="guide">
+          <summary><span class="tag">Cash flow · 5 min read</span><h3>Feast or famine: a cash buffer that survives the slow months</h3><span class="sum">Why the danger isn't the $300K month — it's the $0 month with $80K of expenses still going out.</span></summary>
+          <div class="body">
+            <p><b>The risk is the dip, not the peak.</b> Most creators plan around their best month. The ones who last plan around their worst. The dangerous month is the one where you earn nothing but still owe three rents and a car lease.</p>
+            <p><b>Build a buffer before you need it.</b> Aim for enough set aside to cover several months of your real costs. It comes out of the big months automatically, so the algorithm turning against you becomes an inconvenience instead of a crisis.</p>
+            <p><b>Don't solve a slow month with predatory money.</b> The panic-borrowing that happens in a dip is where a lot of creators get taken. A buffer — or revenue-based financing on fair terms — is the difference between a quiet quarter and a hole you spend a year climbing out of.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section class="cta" id="apply" data-page="all">
     <div class="wrap">
       <span class="label reveal">Limited intake</span>
@@ -563,11 +744,36 @@
     </div>
   </section>
 
-  <footer data-page="all">
-    <div class="wrap foot-inner">
-      <div class="brand" style="font-size:18px;"><span class="coin" style="width:22px;height:22px;font-size:13px;">M</span> Midas</div>
-      <p>From blowing up to building wealth.</p>
-      <span class="draft">Draft v1 · internal review</span>
+  <footer class="footer2" data-page="all">
+    <div class="cols">
+      <div class="col-brand">
+        <a href="#/home" class="brand" style="font-size:20px;text-decoration:none;color:inherit;display:inline-flex;gap:10px;align-items:center;"><span class="coin" style="width:24px;height:24px;font-size:14px;">M</span> Midas</a>
+        <p>The financial team behind the creators. From blowing up to building wealth and legacy.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <a href="#/platform">Platform</a>
+        <a href="#/pricing">Pricing</a>
+        <a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Apply</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#/about">About</a>
+        <a href="#/resources">Resources</a>
+        <a href="#/faq">FAQ</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:lavine@zenith-grp.co">Contact</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <div class="row">
+        <p>© 2026 Midas. Results vary and depend on individual circumstances. Nothing on this site is tax, legal or investment advice.</p>
+        <span class="draft">Draft · pre-launch</span>
+      </div>
     </div>
   </footer>
 </div>
