@@ -428,6 +428,7 @@
       </div>
       <div class="calc-cta reveal">
         <a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary">Book your free money audit →</a>
+        <button type="button" class="btn btn-ghost" id="shareBtn">Share your number ↗</button>
         <span class="calc-note">Estimate only, not tax advice — your real numbers depend on your situation.</span>
       </div>
     </div>
@@ -956,15 +957,31 @@
     if (inc) {
       var fmt = function(n){ return '$' + Math.round(n).toLocaleString('en-US'); };
       var r1k = function(n){ return Math.round(n / 1000) * 1000; };
+      var shareText = '';
       var calc = function(){
         var v = +inc.value;
+        var tax = r1k(v * 0.30), save = r1k(v * 0.08), grow = r1k(save * 13.8);
         document.getElementById('incLabel').textContent = fmt(v);
-        document.getElementById('outTax').textContent = fmt(r1k(v * 0.30));
-        var save = r1k(v * 0.08);
+        document.getElementById('outTax').textContent = fmt(tax);
         document.getElementById('outSave').textContent = fmt(save);
-        document.getElementById('outGrow').textContent = fmt(r1k(save * 13.8));
+        document.getElementById('outGrow').textContent = fmt(grow);
+        shareText = 'My money, real numbers: on ' + fmt(v) + '/yr I could be saving ' + fmt(save) + ' in tax a year — ' + fmt(grow) + ' in 10 years. What’s your number?';
       };
       inc.addEventListener('input', calc); calc();
+      var sBtn = document.getElementById('shareBtn');
+      if (sBtn) {
+        var flash = function(msg){ sBtn.textContent = msg; setTimeout(function(){ sBtn.textContent = 'Share your number ↗'; }, 2000); };
+        sBtn.addEventListener('click', function(){
+          var url = 'https://midascfo.com';
+          if (navigator.share) {
+            navigator.share({ title: 'Midas — your number', text: shareText, url: url }).catch(function(){});
+          } else if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareText + ' ' + url).then(function(){ flash('Copied ✓'); }).catch(function(){ flash('Copied ✓'); });
+          } else {
+            flash('Copied ✓');
+          }
+        });
+      }
     }
     window.addEventListener('hashchange', function(){ if (location.hash.indexOf('#/') === 0) route(); });
     route();
