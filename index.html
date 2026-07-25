@@ -253,6 +253,28 @@
   .pcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
   .pcard .maps { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--ink-faint); font-family: var(--mono); letter-spacing: .02em; }
 
+  /* functionality showcase */
+  .func { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  @media (max-width: 900px){ .func { grid-template-columns: 1fr; } }
+  .fcard { border: 1px solid var(--hairline); border-radius: 18px; background: var(--surface); overflow: hidden; display: flex; flex-direction: column; }
+  .fcard .mock { padding: 24px; background: var(--surface-2); border-bottom: 1px solid var(--hairline); min-height: 210px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+  .fcard .cap2 { padding: 20px 22px; }
+  .fcard .cap2 .k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .fcard .cap2 h3 { font-size: 1.15rem; margin: 8px 0 6px; font-family: var(--body); font-weight: 650; }
+  .fcard .cap2 p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .wa { display: flex; flex-direction: column; gap: 8px; }
+  .wa .b { max-width: 92%; padding: 10px 13px; border-radius: 13px; font-size: 13px; line-height: 1.4; }
+  .wa .b.u { align-self: flex-end; background: linear-gradient(100deg,var(--gold-deep),var(--gold)); color: #1b1408; border-bottom-right-radius: 4px; }
+  .wa .b.m { align-self: flex-start; background: var(--surface); border: 1px solid var(--hairline); border-bottom-left-radius: 4px; }
+  .wa .rcpt { font-size: 11.5px; opacity: .8; }
+  .wa .ok { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--good); margin-top: 5px; }
+  .mbig { font-family: var(--display); font-weight: 300; font-size: 2.4rem; color: var(--gold); font-variant-numeric: tabular-nums; letter-spacing: -.02em; line-height: 1; }
+  .msub { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+  .mrow { font-size: 12.5px; color: var(--ink-soft); }
+  .mbtn { align-self: flex-start; margin-top: 4px; font-size: 12.5px; font-weight: 600; padding: 9px 15px; border-radius: 999px; background: linear-gradient(100deg,var(--gold-deep),var(--gold)); color: #17120a; }
+  .mstrike { text-decoration: line-through; color: var(--ink-faint); font-size: 1.3rem; }
+  .msaved { color: var(--good); font-family: var(--mono); font-size: 12px; }
+
   /* live product screenshots — framed dark regardless of page theme */
   .shots { display: flex; flex-direction: column; gap: 44px; }
   .shot { border: 1px solid rgba(255,255,255,.10); border-radius: 16px; overflow: hidden; background: #0d0d0d; box-shadow: 0 30px 80px -30px rgba(0,0,0,.7); }
@@ -525,6 +547,45 @@
             <li>Real estate and deal access — pool with other creators, we architect the structure</li>
           </ul>
           <div class="foot"><a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary">Apply for Copilot →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="product" data-page="home platform">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">How it actually works</span>
+        <h2>No dashboards to learn. You just text Midas.</h2>
+        <p>Snap a receipt in WhatsApp and the Midas agent reads it, categorises it and files it to your books — then lends against it and shrinks your tax bill. That's the whole product.</p>
+      </div>
+      <div class="func">
+        <div class="fcard reveal">
+          <div class="mock">
+            <div class="wa">
+              <div class="b u"><span class="rcpt">📷 receipt.jpg</span></div>
+              <div class="b m"><b>Processed ✓</b><br>Cafe · $18.50 · Client Dinner · 12 Jan<span class="ok">✓ logged &amp; synced to QuickBooks</span></div>
+            </div>
+          </div>
+          <div class="cap2"><span class="k">The Midas agent</span><h3>Snap it in WhatsApp</h3><p>Every receipt read, categorised and filed instantly — Lambo included. No app to learn, no shoebox.</p></div>
+        </div>
+        <div class="fcard reveal">
+          <div class="mock">
+            <div class="msub">Available to advance</div>
+            <div class="mbig">$85,000</div>
+            <div class="mrow">Against $340K of tracked income &amp; spend</div>
+            <div class="mbtn">Get it today →</div>
+          </div>
+          <div class="cap2"><span class="k">Instant financing</span><h3>Cash for the slow months</h3><p>Draw against what you've already earned — fair terms, funded fast. Never a predatory lender again.</p></div>
+        </div>
+        <div class="fcard reveal">
+          <div class="mock">
+            <div class="msub">Estimated tax owed</div>
+            <div><span class="mstrike">$150,000</span> <span class="mbig" style="font-size:2rem">$108,000</span></div>
+            <div class="msaved">▼ $42,000 saved this year</div>
+            <div class="mrow">Drops live as deductions get captured</div>
+          </div>
+          <div class="cap2"><span class="k">Tax bill, live</span><h3>Watch it shrink</h3><p>Your estimated tax falls in real time as Midas finds every deduction — no April surprise, ever.</p></div>
         </div>
       </div>
     </div>
