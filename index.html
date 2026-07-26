@@ -275,6 +275,16 @@
   .mstrike { text-decoration: line-through; color: var(--ink-faint); font-size: 1.3rem; }
   .msaved { color: var(--good); font-family: var(--mono); font-size: 12px; }
 
+  /* guarantees */
+  .guars { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  @media (max-width: 860px){ .guars { grid-template-columns: 1fr; } }
+  .guar { border: 1px solid var(--hairline); border-radius: 18px; padding: 28px; background: var(--surface); }
+  .guar.hl { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background: linear-gradient(180deg, var(--gold-wash), transparent 45%), var(--surface); }
+  .guar .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--gold-wash); border: 1px solid color-mix(in srgb, var(--gold) 34%, transparent); margin-bottom: 18px; }
+  .guar .ic svg { width: 22px; height: 22px; stroke: var(--gold); fill: none; stroke-width: 1.6; }
+  .guar h3 { font-size: 1.25rem; margin: 0 0 10px; }
+  .guar p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.55; }
+
   /* live product screenshots — framed dark regardless of page theme */
   .shots { display: flex; flex-direction: column; gap: 44px; }
   .shot { border: 1px solid rgba(255,255,255,.10); border-radius: 16px; overflow: hidden; background: #0d0d0d; box-shadow: 0 30px 80px -30px rgba(0,0,0,.7); }
@@ -547,6 +557,33 @@
             <li>Real estate and deal access — pool with other creators, we architect the structure</li>
           </ul>
           <div class="foot"><a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary">Apply for Copilot →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="guarantees" data-page="home pricing">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Why it's safe to say yes</span>
+        <h2>Three guarantees. No blind trust required.</h2>
+        <p>Creators get pitched constantly — so we don't ask you to take our word for anything. We put it in writing.</p>
+      </div>
+      <div class="guars">
+        <div class="guar hl reveal">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>The tax guarantee</h3>
+          <p>We save you more in tax than our fee in your first year — or you don't pay. The only conditions: pay on time and stay involved. That's it.</p>
+        </div>
+        <div class="guar reveal">
+          <span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+          <h3>Your data, your control</h3>
+          <p>You decide exactly what Midas can see, and you can revoke access any time. Read-only where possible, encrypted, and never sold or shared. Ever.</p>
+        </div>
+        <div class="guar reveal">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v4h4"/></svg></span>
+          <h3>Risk-free to start</h3>
+          <p>Put down a small, fully refundable deposit — bring your manager or team to the strategy call, ask anything, and if it's not a fit, you get every cent back.</p>
         </div>
       </div>
     </div>
