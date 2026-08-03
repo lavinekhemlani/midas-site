@@ -305,6 +305,16 @@
   .apply-thanks h3 { font-family: var(--display); font-weight: 300; font-size: 1.9rem; margin-bottom: 12px; }
   .apply-thanks p { color: var(--ink-soft); margin-bottom: 24px; }
 
+  /* GOLD system */
+  .gold-phases { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+  @media (max-width: 900px){ .gold-phases { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px){ .gold-phases { grid-template-columns: 1fr; } }
+  .gphase { border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; background: var(--surface); }
+  .gphase .gl { font-family: var(--display); font-weight: 300; font-size: 3.2rem; line-height: 1; background: linear-gradient(100deg,var(--gold-deep),var(--gold-lift),var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gphase .pn { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: 14px 0 4px; }
+  .gphase h3 { font-size: 1.2rem; margin: 0 0 8px; }
+  .gphase p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+
   /* live product screenshots — framed dark regardless of page theme */
   .shots { display: flex; flex-direction: column; gap: 44px; }
   .shot { border: 1px solid rgba(255,255,255,.10); border-radius: 16px; overflow: hidden; background: #0d0d0d; box-shadow: 0 30px 80px -30px rgba(0,0,0,.7); }
@@ -426,6 +436,7 @@
       <a href="#/home" class="brand" style="text-decoration:none;color:inherit;"><span class="coin">M</span> Midas</a>
       <div class="nav-links">
         <a href="#/platform" class="rlink">Platform</a>
+        <a href="#/gold" class="rlink">The System</a>
         <a href="#/pricing" class="rlink">Pricing</a>
         <a href="#/resources" class="rlink">Resources</a>
         <a href="#/faq" class="rlink">FAQ</a>
@@ -436,6 +447,7 @@
     </div>
     <div class="mobile-menu">
       <a href="#/platform" class="rlink">Platform</a>
+        <a href="#/gold" class="rlink">The System</a>
       <a href="#/pricing" class="rlink">Pricing</a>
       <a href="#/resources" class="rlink">Resources</a>
       <a href="#/faq" class="rlink">FAQ</a>
@@ -569,7 +581,7 @@
           <span class="tag">Done with you</span>
           <h3>Inflection</h3>
           <p class="who">For creators earning $500K–$2M who want it handled every month, without the full price of a manager.</p>
-          <div class="price">$1,500<span> / month</span></div>
+          <div class="price">$1,000<span> / month</span></div>
           <div class="model">flat monthly · dedicated profit coach</div>
           <ul>
             <li>Everything in Compass, plus a coach who actively runs your budget and tax set-aside every month</li>
@@ -596,6 +608,25 @@
           </ul>
           <div class="foot"><a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" class="btn btn-primary">Apply for Legacy →</a></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="gold" data-page="gold">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">The GOLD System™</span>
+        <h2>Four phases that turn what you earn into what you keep — then multiply it.</h2>
+        <p>Every creator we work with runs the same proven path. Where you start depends on your income; where it ends is a legacy.</p>
+      </div>
+      <div class="gold-phases">
+        <div class="gphase reveal"><div class="gl">G</div><div class="pn">Phase one</div><h3>Guard</h3><p>Protect every dollar you earn — real-time deduction capture, tax set aside automatically, and the right structure so you stop overpaying.</p></div>
+        <div class="gphase reveal"><div class="gl">O</div><div class="pn">Phase two</div><h3>Organize</h3><p>One clean picture of your money — every income source and expense in one place, so you always know exactly what you keep.</p></div>
+        <div class="gphase reveal"><div class="gl">L</div><div class="pn">Phase three</div><h3>Leverage</h3><p>Put your money to work — a buffer for the slow months, financing against your earnings, and income invested instead of sitting idle.</p></div>
+        <div class="gphase reveal"><div class="gl">D</div><div class="pn">Phase four</div><h3>Dynasty</h3><p>Build what outlasts the run — wealth management, deal access, and our Patrimonium fund. Turn a viral moment into a lasting legacy.</p></div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:38px;">
+        <a href="#/apply" class="btn btn-primary">Start the GOLD System →</a>
       </div>
     </div>
   </section>
@@ -1149,6 +1180,7 @@
       <div>
         <h5>Product</h5>
         <a href="#/platform">Platform</a>
+        <a href="#/gold">The System</a>
         <a href="#/pricing">Pricing</a>
         <a href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Apply</a>
       </div>
