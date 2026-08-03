@@ -191,8 +191,8 @@
   .spark { height: 40px; margin-top: 20px; width: 100%; display: block; }
 
   /* ---- offer tiers ---- */
-  .tiers { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
-  @media (max-width: 860px){ .tiers { grid-template-columns: 1fr; } }
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px){ .tiers { grid-template-columns: 1fr; } }
   .tier { position: relative; background: var(--surface); border: 1px solid var(--hairline); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; box-shadow: var(--shadow); }
   .tier.feature { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background:
     linear-gradient(180deg, var(--gold-wash), transparent 42%), var(--surface); }
@@ -550,7 +550,7 @@
       </div>
       <div class="tiers">
         <div class="tier reveal">
-          <span class="tag">Done with you</span>
+          <span class="tag">Do it yourself</span>
           <h3>Compass</h3>
           <p class="who">For creators earning under $500K who want to get this right before it gets expensive.</p>
           <div class="price">$5,000<span> / year</span></div>
@@ -566,6 +566,22 @@
         </div>
 
         <div class="tier feature reveal">
+          <span class="tag">Done with you</span>
+          <h3>Autopilot</h3>
+          <p class="who">For creators earning $500K–$2M who want it handled every month, without the full price of a manager.</p>
+          <div class="price">$1,500<span> / month</span></div>
+          <div class="model">flat monthly · dedicated profit coach</div>
+          <ul>
+            <li>Everything in Compass, plus a coach who actively runs your budget and tax set-aside every month</li>
+            <li>The WhatsApp agent capturing every deduction, synced straight to your books</li>
+            <li>A monthly money check-in — what you keep, what to set aside, what's coming</li>
+            <li>Tax filing coordinated and done through our licensed partners</li>
+            <li>Cash-flow planning so the slow months never catch you out</li>
+          </ul>
+          <div class="foot"><a href="#/apply" class="btn btn-primary">Get on Autopilot →</a></div>
+        </div>
+
+        <div class="tier reveal">
           <span class="tag">Done for you</span>
           <h3>Copilot</h3>
           <p class="who">For creators earning $500K–$2M+ who are past the point of doing it themselves.</p>
