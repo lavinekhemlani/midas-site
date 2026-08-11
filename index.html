@@ -279,6 +279,11 @@
   .mstrike { text-decoration: line-through; color: var(--ink-faint); font-size: 1.3rem; }
   .msaved { color: var(--good); font-family: var(--mono); font-size: 12px; }
 
+  /* qualification checklist */
+  .clean-check { list-style: none; padding: 0; max-width: 760px; display: flex; flex-direction: column; gap: 14px; }
+  .clean-check li { display: flex; gap: 14px; font-size: 16.5px; line-height: 1.5; color: var(--ink); background: var(--surface); border: 1px solid var(--hairline); border-radius: 14px; padding: 18px 22px; }
+  .clean-check li::before { content: "✓"; flex: none; color: var(--gold); font-weight: 700; }
+
   /* guarantees */
   .guars { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   @media (max-width: 860px){ .guars { grid-template-columns: 1fr; } }
@@ -466,7 +471,7 @@
         <a href="#/apply" class="btn btn-primary">Apply to work with us →</a>
         <a href="#calc" class="btn btn-ghost">See what you'd keep →</a>
       </div>
-      <p class="hero-note reveal">For creators earning $100K–$5M+ a year. Traditional, TikTok Shop, and beyond.</p>
+      <p class="hero-note reveal">For creators earning $250K+ a year — US &amp; UK. Traditional, TikTok Shop, and beyond.</p>
       <p class="hero-sec reveal"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Bank-grade encryption · your data, your control · never sold. <a href="#/security">How we protect you →</a></p>
     </div>
   </header>
@@ -543,7 +548,7 @@
       <div class="band-head reveal">
         <span class="label">Our process</span>
         <h2>How we find the money you're leaving on the table.</h2>
-        <p>A clear, proven method — the same approach that saves high earners six figures — built for how creator income actually works.</p>
+        <p>A reliable financial baseline, tax readiness coordinated with licensed professionals, and a monthly view of what's reserved, committed, and available — built for how creator income actually works.</p>
       </div>
       <div class="steps">
         <div class="step reveal"><div class="no">01 · The X-ray</div><h3>See where it's leaking</h3><p>We connect the app you're paid through and your books, then map the whole picture — what you earn, what you keep, and exactly what you're overpaying.</p></div>
@@ -625,8 +630,59 @@
         <div class="gphase reveal"><div class="gl">L</div><div class="pn">Phase three</div><h3>Leverage</h3><p>Put your money to work — a buffer for the slow months, financing against your earnings, and income invested instead of sitting idle.</p></div>
         <div class="gphase reveal"><div class="gl">D</div><div class="pn">Phase four</div><h3>Deploy</h3><p>Put your wealth to work — deploy into real assets, deals, and an institutional fund. Turn a viral moment into a legacy that outlasts the run.</p></div>
       </div>
+      <div class="band-head reveal" style="margin-top:64px;">
+        <span class="label">The methodology, in numbers</span>
+        <h2 style="font-size:clamp(1.6rem,1.3rem+1.2vw,2.2rem);">The strategies are proven. Most creators just never hear them.</h2>
+        <p style="font-size:.95rem;">Illustrative figures — your numbers depend on your situation and jurisdiction. Every strategy implemented by licensed professionals.</p>
+      </div>
+      <div class="gold-phases reveal" style="grid-template-columns:repeat(3,1fr);">
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">~$9,500<span style="font-size:1rem;">/yr</span></div><p style="margin-top:12px;">Typical self-employment tax saved on $100K profit from one structural election alone (US).</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">100%</div><p style="margin-top:12px;">Of qualifying content vehicles and equipment written off through accelerated depreciation (US).</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">60%</div><p style="margin-top:12px;">The UK marginal tax trap between £100–125K — planned around with pensions and timing, not suffered.</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">~$70K<span style="font-size:1rem;">/yr</span></div><p style="margin-top:12px;">Deductible retirement contributions available to self-employed creators (US solo plans).</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">14 days</div><p style="margin-top:12px;">Of tax-free home rental to your own business for shoots and meetings (US Augusta rule).</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">3-company</div><p style="margin-top:12px;">Group structures — trading, investment, holdco — that protect reliefs while wealth compounds (UK).</p></div>
+      </div>
       <div class="reveal" style="text-align:center;margin-top:38px;">
-        <a href="#/apply" class="btn btn-primary">Start the GOLD System →</a>
+        <a href="#/apply" class="btn btn-primary">Start with the free review →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="review" data-page="home">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Proof before commitment</span>
+        <h2>Start with the free <span class="gold-text">"Money Left on the Table"</span> review.</h2>
+        <p>Send us last year's return and accounts. Our licensed tax partner reviews them, and inside a week you get two things: the number you likely overpaid, and a clean picture of what you actually make. You keep the findings either way.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="no">Within 7 days</div><h3>Your overpayment number</h3><p>Earned → kept → left on the table. In plain numbers, from the documents you already have.</p></div>
+        <div class="step reveal"><div class="no">Same week</div><h3>Your clean money picture</h3><p>A reliable financial baseline — what's reserved, committed, and actually available to spend or invest.</p></div>
+        <div class="step reveal"><div class="no">Zero risk</div><h3>No credentials. No commitment.</h3><p>Documents only — nothing connected, nothing signed. If we can't find more than we'd cost, we'll say so.</p></div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:36px;">
+        <a href="#/apply" class="btn btn-primary">Get your free review →</a>
+        <p style="margin-top:14px;font-size:13px;color:var(--ink-faint);">We win when you win — that's the whole model.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="foryou" data-page="home">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Is this you?</span>
+        <h2>Midas is built for you if…</h2>
+      </div>
+      <div class="cards-check reveal">
+        <ul class="clean-check">
+          <li>You're earning $250K+ a year from your content — and you honestly couldn't say what you'll owe in tax</li>
+          <li>Money piles up in your account and you don't know what to do with it — nobody gives real advice on excess profits</li>
+          <li>Your income swings hard month to month, and a slow month still scares you</li>
+          <li>Your accountant files what happened last year but never tells you what to do next</li>
+          <li>Your manager books the next deal — but nobody is watching what you actually keep</li>
+          <li>You want the strategies high earners use, without becoming a finance person yourself</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -869,9 +925,9 @@
           <p>A founding team with a decade managing some of the biggest names on TikTok. We know the personas, the egos, and exactly how the money gets lost.</p>
         </div>
         <div class="founder reveal">
-          <div class="nm">Finance &amp; structuring</div>
-          <div class="rl">Ex-investment banking</div>
-          <p>Company builders and financiers who've bought, sold and structured real businesses — bringing institutional-grade finance to people who've never had access to it.</p>
+          <div class="nm">Lavine Hemlani</div>
+          <div class="rl">Founder &amp; CEO</div>
+          <p>Founder of Zenith, the CFO and transaction advisory behind venture-backed companies. A decade building, buying and structuring businesses across the US, UK, Hong Kong and Dubai.</p>
         </div>
         <div class="founder reveal">
           <div class="nm">The partner network</div>
