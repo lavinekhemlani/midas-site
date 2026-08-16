@@ -52,10 +52,13 @@
       --shadow: 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -20px rgba(0,0,0,.6);
     }
   }
-  :root[data-theme="light-disabled"] {
-    --ground:#faf8f5;--surface:#fff;--surface-2:#f3efe8;--hairline:rgba(24,20,12,.10);--hairline-strong:rgba(24,20,12,.18);
-    --ink:#17140f;--ink-soft:#5c564c;--ink-faint:#8a8377;--gold:#a97b2f;--gold-deep:#7c5720;--gold-lift:#c19a4e;--gold-wash:rgba(169,123,47,.10);
-    --good:#1c7c5b;--warn:#b45309;--crit:#b22a2a;--shadow:0 1px 2px rgba(24,20,12,.05),0 12px 40px -12px rgba(24,20,12,.14);
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --ground:#fbfaf8;--surface:#ffffff;--surface-2:#f4f1ec;--hairline:rgba(20,17,12,.12);--hairline-strong:rgba(20,17,12,.22);
+    --ink:#161310;--ink-soft:#4e483f;--ink-faint:#7d766b;
+    --gold:#8f6420;--gold-deep:#6e4c15;--gold-lift:#a87e2e;--gold-wash:rgba(143,100,32,.09);
+    --good:#177a56;--warn:#a34d06;--crit:#b02a2a;
+    --shadow:0 1px 2px rgba(20,17,12,.06),0 12px 40px -12px rgba(20,17,12,.16);
   }
   :root[data-theme="dark"] {
     --ground:#121212;--surface:rgba(255,255,255,.035);--surface-2:rgba(255,255,255,.055);--hairline:rgba(255,255,255,.09);--hairline-strong:rgba(255,255,255,.16);
@@ -112,6 +115,8 @@
   .nav-links a.rlink { cursor: pointer; }
   .nav-links a.active { color: var(--ink); }
   .nav-links a.active::after { content: ""; display: block; height: 1.5px; background: var(--gold); margin-top: 3px; border-radius: 2px; }
+  .theme-toggle { background: none; border: 1px solid var(--hairline-strong); border-radius: 999px; color: var(--ink-soft); width: 34px; height: 34px; font-size: 15px; line-height: 1; cursor: pointer; margin-left: 14px; }
+  .theme-toggle:hover { color: var(--ink); }
   .hamburger { display: none; background: none; border: 0; color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; padding: 6px 4px; }
   .mobile-menu { display: none; flex-direction: column; padding: 4px 28px 18px; background: var(--ground); border-top: 1px solid var(--hairline); }
   .mobile-menu a { text-decoration: none; color: var(--ink); font-size: 17px; padding: 15px 2px; border-bottom: 1px solid var(--hairline); }
@@ -485,6 +490,7 @@
         <a href="#/about" class="rlink">About</a>
         <a href="#/apply" class="btn btn-primary">See if you qualify</a>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" title="Light / dark">☀</button>
       <button class="hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
     </div>
     <div class="mobile-menu">
@@ -1662,6 +1668,16 @@
 
 <script>
   (function () {
+    var tt = document.getElementById('themeToggle');
+    function setTheme(mode){
+      if (mode === 'light') { document.documentElement.setAttribute('data-theme','light'); if (tt){ tt.textContent='☾'; tt.setAttribute('aria-label','Switch to dark mode'); } }
+      else { document.documentElement.removeAttribute('data-theme'); if (tt){ tt.textContent='☀'; tt.setAttribute('aria-label','Switch to light mode'); } }
+      try { localStorage.setItem('midas-theme', mode); } catch(e){}
+    }
+    try { if (localStorage.getItem('midas-theme') === 'light') setTheme('light'); } catch(e){}
+    if (tt) tt.addEventListener('click', function(){
+      setTheme(document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+    });
     var menu = document.querySelector('.mobile-menu');
     var burger = document.querySelector('.hamburger');
     function activePage(){ var h = location.hash; return (h.indexOf('#/') === 0) ? (h.slice(2) || 'home') : 'home'; }
