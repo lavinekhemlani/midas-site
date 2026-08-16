@@ -313,6 +313,11 @@
   .assess-result .rn { font-family: var(--display); font-weight: 300; font-size: clamp(2.2rem, 1.8rem + 2vw, 3.4rem); color: var(--gold-lift); font-variant-numeric: tabular-nums; }
   .assess-result h3 { font-family: var(--display); font-weight: 300; font-size: 1.5rem; margin: 10px 0 12px; }
   .assess-result p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; margin-bottom: 22px; }
+  .vslbox { max-width: 720px; margin: 0 auto 40px; border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent); border-radius: 18px; background: var(--surface-2); aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; box-shadow: var(--shadow); }
+  .vslbox .play { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(100deg, var(--gold-deep), var(--gold)); box-shadow: 0 10px 40px -10px rgba(200,165,90,.5); }
+  .vslbox .play svg { width: 26px; height: 26px; fill: #17120a; margin-left: 4px; }
+  .vslbox .vt2 { font-family: var(--display); font-weight: 300; font-size: 1.3rem; }
+  .vslbox .vs2 { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
 
   /* GOLD system */
   .gold-phases { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
@@ -701,6 +706,42 @@
           <li>You want the strategies high earners use, without becoming a finance person yourself</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section class="band" id="scope" data-page="home platform">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">How we actually do it</span>
+        <h2>Not advice. A system that runs — this is the full scope.</h2>
+        <p>Every engagement is these concrete deliverables, not a strategy deck and a Slack channel.</p>
+      </div>
+      <div class="plat">
+        <div class="pcard reveal"><h4>AI receipt capture</h4><p>Snap any receipt in WhatsApp — read, categorised, filed to your books with the deduction flagged, at the moment it happens.</p><div class="maps">Runs daily · zero effort</div></div>
+        <div class="pcard reveal"><h4>Tax strategy sessions</h4><p>Three to four focused sessions with Elton Lalaj, our Head of Tax — full assessment, then the plan, strategy by strategy.</p><div class="maps">Led by the Head of Tax</div></div>
+        <div class="pcard reveal"><h4>Tax filing, done</h4><p>Federal and state filings prepared and submitted by licensed, registered professionals — coordinated by us, never dumped on you.</p><div class="maps">Licensed partners file</div></div>
+        <div class="pcard reveal"><h4>Quarterly recalibration</h4><p>Estimated payments recalculated every quarter as strategies land — so cash sits with you, not prepaid to the IRS.</p><div class="maps">4x per year</div></div>
+        <div class="pcard reveal"><h4>The reserve system</h4><p>A fixed cut of every payout parked automatically for tax and slow months. April becomes a checkpoint, not a crisis.</p><div class="maps">Set once · runs always</div></div>
+        <div class="pcard reveal"><h4>Monthly money check-in</h4><p>One call a month: what you earned, what you kept, what's reserved, what's safe to spend or invest.</p><div class="maps">30 minutes · every month</div></div>
+        <div class="pcard reveal"><h4>Audit-ready documentation</h4><p>Business-purpose logs, Augusta comps, mileage records — the paper trail that makes every deduction defensible.</p><div class="maps">Built as you go</div></div>
+        <div class="pcard reveal"><h4>Wealth deployment</h4><p>When the reserve is full and the tax is handled, excess profits move into real assets — through separately regulated partners.</p><div class="maps">Regulated partners execute</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="results" data-page="home">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Real results</span>
+        <h2>The track record behind the Audit.</h2>
+      </div>
+      <div class="stats reveal">
+        <div class="stat"><div class="n">30+</div><div class="k">creators already served by our Head of Tax, Elton Lalaj</div></div>
+        <div class="stat"><div class="n">20–30%</div><div class="k">average tax saved with proactive planning across those engagements</div></div>
+        <div class="stat"><div class="n">100+</div><div class="k">founders behind Zenith, the CFO firm Midas grew out of</div></div>
+        <div class="stat"><div class="n">2x fee</div><div class="k">shown in recoverable savings by the Audit — or it's refunded</div></div>
+      </div>
+      <p class="reveal" style="margin-top:18px;font-size:12px;color:var(--ink-faint);">Results from our Head of Tax's professional practice. Individual outcomes depend on your situation — that's what the Audit establishes.</p>
     </div>
   </section>
 
@@ -1207,6 +1248,11 @@
         <span class="label">See if you qualify</span>
         <h2 style="margin:16px 0 0;">Let's see if Midas is a fit.</h2>
         <p style="margin:14px auto 0;">Takes under a minute. We take on a limited number of creators at a time, so this helps us prioritise the right people.</p>
+      </div>
+      <div class="vslbox reveal">
+        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <div class="vt2">Watch: how creators keep 20–30% more</div>
+        <div class="vs2">3-minute overview · from Lavine, founder</div>
       </div>
       <form class="applyform reveal" name="apply" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="applyForm">
         <input type="hidden" name="form-name" value="apply" />
