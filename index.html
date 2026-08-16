@@ -462,6 +462,26 @@
   .fletter .letter p b { color: var(--ink); }
   .fletter .letter .sig { margin-top: 26px; font-family: var(--display); font-size: 1.3rem; color: var(--ink); }
 
+  /* team grid */
+  .team { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+  @media (max-width: 1000px){ .team { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px){ .team { grid-template-columns: 1fr; } }
+  .tm { border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; background: var(--surface); }
+  .tm .av2 { width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 16px;
+    background: radial-gradient(circle at 32% 28%, var(--gold-lift), var(--gold-deep) 78%); color: #241a08;
+    font-family: var(--display); font-size: 22px; letter-spacing: .02em;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 3px 12px -3px rgba(0,0,0,.5); }
+  .tm .av2 img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+  .tm h4 { font-family: var(--display); font-weight: 300; font-size: 1.2rem; margin: 0 0 4px; }
+  .tm .rl4 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .tm p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
+  .taxteam { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+  @media (max-width: 1000px){ .taxteam { grid-template-columns: 1fr 1fr; } }
+  .ttm { border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; background: var(--surface); }
+  .ttm .nm3 { font-weight: 650; font-size: 14.5px; }
+  .ttm .yr { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin: 4px 0 8px; }
+  .ttm p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+
   /* founders */
   .founders { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
   @media (max-width: 820px){ .founders { grid-template-columns: 1fr; } }
@@ -1051,55 +1071,83 @@
         </div>
       </div>
 
-      <div class="band-head reveal" style="margin:72px 0 40px;">
-        <span class="label">Your Head of Tax</span>
-        <h2>The strategist behind every engagement.</h2>
+      <div class="band-head reveal" style="margin:72px 0 36px;">
+        <span class="label">Leadership</span>
+        <h2>The team behind your money.</h2>
       </div>
-      <div class="fletter reveal">
-        <div class="photo">
-          <img src="elton.png" alt="Elton Lalaj, Head of Tax at Midas" />
-          <div class="cap3">
-            <div class="nm2">Elton Lalaj</div>
-            <div class="rl3">CPA · Head of Tax · Founder, Lalaj CPA Group</div>
-          </div>
+      <div class="team reveal">
+        <div class="tm">
+          <div class="av2"><img src="lavine.jpeg" alt="Lavine Hemlani" /></div>
+          <h4>Lavine Hemlani</h4>
+          <div class="rl4">Founder &amp; CEO</div>
+          <p>Founder of Zenith, the CFO firm behind 100+ founders. A decade building, buying and structuring companies across the US, UK and Dubai — now applying that machinery to creators.</p>
         </div>
-        <div class="letter">
-          <p>Elton has spent <b>over 20 years in public accounting</b>, focused on tax advisory for exactly the industries creator money behaves like: <b>entertainment, hospitality and real estate</b>.</p>
-          <p>His work is the machinery under Midas: tax consulting and compliance for <b>partnerships, LLCs and S-corporations</b>, entity formation, structuring partnership agreements, and mapping the tax consequences of exits — the decisions that quietly decide what you keep.</p>
-          <p>Featured on the Artistic Finance podcast on freelancer money, he now runs this playbook for creators, where proactive planning has saved his clients <b>an average of 20–30% a year</b>. Behind him sits <b>Lalaj CPA Group's full team</b> of accountants and tax professionals — every Midas engagement includes his strategy sessions, with filings executed by licensed, registered professionals.</p>
+        <div class="tm">
+          <div class="av2">CT</div>
+          <h4>Carter Turnbull</h4>
+          <div class="rl4">Co-founder &amp; CGO</div>
+          <p>Runs growth. Built and scaled offers in the creator and coaching economy — responsible for how creators find Midas and what they experience from the first conversation onward.</p>
         </div>
+        <div class="tm">
+          <div class="av2">MS</div>
+          <h4>Matthew Singer</h4>
+          <div class="rl4">Chief Operating Officer</div>
+          <p>Runs delivery. Makes sure every strategy that gets designed actually gets implemented, on time — the difference between a plan on paper and money in your account.</p>
+        </div>
+        <div class="tm">
+          <div class="av2">EL</div>
+          <h4>Elton Lalaj, CPA</h4>
+          <div class="rl4">Head of Tax</div>
+          <p>20+ years in public accounting, specialising in entertainment, hospitality and real estate. He designs your plan and leads every strategy session. Founder of Lalaj CPA Group.</p>
+        </div>
+      </div>
+
+      <div class="band-head reveal" style="margin:64px 0 30px;">
+        <span class="label">The tax team</span>
+        <h2 style="font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Elton doesn't work alone.</h2>
+        <p style="font-size:.95rem;">Your plan is designed by Elton and executed by the licensed accountants and tax professionals of Lalaj CPA Group — the practice that files for every Midas client.</p>
+      </div>
+      <div class="taxteam reveal">
+        <div class="ttm"><div class="nm3">Erton Kaleshi</div><div class="yr">10+ years</div><p>Tax consulting and compliance for corporations and high-net-worth individuals, across domestic and foreign industries.</p></div>
+        <div class="ttm"><div class="nm3">Arnold Visha</div><div class="yr">10+ years</div><p>Tax consulting, compliance and dispute resolution — hospitality, construction and professional services businesses.</p></div>
+        <div class="ttm"><div class="nm3">Drita Kaleshi</div><div class="yr">19+ years</div><p>Full-cycle accounting, tax compliance and financial advisory — including production companies.</p></div>
+        <div class="ttm"><div class="nm3">Rafaela Mrruku</div><div class="yr">15+ years</div><p>Taxation, financial reporting, regulatory compliance and advisory for businesses needing full financial management.</p></div>
+        <div class="ttm"><div class="nm3">Ada Mrruku</div><div class="yr">10+ years</div><p>Comprehensive bookkeeping and day-to-day financial management across auditing, construction, banking and fashion.</p></div>
+        <div class="ttm"><div class="nm3">Kristiana Rroqja</div><div class="yr">10 years</div><p>Bookkeeping and annual tax preparation for hospitality, construction and professional services clients.</p></div>
+        <div class="ttm"><div class="nm3">Eriola Mucllari</div><div class="yr">4+ years</div><p>Meticulous bookkeeping and financial records — monthly accounting updates, sales reporting and compliance support.</p></div>
+        <div class="ttm"><div class="nm3">Dhimitra Dhimitri</div><div class="yr">MSc Accounting</div><p>Bookkeeping, financial reporting support and transaction management for small and mid-sized businesses.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="band" id="about" data-page="home about">
+  <section class="band" id="about" data-page="home">
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">Who's behind it</span>
-        <h2>Built by people who've actually sat on this side.</h2>
-        <p>Not accountants who found creators. Operators who lived in the creator economy and watched the money get lost.</p>
+        <h2>Operators and a CPA — not a call centre.</h2>
+        <p>Midas is run by people who've built the finance function behind real companies, and a tax practice that files for creators every day.</p>
       </div>
-      <div class="founders">
-        <div class="founder reveal">
-          <div class="nm">Elton Lalaj</div>
-          <div class="rl">CPA · Head of Tax · Founder, Lalaj CPA Group</div>
-          <p>20+ years in public accounting, specialized in tax advisory for entertainment, hospitality and real estate. He leads every engagement's strategy sessions — full assessment first, then planning that starts today so next tax season is never a surprise.</p>
+      <div class="team reveal">
+        <div class="tm">
+          <div class="av2"><img src="lavine.jpeg" alt="Lavine Hemlani" /></div>
+          <h4>Lavine Hemlani</h4><div class="rl4">Founder &amp; CEO</div>
+          <p>Founder of Zenith — the CFO firm behind 100+ founders.</p>
         </div>
-        <div class="founder reveal">
-          <div class="nm">Creator management</div>
-          <div class="rl">A decade at the top</div>
-          <p>A founding team with a decade managing some of the biggest names on TikTok. We know the personas, the egos, and exactly how the money gets lost.</p>
+        <div class="tm">
+          <div class="av2">CT</div><h4>Carter Turnbull</h4><div class="rl4">Co-founder &amp; CGO</div>
+          <p>Growth. Built and scaled offers across the creator economy.</p>
         </div>
-        <div class="founder reveal">
-          <div class="nm">Lavine Hemlani</div>
-          <div class="rl">Founder &amp; CEO</div>
-          <p>Founder of Zenith, the CFO and transaction advisory behind venture-backed companies. A decade building, buying and structuring businesses across the US, UK, Hong Kong and Dubai.</p>
+        <div class="tm">
+          <div class="av2">MS</div><h4>Matthew Singer</h4><div class="rl4">Chief Operating Officer</div>
+          <p>Delivery. Makes sure every strategy actually gets implemented.</p>
         </div>
-        <div class="founder reveal">
-          <div class="nm">The partner network</div>
-          <div class="rl">Fund · lender · tax</div>
-          <p>An institutional wealth fund, a revenue-financing partner, and a creator-native tax and accounting team — assembled into one service, under one roof.</p>
+        <div class="tm">
+          <div class="av2">EL</div><h4>Elton Lalaj, CPA</h4><div class="rl4">Head of Tax</div>
+          <p>20+ years in public accounting. Designs and leads every plan.</p>
         </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:34px;">
+        <a href="#/about" class="btn btn-ghost">Meet the full team →</a>
       </div>
     </div>
   </section>
@@ -1108,7 +1156,7 @@
     <div class="wrap">
       <div class="quote reveal">
         <p>"I've watched creators go from millions to nothing — not because the money stopped, but because no one built anything under it. That's the entire reason Midas exists."</p>
-        <div class="by">Founding partner · <b>a decade managing top TikTok talent</b></div>
+        <div class="by">Lavine Hemlani · <b>Founder &amp; CEO, Midas</b></div>
       </div>
     </div>
   </section>
