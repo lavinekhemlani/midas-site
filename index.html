@@ -203,8 +203,9 @@
   .spark { height: 40px; margin-top: 20px; width: 100%; display: block; }
 
   /* ---- offer tiers ---- */
-  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  @media (max-width: 900px){ .tiers { grid-template-columns: 1fr; } }
+  .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  @media (max-width: 1100px){ .tiers { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px){ .tiers { grid-template-columns: 1fr; } }
   .tier { position: relative; background: var(--surface); border: 1px solid var(--hairline); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; box-shadow: var(--shadow); }
   .tier.feature { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background:
     linear-gradient(180deg, var(--gold-wash), transparent 42%), var(--surface); }
@@ -495,6 +496,7 @@
         <div class="nav-dd" id="navDD">
           <button class="dd-btn" aria-haspopup="true" aria-expanded="false">Solutions ▾</button>
           <div class="dd-menu">
+            <a href="#/assessment"><b>The Assessment</b><span>Free — playbook, audit &amp; 45-min strategy session</span></a>
             <a href="#/compass"><b>Compass</b><span>Done with you — guides, sessions, community</span></a>
             <a href="#/inflection"><b>Inflection</b><span>Done-for-you tax — strategy, implementation, filing</span></a>
             <a href="#/legacy"><b>Legacy</b><span>Wealth management · enterprise value · exit</span></a>
@@ -512,7 +514,8 @@
     </div>
     <div class="mobile-menu">
       <a href="#/platform" class="rlink">Platform</a>
-        <a href="#/compass" class="rlink">Compass — done with you</a>
+        <a href="#/assessment" class="rlink">The Assessment — free</a>
+      <a href="#/compass" class="rlink">Compass — done with you</a>
       <a href="#/inflection" class="rlink">Inflection — done-for-you tax</a>
       <a href="#/legacy" class="rlink">Legacy — wealth &amp; enterprise value</a>
         <a href="#/gold" class="rlink">Our System</a>
@@ -629,6 +632,21 @@
         <p>Midas isn't an accountant. It isn't a course. It's the financial team that gets in and runs your money with you — so you stay in front of the camera. Start light, graduate to done-for-you.</p>
       </div>
       <div class="tiers">
+        <div class="tier reveal">
+          <span class="tag">Start here · Free</span>
+          <h3>The Assessment</h3>
+          <p class="who">Find out what you're overpaying before you spend a dollar with us.</p>
+          <div class="model">free · by application</div>
+          <ul>
+            <li>The Creator Tax Playbook — all 16 strategies, yours to keep</li>
+            <li>The 5-minute assessment — a directional estimate of your annual leak</li>
+            <li>The Audit — your last two years reviewed, in writing</li>
+            <li>A 45-minute strategy session with our Head of Tax</li>
+            <li>You leave knowing your number, whether or not you work with us</li>
+          </ul>
+          <div class="foot"><a href="#/apply" class="btn btn-ghost">Start free →</a><p style="margin-top:12px;font-size:13px;"><a href="#/assessment" style="color:var(--gold);">Learn more →</a></p></div>
+        </div>
+
         <div class="tier reveal">
           <span class="tag">Done with you</span>
           <h3>Compass</h3>
@@ -1380,9 +1398,20 @@
   <section class="band" id="assessment" data-page="assessment">
     <div class="wrap">
       <div class="band-head reveal" style="text-align:center;margin:0 auto 40px;">
-        <span class="label">The 5-minute creator tax assessment</span>
-        <h2 style="margin:16px 0 0;">Find out roughly what you're leaving on the table.</h2>
-        <p style="margin:14px auto 0;">Nine quick questions. You'll get a directional estimate of your annual tax leak — free, no call required.</p>
+        <span class="label">Start here · Free</span>
+        <h2 style="margin:16px 0 0;">The Assessment.</h2>
+        <p style="margin:14px auto 0;">Everything you need to know your number — before you spend a dollar with us. Four things, all free, in about a week.</p>
+      </div>
+      <div class="steps reveal" style="grid-template-columns:repeat(4,1fr);margin-bottom:56px;">
+        <div class="step"><div class="no">01</div><h3>The Playbook</h3><p>All 16 strategies high-earning creators use, in plain English. Yours to keep, whatever you decide.</p></div>
+        <div class="step"><div class="no">02</div><h3>The 5-min assessment</h3><p>Nine questions below give you a directional estimate of what an unplanned year is costing you.</p></div>
+        <div class="step"><div class="no">03</div><h3>The Audit</h3><p>Your last two years reviewed by our Head of Tax — what you overpaid and what's recoverable, in writing.</p></div>
+        <div class="step"><div class="no">04</div><h3>45-min strategy session</h3><p>Sit with Elton Lalaj, CPA. You leave knowing your number and your options — even if that's "do nothing yet."</p></div>
+      </div>
+      <div class="band-head reveal" style="text-align:center;margin:0 auto 34px;">
+        <span class="label">Step two</span>
+        <h2 style="margin:12px 0 0;font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Start with the 5-minute assessment.</h2>
+        <p style="margin:12px auto 0;">Nine quick questions — you'll see your estimate the moment you finish.</p>
       </div>
       <form class="applyform reveal" name="assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="assessForm">
         <input type="hidden" name="form-name" value="assessment" />
