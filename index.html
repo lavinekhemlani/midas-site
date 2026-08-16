@@ -10,25 +10,23 @@
 <title>Midas — The financial team behind the creators</title>
 <style>
   :root {
-    color-scheme: light dark;
-    /* neutrals — warm-biased toward the gold accent, not pure grey */
-    --ground: #faf8f5;
-    --surface: #ffffff;
-    --surface-2: #f3efe8;
-    --hairline: rgba(24, 20, 12, 0.10);
-    --hairline-strong: rgba(24, 20, 12, 0.18);
-    --ink: #17140f;
-    --ink-soft: #5c564c;
-    --ink-faint: #8a8377;
-    /* gold — muted, closer to old bullion than brass */
-    --gold: #a97b2f;
-    --gold-deep: #7c5720;
-    --gold-lift: #c19a4e;
-    --gold-wash: rgba(169, 123, 47, 0.10);
-    --good: #1c7c5b;
-    --warn: #b45309;
-    --crit: #b22a2a;
-    --shadow: 0 1px 2px rgba(24,20,12,.05), 0 12px 40px -12px rgba(24,20,12,.14);
+    color-scheme: dark;
+    --ground: #121212;
+    --surface: rgba(255,255,255,.035);
+    --surface-2: rgba(255,255,255,.055);
+    --hairline: rgba(255,255,255,.09);
+    --hairline-strong: rgba(255,255,255,.16);
+    --ink: #fafafa;
+    --ink-soft: #b7b1a7;
+    --ink-faint: #837d73;
+    --gold: #c8a55a;
+    --gold-deep: #9a7638;
+    --gold-lift: #e0c483;
+    --gold-wash: rgba(200,165,90,.10);
+    --good: #38c996;
+    --warn: #e0a13a;
+    --crit: #ef6a6a;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -20px rgba(0,0,0,.6);
     --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
     --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     --mono: ui-monospace, "SF Mono", "Menlo", "Cascadia Mono", monospace;
@@ -54,7 +52,7 @@
       --shadow: 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -20px rgba(0,0,0,.6);
     }
   }
-  :root[data-theme="light"] {
+  :root[data-theme="light-disabled"] {
     --ground:#faf8f5;--surface:#fff;--surface-2:#f3efe8;--hairline:rgba(24,20,12,.10);--hairline-strong:rgba(24,20,12,.18);
     --ink:#17140f;--ink-soft:#5c564c;--ink-faint:#8a8377;--gold:#a97b2f;--gold-deep:#7c5720;--gold-lift:#c19a4e;--gold-wash:rgba(169,123,47,.10);
     --good:#1c7c5b;--warn:#b45309;--crit:#b22a2a;--shadow:0 1px 2px rgba(24,20,12,.05),0 12px 40px -12px rgba(24,20,12,.14);
@@ -503,14 +501,14 @@
   <header class="hero" data-page="home">
     <div class="grid-bg"></div>
     <div class="wrap hero-inner">
-      <div class="eyebrow-row reveal"><span class="dot"></span><span class="label">Financial acceleration for creators</span></div>
-      <h1 class="hero-h reveal">You went viral. Now build real <span class="gold-text">wealth.</span></h1>
-      <p class="hero-sub reveal">Going viral is the hard part — and you did it. Midas is the financial team that turns the moment into money that lasts: tax, bookkeeping, cash planning and wealth management, built by people who managed the top of this industry.</p>
+      <div class="eyebrow-row reveal"><span class="dot"></span><span class="label">You went viral. Now build real wealth.</span></div>
+      <h1 class="hero-h reveal">Tax &amp; wealth for <span class="gold-text">content creators.</span></h1>
+      <p class="hero-sub reveal">Save up to 30% in tax, legally — and put what you keep to work. Strategy led by a CPA, filings done for you, wealth built on top. For YouTube, TikTok Shop and Instagram creators in the US.</p>
       <div class="hero-cta reveal">
         <a href="#/apply" class="btn btn-primary">See if you qualify →</a>
         <a href="#calc" class="btn btn-ghost">See what you'd keep →</a>
       </div>
-      <p class="hero-note reveal">For creators earning $250K+ a year — US &amp; UK. Traditional, TikTok Shop, and beyond.</p>
+      <p class="hero-note reveal">For US creators earning $250K+ a year — YouTube, TikTok Shop, Instagram and beyond.</p>
       <p class="hero-sec reveal"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> Bank-grade encryption · your data, your control · never sold. <a href="#/security">How we protect you →</a></p>
     </div>
   </header>
@@ -674,10 +672,10 @@
       <div class="gold-phases reveal" style="grid-template-columns:repeat(3,1fr);">
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">~$9,500<span style="font-size:1rem;">/yr</span></div><p style="margin-top:12px;">Typical self-employment tax saved on $100K profit from one structural election alone (US).</p></div>
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">100%</div><p style="margin-top:12px;">Of qualifying content vehicles and equipment written off through accelerated depreciation (US).</p></div>
-        <div class="gphase"><div class="gl" style="font-size:2.1rem;">60%</div><p style="margin-top:12px;">The UK marginal tax trap between £100–125K — planned around with pensions and timing, not suffered.</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">$14,129</div><p style="margin-top:12px;">Self-employment tax on your first $100K as a default LLC — the leak the S-corp election fixes.</p></div>
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">~$70K<span style="font-size:1rem;">/yr</span></div><p style="margin-top:12px;">Deductible retirement contributions available to self-employed creators (US solo plans).</p></div>
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">14 days</div><p style="margin-top:12px;">Of tax-free home rental to your own business for shoots and meetings (US Augusta rule).</p></div>
-        <div class="gphase"><div class="gl" style="font-size:2.1rem;">3-company</div><p style="margin-top:12px;">Group structures — trading, investment, holdco — that protect reliefs while wealth compounds (UK).</p></div>
+        <div class="gphase"><div class="gl" style="font-size:2.1rem;">25–35%</div><p style="margin-top:12px;">The reserve rule — set aside on every payout, so April is a checkpoint, never a crisis.</p></div>
       </div>
       <div class="reveal" style="text-align:center;margin-top:38px;">
         <a href="#/apply" class="btn btn-primary">Start with the Audit →</a>
@@ -1774,6 +1772,7 @@
           .catch(function(){ af.submit(); });
       });
     }
+    setTimeout(function(){ document.querySelectorAll('.reveal').forEach(function(r){ r.classList.add('in'); }); }, 1200);
     window.addEventListener('hashchange', function(){ if (location.hash.indexOf('#/') === 0) route(); });
     route();
   })();
