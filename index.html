@@ -319,6 +319,24 @@
   .vslbox .vt2 { font-family: var(--display); font-weight: 300; font-size: 1.3rem; }
   .vslbox .vs2 { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
 
+  /* case studies */
+  .cs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  @media (max-width: 900px){ .cs-grid { grid-template-columns: 1fr; } }
+  .cscard { border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); border-radius: 18px; background: var(--surface); overflow: hidden; }
+  .cscard .csh { padding: 18px 22px; border-bottom: 1px solid var(--hairline); background: linear-gradient(180deg, var(--gold-wash), transparent); }
+  .cscard .csh .label { font-size: 10.5px; }
+  .cscard .csh h3 { font-size: 1.25rem; margin-top: 6px; }
+  .cscard .meta { padding: 14px 22px; border-bottom: 1px solid var(--hairline); font-size: 12.5px; color: var(--ink-soft); line-height: 1.7; }
+  .cscard .meta b { color: var(--ink); }
+  .cscard table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .cscard th { text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); padding: 12px 22px 6px; }
+  .cscard td { padding: 7px 22px; color: var(--ink-soft); border-top: 1px solid var(--hairline); }
+  .cscard td:last-child { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .cscard .cstotal { padding: 14px 22px 18px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); }
+  .cscard .cstotal .tl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .cscard .cstotal .tv { font-family: var(--display); font-weight: 300; font-size: 1.6rem; color: var(--gold-lift); font-variant-numeric: tabular-nums; }
+  .cs-sample { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); padding: 3px 9px; border-radius: 999px; margin-left: 10px; vertical-align: middle; }
+
   /* GOLD system */
   .gold-phases { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
   @media (max-width: 900px){ .gold-phases { grid-template-columns: 1fr 1fr; } }
@@ -1005,7 +1023,7 @@
         <div class="letter">
           <p>Elton has spent <b>over 20 years in public accounting</b>, focused on tax advisory for exactly the industries creator money behaves like: <b>entertainment, hospitality and real estate</b>.</p>
           <p>His work is the machinery under Midas: tax consulting and compliance for <b>partnerships, LLCs and S-corporations</b>, entity formation, structuring partnership agreements, and mapping the tax consequences of exits — the decisions that quietly decide what you keep.</p>
-          <p>Featured on the Artistic Finance podcast on freelancer money, he now runs this playbook for creators, where proactive planning has saved his clients <b>an average of 20–30% a year</b>. Every Midas engagement includes his strategy sessions, with filings executed by licensed, registered professionals.</p>
+          <p>Featured on the Artistic Finance podcast on freelancer money, he now runs this playbook for creators, where proactive planning has saved his clients <b>an average of 20–30% a year</b>. Behind him sits <b>Lalaj CPA Group's full team</b> of accountants and tax professionals — every Midas engagement includes his strategy sessions, with filings executed by licensed, registered professionals.</p>
         </div>
       </div>
     </div>
@@ -1096,6 +1114,11 @@
         <details><summary>What if I'm fine just eating the tax bill?</summary><div class="a">Then honestly, you shouldn't hire us yet. This is for creators who've decided that overpaying six figures over a career isn't acceptable.</div></details>
         <details><summary>I might move abroad anyway.</summary><div class="a">Then you want the numbers in front of you before you decide. The structure works either way — and it's the input to that decision, not something that blocks it.</div></details>
         <details><summary>What if my income is all over the place?</summary><div class="a">That's the norm, and it's exactly what we plan for — setting money aside in the big months so the zero months don't wipe you out, without ever touching predatory money.</div></details>
+        <details><summary>Can I keep my current accountant?</summary><div class="a">Yes. Many clients keep their existing accountant for what they're good at — we do the proactive strategy layer and coordinate with them. If you'd rather have it all under one roof, filing is included through our licensed team.</div></details>
+        <details><summary>Do you take a percentage of what you save me?</summary><div class="a">No. Our fees are flat and quoted after the Audit, so you know exactly what you're paying before you commit. The only performance element runs in your favor: if the Audit doesn't show at least twice our fee in recoverable savings, it's refunded.</div></details>
+        <details><summary>Do you file my taxes?</summary><div class="a">Yes — for engaged clients, filing is included and done by licensed, registered professionals. We file exclusively for clients we plan for, because filing a return we didn't strategize is how money gets left on the table.</div></details>
+        <details><summary>Is this a one-year commitment or a subscription?</summary><div class="a">Engagements run annually. Each year the plan gets updated for new rules, new income and new strategies — most clients renew because tax planning compounds, but you're never locked in beyond the year.</div></details>
+        <details><summary>What if I don't want to buy real estate?</summary><div class="a">You don't have to. The foundations — structure, deductions, retirement, timing — need no property at all. Real estate is the optional advanced tier for creators with capital who want the biggest levers.</div></details>
       </div>
     </div>
   </section>
@@ -1483,6 +1506,60 @@
     </div>
   </section>
 
+  <section class="band" id="cases" data-page="cases">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Case studies</span>
+        <h2>What a planned year actually looks like.<span class="cs-sample">Illustrative samples</span></h2>
+        <p>Anonymized composites showing how the strategies stack. Real anonymized client data from 30+ engagements is being added by our Head of Tax — figures below are illustrative models, not client results.</p>
+      </div>
+      <div class="cs-grid">
+        <div class="cscard reveal">
+          <div class="csh"><span class="label">Midas case study 01</span><h3>TikTok Shop creator</h3></div>
+          <div class="meta"><b>Profile:</b> commerce creator · single filer<br/><b>Revenue:</b> ~$850K · <b>Structure before:</b> default LLC</div>
+          <table>
+            <tr><th>Strategy</th><th>Impact</th></tr>
+            <tr><td>S-corp election + salary design</td><td>$19,400</td></tr>
+            <tr><td>Augusta rule (12 shoot days)</td><td>$18,000</td></tr>
+            <tr><td>Solo 401(k) stack</td><td>$23,500</td></tr>
+            <tr><td>Vehicle + depreciation</td><td>$14,200</td></tr>
+            <tr><td>Home studio (actual method)</td><td>$4,100</td></tr>
+          </table>
+          <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$61,000</span></div>
+        </div>
+        <div class="cscard reveal">
+          <div class="csh"><span class="label">Midas case study 02</span><h3>YouTube creator</h3></div>
+          <div class="meta"><b>Profile:</b> brand deals + AdSense · married<br/><b>Revenue:</b> ~$480K · <b>Structure before:</b> sole proprietor</div>
+          <table>
+            <tr><th>Strategy</th><th>Impact</th></tr>
+            <tr><td>S-corp election + salary design</td><td>$11,900</td></tr>
+            <tr><td>Retirement contributions</td><td>$16,000</td></tr>
+            <tr><td>Health premiums + HSA</td><td>$9,300</td></tr>
+            <tr><td>Accountable reimbursement plan</td><td>$6,200</td></tr>
+            <tr><td>Home office (actual method)</td><td>$3,800</td></tr>
+          </table>
+          <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$47,000</span></div>
+        </div>
+        <div class="cscard reveal">
+          <div class="csh"><span class="label">Midas case study 03</span><h3>Subscription creator</h3></div>
+          <div class="meta"><b>Profile:</b> subscriptions + PPV · single filer<br/><b>Revenue:</b> ~$1.4M · <b>Structure before:</b> LLC, no planning</div>
+          <table>
+            <tr><th>Strategy</th><th>Impact</th></tr>
+            <tr><td>Entity restructure + salary design</td><td>$28,000</td></tr>
+            <tr><td>Defined-benefit retirement plan</td><td>$46,000</td></tr>
+            <tr><td>Short-term rental + cost seg</td><td>$38,000</td></tr>
+            <tr><td>Augusta rule (14 days)</td><td>$24,000</td></tr>
+            <tr><td>Equipment + studio (§179)</td><td>$12,500</td></tr>
+          </table>
+          <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$148,000</span></div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center;margin-top:38px;">
+        <a href="#/apply" class="btn btn-primary">See what your year could look like →</a>
+      </div>
+    </div>
+  </section>
+
   <section class="band" id="playbook" data-page="playbook">
     <div class="wrap">
       <div class="band-head reveal" style="text-align:center;margin:0 auto 40px;">
@@ -1561,6 +1638,8 @@
       <div>
         <h5>Company</h5>
         <a href="#/about">About</a>
+        <a href="#/cases">Case Studies</a>
+        <a href="blog/">Blog</a>
         <a href="#/resources">Resources</a>
         <a href="#/faq">FAQ</a>
         <a href="#/assessment">Tax Assessment</a>
