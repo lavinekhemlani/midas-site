@@ -115,6 +115,15 @@
   .nav-links a.rlink { cursor: pointer; }
   .nav-links a.active { color: var(--ink); }
   .nav-links a.active::after { content: ""; display: block; height: 1.5px; background: var(--gold); margin-top: 3px; border-radius: 2px; }
+  .nav-dd { position: relative; }
+  .nav-dd .dd-btn { background: none; border: 0; color: var(--ink-soft); font-size: 14.5px; font-family: var(--body); cursor: pointer; padding: 0; }
+  .nav-dd .dd-btn:hover { color: var(--ink); }
+  .dd-menu { position: absolute; top: calc(100% + 14px); left: -14px; background: var(--ground); border: 1px solid var(--hairline-strong); border-radius: 14px; padding: 8px; min-width: 300px; display: none; box-shadow: var(--shadow); z-index: 60; }
+  .nav-dd:hover .dd-menu, .nav-dd.open .dd-menu { display: block; }
+  .dd-menu a { display: block; padding: 11px 14px; border-radius: 10px; text-decoration: none; }
+  .dd-menu a:hover { background: var(--surface-2); }
+  .dd-menu a b { display: block; color: var(--ink); font-size: 14.5px; font-weight: 650; }
+  .dd-menu a span { display: block; color: var(--ink-faint); font-size: 12px; margin-top: 2px; }
   .theme-toggle { background: none; border: 1px solid var(--hairline-strong); border-radius: 999px; color: var(--ink-soft); width: 34px; height: 34px; font-size: 15px; line-height: 1; cursor: pointer; margin-left: 14px; }
   .theme-toggle:hover { color: var(--ink); }
   .hamburger { display: none; background: none; border: 0; color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer; padding: 6px 4px; }
@@ -483,6 +492,14 @@
       <a href="#/home" class="brand" style="text-decoration:none;color:inherit;"><span class="coin">M</span> Midas</a>
       <div class="nav-links">
         <a href="#/platform" class="rlink">Platform</a>
+        <div class="nav-dd" id="navDD">
+          <button class="dd-btn" aria-haspopup="true" aria-expanded="false">Solutions ▾</button>
+          <div class="dd-menu">
+            <a href="#/compass"><b>Compass</b><span>Done with you — guides, sessions, community</span></a>
+            <a href="#/inflection"><b>Inflection</b><span>Done-for-you tax — strategy, implementation, filing</span></a>
+            <a href="#/legacy"><b>Legacy</b><span>Wealth management · enterprise value · exit</span></a>
+          </div>
+        </div>
         <a href="#/gold" class="rlink">Our System</a>
         <a href="#/pricing" class="rlink">Pricing</a>
         <a href="#/resources" class="rlink">Resources</a>
@@ -495,6 +512,14 @@
     </div>
     <div class="mobile-menu">
       <a href="#/platform" class="rlink">Platform</a>
+        <div class="nav-dd" id="navDD">
+          <button class="dd-btn" aria-haspopup="true" aria-expanded="false">Solutions ▾</button>
+          <div class="dd-menu">
+            <a href="#/compass"><b>Compass</b><span>Done with you — guides, sessions, community</span></a>
+            <a href="#/inflection"><b>Inflection</b><span>Done-for-you tax — strategy, implementation, filing</span></a>
+            <a href="#/legacy"><b>Legacy</b><span>Wealth management · enterprise value · exit</span></a>
+          </div>
+        </div>
         <a href="#/gold" class="rlink">Our System</a>
       <a href="#/pricing" class="rlink">Pricing</a>
       <a href="#/resources" class="rlink">Resources</a>
@@ -1672,6 +1697,12 @@
 
 <script>
   (function () {
+    var dd = document.getElementById('navDD');
+    if (dd) {
+      dd.querySelector('.dd-btn').addEventListener('click', function(e){ e.stopPropagation(); dd.classList.toggle('open'); });
+      document.addEventListener('click', function(){ dd.classList.remove('open'); });
+      dd.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ dd.classList.remove('open'); }); });
+    }
     var tt = document.getElementById('themeToggle');
     function setTheme(mode){
       if (mode === 'light') { document.documentElement.setAttribute('data-theme','light'); if (tt){ tt.textContent='☾'; tt.setAttribute('aria-label','Switch to dark mode'); } }
