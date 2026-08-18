@@ -146,7 +146,12 @@
     -webkit-mask-image: radial-gradient(680px 420px at 50% 8%, #000, transparent 78%);
     mask-image: radial-gradient(680px 420px at 50% 8%, #000, transparent 78%); }
   .hero-inner { position: relative; z-index: 1; }
-  .eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .eyebrow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .eyebrow-row .label.callout {
+    font-family: var(--sans); font-size: clamp(1.05rem, .95rem + .6vw, 1.5rem);
+    letter-spacing: .01em; text-transform: none; font-weight: 600; color: var(--ink);
+  }
+  .eyebrow-row .label.callout b { color: var(--gold); font-weight: 600; }
   .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px var(--gold-wash); }
   h1.hero-h { font-size: clamp(2.6rem, 1.6rem + 4.4vw, 5rem); line-height: 1.03; max-width: 15ch; }
   .hero-sub { margin-top: 26px; max-width: 46ch; font-size: clamp(1.05rem, 1rem + .5vw, 1.3rem); color: var(--ink-soft); line-height: 1.5; }
@@ -382,7 +387,7 @@
   @media (max-width: 680px){ .trust .wrap { flex-direction: column; gap: 16px; } }
 
   /* how it works */
-  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 22px; }
   @media (max-width: 820px){ .steps { grid-template-columns: 1fr; } }
   .step { border: 1px solid var(--hairline); border-radius: 16px; padding: 28px; background: var(--surface); }
   .step .no { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--gold); }
@@ -550,9 +555,9 @@
   <header class="hero" data-page="home">
     <div class="grid-bg"></div>
     <div class="wrap hero-inner">
-      <div class="eyebrow-row reveal"><span class="dot"></span><span class="label">Tax &amp; wealth for US creators earning $250K–$2M</span></div>
-      <h1 class="hero-h reveal">Your accountant files. <span class="gold-text">We plan.</span></h1>
-      <p class="hero-sub reveal">Filing records what already happened. Planning changes what happens next — the same entity structures, deductions and timing high earners already use. Run by CPAs, filings included, so you keep more without ever fearing an audit.</p>
+      <div class="eyebrow-row reveal"><span class="label callout">Creators earning <b>$500K to $2M</b></span></div>
+      <h1 class="hero-h reveal">Cut your <span class="gold-text">tax bill by 30%.</span></h1>
+      <p class="hero-sub reveal">At $500K your tax bill runs ~$220,000. Cutting it 30% (legally) keeps <b style="color:var(--ink);">$66,000+</b> in your pocket — <b style="color:var(--ink);">$1M+ over ten years</b> compounded. <b style="color:var(--ink);">If you don't save at least $25,000, you don't pay.</b></p>
       <div class="hero-cta reveal">
         <a href="#/assessment" class="btn btn-primary">See what you're overpaying →</a>
         <a href="#/platform" class="btn btn-ghost">How it works →</a>
@@ -577,9 +582,9 @@
           <div class="calc-scale"><span>$100K</span><span>$5M+</span></div>
         </div>
         <div class="calc-out">
-          <div class="calc-card"><div class="cl">Set aside for tax</div><div class="cv" id="outTax">$150,000</div><div class="cd">so April never blindsides you (~30%)</div></div>
-          <div class="calc-card hl"><div class="cl">You could be saving / yr</div><div class="cv" id="outSave">$40,000</div><div class="cd">with creator-native structure &amp; deductions</div></div>
-          <div class="calc-card"><div class="cl">That, invested 10 yrs</div><div class="cv" id="outGrow">$550,000</div><div class="cd">saved yearly at ~7% — the wealth you keep</div></div>
+          <div class="calc-card"><div class="cl">Your likely tax bill</div><div class="cv" id="outTax">$218,000</div><div class="cd">federal, state and self-employment, high-tax state</div></div>
+          <div class="calc-card hl"><div class="cl">You could be saving / yr</div><div class="cv" id="outSave">$65,000</div><div class="cd">cutting that bill by 30% with the right structure</div></div>
+          <div class="calc-card"><div class="cl">That, invested 10 yrs</div><div class="cv" id="outGrow">$898,000</div><div class="cd">saved yearly at ~7% — the wealth you keep</div></div>
         </div>
       </div>
       <div class="calc-cta reveal">
@@ -629,26 +634,11 @@
     </div>
   </section>
 
-  <section class="band" data-page="home">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">Our process</span>
-        <h2>How we find the money you're leaving on the table.</h2>
-        <p>A reliable financial baseline, tax readiness coordinated with licensed professionals, and a monthly view of what's reserved, committed, and available — built for how creator income actually works.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><div class="no">01 · The X-ray</div><h3>See where it's leaking</h3><p>We connect the app you're paid through and your books, then map the whole picture — what you earn, what you keep, and exactly what you're overpaying.</p></div>
-        <div class="step reveal"><div class="no">02 · The strategy</div><h3>Build the plan</h3><p>A plan for your income type: the right structure, every deduction you're missing, what to set aside for tax, and where your cash should be working.</p></div>
-        <div class="step reveal"><div class="no">03 · The build</div><h3>Put it on autopilot</h3><p>We implement it — filings by licensed partners, deductions captured through the WhatsApp agent, tax set aside, and financing ready for the slow months.</p></div>
-      </div>
-    </div>
-  </section>
-
   <section class="band" id="offer" data-page="home pricing">
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">What we do</span>
-        <h2>Three ways in, depending on how hands-on you want us.</h2>
+        <h2>Four ways in, depending on how hands-on you want us.</h2>
         <p>Midas isn't an accountant. It isn't a course. It's the financial team that gets in and runs your money with you — so you stay in front of the camera. Start light, graduate to done-for-you.</p>
       </div>
       <div class="tiers">
@@ -724,9 +714,9 @@
         <p>Every creator we work with runs the same proven path. Where you start depends on your income; where it ends is a legacy.</p>
       </div>
       <div class="gold-phases">
-        <div class="gphase reveal"><div class="gl">G</div><div class="pn">Phase one</div><h3>Guard</h3><p>Protect every dollar you earn — real-time deduction capture, tax set aside automatically, and the right structure so you stop overpaying.</p></div>
-        <div class="gphase reveal"><div class="gl">O</div><div class="pn">Phase two</div><h3>Organize</h3><p>One clean picture of your money — every income source and expense in one place, so you always know exactly what you keep.</p></div>
-        <div class="gphase reveal"><div class="gl">L</div><div class="pn">Phase three</div><h3>Leverage</h3><p>Put your money to work — a buffer for the slow months, financing against your earnings, and income invested instead of sitting idle.</p></div>
+        <div class="gphase reveal"><div class="gl">G</div><div class="pn">Phase one</div><h3>Guard</h3><p>Stop the bill before it forms. The <b>structure</b> you file under, the <b>deductions</b> you capture as they happen, and the <b>timing</b> of income you can still move — the three decisions that have to be made before December 31, not after.</p></div>
+        <div class="gphase reveal"><div class="gl">O</div><div class="pn">Phase two</div><h3>Organize</h3><p>One clean picture of your money — every income source and expense in one place, and a <b>reserve</b> set aside on every payout so April is a checkpoint, never a crisis.</p></div>
+        <div class="gphase reveal"><div class="gl">L</div><div class="pn">Phase three</div><h3>Leverage</h3><p>Put what you kept to work — <b>retirement</b> plans that are the largest legal deduction available to you, a buffer for the slow months, and financing against your earnings instead of idle cash.</p></div>
         <div class="gphase reveal"><div class="gl">D</div><div class="pn">Phase four</div><h3>Deploy</h3><p>Put your wealth to work — deploy into real assets, deals, and an institutional fund. Turn a viral moment into a legacy that outlasts the run.</p></div>
       </div>
       <div class="band-head reveal" style="margin-top:64px;">
@@ -1087,19 +1077,13 @@
           <p>Founder of Zenith, the CFO firm behind 100+ founders. A decade building, buying and structuring companies across the US, UK and Dubai — now applying that machinery to creators.</p>
         </div>
         <div class="tm">
-          <div class="av2">CT</div>
+          <div class="av2"><img src="carter.jpg" alt="Carter Turnbull" /></div>
           <h4>Carter Turnbull</h4>
           <div class="rl4">Co-founder &amp; CGO</div>
           <p>Runs growth. Built and scaled offers in the creator and coaching economy — responsible for how creators find Midas and what they experience from the first conversation onward.</p>
         </div>
         <div class="tm">
-          <div class="av2">MS</div>
-          <h4>Matthew Singer</h4>
-          <div class="rl4">Chief Operating Officer</div>
-          <p>Runs delivery. Makes sure every strategy that gets designed actually gets implemented, on time — the difference between a plan on paper and money in your account.</p>
-        </div>
-        <div class="tm">
-          <div class="av2">EL</div>
+          <div class="av2"><img src="elton.jpg" alt="Elton Lalaj, CPA" /></div>
           <h4>Elton Lalaj, CPA</h4>
           <div class="rl4">Head of Tax</div>
           <p>20+ years in public accounting, specialising in entertainment, hospitality and real estate. He designs your plan and leads every strategy session. Founder of Lalaj CPA Group.</p>
@@ -1138,20 +1122,33 @@
           <p>Founder of Zenith — the CFO firm behind 100+ founders.</p>
         </div>
         <div class="tm">
-          <div class="av2">CT</div><h4>Carter Turnbull</h4><div class="rl4">Co-founder &amp; CGO</div>
+          <div class="av2"><img src="carter.jpg" alt="Carter Turnbull" /></div><h4>Carter Turnbull</h4><div class="rl4">Co-founder &amp; CGO</div>
           <p>Growth. Built and scaled offers across the creator economy.</p>
         </div>
         <div class="tm">
-          <div class="av2">MS</div><h4>Matthew Singer</h4><div class="rl4">Chief Operating Officer</div>
-          <p>Delivery. Makes sure every strategy actually gets implemented.</p>
-        </div>
-        <div class="tm">
-          <div class="av2">EL</div><h4>Elton Lalaj, CPA</h4><div class="rl4">Head of Tax</div>
+          <div class="av2"><img src="elton.jpg" alt="Elton Lalaj, CPA" /></div><h4>Elton Lalaj, CPA</h4><div class="rl4">Head of Tax</div>
           <p>20+ years in public accounting. Designs and leads every plan.</p>
         </div>
       </div>
       <div class="reveal" style="text-align:center;margin-top:34px;">
         <a href="#/about" class="btn btn-ghost">Meet the full team →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="board" data-page="about">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">Board and advisors</span>
+        <h2>The people we answer to.</h2>
+        <p>Operators who have built and sold real companies, and who sit on the numbers with us.</p>
+      </div>
+      <div class="team reveal">
+        <div class="tm">
+          <div class="av2"><img src="matthew.jpg" alt="Matthew Singer" /></div>
+          <h4>Matthew Singer</h4><div class="rl4">Board Member</div>
+          <p>Operations and delivery. Keeps the standard honest as we scale.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1506,15 +1503,15 @@
             <option value="1">No — my accountant sorts it in April</option>
           </select>
         </div>
-        <div class="frow"><label>Do you set aside a fixed % of every payout for tax? *</label>
-          <select name="setaside" id="asSetaside" required>
+        <div class="frow"><label>Did anyone proactively bring you tax moves before December 31 last year? *</label>
+          <select name="proactive" id="asProactive" required>
             <option value="">Select…</option>
-            <option value="0">Yes, automatically</option>
-            <option value="0.5">Sometimes, when I remember</option>
-            <option value="1">No — I deal with it at tax time</option>
+            <option value="0">Yes — I have a real strategist</option>
+            <option value="1">No — my accountant just files</option>
+            <option value="1">I don't have an accountant</option>
           </select>
         </div>
-        <div class="frow"><label>Retirement / pension contributions running through the business? *</label>
+        <div class="frow"><label>Retirement contributions running through the business? *</label>
           <select name="retirement" id="asRetirement" required>
             <option value="">Select…</option>
             <option value="0">Yes, maxed or close</option>
@@ -1522,12 +1519,12 @@
             <option value="1">No / didn't know I could</option>
           </select>
         </div>
-        <div class="frow"><label>Did anyone proactively bring you tax moves before December 31 last year? *</label>
-          <select name="proactive" id="asProactive" required>
+        <div class="frow"><label>Do you set aside a fixed % of every payout for tax? *</label>
+          <select name="setaside" id="asSetaside" required>
             <option value="">Select…</option>
-            <option value="0">Yes — I have a real strategist</option>
-            <option value="1">No — my accountant just files</option>
-            <option value="1">I don't have an accountant</option>
+            <option value="0">Yes, automatically</option>
+            <option value="0.5">Sometimes, when I remember</option>
+            <option value="1">No — I deal with it at tax time</option>
           </select>
         </div>
         <div class="two">
@@ -1618,6 +1615,13 @@
         <div class="pcard reveal"><h4>Monthly books review</h4><p>Your books reviewed every month for tax opportunities — nothing waits until April.</p><div class="maps">12x per year</div></div>
         <div class="pcard reveal"><h4>Slack access</h4><p>Direct line to the team between sessions — decisions checked before you make them, not after.</p><div class="maps">Ongoing</div></div>
       </div>
+      <div class="band-head reveal" style="margin-top:56px;"><span class="label">The GOLD system</span><h2 style="font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Inflection runs the first two phases.</h2></div>
+        <div class="gold-phases reveal">
+        <div class="gphase"><div class="gl">G</div><h3>Guard</h3><p>Structure, deductions and timing — the bill cut before it forms.</p></div>
+        <div class="gphase"><div class="gl">O</div><h3>Organize</h3><p>Clean books, clean picture, tax reserved on every payout.</p></div>
+        <div class="gphase" style="opacity:.38;"><div class="gl">L</div><div class="pn" style="color:var(--ink-soft);">In Legacy</div><h3>Leverage</h3><p>Retirement, buffer and financing — what you kept, working.</p></div>
+        <div class="gphase" style="opacity:.38;"><div class="gl">D</div><div class="pn" style="color:var(--ink-soft);">In Legacy</div><h3>Deploy</h3><p>Real assets, deals and enterprise value.</p></div>
+        </div>
       <div class="reveal" style="text-align:center;margin-top:38px;">
         <a href="#/apply" class="btn btn-primary">See if you qualify →</a>
       </div>
@@ -1640,6 +1644,13 @@
         <div class="pcard reveal"><h4>Wealth &amp; deal access</h4><p>Excess profits deployed into real assets through a regulated financial entity, plus select opportunities when they fit.</p><div class="maps">Regulated partner executes</div></div>
         <div class="pcard reveal"><h4>Quarterly board reviews</h4><p>A board-style sitting on your whole picture: earned, kept, deployed, enterprise value, and what's next.</p><div class="maps">4x per year</div></div>
       </div>
+      <div class="band-head reveal" style="margin-top:56px;"><span class="label">The GOLD system</span><h2 style="font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Legacy is the only tier that runs all four phases.</h2></div>
+        <div class="gold-phases reveal">
+        <div class="gphase"><div class="gl">G</div><h3>Guard</h3><p>Structure, deductions and timing — the bill cut before it forms.</p></div>
+        <div class="gphase"><div class="gl">O</div><h3>Organize</h3><p>Clean books, clean picture, tax reserved on every payout.</p></div>
+        <div class="gphase"><div class="gl">L</div><h3>Leverage</h3><p>Retirement, buffer and financing — what you kept, working.</p></div>
+        <div class="gphase"><div class="gl">D</div><h3>Deploy</h3><p>Real assets, deals and enterprise value.</p></div>
+        </div>
       <div class="reveal" style="text-align:center;margin-top:38px;">
         <a href="#/apply" class="btn btn-primary">See if you qualify for Legacy →</a>
       </div>
@@ -1692,6 +1703,45 @@
             <tr><td>Equipment + studio (§179)</td><td>$12,500</td></tr>
           </table>
           <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$148,000</span></div>
+        </div>
+        <div class="cscard reveal">
+          <div class="csh"><span class="label">Midas case study 04</span><h3>Instagram &amp; brand-deal creator</h3></div>
+          <div class="meta"><b>Profile:</b> sponsorships + affiliate · single filer<br/><b>Revenue:</b> ~$650K · <b>Structure before:</b> sole proprietor</div>
+          <table>
+            <tr><th>Strategy</th><th>Impact</th></tr>
+            <tr><td>S-corp election + salary design</td><td>$16,800</td></tr>
+            <tr><td>Solo 401(k) employee + employer</td><td>$21,000</td></tr>
+            <tr><td>Accountable reimbursement plan</td><td>$7,400</td></tr>
+            <tr><td>Content production &amp; equipment (§179)</td><td>$9,600</td></tr>
+            <tr><td>Travel &amp; location shoots, documented</td><td>$5,900</td></tr>
+          </table>
+          <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$61,000</span></div>
+        </div>
+        <div class="cscard reveal">
+          <div class="csh"><span class="label">Midas case study 05</span><h3>Course &amp; community creator</h3></div>
+          <div class="meta"><b>Profile:</b> digital products + membership · married filing jointly<br/><b>Revenue:</b> ~$2.1M · <b>Structure before:</b> LLC, no planning</div>
+          <table>
+            <tr><th>Strategy</th><th>Impact</th></tr>
+            <tr><td>Entity restructure + reasonable comp</td><td>$34,000</td></tr>
+            <tr><td>Defined-benefit / cash balance plan</td><td>$71,000</td></tr>
+            <tr><td>PTET election (state workaround)</td><td>$29,500</td></tr>
+            <tr><td>Family payroll, properly papered</td><td>$11,200</td></tr>
+            <tr><td>QBI positioning + timing</td><td>$18,000</td></tr>
+          </table>
+          <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$164,000</span></div>
+        </div>
+        <div class="cscard reveal">
+          <div class="csh"><span class="label">Midas case study 06</span><h3>Podcast &amp; newsletter creator</h3></div>
+          <div class="meta"><b>Profile:</b> sponsorships + paid subscriptions · single filer<br/><b>Revenue:</b> ~$310K · <b>Structure before:</b> default LLC</div>
+          <table>
+            <tr><th>Strategy</th><th>Impact</th></tr>
+            <tr><td>S-corp election + salary design</td><td>$8,700</td></tr>
+            <tr><td>SEP-IRA contribution</td><td>$12,400</td></tr>
+            <tr><td>Health premiums + HSA</td><td>$6,800</td></tr>
+            <tr><td>Home studio (actual method)</td><td>$4,300</td></tr>
+            <tr><td>Q4 timing on renewals</td><td>$3,600</td></tr>
+          </table>
+          <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$36,000</span></div>
         </div>
       </div>
       <p class="reveal" style="text-align:center;margin-top:26px;font-size:12px;color:var(--ink-faint);">No names, handles, or identifying details are ever shown — yours wouldn't be either.</p>
@@ -1855,7 +1905,11 @@
       var shareText = '';
       var calc = function(){
         var v = +inc.value;
-        var tax = r1k(v * 0.30), save = r1k(v * 0.08), grow = r1k(save * 13.8);
+        var pts = [[100000,.30],[250000,.39],[500000,.435],[1000000,.47],[2000000,.49],[5000000,.50]];
+        var rate = pts[pts.length-1][1];
+        for (var i=0;i<pts.length-1;i++){ if (v<=pts[i+1][0]){ var a=pts[i],b=pts[i+1];
+          rate = a[1] + (b[1]-a[1]) * (v-a[0])/(b[0]-a[0]); break; } }
+        var tax = r1k(v * rate), save = r1k(tax * 0.30), grow = r1k(save * 13.816);
         document.getElementById('incLabel').textContent = fmt(v);
         document.getElementById('outTax').textContent = fmt(tax);
         document.getElementById('outSave').textContent = fmt(save);
