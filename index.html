@@ -23,6 +23,9 @@
 <link rel="canonical" href="https://midascfo.com/" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%AA%99</text></svg>" />
 <title>Midas — The financial team behind the creators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <style>
   :root {
     color-scheme: dark;
@@ -42,8 +45,8 @@
     --warn: #e0a13a;
     --crit: #ef6a6a;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 24px 60px -20px rgba(0,0,0,.6);
-    --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --display: "Instrument Serif", "Iowan Old Style", Palatino, Georgia, serif;
+    --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     --mono: ui-monospace, "SF Mono", "Menlo", "Cascadia Mono", monospace;
     --maxw: 1120px;
   }
@@ -93,13 +96,15 @@
     overflow-x: hidden;
   }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
-  h1,h2,h3 { font-family: var(--display); font-weight: 300; letter-spacing: -0.01em; text-wrap: balance; margin: 0; }
+  h1,h2,h3 { font-family: var(--display); font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; margin: 0; }
   p { margin: 0; }
   a { color: inherit; }
   .label {
-    font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--gold); font-weight: 500;
+    font-family: var(--display); font-style: italic; font-size: 1.02rem; letter-spacing: 0;
+    text-transform: none; color: var(--gold); font-weight: 400; display: inline-block;
   }
+  .label:before { content:""; display:inline-block; width:26px; height:1px; background:var(--gold);
+    vertical-align:middle; margin:0 11px 3px 0; opacity:.5; }
   .gold-text {
     background: linear-gradient(100deg, var(--gold-deep), var(--gold-lift), var(--gold));
     -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -181,7 +186,7 @@
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 72px;
     border: 1px solid var(--hairline); border-radius: 18px; overflow: hidden; background: var(--hairline); }
   .stat { background: var(--ground); padding: 26px 24px; }
-  .stat .n { font-family: var(--display); font-size: clamp(1.8rem, 1.3rem + 1.6vw, 2.7rem); font-weight: 300; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+  .stat .n { font-family: var(--display); font-size: clamp(1.8rem, 1.3rem + 1.6vw, 2.7rem); font-weight: 400; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
   .stat .k { margin-top: 6px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.35; }
   @media (max-width: 760px){ .stats { grid-template-columns: repeat(2,1fr); } }
 
@@ -189,7 +194,7 @@
   .calc { display: grid; grid-template-columns: 1fr 1.5fr; gap: 34px; align-items: center; border: 1px solid var(--hairline); border-radius: 20px; padding: 34px; background: var(--surface); box-shadow: var(--shadow); }
   @media (max-width: 860px){ .calc { grid-template-columns: 1fr; gap: 28px; } }
   .calc-input label { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
-  .calc-val { font-family: var(--display); font-size: clamp(2rem, 1.6rem + 1.5vw, 2.8rem); font-weight: 300; margin: 8px 0 18px; font-variant-numeric: tabular-nums; }
+  .calc-val { font-family: var(--display); font-size: clamp(2rem, 1.6rem + 1.5vw, 2.8rem); font-weight: 400; margin: 8px 0 18px; font-variant-numeric: tabular-nums; }
   .calc input[type=range] { width: 100%; accent-color: var(--gold); height: 4px; cursor: pointer; }
   .calc-scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 10px; }
   .calc-out { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
@@ -197,7 +202,7 @@
   .calc-card { border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; background: var(--ground); }
   .calc-card.hl { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background: linear-gradient(180deg, var(--gold-wash), transparent 65%), var(--ground); }
   .calc-card .cl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); }
-  .calc-card .cv { font-family: var(--display); font-size: 1.7rem; font-weight: 300; margin: 7px 0; font-variant-numeric: tabular-nums; color: var(--gold); }
+  .calc-card .cv { font-family: var(--display); font-size: 1.7rem; font-weight: 400; margin: 7px 0; font-variant-numeric: tabular-nums; color: var(--gold); }
   .calc-card.hl .cv { color: var(--gold-lift); }
   .calc-card .cd { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
   .calc-cta { display: flex; align-items: center; gap: 18px; margin-top: 26px; flex-wrap: wrap; }
@@ -232,7 +237,7 @@
   .tier .tag { align-self: flex-start; font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent); padding: 5px 11px; border-radius: 999px; }
   .tier h3 { font-size: 1.9rem; margin: 22px 0 6px; }
   .tier .who { color: var(--ink-soft); font-size: 15px; min-height: 42px; }
-  .tier .price { margin: 20px 0 6px; font-family: var(--display); font-size: 2.1rem; font-weight: 300; }
+  .tier .price { margin: 20px 0 6px; font-family: var(--display); font-size: 2.1rem; font-weight: 400; }
   .tier .price span { font-family: var(--body); font-size: 14px; color: var(--ink-faint); }
   .tier .model { font-size: 13px; color: var(--ink-faint); font-family: var(--mono); letter-spacing: .04em; }
   .tier ul { list-style: none; padding: 0; margin: 26px 0 0; display: flex; flex-direction: column; gap: 13px; }
@@ -278,7 +283,7 @@
   @media (max-width: 760px){ .kpi { grid-template-columns: repeat(2,1fr); } }
   .kpi .cell { background: var(--ground); padding: 22px 20px; }
   .kpi .cl { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
-  .kpi .cv { font-family: var(--display); font-size: 1.7rem; font-weight: 300; margin-top: 7px; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+  .kpi .cv { font-family: var(--display); font-size: 1.7rem; font-weight: 400; margin-top: 7px; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
   .kpi .cd { font-size: 12px; margin-top: 4px; color: var(--ink-soft); }
   .kpi .cd.up { color: var(--good); } .kpi .cd.dn { color: var(--crit); }
   .plat { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -305,7 +310,7 @@
   .wa .b.m { align-self: flex-start; background: var(--surface); border: 1px solid var(--hairline); border-bottom-left-radius: 4px; }
   .wa .rcpt { font-size: 11.5px; opacity: .8; }
   .wa .ok { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--good); margin-top: 5px; }
-  .mbig { font-family: var(--display); font-weight: 300; font-size: 2.4rem; color: var(--gold); font-variant-numeric: tabular-nums; letter-spacing: -.02em; line-height: 1; }
+  .mbig { font-family: var(--display); font-weight: 400; font-size: 2.4rem; color: var(--gold); font-variant-numeric: tabular-nums; letter-spacing: -.02em; line-height: 1; }
   .msub { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
   .mrow { font-size: 12.5px; color: var(--ink-soft); }
   .mbtn { align-self: flex-start; margin-top: 4px; font-size: 12.5px; font-weight: 600; padding: 9px 15px; border-radius: 999px; background: linear-gradient(100deg,var(--gold-deep),var(--gold)); color: #17120a; }
@@ -340,16 +345,16 @@
   .applyform .hp { position: absolute; left: -9999px; }
   .apply-note { text-align: center; font-size: 12.5px; color: var(--ink-faint); margin-top: 14px; }
   .apply-thanks { max-width: 560px; margin: 0 auto; text-align: center; border: 1px solid var(--hairline); border-radius: 18px; padding: 44px 30px; background: var(--surface); }
-  .apply-thanks h3 { font-family: var(--display); font-weight: 300; font-size: 1.9rem; margin-bottom: 12px; }
+  .apply-thanks h3 { font-family: var(--display); font-weight: 400; font-size: 1.9rem; margin-bottom: 12px; }
   .apply-thanks p { color: var(--ink-soft); margin-bottom: 24px; }
   .assess-result { max-width: 560px; margin: 0 auto; text-align: center; border: 1px solid color-mix(in srgb, var(--gold) 50%, transparent); border-radius: 18px; padding: 44px 30px; background: linear-gradient(180deg, var(--gold-wash), transparent 60%), var(--surface); }
-  .assess-result .rn { font-family: var(--display); font-weight: 300; font-size: clamp(2.2rem, 1.8rem + 2vw, 3.4rem); color: var(--gold-lift); font-variant-numeric: tabular-nums; }
-  .assess-result h3 { font-family: var(--display); font-weight: 300; font-size: 1.5rem; margin: 10px 0 12px; }
+  .assess-result .rn { font-family: var(--display); font-weight: 400; font-size: clamp(2.2rem, 1.8rem + 2vw, 3.4rem); color: var(--gold-lift); font-variant-numeric: tabular-nums; }
+  .assess-result h3 { font-family: var(--display); font-weight: 400; font-size: 1.5rem; margin: 10px 0 12px; }
   .assess-result p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; margin-bottom: 22px; }
   .vslbox { max-width: 720px; margin: 0 auto 40px; border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent); border-radius: 18px; background: var(--surface-2); aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; box-shadow: var(--shadow); }
   .vslbox .play { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(100deg, var(--gold-deep), var(--gold)); box-shadow: 0 10px 40px -10px rgba(200,165,90,.5); }
   .vslbox .play svg { width: 26px; height: 26px; fill: #17120a; margin-left: 4px; }
-  .vslbox .vt2 { font-family: var(--display); font-weight: 300; font-size: 1.3rem; }
+  .vslbox .vt2 { font-family: var(--display); font-weight: 400; font-size: 1.3rem; }
   .vslbox .vs2 { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
 
   /* case studies */
@@ -367,7 +372,7 @@
   .cscard td:last-child { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
   .cscard .cstotal { padding: 14px 22px 18px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); }
   .cscard .cstotal .tl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
-  .cscard .cstotal .tv { font-family: var(--display); font-weight: 300; font-size: 1.6rem; color: var(--gold-lift); font-variant-numeric: tabular-nums; }
+  .cscard .cstotal .tv { font-family: var(--display); font-weight: 400; font-size: 1.6rem; color: var(--gold-lift); font-variant-numeric: tabular-nums; }
   .cs-sample { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); padding: 3px 9px; border-radius: 999px; margin-left: 10px; vertical-align: middle; }
 
   /* GOLD system */
@@ -375,7 +380,7 @@
   @media (max-width: 900px){ .gold-phases { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 520px){ .gold-phases { grid-template-columns: 1fr; } }
   .gphase { border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; background: var(--surface); }
-  .gphase .gl { font-family: var(--display); font-weight: 300; font-size: 3.2rem; line-height: 1; background: linear-gradient(100deg,var(--gold-deep),var(--gold-lift),var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gphase .gl { font-family: var(--display); font-weight: 400; font-size: 3.2rem; line-height: 1; background: linear-gradient(100deg,var(--gold-deep),var(--gold-lift),var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .gphase .pn { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: 14px 0 4px; }
   .gphase h3 { font-size: 1.2rem; margin: 0 0 8px; }
   .gphase p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
@@ -434,14 +439,14 @@
 
   /* quote */
   .quote { border-left: 2px solid var(--gold); padding: 6px 0 6px 28px; max-width: 64ch; }
-  .quote p { font-family: var(--display); font-weight: 300; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); line-height: 1.3; }
+  .quote p { font-family: var(--display); font-weight: 400; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); line-height: 1.3; }
   .quote .by { margin-top: 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
   .quote .by b { color: var(--gold); font-weight: 600; }
 
   /* faq */
   .faq { max-width: 820px; }
   .faq details { border-bottom: 1px solid var(--hairline); }
-  .faq summary { cursor: pointer; list-style: none; padding: 20px 0; font-size: 1.1rem; font-family: var(--display); font-weight: 300; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+  .faq summary { cursor: pointer; list-style: none; padding: 20px 0; font-size: 1.1rem; font-family: var(--display); font-weight: 400; display: flex; justify-content: space-between; gap: 20px; align-items: center; }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after { content: "+"; color: var(--gold); font-size: 1.4rem; line-height: 1; }
   .faq details[open] summary::after { content: "\2013"; }
@@ -475,7 +480,7 @@
   .legal { max-width: 760px; }
   .legal .lh { font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.6rem); margin-bottom: 8px; }
   .legal .eff { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: .06em; margin: 14px 0 28px; }
-  .legal h3 { font-family: var(--display); font-weight: 300; font-size: 1.35rem; margin: 32px 0 10px; }
+  .legal h3 { font-family: var(--display); font-weight: 400; font-size: 1.35rem; margin: 32px 0 10px; }
   .legal p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin: 0 0 14px; }
   .legal ul { margin: 0 0 14px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
   .legal li { color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
@@ -505,22 +510,47 @@
   .fletter .letter p b { color: var(--ink); }
   .fletter .letter .sig { margin-top: 26px; font-family: var(--display); font-size: 1.3rem; color: var(--ink); }
 
+
+  /* price block */
+  .price { max-width: 720px; margin: 64px auto 0; border: 1px solid var(--hairline-strong); border-radius: 20px;
+    background: var(--surface); padding: 40px 38px; text-align: center; box-shadow: var(--shadow); }
+  .price .pk { font-family: var(--display); font-style: italic; color: var(--gold); font-size: 1.05rem; }
+  .price .amt { font-family: var(--display); font-size: clamp(3rem,2.2rem + 3vw,4.6rem); line-height: 1; margin: 14px 0 6px; }
+  .price .amt .mo { font-size: .3em; color: var(--ink-faint); letter-spacing: 0; }
+  .price .per { color: var(--ink-faint); font-size: .95rem; }
+  .price .math { margin: 26px auto 0; max-width: 52ch; color: var(--ink-soft); font-size: 1.02rem; line-height: 1.6; }
+  .price .math b { color: var(--ink); }
+  .price .gtee { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--hairline);
+    font-size: 1.05rem; color: var(--ink); }
+  .price .gtee b { color: var(--gold); }
+  .price .btn { margin-top: 26px; }
+  .price .fine2 { margin-top: 16px; font-size: 12.5px; color: var(--ink-faint); }
+  @media (max-width: 620px){ .price { padding: 30px 22px; } }
+
   /* team grid */
   .team { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+  #board .team { grid-template-columns: repeat(5,1fr); gap: 14px; }
+  #board .tm { padding: 20px 18px; }
+  @media (max-width: 1180px){ #board .team { grid-template-columns: repeat(3,1fr); } }
+  @media (max-width: 1000px){ #board .team { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 1000px){ .team { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px){ .team { grid-template-columns: 1fr; } }
   .tm { border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; background: var(--surface); }
-  .tm .av2 { width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 16px;
+  .tm .av2 { width: 96px; height: 96px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 16px;
     background: radial-gradient(circle at 32% 28%, var(--gold-lift), var(--gold-deep) 78%); color: #241a08;
-    font-family: var(--display); font-size: 22px; letter-spacing: .02em;
+    font-family: var(--display); font-size: 34px; letter-spacing: .02em;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 3px 12px -3px rgba(0,0,0,.5); }
   .tm .av2 img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-  .tm h4 { font-family: var(--display); font-weight: 300; font-size: 1.2rem; margin: 0 0 4px; }
+  .tm h4 { font-family: var(--display); font-weight: 400; font-size: 1.2rem; margin: 0 0 4px; }
   .tm .rl4 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
   .tm p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
   .taxteam { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
   @media (max-width: 1000px){ .taxteam { grid-template-columns: 1fr 1fr; } }
   .ttm { border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; background: var(--surface); }
+  .ttm .av3 { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 12px;
+    background: rgba(255,255,255,.05); box-shadow: inset 0 0 0 1px var(--hairline);
+    font-family: var(--display); font-size: 15px; color: var(--gold); overflow: hidden; }
+  .ttm .av3 img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
   .ttm .nm3 { font-weight: 650; font-size: 14.5px; }
   .ttm .yr { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin: 4px 0 8px; }
   .ttm p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
@@ -630,7 +660,7 @@
     </div>
   </section>
 
-  <section class="trust" data-page="home gold">
+  <section class="trust" data-page="home">
     <div class="wrap">
       <span class="lab">Works with the tools you already sell on</span>
       <div class="logos">
@@ -720,17 +750,16 @@
         <p>Every creator we work with runs the same proven path. Where you start depends on your income; where it ends is a legacy.</p>
       </div>
       <div class="gold-phases">
-        <div class="gphase reveal"><div class="gl">G</div><div class="pn">Phase one</div><h3>Guard</h3><p>Stop the bill before it forms. The <b>structure</b> you file under, the <b>deductions</b> you capture as they happen, and the <b>timing</b> of income you can still move — the three decisions that have to be made before December 31, not after.</p></div>
-        <div class="gphase reveal"><div class="gl">O</div><div class="pn">Phase two</div><h3>Organize</h3><p>One clean picture of your money — every income source and expense in one place, and a <b>reserve</b> set aside on every payout so April is a checkpoint, never a crisis.</p></div>
-        <div class="gphase reveal"><div class="gl">L</div><div class="pn">Phase three</div><h3>Leverage</h3><p>Put what you kept to work — <b>retirement</b> plans that are the largest legal deduction available to you, a buffer for the slow months, and financing against your earnings instead of idle cash.</p></div>
-        <div class="gphase reveal"><div class="gl">D</div><div class="pn">Phase four</div><h3>Deploy</h3><p>Put your wealth to work — deploy into real assets, deals, and an institutional fund. Turn a viral moment into a legacy that outlasts the run.</p></div>
+        <div class="gphase"><div class="gl">G</div><div class="pn">Phase one</div><h3>Guard</h3><p>Stop the bill before it forms. The <b>structure</b> you file under, the <b>deductions</b> you capture as they happen, and the <b>timing</b> of income you can still move — the three decisions that have to be made before December 31, not after.</p></div>
+        <div class="gphase"><div class="gl">O</div><div class="pn">Phase two</div><h3>Organize</h3><p>One clean picture of your money — every income source and expense in one place, and a <b>reserve</b> set aside on every payout so April is a checkpoint, never a crisis.</p></div>
+        <div class="gphase"><div class="gl">L</div><div class="pn">Phase three</div><h3>Leverage</h3><p>Put what you kept to work — <b>retirement</b> plans that are the largest legal deduction available to you, a buffer for the slow months, and financing against your earnings instead of idle cash.</p></div>
+        <div class="gphase"><div class="gl">D</div><div class="pn">Phase four</div><h3>Deploy</h3><p>Put your wealth to work — deploy into real assets, deals, and an institutional fund. Turn a viral moment into a legacy that outlasts the run.</p></div>
       </div>
       <div class="band-head reveal" style="margin-top:64px;">
-        <span class="label">The methodology, in numbers</span>
-        <h2 style="font-size:clamp(1.6rem,1.3rem+1.2vw,2.2rem);">The strategies are proven. Most creators just never hear them.</h2>
+        <h2 style="font-size:clamp(1.6rem,1.3rem + 1.2vw,2.2rem);">The strategies are proven. Most creators just never hear them.</h2>
         <p style="font-size:.95rem;">Illustrative figures — your numbers depend on your situation and jurisdiction. Every strategy implemented by licensed professionals.</p>
       </div>
-      <div class="gold-phases reveal" style="grid-template-columns:repeat(3,1fr);">
+      <div class="gold-phases" style="grid-template-columns:repeat(3,1fr);">
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">~$9,500<span style="font-size:1rem;">/yr</span></div><p style="margin-top:12px;">Typical self-employment tax saved on $100K profit from one structural election alone (US).</p></div>
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">$2,500</div><p style="margin-top:12px;">Per-item de minimis threshold — gear expensed immediately, no capitalisation argument needed.</p></div>
         <div class="gphase"><div class="gl" style="font-size:2.1rem;">$14,129</div><p style="margin-top:12px;">Self-employment tax on your first $100K as a default LLC — the leak the S-corp election fixes.</p></div>
@@ -753,9 +782,9 @@
         <p style="margin-top:14px;">If the Audit doesn't show at least <b style="color:var(--ink);">twice our fee in recoverable savings</b>, we'll tell you not to hire us — and refund the Audit. From there, the work is <b style="color:var(--ink);">three to four focused sessions</b> with our Head of Tax: full assessment, then proactive planning that starts today, so next tax season is never a surprise.</p>
       </div>
       <div class="steps">
-        <div class="step reveal"><div class="no">Within 7 days</div><h3>Your overpayment number</h3><p>Earned → kept → left on the table. In plain numbers, from the documents you already have.</p></div>
-        <div class="step reveal"><div class="no">Same week</div><h3>Your clean money picture</h3><p>A reliable financial baseline — what's reserved, committed, and actually available to spend or invest.</p></div>
-        <div class="step reveal"><div class="no">Zero risk</div><h3>2x our fee, or we refund it</h3><p>Documents only — nothing connected. If the Audit doesn't show at least twice our fee in recoverable savings, we tell you not to hire us and refund it.</p></div>
+        <div class="step"><div class="no">Within 7 days</div><h3>Your overpayment number</h3><p>Earned → kept → left on the table. In plain numbers, from the documents you already have.</p></div>
+        <div class="step"><div class="no">Same week</div><h3>Your clean money picture</h3><p>A reliable financial baseline — what's reserved, committed, and actually available to spend or invest.</p></div>
+        <div class="step"><div class="no">Zero risk</div><h3>2x our fee, or we refund it</h3><p>Documents only — nothing connected. If the Audit doesn't show at least twice our fee in recoverable savings, we tell you not to hire us and refund it.</p></div>
       </div>
       <div class="reveal" style="text-align:center;margin-top:36px;">
         <a href="#/apply" class="btn btn-primary">Book the Audit →</a>
@@ -790,27 +819,27 @@
         <p>Six things every engagement actually delivers.</p>
       </div>
       <div class="plat">
-        <div class="pcard reveal">
+        <div class="pcard">
           <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v11H8l-5 4V5z"/></svg></span>
           <h4>Strategy sessions</h4><p>Monthly with Elton Lalaj, CPA — our Head of Tax.</p><div class="maps">Led by the Head of Tax</div>
         </div>
-        <div class="pcard reveal">
+        <div class="pcard">
           <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5 5l2.1 2.1M16.9 16.9L19 19M19 5l-2.1 2.1M7.1 16.9L5 19"/></svg></span>
           <h4>Implemented for you</h4><p>Structure, elections and timing executed, not explained.</p><div class="maps">We do the doing</div>
         </div>
-        <div class="pcard reveal">
+        <div class="pcard">
           <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6v18h12V7l-4-4z"/><path d="M14 3v4h4"/><path d="M9 13h6M9 17h6"/></svg></span>
           <h4>Filing included</h4><p>Federal and state, by licensed professionals.</p><div class="maps">Licensed partners file</div>
         </div>
-        <div class="pcard reveal">
+        <div class="pcard">
           <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h4l2-2h6l2 2h4v11H3V8z"/><circle cx="12" cy="13" r="3.4"/></svg></span>
           <h4>Receipts, captured live</h4><p>Snap it in WhatsApp. Read, categorised, audit-ready.</p><div class="maps">Real-time</div>
         </div>
-        <div class="pcard reveal">
+        <div class="pcard">
           <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
           <h4>Tax reserved automatically</h4><p>A fixed cut of every payout, parked the day it lands.</p><div class="maps">Set once, runs always</div>
         </div>
-        <div class="pcard reveal">
+        <div class="pcard">
           <span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L8 22l4-2 4 2-1-7.5"/></svg></span>
           <h4>Twice our fee, or free</h4><p>If the first review finds less, you don't pay for it.</p><div class="maps">The guarantee</div>
         </div>
@@ -835,44 +864,7 @@
   </section>
 
 
-  <section class="band" id="product" data-page="home gold">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">How it actually works</span>
-        <h2>No dashboards to learn. You just text Midas.</h2>
-        <p>Snap a receipt in WhatsApp and the Midas agent reads it, categorises it and files it to your books — then lends against it and shrinks your tax bill. All legal, all documented, so tax season stops being something you fear.</p>
-      </div>
-      <div class="func">
-        <div class="fcard reveal">
-          <div class="mock">
-            <div class="wa">
-              <div class="b u"><span class="rcpt">📷 receipt.jpg</span></div>
-              <div class="b m"><b>Processed ✓</b><br>Cafe · $18.50 · Client Dinner · 12 Jan<span class="ok">✓ logged &amp; synced to QuickBooks</span></div>
-            </div>
-          </div>
-          <div class="cap2"><span class="k">The Midas agent</span><h3>Snap it in WhatsApp</h3><p>Every receipt read, categorised and filed instantly, with the business purpose recorded. No app to learn, no shoebox, nothing reconstructed in April.</p></div>
-        </div>
-        <div class="fcard reveal">
-          <div class="mock">
-            <div class="msub">Available to advance</div>
-            <div class="mbig">$85,000</div>
-            <div class="mrow">Against $340K of tracked income &amp; spend</div>
-            <div class="mbtn">Get it today →</div>
-          </div>
-          <div class="cap2"><span class="k">Instant financing</span><h3>Cash for the slow months</h3><p>Draw against what you've already earned — fair terms, funded fast. Never a predatory lender again.</p></div>
-        </div>
-        <div class="fcard reveal">
-          <div class="mock">
-            <div class="msub">Estimated tax owed</div>
-            <div><span class="mstrike">$150,000</span> <span class="mbig" style="font-size:2rem">$108,000</span></div>
-            <div class="msaved">▼ $42,000 saved this year</div>
-            <div class="mrow">Drops live as deductions get captured</div>
-          </div>
-          <div class="cap2"><span class="k">Tax bill, live</span><h3>Watch it shrink</h3><p>Your estimated tax falls in real time as Midas finds every deduction — legally. No April surprise, no audit to fear.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <section class="band" id="who" data-page="pricing">
     <div class="wrap">
@@ -904,90 +896,9 @@
     </div>
   </section>
 
-  <section class="band" id="platform" data-page="gold">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">The platform</span>
-        <h2>For creators who sell, the tech does the heavy lifting.</h2>
-        <p>Commerce creators — TikTok Shop, merch, product lines — run real businesses with real books. Midas already connects to the tools they use and turns the mess into a live picture of what they actually keep.</p>
-      </div>
+  
 
-      <div class="kpi reveal">
-        <div class="cell"><div class="cl">Revenue · month</div><div class="cv">$312,400</div><div class="cd up">▲ 18% vs last month</div></div>
-        <div class="cell"><div class="cl">True margin</div><div class="cv">41%</div><div class="cd">after COGS, ads &amp; fees</div></div>
-        <div class="cell"><div class="cl">Set aside for tax</div><div class="cv">$74,900</div><div class="cd up">on track</div></div>
-        <div class="cell"><div class="cl">Runway</div><div class="cv">7.2 mo</div><div class="cd dn">▼ 3.1 mo if sales dip 40%</div></div>
-      </div>
-      <p class="reveal" style="margin:-16px 0 30px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);">Illustrative — your live numbers once you connect your channels</p>
-
-      <div class="plat">
-        <div class="pcard reveal">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg></span>
-          <h4>Connect every income source</h4>
-          <p>TikTok Shop payouts, Shopify, Stripe, QuickBooks — pulled into one place. One creator, multiple entities: the LLC, the merch store, the personal brand, all under a single view.</p>
-          <div class="maps">Multi-provider · multi-entity sync</div>
-        </div>
-        <div class="pcard reveal">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
-          <h4>See what you actually keep</h4>
-          <p>Full P&amp;L, cash flow and per-product margin — after COGS, ad spend and platform fees. Which SKU makes money, which one just makes noise.</p>
-          <div class="maps">Reports · sales &amp; product analytics</div>
-        </div>
-        <div class="pcard reveal">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-4 4V5a2 2 0 0 1 2-2h13a2 2 0 0 1 2 2z"/></svg></span>
-          <h4>Ask it anything</h4>
-          <p>An AI CFO that answers in plain English — "what's my margin on the beauty line?" or "how much do I owe for tax?" — with charts, not jargon. No finance degree required.</p>
-          <div class="maps">Conversational AI · 14+ finance tools</div>
-        </div>
-        <div class="pcard reveal">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></span>
-          <h4>Never get surprised</h4>
-          <p>Forecasting, burn rate and runway built in. "If this product dips 40%, when do I run out of cash?" — answered before it happens, not after.</p>
-          <div class="maps">Forecasting · scenario modeling</div>
-        </div>
-        <div class="pcard reveal">
-          <span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M9 4v16"/></svg></span>
-          <h4>Expenses on autopilot</h4>
-          <p>Vendor tracking, categorization and receipt capture that feed the books automatically. The snap-a-receipt tool from Compass flows straight into the platform.</p>
-          <div class="maps">Expense management · receipt capture</div>
-        </div>
-        <div class="pcard reveal">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/><path d="M9 21h6M10 17v4M14 17v4"/></svg></span>
-          <h4>It remembers</h4>
-          <p>Tax deadlines, savings goals, the decisions you made last quarter — carried across every session, so the platform actually knows your business over time.</p>
-          <div class="maps">Persistent memory · per-entity</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="inside" data-page="gold">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">Inside the platform</span>
-        <h2>This is what visibility actually looks like.</h2>
-        <p>Not a mockup — the real Midas platform. Connect the channels a creator already sells on, and the whole picture assembles itself. Then you just ask it questions.</p>
-      </div>
-      <div class="shots">
-        <div class="shot reveal">
-          <div class="bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="url">app.midas.finance / executive-summary</span></div>
-          <img src="creator-revenue.jpg" alt="Midas Executive Summary with the AI CFO breaking revenue down by sales channel" loading="lazy" />
-          <div class="cap">
-            <span class="k">The e-commerce answer</span>
-            <p>Ask <b>"what's my revenue?"</b> in plain English and Midas breaks it down by channel — <b>Amazon, Shopify, TikTok, brand deals</b> — in one answer, even netting out discounts and returns. This is why commerce creators are the sweet spot: their money lives across platforms, and nobody else stitches it together.</p>
-          </div>
-        </div>
-        <div class="shot reveal">
-          <div class="bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="url">app.midas.finance / dashboard</span></div>
-          <img src="dashboard.jpg" alt="Midas dashboard with P&L, balance sheet, cash flow, financial health score and month-over-month AI snapshot" loading="lazy" />
-          <div class="cap">
-            <span class="k">The whole picture, one screen</span>
-            <p>Live <b>P&amp;L, cash flow, burn rate, runway</b> and a <b>financial-health score</b> — plus a month-over-month snapshot the AI writes on its own. A creator sees exactly what they keep, and what a slow month does to them, before it happens.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <section class="band" id="engine" data-page="gold">
     <div class="wrap engine">
@@ -1028,6 +939,70 @@
     </div>
   </section>
 
+  <section class="band" id="product" data-page="home gold">
+    <div class="wrap">
+      <div class="band-head reveal">
+        <span class="label">How it actually works</span>
+        <h2>No dashboards to learn. You just text Midas.</h2>
+        <p>Snap a receipt in WhatsApp and the Midas agent reads it, categorises it and files it to your books &mdash; then lends against it and shrinks your tax bill. All legal, all documented, so tax season stops being something you fear.</p>
+      </div>
+      <div class="func">
+        <div class="fcard">
+          <div class="mock">
+            <div class="wa">
+              <div class="b u"><span class="rcpt">📷 receipt.jpg</span></div>
+              <div class="b m"><b>Processed ✓</b><br>Cafe · $18.50 · Client Dinner · 12 Jan<span class="ok">✓ logged &amp; synced to QuickBooks</span></div>
+            </div>
+          </div>
+          <div class="cap2"><span class="k">The Midas agent</span><h3>Snap it in WhatsApp</h3><p>Every receipt read, categorised and filed instantly, with the business purpose recorded. No app to learn, no shoebox, nothing reconstructed in April.</p></div>
+        </div>
+        <div class="fcard">
+          <div class="mock">
+            <div class="msub">Available to advance</div>
+            <div class="mbig">$85,000</div>
+            <div class="mrow">Against $340K of tracked income &amp; spend</div>
+            <div class="mbtn">Get it today →</div>
+          </div>
+          <div class="cap2"><span class="k">Instant financing</span><h3>Cash for the slow months</h3><p>Draw against what you've already earned — fair terms, funded fast. Never a predatory lender again.</p></div>
+        </div>
+        <div class="fcard">
+          <div class="mock">
+            <div class="msub">Estimated tax owed</div>
+            <div><span class="mstrike">$150,000</span> <span class="mbig" style="font-size:2rem">$108,000</span></div>
+            <div class="msaved">▼ $42,000 saved this year</div>
+            <div class="mrow">Drops live as deductions get captured</div>
+          </div>
+          <div class="cap2"><span class="k">Tax bill, live</span><h3>Watch it shrink</h3><p>Your estimated tax falls in real time as Midas finds every deduction — legally. No April surprise, no audit to fear.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="margin-top:70px;">
+      <div class="band-head reveal">
+        <h2>And when you want the whole picture, it&rsquo;s already assembled.</h2>
+        <p>Connect the channels you already sell on &mdash; TikTok Shop, Shopify, Amazon, Stripe, QuickBooks &mdash; and ask it questions in plain English. These are real screens, not mockups.</p>
+      </div>
+      <div class="shots">
+        <div class="shot">
+          <div class="bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="url">app.midas.finance / executive-summary</span></div>
+          <img src="creator-revenue.jpg" alt="Midas Executive Summary with the AI CFO breaking revenue down by sales channel" loading="lazy" />
+          <div class="cap">
+            <span class="k">The e-commerce answer</span>
+            <p>Ask <b>"what's my revenue?"</b> in plain English and Midas breaks it down by channel — <b>Amazon, Shopify, TikTok, brand deals</b> — in one answer, even netting out discounts and returns. This is why commerce creators are the sweet spot: their money lives across platforms, and nobody else stitches it together.</p>
+          </div>
+        </div>
+        <div class="shot">
+          <div class="bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="url">app.midas.finance / dashboard</span></div>
+          <img src="dashboard.jpg" alt="Midas dashboard with P&L, balance sheet, cash flow, financial health score and month-over-month AI snapshot" loading="lazy" />
+          <div class="cap">
+            <span class="k">The whole picture, one screen</span>
+            <p>Live <b>P&amp;L, cash flow, burn rate, runway</b> and a <b>financial-health score</b> — plus a month-over-month snapshot the AI writes on its own. A creator sees exactly what they keep, and what a slow month does to them, before it happens.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <section class="band" id="founder" data-page="about">
     <div class="wrap">
       <div class="band-head reveal" style="margin-bottom:40px;">
@@ -1053,10 +1028,9 @@
       </div>
 
       <div class="band-head reveal" style="margin:72px 0 36px;">
-        <span class="label">Leadership</span>
         <h2>The team behind your money.</h2>
       </div>
-      <div class="team reveal">
+      <div class="team">
         <div class="tm">
           <div class="av2"><img src="lavine.jpeg" alt="Lavine Hemlani" /></div>
           <h4>Lavine Hemlani</h4>
@@ -1078,19 +1052,19 @@
       </div>
 
       <div class="band-head reveal" style="margin:64px 0 30px;">
-        <span class="label">The tax team</span>
-        <h2 style="font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Elton doesn't work alone.</h2>
+        <h2 style="font-size:clamp(1.5rem,1.3rem + 1vw,2rem);">Elton doesn't work alone.</h2>
         <p style="font-size:.95rem;">Your plan is designed by Elton and executed by the licensed accountants and tax professionals of Lalaj CPA Group — the practice that files for every Midas client.</p>
       </div>
-      <div class="taxteam reveal">
-        <div class="ttm"><div class="nm3">Erton Kaleshi</div><div class="yr">10+ years</div><p>Tax consulting and compliance for corporations and high-net-worth individuals, across domestic and foreign industries.</p></div>
-        <div class="ttm"><div class="nm3">Arnold Visha</div><div class="yr">10+ years</div><p>Tax consulting, compliance and dispute resolution — hospitality, construction and professional services businesses.</p></div>
-        <div class="ttm"><div class="nm3">Drita Kaleshi</div><div class="yr">19+ years</div><p>Full-cycle accounting, tax compliance and financial advisory — including production companies.</p></div>
-        <div class="ttm"><div class="nm3">Rafaela Mrruku</div><div class="yr">15+ years</div><p>Taxation, financial reporting, regulatory compliance and advisory for businesses needing full financial management.</p></div>
-        <div class="ttm"><div class="nm3">Ada Mrruku</div><div class="yr">10+ years</div><p>Comprehensive bookkeeping and day-to-day financial management across auditing, construction, banking and fashion.</p></div>
-        <div class="ttm"><div class="nm3">Kristiana Rroqja</div><div class="yr">10 years</div><p>Bookkeeping and annual tax preparation for hospitality, construction and professional services clients.</p></div>
-        <div class="ttm"><div class="nm3">Eriola Mucllari</div><div class="yr">4+ years</div><p>Meticulous bookkeeping and financial records — monthly accounting updates, sales reporting and compliance support.</p></div>
-        <div class="ttm"><div class="nm3">Dhimitra Dhimitri</div><div class="yr">MSc Accounting</div><p>Bookkeeping, financial reporting support and transaction management for small and mid-sized businesses.</p></div>
+      <div class="taxteam">
+        <div class="ttm"><div class="av3"><img src="tax_erton.jpg" alt="Erton Kaleshi" loading="lazy" /></div><div class="nm3">Erton Kaleshi</div><div class="yr">10+ years</div><p>Tax consulting and compliance for corporations and high-net-worth individuals, across domestic and foreign industries.</p></div>
+        <div class="ttm"><div class="av3">AV</div><div class="nm3">Arnold Visha</div><div class="yr">10+ years</div><p>Tax consulting, compliance and dispute resolution — hospitality, construction and professional services businesses.</p></div>
+        <div class="ttm"><div class="av3">DK</div><div class="nm3">Drita Kaleshi</div><div class="yr">19+ years</div><p>Full-cycle accounting, tax compliance and financial advisory — including production companies.</p></div>
+        <div class="ttm"><div class="av3"><img src="tax_refaela.jpg" alt="Rafaela Mrruku" loading="lazy" /></div><div class="nm3">Rafaela Mrruku</div><div class="yr">15+ years</div><p>Taxation, financial reporting, regulatory compliance and advisory for businesses needing full financial management.</p></div>
+        <div class="ttm"><div class="av3">AM</div><div class="nm3">Ada Mrruku</div><div class="yr">10+ years</div><p>Comprehensive bookkeeping and day-to-day financial management across auditing, construction, banking and fashion.</p></div>
+        <div class="ttm"><div class="av3">KR</div><div class="nm3">Kristiana Rroqja</div><div class="yr">10 years</div><p>Bookkeeping and annual tax preparation for hospitality, construction and professional services clients.</p></div>
+        <div class="ttm"><div class="av3">EM</div><div class="nm3">Eriola Mucllari</div><div class="yr">4+ years</div><p>Meticulous bookkeeping and financial records — monthly accounting updates, sales reporting and compliance support.</p></div>
+        <div class="ttm"><div class="av3"><img src="tax_arber.jpg" alt="Arber Bendo" loading="lazy" /></div><div class="nm3">Arber Bendo</div><div class="yr">Tax &amp; accounting</div><p>Tax preparation and accounting support across the firm's corporate and individual client base.</p></div>
+        <div class="ttm"><div class="av3">DD</div><div class="nm3">Dhimitra Dhimitri</div><div class="yr">MSc Accounting</div><p>Bookkeeping, financial reporting support and transaction management for small and mid-sized businesses.</p></div>
       </div>
     </div>
   </section>
@@ -1102,7 +1076,7 @@
         <h2>Operators and a CPA — not a call centre.</h2>
         <p>Midas is run by people who've built the finance function behind real companies, and a tax practice that files for creators every day.</p>
       </div>
-      <div class="team reveal">
+      <div class="team">
         <div class="tm">
           <div class="av2"><img src="lavine.jpeg" alt="Lavine Hemlani" /></div>
           <h4>Lavine Hemlani</h4><div class="rl4">Founder &amp; CEO</div>
@@ -1126,11 +1100,11 @@
   <section class="band" id="board" data-page="about">
     <div class="wrap">
       <div class="band-head reveal">
-        <span class="label">Board and advisors</span>
+        <span class="label">Board</span>
         <h2>The people we answer to.</h2>
         <p>Operators who have built and sold real companies, and who sit on the numbers with us.</p>
       </div>
-      <div class="team reveal">
+      <div class="team">
         <div class="tm">
           <div class="av2"><img src="evan.jpg" alt="Evan Meagher" /></div>
           <h4>Evan Meagher</h4><div class="rl4">Board Member</div>
@@ -1464,8 +1438,7 @@
         <div class="step"><div class="no">04</div><h3>45-min strategy session</h3><p>Sit with Elton Lalaj, CPA. You leave knowing your number and your options — even if that's "do nothing yet."</p></div>
       </div>
       <div class="band-head reveal" style="text-align:center;margin:0 auto 34px;">
-        <span class="label">Step two</span>
-        <h2 style="margin:12px 0 0;font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Start with the 5-minute assessment.</h2>
+        <h2 style="margin:12px 0 0;font-size:clamp(1.5rem,1.3rem + 1vw,2rem);">Start with the 5-minute assessment.</h2>
         <p style="margin:12px auto 0;">Nine quick questions — you'll see your estimate the moment you finish.</p>
       </div>
       <form class="applyform reveal" name="assessment" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="assessForm">
@@ -1560,7 +1533,6 @@
         <p class="apply-note">Directional estimate, not tax advice. Your info stays private — never sold or shared.</p>
       </form>
       <div class="assess-result reveal" id="assessResult" style="display:none;">
-        <span class="label">Your directional estimate</span>
         <div class="rn" id="arNumber">$0</div>
         <h3 id="arHead">left on the table this year</h3>
         <p id="arBody"></p>
@@ -1578,31 +1550,37 @@
         <p>Compass is for creators who want to stay hands-on: you get the full playbook, real sessions with our team, and a room of serious creators — and you run the system yourself, with us on call.</p>
       </div>
       <div class="plat">
-        <div class="pcard reveal"><h4>The guide &amp; content library</h4><p>Every strategy in the Creator Tax Playbook, expanded — structure, deductions, retirement, timing — in plain English, updated as rules change.</p><div class="maps">Yours from day one</div></div>
-        <div class="pcard reveal"><h4>Three 1-on-1 strategy sessions</h4><p>Sit down one-on-one with our team, map your situation, and set your structure and plan for the year.</p><div class="maps">1-on-1 · booked around you</div></div>
-        <div class="pcard reveal"><h4>Private Slack access</h4><p>Questions as they come up — "can I expense this?", "what do I set aside?" — answered by people who do this daily.</p><div class="maps">Ongoing</div></div>
-        <div class="pcard reveal"><h4>The community</h4><p>A room of creators at your level sharing what actually works — deals, structures, mistakes avoided.</p><div class="maps">Serious creators only</div></div>
-        <div class="pcard reveal"><h4>The expense app</h4><p>Photograph any receipt and see what's deductible on the spot — your documentation builds itself.</p><div class="maps">WhatsApp-first</div></div>
-        <div class="pcard reveal"><h4>Upgrade path</h4><p>When you're ready to hand it all over, Compass credits your way into Inflection.</p><div class="maps">No lock-in</div></div>
+        <div class="pcard"><h4>The guide &amp; content library</h4><p>Every strategy in the Creator Tax Playbook, expanded — structure, deductions, retirement, timing — in plain English, updated as rules change.</p><div class="maps">Yours from day one</div></div>
+        <div class="pcard"><h4>Three 1-on-1 strategy sessions</h4><p>Sit down one-on-one with our team, map your situation, and set your structure and plan for the year.</p><div class="maps">1-on-1 · booked around you</div></div>
+        <div class="pcard"><h4>Private Slack access</h4><p>Questions as they come up — "can I expense this?", "what do I set aside?" — answered by people who do this daily.</p><div class="maps">Ongoing</div></div>
+        <div class="pcard"><h4>The community</h4><p>A room of creators at your level sharing what actually works — deals, structures, mistakes avoided.</p><div class="maps">Serious creators only</div></div>
+        <div class="pcard"><h4>The expense app</h4><p>Photograph any receipt and see what's deductible on the spot — your documentation builds itself.</p><div class="maps">WhatsApp-first</div></div>
+        <div class="pcard"><h4>Upgrade path</h4><p>When you're ready to hand it all over, Compass credits your way into Inflection.</p><div class="maps">No lock-in</div></div>
       </div>
       <div class="band-head reveal" style="margin-top:64px;">
-        <span class="label">The Compass curriculum</span>
-        <h2 style="font-size:clamp(1.6rem,1.3rem+1.2vw,2.2rem);">Eight modules. Every strategy. In order.</h2>
+        <h2 style="font-size:clamp(1.6rem,1.3rem + 1.2vw,2.2rem);">Eight modules. Every strategy. In order.</h2>
         <p style="font-size:.95rem;">Built from the sixteen strategies in the Creator Tax Playbook — taught in the order they compound.</p>
       </div>
       <div class="steps" style="grid-template-columns:repeat(4,1fr);">
-        <div class="step reveal"><div class="no">Module 01</div><h3>Financial hygiene</h3><p>Separate accounts, clean books, the 25–35% reserve, and reading your own P&amp;L — the foundation everything sits on.</p></div>
-        <div class="step reveal"><div class="no">Module 02</div><h3>Structure</h3><p>LLC vs S-corp, the election, reasonable salary, and the QBI deduction — with the real math.</p></div>
-        <div class="step reveal"><div class="no">Module 03</div><h3>The deduction system</h3><p>Real-time capture, home studio (actual method), audit-ready documentation that survives scrutiny.</p></div>
-        <div class="step reveal"><div class="no">Module 04</div><h3>Vehicles &amp; Augusta</h3><p>Mileage vs actual vs depreciation, the 6,000-lb rules — and the Augusta rule done with proper comps.</p></div>
-        <div class="step reveal"><div class="no">Module 05</div><h3>Retirement &amp; health</h3><p>Solo 401(k) to ~$70K, HSA, 100%-deductible premiums — the self-employed wealth stack.</p></div>
-        <div class="step reveal"><div class="no">Module 06</div><h3>Quarterlies &amp; timing</h3><p>Estimated payments, safe harbors, and the year-end moves that expire December 31.</p></div>
-        <div class="step reveal"><div class="no">Module 07</div><h3>People &amp; plans</h3><p>Family on payroll, the accountable reimbursement plan, and paying your team properly.</p></div>
-        <div class="step reveal"><div class="no">Module 08</div><h3>Wealth foundations</h3><p>What to do with excess profits — deployment basics and your first look at enterprise value.</p></div>
+        <div class="step"><div class="no">Module 01</div><h3>Financial hygiene</h3><p>Separate accounts, clean books, the 25–35% reserve, and reading your own P&amp;L — the foundation everything sits on.</p></div>
+        <div class="step"><div class="no">Module 02</div><h3>Structure</h3><p>LLC vs S-corp, the election, reasonable salary, and the QBI deduction — with the real math.</p></div>
+        <div class="step"><div class="no">Module 03</div><h3>The deduction system</h3><p>Real-time capture, home studio (actual method), audit-ready documentation that survives scrutiny.</p></div>
+        <div class="step"><div class="no">Module 04</div><h3>Vehicles &amp; Augusta</h3><p>Mileage vs actual vs depreciation, the 6,000-lb rules — and the Augusta rule done with proper comps.</p></div>
+        <div class="step"><div class="no">Module 05</div><h3>Retirement &amp; health</h3><p>Solo 401(k) to ~$70K, HSA, 100%-deductible premiums — the self-employed wealth stack.</p></div>
+        <div class="step"><div class="no">Module 06</div><h3>Quarterlies &amp; timing</h3><p>Estimated payments, safe harbors, and the year-end moves that expire December 31.</p></div>
+        <div class="step"><div class="no">Module 07</div><h3>People &amp; plans</h3><p>Family on payroll, the accountable reimbursement plan, and paying your team properly.</p></div>
+        <div class="step"><div class="no">Module 08</div><h3>Wealth foundations</h3><p>What to do with excess profits — deployment basics and your first look at enterprise value.</p></div>
       </div>
-      <div class="reveal" style="text-align:center;margin-top:38px;">
-        <a href="#/apply" class="btn btn-primary">Start with Compass →</a>
+      <div class="price reveal">
+        <div class="pk">What it costs</div>
+        <div class="amt">$500<span class="mo">/month</span></div>
+        <div class="per">$6,000 a year &middot; cancel any time</div>
+        <p class="math">The S-corp election on its own typically saves a creator around <b>$9,500 a year</b> in self-employment tax. That is one of sixteen strategies inside Compass &mdash; and on its own it already covers the year, with $3,500 left over.</p>
+        <div class="gtee">If you don&rsquo;t save at least <b>$25,000</b>, you don&rsquo;t pay.</div>
+        <a href="#/apply" class="btn btn-primary">Start with Compass &rarr;</a>
+        <p class="fine2">Everything you&rsquo;ve paid is credited in full if you move up to Inflection.</p>
       </div>
+
     </div>
   </section>
 
@@ -1614,15 +1592,15 @@
         <p>Inflection is for creators past the point of doing it themselves. Our Head of Tax runs your strategy, our team implements every piece, licensed professionals file — and you review the wins once a month.</p>
       </div>
       <div class="plat">
-        <div class="pcard reveal"><h4>Monthly strategy session</h4><p>A standing session with Elton Lalaj, CPA — our Head of Tax — what's changing, what's next, what it's worth.</p><div class="maps">Every month · Head of Tax</div></div>
-        <div class="pcard reveal"><h4>Full implementation</h4><p>Structure, elections, timing, retirement plans — every strategy executed for you, not explained to you.</p><div class="maps">We do the doing</div></div>
-        <div class="pcard reveal"><h4>Expense &amp; deduction capture</h4><p>Every receipt read, categorised and filed with business purpose logged — audit-ready by default.</p><div class="maps">Runs daily</div></div>
-        <div class="pcard reveal"><h4>Tax filing included</h4><p>Federal and state returns prepared and submitted by licensed, registered professionals.</p><div class="maps">Licensed partners file</div></div>
-        <div class="pcard reveal"><h4>Monthly books review</h4><p>Your books reviewed every month for tax opportunities — nothing waits until April.</p><div class="maps">12x per year</div></div>
-        <div class="pcard reveal"><h4>Slack access</h4><p>Direct line to the team between sessions — decisions checked before you make them, not after.</p><div class="maps">Ongoing</div></div>
+        <div class="pcard"><h4>Monthly strategy session</h4><p>A standing session with Elton Lalaj, CPA — our Head of Tax — what's changing, what's next, what it's worth.</p><div class="maps">Every month · Head of Tax</div></div>
+        <div class="pcard"><h4>Full implementation</h4><p>Structure, elections, timing, retirement plans — every strategy executed for you, not explained to you.</p><div class="maps">We do the doing</div></div>
+        <div class="pcard"><h4>Expense &amp; deduction capture</h4><p>Every receipt read, categorised and filed with business purpose logged — audit-ready by default.</p><div class="maps">Runs daily</div></div>
+        <div class="pcard"><h4>Tax filing included</h4><p>Federal and state returns prepared and submitted by licensed, registered professionals.</p><div class="maps">Licensed partners file</div></div>
+        <div class="pcard"><h4>Monthly books review</h4><p>Your books reviewed every month for tax opportunities — nothing waits until April.</p><div class="maps">12x per year</div></div>
+        <div class="pcard"><h4>Slack access</h4><p>Direct line to the team between sessions — decisions checked before you make them, not after.</p><div class="maps">Ongoing</div></div>
       </div>
-      <div class="band-head reveal" style="margin-top:56px;"><span class="label">The GOLD system</span><h2 style="font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Inflection runs the first two phases.</h2></div>
-        <div class="gold-phases reveal">
+      <div class="band-head reveal" style="margin-top:56px;"><h2 style="font-size:clamp(1.5rem,1.3rem + 1vw,2rem);">Inflection runs the first two phases.</h2></div>
+        <div class="gold-phases">
         <div class="gphase"><div class="gl">G</div><h3>Guard</h3><p>Structure, deductions and timing — the bill cut before it forms.</p></div>
         <div class="gphase"><div class="gl">O</div><h3>Organize</h3><p>Clean books, clean picture, tax reserved on every payout.</p></div>
         <div class="gphase" style="opacity:.38;"><div class="gl">L</div><div class="pn" style="color:var(--ink-soft);">In Legacy</div><h3>Leverage</h3><p>Retirement, buffer and financing — what you kept, working.</p></div>
@@ -1642,16 +1620,16 @@
         <p>Right now, most creators don't own a business — they own a very well-paid job that stops the day they stop. Legacy fixes that: the full tax engine underneath, real CFO work on top, and the structural work that turns an audience into something a buyer could actually purchase. The best time to know what you're worth is years before anyone offers.</p>
       </div>
       <div class="plat">
-        <div class="pcard reveal"><h4>The full Inflection engine</h4><p>Monthly strategy with our Head of Tax, full implementation, capture, filing, books review, Slack.</p><div class="maps">Included</div></div>
-        <div class="pcard reveal"><h4>Real CFO work</h4><p>Forecasting, cash planning, unit economics and board-grade reporting — the finance function behind 100+ founders at Zenith, applied to your business.</p><div class="maps">Fractional CFO · included</div></div>
-        <div class="pcard reveal"><h4>Building enterprise value</h4><p>Turning personal income into a company someone could buy: recurring revenue, products, team, systems — value that exists beyond your face.</p><div class="maps">The valuation drivers</div></div>
-        <div class="pcard reveal"><h4>Owner independence</h4><p>Structuring the business so revenue doesn't depend entirely on you — the single biggest driver of what a buyer will pay.</p><div class="maps">De-risk the key person</div></div>
-        <div class="pcard reveal"><h4>Exit readiness</h4><p>Learning what buyers pay for, cleaning the books for diligence, and preparing the business to sell — years before you want to.</p><div class="maps">Built to be bought</div></div>
-        <div class="pcard reveal"><h4>Wealth &amp; deal access</h4><p>Excess profits deployed into real assets through a regulated financial entity, plus select opportunities when they fit.</p><div class="maps">Regulated partner executes</div></div>
-        <div class="pcard reveal"><h4>Quarterly board reviews</h4><p>A board-style sitting on your whole picture: earned, kept, deployed, enterprise value, and what's next.</p><div class="maps">4x per year</div></div>
+        <div class="pcard"><h4>The full Inflection engine</h4><p>Monthly strategy with our Head of Tax, full implementation, capture, filing, books review, Slack.</p><div class="maps">Included</div></div>
+        <div class="pcard"><h4>Real CFO work</h4><p>Forecasting, cash planning, unit economics and board-grade reporting — the finance function behind 100+ founders at Zenith, applied to your business.</p><div class="maps">Fractional CFO · included</div></div>
+        <div class="pcard"><h4>Building enterprise value</h4><p>Turning personal income into a company someone could buy: recurring revenue, products, team, systems — value that exists beyond your face.</p><div class="maps">The valuation drivers</div></div>
+        <div class="pcard"><h4>Owner independence</h4><p>Structuring the business so revenue doesn't depend entirely on you — the single biggest driver of what a buyer will pay.</p><div class="maps">De-risk the key person</div></div>
+        <div class="pcard"><h4>Exit readiness</h4><p>Learning what buyers pay for, cleaning the books for diligence, and preparing the business to sell — years before you want to.</p><div class="maps">Built to be bought</div></div>
+        <div class="pcard"><h4>Wealth &amp; deal access</h4><p>Excess profits deployed into real assets through a regulated financial entity, plus select opportunities when they fit.</p><div class="maps">Regulated partner executes</div></div>
+        <div class="pcard"><h4>Quarterly board reviews</h4><p>A board-style sitting on your whole picture: earned, kept, deployed, enterprise value, and what's next.</p><div class="maps">4x per year</div></div>
       </div>
-      <div class="band-head reveal" style="margin-top:56px;"><span class="label">The GOLD system</span><h2 style="font-size:clamp(1.5rem,1.3rem+1vw,2rem);">Legacy is the only tier that runs all four phases.</h2></div>
-        <div class="gold-phases reveal">
+      <div class="band-head reveal" style="margin-top:56px;"><h2 style="font-size:clamp(1.5rem,1.3rem + 1vw,2rem);">Legacy is the only tier that runs all four phases.</h2></div>
+        <div class="gold-phases">
         <div class="gphase"><div class="gl">G</div><h3>Guard</h3><p>Structure, deductions and timing — the bill cut before it forms.</p></div>
         <div class="gphase"><div class="gl">O</div><h3>Organize</h3><p>Clean books, clean picture, tax reserved on every payout.</p></div>
         <div class="gphase"><div class="gl">L</div><h3>Leverage</h3><p>Retirement, buffer and financing — what you kept, working.</p></div>
@@ -1671,8 +1649,8 @@
         <p>Client identities are never published — every case study is anonymized by profile, platform and income band. The figures below are illustrative models showing how the strategies stack; anonymized results from our Head of Tax's engagements replace them as each client's year completes.</p>
       </div>
       <div class="cs-grid">
-        <div class="cscard reveal">
-          <div class="csh"><span class="label">Midas case study 01</span><h3>TikTok Shop creator</h3></div>
+        <div class="cscard">
+          <div class="csh"><h3>TikTok Shop creator</h3></div>
           <div class="meta"><b>Profile:</b> commerce creator · single filer<br/><b>Revenue:</b> ~$850K · <b>Structure before:</b> default LLC</div>
           <table>
             <tr><th>Strategy</th><th>Impact</th></tr>
@@ -1684,8 +1662,8 @@
           </table>
           <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$61,000</span></div>
         </div>
-        <div class="cscard reveal">
-          <div class="csh"><span class="label">Midas case study 02</span><h3>YouTube creator</h3></div>
+        <div class="cscard">
+          <div class="csh"><h3>YouTube creator</h3></div>
           <div class="meta"><b>Profile:</b> brand deals + AdSense · married<br/><b>Revenue:</b> ~$480K · <b>Structure before:</b> sole proprietor</div>
           <table>
             <tr><th>Strategy</th><th>Impact</th></tr>
@@ -1697,8 +1675,8 @@
           </table>
           <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$47,000</span></div>
         </div>
-        <div class="cscard reveal">
-          <div class="csh"><span class="label">Midas case study 03</span><h3>Subscription creator</h3></div>
+        <div class="cscard">
+          <div class="csh"><h3>Subscription creator</h3></div>
           <div class="meta"><b>Profile:</b> memberships + digital products · single filer<br/><b>Revenue:</b> ~$1.4M · <b>Structure before:</b> LLC, no planning</div>
           <table>
             <tr><th>Strategy</th><th>Impact</th></tr>
@@ -1710,8 +1688,8 @@
           </table>
           <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$148,000</span></div>
         </div>
-        <div class="cscard reveal">
-          <div class="csh"><span class="label">Midas case study 04</span><h3>Instagram &amp; brand-deal creator</h3></div>
+        <div class="cscard">
+          <div class="csh"><h3>Instagram &amp; brand-deal creator</h3></div>
           <div class="meta"><b>Profile:</b> sponsorships + affiliate · single filer<br/><b>Revenue:</b> ~$650K · <b>Structure before:</b> sole proprietor</div>
           <table>
             <tr><th>Strategy</th><th>Impact</th></tr>
@@ -1723,8 +1701,8 @@
           </table>
           <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$61,000</span></div>
         </div>
-        <div class="cscard reveal">
-          <div class="csh"><span class="label">Midas case study 05</span><h3>Course &amp; community creator</h3></div>
+        <div class="cscard">
+          <div class="csh"><h3>Course &amp; community creator</h3></div>
           <div class="meta"><b>Profile:</b> digital products + membership · married filing jointly<br/><b>Revenue:</b> ~$2.1M · <b>Structure before:</b> LLC, no planning</div>
           <table>
             <tr><th>Strategy</th><th>Impact</th></tr>
@@ -1736,8 +1714,8 @@
           </table>
           <div class="cstotal"><span class="tl">Modeled tax reduction</span><span class="tv">~$164,000</span></div>
         </div>
-        <div class="cscard reveal">
-          <div class="csh"><span class="label">Midas case study 06</span><h3>Podcast &amp; newsletter creator</h3></div>
+        <div class="cscard">
+          <div class="csh"><h3>Podcast &amp; newsletter creator</h3></div>
           <div class="meta"><b>Profile:</b> sponsorships + paid subscriptions · single filer<br/><b>Revenue:</b> ~$310K · <b>Structure before:</b> default LLC</div>
           <table>
             <tr><th>Strategy</th><th>Impact</th></tr>
