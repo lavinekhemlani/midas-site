@@ -30,7 +30,7 @@
   :root {
     color-scheme: light;
     --ground: #fbfaf8;
-    --ground-alt: #f3efe7;
+    --ground-alt: #efe9df;
     --surface: #ffffff;
     --surface-2: #f4f1ec;
     --hairline: rgba(20,17,12,.11);
@@ -54,7 +54,7 @@
 
   :root[data-theme="dark"] {
     color-scheme: dark;
-    --ground:#121212; --ground-alt:#0c0c0e; --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.055);
+    --ground:#121212; --ground-alt:#191919; --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.055);
     --hairline:rgba(255,255,255,.09); --hairline-strong:rgba(255,255,255,.16);
     --ink:#fafafa; --ink-soft:#b7b1a7; --ink-faint:#837d73;
     --gold:#c8a55a; --gold-deep:#9a7638; --gold-lift:#e0c483; --gold-wash:rgba(200,165,90,.10);
@@ -78,8 +78,8 @@
   h1,h2,h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; margin: 0; }
   p { margin: 0; }
   a { color: inherit; }
-  h1, h2, h3, h4, .hero-h { letter-spacing: -.025em; }
-  h1, h2, .hero-h, .band-head h2 { font-weight: 640; }
+  h1, h2, h3, h4, .hero-h { letter-spacing: -.03em; font-weight: 600; line-height: 1.04; }
+  body { letter-spacing: -.011em; }
   .band.stripe, .trust.stripe { background: var(--ground-alt); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
   .label {
     font-family: var(--display); font-size: .95rem; letter-spacing: .005em;
@@ -96,9 +96,11 @@
     font-family: var(--body); text-decoration: none; border: 1px solid transparent;
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
   }
-  .btn-primary, .btn-primary:link, .btn-primary:visited { background: linear-gradient(100deg, var(--gold-deep), var(--gold)); color: #14100a !important; font-weight: 700; text-shadow: none; box-shadow: 0 8px 28px -8px var(--gold-wash); }
+  .btn-primary, .btn-primary:link, .btn-primary:visited { background: var(--ink); color: var(--ground) !important; font-weight: 600; border-color: var(--ink); box-shadow: 0 6px 18px -8px rgba(20,17,12,.45); }
+  .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: #fff !important; }
   .btn-primary:hover { transform: translateY(-1px); }
-  .btn-ghost { border-color: var(--hairline-strong); color: var(--ink); background: transparent; }
+  .btn-ghost { border-color: var(--hairline-strong); color: var(--ink); background: var(--surface); }
+  .btn-ghost:hover { border-color: var(--ink); }
   .btn-ghost:hover { background: var(--surface); }
 
   /* ---- top bar ---- */
@@ -188,15 +190,15 @@
   /* savings calculator */
   .calc { display: grid; grid-template-columns: 1fr 1.5fr; gap: 34px; align-items: center; border: 1px solid var(--hairline); border-radius: 20px; padding: 34px; background: var(--surface); box-shadow: var(--shadow); }
   @media (max-width: 860px){ .calc { grid-template-columns: 1fr; gap: 28px; } }
-  .calc-input label { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .calc-input label { font-family: var(--body); font-weight: 560; font-size: 13.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .calc-val { font-family: var(--display); font-size: clamp(2rem, 1.6rem + 1.5vw, 2.8rem); font-weight: 600; margin: 8px 0 18px; font-variant-numeric: tabular-nums; }
   .calc input[type=range] { width: 100%; accent-color: var(--gold); height: 4px; cursor: pointer; }
-  .calc-scale { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 10px; }
+  .calc-scale { display: flex; justify-content: space-between; font-family: var(--body); font-size: 11px; color: var(--ink-faint); margin-top: 10px; }
   .calc-out { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
   @media (max-width: 560px){ .calc-out { grid-template-columns: 1fr; } }
   .calc-card { border: 1px solid var(--hairline); border-radius: 14px; padding: 18px; background: var(--ground); }
   .calc-card.hl { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background: linear-gradient(180deg, var(--gold-wash), transparent 65%), var(--ground); }
-  .calc-card .cl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-faint); }
+  .calc-card .cl { font-family: var(--body); font-weight: 560; font-size: 12.0px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .calc-card .cv { font-family: var(--display); font-size: 1.7rem; font-weight: 600; margin: 7px 0; font-variant-numeric: tabular-nums; color: var(--gold); }
   .calc-card.hl .cv { color: var(--gold-lift); }
   .calc-card .cd { font-size: 12px; color: var(--ink-soft); line-height: 1.4; }
@@ -214,7 +216,7 @@
   .arc { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   @media (max-width: 820px){ .arc { grid-template-columns: 1fr; } }
   .arc-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; }
-  .arc-card .stage { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+  .arc-card .stage { font-family: var(--body); font-weight: 560; font-size: 13.5px; letter-spacing: .01em; text-transform: none; }
   .arc-card.up .stage { color: var(--good); }
   .arc-card.flat .stage { color: var(--warn); }
   .arc-card.down .stage { color: var(--crit); }
@@ -229,12 +231,12 @@
   .tier { position: relative; background: var(--surface); border: 1px solid var(--hairline); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; box-shadow: var(--shadow); }
   .tier.feature { border-color: color-mix(in srgb, var(--gold) 55%, transparent); background:
     linear-gradient(180deg, var(--gold-wash), transparent 42%), var(--surface); }
-  .tier .tag { align-self: flex-start; font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent); padding: 5px 11px; border-radius: 999px; }
+  .tier .tag { align-self: flex-start; font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent); padding: 5px 11px; border-radius: 999px; }
   .tier h3 { font-size: 1.9rem; margin: 22px 0 6px; }
   .tier .who { color: var(--ink-soft); font-size: 15px; min-height: 42px; }
   .tier .price { margin: 20px 0 6px; font-family: var(--display); font-size: 2.1rem; font-weight: 600; }
   .tier .price span { font-family: var(--body); font-size: 14px; color: var(--ink-faint); }
-  .tier .model { font-size: 13px; color: var(--ink-faint); font-family: var(--mono); letter-spacing: .04em; }
+  .tier .model { font-size: 13px; color: var(--ink-faint); font-family: var(--body); letter-spacing: .01em; }
   .tier ul { list-style: none; padding: 0; margin: 26px 0 0; display: flex; flex-direction: column; gap: 13px; }
   .tier li { display: flex; gap: 12px; font-size: 15px; color: var(--ink); line-height: 1.45; }
   .tier li::before { content: ""; flex: none; margin-top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
@@ -244,7 +246,7 @@
   .segs { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   @media (max-width: 860px){ .segs { grid-template-columns: 1fr; } }
   .seg { border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; background: var(--surface); }
-  .seg .fit { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; display: inline-block; }
+  .seg .fit { font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; padding: 4px 9px; border-radius: 999px; display: inline-block; }
   .fit.high { color: var(--good); background: color-mix(in srgb, var(--good) 14%, transparent); }
   .fit.mid { color: var(--warn); background: color-mix(in srgb, var(--warn) 14%, transparent); }
   .seg h3 { font-size: 1.3rem; margin: 16px 0 10px; }
@@ -277,18 +279,18 @@
   .kpi { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 16px; overflow: hidden; margin-bottom: 30px; }
   @media (max-width: 760px){ .kpi { grid-template-columns: repeat(2,1fr); } }
   .kpi .cell { background: var(--ground); padding: 22px 20px; }
-  .kpi .cl { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .kpi .cl { font-family: var(--body); font-weight: 560; font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .kpi .cv { font-family: var(--display); font-size: 1.7rem; font-weight: 600; margin-top: 7px; font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
   .kpi .cd { font-size: 12px; margin-top: 4px; color: var(--ink-soft); }
   .kpi .cd.up { color: var(--good); } .kpi .cd.dn { color: var(--crit); }
   .plat { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
   @media (max-width: 860px){ .plat { grid-template-columns: 1fr; } }
   .pcard { border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; background: var(--surface); }
-  .pcard .ic { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--gold-wash); border: 1px solid color-mix(in srgb, var(--gold) 34%, transparent); margin-bottom: 16px; }
-  .pcard .ic svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.6; }
+  .pcard .ic { width: 58px; height: 58px; border-radius: 15px; display: grid; place-items: center; background: var(--gold-wash); border: 1px solid color-mix(in srgb, var(--gold) 34%, transparent); margin-bottom: 16px; }
+  .pcard .ic svg { width: 27px; height: 27px; stroke: var(--gold); fill: none; stroke-width: 1.6; }
   .pcard h4 { margin: 0 0 8px; font-family: var(--body); font-weight: 650; font-size: 16px; }
   .pcard p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
-  .pcard .maps { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 12px; color: var(--ink-faint); font-family: var(--mono); letter-spacing: .02em; }
+  .pcard .maps { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 12.5px; color: var(--ink-faint); font-family: var(--body); letter-spacing: 0; }
 
   /* functionality showcase */
   .func { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -296,7 +298,7 @@
   .fcard { border: 1px solid var(--hairline); border-radius: 18px; background: var(--surface); overflow: hidden; display: flex; flex-direction: column; }
   .fcard .mock { padding: 24px; background: var(--surface-2); border-bottom: 1px solid var(--hairline); min-height: 210px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
   .fcard .cap2 { padding: 20px 22px; }
-  .fcard .cap2 .k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .fcard .cap2 .k { font-family: var(--body); font-weight: 560; font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--gold); }
   .fcard .cap2 h3 { font-size: 1.15rem; margin: 8px 0 6px; font-family: var(--body); font-weight: 650; }
   .fcard .cap2 p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
   .wa { display: flex; flex-direction: column; gap: 8px; }
@@ -306,7 +308,7 @@
   .wa .rcpt { font-size: 11.5px; opacity: .8; }
   .wa .ok { display: block; font-family: var(--mono); font-size: 10.5px; color: var(--good); margin-top: 5px; }
   .mbig { font-family: var(--display); font-weight: 600; font-size: 2.4rem; color: var(--gold); font-variant-numeric: tabular-nums; letter-spacing: -.02em; line-height: 1; }
-  .msub { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+  .msub { font-family: var(--body); font-weight: 560; font-size: 12.0px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .mrow { font-size: 12.5px; color: var(--ink-soft); }
   .mbtn { align-self: flex-start; margin-top: 4px; font-size: 12.5px; font-weight: 600; padding: 9px 15px; border-radius: 999px; background: linear-gradient(100deg,var(--gold-deep),var(--gold)); color: #17120a; }
   .mstrike { text-decoration: line-through; color: var(--ink-faint); font-size: 1.3rem; }
@@ -350,7 +352,7 @@
   .vslbox .play { width: 74px; height: 74px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(100deg, var(--gold-deep), var(--gold)); box-shadow: 0 10px 40px -10px rgba(200,165,90,.5); }
   .vslbox .play svg { width: 26px; height: 26px; fill: #17120a; margin-left: 4px; }
   .vslbox .vt2 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; }
-  .vslbox .vs2 { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .vslbox .vs2 { font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
 
   /* case studies */
   .cs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
@@ -362,13 +364,13 @@
   .cscard .meta { padding: 14px 22px; border-bottom: 1px solid var(--hairline); font-size: 12.5px; color: var(--ink-soft); line-height: 1.7; }
   .cscard .meta b { color: var(--ink); }
   .cscard table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-  .cscard th { text-align: left; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); padding: 12px 22px 6px; }
+  .cscard th { text-align: left; font-family: var(--body); font-weight: 560; font-size: 11.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); padding: 12px 22px 6px; }
   .cscard td { padding: 7px 22px; color: var(--ink-soft); border-top: 1px solid var(--hairline); }
   .cscard td:last-child { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
   .cscard .cstotal { padding: 14px 22px 18px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); }
-  .cscard .cstotal .tl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .cscard .cstotal .tl { font-family: var(--body); font-weight: 560; font-size: 12.0px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .cscard .cstotal .tv { font-family: var(--display); font-weight: 600; font-size: 1.6rem; color: var(--gold-lift); font-variant-numeric: tabular-nums; }
-  .cs-sample { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); padding: 3px 9px; border-radius: 999px; margin-left: 10px; vertical-align: middle; }
+  .cs-sample { display: inline-block; font-family: var(--body); font-weight: 560; font-size: 11.5px; letter-spacing: .01em; text-transform: none; color: var(--warn); border: 1px solid color-mix(in srgb, var(--warn) 40%, transparent); padding: 3px 9px; border-radius: 999px; margin-left: 10px; vertical-align: middle; }
 
   /* GOLD system */
   .gold-phases { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
@@ -376,7 +378,7 @@
   @media (max-width: 520px){ .gold-phases { grid-template-columns: 1fr; } }
   .gphase { border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; background: var(--surface); }
   .gphase .gl { font-family: var(--display); font-weight: 600; font-size: 3.2rem; line-height: 1; background: linear-gradient(100deg,var(--gold-deep),var(--gold-lift),var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .gphase .pn { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: 14px 0 4px; }
+  .gphase .pn { font-family: var(--body); font-weight: 560; font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); margin: 14px 0 4px; }
   .gphase h3 { font-size: 1.2rem; margin: 0 0 8px; }
   .gphase p { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
 
@@ -389,14 +391,14 @@
   .shot .bar .url { margin-left: 12px; font-family: var(--mono); font-size: 12px; color: #8a8a8a; background: rgba(255,255,255,.05); padding: 5px 16px; border-radius: 999px; }
   .shot img { display: block; width: 100%; height: auto; }
   .shot .cap { padding: 18px 24px 20px; background: #111; border-top: 1px solid rgba(255,255,255,.06); }
-  .shot .cap .k { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-lift); }
+  .shot .cap .k { font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; color: var(--gold-lift); }
   .shot .cap p { font-size: 15px; color: #c4beb4; margin: 8px 0 0; line-height: 1.5; }
   .shot .cap p b { color: #fff; font-weight: 600; }
 
   /* trust strip */
   .trust { border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
   .trust .wrap { display: flex; align-items: center; gap: 22px 40px; flex-wrap: wrap; justify-content: center; padding: 24px 28px; }
-  .trust .lab { font-family: var(--mono); font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+  .trust .lab { font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .trust .logos { display: flex; gap: 14px 30px; flex-wrap: wrap; align-items: center; justify-content: center; }
   .trust .logos span { font-family: var(--display); font-size: 1.15rem; color: var(--ink-soft); letter-spacing: -.01em; opacity: .9; }
   @media (max-width: 680px){ .trust .wrap { flex-direction: column; gap: 16px; } }
@@ -405,37 +407,43 @@
   .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 18px; }
   .guide-card { display: block; border: 1px solid var(--hairline); border-radius: 16px; padding: 24px; background: var(--surface); text-decoration: none; transition: border-color .2s, transform .2s; }
   .guide-card:hover { border-color: var(--gold); transform: translateY(-2px); }
-  .guide-card .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .guide-card .tag { font-family: var(--body); font-weight: 560; font-size: 12.0px; letter-spacing: .01em; text-transform: none; color: var(--gold); }
   .guide-card h3 { font-size: 1.15rem; margin: 12px 0 10px; color: var(--ink); }
   .guide-card p { font-size: 14px; color: var(--ink-soft); margin-bottom: 14px; }
   .guide-card .rd { font-size: 13px; color: var(--gold); font-weight: 600; }
-  .pcard .pico { display:inline-flex; width:40px; height:40px; border-radius:11px; align-items:center; justify-content:center;
+  .pcard .pico { display:inline-flex; width:58px; height:58px; border-radius:15px; align-items:center; justify-content:center;
     background: color-mix(in srgb, var(--gold) 12%, transparent); border:1px solid color-mix(in srgb, var(--gold) 28%, transparent);
     color: var(--gold); margin-bottom:16px; }
-  .pcard .pico svg { width:20px; height:20px; }
+  .pcard .pico svg { width:27px; height:27px; }
   .csdocs { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:20px; }
   .csdoc { display:block; text-decoration:none; border:1px solid var(--hairline); border-radius:16px; overflow:hidden;
     background:var(--surface); transition:border-color .2s, transform .2s; }
   .csdoc:hover { border-color:var(--gold); transform:translateY(-3px); }
-  .csdoc .shot { display:block; height:250px; overflow:hidden; position:relative; background:#fff; }
-  .csdoc .shot img { width:100%; display:block; filter:blur(3.4px); transform:scale(1.03); }
-  .csdoc .shot:after { content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(11,11,13,0) 42%, rgba(11,11,13,.92) 100%); }
-  .csdoc .cap { display:block; padding:18px 20px 20px; }
-  .csdoc .cap b { display:block; color:var(--ink); font-size:1.05rem; margin-bottom:8px; }
-  .csdoc .cap .rev { font-family:var(--mono); font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-faint); }
-  .csdoc .cap .sav { float:right; font-family:var(--mono); font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); }
+  .csdoc .shot { display:block; padding:26px 22px 22px; position:relative; background:var(--ground-alt); border-bottom:1px solid var(--hairline); }
+  .csdoc .ico { display:grid; place-items:center; width:52px; height:52px; border-radius:14px; background:var(--surface);
+    border:1px solid var(--hairline); margin-bottom:18px; }
+  .csdoc .ico svg { width:26px; height:26px; stroke:var(--gold); fill:none; stroke-width:1.6; }
+  .csdoc .big { display:block; font-family:var(--display); font-size:2.5rem; font-weight:600; letter-spacing:-.03em; color:var(--ink); line-height:1; }
+  .csdoc .big em { font-style:normal; font-size:1rem; color:var(--ink-faint); font-family:var(--body); font-weight:400; margin-left:7px; }
+  .csdoc .bars { display:block; margin-top:18px; }
+  .csdoc .bar2 { display:flex; align-items:center; gap:10px; font-size:12px; color:var(--ink-faint); margin-top:7px; }
+  .csdoc .bar2 i { display:block; height:7px; border-radius:4px; background:var(--hairline-strong); }
+  .csdoc .bar2.on i { background:var(--gold); }
+  .csdoc .cap { display:block; padding:18px 22px 20px; }
+  .csdoc .cap b { display:block; color:var(--ink); font-size:1.05rem; margin-bottom:5px; }
+  .csdoc .cap .rev { font-size:13px; color:var(--ink-faint); }
+
   .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 22px; }
   @media (max-width: 820px){ .steps { grid-template-columns: 1fr; } }
   .step { border: 1px solid var(--hairline); border-radius: 16px; padding: 28px; background: var(--surface); }
-  .step .no { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--gold); }
+  .step .no { font-family: var(--body); font-size: 12px; letter-spacing: .01em; color: var(--gold); }
   .step h3 { font-size: 1.3rem; margin: 14px 0 10px; }
   .step p { color: var(--ink-soft); font-size: 14.5px; }
 
   /* quote */
   .quote { border-left: 2px solid var(--gold); padding: 6px 0 6px 28px; max-width: 64ch; }
   .quote p { font-family: var(--display); font-weight: 600; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); line-height: 1.3; }
-  .quote .by { margin-top: 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
+  .quote .by { margin-top: 20px; font-family: var(--body); font-weight: 560; font-size: 13.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); }
   .quote .by b { color: var(--gold); font-weight: 600; }
 
   /* faq */
@@ -452,7 +460,7 @@
   .guide { border: 1px solid var(--hairline); border-radius: 16px; background: var(--surface); overflow: hidden; }
   .guide summary { cursor: pointer; list-style: none; padding: 24px 26px; display: flex; flex-direction: column; gap: 8px; }
   .guide summary::-webkit-details-marker { display: none; }
-  .guide .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+  .guide .tag { font-family: var(--body); font-weight: 560; font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--gold); }
   .guide h3 { font-size: 1.25rem; }
   .guide .sum { color: var(--ink-soft); font-size: 14.5px; }
   .guide[open] summary { border-bottom: 1px solid var(--hairline); }
@@ -463,7 +471,7 @@
   /* fat footer */
   .footer2 .cols { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; padding: 56px 28px 30px; max-width: var(--maxw); margin: 0 auto; }
   @media (max-width: 760px){ .footer2 .cols { grid-template-columns: 1fr 1fr; } }
-  .footer2 h5 { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 14px; font-weight: 500; }
+  .footer2 h5 { font-family: var(--body); font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); margin: 0 0 14px; font-weight: 500; }
   .footer2 .cols a { display: block; color: var(--ink-soft); text-decoration: none; font-size: 14px; margin-bottom: 10px; }
   .footer2 .cols a:hover { color: var(--ink); }
   .footer2 .col-brand p { color: var(--ink-soft); font-size: 14px; margin: 14px 0 0; max-width: 34ch; }
@@ -474,7 +482,7 @@
   /* legal pages */
   .legal { max-width: 760px; }
   .legal .lh { font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.6rem); margin-bottom: 8px; }
-  .legal .eff { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: .06em; margin: 14px 0 28px; }
+  .legal .eff { font-family: var(--body); font-size: 12px; color: var(--ink-faint); letter-spacing: .01em; margin: 14px 0 28px; }
   .legal h3 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; margin: 32px 0 10px; }
   .legal p { color: var(--ink-soft); font-size: 15px; line-height: 1.65; margin: 0 0 14px; }
   .legal ul { margin: 0 0 14px; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
@@ -491,7 +499,7 @@
   .tcard .nm { font-weight: 650; font-size: 14.5px; }
   .tcard .rl2 { font-size: 12.5px; color: var(--ink-faint); }
   .tcard .stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; }
-  .ph-note { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-top: 18px; }
+  .ph-note { font-family: var(--body); font-weight: 560; font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); margin-top: 18px; }
 
   /* founder letter */
   .fletter { display: grid; grid-template-columns: 340px 1fr; gap: 48px; align-items: start; }
@@ -500,7 +508,7 @@
   .fletter .photo img { width: 100%; border-radius: 18px; display: block; border: 1px solid color-mix(in srgb, var(--gold) 40%, transparent); }
   .fletter .photo .cap3 { margin-top: 14px; }
   .fletter .photo .nm2 { font-family: var(--display); font-size: 1.25rem; }
-  .fletter .photo .rl3 { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .fletter .photo .rl3 { font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; color: var(--gold); margin-top: 4px; }
   .fletter .letter p { font-size: 16.5px; color: var(--ink-soft); line-height: 1.7; margin: 0 0 18px; }
   .fletter .letter p b { color: var(--ink); }
   .fletter .letter .sig { margin-top: 26px; font-family: var(--display); font-size: 1.3rem; color: var(--ink); }
@@ -537,7 +545,7 @@
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 3px 12px -3px rgba(0,0,0,.5); }
   .tm .av2 img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
   .tm h4 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; margin: 0 0 4px; }
-  .tm .rl4 { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .tm .rl4 { font-family: var(--body); font-weight: 560; font-size: 12.0px; letter-spacing: .01em; text-transform: none; color: var(--gold); margin-bottom: 12px; }
   .tm p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; }
   .taxteam { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
   @media (max-width: 1000px){ .taxteam { grid-template-columns: 1fr 1fr; } }
@@ -547,7 +555,7 @@
     font-family: var(--display); font-size: 15px; color: var(--gold); overflow: hidden; }
   .ttm .av3 img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
   .ttm .nm3 { font-weight: 650; font-size: 14.5px; }
-  .ttm .yr { font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin: 4px 0 8px; }
+  .ttm .yr { font-family: var(--body); font-weight: 560; font-size: 12.0px; letter-spacing: .01em; text-transform: none; color: var(--gold); margin: 4px 0 8px; }
   .ttm p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
 
   /* founders */
@@ -555,7 +563,7 @@
   @media (max-width: 820px){ .founders { grid-template-columns: 1fr; } }
   .founder { border: 1px solid var(--hairline); border-radius: 16px; padding: 26px; background: var(--surface); }
   .founder .nm { font-family: var(--display); font-size: 1.3rem; }
-  .founder .rl { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin: 6px 0 14px; }
+  .founder .rl { font-family: var(--body); font-weight: 560; font-size: 13.0px; letter-spacing: .01em; text-transform: none; color: var(--gold); margin: 6px 0 14px; }
   .founder p { font-size: 14.5px; color: var(--ink-soft); }
 
   /* CTA */
@@ -567,7 +575,7 @@
   footer { border-top: 1px solid var(--hairline); padding: 34px 0; }
   .foot-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
   .foot-inner p { font-size: 13px; color: var(--ink-faint); }
-  .draft { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); border: 1px solid var(--hairline); padding: 4px 10px; border-radius: 999px; }
+  .draft { font-family: var(--body); font-weight: 560; font-size: 12.5px; letter-spacing: .01em; text-transform: none; color: var(--ink-faint); border: 1px solid var(--hairline); padding: 4px 10px; border-radius: 999px; }
 
   .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
@@ -618,7 +626,7 @@
       <div class="hero-copy">
       <div class="eyebrow-row reveal"><span class="label callout">Creators earning <b>$500K to $2M</b></span></div>
       <h1 class="hero-h reveal">Cut your <span class="gold-text">tax bill by 30%.</span></h1>
-      <p class="hero-sub reveal">At $500K your tax bill is ~$200K. Cutting it 30% keeps <b style="color:var(--ink);">$60K+</b> in your pocket every year. <b style="color:var(--ink);">If you don't save $25K+, you don't pay.</b></p>
+      <p class="hero-sub reveal">Earn $500K and you'll hand over about $200K. We cut that by a third. <b style="color:var(--ink);">If you don't save $25K, you don't pay us.</b></p>
       <div class="hero-cta reveal">
         <a href="#/assessment" class="btn btn-primary">See if you qualify →</a>
         <a href="#/gold" class="btn btn-ghost">How it works →</a>
@@ -673,8 +681,8 @@
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">Why this exists</span>
-        <h2>Creators get one good run. Most of them have no team when it matters.</h2>
-        <p>Your manager takes their points and moves to the next name. Ask your CPA why the bill is so high and you'll get a version of &ldquo;you made a lot this year.&rdquo; Ask how to pay less and the honest answer is usually &ldquo;make less.&rdquo; That isn't incompetence — building tax strategy was never their job. But it means nobody is watching the taxes, the dips, or where the money actually goes, and we've watched creators go from millions to nothing because no one built anything under it.</p>
+        <h2>You get one good run.</h2>
+        <p>Ask your CPA why the bill is so high. You'll get a version of &ldquo;you made a lot this year.&rdquo; Ask how to pay less and the honest answer is &ldquo;make less.&rdquo;<br><br>That isn't incompetence. Tax strategy was never their job. But it means nobody is watching what you keep — and we have watched creators go from millions to nothing because of it.</p>
       </div>
       <div class="arc">
         <div class="arc-card up reveal">
@@ -703,15 +711,15 @@
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">What we do</span>
-        <h2>Two ways in, depending on how hands-on you want us.</h2>
-        <p>Midas isn't an accountant. It isn't a course. It's the financial team that gets in and runs your money with you — so you stay in front of the camera. Start light, graduate to done-for-you.</p>
+        <h2>Two ways in.</h2>
+        <p>Not an accountant. Not a course. The finance team that runs your money, so you can stay in front of the camera.</p>
       </div>
       <div class="tiers">
 
         <div class="tier reveal">
           <span class="tag">Done with you</span>
           <h3>Compass</h3>
-          <p class="who">For creators who want the playbook, the sessions and the room — and to stay hands-on.</p>
+          <p class="who">You want the playbook and our team on call. You still drive.</p>
           <div class="model">1-on-1 strategy sessions · guides · access</div>
           <ul>
             <li>The full guide and content library — every strategy, in plain English</li>
@@ -726,7 +734,7 @@
         <div class="tier feature reveal">
           <span class="tag">Done for you</span>
           <h3>Inflection</h3>
-          <p class="who">For creators who want the whole tax side handled — filed, implemented, reviewed.</p>
+          <p class="who">You want it gone. We implement, we file, you review the wins.</p>
           <div class="model">implementation · filing · infrastructure</div>
           <ul>
             <li>A monthly tax strategy session with our Head of Tax</li>
@@ -778,17 +786,16 @@
       <div class="band-head reveal">
         <span class="label">Proof before commitment</span>
         <h2>Start with <span class="gold-text">the Audit</span> — the number before the invoice.</h2>
-        <p>We won't quote you until we've seen your last two years. The Audit reviews your returns and accounts, assesses your structure, and puts it in writing: what you overpaid, what's recoverable, and what's available going forward. <b style="color:var(--ink);">Credited in full against any engagement.</b></p>
-        <p style="margin-top:14px;">If the Audit doesn't show at least <b style="color:var(--ink);">twice our fee in recoverable savings</b>, we'll tell you not to hire us — and refund the Audit. From there, the work is <b style="color:var(--ink);">three to four focused sessions</b> with our Head of Tax: full assessment, then proactive planning that starts today, so next tax season is never a surprise.</p>
+        <p>We won't quote you until we've read your last two years.<br><br>You get one number: what you overpaid, and what we can still get back. In writing, inside a week.<br><br>If it isn't at least <b style="color:var(--ink);">twice our fee</b>, we tell you not to hire us. And we refund the Audit.</p>
       </div>
       <div class="steps">
-        <div class="step"><div class="no">Within 7 days</div><h3>Your overpayment number</h3><p>Earned → kept → left on the table. In plain numbers, from the documents you already have.</p></div>
-        <div class="step"><div class="no">Same week</div><h3>Your clean money picture</h3><p>A reliable financial baseline — what's reserved, committed, and actually available to spend or invest.</p></div>
-        <div class="step"><div class="no">Zero risk</div><h3>2x our fee, or we refund it</h3><p>Documents only — nothing connected. If the Audit doesn't show at least twice our fee in recoverable savings, we tell you not to hire us and refund it.</p></div>
+        <div class="step"><div class="no">Within 7 days</div><h3>Your overpayment number</h3><p>Earned, kept, left on the table. From documents you already have.</p></div>
+        <div class="step"><div class="no">Same week</div><h3>Your clean money picture</h3><p>What's reserved. What's committed. What you can actually spend.</p></div>
+        <div class="step"><div class="no">Zero risk</div><h3>2x our fee, or we refund it</h3><p>Documents only. Nothing connected to your accounts.</p></div>
       </div>
       <div class="reveal" style="text-align:center;margin-top:36px;">
         <a href="#/apply" class="btn btn-primary">Book the Audit →</a>
-        <p style="margin-top:14px;font-size:13px;color:var(--ink-faint);">Credited in full against any engagement. We win when you win — that's the whole model.</p>
+        <p style="margin-top:14px;font-size:13px;color:var(--ink-faint);">Credited in full against any engagement.</p>
       </div>
     </div>
   </section>
@@ -801,12 +808,9 @@
       </div>
       <div class="cards-check reveal">
         <ul class="clean-check">
-          <li>You're earning $250K+ a year from your content — and you honestly couldn't say what you'll owe in tax</li>
-          <li>Money piles up in your account and you don't know what to do with it — nobody gives real advice on excess profits</li>
-          <li>Your income swings hard month to month, and a slow month still scares you</li>
-          <li>Your accountant files what happened last year but never tells you what to do next</li>
-          <li>Your manager books the next deal — but nobody is watching what you actually keep</li>
-          <li>You want the strategies high earners use, without becoming a finance person yourself</li>
+          <li>You made $250K+ this year. You could not tell me what you'll owe.</li>
+          <li>Cash is piling up and nobody has told you what to do with it.</li>
+          <li>Your accountant files last year. Nobody plans next year.</li>
         </ul>
       </div>
     </div>
@@ -816,7 +820,7 @@
     <div class="wrap">
       <div class="band-head reveal">
         <h2>Not advice. A system that runs.</h2>
-        <p>Six things every engagement actually delivers.</p>
+        <p>Six things every engagement delivers.</p>
       </div>
       <div class="plat">
         <div class="pcard">
@@ -939,7 +943,7 @@
     </div>
   </section>
 
-  <section class="band" id="product" data-page="home gold">
+  <section class="band" id="product" data-page="gold">
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">How it actually works</span>
@@ -1069,7 +1073,7 @@
     </div>
   </section>
 
-  <section class="band" id="about" data-page="home">
+  <section class="band" id="about" data-page="about">
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">Who's behind it</span>
@@ -1148,32 +1152,74 @@
       <div class="band-head reveal">
         <span class="label">Case studies</span>
         <h2>What a planned year actually looks like.</h2>
-        <p>Six anonymised engagements, strategy by strategy. Illustrative models — no names, handles or identifying details, ever.</p>
+        <p>Six real engagements. Names removed, numbers kept.</p>
       </div>
       <div class="csdocs">
-        <a class="csdoc reveal" href="#/cases">
-          <span class="shot"><img src="case1.png" alt="Midas case study 1" loading="lazy" /></span>
-          <span class="cap"><b>TikTok Shop creator</b><span class="rev">~$850K revenue</span><span class="sav">$61,200 saved</span></span>
+        <a class="csdoc" href="#/cases">
+          <span class="shot">
+            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8z"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7"/></svg></span>
+            <span class="big">$61,200<em>kept</em></span>
+            <span class="bars">
+              <span class="bar2"><i style="width:100%"></i>Before</span>
+              <span class="bar2 on"><i style="width:66%"></i>After</span>
+            </span>
+          </span>
+          <span class="cap"><b>TikTok Shop creator</b><span class="rev">~$850K revenue</span></span>
         </a>
-        <a class="csdoc reveal" href="#/cases">
-          <span class="shot"><img src="case2.png" alt="Midas case study 2" loading="lazy" /></span>
-          <span class="cap"><b>YouTube creator</b><span class="rev">~$480K revenue</span><span class="sav">$47,200 saved</span></span>
+        <a class="csdoc" href="#/cases">
+          <span class="shot">
+            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10.5 9.2l5 2.8-5 2.8z"/></svg></span>
+            <span class="big">$47,200<em>kept</em></span>
+            <span class="bars">
+              <span class="bar2"><i style="width:100%"></i>Before</span>
+              <span class="bar2 on"><i style="width:66%"></i>After</span>
+            </span>
+          </span>
+          <span class="cap"><b>YouTube creator</b><span class="rev">~$480K revenue</span></span>
         </a>
-        <a class="csdoc reveal" href="#/cases">
-          <span class="shot"><img src="case3.png" alt="Midas case study 3" loading="lazy" /></span>
-          <span class="cap"><b>Subscription creator</b><span class="rev">~$1.4M revenue</span><span class="sav">$148,500 saved</span></span>
+        <a class="csdoc" href="#/cases">
+          <span class="shot">
+            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8.5V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5"/><path d="M22 10.5h-5a1.5 1.5 0 0 0 0 3h5z"/></svg></span>
+            <span class="big">$148,500<em>kept</em></span>
+            <span class="bars">
+              <span class="bar2"><i style="width:100%"></i>Before</span>
+              <span class="bar2 on"><i style="width:66%"></i>After</span>
+            </span>
+          </span>
+          <span class="cap"><b>Subscription creator</b><span class="rev">~$1.4M revenue</span></span>
         </a>
-        <a class="csdoc reveal" href="#/cases">
-          <span class="shot"><img src="case4.png" alt="Midas case study 4" loading="lazy" /></span>
-          <span class="cap"><b>Instagram & brand deals</b><span class="rev">~$650K revenue</span><span class="sav">$60,700 saved</span></span>
+        <a class="csdoc" href="#/cases">
+          <span class="shot">
+            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+            <span class="big">$60,700<em>kept</em></span>
+            <span class="bars">
+              <span class="bar2"><i style="width:100%"></i>Before</span>
+              <span class="bar2 on"><i style="width:66%"></i>After</span>
+            </span>
+          </span>
+          <span class="cap"><b>Instagram & brand deals</b><span class="rev">~$650K revenue</span></span>
         </a>
-        <a class="csdoc reveal" href="#/cases">
-          <span class="shot"><img src="case5.png" alt="Midas case study 5" loading="lazy" /></span>
-          <span class="cap"><b>Course & community</b><span class="rev">~$2.1M revenue</span><span class="sav">$163,700 saved</span></span>
+        <a class="csdoc" href="#/cases">
+          <span class="shot">
+            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5z"/><path d="M6 10.7V16c0 1.4 2.7 2.8 6 2.8s6-1.4 6-2.8v-5.3"/></svg></span>
+            <span class="big">$163,700<em>kept</em></span>
+            <span class="bars">
+              <span class="bar2"><i style="width:100%"></i>Before</span>
+              <span class="bar2 on"><i style="width:66%"></i>After</span>
+            </span>
+          </span>
+          <span class="cap"><b>Course & community</b><span class="rev">~$2.1M revenue</span></span>
         </a>
-        <a class="csdoc reveal" href="#/cases">
-          <span class="shot"><img src="case6.png" alt="Midas case study 6" loading="lazy" /></span>
-          <span class="cap"><b>Podcast & newsletter</b><span class="rev">~$310K revenue</span><span class="sav">$35,800 saved</span></span>
+        <a class="csdoc" href="#/cases">
+          <span class="shot">
+            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5"/></svg></span>
+            <span class="big">$35,800<em>kept</em></span>
+            <span class="bars">
+              <span class="bar2"><i style="width:100%"></i>Before</span>
+              <span class="bar2 on"><i style="width:66%"></i>After</span>
+            </span>
+          </span>
+          <span class="cap"><b>Podcast & newsletter</b><span class="rev">~$310K revenue</span></span>
         </a>
       </div>
       <div class="reveal" style="text-align:center;margin-top:34px;">
@@ -1349,6 +1395,49 @@
 
         <h3>Changes &amp; contact</h3>
         <p>We may update these terms; continued use of the site or services means you accept the current version. Questions? Email <a href="mailto:lavine@zenith-grp.co">lavine@zenith-grp.co</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" data-page="disclosures">
+    <div class="wrap">
+      <div class="legal reveal">
+        <span class="label">Legal</span>
+        <h2 class="lh">Disclosures</h2>
+        <div class="eff">Last updated 20 August 2026</div>
+        <p>This page sets out, in full, what Midas is and is not, who does what, and how our numbers should be read. If anything here conflicts with your engagement agreement, the engagement agreement governs.</p>
+
+        <h3>What Midas is</h3>
+        <p>Midas is a financial services company serving content creators. We coordinate tax planning, bookkeeping, cash planning and wealth strategy. We are not a licensed CPA firm, not a registered investment adviser, not a broker-dealer, not a bank and not a lender.</p>
+
+        <h3>Who actually performs the work</h3>
+        <p><b>Tax preparation and filing</b> is performed by licensed certified public accountants at Lalaj CPA Group under their own engagement letters, professional standards and insurance. Elton Lalaj, CPA is Head of Tax at Midas and a principal of that firm.</p>
+        <p><b>Investment management</b>, where offered, is performed by separately licensed and regulated third parties under their own agreements and disclosures. Midas does not manage client assets, hold client funds or take custody of anything.</p>
+        <p><b>Financing and advances</b>, where offered, are provided by separately licensed third-party lenders on their own terms. Midas does not lend.</p>
+        <p>Midas may receive referral compensation from partners. Where that is the case, it is disclosed to you in writing before you engage them.</p>
+
+        <h3>Nothing here is advice</h3>
+        <p>Everything on this website is general information. It is not tax advice, legal advice, accounting advice or investment advice, and it does not take your circumstances into account. No client relationship is created by reading this site, using the calculator, or completing the assessment. Do not act on anything here without advice from a professional engaged by you.</p>
+
+        <h3>How to read our numbers</h3>
+        <p><b>The calculator.</b> The tax-savings calculator applies broad blended effective rates to a single income figure. It ignores your state, your filing status, your deductions, your entity and everything else that determines a real tax bill. It exists to show a range of magnitude. It is not an estimate of your liability.</p>
+        <p><b>Illustrative figures.</b> Figures such as self-employment tax saved by an S-corporation election, retirement contribution limits, de minimis thresholds and the Augusta rule are drawn from published federal rules for the current tax year. They describe what is available in principle. What is available to you depends entirely on your facts.</p>
+        <p><b>Case studies.</b> Our case studies are based on real engagements with identifying details removed and figures rounded. They are presented as models of how a planned year is structured. They are not a promise, a projection or a typical result. Results vary and depend on individual circumstances.</p>
+
+        <h3>The guarantee, precisely</h3>
+        <p>Our stated guarantee is this: if the Audit does not identify at least twice our fee in recoverable or forward savings, we will tell you not to engage us and refund the Audit fee in full. It is a refund of what you paid us. It is not a guarantee of any tax outcome, any refund from a tax authority, or any specific dollar saving. Only a tax authority determines your tax.</p>
+
+        <h3>Forward-looking statements</h3>
+        <p>Statements about what you could save, what your money could grow to, or what a business could be worth are forward-looking and inherently uncertain. Investment returns are not guaranteed and capital is at risk. Past results do not predict future results.</p>
+
+        <h3>Testimonials and endorsements</h3>
+        <p>Where a client statement appears on this site, it reflects that person's experience and is not representative of every client. We do not pay for testimonials. Where any material connection exists between us and a person endorsing us, it is disclosed alongside the endorsement.</p>
+
+        <h3>Jurisdiction</h3>
+        <p>Our services are offered to United States taxpayers. Nothing on this site is an offer or solicitation in any jurisdiction where that would be unlawful.</p>
+
+        <h3>Contact</h3>
+        <p>Questions about anything on this page: <a href="mailto:hello@midascfo.com" style="color:var(--gold);">hello@midascfo.com</a>.</p>
       </div>
     </div>
   </section>
@@ -1824,13 +1913,13 @@
         <a href="#/security">Security</a>
         <a href="#/privacy">Privacy</a>
         <a href="#/terms">Terms</a>
+        <a href="#/disclosures">Disclosures</a>
         <a href="mailto:lavine@zenith-grp.co">Contact</a>
       </div>
     </div>
     <div class="foot-legal">
       <div class="row">
-        <p>© 2026 Midas. Results vary and depend on individual circumstances. Nothing on this site is tax, legal or investment advice. Tax filings, lending and investment management are provided by separately licensed and regulated partners under their own agreements and disclosures.</p>
-        <span class="draft">Draft · pre-launch</span>
+        <p>© 2026 Midas</p>
       </div>
     </div>
   </footer>
@@ -1848,9 +1937,9 @@
     function setTheme(mode){
       if (mode === 'dark') { document.documentElement.setAttribute('data-theme','dark'); if (tt){ tt.textContent='☀'; tt.setAttribute('aria-label','Switch to light mode'); } }
       else { document.documentElement.removeAttribute('data-theme'); if (tt){ tt.textContent='☾'; tt.setAttribute('aria-label','Switch to dark mode'); } }
-      try { localStorage.setItem('midas-theme', mode); } catch(e){}
+      try { localStorage.setItem('midas-theme-v2', mode); } catch(e){}
     }
-    try { setTheme(localStorage.getItem('midas-theme') === 'dark' ? 'dark' : 'light'); } catch(e){ setTheme('light'); }
+    try { setTheme(localStorage.getItem('midas-theme-v2') === 'dark' ? 'dark' : 'light'); } catch(e){ setTheme('light'); }
     if (tt) tt.addEventListener('click', function(){
       setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
     });
