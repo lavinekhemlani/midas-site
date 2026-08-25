@@ -531,8 +531,8 @@
   @media (max-width: 620px){ .price { padding: 30px 22px; } }
 
   /* team grid */
-  .team { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
-  #board .team { grid-template-columns: repeat(5,1fr); gap: 14px; }
+  .team { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  #board .team { grid-template-columns: repeat(4,1fr); gap: 16px; }
   #board .tm { padding: 20px 18px; }
   @media (max-width: 1180px){ #board .team { grid-template-columns: repeat(3,1fr); } }
   @media (max-width: 1000px){ #board .team { grid-template-columns: 1fr 1fr; } }
@@ -545,7 +545,7 @@
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.25), 0 3px 12px -3px rgba(0,0,0,.5); }
   .tm .av2 img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
   .tm h4 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; margin: 0 0 4px; }
-  .tm .lic { font-size: 12.5px; line-height: 1.5; color: var(--ink-faint); margin: -4px 0 12px;
+  .tm .lic { font-size: 12.5px; line-height: 1.5; color: var(--ink-faint); margin: 14px 0 0;
     padding: 9px 11px; border-radius: 9px; background: var(--gold-wash);
     border: 1px solid color-mix(in srgb, var(--gold) 26%, transparent); }
   .tm .lic b { color: var(--ink); }
@@ -1098,14 +1098,19 @@
           <div class="av2"><img src="elton.jpg" alt="Elton Lalaj, CPA" /></div>
           <h4>Elton Lalaj, CPA</h4>
           <div class="rl4">Head of Tax</div>
-          <div class="lic">New York CPA licence <b>#123766</b> &middot; registered, no enforcement actions &middot; <a href="https://eservices.nysed.gov/professions/verification-search" target="_blank" rel="noopener">verify with New York State &rarr;</a></div>
-          <p>Two decades in public accounting, specialising in entertainment, hospitality and real estate. Founder of Lalaj CPA Group &mdash; the practice that prepares and files for every Midas client. He designs your plan personally and leads every strategy session, and he is the one who signs off before anything is claimed.</p>
+                    <p>Two decades in public accounting, specialising in entertainment, hospitality and real estate. Founder of Lalaj CPA Group &mdash; the practice that prepares and files for every Midas client. He designs your plan personally and leads every strategy session, and he is the one who signs off before anything is claimed.</p>
+          <div class="lic">New York CPA licence <b>#123766</b> &middot; registered</div>
+        </div>
+        <div class="tm">
+          <div class="av2"><img src="matthew.jpg" alt="Matthew Singer" /></div>
+          <h4>Matthew Singer</h4>
+          <div class="rl4">COO &amp; Head of Wealth Management</div>
+          <p>Runs operations and delivery &mdash; the machinery that makes sure what we promise actually happens every month. He also leads the wealth side: what happens to the money once the tax work has freed it up.</p>
         </div>
       </div>
 
       <div class="band-head reveal" style="margin:64px 0 30px;">
-        <h2 style="font-size:clamp(1.5rem,1.3rem + 1vw,2rem);">Elton doesn't work alone.</h2>
-        <p style="font-size:.95rem;">Your plan is designed by Elton and executed by the licensed accountants and tax professionals of Lalaj CPA Group — the practice that files for every Midas client.</p>
+        <h2 style="font-size:clamp(1.5rem,1.3rem + 1vw,2rem);">The Midas tax team.</h2>
       </div>
       <div class="taxteam">
         <div class="ttm"><div class="av3"><img src="tax_erton.jpg" alt="Erton Kaleshi" loading="lazy" /></div><div class="nm3">Erton Kaleshi</div><div class="yr">10+ years</div><p>Tax consulting and compliance for corporations and high-net-worth individuals, across domestic and foreign industries.</p></div>
@@ -1126,8 +1131,7 @@
     <div class="wrap">
       <div class="band-head reveal">
         <span class="label">Board</span>
-        <h2>The people we answer to.</h2>
-        <p>Operators who have built and sold real companies, and who sit on the numbers with us.</p>
+        <h2>Our board.</h2>
       </div>
       <div class="team">
         <div class="tm">
@@ -1149,338 +1153,6 @@
           <div class="av2"><img src="richard.jpg" alt="Richard Pattle" /></div>
           <h4>Richard Pattle</h4><div class="rl4">Board Member</div>
           <p>Co-founder of Indian asset manager True Beacon. Former vice chairman of Standard Chartered Private Bank.</p>
-        </div>
-        <div class="tm">
-          <div class="av2"><img src="matthew.jpg" alt="Matthew Singer" /></div>
-          <h4>Matthew Singer</h4><div class="rl4">Board Member</div>
-          <p>Operations and delivery.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" data-page="home">
-    <div class="wrap">
-      <div class="quote reveal">
-        <p>"I've watched creators go from millions to nothing — not because the money stopped, but because no one built anything under it. That's the entire reason Midas exists."</p>
-        <div class="by">Lavine Hemlani · <b>Founder &amp; CEO, Midas</b></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="casedocs" data-page="home">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">Case studies</span>
-        <h2>What a planned year actually looks like.</h2>
-        <p>Six real engagements. Names removed, numbers kept.</p>
-      </div>
-      <div class="csdocs">
-        <a class="csdoc" href="#/cases">
-          <span class="shot">
-            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16l-1.4 12.2a2 2 0 0 1-2 1.8H7.4a2 2 0 0 1-2-1.8z"/><path d="M9 7V5.5a3 3 0 0 1 6 0V7"/></svg></span>
-            <span class="big">$61,200<em>kept</em></span>
-            <span class="bars">
-              <span class="bar2"><i style="width:100%"></i>Before</span>
-              <span class="bar2 on"><i style="width:66%"></i>After</span>
-            </span>
-          </span>
-          <span class="cap"><b>TikTok Shop creator</b><span class="rev">~$850K revenue</span></span>
-        </a>
-        <a class="csdoc" href="#/cases">
-          <span class="shot">
-            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10.5 9.2l5 2.8-5 2.8z"/></svg></span>
-            <span class="big">$47,200<em>kept</em></span>
-            <span class="bars">
-              <span class="bar2"><i style="width:100%"></i>Before</span>
-              <span class="bar2 on"><i style="width:66%"></i>After</span>
-            </span>
-          </span>
-          <span class="cap"><b>YouTube creator</b><span class="rev">~$480K revenue</span></span>
-        </a>
-        <a class="csdoc" href="#/cases">
-          <span class="shot">
-            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8.5V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5"/><path d="M22 10.5h-5a1.5 1.5 0 0 0 0 3h5z"/></svg></span>
-            <span class="big">$148,500<em>kept</em></span>
-            <span class="bars">
-              <span class="bar2"><i style="width:100%"></i>Before</span>
-              <span class="bar2 on"><i style="width:66%"></i>After</span>
-            </span>
-          </span>
-          <span class="cap"><b>Subscription creator</b><span class="rev">~$1.4M revenue</span></span>
-        </a>
-        <a class="csdoc" href="#/cases">
-          <span class="shot">
-            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></span>
-            <span class="big">$60,700<em>kept</em></span>
-            <span class="bars">
-              <span class="bar2"><i style="width:100%"></i>Before</span>
-              <span class="bar2 on"><i style="width:66%"></i>After</span>
-            </span>
-          </span>
-          <span class="cap"><b>Instagram & brand deals</b><span class="rev">~$650K revenue</span></span>
-        </a>
-        <a class="csdoc" href="#/cases">
-          <span class="shot">
-            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4L2.5 8.5 12 13l9.5-4.5z"/><path d="M6 10.7V16c0 1.4 2.7 2.8 6 2.8s6-1.4 6-2.8v-5.3"/></svg></span>
-            <span class="big">$163,700<em>kept</em></span>
-            <span class="bars">
-              <span class="bar2"><i style="width:100%"></i>Before</span>
-              <span class="bar2 on"><i style="width:66%"></i>After</span>
-            </span>
-          </span>
-          <span class="cap"><b>Course & community</b><span class="rev">~$2.1M revenue</span></span>
-        </a>
-        <a class="csdoc" href="#/cases">
-          <span class="shot">
-            <span class="ico"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3.5"/></svg></span>
-            <span class="big">$35,800<em>kept</em></span>
-            <span class="bars">
-              <span class="bar2"><i style="width:100%"></i>Before</span>
-              <span class="bar2 on"><i style="width:66%"></i>After</span>
-            </span>
-          </span>
-          <span class="cap"><b>Podcast & newsletter</b><span class="rev">~$310K revenue</span></span>
-        </a>
-      </div>
-      <div class="reveal" style="text-align:center;margin-top:34px;">
-        <a href="#/cases" class="btn btn-ghost">Read all six in full →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="faq" data-page="home faq">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">FAQ</span>
-        <h2>The questions creators actually ask.</h2>
-      </div>
-      <div class="faq reveal">
-        <details><summary>My accountant already handles this.</summary><div class="a">Your accountant files. Ask yourself: what did they proactively tell you to do before December 31st last year? If the answer is nothing, they're a historian, not a planner. We work alongside a good accountant — we do the planning they don't.</div></details>
-        <details><summary>Isn't this regulated financial advice?</summary><div class="a">We don't give investment advice. Tax planning and filings are delivered through licensed professionals, and anything that touches investments goes to a separately regulated partner — and we tell you exactly where that line is.</div></details>
-        <details><summary>How do I know you can actually deliver?</summary><div class="a">You'll have the number before you have an invoice. The Audit reviews your last two years and puts what you overpaid in writing — if it doesn't show real recoverable savings, we'll tell you not to hire us.</div></details>
-        <details><summary>I'm not big enough yet.</summary><div class="a">The decisions that save the most are the ones you make before the income arrives, not after. That said, if you're under about $250K a year, we'll tell you honestly — start with Compass, not the full service.</div></details>
-        <details><summary>Can't I just deal with it at year end?</summary><div class="a">By year end most of the levers are gone. December isn't when planning happens — it's when planning expires. The set-aside, the structure, the timing all work because they start now.</div></details>
-        <details><summary>I don't want the tax tail wagging the dog.</summary><div class="a">Neither do we. We don't change your business to save tax — we change the structure around the business you're already running.</div></details>
-        <details><summary>What does it cost?</summary><div class="a">We won't quote you until we've seen your last two years — that's the point of the Audit. The Audit fee is credited in full against any engagement, and if it doesn't show at least twice our fee in recoverable savings, we refund it. From there, Compass, Inflection and Legacy are priced to what your situation actually needs.</div></details>
-        <details><summary>What if I'm fine just eating the tax bill?</summary><div class="a">Then honestly, you shouldn't hire us yet. This is for creators who've decided that overpaying six figures over a career isn't acceptable.</div></details>
-        <details><summary>I might move abroad anyway.</summary><div class="a">Then you want the numbers in front of you before you decide. The structure works either way — and it's the input to that decision, not something that blocks it.</div></details>
-        <details><summary>What if my income is all over the place?</summary><div class="a">That's the norm, and it's exactly what we plan for — setting money aside in the big months so the zero months don't wipe you out, without ever touching predatory money.</div></details>
-        <details><summary>Can I keep my current accountant?</summary><div class="a">Yes. Many clients keep their existing accountant for what they're good at — we do the proactive strategy layer and coordinate with them. If you'd rather have it all under one roof, filing is included through our licensed team.</div></details>
-        <details><summary>Do you take a percentage of what you save me?</summary><div class="a">No. Our fees are flat and quoted after the Audit, so you know exactly what you're paying before you commit. The only performance element runs in your favor: if the Audit doesn't show at least twice our fee in recoverable savings, it's refunded.</div></details>
-        <details><summary>Do you file my taxes?</summary><div class="a">Yes — for engaged clients, filing is included and done by licensed, registered professionals. We file exclusively for clients we plan for, because filing a return we didn't strategize is how money gets left on the table.</div></details>
-        <details><summary>Is this a one-year commitment or a subscription?</summary><div class="a">Engagements run annually. Each year the plan gets updated for new rules, new income and new strategies — most clients renew because tax planning compounds, but you're never locked in beyond the year.</div></details>
-        <details><summary>What if I don't want to buy real estate?</summary><div class="a">You don't have to. The foundations — structure, deductions, retirement, timing — need no property at all. Real estate is the optional advanced tier for creators with capital who want the biggest levers.</div></details>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" data-page="resources">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">Resources</span>
-        <h2>Guides for creators who want to keep what they make.</h2>
-        <p>Twelve plain-English playbooks on how creator tax actually works. No jargon, no gatekeeping.</p>
-      </div>
-      <div class="guide-grid">
-        <a class="guide-card reveal" href="blog/how-much-tax-do-content-creators-pay.html"><span class="tag">Tax · 8 min</span><h3>How much tax do content creators actually pay?</h3><p>Creators typically pay 30–45% of profit once the IRS and your state take from you.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/creator-accountant-vs-tax-strategist.html"><span class="tag">Strategy · 6 min</span><h3>Accountant vs tax strategist: what creators actually need</h3><p>Filing records the past. Strategy changes the number. Most creators only have the first.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/llc-vs-s-corp-for-content-creators.html"><span class="tag">Structure · 7 min</span><h3>LLC vs S-corp for content creators: when to switch</h3><p>Above roughly $50K of profit, an S-corp election typically saves $5K–$9K a year.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/tax-write-offs-for-content-creators.html"><span class="tag">Deductions · 7 min</span><h3>The tax write-offs content creators miss most</h3><p>Gear, home studios, travel and the Augusta rule — the deductions that go unclaimed.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/solo-401k-for-creators.html"><span class="tag">Retirement · 6 min</span><h3>The Solo 401(k): a creator's biggest single deduction</h3><p>Deduct up to ~$70K a year while building wealth you actually keep.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/quarterly-estimated-taxes-creators.html"><span class="tag">Compliance · 5 min</span><h3>Quarterly estimated taxes: dates, math and penalties</h3><p>Creators prepay four times a year. Miss the dates and penalties accrue quietly.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/augusta-rule-content-creators.html"><span class="tag">Deductions · 6 min</span><h3>The Augusta rule for content creators</h3><p>Rent your home to your own business for up to 14 days a year — and document it properly.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/can-creators-write-off-cars.html"><span class="tag">Deductions · 6 min</span><h3>Can creators write off a car?</h3><p>Mileage, actual expenses and the 6,000-lb rule — and where the IRS pushes back.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/home-studio-tax-deduction.html"><span class="tag">Deductions · 5 min</span><h3>The home studio deduction: actual vs simplified</h3><p>The simplified method caps at $1,500. Actual expenses routinely triple it.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/youtube-taxes-guide.html"><span class="tag">Platform · 7 min</span><h3>YouTube taxes: what creators owe and how to pay less</h3><p>AdSense is 1099 income — no withholding, quarterly payments, structure decides the rest.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/tiktok-shop-seller-taxes.html"><span class="tag">Platform · 8 min</span><h3>TikTok Shop seller taxes: the complete guide</h3><p>Commerce creators are e-commerce businesses: COGS, fees, inventory and sales-tax nexus.</p><span class="rd">Read →</span></a>
-        <a class="guide-card reveal" href="blog/why-creators-get-audited.html"><span class="tag">Risk · 6 min</span><h3>Why creators get audited — and what prevents it</h3><p>Sole-prop returns, 100% vehicle claims and undocumented Augusta days are the flags.</p><span class="rd">Read →</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" data-page="security">
-    <div class="wrap">
-      <div class="band-head reveal">
-        <span class="label">Security &amp; privacy</span>
-        <h2>Your money data is the most sensitive thing you own. We treat it that way.</h2>
-        <p>Creators get targeted — scams, impersonation, people trying to get into your accounts. So before you connect anything to Midas, here's exactly how your data is protected and what stays in your control. No fine print.</p>
-      </div>
-      <div class="guars reveal">
-        <div class="guar hl">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <h3>You decide. You can revoke.</h3>
-          <p>You choose exactly what Midas connects to, and you can cut off access in one click, any time. Read-only wherever the job allows — we can see, not touch.</p>
-        </div>
-        <div class="guar">
-          <span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
-          <h3>Encrypted, always</h3>
-          <p>Your data is encrypted in transit and at rest with bank-grade standards. Access is logged and locked to the specific people serving you — no one else.</p>
-        </div>
-        <div class="guar">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/><circle cx="12" cy="12" r="10"/></svg></span>
-          <h3>Never sold. Never shared.</h3>
-          <p>We do not sell your data or hand it to advertisers, platforms, managers, or anyone else. It exists to serve you — full stop. That's a promise in writing, not a setting.</p>
-        </div>
-        <div class="guar">
-          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></span>
-          <h3>Regulated data, licensed hands</h3>
-          <p>Tax filing and wealth are handled by licensed, vetted partners under their own compliance and security — held to professional standards, not floating around a startup.</p>
-        </div>
-      </div>
-      <div class="legal reveal" style="margin-top:44px;">
-        <h3>What we access, and why</h3>
-        <p>Only what's needed to do the job. To handle your tax and books, we connect to the places your money moves — the app you're paid through, and your accounting software. We request the minimum access required, and never more.</p>
-        <h3>What stays in your control</h3>
-        <p>You grant access, and you can withdraw it at any time. Where a connection can be read-only, it is. You always see what's connected and can disconnect it yourself in seconds.</p>
-        <h3>How it's protected</h3>
-        <p>Encryption in transit and at rest, strict internal access controls, activity logging, and reputable infrastructure providers. Only the team members actively working on your account can see your information, and every access is recorded.</p>
-        <h3>Built for people in the public eye</h3>
-        <p>We know creators are targets for impersonation, phishing and account-takeover attempts. We'll never ask for passwords over chat, we verify before acting on sensitive requests, and we treat your identity and privacy as part of the product — not an afterthought.</p>
-        <h3>If something ever looks wrong</h3>
-        <p>Email <a href="mailto:lavine@zenith-grp.co">lavine@zenith-grp.co</a> and we'll act immediately. For the full detail on data handling and your rights, see our <a href="#/privacy">Privacy Policy</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" data-page="privacy">
-    <div class="wrap">
-      <div class="legal reveal">
-        <span class="label">Legal</span>
-        <h2 class="lh">Privacy Policy</h2>
-        <div class="eff">Last updated 23 July 2026</div>
-        <p>Midas ("Midas", "we", "us") respects your privacy. This policy explains what information we collect through midascfo.com and our services, how we use it, and the choices you have.</p>
-
-        <h3>Information we collect</h3>
-        <ul>
-          <li><b>Information you give us</b> — your name, email, phone number, and details about you and your business when you apply, book a call, or become a client.</li>
-          <li><b>Financial information</b> — for clients, we access financial data from the accounts you choose to connect (such as TikTok Shop, Shopify, Stripe, Amazon or QuickBooks) so we can provide bookkeeping, tax, cash-planning and wealth services.</li>
-          <li><b>Usage information</b> — basic device, browser and usage data collected automatically, including through cookies, to operate and improve the site.</li>
-        </ul>
-
-        <h3>How we use your information</h3>
-        <p>To provide and improve our services, respond to and communicate with you, schedule calls, deliver the bookkeeping, tax, cash-planning, wealth and financing services you engage us for, and meet our legal obligations.</p>
-
-        <h3>How we share it</h3>
-        <p>We share information with the service providers and professional partners who help deliver parts of the service — for example tax, bookkeeping, wealth-management and financing partners — under confidentiality obligations, and only as needed to serve you. We may disclose information where required by law. <b>We do not sell your personal information.</b></p>
-
-        <h3>Data security &amp; retention</h3>
-        <p>We use reasonable safeguards to protect your information, though no method of transmission or storage is completely secure. We keep your information for as long as needed to provide the services and to meet legal and accounting obligations.</p>
-
-        <h3>Your choices</h3>
-        <p>You may request access to, correction of, or deletion of your personal information, and you can opt out of marketing emails at any time. Depending on where you live, you may have additional rights (for example under GDPR or the CCPA). To exercise any of these, email <a href="mailto:lavine@zenith-grp.co">lavine@zenith-grp.co</a>.</p>
-
-        <h3>Cookies &amp; third-party links</h3>
-        <p>We use cookies for core functionality and analytics; you can control them through your browser settings. Our site may link to third-party services that have their own privacy practices, which we don't control.</p>
-
-        <h3>Children</h3>
-        <p>Our services are intended for adults (18+) and are not directed to children.</p>
-
-        <h3>Changes &amp; contact</h3>
-        <p>We may update this policy from time to time; the date above reflects the latest version. Questions? Email <a href="mailto:lavine@zenith-grp.co">lavine@zenith-grp.co</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" data-page="terms">
-    <div class="wrap">
-      <div class="legal reveal">
-        <span class="label">Legal</span>
-        <h2 class="lh">Terms of Service</h2>
-        <div class="eff">Last updated 23 July 2026</div>
-        <p>By using midascfo.com or engaging our services, you agree to these terms. Please read them carefully.</p>
-
-        <h3>Our services</h3>
-        <p>Midas offers <b>Compass</b> (a done-with-you membership including education and coaching) and <b>Legacy</b> (done-for-you financial services including bookkeeping, tax coordination, cash planning, and access to wealth-management and financing partners). The exact scope of what we provide to you is set out in your engagement agreement.</p>
-
-        <h3>Not professional advice</h3>
-        <p>Information on this site is general and is not tax, legal, or investment advice. Regulated services are provided under separate engagement agreements by appropriately qualified partners. You should not act on general information without advice specific to your situation.</p>
-
-        <h3>Eligibility &amp; results</h3>
-        <p>You must be at least 18 to use our services. Creator income is variable, and we do not guarantee any particular financial outcome.</p>
-
-        <h3>Fees</h3>
-        <p>Compass is billed annually; Legacy is percentage-based (a percentage of assets managed plus a share of what we save you). Applicable fees are disclosed to you before you sign up and are detailed in your engagement agreement.</p>
-
-        <h3>Your responsibilities</h3>
-        <p>You agree to provide accurate information and to maintain access to any accounts you connect. Unless we expressly assume a responsibility in your engagement agreement, final decisions and filings remain yours.</p>
-
-        <h3>Third-party services &amp; intellectual property</h3>
-        <p>Connected platforms and partner services are governed by their own terms. The content, design and branding of this site are owned by Midas and may not be copied or reused without permission.</p>
-
-        <h3>Disclaimers &amp; liability</h3>
-        <p>The site and services are provided "as is". To the fullest extent permitted by law, Midas is not liable for indirect or consequential losses, and our total liability is limited as set out in your engagement agreement.</p>
-
-        <h3>Termination &amp; governing law</h3>
-        <p>Either party may end an engagement in accordance with its terms. These terms are governed by the laws of the jurisdiction in which Midas operates; the specific governing law and venue will be set out in your engagement agreement.</p>
-
-        <h3>Changes &amp; contact</h3>
-        <p>We may update these terms; continued use of the site or services means you accept the current version. Questions? Email <a href="mailto:lavine@zenith-grp.co">lavine@zenith-grp.co</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" data-page="disclosures">
-    <div class="wrap">
-      <div class="legal reveal">
-        <span class="label">Legal</span>
-        <h2 class="lh">Disclosures</h2>
-        <div class="eff">Last updated 20 August 2026</div>
-        <p>This page sets out, in full, what Midas is and is not, who does what, and how our numbers should be read. If anything here conflicts with your engagement agreement, the engagement agreement governs.</p>
-
-        <h3>What Midas is</h3>
-        <p>Midas is a financial services company serving content creators. We coordinate tax planning, bookkeeping, cash planning and wealth strategy. We are not a licensed CPA firm, not a registered investment adviser, not a broker-dealer, not a bank and not a lender.</p>
-
-        <h3>Who actually performs the work</h3>
-        <p><b>Tax preparation and filing</b> is performed by licensed certified public accountants at Lalaj CPA Group under their own engagement letters, professional standards and insurance. Elton Lalaj, CPA is Head of Tax at Midas and a principal of that firm. He holds New York State certified public accountancy licence <b>#123766</b>, issued 13 March 2017 and registered through 30 September 2028, with no enforcement actions on record. You can confirm this yourself at the <a href="https://eservices.nysed.gov/professions/verification-search" target="_blank" rel="noopener" style="color:var(--gold);">New York State Office of the Professions</a>.</p>
-        <p><b>Investment management</b>, where offered, is performed by separately licensed and regulated third parties under their own agreements and disclosures. Midas does not manage client assets, hold client funds or take custody of anything.</p>
-        <p><b>Financing and advances</b>, where offered, are provided by separately licensed third-party lenders on their own terms. Midas does not lend.</p>
-        <p>Midas may receive referral compensation from partners. Where that is the case, it is disclosed to you in writing before you engage them.</p>
-
-        <h3>Nothing here is advice</h3>
-        <p>Everything on this website is general information. It is not tax advice, legal advice, accounting advice or investment advice, and it does not take your circumstances into account. No client relationship is created by reading this site, using the calculator, or completing the assessment. Do not act on anything here without advice from a professional engaged by you.</p>
-
-        <h3>How to read our numbers</h3>
-        <p><b>The calculator.</b> The tax-savings calculator applies broad blended effective rates to a single income figure. It ignores your state, your filing status, your deductions, your entity and everything else that determines a real tax bill. It exists to show a range of magnitude. It is not an estimate of your liability.</p>
-        <p><b>Illustrative figures.</b> Figures such as self-employment tax saved by an S-corporation election, retirement contribution limits, de minimis thresholds and the Augusta rule are drawn from published federal rules for the current tax year. They describe what is available in principle. What is available to you depends entirely on your facts.</p>
-        <p><b>Case studies.</b> Our case studies are based on real engagements with identifying details removed and figures rounded. They are presented as models of how a planned year is structured. They are not a promise, a projection or a typical result. Results vary and depend on individual circumstances.</p>
-
-        <h3>The guarantee, precisely</h3>
-        <p>Our stated guarantee is this: if the Audit does not identify at least twice our fee in recoverable or forward savings, we will tell you not to engage us and refund the Audit fee in full. It is a refund of what you paid us. It is not a guarantee of any tax outcome, any refund from a tax authority, or any specific dollar saving. Only a tax authority determines your tax.</p>
-
-        <h3>Forward-looking statements</h3>
-        <p>Statements about what you could save, what your money could grow to, or what a business could be worth are forward-looking and inherently uncertain. Investment returns are not guaranteed and capital is at risk. Past results do not predict future results.</p>
-
-        <h3>Testimonials and endorsements</h3>
-        <p>Where a client statement appears on this site, it reflects that person's experience and is not representative of every client. We do not pay for testimonials. Where any material connection exists between us and a person endorsing us, it is disclosed alongside the endorsement.</p>
-
-        <h3>Jurisdiction</h3>
-        <p>Our services are offered to United States taxpayers. Nothing on this site is an offer or solicitation in any jurisdiction where that would be unlawful.</p>
-
-        <h3>Contact</h3>
-        <p>Questions about anything on this page: <a href="mailto:hello@midascfo.com" style="color:var(--gold);">hello@midascfo.com</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="apply-page" data-page="apply">
-    <div class="wrap">
-      <div class="band-head reveal" style="text-align:center;margin:0 auto 40px;">
-        <span class="label">See if you qualify</span>
-        <h2 style="margin:16px 0 0;">Let's see if Midas is a fit.</h2>
-        <p style="margin:14px auto 0;">Takes under a minute. We take on a limited number of creators at a time, so this helps us prioritise the right people.</p>
-      </div>
-      <div class="vslbox reveal">
-        <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
-        <div class="vt2">Watch: how creators keep 20–30% more</div>
-        <div class="vs2">3-minute overview · from Lavine, founder</div>
-      </div>
-      <form class="applyform reveal" name="apply" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="applyForm">
-        <input type="hidden" name="form-name" value="apply" />
-        <p class="hp"><label>Leave this empty: <input name="bot-field" /></label></p>
-        <div class="two">
-          <div class="frow"><label>First name *</label><input name="first_name" required /></div>
-          <div class="frow"><label>Last name *</label><input name="last_name" required /></div>
         </div>
         <div class="two">
           <div class="frow"><label>Email *</label><input type="email" name="email" required /></div>
