@@ -187,6 +187,30 @@
   .stat .k { margin-top: 6px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.35; }
   @media (max-width: 760px){ .stats { grid-template-columns: repeat(2,1fr); } }
 
+
+  /* product panels — show the work, don't describe it */
+  .panels { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 900px){ .panels { grid-template-columns: 1fr; } }
+  .panel { border: 1px solid var(--hairline); border-radius: 18px; background: var(--surface); padding: 22px 22px 18px; box-shadow: var(--shadow); }
+  .panel .ph { display: flex; align-items: center; gap: 11px; margin-bottom: 4px; }
+  .panel .pic2 { width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center; font-size: 15px; flex: none; }
+  .panel h4 { font-family: var(--display); font-size: 1.06rem; font-weight: 600; letter-spacing: -.015em; margin: 0; }
+  .panel .psub { font-size: 12.5px; color: var(--ink-faint); margin: 0 0 14px 43px; }
+  .prow { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 9px 0; border-top: 1px solid var(--hairline); font-size: 13.5px; }
+  .prow:first-of-type { border-top: 0; }
+  .prow .pl { color: var(--ink-soft); }
+  .prow .pl b { color: var(--ink); font-weight: 560; }
+  .prow .pm { font-variant-numeric: tabular-nums; font-weight: 560; color: var(--ink); white-space: nowrap; }
+  .prow .pm.good { color: #2f7d4f; }
+  .prow .pm.bad { color: #b4483a; }
+  .pnote { margin-top: 13px; padding-top: 12px; border-top: 1px solid var(--hairline); font-size: 12.8px; color: var(--ink-soft); line-height: 1.5; }
+  .pnote b { color: var(--ink); }
+  .pflag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .01em; padding: 2px 7px; border-radius: 5px; margin-left: 7px; vertical-align: 1px; }
+  .pflag.warn { background: color-mix(in srgb, #b4483a 12%, transparent); color: #b4483a; }
+  .pflag.ok { background: color-mix(in srgb, #2f7d4f 13%, transparent); color: #2f7d4f; }
+  .pbar { height: 5px; border-radius: 3px; background: var(--hairline); overflow: hidden; width: 92px; flex: none; }
+  .pbar i { display: block; height: 100%; background: var(--gold); }
+
   /* savings calculator */
   .calc { display: grid; grid-template-columns: 1fr 1.5fr; gap: 34px; align-items: center; border: 1px solid var(--hairline); border-radius: 20px; padding: 34px; background: var(--surface); box-shadow: var(--shadow); }
   @media (max-width: 860px){ .calc { grid-template-columns: 1fr; gap: 28px; } }
@@ -842,26 +866,82 @@
       </div>
     </div>
   </section>
-  <section class="band" id="product" data-page="home gold">
+    <section class="band" id="product" data-page="home gold">
     <div class="wrap">
       <div class="band-head reveal">
-        <span class="label">How it actually works</span>
-        <h2>No dashboard to learn. You text Midas.</h2>
-        <p>Your books feed a system that knows your business. Ask it a question the way you'd ask a partner, and get an answer based on your own numbers &mdash; not a general article about HVAC accounting.</p>
+        <span class="label">What you actually get</span>
+        <h2>This is what lands in your inbox on the tenth.</h2>
+        <p>Not a folder of reconciled transactions. The six things that tell you what the business is doing, what you owe, and what it is worth &mdash; every month.</p>
       </div>
-      <div class="demo reveal">
-        <div class="demo-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b>Midas</b></div>
-        <div class="demo-body">
-          <div class="bubble user">Can I afford another van and a tech this year?</div>
-          <div class="bubble ai">On current cash and your last six months, yes &mdash; but not both in Q3. A second tech adds roughly $11K/month of loaded cost before they bill anything, and your July receivables are running 41 days. Van first, tech in October, and you stay above your reserve floor the whole way.</div>
-          <div class="bubble user">Is the new truck deductible?</div>
-          <div class="bubble ai">Over 6,000 lbs GVWR and used more than half for business, so it's a candidate for first-year expensing. I've flagged it for Elton to confirm the business-use percentage before we book it &mdash; that's the part that gets challenged, not the deduction itself.</div>
-          <div class="bubble user">What would get me to a 6x multiple?</div>
-          <div class="bubble ai">Two things. Your maintenance agreements are 9% of revenue &mdash; buyers pay up when that's north of 20%. And 38% of gross profit still runs through you personally on the sales side. Owner dependency is the discount nobody tells you about until diligence.</div>
+      <div class="panels reveal">
+        <div class="panel">
+          <div class="ph"><div class="pic2" style="background:color-mix(in srgb,var(--gold) 15%,transparent);">&#128202;</div><h4>September P&amp;L, by service line</h4></div>
+          <p class="psub">Where the money actually came from</p>
+          <div class="prow"><span class="pl"><b>Install</b> &middot; $412,800</span><span class="pm">31.2% GM</span></div>
+          <div class="prow"><span class="pl"><b>Service</b> &middot; $186,400</span><span class="pm good">54.1% GM</span></div>
+          <div class="prow"><span class="pl"><b>Maintenance plans</b> &middot; $64,200</span><span class="pm good">61.4% GM</span></div>
+          <div class="prow"><span class="pl"><b>Warranty callbacks</b></span><span class="pm bad">&minus;$18,900</span></div>
+          <div class="pnote">Install is <b>62% of revenue and 38% of gross profit.</b> Service and maintenance are carrying the company.</div>
+        </div>
+
+        <div class="panel">
+          <div class="ph"><div class="pic2" style="background:color-mix(in srgb,#2f7d4f 14%,transparent);">&#128176;</div><h4>Tax position</h4></div>
+          <p class="psub">Live, not reconstructed in March</p>
+          <div class="prow"><span class="pl">Reserved to date</span><span class="pm">$148,000</span></div>
+          <div class="prow"><span class="pl">Projected 2026 bill</span><span class="pm">$196,400</span></div>
+          <div class="prow"><span class="pl">S-corp election &amp; comp split</span><span class="pm good">&minus;$22,400</span></div>
+          <div class="prow"><span class="pl">Section 179 &mdash; two service vans</span><span class="pm good">&minus;$118,000</span></div>
+          <div class="prow"><span class="pl">Accountable plan</span><span class="pm good">&minus;$9,600</span></div>
+          <div class="pnote"><b>Two decisions still open</b> before 31 December. After that you are reporting the year, not shaping it.</div>
+        </div>
+
+        <div class="panel">
+          <div class="ph"><div class="pic2" style="background:color-mix(in srgb,var(--gold) 15%,transparent);">&#128295;</div><h4>Job costing</h4></div>
+          <p class="psub">True margin after labour, materials and truck</p>
+          <div class="prow"><span class="pl"><b>WO&#8209;4471</b> Rooftop RTU replacement</span><span class="pm">34.0%</span></div>
+          <div class="prow"><span class="pl"><b>WO&#8209;4468</b> Emergency service call</span><span class="pm good">58.2%</span></div>
+          <div class="prow"><span class="pl"><b>WO&#8209;4455</b> Ductwork retrofit<span class="pflag warn">flagged</span></span><span class="pm bad">9.1%</span></div>
+          <div class="prow"><span class="pl"><b>WO&#8209;4442</b> Maintenance renewal</span><span class="pm good">63.4%</span></div>
+          <div class="pnote">Ductwork retrofits have run <b>under 12% for three straight months.</b> Either the price is wrong or the estimate is.</div>
+        </div>
+
+        <div class="panel">
+          <div class="ph"><div class="pic2" style="background:color-mix(in srgb,#b4483a 12%,transparent);">&#127919;</div><h4>Exit readiness</h4></div>
+          <p class="psub">What a buyer would find if they opened the books today</p>
+          <div class="prow"><span class="pl">Financial normalisation</span><span style="display:flex;align-items:center;gap:10px;"><span class="pbar"><i style="width:61%"></i></span><span class="pm">61</span></span></div>
+          <div class="prow"><span class="pl">Add-back documentation</span><span style="display:flex;align-items:center;gap:10px;"><span class="pbar"><i style="width:44%"></i></span><span class="pm">44</span></span></div>
+          <div class="prow"><span class="pl">Recurring revenue</span><span style="display:flex;align-items:center;gap:10px;"><span class="pbar"><i style="width:38%"></i></span><span class="pm">38</span></span></div>
+          <div class="prow"><span class="pl">Owner dependency</span><span style="display:flex;align-items:center;gap:10px;"><span class="pbar"><i style="width:52%"></i></span><span class="pm">52</span></span></div>
+          <div class="prow"><span class="pl">Reporting consistency</span><span style="display:flex;align-items:center;gap:10px;"><span class="pbar"><i style="width:73%"></i></span><span class="pm">73</span></span></div>
+          <div class="pnote"><b>Not ready.</b> Roughly eighteen months of work &mdash; which is exactly why you start before the offer, not after.</div>
+        </div>
+
+        <div class="panel">
+          <div class="ph"><div class="pic2" style="background:color-mix(in srgb,var(--gold) 15%,transparent);">&#128203;</div><h4>Add-back register</h4></div>
+          <p class="psub">Documented as it happens, not reconstructed under pressure</p>
+          <div class="prow"><span class="pl">Owner truck, 40% personal<span class="pflag ok">supported</span></span><span class="pm">$14,200</span></div>
+          <div class="prow"><span class="pl">Family phone lines<span class="pflag ok">supported</span></span><span class="pm">$3,840</span></div>
+          <div class="prow"><span class="pl">Above-market owner salary<span class="pflag ok">supported</span></span><span class="pm">$86,000</span></div>
+          <div class="prow"><span class="pl">One-off legal dispute<span class="pflag ok">supported</span></span><span class="pm">$27,500</span></div>
+          <div class="prow"><span class="pl">Cabo trip, March<span class="pflag warn">won't hold</span></span><span class="pm bad">$11,600</span></div>
+          <div class="pnote">Four of these add roughly <b>$131,500 to EBITDA.</b> The fifth we take out now, so a buyer never gets to use it against you.</div>
+        </div>
+
+        <div class="panel" style="display:flex;flex-direction:column;">
+          <div class="ph"><div class="pic2" style="background:color-mix(in srgb,var(--gold) 15%,transparent);">&#128172;</div><h4>Ask Midas</h4></div>
+          <p class="psub">Your numbers, not a general article about HVAC</p>
+          <div class="demo-body" style="padding:0;margin-top:2px;">
+            <div class="bubble user">Can I afford another van and a tech this year?</div>
+            <div class="bubble ai">Yes, but not both in Q3. A second tech is about $11K/month loaded before they bill anything, and your September receivables are at 41 days. Van now, tech in October, and you stay above your reserve floor.</div>
+            <div class="bubble user">What gets me to a 6x multiple?</div>
+            <div class="bubble ai">Maintenance plans at 9% of revenue &mdash; buyers pay up above 20%. And 38% of gross profit still runs through you personally on sales. Owner dependency is the discount nobody mentions until diligence.</div>
+          </div>
         </div>
       </div>
+      <p class="reveal" style="text-align:center;margin-top:20px;font-size:.82rem;color:var(--ink-faint);">Illustrative figures for a ~$7M contractor. Not a client. <a href="#/disclosures" style="color:var(--gold);">Disclosures</a>.</p>
     </div>
   </section>
+
 
   <section class="band" id="results" data-page="home">
     <div class="wrap">
