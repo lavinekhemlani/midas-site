@@ -238,37 +238,30 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .veh-mo-big{font-family:var(--display);font-size:1.5rem;font-weight:650;color:var(--naira);letter-spacing:-.02em;margin-top:11px}
 .veh-mo-big span{font-size:.85rem;color:var(--ink-faint);font-weight:450;font-family:var(--body)}
 .veh-full{font-size:12.8px;color:var(--ink-soft);margin-top:3px}
-.stepbig{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media(max-width:860px){.stepbig{grid-template-columns:repeat(2,1fr)}}
-.stepbig .sb{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 20px;text-align:center;box-shadow:var(--shadow)}
-.stepbig .ic{width:54px;height:54px;margin:0 auto 12px;border-radius:16px;background:var(--accent-soft);display:grid;place-items:center;font-size:26px}
-.stepbig h4{font-size:1.02rem;margin-bottom:5px}
-.stepbig p{font-size:13.5px;color:var(--ink-soft)}
-.stepbig .n2{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;letter-spacing:.08em;margin-bottom:8px}
-.trustband{background:#0b2a4a;color:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;min-height:340px}
-@media(max-width:860px){.trustband{grid-template-columns:1fr}}
-.trustband .tx{padding:38px 36px;display:flex;flex-direction:column;justify-content:center}
-.trustband .tx h2{color:#fff}
-.trustband .ph{min-height:240px;background-size:cover;background-position:center}
-.tfacts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-.tfacts .tf .n{font-family:var(--display);font-weight:650;font-size:1.45rem;color:#f0b955}
-.tfacts .tf .k{font-size:12.8px;color:#b9c9dd;margin-top:2px;line-height:1.4}
-.bankschips{display:flex;flex-wrap:wrap;gap:8px}
-.bankschips .bk{width:40px;height:40px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);font-weight:500}
 
+.person{display:flex;align-items:center;gap:15px;margin-top:24px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);max-width:380px}
+.person .pav{width:52px;height:52px;flex:none;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:18px}
+.person .pnum{font-size:1.15rem;font-weight:600;margin-top:3px;letter-spacing:.01em}
+@media(max-width:860px){#humanGrid{grid-template-columns:1fr}}
+.steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;max-width:1000px}
+.steps3 .num{font-family:var(--display);font-size:2.8rem;font-weight:650;color:var(--accent);line-height:1;letter-spacing:-.03em}
+.steps3 h4{font-size:1.18rem;margin:12px 0 6px}
+.steps3 p{color:var(--ink-soft);font-size:14.5px;max-width:30ch}
+@media(max-width:700px){.steps3{grid-template-columns:1fr;gap:26px}}
+.logo img{height:26px;width:auto;display:block}
 </style>
 </head>
 <body>
 <div class="topbar">
   <div class="topbar-in">
-    <a href="#/market" class="logo"><span class="mark">M</span> Midas <span class="sub">&nbsp;· a Stallion Group company</span></a>
+    <a href="#/market" class="logo"><img src="brand/wordmark.svg" alt="Midas" /> <span class="sub">&nbsp;· a Stallion Group company</span></a>
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/status" data-nav="status">My application</a>
     </nav>
     <div class="tspacer"></div>
-    <a class="btn btn-wa btn-sm" href="https://wa.me/2348034599999?text=Hello%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">🟢&nbsp;WhatsApp us</a>
+    <a class="btn btn-wa btn-sm" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">🟢&nbsp;WhatsApp us</a>
   </div>
 </div>
 
@@ -278,11 +271,11 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <img class="bg" src="cars/hero.jpg" alt="Brand-new Hyundai Creta from Stallion" />
     <div class="veil"></div>
     <div class="wrap"><div class="in">
-      <h1>A brand-new car,<br>the easy way.</h1>
-      <p class="sub">Fill one form. <b>70 banks</b> compete for your loan. You pick the cheapest. Drive in days.</p>
+      <h1>The best loan for<br>your new car.</h1>
+      <p class="sub"><b>7 banks compete</b> to finance your car. You take the lowest rate. Keys in 48 hours.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
         <a href="#inv" class="btn btn-a btn-lg" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See the cars &rarr;</a>
-        <a href="https://wa.me/2348034599999?text=Hello%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" class="btn btn-wa btn-lg">Chat on WhatsApp</a>
+        <a href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" class="btn btn-wa btn-lg">Chat on WhatsApp</a>
       </div>
       <div class="chiprow">
         <span class="chip">🐎 Stallion Group · since 1969</span>
@@ -292,15 +285,12 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </div></div>
   </div>
 
-  <div class="wrap sec" id="how" style="padding-bottom:36px">
-    <div class="sec-head" style="text-align:center;max-width:none">
-      <h2>Four steps. No long story.</h2>
-    </div>
-    <div class="stepbig">
-      <div class="sb"><div class="n2">STEP 1</div><div class="ic">🚗</div><h4>Pick your car</h4><p>Brand new, from our showroom. Full warranty.</p></div>
-      <div class="sb"><div class="n2">STEP 2</div><div class="ic">📝</div><h4>Fill one form</h4><p>Five minutes. Your phone is enough.</p></div>
-      <div class="sb"><div class="n2">STEP 3</div><div class="ic">🏦</div><h4>Banks compete</h4><p>70 banks see it. The best offers win.</p></div>
-      <div class="sb"><div class="n2">STEP 4</div><div class="ic">🔑</div><h4>You drive</h4><p>Pick your offer. Keys in days.</p></div>
+  <div class="wrap sec" id="how" style="padding-bottom:40px">
+    <h2 style="margin-bottom:30px">Three steps to your keys.</h2>
+    <div class="steps3">
+      <div><div class="num">1</div><h4>Pick your car</h4><p>Brand new from our showroom. Full warranty.</p></div>
+      <div><div class="num">2</div><h4>We find your best rate</h4><p>7 banks compete for you. The lowest offer wins.</p></div>
+      <div><div class="num">3</div><h4>You drive</h4><p>Approved in 48 hours. Not 40 days.</p></div>
     </div>
   </div>
 
@@ -315,42 +305,31 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <p class="tiny faint" style="margin-top:14px">Showroom prices, synced from Auto OS. Monthly amounts are the best current bank offer at 30% down over 60 months &mdash; your own offer depends on your income.</p>
   </div>
 
-  <div class="wrap sec">
-    <div class="trustband">
-      <div class="tx">
-        <div class="eyebrow" style="color:#f0b955">Why people trust us</div>
-        <h2 style="margin-top:10px">The cars are ours.<br>The banks are real.</h2>
-        <div class="tfacts">
-          <div class="tf"><div class="n">Since 1969</div><div class="k">Stallion Group. Cars, steel, food — Pride of Africa.</div></div>
-          <div class="tf"><div class="n">45%</div><div class="k">of Nigeria's new cars come through Stallion brands.</div></div>
-          <div class="tf"><div class="n">11 brands</div><div class="k">Honda, Hyundai, Nissan, Changan, MG and more.</div></div>
-          <div class="tf"><div class="n">Nationwide</div><div class="k">Showrooms and service in Lagos, Abuja, PH, Kano, Enugu, Ibadan.</div></div>
+  <div class="wrap sec" style="padding-top:26px">
+    <div class="card" style="overflow:hidden">
+      <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch" id="humanGrid">
+        <div style="padding:36px 34px">
+          <h2>Buy from people you can meet.</h2>
+          <p class="muted" style="margin-top:10px;max-width:46ch">Midas is a Stallion Group company. We have been selling cars in Nigeria since 1969 &mdash; Honda, Hyundai, Nissan, Changan, MG. Come and see the cars, or talk to Amit. He will walk you through everything.</p>
+          <div class="person">
+            <div class="pav">AS</div>
+            <div>
+              <div style="font-weight:600;font-size:15.5px">Amit Sharma</div>
+              <div class="tiny muted">Sales &middot; Midas</div>
+              <div class="pnum mono">0805 896 3692</div>
+            </div>
+          </div>
+          <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
+            <a class="btn btn-p" href="tel:+2348058963692">&#128222;&nbsp;Call Amit</a>
+            <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">WhatsApp Amit</a>
+          </div>
+          <p class="tiny faint" style="margin-top:20px">Showrooms &middot; Victoria Island &middot; Ikeja &middot; Abuja &middot; Port Harcourt &middot; Kano &middot; Enugu &middot; Ibadan</p>
         </div>
-      </div>
-      <div class="ph" style="background-image:url('cars/showroom.jpg')"></div>
-    </div>
-  </div>
-
-  <div class="wrap" style="padding-bottom:26px">
-    <div class="grid" style="grid-template-columns:1fr 1fr;align-items:start" id="faqWrap">
-      <div class="card pad">
-        <div class="eyebrow">Questions</div>
-        <div class="faq" style="margin-top:6px">
-          <details><summary>How much do I pay first?</summary><div class="a">From 20% of the car's price. Pay more first, pay less monthly.</div></details>
-          <details><summary>How fast is it?</summary><div class="a">Offers come the same day. Final approval in about 48 hours.</div></details>
-          <details><summary>Which banks give the loans?</summary><div class="a">70 banks and finance houses are on the panel. You see every offer and choose one. Nobody chooses for you.</div></details>
-          <details><summary>What if my salary is small?</summary><div class="a">Tell us what you earn. We only show offers you can afford — and we tell you what would unlock more.</div></details>
-        </div>
-      </div>
-      <div class="card pad">
-        <div class="eyebrow">The lender panel</div>
-        <h3 style="margin:8px 0 12px">70 lenders, one file.</h3>
-        <div class="bankschips" id="bankChips"></div>
-        <p class="tiny muted" style="margin-top:14px">Names are shown once you accept an offer. Every lender prices the same certified car and the same form — that competition is why the rate drops.</p>
+        <div style="min-height:320px;background:url('cars/showroom.jpg') center/cover"></div>
       </div>
     </div>
+    <p style="text-align:center;margin-top:22px;font-size:14.5px;color:var(--ink-soft)"><b style="color:var(--ink)">What you need:</b> your ID &middot; your phone &middot; your salary details. That's all.</p>
   </div>
-</section>
 
 <!-- ===================== CAR DETAIL ===================== -->
 <section class="view" id="v-car">
@@ -369,8 +348,8 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <section class="view" id="v-apply">
   <div class="wrap" style="padding-top:34px;max-width:860px">
     <div class="eyebrow">One application</div>
-    <h2 style="margin:8px 0 10px">One form. Every bank reads it.</h2>
-    <p class="muted" style="margin-bottom:26px">Five minutes. Nothing goes to a credit bureau until you accept an offer.</p>
+    <h2 style="margin:8px 0 10px">Let&rsquo;s find your best rate.</h2>
+    <p class="muted" style="margin-bottom:26px">Five minutes. The banks do the rest. Nothing touches a credit bureau until you accept an offer.</p>
 
     <div class="steps" id="applySteps">
       <div class="st on">1 &middot; Vehicle</div>
@@ -393,7 +372,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <div class="between" style="align-items:flex-end;flex-wrap:wrap;margin-bottom:20px">
       <div>
         <div class="eyebrow">Live panel</div>
-        <h2 style="margin:8px 0 6px" id="offHead">Lenders are pricing your file.</h2>
+        <h2 style="margin:8px 0 6px" id="offHead">Your offers are coming in.</h2>
         <p class="muted" id="offSub"></p>
       </div>
       <div class="seg" id="sortSeg">
@@ -460,7 +439,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <div class="wrap foot">
   <div class="between" style="flex-wrap:wrap;gap:14px">
     <div>
-      <b style="color:var(--ink)">Midas</b> &middot; a Stallion Group company &middot; new-car financing with 70 banks.<br>
+      <b style="color:var(--ink)">Midas</b> &middot; a Stallion Group company &middot; new-car financing at the best rate any bank will give.<br>
       Auto loans today. Mortgages on the same rails next.
     </div>
     <div style="text-align:right">
@@ -535,14 +514,12 @@ const VEHICLES = [
 
 /* ---------- LENDER PANEL (70, masked) ---------- */
 const TIERS = [
-  {k:'Tier-1 Commercial',      n:10, rate:[.255,.295], eq:[.30,.35], ten:60, inc:400000, dti:.42, ltrv:[1.35,1.55], hrs:[28,48], age:12, emp:['Salaried','Director/Owner'],                        tick:[3e6,120e6]},
-  {k:'Tier-2 Commercial',      n:16, rate:[.278,.325], eq:[.32,.40], ten:48, inc:300000, dti:.45, ltrv:[1.40,1.62], hrs:[20,40], age:14, emp:['Salaried','Self-employed','Director/Owner'],        tick:[2.5e6,70e6]},
-  {k:'Pan-African Regional',   n:8,  rate:[.265,.305], eq:[.30,.38], ten:60, inc:350000, dti:.44, ltrv:[1.38,1.58], hrs:[24,44], age:13, emp:['Salaried','Director/Owner'],                        tick:[3e6,90e6]},
-  {k:'Merchant / Investment',  n:5,  rate:[.245,.285], eq:[.35,.45], ten:36, inc:900000, dti:.38, ltrv:[1.25,1.42], hrs:[36,60], age:10, emp:['Director/Owner','Professional'],                    tick:[12e6,200e6]},
-  {k:'Non-Interest (Murabaha)',n:5,  rate:[.262,.300], eq:[.33,.42], ten:42, inc:320000, dti:.43, ltrv:[1.34,1.52], hrs:[30,54], age:12, emp:['Salaried','Self-employed','Director/Owner'],        tick:[2.5e6,60e6]},
-  {k:'Finance House / Leasing',n:14, rate:[.305,.372], eq:[.28,.36], ten:42, inc:220000, dti:.50, ltrv:[1.50,1.75], hrs:[10,26], age:16, emp:['Salaried','Self-employed','Director/Owner','Gig'],  tick:[1.5e6,45e6]},
-  {k:'Microfinance',           n:8,  rate:[.352,.425], eq:[.25,.33], ten:30, inc:150000, dti:.55, ltrv:[1.60,1.90], hrs:[4,14],  age:18, emp:['Salaried','Self-employed','Gig','Trader'],          tick:[8e5,18e6]},
-  {k:'Captive / OEM',          n:4,  rate:[.232,.272], eq:[.20,.28], ten:60, inc:400000, dti:.42, ltrv:[1.30,1.48], hrs:[16,34], age:4,  emp:['Salaried','Director/Owner','Professional'],         tick:[8e6,150e6]}
+  {k:'Tier-1 Commercial',      n:2, rate:[.252,.288], eq:[.30,.34], ten:60, inc:400000, dti:.42, ltrv:[1.38,1.55], hrs:[28,48], age:12, emp:['Salaried','Director/Owner','Professional'],           tick:[3e6,120e6]},
+  {k:'Tier-2 Commercial',      n:1, rate:[.278,.315], eq:[.32,.38], ten:48, inc:300000, dti:.45, ltrv:[1.42,1.60], hrs:[20,40], age:14, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,70e6]},
+  {k:'Non-Interest (Murabaha)',n:1, rate:[.262,.295], eq:[.33,.40], ten:48, inc:320000, dti:.43, ltrv:[1.36,1.52], hrs:[30,54], age:12, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,60e6]},
+  {k:'Captive / OEM',          n:1, rate:[.232,.268], eq:[.20,.28], ten:60, inc:400000, dti:.42, ltrv:[1.30,1.48], hrs:[16,34], age:4,  emp:['Salaried','Director/Owner','Professional'],            tick:[8e6,150e6]},
+  {k:'Finance House / Leasing',n:1, rate:[.305,.36],  eq:[.28,.34], ten:42, inc:220000, dti:.50, ltrv:[1.52,1.72], hrs:[10,26], age:16, emp:['Salaried','Self-employed','Director/Owner','Gig'],     tick:[1.5e6,45e6]},
+  {k:'Microfinance',           n:1, rate:[.352,.41],  eq:[.25,.32], ten:30, inc:150000, dti:.55, ltrv:[1.60,1.88], hrs:[4,14],  age:18, emp:['Salaried','Self-employed','Gig','Trader'],             tick:[8e5,18e6]}
 ];
 const LENDERS = (() => {
   const r = rng(20260922), out = []; let i = 1;
@@ -708,13 +685,11 @@ function renderMarket(){
           <div class="veh-full">Full price ${NGNs(v.price)} · from 30% down</div>
           <div class="veh-foot">
             <button class="btn btn-a btn-sm" style="flex:2" onclick="event.stopPropagation();openCar('${v.id}')">Get loan offers</button>
-            <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348034599999?text=${encodeURIComponent('Hello, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
+            <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
           </div>
         </div>
       </article>`));
   });
-  const bc=$('#bankChips');
-  if(bc && !bc.children.length){ LENDERS.slice(0,24).forEach(l=>bc.appendChild(el(`<span class="bk">${l.id.replace('LP-','')}</span>`))); bc.appendChild(el('<span class="bk" style="background:var(--accent-soft);color:var(--accent);font-weight:650">+46</span>')); }
 }
 function openCar(id){ S.vehicleId = id; save(); location.hash = '#/car'; }
 
@@ -802,10 +777,10 @@ function renderDeal(){
     <div class="kv"><span class="k">Net income needed</span><span class="v">${NGN(incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0))}/mo</span></div>
     <hr class="sep">
     ${best ? `
-      <div class="tiny faint">BEST INDICATIVE OFFER · ${offers.length} of 70 lenders would bid</div>
+      <div class="tiny faint">BEST OFFER TODAY · ${offers.length} of ${LENDERS.length} banks will bid</div>
       <div style="font-family:var(--display);font-size:1.6rem;font-weight:600;margin:6px 0 2px">${NGN(best.monthly)}<span style="font-size:.95rem;color:var(--ink-faint);font-weight:400">/mo</span></div>
       <p class="tiny muted">${pct(best.rate*100)} p.a. · ${best.lender.tier} · decision in ${best.hours}h</p>
-      <button class="btn btn-a" style="width:100%;margin-top:16px" onclick="location.hash='#/apply'">Get my offers — one form →</button>`
+      <button class="btn btn-a" style="width:100%;margin-top:16px" onclick="location.hash='#/apply'">See my offers →</button>`
      : `<div class="warnbox">No lender on the panel will bid at this structure. Raise the equity or shorten the tenor.</div>`}
     <p class="tiny faint" style="margin-top:12px">Indicative only. Firm offers require the application.</p>`;
 }
@@ -823,7 +798,7 @@ function renderApply(){
   if (S.step === 1){
     const loan = v.price * (1 - S.equityPct);
     c.innerHTML = `
-      <h3>The vehicle and the structure</h3>
+      <h3>Your car, your budget</h3>
       <p class="muted tiny" style="margin:6px 0 18px">Brand new from the Stallion showroom. The banks already know this car.</p>
       <div class="row" style="gap:16px;padding:14px;background:var(--surface-2);border-radius:11px">
         <div style="width:110px;flex:none">${carSVG(v.body)}</div>
@@ -843,7 +818,7 @@ function renderApply(){
   else if (S.step === 2){
     c.innerHTML = `
       <h3>About you</h3>
-      <p class="muted tiny" style="margin:6px 0 18px">The panel needs enough to run policy. Nothing more.</p>
+      <p class="muted tiny" style="margin:6px 0 18px">Just enough for the banks to say yes. Nothing more.</p>
       <div class="f2">
         <div class="field"><label>Full name</label><input class="inp" id="fName" value="${a.name}" placeholder="Adeola Bakare"></div>
         <div class="field"><label>Phone</label><input class="inp" id="fPhone" value="${a.phone}" placeholder="080 0000 0000"></div>
@@ -861,7 +836,7 @@ function renderApply(){
   else if (S.step === 3){
     c.innerHTML = `
       <h3>Income and obligations</h3>
-      <p class="muted tiny" style="margin:6px 0 18px">This drives affordability. Every lender tests it against its own DTI ceiling.</p>
+      <p class="muted tiny" style="margin:6px 0 18px">So we only show you offers you can truly afford.</p>
       <div class="f2">
         <div class="field"><label>Net monthly income (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}">
           <div class="hint">Take-home, after tax and pension.</div></div>
@@ -893,7 +868,7 @@ function renderApply(){
       </div>
       ${S.verified
         ? `<div class="note"><b>Income verified.</b> Verified net monthly inflow ${NGN(S.applicant.income)} · 6-month average · stability score 82/100. The panel can now price firm.</div>
-           <button class="btn btn-a" style="margin-top:18px" onclick="submitApp()">Send to the panel — 70 lenders →</button>`
+           <button class="btn btn-a" style="margin-top:18px" onclick="submitApp()">Show me my offers →</button>`
         : `<button class="btn btn-p" id="vBtn" onclick="doVerify()">Connect and verify income</button>
            <p class="tiny faint" style="margin-top:12px">Demo: this simulates the provider callback. No connection is made.</p>`}
       <div class="row" style="gap:10px;margin-top:16px">
@@ -930,7 +905,7 @@ function renderOffers(){
   const ok=all.filter(o=>o.approved), no=all.filter(o=>!o.approved);
   $('#offSub').textContent=`${v.year} ${v.make} ${v.model} · ${NGN(v.price*(1-S.equityPct))} financed over ${S.tenor} months · ${pct(S.equityPct*100,0)} equity`;
   $('#aucTitle').textContent=`Panel response — ${ok.length} bids, ${no.length} passes`;
-  $('#aucMeta').textContent=`${LENDERS.length} lenders alerted · same certified file · no repeat paperwork`;
+  $('#aucMeta').textContent=`${LENDERS.length} banks alerted · one profile · no repeat paperwork`;
   $('#offSide').innerHTML=sidePanel(v,ok,no);
   $('#declineWrap').innerHTML=declineBlock(no);
   aucTimers.forEach(clearTimeout); aucTimers=[]; aucDone=false;
@@ -983,8 +958,8 @@ function sidePanel(v,ok,no){
     <hr class="sep">
     <div class="tiny faint">PANEL OUTCOME</div>
     <div class="bars" style="margin-top:9px">
-      <div class="barw"><span class="bl tiny">Bid</span><span class="bt"><i style="width:${ok.length/70*100}%"></i></span><span class="bv">${ok.length}</span></div>
-      <div class="barw"><span class="bl tiny">Passed</span><span class="bt"><i style="width:${no.length/70*100}%;background:var(--line-2)"></i></span><span class="bv">${no.length}</span></div>
+      <div class="barw"><span class="bl tiny">Bid</span><span class="bt"><i style="width:${ok.length/LENDERS.length*100}%"></i></span><span class="bv">${ok.length}</span></div>
+      <div class="barw"><span class="bl tiny">Passed</span><span class="bt"><i style="width:${no.length/LENDERS.length*100}%;background:var(--line-2)"></i></span><span class="bv">${no.length}</span></div>
     </div>`;
 }
 function declineBlock(no){
@@ -1019,7 +994,7 @@ function renderStatus(){
     $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>The structure changed after this offer was accepted.</b> '+S.accepted+' will not price the deal as it now stands. Go back to the panel and take a live offer.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the panel →</a></div>'; return; }
   const okCount=panel.filter(x=>x.approved).length;
   const steps=[['Vehicle inspected & certified','Auto OS · 172-point check · Grade '+v.grade,'done'],
-    ['Application sent to panel','70 lenders · one file','done'],
+    ['Application sent to the banks',LENDERS.length+' lenders · one profile','done'],
     ['Offers returned',okCount+' firm bids','done'],
     ['Offer accepted',o.lender.id+' · '+o.lender.tier,'done'],
     ['Lender final approval','Target '+o.hours+' hours from acceptance','now'],
