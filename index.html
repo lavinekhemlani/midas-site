@@ -279,6 +279,16 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .bestpanel.tick .bp-rate{transform:scale(1.06)}
 .specrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .specrow .sp{font-size:11.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:6px;padding:3px 8px}
+/* mobile collapses for app layout grids */
+@media(max-width:900px){
+  #carLayout,#offLayout,#bankLayout,#dealerBody .grid{grid-template-columns:1fr !important}
+  #carLayout>.card.pad{position:sticky;bottom:0}
+}
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  .g4{grid-template-columns:repeat(2,1fr) !important}
+  .hero-cta .btn{flex:1;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -367,6 +377,8 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </div>
     <p style="text-align:center;margin-top:22px;font-size:14.5px;color:var(--ink-soft)"><b style="color:var(--ink)">What you need:</b> your ID &middot; your phone &middot; your salary details. That's all.</p>
   </div>
+
+</section>
 
 <!-- ===================== CAR DETAIL ===================== -->
 <section class="view" id="v-car">
@@ -577,7 +589,7 @@ const LENDERS = (() => {
 </script>
 <script>
 /* ---------- APPLICATION STATE ---------- */
-const KEY = 'midas-drive-v1';
+const KEY = 'midas-v2';
 let S = load();
 function load(){
   try { const r = JSON.parse(localStorage.getItem(KEY)); if (r) return r; } catch(e){}
@@ -761,7 +773,7 @@ function renderCar(){
       <span class="tag ok" style="font-size:12.5px;padding:7px 12px">🛡 5-yr / 100,000 km warranty</span>
     </div>
     <hr class="sep">
-    <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:14px">
+    <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:14px">
       ${[['Condition','Brand new'],['Warranty','5 yr / 100k km'],['Engine',v.cyl+'-cylinder'],['Gearbox',v.trans]]
         .map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-weight:550;margin-top:2px">${x}</div></div>`).join('')}
     </div>
@@ -840,7 +852,7 @@ function renderApply(){
       <h3>Your car, your budget</h3>
       <p class="muted tiny" style="margin:6px 0 18px">Brand new from our showroom. The banks already know this car.</p>
       <div class="row" style="gap:16px;padding:14px;background:var(--surface-2);border-radius:11px">
-        <div style="width:110px;flex:none">${carSVG(v.body)}</div>
+        <div style="width:110px;flex:none">${v.img?`<img src="${v.img}" alt="" style="width:100%;border-radius:9px">`:carSVG(v.body)}</div>
         <div><div style="font-weight:600">${v.year} ${v.make} ${v.model}</div>
           <div class="tiny muted">${NGN(v.price)} · Brand new · 5-yr warranty</div></div>
       </div>
@@ -1116,7 +1128,7 @@ function renderBank(){
         <div>${o.approved?'<span class="tag ok" style="font-size:13px;padding:7px 14px">✓ AUTO-APPROVE · price returned</span>':'<span class="tag b" style="font-size:13px;padding:7px 14px">✕ DECLINE</span>'}</div>
       </div>
       <hr class="sep">
-      <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:16px">
+      <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:16px">
         ${[['Amount financed',NGN(o.loan)],['Forecast residual',NGN(rvNow)],['Loan-to-residual',o.ltrv.toFixed(2)+'× / '+l.maxLtrv.toFixed(2)+'×'],['DTI',pct(dti*100,0)+' / '+pct(l.maxDti*100,0)]]
           .map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-family:var(--mono);font-weight:600;margin-top:3px">${x}</div></div>`).join('')}
       </div>
@@ -1169,7 +1181,7 @@ function renderDealer(){
     ['Accepted an offer',acc,'52% — choice converts; a single-bank offer converts far lower'],
     ['Funded & delivered',fund,'91% of acceptances complete']];
   $('#dealerBody').innerHTML=`
-    <div class="grid" style="grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px">
+    <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px">
       ${[['Financed volume',NGNs(vol),'12 months, illustrative'],['Midas commission',NGNs(comm),'2.2% of funded principal'],
          ['Avg decision','31 hrs','vs 40–45 days unassisted'],['Attach rate',pct(fund/listed*100,0),'of listed units sold on finance']]
         .map(([k,v2,s])=>`<div class="card pad"><div class="tiny faint">${k}</div><div style="font-family:var(--display);font-size:1.75rem;font-weight:600;letter-spacing:-.02em;margin:5px 0 3px">${v2}</div><div class="tiny muted">${s}</div></div>`).join('')}
