@@ -249,12 +249,27 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .steps3 p{color:var(--ink-soft);font-size:14.5px;max-width:30ch}
 @media(max-width:700px){.steps3{grid-template-columns:1fr;gap:26px}}
 .logo img{height:26px;width:auto;display:block}
+.ratesboard{background:#0b1220;border-bottom:1px solid #1d2941}
+.rb-in{display:flex;align-items:center;gap:22px;padding:11px 24px;overflow-x:auto;scrollbar-width:none}
+.rb-in::-webkit-scrollbar{display:none}
+.rb-live{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:#7ee0a8;letter-spacing:.08em;white-space:nowrap;flex:none}
+.rb-items{display:flex;gap:26px}
+.rb-it{white-space:nowrap;font-size:13px;color:#93a5c0}
+.rb-it b{color:#fff;font-family:var(--mono);font-weight:600}
+.rb-it .dn{color:#7ee0a8;font-family:var(--mono)}
+.bestpanel{background:linear-gradient(135deg,#0b2a4a,#123f6e);color:#fff;border-radius:14px;padding:20px 22px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.bestpanel .bp-k{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:#9fb5cd}
+.bestpanel .bp-rate{font-family:var(--display);font-size:2.5rem;font-weight:650;letter-spacing:-.03em;line-height:1;color:#f0b955;transition:.3s}
+.bestpanel .bp-mo{font-family:var(--display);font-size:1.5rem;font-weight:600}
+.bestpanel.tick .bp-rate{transform:scale(1.06)}
+.specrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.specrow .sp{font-size:11.5px;color:var(--ink-soft);background:var(--surface-2);border-radius:6px;padding:3px 8px}
 </style>
 </head>
 <body>
 <div class="topbar">
   <div class="topbar-in">
-    <a href="#/market" class="logo"><img src="brand/wordmark.svg" alt="Midas" /> <span class="sub">&nbsp;· a Stallion Group company</span></a>
+    <a href="#/market" class="logo"><img src="brand/wordmark.svg" alt="Midas" /></a>
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
@@ -268,7 +283,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <!-- ===================== MARKETPLACE ===================== -->
 <section class="view on" id="v-market">
   <div class="hero-photo">
-    <img class="bg" src="cars/hero.jpg" alt="Brand-new Hyundai Creta from Stallion" />
+    <img class="bg" src="cars/hero.jpg" alt="Brand-new Hyundai Creta" />
     <div class="veil"></div>
     <div class="wrap"><div class="in">
       <h1>The best loan for<br>your new car.</h1>
@@ -278,11 +293,18 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <a href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" class="btn btn-wa btn-lg">Chat on WhatsApp</a>
       </div>
       <div class="chiprow">
-        <span class="chip">🐎 Stallion Group · since 1969</span>
+        <span class="chip">🏦 7 banks compete</span>
         <span class="chip">🛡 5-year warranty</span>
         <span class="chip">⚡ Decision in 48 hours</span>
       </div>
     </div></div>
+  </div>
+
+  <div class="ratesboard">
+    <div class="wrap rb-in">
+      <span class="rb-live"><span class="auc-dot"></span>BEST RATES RIGHT NOW</span>
+      <div class="rb-items" id="ratesBoard"></div>
+    </div>
   </div>
 
   <div class="wrap sec" id="how" style="padding-bottom:40px">
@@ -310,7 +332,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch" id="humanGrid">
         <div style="padding:36px 34px">
           <h2>Buy from people you can meet.</h2>
-          <p class="muted" style="margin-top:10px;max-width:46ch">Midas is a Stallion Group company. We have been selling cars in Nigeria since 1969 &mdash; Honda, Hyundai, Nissan, Changan, MG. Come and see the cars, or talk to Amit. He will walk you through everything.</p>
+          <p class="muted" style="margin-top:10px;max-width:46ch">Brand-new cars &mdash; Honda, Hyundai, Nissan, Changan, MG &mdash; with the loan built in. Real showrooms, real warranty, real people. Come and see the cars, or talk to Amit. He will walk you through everything.</p>
           <div class="person">
             <div class="pav">AS</div>
             <div>
@@ -431,7 +453,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   <div class="wrap" style="padding-top:34px">
     <div class="eyebrow">Dealer desk</div>
     <h2 style="margin:8px 0 10px">What financing does to the showroom.</h2>
-    <p class="muted" style="margin-bottom:24px;max-width:70ch">The commercial case for Stallion: cars that were browsed and abandoned become funded sales, and Midas earns on every one.</p>
+    <p class="muted" style="margin-bottom:24px;max-width:70ch">The commercial case for the dealer: cars that were browsed and abandoned become funded sales, and Midas earns on every one.</p>
     <div id="dealerBody"></div>
   </div>
 </section>
@@ -439,7 +461,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <div class="wrap foot">
   <div class="between" style="flex-wrap:wrap;gap:14px">
     <div>
-      <b style="color:var(--ink)">Midas</b> &middot; a Stallion Group company &middot; new-car financing at the best rate any bank will give.<br>
+      <b style="color:var(--ink)">Midas</b> &middot; new-car financing at the best rate any bank will give.<br>
       Auto loans today. Mortgages on the same rails next.
     </div>
     <div style="text-align:right">
@@ -505,20 +527,20 @@ function balanceAt(P, annualRate, n, m){
 
 /* ---------- VEHICLES (Auto OS certified) ---------- */
 const VEHICLES = [
-  {id:'V-1001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:41900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Stallion showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/creta.jpg', tag:'Most loved SUV'},
-  {id:'V-1002', year:2026, make:'Hyundai', model:'Elantra', body:'sedan', price:38500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Stallion showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/elantra.jpg', tag:'Executive saloon'},
-  {id:'V-1003', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:62000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Stallion showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/tucson.jpg', tag:'Family flagship'},
-  {id:'V-1004', year:2026, make:'Changan', model:'Hunter 4×4', body:'pickup', price:49500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Stallion showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/hunter.jpg', tag:'Work + weekend'},
-  {id:'V-1005', year:2026, make:'MG', model:'T60 4×4', body:'pickup', price:46500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Stallion showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/t60.jpg', tag:'Built for business'}
+  {id:'V-1001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:41900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/creta.jpg', tag:'Most loved SUV'},
+  {id:'V-1002', year:2026, make:'Hyundai', model:'Elantra', body:'sedan', price:38500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/elantra.jpg', tag:'Executive saloon'},
+  {id:'V-1003', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:62000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/tucson.jpg', tag:'Family flagship'},
+  {id:'V-1004', year:2026, make:'Changan', model:'Hunter 4×4', body:'pickup', price:49500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/hunter.jpg', tag:'Work + weekend'},
+  {id:'V-1005', year:2026, make:'MG', model:'T60 4×4', body:'pickup', price:46500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/t60.jpg', tag:'Built for business'}
 ];
 
 /* ---------- LENDER PANEL (70, masked) ---------- */
 const TIERS = [
-  {k:'Tier-1 Commercial',      n:2, rate:[.252,.288], eq:[.30,.34], ten:60, inc:400000, dti:.42, ltrv:[1.38,1.55], hrs:[28,48], age:12, emp:['Salaried','Director/Owner','Professional'],           tick:[3e6,120e6]},
-  {k:'Tier-2 Commercial',      n:1, rate:[.278,.315], eq:[.32,.38], ten:48, inc:300000, dti:.45, ltrv:[1.42,1.60], hrs:[20,40], age:14, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,70e6]},
-  {k:'Non-Interest (Murabaha)',n:1, rate:[.262,.295], eq:[.33,.40], ten:48, inc:320000, dti:.43, ltrv:[1.36,1.52], hrs:[30,54], age:12, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,60e6]},
-  {k:'Captive / OEM',          n:1, rate:[.232,.268], eq:[.20,.28], ten:60, inc:400000, dti:.42, ltrv:[1.30,1.48], hrs:[16,34], age:4,  emp:['Salaried','Director/Owner','Professional'],            tick:[8e6,150e6]},
-  {k:'Finance House / Leasing',n:1, rate:[.305,.36],  eq:[.28,.34], ten:42, inc:220000, dti:.50, ltrv:[1.52,1.72], hrs:[10,26], age:16, emp:['Salaried','Self-employed','Director/Owner','Gig'],     tick:[1.5e6,45e6]},
+  {k:'Tier-1 Commercial',      n:2, rate:[.252,.288], eq:[.30,.34], ten:60, inc:400000, dti:.45, ltrv:[1.38,1.55], hrs:[28,48], age:12, emp:['Salaried','Director/Owner','Professional'],           tick:[3e6,120e6]},
+  {k:'Tier-2 Commercial',      n:1, rate:[.278,.315], eq:[.32,.35], ten:48, inc:300000, dti:.48, ltrv:[1.42,1.60], hrs:[20,40], age:14, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,70e6]},
+  {k:'Non-Interest (Murabaha)',n:1, rate:[.262,.295], eq:[.30,.35], ten:48, inc:320000, dti:.46, ltrv:[1.36,1.52], hrs:[30,54], age:12, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,60e6]},
+  {k:'Captive / OEM',          n:1, rate:[.232,.268], eq:[.20,.28], ten:60, inc:400000, dti:.45, ltrv:[1.30,1.48], hrs:[16,34], age:4,  emp:['Salaried','Director/Owner','Professional'],            tick:[8e6,150e6]},
+  {k:'Finance House / Leasing',n:1, rate:[.305,.36],  eq:[.28,.34], ten:48, inc:220000, dti:.50, ltrv:[1.52,1.72], hrs:[10,26], age:16, emp:['Salaried','Self-employed','Director/Owner','Gig'],     tick:[1.5e6,45e6]},
   {k:'Microfinance',           n:1, rate:[.352,.41],  eq:[.25,.32], ten:30, inc:150000, dti:.55, ltrv:[1.60,1.88], hrs:[4,14],  age:18, emp:['Salaried','Self-employed','Gig','Trader'],             tick:[8e5,18e6]}
 ];
 const LENDERS = (() => {
@@ -544,7 +566,7 @@ const KEY = 'midas-drive-v1';
 let S = load();
 function load(){
   try { const r = JSON.parse(localStorage.getItem(KEY)); if (r) return r; } catch(e){}
-  return { vehicleId:null, equityPct:.30, tenor:60, step:1, applicant:null, verified:false, accepted:null, submittedAt:null };
+  return { vehicleId:null, equityPct:.35, tenor:48, step:1, applicant:null, verified:false, accepted:null, submittedAt:null };
 }
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
 const vehicle = () => VEHICLES.find(v => v.id === S.vehicleId) || null;
@@ -670,6 +692,8 @@ function bestTeaser(v){
 }
 function renderMarket(){
   const g = $('#vehGrid'); if (!g) return;
+  const rb=$('#ratesBoard');
+  if(rb){ rb.innerHTML=VEHICLES.map(v=>{const t=bestTeaser(v);return t?`<span class="rb-it">${v.model} <b>${pct(t.rate*100)}</b> <span class="dn">▾</span> · ${NGN(t.monthly)}/mo</span>`:'';}).join(''); }
   g.innerHTML = '';
   VEHICLES.forEach(v => {
     const t = bestTeaser(v);
@@ -680,9 +704,9 @@ function renderMarket(){
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
-          <div class="veh-meta">5-year warranty · Serviced by Stallion nationwide</div>
+          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">5-yr warranty</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
           <div class="veh-mo-big">${t?NGN(t.monthly):'—'}<span> /month</span></div>
-          <div class="veh-full">Full price ${NGNs(v.price)} · from 30% down</div>
+          <div class="veh-full">Full price ${NGNs(v.price)} · from 30% down${t?` · best rate <b style="color:var(--naira)">${pct(t.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
             <button class="btn btn-a btn-sm" style="flex:2" onclick="event.stopPropagation();openCar('${v.id}')">Get loan offers</button>
             <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
@@ -729,7 +753,7 @@ function renderCar(){
     <hr class="sep">
     <div class="tiny faint" style="margin-bottom:8px">WHAT THE CAR WILL STILL BE WORTH</div>
     <div id="rvChart"></div>
-    <p class="tiny muted" style="margin-top:10px">Banks check what the car will be worth as you pay. A new Stallion car holds its value — <b>that is why your loan is cheaper here.</b></p>`;
+    <p class="tiny muted" style="margin-top:10px">Banks check what the car will be worth as you pay. A brand-new car holds its value — <b>that is why your loan is cheaper here.</b></p>`;
   renderDeal();
 }
 function rvCurve(v, loan, rate, tenor){
@@ -799,7 +823,7 @@ function renderApply(){
     const loan = v.price * (1 - S.equityPct);
     c.innerHTML = `
       <h3>Your car, your budget</h3>
-      <p class="muted tiny" style="margin:6px 0 18px">Brand new from the Stallion showroom. The banks already know this car.</p>
+      <p class="muted tiny" style="margin:6px 0 18px">Brand new from our showroom. The banks already know this car.</p>
       <div class="row" style="gap:16px;padding:14px;background:var(--surface-2);border-radius:11px">
         <div style="width:110px;flex:none">${carSVG(v.body)}</div>
         <div><div style="font-weight:600">${v.year} ${v.make} ${v.model}</div>
@@ -911,13 +935,25 @@ function renderOffers(){
   aucTimers.forEach(clearTimeout); aucTimers=[]; aucDone=false;
   const body=$('#aucBody'); body.innerHTML='';
   const sorted=sortOffers(ok,sortMode);
+  const best=sortOffers(ok,'cost')[0];
+  // CURRENT BEST tracker — rates drop live as bids land
+  let bp=$('#bestPanel');
+  if(!bp){ bp=el('<div class="bestpanel" id="bestPanel"></div>'); $('#aucBody').parentNode.parentNode.insertBefore(bp, $('#aucBody').parentNode.parentNode.firstChild); }
+  bp.innerHTML='<div><div class="bp-k">CURRENT BEST RATE</div><div class="bp-rate" id="bpRate">—</div></div><div style="text-align:right"><div class="bp-k">YOUR MONTHLY AT BEST</div><div class="bp-mo" id="bpMo">—</div><div class="tiny" style="color:#9fb5cd;margin-top:2px">Offer valid 7 days once accepted</div></div>';
+  // arrivals land in shuffled order, tracker ratchets down — like a real panel responding
+  const rr=rng(48); const arriv=sorted.slice().sort(()=>rr()-.5);
+  let bestSeen=null;
   $('#aucState').textContent='BIDDING';
-  sorted.forEach((o,i)=>{
+  arriv.forEach((o,i)=>{
     aucTimers.push(setTimeout(()=>{
-      body.appendChild(offerRow(o,i===0));
-      $('#aucBar').style.width=Math.round((i+1)/sorted.length*100)+'%';
-      if(i===sorted.length-1){ $('#aucState').textContent='COMPLETE'; document.querySelector('#v-offers .auc-dot').style.animation='none'; aucDone=true; }
-    }, 240+i*95));
+      body.insertBefore(offerRow(o,o===best), body.firstChild);
+      if(!bestSeen || o.allIn<bestSeen.allIn){ bestSeen=o;
+        const r=$('#bpRate'),m=$('#bpMo');
+        if(r){ r.textContent=pct(o.rate*100)+' p.a.'; m.textContent=NGN(o.monthly)+'/mo';
+          bp.classList.add('tick'); setTimeout(()=>bp.classList.remove('tick'),260); } }
+      $('#aucBar').style.width=Math.round((i+1)/arriv.length*100)+'%';
+      if(i===arriv.length-1){ $('#aucState').textContent='COMPLETE'; const d=document.querySelector('#v-offers .auc-dot'); if(d) d.style.animation='none'; aucDone=true; }
+    }, 400+i*620));
   });
   if(!sorted.length){
     const fixes=solveFix(v,app);
@@ -998,7 +1034,7 @@ function renderStatus(){
     ['Offers returned',okCount+' firm bids','done'],
     ['Offer accepted',o.lender.id+' · '+o.lender.tier,'done'],
     ['Lender final approval','Target '+o.hours+' hours from acceptance','now'],
-    ['Disbursement & registration','Funds to Stallion, papers to you',''],
+    ['Disbursement & registration','Funds to the dealer, papers to you',''],
   ];
   $('#stHead').textContent='Accepted — '+o.lender.id;
   $('#stBody').innerHTML=`
