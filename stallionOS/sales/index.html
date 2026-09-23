@@ -1,0 +1,48 @@
+<!DOCTYPE html><html lang="en"><head><script>(function(){
+var K='stallionos_unlock_v1',H='57fa8bccaff22730843336788692c4f3f57f94be63553eb09c484dbd1ad0e330',S='stallionos.v1.';
+try{if(localStorage.getItem(K)===H)return}catch(e){}
+window.stop();
+function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){
+return ('0'+x.toString(16)).slice(-2)}).join('')}
+document.documentElement.innerHTML='<head><meta charset="utf-8">'+
+'<meta name="viewport" content="width=device-width,initial-scale=1">'+
+'<meta name="robots" content="noindex,nofollow">'+
+'<title>StallionOS</title><style>'+
+'*{margin:0;padding:0;box-sizing:border-box}'+
+'body{min-height:100vh;display:flex;align-items:center;justify-content:center;'+
+'background:#0d1b3e;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;padding:24px}'+
+'.c{width:100%;max-width:400px;text-align:center}'+
+'.m{width:54px;height:54px;margin:0 auto 22px}'+
+'h1{color:#fff;font-size:21px;font-weight:600;letter-spacing:.2px;margin-bottom:7px}'+
+'p.s{color:#8a93a6;font-size:13.5px;margin-bottom:28px}'+
+'form{display:flex;flex-direction:column;gap:11px}'+
+'input{width:100%;padding:13px 15px;border:1px solid #2a3a5e;border-radius:7px;'+
+'background:#132449;color:#fff;font-size:15px;outline:none;transition:border-color .15s}'+
+'input:focus{border-color:#c99c32}'+
+'input::placeholder{color:#6b7a99}'+
+'button{width:100%;padding:13px;border:0;border-radius:7px;cursor:pointer;'+
+'background:linear-gradient(135deg,#D1AA29,#B8891C);color:#0d1b3e;font-size:15px;font-weight:700;letter-spacing:.2px}'+
+'button:hover{filter:brightness(1.07)}'+
+'.e{color:#ff8b8b;font-size:13px;min-height:18px;margin-top:4px}'+
+'.f{color:#5c6a85;font-size:11.5px;margin-top:26px;letter-spacing:.4px}'+
+'</style></head><body><div class="c">'+
+'<svg class="m" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+'<circle cx="15" cy="15" r="13.5" stroke="#C99C32" stroke-width="1.6"/>'+
+'<circle cx="15" cy="15" r="6" stroke="#C99C32" stroke-width="1.6"/></svg>'+
+'<h1>StallionOS</h1><p class="s">Group command center &middot; restricted access</p>'+
+'<form id="g"><input id="p" type="password" placeholder="Access password" '+
+'autocomplete="current-password" autofocus><button type="submit">Enter</button>'+
+'<div class="e" id="e"></div></form>'+
+'<div class="f">STALLION GROUP</div></div></body>';
+var f=document.getElementById('g'),p=document.getElementById('p'),e=document.getElementById('e');
+f.addEventListener('submit',function(ev){ev.preventDefault();
+if(!window.crypto||!crypto.subtle){e.textContent='This browser is not supported.';return}
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(S+p.value)).then(function(b){
+if(hex(b)===H){try{localStorage.setItem(K,H)}catch(x){}location.reload()}
+else{e.textContent='Incorrect password.';p.value='';p.focus()}})});
+})()</script><meta charset="utf-8">
+<meta http-equiv="refresh" content="0; url=/stallionOS/qb/sales/">
+<link rel="canonical" href="/stallionOS/qb/sales/"><title>StallionOS</title>
+<script>location.replace('/stallionOS/qb/sales/')</script></head>
+<body style="font-family:system-ui;padding:3rem;background:#faf8f5;color:#3a3226">
+<p>This route redirects in production. Continuing to <a href="/stallionOS/qb/sales/">/qb/sales/</a>&hellip;</p></body></html>
