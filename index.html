@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Midas — Embedded vehicle financing</title>
-<meta name="description" content="The best loan for your new car. 7 banks compete to finance it — you take the lowest rate. Keys in 48 hours." />
+<meta name="description" content="The best loan for your new car. 7 banks price your loan — you take the lowest rate. Keys in 48 hours." />
 
 <link rel="icon" type="image/svg+xml" href="brand/mark.svg" />
 <link rel="apple-touch-icon" href="brand/icon-180.png" />
@@ -13,14 +13,14 @@
 <meta property="og:site_name" content="Midas" />
 <meta property="og:url" content="https://midascfo.com/" />
 <meta property="og:title" content="Midas — the best loan for your new car" />
-<meta property="og:description" content="7 banks compete to finance your car. You take the lowest rate. Keys in 48 hours." />
+<meta property="og:description" content="7 banks price your loan. You take the lowest rate. Keys in 48 hours." />
 <meta property="og:image" content="https://midascfo.com/og-midas.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:type" content="image/jpeg" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Midas — the best loan for your new car" />
-<meta name="twitter:description" content="7 banks compete to finance your car. You take the lowest rate. Keys in 48 hours." />
+<meta name="twitter:description" content="7 banks price your loan. You take the lowest rate. Keys in 48 hours." />
 <meta name="twitter:image" content="https://midascfo.com/og-midas.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -312,13 +312,13 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <div class="veil"></div>
     <div class="wrap"><div class="in">
       <h1>The best loan for<br>your new car.</h1>
-      <p class="sub"><b>7 banks compete</b> to finance your car. You take the lowest rate. Keys in 48 hours.</p>
+      <p class="sub"><b>7 banks price your loan.</b> You take the lowest rate. Keys in 48 hours.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
         <a href="#inv" class="btn btn-a btn-lg" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See the cars &rarr;</a>
         <a href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" class="btn btn-wa btn-lg">Chat on WhatsApp</a>
       </div>
       <div class="chiprow">
-        <span class="chip">🏦 7 banks compete</span>
+        <span class="chip">🏦 7 banks, one application</span>
         <span class="chip">🛡 5-year warranty</span>
         <span class="chip">⚡ Decision in 48 hours</span>
       </div>
@@ -336,7 +336,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <h2 style="margin-bottom:30px">Three steps to your keys.</h2>
     <div class="steps3">
       <div><div class="num">1</div><h4>Pick your car</h4><p>Brand new from our showroom. Full warranty.</p></div>
-      <div><div class="num">2</div><h4>We find your best rate</h4><p>7 banks compete for you. The lowest offer wins.</p></div>
+      <div><div class="num">2</div><h4>We find your best rate</h4><p>7 banks price it. You take the lowest.</p></div>
       <div><div class="num">3</div><h4>You drive</h4><p>Approved in 48 hours. Not 40 days.</p></div>
     </div>
   </div>
@@ -489,10 +489,11 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   <div class="between" style="flex-wrap:wrap;gap:14px">
     <div>
       <b style="color:var(--ink)">Midas</b> &middot; new-car financing at the best rate any bank will give.<br>
-      Auto loans today. Mortgages on the same rails next.
+      Vehicles today; education loans and mortgages on the same rail next.
     </div>
     <div style="text-align:right">
-      <b style="color:var(--ink)">For partners:</b> <a href="#/bank">Lender console</a> &middot; <a href="#/dealer">Dealer desk</a><br>
+      <b style="color:var(--ink)">For banks:</b> <a href="app.html#/axis">Access Bank console</a> &middot; <a href="#/bank">panel view</a><br>
+      <b style="color:var(--ink)">For dealerships:</b> <a href="app.html#/stallion">Dealer desk</a> &middot; <a href="#/dealer">the numbers</a><br>
       <span class="tiny">Prototype. Indicative pricing, masked lender identities, no live credit decision.</span>
     </div>
   </div>
@@ -566,7 +567,7 @@ const TIERS = [
   {k:'Tier-1 Commercial',      n:2, rate:[.252,.288], eq:[.30,.34], ten:60, inc:400000, dti:.45, ltrv:[1.38,1.55], hrs:[28,48], age:12, emp:['Salaried','Director/Owner','Professional'],           tick:[3e6,120e6]},
   {k:'Tier-2 Commercial',      n:1, rate:[.278,.315], eq:[.32,.35], ten:48, inc:300000, dti:.48, ltrv:[1.42,1.60], hrs:[20,40], age:14, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,70e6]},
   {k:'Non-Interest (Murabaha)',n:1, rate:[.262,.295], eq:[.30,.35], ten:48, inc:320000, dti:.46, ltrv:[1.36,1.52], hrs:[30,54], age:12, emp:['Salaried','Self-employed','Director/Owner'],           tick:[2.5e6,60e6]},
-  {k:'Captive / OEM',          n:1, rate:[.232,.268], eq:[.20,.28], ten:60, inc:400000, dti:.45, ltrv:[1.30,1.48], hrs:[16,34], age:4,  emp:['Salaried','Director/Owner','Professional'],            tick:[8e6,150e6]},
+  {k:'Captive / OEM',          n:1, rate:[.232,.268], eq:[.20,.28], ten:60, inc:400000, dti:.45, ltrv:[1.30,1.48], hrs:[16,34], age:4,  emp:['Salaried','Director/Owner','Professional'],            tick:[8e6,150e6], makes:['Hyundai']},
   {k:'Finance House / Leasing',n:1, rate:[.305,.36],  eq:[.28,.34], ten:48, inc:220000, dti:.50, ltrv:[1.52,1.72], hrs:[10,26], age:16, emp:['Salaried','Self-employed','Director/Owner','Gig'],     tick:[1.5e6,45e6]},
   {k:'Microfinance',           n:1, rate:[.352,.41],  eq:[.25,.32], ten:30, inc:150000, dti:.55, ltrv:[1.60,1.88], hrs:[4,14],  age:18, emp:['Salaried','Self-employed','Gig','Trader'],             tick:[8e5,18e6]}
 ];
@@ -581,14 +582,35 @@ const LENDERS = (() => {
       maxLtrv: t.ltrv[0] + r() * (t.ltrv[1]-t.ltrv[0]),
       hrs: Math.round(t.hrs[0] + r() * (t.hrs[1]-t.hrs[0])),
       maxAge: t.age, emp: t.emp, minTick: t.tick[0], maxTick: t.tick[1],
-      appetite: 0.82 + r() * 0.18, localOk: r() > 0.12
+      appetite: 0.82 + r() * 0.18, localOk: r() > 0.12, makes: t.makes ?? null
     });
   }
   return out;
 })();
 </script>
 <script>
+/* ---------- live inventory seam (Zoho -> Auto OS) ----------
+   If inventory.json sits beside this file, it replaces the built-in
+   stock at load. Auto OS exports that file from the Zoho-linked
+   system; nothing else changes. Falls back silently when absent. */
+fetch('inventory.json').then(r=>r.ok?r.json():null).then(rows=>{
+  if(Array.isArray(rows)&&rows.length){
+    VEHICLES.length=0; rows.forEach(r=>VEHICLES.push(r));
+    if(typeof route==='function') route();
+  }
+}).catch(()=>{});
+
+/* full spec sheets, Autochek-parity (engine, fuel, colours, features) */
+const SPECS={
+  'V-1001': {engine:'1.5L · 4-cylinder',fuel:'Petrol',gearbox:'CVT automatic',drive:'Front-wheel drive',seats:'5',ext:'Dynamic Red',inter:'Black fabric',features:["Rear camera", "8\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Keyless entry", "Power windows", "Central locking"]},
+  'V-1002': {engine:'1.6L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Phantom Black',inter:'Grey fabric',features:["Rear camera", "8\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Power windows", "Central locking"]},
+  'V-1003': {engine:'2.0L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Titan Grey',inter:'Black leather',features:["Rear camera", "10\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "6 airbags", "Alloy wheels", "Dual-zone climate control", "Cruise control", "Keyless start", "Roof rails"]},
+  'V-1004': {engine:'2.0L turbo · 4-cylinder',fuel:'Petrol',gearbox:'Automatic',drive:'4×4 double cab',seats:'5',ext:'Glacier White',inter:'Black fabric',features:["Rear camera", "10\\u2033 touchscreen", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Hill descent control", "Tow bar ready", "Load-bed liner"]},
+  'V-1005': {engine:'2.0L turbo diesel · 4-cylinder',fuel:'Diesel',gearbox:'Automatic',drive:'4×4 double cab',seats:'5',ext:'Metal Black',inter:'Black fabric',features:["Rear camera", "10\\u2033 touchscreen \u00b7 Apple CarPlay", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Hill descent control", "Load-bed liner"]},
+};
+
 /* ---------- APPLICATION STATE ---------- */
+const BRAND = { name: 'Midas' };   // one-line switch if the storefront ships as Zeecar
 const KEY = 'midas-v2';
 let S = load();
 function load(){
@@ -614,6 +636,7 @@ function evaluate(lender, v, equityPct, tenor, app){
   if (tenor > lender.maxTen)              declines.push('Tenor exceeds ' + lender.maxTen + ' months');
   if (age > lender.maxAge)                declines.push('Vehicle age ' + age + 'y exceeds ' + lender.maxAge + 'y cap');
   if (v.origin === 'Local' && !lender.localOk) declines.push('No appetite for locally-used units');
+  if (lender.makes && !lender.makes.includes(v.make)) declines.push(v.make + ' outside manufacturer programme');
   if (ltrv > lender.maxLtrv)              declines.push('Loan-to-residual ' + ltrv.toFixed(2) + '× over ' + lender.maxLtrv.toFixed(2) + '× limit');
 
   if (app){
@@ -774,13 +797,25 @@ function renderCar(){
     </div>
     <hr class="sep">
     <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:14px">
-      ${[['Condition','Brand new'],['Warranty','5 yr / 100k km'],['Engine',v.cyl+'-cylinder'],['Gearbox',v.trans]]
+      ${[['Condition','Brand new'],['Mileage','0 km'],['Warranty','5 yr / 100,000 km'],['Service','Nationwide centres']]
         .map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-weight:550;margin-top:2px">${x}</div></div>`).join('')}
     </div>
     <hr class="sep">
-    <div class="tiny faint" style="margin-bottom:8px">WHAT THE CAR WILL STILL BE WORTH</div>
+    ${(SPECS[v.id]?`
+    <div class="tiny faint" style="margin-bottom:10px">Specifications</div>
+    <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:14px">
+      ${[['Engine',SPECS[v.id].engine],['Fuel',SPECS[v.id].fuel],['Gearbox',SPECS[v.id].gearbox],['Drive',SPECS[v.id].drive],
+         ['Seats',SPECS[v.id].seats],['Exterior',SPECS[v.id].ext],['Interior',SPECS[v.id].inter],['Vehicle ID',v.id]]
+        .map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-weight:550;margin-top:2px">${x}</div></div>`).join('')}
+    </div>
+    <p class="tiny faint" style="margin-top:10px">VIN and registration papers shared at the showroom or on request.</p>
+    <hr class="sep">
+    <div class="tiny faint" style="margin-bottom:9px">Features</div>
+    <div class="specrow">${SPECS[v.id].features.map(f=>`<span class="sp">${f}</span>`).join('')}</div>
+    <hr class="sep">`:'')}
+    <div class="tiny faint" style="margin-bottom:8px">It holds its value</div>
     <div id="rvChart"></div>
-    <p class="tiny muted" style="margin-top:10px">Banks check what the car will be worth as you pay. A brand-new car holds its value — <b>that is why your loan is cheaper here.</b></p>`;
+    <p class="tiny muted" style="margin-top:10px">The blue line is what the car stays worth. The orange line is what you still owe. The gap between them is yours — <b>and it is why banks give brand-new cars their best rates.</b></p>`;
   renderDeal();
 }
 function rvCurve(v, loan, rate, tenor){
@@ -812,28 +847,28 @@ function renderDeal(){
   const best = offers[0];
   const rv = residualValue(v, ten);
   $('#rvChart').innerHTML = rvCurve(v, loan, best ? best.rate : .30, ten);
+  const earn=incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0);
   $('#carDeal').innerHTML = `
-    <div class="eyebrow">Structure the deal</div>
-    <div style="font-family:var(--display);font-size:1.9rem;font-weight:600;letter-spacing:-.02em;margin:8px 0 2px">${NGN(v.price)}</div>
-    <p class="tiny faint">Showroom price. Same for everybody.</p>
+    ${best ? `
+    <div style="font-family:var(--display);font-size:2.3rem;font-weight:650;letter-spacing:-.025em;line-height:1">${NGN(best.monthly)}<span style="font-size:1rem;color:var(--ink-faint);font-weight:400"> /month</span></div>
+    <p class="tiny muted" style="margin-top:7px">${pct(best.rate*100)} yearly · best of ${LENDERS.length} banks today · answer in ${best.hours}h</p>`
+    : `
+    <div style="font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em">${NGN(v.price)}</div>
+    <p class="tiny muted" style="margin-top:6px">Showroom price. Same for everybody.</p>`}
     <hr class="sep">
-    <label class="tiny" style="font-weight:550">Equity contribution — <b class="mono">${pct(eq*100,0)}</b> · ${NGN(v.price*eq)}</label>
+    <label class="tiny" style="font-weight:550">Down payment · <b class="mono">${NGN(v.price*eq)}</b> (${pct(eq*100,0)})</label>
     <input type="range" class="rng" min="20" max="70" step="1" value="${eq*100}" oninput="S.equityPct=this.value/100;save();renderDeal()">
-    <label class="tiny" style="font-weight:550;display:block;margin-top:12px">Tenor — <b class="mono">${ten} months</b></label>
+    <label class="tiny" style="font-weight:550;display:block;margin-top:12px">Paying it back over · <b class="mono">${ten} months</b></label>
     <input type="range" class="rng" min="12" max="60" step="6" value="${ten}" oninput="S.tenor=+this.value;save();renderDeal()">
     <hr class="sep">
-    <div class="kv"><span class="k">Amount financed</span><span class="v">${NGN(loan)}</span></div>
-    <div class="kv"><span class="k">Forecast value at ${ten} mo</span><span class="v">${NGN(rv)}</span></div>
-    <div class="kv"><span class="k">Loan-to-residual</span><span class="v">${(loan/rv).toFixed(2)}×</span></div>
-    <div class="kv"><span class="k">Net income needed</span><span class="v">${NGN(incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0))}/mo</span></div>
-    <hr class="sep">
+    <div class="kv"><span class="k">Car price</span><span class="v">${NGN(v.price)}</span></div>
+    <div class="kv"><span class="k">Your down payment</span><span class="v">${NGN(v.price*eq)}</span></div>
+    <div class="kv"><span class="k">The loan</span><span class="v">${NGN(loan)}</span></div>
+    <div class="kv"><span class="k">Works on take-home pay of</span><span class="v">~${NGNs(Math.ceil(earn/50000)*50000)}/mo</span></div>
     ${best ? `
-      <div class="tiny faint">BEST OFFER TODAY · ${offers.length} of ${LENDERS.length} banks will bid</div>
-      <div style="font-family:var(--display);font-size:1.6rem;font-weight:600;margin:6px 0 2px">${NGN(best.monthly)}<span style="font-size:.95rem;color:var(--ink-faint);font-weight:400">/mo</span></div>
-      <p class="tiny muted">${pct(best.rate*100)} p.a. · ${best.lender.tier} · decision in ${best.hours}h</p>
-      <button class="btn btn-a" style="width:100%;margin-top:16px" onclick="location.hash='#/apply'">See my offers →</button>`
-     : `<div class="warnbox">No lender on the panel will bid at this structure. Raise the equity or shorten the tenor.</div>`}
-    <p class="tiny faint" style="margin-top:12px">Indicative only. Firm offers require the application.</p>`;
+    <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="location.hash='#/apply'">See my offers →</button>
+    <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
+    : `<div class="warnbox" style="margin-top:16px">No bank will price this yet. Add to the down payment, or take longer to pay.</div>`}`;
 }
 </script>
 <script>
@@ -857,13 +892,16 @@ function renderApply(){
           <div class="tiny muted">${NGN(v.price)} · Brand new · 5-yr warranty</div></div>
       </div>
       <div class="f2" style="margin-top:20px">
-        <div class="field"><label>Equity contribution — ${pct(S.equityPct*100,0)}</label>
+        <div class="field"><label>Down payment — ${pct(S.equityPct*100,0)}</label>
           <input type="range" class="rng" min="20" max="70" value="${S.equityPct*100}" oninput="S.equityPct=this.value/100;save();renderApply()">
           <div class="hint">${NGN(v.price*S.equityPct)} down · ${NGN(loan)} financed</div></div>
         <div class="field"><label>Tenor — ${S.tenor} months</label>
           <input type="range" class="rng" min="12" max="60" step="6" value="${S.tenor}" oninput="S.tenor=+this.value;save();renderApply()">
           <div class="hint">Longer tenor lowers the monthly and raises the total cost.</div></div>
       </div>
+      <div class="field" style="margin-top:6px"><label>Have a car to trade in? (optional)</label>
+        <input class="inp" id="fTradeIn" value="${S.tradeIn||''}" placeholder="e.g. 2018 Toyota Camry, 90K km" onchange="S.tradeIn=this.value;save()">
+        <div class="hint">We'll value it at the showroom and it can count toward your down payment.</div></div>
       <button class="btn btn-p" onclick="S.step=2;save();renderApply()">Continue →</button>`;
   }
   else if (S.step === 2){
@@ -944,6 +982,11 @@ function doVerify(){
   setTimeout(()=>{ b.textContent='Reading 6 months of inflows…'; },700);
   setTimeout(()=>{ S.verified=true; save(); renderApply(); },1700);
 }
+function pfiNumber(){
+  const d=new Date(S.submittedAt||Date.now());
+  const seq=1000+Math.abs((S.vehicleId+''+(S.submittedAt||0)).split('').reduce((a,c)=>a*31+c.charCodeAt(0)|0,7))%9000;
+  return 'MD-PFI-'+d.getFullYear()+'-'+seq;
+}
 function submitApp(){ S.submittedAt=Date.now(); S.accepted=null; save(); location.hash='#/offers'; }
 </script>
 <script>
@@ -1016,6 +1059,7 @@ function sidePanel(v,ok,no){
     <div class="kv"><span class="k">Spread across panel</span><span class="v" style="color:var(--good)">${NGN(spread)}</span></div>
     <div class="kv"><span class="k">Fastest decision</span><span class="v">${fast.hours}h</span></div>
     <hr class="sep">
+    <p class="tiny muted" style="margin-bottom:10px"><b style="color:var(--ink)">Your down payment goes to the bank.</b> When you accept an offer, it is paid directly into the bank's own account — never to the dealer, never to Midas.</p>
     <p class="tiny muted">Applying to one bank is a coin flip on ${NGN(spread)}. That is the entire argument for the panel — and why a dealer that offers it converts more browsers into buyers.</p>
     `:'<p class="tiny muted">No bids at this structure.</p>'}
     <hr class="sep">
@@ -1056,18 +1100,36 @@ function renderStatus(){
   if(!o){ $('#stHead').textContent='Offer no longer valid';
     $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>The structure changed after this offer was accepted.</b> '+S.accepted+' will not price the deal as it now stands. Go back to the panel and take a live offer.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the panel →</a></div>'; return; }
   const okCount=panel.filter(x=>x.approved).length;
-  const steps=[['Vehicle inspected & certified','Auto OS · 172-point check · Grade '+v.grade,'done'],
-    ['Application sent to the banks',LENDERS.length+' lenders · one profile','done'],
-    ['Offers returned',okCount+' firm bids','done'],
-    ['Offer accepted',o.lender.id+' · '+o.lender.tier,'done'],
-    ['Lender final approval','Target '+o.hours+' hours from acceptance','now'],
-    ['Disbursement & registration','Funds to the dealer, papers to you',''],
+  const pfi=pfiNumber();
+  const steps=[['1 · Car selected & certified',v.year+' '+v.make+' '+v.model+' · Auto OS Grade '+v.grade,'done'],
+    ['2 · Proforma invoice issued',pfi+' · fixes the price and structure · valid 7 days','done'],
+    ['3 · Credit assessment — in the bank\u2019s own environment','One file to '+LENDERS.length+' banks over a secure API. Scoring runs on bank infrastructure, not ours.','done'],
+    ['4 · Offer letter',o.lender.label+' · '+pct(o.rate*100)+' p.a. · '+NGN(o.monthly)+'/month · target '+o.hours+'h','done'],
+    ['5 · Down payment — paid to the bank','Pay '+NGN(o.equity)+' directly into the bank\u2019s account. Never to the dealer, never to Midas.','now'],
+    ['6 · Disbursement & pickup','The bank pays the dealer. Keys within 24 hours of your equity landing.',''],
   ];
   $('#stHead').textContent='Accepted — '+o.lender.id;
   $('#stBody').innerHTML=`
     <div class="grid" style="grid-template-columns:1fr 340px;align-items:start">
+      <div>
       <div class="card pad">
         <div class="timeline">${steps.map(([t,s,c])=>`<div class="tl ${c}"><div class="d">${c==='done'?'✓':''}</div><div><h4>${t}</h4><p>${s}</p></div></div>`).join('')}</div>
+      </div>
+      <div class="card pad" id="pfiDoc" style="margin-top:18px">
+        <div class="between" style="align-items:flex-start">
+          <div><div class="eyebrow">Proforma invoice</div>
+            <h3 style="margin:8px 0 2px;font-family:var(--mono);font-size:1.05rem">${pfi}</h3>
+            <p class="tiny faint">Issued ${new Date(S.submittedAt||Date.now()).toLocaleDateString('en-NG',{day:'numeric',month:'long',year:'numeric'})} · valid 7 days</p></div>
+          <button class="btn btn-g btn-sm" onclick="window.print()">Print / save PDF</button>
+        </div>
+        <hr class="sep">
+        <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${v.year} ${v.make} ${v.model} · ${v.id}</span></div>
+        <div class="kv"><span class="k">Certified price</span><span class="v">${NGN(v.price)}</span></div>
+        <div class="kv"><span class="k">Down payment (${pct(S.equityPct*100,0)})</span><span class="v">${NGN(o.equity)}</span></div>
+        <div class="kv"><span class="k">Balance financed</span><span class="v">${NGN(o.loan)} · ${o.tenor} months</span></div>
+        <div class="kv"><span class="k">Financing bank</span><span class="v" style="font-family:var(--body)">${o.lender.label}</span></div>
+        <p class="tiny muted" style="margin-top:12px">Present this PFI number in any conversation with the bank or the showroom. Your down payment is payable only to the account named on the bank's offer letter.</p>
+      </div>
       </div>
       <div class="card pad">
         <div class="eyebrow">Your facility</div>
