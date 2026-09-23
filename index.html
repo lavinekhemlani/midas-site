@@ -521,6 +521,29 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 </section>
 
 
+<!-- ===================== SHOWROOM DESK ===================== -->
+<section class="view" id="v-desk">
+  <div class="wrap" style="padding-top:34px;max-width:720px">
+    <div class="eyebrow">Showroom desk</div>
+    <h2 style="margin:8px 0 8px">Send a customer their car.</h2>
+    <p class="muted" style="margin-bottom:22px">For showroom staff. Pick the car, enter the customer's WhatsApp, and send a link that opens with their car ready to finance — your showroom on the file.</p>
+    <div class="card pad">
+      <div class="field"><label>Vehicle</label><select class="inp" id="dkCar"></select></div>
+      <div class="f2">
+        <div class="field"><label>Customer's first name</label><input class="inp" id="dkName" placeholder="Adeola"></div>
+        <div class="field"><label>Customer's WhatsApp</label><input class="inp" id="dkPhone" inputmode="tel" placeholder="0803 123 4567"></div>
+      </div>
+      <div class="field"><label>Your showroom</label>
+        <select class="inp" id="dkRef"><option>Victoria Island</option><option>Ikeja</option><option>Abuja</option><option>Port Harcourt</option><option>Kano</option><option>Enugu</option><option>Ibadan</option></select></div>
+      <div class="row" style="gap:10px;flex-wrap:wrap;margin-top:6px">
+        <a class="btn btn-wa" id="dkSend" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <button class="btn btn-g" id="dkCopy">Copy link</button>
+      </div>
+      <p class="tiny faint" style="margin-top:12px" id="dkPreview"></p>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== PRIVACY ===================== -->
 <section class="view" id="v-privacy">
   <div class="wrap" style="padding-top:34px;max-width:760px">
@@ -565,11 +588,40 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Your policy</div><div class="tiny muted">you set rates, ceilings and appetite; change them any time</div></div>
       <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Secured</div><div class="tiny muted">brand-new collateral, 20&ndash;70% down, lien on title, salary domiciliation</div></div>
     </div>
+    <div class="card pad" style="margin-bottom:18px">
+      <div class="eyebrow">The regulated shape of the deal</div>
+      <h3 style="margin:10px 0 4px;font-size:1.15rem">Six positions. Yours run in your environment.</h3>
+      <p class="tiny muted" style="margin-bottom:14px">Built to the requirement your peers set: credit assessment sits on the bank's side, reached over an API — never inside the dealer's system.</p>
+      <div style="display:grid;gap:0">
+        ${'' /* rendered by renderBanksCalc */}
+        <div id="sixSteps"></div>
+      </div>
+    </div>
+    <div class="card pad" style="margin-bottom:18px">
+      <div class="eyebrow">What this earns you</div>
+      <h3 style="margin:10px 0 4px;font-size:1.15rem" id="bkEarnHead">Fund 25 cars a month.</h3>
+      <p class="tiny muted">Your team does one thing: price the file in your own system. Midas finds the customer, certifies the car, verifies the income and holds their hand to disbursement.</p>
+      <label class="tiny" style="font-weight:550;display:block;margin-top:14px">Cars you fund per month — <b class="mono" id="bkN">25</b></label>
+      <input type="range" class="rng" min="5" max="200" step="5" value="25" id="bkSlider">
+      <div class="grid g4" style="grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px">
+        <div><div class="tiny faint">Principal originated / year</div><div style="font-family:var(--display);font-size:1.45rem;font-weight:650" id="bkPrin">—</div></div>
+        <div><div class="tiny faint">Interest income, life of one year's loans</div><div style="font-family:var(--display);font-size:1.45rem;font-weight:650;color:var(--naira,#1f7a4d)" id="bkInt">—</div></div>
+        <div><div class="tiny faint">Cost to join the panel</div><div style="font-family:var(--display);font-size:1.45rem;font-weight:650">₦0</div></div>
+      </div>
+      <p class="tiny faint" style="margin-top:12px">Illustrative: average loan ₦27M at 26% p.a. over 48 months, secured on brand-new collateral with lien and salary domiciliation. Your rates, your policy.</p>
+    </div>
+    <div class="card pad" style="margin-bottom:18px">
+      <div class="eyebrow">The founding panel</div>
+      <h3 style="margin:10px 0 4px;font-size:1.15rem">The panel is forming now.</h3>
+      <p class="tiny muted" style="margin-bottom:12px">Founding lenders shape the credit-policy templates and get first look at every file in their segment.</p>
+      <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:10px" id="seatGrid"></div>
+      <p class="tiny faint" style="margin-top:10px">Panel formation in progress — statuses as of September 2026. A listing reflects live onboarding or discussion, not a signed lending agreement.</p>
+    </div>
     <div class="card pad">
       <b>Three steps to live:</b>
       <p class="tiny muted" style="margin-top:8px">1&nbsp;&middot;&nbsp;A 30-minute call on policy and commercials &nbsp;&nbsp;2&nbsp;&middot;&nbsp;Your tech team + ours stand up the sandbox (the <a href="app.html#/axis/integration" style="color:var(--accent)">integration spec is public</a>) &nbsp;&nbsp;3&nbsp;&middot;&nbsp;You price your first live file.</p>
       <div class="row" style="gap:10px;margin-top:14px;flex-wrap:wrap">
-        <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book the 30-minute call &rarr;</a>
+        <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" onclick="track('bank_call_booked_click')">Book the 30-minute call &rarr;</a>
         <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20lender%20panel%20%E2%80%94%20[Bank%20name]&body=Bank%3A%0AName%20and%20role%3A%0APhone%3A%0ABest%20time%20to%20talk%3A">Email us instead</a>
       </div>
     </div>
@@ -631,6 +683,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <p>Every car carries a monthly price and a bank panel behind it. Free to list, and you're paid on disbursement.</p>
       <div class="pacts">
         <a class="pmain" href="#/dealers">List your stock <span>&rarr;</span></a>
+        <a class="plink" href="#/desk">Showroom desk</a>
         <a class="plink" href="app.html#/stallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Dealer desk</a>
         <a class="plink" href="#/dealer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>The numbers</a>
       </div>
@@ -767,6 +820,17 @@ function renderQuotes(qs, sample){
   w.hidden=false;
 }
 if (typeof document !== 'undefined') {
+  /* Showroom links: ?car=V-1001&ref=<showroom> opens that car directly,
+     carrying dealer attribution. Sent by staff from the #/desk screen. */
+  try {
+    const q = new URLSearchParams(location.search);
+    if (q.get('car')) {
+      S.vehicleId = q.get('car');
+      if (q.get('ref')) S.ref = q.get('ref');
+      save(); track('dealer_link_open', {car: S.vehicleId, ref: S.ref||''});
+      history.replaceState(null, '', location.pathname + '#/car');
+    }
+  } catch(e){}
   renderQuotes(SAMPLE_QUOTES, true);
   fetch('testimonials.json').then(r=>r.ok?r.json():null).then(qs=>{
     if(Array.isArray(qs)&&qs.length) renderQuotes(qs, false);
@@ -1523,7 +1587,51 @@ function renderDealer(){
 }
 
 /* ===================== ROUTER ===================== */
-const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,bank:renderBank,dealer:renderDealer,privacy:()=>{},terms:()=>{},banks:()=>{},dealers:()=>{}};
+function renderBanksCalc(){
+  const steps=[
+    ['Midas','Customer picks the car','Certified stock, priced live, on their phone.'],
+    ['Midas','Proforma invoice issued','A numbered PFI fixes car, price and structure. Valid 7 days.'],
+    ['Your bank','Credit assessment','The file crosses the API into your environment. Your scoring, your bureau checks, your rules.'],
+    ['Your bank','Offer letter','Terms return with your reference. Target 48 hours — the industry runs 40–45 days.'],
+    ['Your bank','Down payment lands with you','The customer pays equity directly into your account. Never to the dealer, never to Midas.'],
+    ['You → dealer','Disbursement & keys','You pay the dealer, the lien registers, keys in 24 hours. You collect for the tenor.']];
+  const sx=$('#sixSteps');
+  if(sx) sx.innerHTML=steps.map((st,i)=>`
+    <div style="display:grid;grid-template-columns:34px 96px 1fr;gap:12px;padding:11px 0;${i?'border-top:1px solid var(--line);':''}align-items:baseline">
+      <div class="mono" style="font-size:1.25rem;font-weight:650;color:var(--accent)">${i+1}</div>
+      <div><span class="tag ${st[0].startsWith('Your')||st[0].startsWith('You')?'ok':''}" style="font-size:10.5px">${st[0]}</span></div>
+      <div><b style="font-size:14px">${st[1]}</b><div class="tiny muted" style="margin-top:2px">${st[2]}</div></div>
+    </div>`).join('');
+  const seats=$('#seatGrid');
+  const PANEL=[['Access Bank','Onboarding','ok'],['Stanbic IBTC','In discussion','a'],['Zenith Bank','In discussion','a'],
+               ['Fidelity Bank','In discussion','a'],['Wema Bank','In discussion','a'],['Globus Bank','In discussion','a']];
+  if(seats) seats.innerHTML=PANEL.map(([n,st,cl])=>`<div class="card pad-sm" style="padding:12px 14px"><b style="font-size:13.5px">${n}</b><div class="tiny"><span class="tag ${cl}" style="margin-top:4px">${st}</span></div></div>`).join('')
+    + `<div class="card pad-sm" style="padding:12px 14px;border-style:dashed"><b style="font-size:13.5px">Your bank</b><div class="tiny faint" style="margin-top:4px">Seat open — 30 minutes to find out</div></div>`;
+  const sl=$('#bkSlider');
+  const upd=()=>{const n=+sl.value;$('#bkN').textContent=n;$('#bkEarnHead').textContent='Fund '+n+' cars a month.';
+    const prin=n*12*27000000; const intr=n*12*16900000;
+    $('#bkPrin').textContent=NGNs(prin); $('#bkInt').textContent=NGNs(intr);};
+  if(sl){sl.oninput=upd; upd();}
+}
+function renderDesk(){
+  const sel=$('#dkCar');
+  if(!sel.options.length) sel.innerHTML=VEHICLES.map(v=>`<option value="${v.id}">${v.year} ${v.make} ${v.model} — ${NGN(v.price)}</option>`).join('');
+  const update=()=>{
+    const id=sel.value, v=VEHICLES.find(x=>x.id===id);
+    const ref=encodeURIComponent(($('#dkRef').value||'').toLowerCase().replace(/\s+/g,'-'));
+    const link=location.origin+location.pathname+'?car='+id+'&ref='+ref;
+    const nm=$('#dkName').value.trim();
+    const msg=`Hello${nm?' '+nm:''}, good to see you at the showroom today. Here is the ${v.year} ${v.make} ${v.model} — you can see your monthly price and apply for financing from your phone: ${link}`;
+    const raw=$('#dkPhone').value.replace(/\D/g,'');
+    const intl=raw.startsWith('234')?raw:(raw.startsWith('0')?'234'+raw.slice(1):raw);
+    $('#dkSend').href='https://wa.me/'+(intl||'')+'?text='+encodeURIComponent(msg);
+    $('#dkPreview').textContent=msg;
+    $('#dkCopy').onclick=()=>{try{navigator.clipboard.writeText(link);$('#dkCopy').textContent='Copied ✓';setTimeout(()=>$('#dkCopy').textContent='Copy link',1600);}catch(e){}};
+  };
+  ['dkCar','dkName','dkPhone','dkRef'].forEach(i=>{const n=$('#'+i); n.oninput=update; n.onchange=update;});
+  update();
+}
+const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,bank:renderBank,dealer:renderDealer,desk:renderDesk,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
   const page=VIEWS[h]?h:'market';
