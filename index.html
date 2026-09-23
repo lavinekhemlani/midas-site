@@ -154,7 +154,7 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:18px 0}
 .field{margin-bottom:16px}
 .field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px;color:var(--ink)}
 .field .hint{font-size:12px;color:var(--ink-faint);margin-top:5px;line-height:1.4}
-.inp,select.inp{width:100%;padding:11px 13px;border:1px solid var(--line-2);border-radius:9px;background:var(--surface);font-size:14.5px;transition:.14s}
+.inp,select.inp{width:100%;padding:14px 15px;border:1px solid var(--line-2);border-radius:11px;background:var(--surface);font-size:16px;transition:.14s}
 .inp:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(11,42,74,.09)}
 .f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:600px){.f2{grid-template-columns:1fr}}
@@ -257,6 +257,29 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .foot-bar .fb-links{display:flex;gap:18px;margin-top:10px}
 .foot-bar .fb-links a{text-decoration:none}
 .foot-bar .fb-links a:hover{color:var(--ink);text-decoration:underline}
+/* motion */
+.rev{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.rev.on{opacity:1;transform:none}
+.hero-photo .bg{animation:kenb 26s ease-in-out infinite alternate}
+@keyframes kenb{from{transform:scale(1)}to{transform:scale(1.06)}}
+.stepflow{position:relative;padding-left:30px}
+.stepflow:before{content:"";position:absolute;left:10px;top:14px;bottom:14px;width:2px;background:repeating-linear-gradient(180deg,var(--accent) 0 6px,transparent 6px 12px);animation:dashmove 1.4s linear infinite;opacity:.45}
+@keyframes dashmove{to{background-position:0 12px}}
+.sf-it{position:relative;padding:12px 0;border-bottom:1px solid var(--line)}
+.sf-it:before{content:"";position:absolute;left:-25px;top:19px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(200,134,42,.16)}
+.chiprow{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chiprow .ch{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--ink-soft)}
+.chiprow .ch b{color:var(--ink);font-weight:600}
+.bignum{font-family:var(--display);font-size:2.2rem;font-weight:650;letter-spacing:-.02em;line-height:1}
+/* big footer */
+.bigfoot{border-top:1px solid var(--line);margin-top:40px;padding:36px 0 18px}
+.bigfoot .bf-cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:26px}
+.bigfoot h5{margin:0 0 10px;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+.bigfoot a{display:block;text-decoration:none;color:var(--ink-soft);font-size:13.5px;padding:3px 0}
+.bigfoot a:hover{color:var(--ink)}
+.bigfoot .bf-bot{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-faint)}
+@media(max-width:880px){.bigfoot .bf-cols{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}.hero-photo .bg{animation:none}.stepflow:before{animation:none}}
 .foot-bar .fb-r{max-width:44ch;text-align:right;font-size:12px;line-height:1.5}
 @media(max-width:820px){.pgrid{grid-template-columns:1fr}.pcard{min-height:0;padding:26px 22px 22px}.foot-bar .fb-r{text-align:left}}
 .timeline{display:grid;gap:0}
@@ -337,9 +360,15 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <div class="topbar">
   <div class="topbar-in">
     <a href="#/market" class="logo"><img src="brand/wordmark.svg" alt="Midas" /></a>
+    <select id="ctrySel" onchange="setCountry(this.value)" style="border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 8px;font-size:13px;margin-left:8px;cursor:pointer">
+      <option value="NG">&#127475;&#127468; Nigeria</option>
+      <option value="GH">&#127468;&#127469; Ghana</option>
+      <option value="BJ">&#127463;&#127471; Benin</option>
+    </select>
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
+      <a href="#/learn" data-nav="learn">Learn</a>
       <a href="#/status" data-nav="status">My application</a>
       <a href="#/banks" data-nav="banks">For banks</a>
       <a href="#/dealers" data-nav="dealers">For dealerships</a>
@@ -402,6 +431,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <button onclick="setMarketSeg('new',this)">Brand new</button>
       <button onclick="setMarketSeg('used',this)">Pre-owned</button>
     </div>
+    <a href="#/halal" class="tag a" style="margin-left:12px;text-decoration:none;padding:7px 12px;font-size:12.5px">&#9770; Non-interest (halal) option available</a>
     <div class="veh-grid" id="vehGrid"></div>
     <p class="tiny faint" style="margin-top:14px">Showroom prices, synced from Auto OS. Monthly amounts are the best current bank offer at 30% down over 60 months &mdash; your own offer depends on your income.</p>
   </div>
@@ -451,22 +481,20 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <section class="view" id="v-apply">
   <div class="wrap" style="padding-top:34px;max-width:860px">
     <div class="eyebrow">One application</div>
-    <h2 style="margin:8px 0 10px">Let&rsquo;s find your best rate.</h2>
-    <p class="muted" style="margin-bottom:26px">Five minutes. The banks do the rest. Nothing touches a credit bureau until you accept an offer.</p>
+    <h2 style="margin:8px 0 10px">Let&rsquo;s get your car.</h2>
+    <p class="muted" style="margin-bottom:26px">5 minutes on your phone. The banks do the rest.</p>
 
     <div class="steps" id="applySteps">
       <div class="st on">1 &middot; Car</div>
       <div class="st">2 &middot; You</div>
       <div class="st">3 &middot; Money</div>
-      <div class="st">4 &middot; Documents</div>
+      <div class="st">4 &middot; Papers</div>
       <div class="st">5 &middot; Approval</div>
     </div>
 
     <div class="card pad" id="applyCard"></div>
 
-    <div class="warnbox" style="margin-top:18px">
-      <b>Demo build.</b> Midas never asks for a banking password, card number, BVN or OTP. Statement verification runs through a licensed open-banking provider, which returns a verified income summary &mdash; Midas and the lender never see your credentials. Nothing on this page is transmitted anywhere; it stays in your browser.
-    </div>
+    <p class="tiny muted" style="margin-top:16px">&#128274; We never ask for your BVN, card number, PIN or OTP.</p>
   </div>
 </section>
 
@@ -541,6 +569,114 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 </section>
 
 
+<!-- ===================== COUNTRY ===================== -->
+<section class="view" id="v-country">
+  <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px" id="countryWrap"></div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="view" id="v-about">
+  <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px">
+    <div class="eyebrow">About Midas</div>
+    <h2 style="margin:10px 0 12px">Cars, financed properly.</h2>
+    <p class="muted" style="max-width:58ch">Most Nigerians pay cash for cars because a loan takes forty days and a miracle. Midas puts a panel of banks behind every car, so an offer comes back in 48 hours and the keys follow your down payment.</p>
+    <div style="margin:22px 0;border-radius:14px;overflow:hidden"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;max-height:300px;object-fit:cover;display:block"></div>
+    <div class="grid rev" style="grid-template-columns:repeat(4,1fr);gap:14px;text-align:center;margin:26px 0">
+      <div><div class="bignum" data-cnt="48">0</div><div class="tiny muted">hour offer target</div></div>
+      <div><div class="bignum" data-cnt="7">0</div><div class="tiny muted">banks on the panel</div></div>
+      <div><div class="bignum" data-cnt="6">0</div><div class="tiny muted">cities served</div></div>
+      <div><div class="bignum" data-cnt="24">0</div><div class="tiny muted">hours to keys</div></div>
+    </div>
+    <p class="muted rev" style="max-width:58ch">We are built with the Stallion Group&rsquo;s national dealer network &mdash; showrooms and service centres in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan. Vehicles first; education loans and mortgages ride the same rail next.</p>
+    <div class="row" style="gap:10px;margin-top:20px;flex-wrap:wrap">
+      <a class="btn btn-p" href="#/market">See the cars &rarr;</a>
+      <a class="btn btn-g" href="#/team">Meet the team</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section class="view" id="v-team">
+  <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px">
+    <div class="eyebrow">The team</div>
+    <h2 style="margin:10px 0 20px">Small team. Big rail.</h2>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px">
+      <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">LH</div>
+        <b style="display:block;margin-top:12px">Lavine Hemlani</b><div class="tiny muted">Founder. Builds the bank panel and the capital side.</div></div>
+      <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0b2a4a,#2a5a8f);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">MK</div>
+        <b style="display:block;margin-top:12px">Manoj Kurapati</b><div class="tiny muted">Technology. The platform, the API, the consoles.</div></div>
+      <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1d7a4f,#3fae7a);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">AS</div>
+        <b style="display:block;margin-top:12px">Amit Sharma</b><div class="tiny muted">Sales, Lagos. The person on the other end of the WhatsApp button.</div></div>
+    </div>
+    <p class="tiny faint" style="margin-top:16px">Behind the team sits the Stallion Group&rsquo;s automotive network &mdash; three decades of vehicle distribution in Nigeria.</p>
+  </div>
+</section>
+
+<!-- ===================== CAREERS ===================== -->
+<section class="view" id="v-careers">
+  <div class="wrap" style="padding-top:38px;max-width:720px;padding-bottom:30px">
+    <div class="eyebrow">Careers</div>
+    <h2 style="margin:10px 0 8px">Help finance a million cars.</h2>
+    <p class="muted" style="max-width:56ch">Lagos-based unless stated. Write briefly &mdash; what you have done beats what you would do.</p>
+    <div id="jobsList" style="margin-top:14px">
+      <div class="sf-it rev" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b style="font-size:14.5px">Credit Operations Analyst</b><div class="tiny muted">Runs files from PFI to disbursement with the bank desks.</div></div><a class="btn btn-g btn-sm" href="mailto:lavine@zenith-grp.co?subject=Credit%20Operations%20Analyst%20%E2%80%94%20Midas">Apply</a></div>
+      <div class="sf-it rev" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b style="font-size:14.5px">Dealer Success Manager</b><div class="tiny muted">Onboards showrooms; keeps stock and pricing live.</div></div><a class="btn btn-g btn-sm" href="mailto:lavine@zenith-grp.co?subject=Dealer%20Success%20Manager%20%E2%80%94%20Midas">Apply</a></div>
+      <div class="sf-it rev" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b style="font-size:14.5px">Verification &amp; KYC Officer</b><div class="tiny muted">Income and identity checks, done fast and done right.</div></div><a class="btn btn-g btn-sm" href="mailto:lavine@zenith-grp.co?subject=Verification%20Officer%20%E2%80%94%20Midas">Apply</a></div>
+      <div class="sf-it rev" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b style="font-size:14.5px">Full-stack Engineer <span class="tiny faint">Remote / Lagos</span></b><div class="tiny muted">The customer flow, the bank API, the dealer desk.</div></div><a class="btn btn-g btn-sm" href="mailto:lavine@zenith-grp.co?subject=Engineer%20%E2%80%94%20Midas">Apply</a></div>
+      <div class="sf-it rev" style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b style="font-size:14.5px">Customer Success &mdash; WhatsApp</b><div class="tiny muted">First reply inside five minutes, in English, Pidgin, Hausa or Yoruba.</div></div><a class="btn btn-g btn-sm" href="mailto:lavine@zenith-grp.co?subject=Customer%20Success%20%E2%80%94%20Midas">Apply</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEARN ===================== -->
+<section class="view" id="v-learn">
+  <div class="wrap" style="padding-top:38px;max-width:900px;padding-bottom:30px">
+    <div class="eyebrow">Learn</div>
+    <h2 style="margin:10px 0 20px">Car money, explained simply.</h2>
+    <div class="grid" id="learnGrid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px"></div>
+  </div>
+</section>
+
+<!-- ===================== POST ===================== -->
+<section class="view" id="v-post">
+  <div class="wrap" style="padding-top:38px;max-width:680px;padding-bottom:30px" id="postWrap"></div>
+</section>
+
+<!-- ===================== HALAL FINANCE ===================== -->
+<section class="view" id="v-halal">
+  <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px">
+    <div class="eyebrow">Non-interest finance</div>
+    <h2 style="margin:10px 0 12px">Own your car the halal way.</h2>
+    <p class="muted" style="max-width:58ch">No interest, ever. You pay an agreed rental-profit charge, fixed and written down on day one. Nothing floats, nothing compounds.</p>
+    <div class="grid rev" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px">
+      <div class="card pad"><div class="mono" style="color:var(--accent);font-weight:650">1</div><b style="font-size:14px">The bank buys the car</b><div class="tiny muted" style="margin-top:3px">At the showroom price. It owns it.</div></div>
+      <div class="card pad"><div class="mono" style="color:var(--accent);font-weight:650">2</div><b style="font-size:14px">You drive and pay monthly</b><div class="tiny muted" style="margin-top:3px">A fixed rent. Ownership passes step by step.</div></div>
+      <div class="card pad"><div class="mono" style="color:var(--accent);font-weight:650">3</div><b style="font-size:14px">It becomes yours</b><div class="tiny muted" style="margin-top:3px">At the end of the term, outright.</div></div>
+    </div>
+
+    <h3 style="margin:32px 0 8px;font-size:1.1rem">Two structures, both simple</h3>
+    <div style="display:grid;gap:0">
+      <div style="padding:14px 0;border-bottom:1px solid var(--line)">
+        <b style="font-size:14.5px">Rent-to-own &mdash; Ijara wa Iqtina</b>
+        <div class="tiny muted" style="margin-top:3px">The bank owns the car and you rent it for a fixed monthly amount. With each payment, ownership passes to you step by step. At the end of the term the car is yours outright.</div>
+      </div>
+      <div style="padding:14px 0;border-bottom:1px solid var(--line)">
+        <b style="font-size:14.5px">Cost-plus sale &mdash; Murabaha</b>
+        <div class="tiny muted" style="margin-top:3px">The bank buys the car at the showroom price and sells it to you at a disclosed, fixed margin, paid in equal monthly instalments. You own the car from day one; the bank holds a lien until you finish paying.</div>
+      </div>
+    </div>
+
+    <h3 style="margin:32px 0 8px;font-size:1.1rem">What stays the same</h3>
+    <p class="muted" style="max-width:64ch;font-size:14.5px">The same cars, the same application, the same 48-hour target. Your down payment still goes directly to the bank, never to the dealer or Midas. Tick <b>non-interest finance</b> when you apply and only compliant offers reach you.</p>
+
+    <div class="row" style="gap:10px;margin-top:22px;flex-wrap:wrap">
+      <a class="btn btn-p" href="#/market" onclick="S.halal=true;save()">See the cars &mdash; halal offers only &rarr;</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Salaam%20Amit%2C%20I%20want%20halal%20non-interest%20financing%20for%20a%20car" target="_blank" rel="noopener">Ask on WhatsApp</a>
+    </div>
+    <p class="tiny faint" style="margin-top:16px">Non-interest products are provided by licensed non-interest banks and governed by each bank&rsquo;s own Sharia advisory board. Midas arranges the transaction; it does not issue Sharia certification.</p>
+  </div>
+</section>
+
 <!-- ===================== SHOWROOM DESK ===================== -->
 <section class="view" id="v-desk">
   <div class="wrap" style="padding-top:34px;max-width:720px">
@@ -602,17 +738,24 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   <div class="wrap" style="padding-top:38px;max-width:780px;padding-bottom:30px">
     <div class="eyebrow">For financial institutions</div>
     <h2 style="margin:10px 0 14px">Vehicle finance origination, done properly.</h2>
-    <p class="muted" style="max-width:66ch">Midas originates fully documented vehicle-finance applications for a panel of Nigerian banks, on new and certified pre-owned stock from an established national dealer network. Each file arrives complete: a numbered proforma invoice, a certified vehicle with fixed pricing, verified income, and the customer&rsquo;s documentation &mdash; ready for your credit process, not a lead to be chased.</p>
+    <p class="muted" style="max-width:60ch">Complete files, not leads: a numbered PFI, a certified vehicle at a fixed price, verified income and full KYC &mdash; delivered to your credit team over an API.</p>
 
     <div style="margin:22px 0 6px;border-radius:14px;overflow:hidden"><img src="cars/showroom.jpg" alt="Stallion showroom" style="width:100%;max-height:280px;object-fit:cover;display:block"></div>
     <p class="tiny faint" style="margin-bottom:14px">The dealer network behind the flow &mdash; showrooms and service centres in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan.</p>
-    <p class="muted" style="max-width:66ch;margin-top:14px"><b style="color:var(--ink)">The model is proven in this market.</b> Through a comparable origination platform, Stanbic IBTC disbursed over &#8358;4&nbsp;billion of vehicle loans in its first six months, and vehicle &amp; asset finance desks across the industry are actively growing this book. The question is no longer whether digitally originated auto finance performs in Nigeria &mdash; it is which institutions take the flow.</p>
+    <p class="muted rev" style="max-width:60ch;margin-top:14px"><b style="color:var(--ink)">Proven in this market:</b> Stanbic IBTC disbursed over &#8358;4bn of vehicle loans in its first six months on a comparable platform.</p>
 
-    <h3 style="margin:34px 0 8px;font-size:1.1rem">The quality of the risk asset</h3>
-    <p class="muted" style="max-width:66ch">These are the facilities your credit policy already favours: <b style="color:var(--ink)">equity contributions of 20&ndash;70%</b> paid directly into your account before disbursement; <b style="color:var(--ink)">lien on title</b>; comprehensive insurance; <b style="color:var(--ink)">salary domiciliation</b> where applicable; income verified through a licensed provider rather than declared; and collateral that is either brand new with full warranty or inspected and graded. Your credit committee retains full discretion on every file &mdash; assessment runs inside your own environment, over an API. Nothing sits in the dealer&rsquo;s systems.</p>
+    <h3 class="rev" style="margin:34px 0 4px;font-size:1.1rem">The risk asset</h3>
+    <div class="chiprow rev">
+      <span class="ch"><b>20&ndash;70% equity</b> &mdash; paid to your account</span>
+      <span class="ch"><b>Lien on title</b></span>
+      <span class="ch"><b>Comprehensive insurance</b></span>
+      <span class="ch"><b>Salary domiciliation</b></span>
+      <span class="ch"><b>Verified income</b>, not declared</span>
+      <span class="ch"><b>Your committee&rsquo;s full discretion</b></span>
+    </div>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">How a facility originates</h3>
-    <div id="sixSteps"></div>
+    <div id="sixSteps" class="stepflow"></div>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">Indicative economics</h3>
     <p class="tiny muted" style="margin-bottom:10px">Average facility of &#8358;27M at 26% p.a. over 48 months, for illustration. Rates and tenors are set by your institution.</p>
@@ -622,12 +765,14 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </table></div>
     <p class="tiny faint" style="margin-top:8px">There is no fee to join the panel. Midas is remunerated by its commercial partners, not by your institution or the borrower.</p>
 
+    <p class="muted" style="max-width:66ch;margin-top:14px">A <b style="color:var(--ink)">non-interest window</b> is reserved on the panel for licensed Islamic banks &mdash; Murabaha and Ijara wa Iqtina structures, serving the roughly half of Nigeria that will not take an interest-bearing loan. We would particularly welcome that conversation.</p>
+
     <h3 style="margin:34px 0 8px;font-size:1.1rem">The founding panel</h3>
     <div id="seatGrid" style="max-width:640px"></div>
     <p class="tiny faint" style="margin-top:8px">Positions as of September 2026, reflecting live onboarding or discussions &mdash; not signed lending agreements. One founding position remains open.</p>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">Next step</h3>
-    <p class="muted" style="font-size:14.5px;max-width:66ch">A thirty-minute conversation on credit policy and commercials; thereafter your technology team and ours establish the sandbox &mdash; <a href="app.html#/axis/integration" style="color:var(--accent)">the integration specification is published</a>. We would welcome the conversation at your convenience.</p>
+    <p class="muted" style="font-size:14.5px;max-width:60ch">Thirty minutes on credit policy and commercials, then the sandbox &mdash; <a href="app.html#/axis/integration" style="color:var(--accent)">the integration specification is published</a>.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" onclick="track('bank_call_booked_click')">Arrange the conversation &rarr;</a>
       <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20lender%20panel%20%E2%80%94%20[Institution]&body=Institution%3A%0AName%20and%20title%3A%0ATelephone%3A%0AConvenient%20time%3A">Write to us</a>
@@ -660,7 +805,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <div class="wrap sec" id="quotesWrap" hidden>
   <h2 style="margin:10px 0 24px">What people say after the keys.</h2>
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px" id="quotesGrid"></div>
-  <p class="tiny faint" id="quotesNote" style="margin-top:12px">Illustrative until our first deliveries &mdash; real buyers and their photos replace these.</p>
+  <p class="tiny faint" id="quotesNote" style="margin-top:12px">Illustrative &mdash; portraits are generated, not real customers. Real buyers replace these after our first deliveries.</p>
 </div>
 
 <section class="wrap partners" aria-labelledby="partnersTitle">
@@ -672,7 +817,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <p>Banks compete for every loan. Dealers sell more cars. Buyers get the lowest rate.</p>
   </div>
   <div class="pgrid">
-    <article class="pcard bank">
+    <article class="pcard bank rev">
       <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg></div>
       <div class="pk">For banks</div>
       <h3>Join the panel. Price every loan.</h3>
@@ -683,7 +828,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <a class="plink" href="#/bank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>Panel view</a>
       </div>
     </article>
-    <article class="pcard dealer">
+    <article class="pcard dealer rev">
       <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4h-2M3 13v4h2"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/><path d="M3 13h18"/></svg></div>
       <div class="pk">For dealerships</div>
       <h3>List your stock. Browsers become buyers.</h3>
@@ -698,14 +843,21 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   </div>
 </section>
 
-<div class="wrap foot">
-  <div class="foot-bar">
-    <div class="fb-l">
-      <b style="color:var(--ink)">Midas</b> &middot; new-car financing at the best rate any bank will give.<br>
-      Vehicles today; education loans and mortgages on the same rail next.
-      <div class="fb-links"><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/banks">Banks</a><a href="#/dealers">Dealerships</a></div>
+<div class="wrap bigfoot">
+  <div class="bf-cols">
+    <div>
+      <img src="brand/wordmark.svg" alt="Midas" style="height:22px;margin-bottom:10px">
+      <div class="tiny muted" style="max-width:34ch">Financing at the best rate any bank will give. Vehicles today; education loans and mortgages next.</div>
+      <a class="btn btn-wa btn-sm" style="margin-top:12px;display:inline-flex" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
-    <div class="fb-r">Pilot build. Panel pricing is indicative until each bank&rsquo;s signed policy is live; identities stay masked until you accept an offer.</div>
+    <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
+    <div><h5>Partners</h5><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
+    <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a></div>
+    <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a></div>
+  </div>
+  <div class="bf-bot">
+    <span>&copy; 2026 Midas &middot; Lagos &middot; Abuja &middot; Port Harcourt</span>
+    <span>Pilot build &mdash; panel pricing indicative until each bank&rsquo;s signed policy is live.</span>
   </div>
 </div>
 <script>
@@ -770,11 +922,11 @@ const VEHICLES = [
   {id:'V-1003', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:62000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/tucson.jpg', tag:'Family flagship'},
   {id:'V-1004', year:2026, make:'Changan', model:'Hunter 4×4', body:'pickup', price:49500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/hunter.jpg', tag:'Work + weekend'},
   {id:'V-1005', year:2026, make:'MG', model:'T60 4×4', body:'pickup', price:46500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/t60.jpg', tag:'Built for business'},
-  {id:'U-2001', year:2019, make:'Toyota', model:'Corolla LE', body:'sedan', price:16500000, km:62000, origin:'Foreign', grade:'A', score:178, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2002', year:2016, make:'Toyota', model:'Camry SE', body:'sedan', price:12800000, km:118000, origin:'Local', grade:'B', score:151, loc:'Victoria Island, Lagos', cyl:4, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2003', year:2021, make:'Hyundai', model:'Elantra', body:'sedan', price:21500000, km:41000, origin:'Foreign', grade:'A', score:186, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2004', year:2018, make:'Lexus', model:'RX 350', body:'suv', price:38500000, km:88000, origin:'Foreign', grade:'A', score:181, loc:'Victoria Island, Lagos', cyl:6, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2005', year:2013, make:'Toyota', model:'Sienna XLE', body:'van', price:11500000, km:143000, origin:'Local', grade:'B', score:144, loc:'Ikeja, Lagos', cyl:6, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'}
+  {id:'U-2001', img:'cars/used-corolla.jpg', year:2019, make:'Toyota', model:'Corolla LE', body:'sedan', price:16500000, km:62000, origin:'Foreign', grade:'A', score:178, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2002', img:'cars/used-camry.jpg', year:2016, make:'Toyota', model:'Camry SE', body:'sedan', price:12800000, km:118000, origin:'Local', grade:'B', score:151, loc:'Victoria Island, Lagos', cyl:4, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2003', img:'cars/elantra.jpg', year:2021, make:'Hyundai', model:'Elantra', body:'sedan', price:21500000, km:41000, origin:'Foreign', grade:'A', score:186, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2004', img:'cars/used-rx.jpg', year:2018, make:'Lexus', model:'RX 350', body:'suv', price:38500000, km:88000, origin:'Foreign', grade:'A', score:181, loc:'Victoria Island, Lagos', cyl:6, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2005', img:'cars/used-sienna.jpg', year:2013, make:'Toyota', model:'Sienna XLE', body:'van', price:11500000, km:143000, origin:'Local', grade:'B', score:144, loc:'Ikeja, Lagos', cyl:6, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'}
 ];
 
 /* ---------- LENDER PANEL (70, masked) ---------- */
@@ -813,11 +965,11 @@ const LENDERS = (() => {
    SAMPLE set below, visibly tagged as sample — the tag drops off
    automatically the day the real file lands. */
 const SAMPLE_QUOTES=[
-  {name:'Adaeze O.', city:'Lekki, Lagos', vehicle:'2026 Hyundai Creta', img:'cars/creta.jpg',
+  {name:'Adaeze O.', city:'Lekki, Lagos', vehicle:'2026 Hyundai Creta', img:'cars/creta.jpg', photo:'brand/people/adaeze.jpg',
    quote:'I applied on Tuesday from my office. Thursday the bank called with an offer. Saturday I drove the Creta home.'},
-  {name:'Emeka N.', city:'Port Harcourt', vehicle:'2026 Hyundai Elantra', img:'cars/elantra.jpg',
+  {name:'Emeka N.', city:'Port Harcourt', vehicle:'2026 Hyundai Elantra', img:'cars/elantra.jpg', photo:'brand/people/emeka.jpg',
    quote:'The part I did not believe was that nobody asked me to pay anything except into the bank\u2019s own account. That is when I knew it was real.'},
-  {name:'Fatima B.', city:'Wuse, Abuja', vehicle:'2026 Hyundai Tucson', img:'cars/tucson.jpg',
+  {name:'Fatima B.', city:'Wuse, Abuja', vehicle:'2026 Hyundai Tucson', img:'cars/tucson.jpg', photo:'brand/people/fatima.jpg',
    quote:'Three banks came back with offers. I took the lowest one \u2014 my monthly is less than I was paying to rent.'}
 ];
 function renderQuotes(qs, sample){
@@ -895,7 +1047,7 @@ const KEY = 'midas-v2';
 let S = load();
 function load(){
   try { const r = JSON.parse(localStorage.getItem(KEY)); if (r) return r; } catch(e){}
-  return { vehicleId:null, equityPct:.35, tenor:48, step:1, applicant:null, verified:false, accepted:null, submittedAt:null };
+  return { vehicleId:null, equityPct:.35, tenor:48, halal:false, step:1, applicant:null, verified:false, accepted:null, submittedAt:null };
 }
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
 const vehicle = () => VEHICLES.find(v => v.id === S.vehicleId) || null;
@@ -1017,30 +1169,37 @@ const el = (h) => { const d = document.createElement('div'); d.innerHTML = h.tri
 
 /* ===================== MARKETPLACE ===================== */
 function bestTeaser(v){
-  const ok = runPanel(v, .30, 60, null).filter(o=>o.approved);
-  return ok.length ? sortOffers(ok,'mo')[0] : null;
+  for (const eq of [.30,.35,.40]){
+    let best=null;
+    for (const ten of [60,48,36]){
+      const ok=runPanel(v,eq,ten,null).filter(o=>o.approved);
+      if(ok.length){ const o=sortOffers(ok,'mo')[0]; if(!best||o.monthly<best.o.monthly) best={o,eq,ten}; }
+    }
+    if(best) return best;
+  }
+  return null;
 }
 let marketSeg='all';
 function setMarketSeg(m,btn){ marketSeg=m; document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b===btn)); renderMarket(); }
 function renderMarket(){
   const g = $('#vehGrid'); if (!g) return;
   const rb=$('#ratesBoard');
-  if(rb){ rb.innerHTML=VEHICLES.map(v=>{const t=bestTeaser(v);return t?`<span class="rb-it">${v.model} <b>${pct(t.rate*100)}</b> <span class="dn">▾</span> · ${NGN(t.monthly)}/mo</span>`:'';}).join(''); }
+  if(rb){ rb.innerHTML=VEHICLES.map(v=>{const t=bestTeaser(v);return t?`<span class="rb-it">${v.model} <b>${pct(t.o.rate*100)}</b> <span class="dn">▾</span> · ${NGN(t.o.monthly)}/mo</span>`:'';}).join(''); }
   g.innerHTML = '';
   const rows = VEHICLES.filter(v => marketSeg==='all' ? true : marketSeg==='new' ? v.origin==='Brand new' : v.origin!=='Brand new');
   rows.forEach(v => {
     const t = bestTeaser(v);
     const isNew = v.origin==='Brand new';
     g.appendChild(el(`
-      <article class="veh" onclick="openCar('${v.id}')">
+      <article class="veh rev" onclick="openCar('${v.id}')">
         <div class="veh-img">${v.img?`<img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" loading="lazy" />`:carSVG(v.body)}
           <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${isNew?v.tag:(v.km/1000).toFixed(0)+'K km · Grade '+v.grade}</span></div>
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
           <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">${isNew?'In stock · Lagos':'Inspected · '+v.loc.split(',')[0]}</span></div>
-          <div class="veh-mo-big">${t?NGN(t.monthly):'—'}<span> /month</span></div>
-          <div class="veh-full">Full price ${NGNs(v.price)} · from 30% down${t?` · best rate <b style="color:var(--naira)">${pct(t.rate*100)}</b>`:''}</div>
+          <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
+          <div class="veh-full">Full price ${NGNs(v.price)} · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
             <button class="btn btn-a btn-sm" style="flex:2" onclick="event.stopPropagation();openCar('${v.id}')">Get loan offers</button>
             <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
@@ -1123,11 +1282,13 @@ function rvCurve(v, loan, rate, tenor){
     <text x="${P.l+4}" y="${y(loan)+12}" font-size="10" fill="#c8862a">loan balance</text>
   </svg>`;
 }
+function isHalalLender(l){ return l.tier==='Non-Interest (Murabaha)'; }
 function renderDeal(){
   const v = vehicle();
   const eq = S.equityPct, ten = S.tenor;
   const loan = v.price * (1-eq);
-  const offers = sortOffers(runPanel(v, eq, ten, S.applicant).filter(o=>o.approved), 'cost');
+  let offers = sortOffers(runPanel(v, eq, ten, S.applicant).filter(o=>o.approved), 'cost');
+  if (S.halal) offers = offers.filter(o=>isHalalLender(o.lender));
   const best = offers[0];
   const rv = residualValue(v, ten);
   $('#rvChart').innerHTML = rvCurve(v, loan, best ? best.rate : .30, ten);
@@ -1135,7 +1296,7 @@ function renderDeal(){
   $('#carDeal').innerHTML = `
     ${best ? `
     <div style="font-family:var(--display);font-size:2.3rem;font-weight:650;letter-spacing:-.025em;line-height:1">${NGN(best.monthly)}<span style="font-size:1rem;color:var(--ink-faint);font-weight:400"> /month</span></div>
-    <p class="tiny muted" style="margin-top:7px">${pct(best.rate*100)} yearly · best of ${LENDERS.length} banks today · answer in ${best.hours}h</p>`
+    <p class="tiny muted" style="margin-top:7px">${S.halal?pct(best.rate*100)+' fixed profit margin · non-interest bank':pct(best.rate*100)+' yearly · best of '+LENDERS.length+' banks today'} · answer in ${best.hours}h</p>`
     : `
     <div style="font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em">${NGN(v.price)}</div>
     <p class="tiny muted" style="margin-top:6px">Showroom price. Same for everybody.</p>`}
@@ -1144,6 +1305,9 @@ function renderDeal(){
     <input type="range" class="rng" min="20" max="70" step="1" value="${eq*100}" oninput="S.equityPct=this.value/100;save();renderDeal()">
     <label class="tiny" style="font-weight:550;display:block;margin-top:12px">Paying it back over · <b class="mono">${ten} months</b></label>
     <input type="range" class="rng" min="12" max="60" step="6" value="${ten}" oninput="S.tenor=+this.value;save();renderDeal()">
+    <label style="display:flex;gap:8px;align-items:center;margin-top:12px;cursor:pointer;font-size:13px">
+      <input type="checkbox" ${S.halal?'checked':''} onchange="S.halal=this.checked;save();renderDeal()">
+      <span>&#9770; Non-interest (halal) offers only · <a href="#/halal" style="color:var(--accent)" onclick="event.stopPropagation()">how it works</a></span></label>
     <hr class="sep">
     <div class="kv"><span class="k">Car price</span><span class="v">${NGN(v.price)}</span></div>
     <div class="kv"><span class="k">Your down payment</span><span class="v">${NGN(v.price*eq)}</span></div>
@@ -1152,7 +1316,7 @@ function renderDeal(){
     ${best ? `
     <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="location.hash='#/apply'">See my offers →</button>
     <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
-    : `<div class="warnbox" style="margin-top:16px">No bank will price this yet. Add to the down payment, or take longer to pay.</div>`}`;
+    : `<div class="warnbox" style="margin-top:16px">${S.halal?'The non-interest bank will not price this structure yet. Add to the down payment or shorten the term.':'No bank will price this yet. Add to the down payment, or take longer to pay.'}</div>`}`;
 }
 </script>
 <script>
@@ -1199,19 +1363,19 @@ function renderApply(){
   else if (S.step === 2){
     c.innerHTML = `
       <h3>About you</h3>
-      <p class="muted tiny" style="margin:6px 0 18px">Just enough for the banks to say yes. Nothing more.</p>
+      <p class="muted tiny" style="margin:6px 0 18px">So the bank knows who you are.</p>
       <div class="f2">
-        <div class="field"><label>Full name</label><input class="inp" id="fName" value="${a.name}" placeholder="Adeola Bakare"></div>
+        <div class="field"><label>Your name</label><input class="inp" id="fName" value="${a.name}" placeholder="Adeola Bakare"></div>
         <div class="field"><label>Phone</label><input class="inp" id="fPhone" type="tel" value="${a.phone}" placeholder="080 0000 0000"></div>
       </div>
       <div class="f2">
-        <div class="field"><label>WhatsApp number</label><input class="inp" id="fWa" type="tel" value="${a.whatsapp||''}" placeholder="same as phone if empty">
-          <div class="hint">Offer updates and your PFI arrive here.</div></div>
+        <div class="field"><label>WhatsApp (if different)</label><input class="inp" id="fWa" type="tel" value="${a.whatsapp||''}" placeholder="same as phone if empty">
+          <div class="hint">Your offers arrive here.</div></div>
         <div class="field"><label>Email</label><input class="inp" id="fEmail" type="email" value="${a.email}" placeholder="you@company.com"></div>
       </div>
       <div class="f2">
-        <div class="field"><label>Employment type</label><select class="inp" id="fEmp">${EMP.map(e=>`<option ${a.employment===e?'selected':''}>${e}</option>`).join('')}</select></div>
-        <div class="field"><label>Years in current role</label><input class="inp" id="fYrs" type="number" min="0" max="40" value="${a.yearsEmployed}"></div>
+        <div class="field"><label>How do you earn?</label><select class="inp" id="fEmp">${EMP.map(e=>`<option value="${e}" ${a.employment===e?'selected':''}>${({'Salaried':'I get a salary','Self-employed':'I run my own business','Director/Owner':'I own a company','Professional':'Professional \u2014 doctor, lawyer, engineer','Trader':'I trade goods','Gig':'I do gig or contract work'})[e]||e}</option>`).join('')}</select></div>
+        <div class="field"><label>Years doing this work</label><input class="inp" id="fYrs" type="number" min="0" max="40" value="${a.yearsEmployed}"></div>
       </div>
       <div class="row" style="gap:10px">
         <button class="btn btn-g" onclick="S.step=1;save();renderApply()">← Back</button>
@@ -1222,27 +1386,27 @@ function renderApply(){
     const pq = prequalMax(a.income, a.obligations);
     c.innerHTML = `
       <h3>Your money</h3>
-      <p class="muted tiny" style="margin:6px 0 18px">So the banks only send offers you can truly afford.</p>
-      ${pq>0?`<div class="note" style="margin-bottom:16px"><b>Banks could lend you up to ~${NGN(pq)}.</b> Estimate at 27% p.a. over 60 months, half your income free for repayments. Firm figures come with the offers.</div>`:''}
+      <p class="muted tiny" style="margin:6px 0 18px">So banks only offer what you can pay.</p>
+      ${pq>0?`<div class="note" style="margin-bottom:16px"><b>Banks could lend you up to ~${NGN(pq)}.</b> <span class="tiny">Firm figures come with the offers.</span></div>`:''}
       <div class="f2">
-        <div class="field"><label>Net monthly income (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}" oninput="S.applicant.income=+this.value||0;save()" onchange="renderApply()">
-          <div class="hint">Take-home, after tax and pension.</div></div>
-        <div class="field"><label>Existing monthly loan repayments (₦)</label><input class="inp" id="fOb" type="number" step="10000" value="${a.obligations}" oninput="S.applicant.obligations=+this.value||0;save()" onchange="renderApply()">
-          <div class="hint">Other loans, card minimums, rent-to-own.</div></div>
+        <div class="field"><label>What you take home monthly (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}" oninput="S.applicant.income=+this.value||0;save()" onchange="renderApply()">
+          <div class="hint">After tax.</div></div>
+        <div class="field"><label>Loans you already pay monthly (₦)</label><input class="inp" id="fOb" type="number" step="10000" value="${a.obligations}" oninput="S.applicant.obligations=+this.value||0;save()" onchange="renderApply()">
+          <div class="hint">Put 0 if none.</div></div>
       </div>
       <div class="f2">
-        <div class="field"><label>Bank your salary is paid into</label>
+        <div class="field"><label>Your bank</label>
           <select class="inp" id="fBank">${NG_BANKS.map(b=>`<option ${a.salaryBank===b?'selected':''}>${b}</option>`).join('')}</select></div>
         <div class="field"><label>Account number</label><input class="inp mono" id="fAcct" inputmode="numeric" maxlength="10" value="${a.accountNumber||''}" placeholder="10-digit NUBAN">
-          <div class="hint">For salary checks and disbursement paperwork only.</div></div>
+          <div class="hint">For the bank’s paperwork only.</div></div>
       </div>
       <div class="field"><label>Account name</label><input class="inp" id="fAcctName" value="${a.accountName||''}" placeholder="exactly as the bank has it"></div>
-      <div class="warnbox" style="margin-bottom:16px;font-size:12.5px"><b>We will never ask for your BVN, card number, PIN or OTP.</b> Your bank collects your BVN directly at the offer stage — never through this site or anyone claiming to be Midas.</div>
+      <div class="warnbox" style="margin-bottom:16px;font-size:12.5px"><b>Never share your BVN, PIN or OTP with anyone.</b> Only your bank will ask for BVN, at the offer stage.</div>
       <div class="field">
         <label style="display:flex;gap:9px;align-items:flex-start;font-weight:450;cursor:pointer">
           <input type="checkbox" id="fDom" ${a.salaryDomiciled?'checked':''} style="margin-top:3px">
-          <span>My salary is paid into an account I can nominate<br>
-          <span class="hint" style="margin-top:2px">Lenders that hold your salary account price tighter — they can see the inflow and set a standing debit.</span></span>
+          <span>My salary can go to the lending bank<br>
+          <span class="hint" style="margin-top:2px">This usually gets you a lower rate.</span></span>
         </label>
       </div>
       <div class="row" style="gap:10px">
@@ -1260,7 +1424,7 @@ function renderApply(){
       </div>`;
     c.innerHTML = `
       <h3>Your documents</h3>
-      <p class="muted tiny" style="margin:6px 0 14px">Phone photos are fine. These go to the bank with your file — having them ready is what keeps the 48-hour clock honest.</p>
+      <p class="muted tiny" style="margin:6px 0 14px">Photos from your phone are fine.</p>
       ${row('id','Government ID','Driver\u2019s licence, NIN slip, passport or voter\u2019s card')}
       ${row('income','Proof of income','Latest payslip, or a 3-month bank statement')}
       ${row('work','Work ID or employment letter','Optional — speeds up salary confirmation')}
@@ -1339,10 +1503,11 @@ function renderOffers(){
   const v=vehicle(); const app=S.applicant;
   if(!v||!app||!S.verified){ location.hash = v?'#/apply':'#/market'; return; }
   const all=runPanel(v,S.equityPct,S.tenor,app);
-  const ok=all.filter(o=>o.approved), no=all.filter(o=>!o.approved);
+  let ok=all.filter(o=>o.approved), no=all.filter(o=>!o.approved);
+  if(S.halal){ no=no.concat(ok.filter(o=>!isHalalLender(o.lender)).map(o=>({...o,approved:false,declines:[{}],reasonCodesX:1}))); ok=ok.filter(o=>isHalalLender(o.lender)); }
   $('#offSub').textContent=`${v.year} ${v.make} ${v.model} · ${NGN(v.price*(1-S.equityPct))} financed over ${S.tenor} months · ${pct(S.equityPct*100,0)} equity`;
   $('#aucTitle').textContent=`Panel response — ${ok.length} bids, ${no.length} passes`;
-  $('#aucMeta').textContent=`${LENDERS.length} banks alerted · one profile · no repeat paperwork`;
+  $('#aucMeta').textContent=S.halal?`Non-interest window · Murabaha / Ijara · fixed disclosed margin`:`${LENDERS.length} banks alerted · one profile · no repeat paperwork`;
   $('#offSide').innerHTML=sidePanel(v,ok,no);
   $('#declineWrap').innerHTML=declineBlock(no);
   aucTimers.forEach(clearTimeout); aucTimers=[]; aucDone=false;
@@ -1384,7 +1549,7 @@ function renderOffers(){
 function offerRow(o,best){
   return el(`<div class="auc-row ${best?'best':''}">
     <div><div class="lp">${o.lender.id} ${best?'<span class="tag a" style="margin-left:6px">best</span>':''}</div><div class="lt">${o.lender.tier}</div></div>
-    <div class="v"><span class="vk">rate p.a.</span><b>${pct(o.rate*100)}</b></div>
+    <div class="v"><span class="vk">${S.halal?'profit margin':'rate p.a.'}</span><b>${pct(o.rate*100)}</b></div>
     <div class="v"><span class="vk">monthly</span><b>${NGN(o.monthly)}</b></div>
     <div class="v"><span class="vk">decision</span><b>${o.hours}h</b></div>
     <div><button class="btn btn-a btn-sm" onclick="accept('${o.lender.id}')">Accept</button></div></div>`);
@@ -1618,18 +1783,17 @@ function renderDealer(){
 /* ===================== ROUTER ===================== */
 function renderBanksCalc(){
   const steps=[
-    ['Midas','The customer selects a vehicle','Certified stock at fixed showroom pricing, on their phone or at the showroom.'],
-    ['Midas','Proforma invoice issued','A numbered PFI fixes the vehicle, price and structure. Valid seven days.'],
-    ['Your institution','Credit assessment','The file crosses the API into your environment. Your scoring, your bureau checks, your rules \u2014 your credit committee\u2019s discretion throughout.'],
-    ['Your institution','Offer letter','Terms issued under your reference. Target: 48 hours, against an industry norm of 40\u201345 days.'],
-    ['Your institution','Equity contribution received','The customer pays the down payment directly into your account. It never passes through the dealer or Midas.'],
-    ['Your institution','Disbursement and delivery','You disburse to the dealer, the lien is registered, and the customer collects within 24 hours. The facility amortises to your book.']];
+    ['Midas','Customer selects a vehicle','Certified stock, fixed showroom price.'],
+    ['Midas','Proforma invoice','Numbered PFI. Valid seven days.'],
+    ['Your institution','Credit assessment','The file crosses the API. Your rules, your committee.'],
+    ['Your institution','Offer letter','Under your reference. Target: 48 hours.'],
+    ['Your institution','Equity received','Down payment straight to your account.'],
+    ['Your institution','Disburse &amp; deliver','Lien registered. Keys within 24 hours.']];
   const sx=$('#sixSteps');
   if(sx) sx.innerHTML=steps.map((st,i)=>`
-    <div style="display:grid;grid-template-columns:24px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline">
-      <div class="mono" style="font-weight:650;color:var(--accent)">${i+1}</div>
-      <div><b style="font-size:14.5px">${st[1]}</b><span class="tiny faint" style="margin-left:9px">${st[0]}</span>
-      <div class="tiny muted" style="margin-top:2px">${st[2]}</div></div>
+    <div class="sf-it rev">
+      <b style="font-size:14.5px">${st[1]}</b><span class="tiny faint" style="margin-left:9px">${st[0]}</span>
+      <div class="tiny muted" style="margin-top:2px">${st[2]}</div>
     </div>`).join('');
   const naira=n=> n>=1e9 ? '\u20a6'+(n/1e9).toFixed(1).replace(/\.0$/,'')+'bn' : NGNs(n);
   const rows=$('#bkRows');
@@ -1663,7 +1827,92 @@ function renderDesk(){
   ['dkCar','dkName','dkPhone','dkRef'].forEach(i=>{const n=$('#'+i); n.oninput=update; n.onchange=update;});
   update();
 }
-const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,bank:renderBank,dealer:renderDealer,desk:renderDesk,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+const COUNTRIES={
+ GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0104,eta:'early 2027',banks:'GCB Bank, Absa Ghana, Stanbic Bank Ghana',city:'Accra'},
+ BJ:{name:'Benin',flag:'\u{1F1E7}\u{1F1EF}',cur:'CFA',rate:0.39,eta:'2027',banks:'Bank of Africa, Ecobank, UBA B\u00e9nin',city:'Cotonou'}};
+let curCountry='GH';
+function setCountry(c){
+  if(c==='NG'){ location.hash='#/market'; return; }
+  curCountry=c; location.hash='#/country';
+  const el=document.getElementById('ctrySel'); if(el) el.value=c;
+}
+function renderCountry(){
+  const w=$('#countryWrap'); if(!w) return;
+  const C=COUNTRIES[curCountry]||COUNTRIES.GH;
+  const lc=n=>C.cur+' '+Math.round(n*C.rate).toLocaleString('en-US');
+  const picks=VEHICLES.slice(0,3);
+  w.innerHTML=`
+    <div class="eyebrow">Midas ${C.name}</div>
+    <h2 style="margin:10px 0 10px">${C.flag} Coming to ${C.city} \u2014 ${C.eta}.</h2>
+    <p class="muted" style="max-width:54ch">Same idea: banks compete to finance your car, priced in ${C.cur}.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:22px 0">
+      ${picks.map(v=>`<article class="veh rev">
+        <div class="veh-img" style="aspect-ratio:16/9">${v.img?`<img src="${v.img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:carSVG(v.body)}</div>
+        <div class="veh-body"><div class="veh-title" style="font-size:1rem">${v.make} ${v.model} ${v.year}</div>
+        <div class="veh-full" style="margin-top:6px">around <b style="color:var(--naira)">${lc(v.price)}</b></div></div>
+      </article>`).join('')}
+    </div>
+    <p class="tiny faint">Indicative ${C.cur} pricing at today\u2019s rates, before local duties. Lender panel forming with ${C.banks}.</p>
+    <div class="row" style="gap:10px;margin-top:18px;flex-wrap:wrap">
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello, I want Midas in '+C.name+' \u2014 put me on the waiting list')}" target="_blank" rel="noopener">Join the ${C.name} waiting list</a>
+      <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">See the Nigeria site &rarr;</a>
+    </div>`;
+}
+const LEARN_POSTS=[
+ {id:'how-it-works',img:'cars/hero.jpg',mins:3,title:'How car finance works in Nigeria',
+  body:`<p>You pick the car. Banks compete to fund it. The winner sends an offer letter in about 48 hours.</p><p>Your down payment goes <b>straight into the bank\u2019s account</b> \u2014 never to a dealer, never to us. The bank pays the showroom, a lien goes on the title, and you collect the keys within 24 hours.</p><p>You pay monthly until the loan ends and the lien comes off. That is the whole thing.</p>`},
+ {id:'equity',img:'cars/showroom.jpg',mins:2,title:'What is an equity contribution?',
+  body:`<p>Your part of the price \u2014 usually 30\u201350%. The bank funds the rest.</p><p>Two rules keep you safe: it is paid <b>only into the lending bank\u2019s account</b>, and only after you hold a signed offer letter. Anyone asking for a \u201cdeposit\u201d before an offer letter is not financing your car.</p><p>More equity means a smaller loan, a lower monthly and a faster yes.</p>`},
+ {id:'halal',img:'cars/tucson.jpg',mins:3,title:'Halal car finance, explained',
+  body:`<p>No interest \u2014 the bank buys the car and you pay a <b>fixed rental-profit charge</b>, agreed on day one.</p><p>Rent-to-own (<i>Ijara wa Iqtina</i>): the bank owns the car, you rent it, ownership passes to you step by step. Cost-plus (<i>Murabaha</i>): the bank sells it to you at a disclosed margin, paid monthly.</p><p>Licensed non-interest banks provide these under their own Sharia boards. Tick \u201cnon-interest\u201d when you apply. <a href="#/halal" style="color:var(--accent)">More here.</a></p>`},
+ {id:'new-vs-used',img:'cars/used-corolla.jpg',mins:3,title:'Brand new, foreign used, Nigerian used',
+  body:`<p><b>Brand new</b>: 5-year warranty, longest tenors, lowest rates.</p><p><b>Foreign used (tokunbo)</b>: cheaper, but the bank prices the age \u2014 expect a bit more equity and a shorter tenor. Every unit we list is inspected and graded first.</p><p><b>Nigerian used</b>: cheapest to buy; fewer banks accept it, so grading matters most. If the card shows a monthly, a bank has already said it would price it.</p>`},
+ {id:'monthly',img:'cars/creta.jpg',mins:2,title:'How banks set your monthly payment',
+  body:`<p>Three dials: the <b>loan size</b> (price minus your equity), the <b>rate</b> the bank quotes, and the <b>tenor</b> (months to repay).</p><p>Banks also check the payment fits inside roughly half your verified monthly income after other obligations. That is why two people can get different offers on the same car.</p><p>Move any dial on the car page and watch the monthly move.</p>`}];
+let curPost=LEARN_POSTS[0].id;
+function openPost(id){curPost=id;location.hash='#/post';}
+function renderLearn(){
+  const g=$('#learnGrid'); if(!g) return;
+  g.innerHTML=LEARN_POSTS.map(p=>`
+    <article class="veh rev" onclick="openPost('${p.id}')" style="cursor:pointer">
+      <div class="veh-img" style="aspect-ratio:16/9"><img src="${p.img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="veh-body"><div class="veh-title" style="font-size:1.02rem">${p.title}</div>
+      <div class="tiny faint" style="margin-top:6px">${p.mins} min read</div></div>
+    </article>`).join('');
+}
+function renderPost(){
+  const w=$('#postWrap'); if(!w) return;
+  const p=LEARN_POSTS.find(x=>x.id===curPost)||LEARN_POSTS[0];
+  w.innerHTML=`<div class="eyebrow"><a href="#/learn" style="color:var(--accent);text-decoration:none">&larr; Learn</a></div>
+    <h2 style="margin:10px 0 6px">${p.title}</h2><div class="tiny faint">${p.mins} min read · Midas</div>
+    <div style="margin:18px 0;border-radius:14px;overflow:hidden"><img src="${p.img}" alt="" style="width:100%;max-height:320px;object-fit:cover;display:block"></div>
+    <div class="muted" style="font-size:15.5px;line-height:1.75;max-width:58ch">${p.body}</div>
+    <div class="row" style="gap:10px;margin-top:26px;flex-wrap:wrap">
+      <a class="btn btn-p" href="#/market">See the cars &rarr;</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692" target="_blank" rel="noopener">Ask on WhatsApp</a>
+    </div>`;
+}
+let revObs=null;
+function cntUp(el){
+  const t=+el.dataset.cnt, d=900, st=performance.now();
+  const f=n=>{const k=Math.min(1,(n-st)/d);el.textContent=Math.round(t*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);};
+  requestAnimationFrame(f);
+}
+function initReveal(){
+  if(!('IntersectionObserver' in window)) { document.querySelectorAll('.rev').forEach(n=>n.classList.add('on')); return; }
+  if(!revObs) revObs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.classList.add('on');
+    e.target.querySelectorAll('[data-cnt]').forEach(cntUp);
+    revObs.unobserve(e.target);
+  }),{threshold:.1});
+  document.querySelectorAll('.rev:not(.on)').forEach(n=>{
+    const p=n.parentElement; const sibs=p?[...p.children].filter(c=>c.classList&&c.classList.contains('rev')):[n];
+    n.style.transitionDelay=(sibs.indexOf(n)%6)*70+'ms';
+    revObs.observe(n);
+  });
+}
+const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,bank:renderBank,dealer:renderDealer,desk:renderDesk,halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
   const page=VIEWS[h]?h:'market';
@@ -1671,6 +1920,7 @@ function route(){
   const node=$('#v-'+page); if(node) node.classList.add('on');
   document.querySelectorAll('#tnav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===page));
   try{ VIEWS[page](); }catch(e){ console.error(e); }
+  initReveal();
   if(page==='market') heroTicker();
   window.scrollTo(0,0);
 }
