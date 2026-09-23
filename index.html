@@ -369,6 +369,8 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </select>
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
+      <a href="#/market" data-nav="used" onclick="gotoSeg('used');return false;">Used cars</a>
+      <a href="#/halal" data-nav="halal">Halal finance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/learn" data-nav="learn">Learn</a>
       <a href="#/status" data-nav="status">My application</a>
@@ -396,6 +398,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <span class="chip">🏦 7 banks, one application</span>
         <span class="chip">🛡 5-year warranty</span>
         <span class="chip">⚡ Decision in 48 hours</span>
+        <a class="chip" href="#/halal" style="text-decoration:none">&#9770; Halal option</a>
       </div>
     </div></div>
   </div>
@@ -441,10 +444,26 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <h2>Pay monthly. Drive today.</h2>
       </div>
     </div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px">
+      <a class="veh rev" href="#/market" onclick="gotoSeg('used');return false;" style="text-decoration:none;color:inherit">
+        <div class="veh-img" style="aspect-ratio:16/6;position:relative"><img src="cars/used-corolla.jpg" alt="Certified used cars" style="width:100%;height:100%;object-fit:cover">
+          <span class="tag" style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94)">Inspected &amp; graded</span></div>
+        <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Certified used cars</h3>
+          <p class="tiny muted" style="margin:4px 0 0">From &#8358;11.5M full price. 6-month engine &amp; gearbox warranty.</p>
+          <b style="color:var(--accent);font-size:13.5px">See pre-owned &rarr;</b></div>
+      </a>
+      <a class="veh rev" href="#/halal" style="text-decoration:none;color:inherit">
+        <div class="veh-img" style="aspect-ratio:16/6;position:relative;background:linear-gradient(135deg,#0d3b2e,#1d7a4f);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--display);color:#eafff3;font-size:1.5rem;font-weight:650">&#9770; No interest. Ever.</span></div>
+        <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Halal finance &mdash; rent to own</h3>
+          <p class="tiny muted" style="margin:4px 0 0">The bank buys the car. You pay a fixed monthly rent until it is yours.</p>
+          <b style="color:var(--accent);font-size:13.5px">How it works &rarr;</b></div>
+      </a>
+    </div>
     <div class="seg" id="segMarket" style="margin-bottom:18px">
-      <button class="on" onclick="setMarketSeg('all',this)">All</button>
-      <button onclick="setMarketSeg('new',this)">Brand new</button>
-      <button onclick="setMarketSeg('used',this)">Pre-owned</button>
+      <button class="on" data-seg="all" onclick="setMarketSeg('all',this)">All</button>
+      <button data-seg="new" onclick="setMarketSeg('new',this)">Brand new</button>
+      <button data-seg="used" onclick="setMarketSeg('used',this)">Pre-owned</button>
     </div>
     <a href="#/halal" class="tag a" style="margin-left:12px;text-decoration:none;padding:7px 12px;font-size:12.5px">&#9770; Non-interest (halal) option available</a>
     <div class="veh-grid" id="vehGrid"></div>
@@ -985,13 +1004,25 @@ const SAMPLE_QUOTES=[
   {name:'Emeka N.', city:'Port Harcourt', vehicle:'2026 Hyundai Elantra', img:'cars/elantra.jpg', photo:'brand/people/emeka.jpg',
    quote:'The part I did not believe was that nobody asked me to pay anything except into the bank\u2019s own account. That is when I knew it was real.'},
   {name:'Fatima B.', city:'Wuse, Abuja', vehicle:'2026 Hyundai Tucson', img:'cars/tucson.jpg', photo:'brand/people/fatima.jpg',
-   quote:'Three banks came back with offers. I took the lowest one \u2014 my monthly is less than I was paying to rent.'}
+   quote:'Three banks came back with offers. I took the lowest one \u2014 my monthly is less than I was paying to rent.'},
+  {name:'Tunde A.', city:'Surulere, Lagos', vehicle:'2019 Toyota Corolla', img:'cars/used-corolla.jpg', photo:'brand/people/tunde.jpg',
+   quote:'I thought used cars had no financing. This Corolla was inspected and graded, and two banks priced it.'},
+  {name:'Ngozi E.', city:'Enugu', vehicle:'2016 Toyota Camry', img:'cars/used-camry.jpg', photo:'brand/people/ngozi.jpg',
+   quote:'My brother checked everything for scam. The offer letter came from the bank itself \u2014 he told me to sign.'},
+  {name:'Ibrahim S.', city:'Kano', vehicle:'2026 Hyundai Creta', img:'cars/creta.jpg', photo:'brand/people/ibrahim.jpg',
+   quote:'I do not take interest. Here the bank buys the car and I rent it until it is mine. That is why I applied.'},
+  {name:'Segun F.', city:'Ibadan', vehicle:'MG T60 4\u00d74', img:'cars/t60.jpg', photo:'brand/people/segun.jpg',
+   quote:'The T60 carries my building materials. The work it does pays its own monthly.'},
+  {name:'Amina Y.', city:'Garki, Abuja', vehicle:'2018 Lexus RX 350', img:'cars/used-rx.jpg', photo:'brand/people/amina.jpg',
+   quote:'Foreign used, grade A. I saw the inspection report before I paid one naira.'},
+  {name:'Kelechi U.', city:'Port Harcourt', vehicle:'2013 Toyota Sienna', img:'cars/used-sienna.jpg', photo:'brand/people/kelechi.jpg',
+   quote:'Sienna for the family and my airport runs. The bank said yes in two days.'}
 ];
 function renderQuotes(qs, sample){
   const w=document.getElementById('quotesWrap'), g=document.getElementById('quotesGrid'), t=document.getElementById('quotesNote');
   if(!w||!g) return;
   const initials=n=>n.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();
-  g.innerHTML=qs.slice(0,6).map(q=>`
+  g.innerHTML=qs.slice(0,9).map(q=>`
     <div class="card" style="display:flex;flex-direction:column;overflow:hidden">
       ${q.img?`<div style="aspect-ratio:16/8;overflow:hidden"><img src="${q.img}" alt="${q.vehicle||''}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`:''}
       <div class="pad" style="display:flex;flex-direction:column;gap:12px;flex:1">
@@ -1197,8 +1228,10 @@ function bestTeaser(v){
 }
 let marketSeg='all';
 function setMarketSeg(m,btn){ marketSeg=m; document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b===btn)); renderMarket(); }
+function gotoSeg(m){ marketSeg=m; location.hash='#/market'; renderMarket(); const inv=document.getElementById('inv'); if(inv) setTimeout(()=>inv.scrollIntoView({behavior:'smooth'}),60); }
 function renderMarket(){
   const g = $('#vehGrid'); if (!g) return;
+  document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b.dataset.seg===marketSeg));
   const rb=$('#ratesBoard');
   if(rb){ rb.innerHTML=VEHICLES.map(v=>{const t=bestTeaser(v);return t?`<span class="rb-it">${v.model} <b>${pct(t.o.rate*100)}</b> <span class="dn">▾</span> · ${NGN(t.o.monthly)}/mo</span>`:'';}).join(''); }
   g.innerHTML = '';
