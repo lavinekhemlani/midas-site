@@ -401,10 +401,11 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <p class="muted" style="margin-bottom:26px">Five minutes. The banks do the rest. Nothing touches a credit bureau until you accept an offer.</p>
 
     <div class="steps" id="applySteps">
-      <div class="st on">1 &middot; Vehicle</div>
+      <div class="st on">1 &middot; Car</div>
       <div class="st">2 &middot; You</div>
-      <div class="st">3 &middot; Income</div>
-      <div class="st">4 &middot; Verification</div>
+      <div class="st">3 &middot; Money</div>
+      <div class="st">4 &middot; Documents</div>
+      <div class="st">5 &middot; Approval</div>
     </div>
 
     <div class="card pad" id="applyCard"></div>
@@ -700,10 +701,12 @@ function renderQuotes(qs, sample){
   if(t) t.hidden=!sample;
   w.hidden=false;
 }
-renderQuotes(SAMPLE_QUOTES, true);
-fetch('testimonials.json').then(r=>r.ok?r.json():null).then(qs=>{
-  if(Array.isArray(qs)&&qs.length) renderQuotes(qs, false);
-}).catch(()=>{});
+if (typeof document !== 'undefined') {
+  renderQuotes(SAMPLE_QUOTES, true);
+  fetch('testimonials.json').then(r=>r.ok?r.json():null).then(qs=>{
+    if(Array.isArray(qs)&&qs.length) renderQuotes(qs, false);
+  }).catch(()=>{});
+}
 
 fetch('inventory.json').then(r=>r.ok?r.json():null).then(rows=>{
   if(Array.isArray(rows)&&rows.length){
@@ -997,6 +1000,14 @@ function renderDeal(){
 <script>
 /* ===================== APPLY ===================== */
 const EMP = ['Salaried','Director/Owner','Professional','Self-employed','Trader','Gig'];
+const NG_BANKS=['Access Bank','Zenith Bank','GTBank','First Bank','UBA','Stanbic IBTC','Fidelity Bank','FCMB','Union Bank','Sterling Bank','Wema Bank','Ecobank','Keystone Bank','Polaris Bank','Providus Bank','Jaiz Bank','Kuda','Moniepoint','OPay','PalmPay','Other'];
+/* What the panel could lend on this income — 50% debt-service cap, 27% p.a., 60 months. */
+function prequalMax(income, obligations){
+  const cap = income*0.5 - (obligations||0);
+  if (cap <= 0) return 0;
+  const r = 0.27/12, n = 60;
+  return Math.max(0, Math.floor(cap * (1 - Math.pow(1+r,-n)) / r / 100000) * 100000);
+}
 function renderApply(){
   const v = vehicle(); if (!v){ location.hash = '#/market'; return; }
   document.querySelectorAll('#applySteps .st').forEach((n,i) => {
@@ -1033,9 +1044,13 @@ function renderApply(){
       <p class="muted tiny" style="margin:6px 0 18px">Just enough for the banks to say yes. Nothing more.</p>
       <div class="f2">
         <div class="field"><label>Full name</label><input class="inp" id="fName" value="${a.name}" placeholder="Adeola Bakare"></div>
-        <div class="field"><label>Phone</label><input class="inp" id="fPhone" value="${a.phone}" placeholder="080 0000 0000"></div>
+        <div class="field"><label>Phone</label><input class="inp" id="fPhone" type="tel" value="${a.phone}" placeholder="080 0000 0000"></div>
       </div>
-      <div class="field"><label>Email</label><input class="inp" id="fEmail" type="email" value="${a.email}" placeholder="you@company.com"></div>
+      <div class="f2">
+        <div class="field"><label>WhatsApp number</label><input class="inp" id="fWa" type="tel" value="${a.whatsapp||''}" placeholder="same as phone if empty">
+          <div class="hint">Offer updates and your PFI arrive here.</div></div>
+        <div class="field"><label>Email</label><input class="inp" id="fEmail" type="email" value="${a.email}" placeholder="you@company.com"></div>
+      </div>
       <div class="f2">
         <div class="field"><label>Employment type</label><select class="inp" id="fEmp">${EMP.map(e=>`<option ${a.employment===e?'selected':''}>${e}</option>`).join('')}</select></div>
         <div class="field"><label>Years in current role</label><input class="inp" id="fYrs" type="number" min="0" max="40" value="${a.yearsEmployed}"></div>
@@ -1046,15 +1061,25 @@ function renderApply(){
       </div>`;
   }
   else if (S.step === 3){
+    const pq = prequalMax(a.income, a.obligations);
     c.innerHTML = `
-      <h3>Income and obligations</h3>
-      <p class="muted tiny" style="margin:6px 0 18px">So we only show you offers you can truly afford.</p>
+      <h3>Your money</h3>
+      <p class="muted tiny" style="margin:6px 0 18px">So the banks only send offers you can truly afford.</p>
+      ${pq>0?`<div class="note" style="margin-bottom:16px"><b>Banks could lend you up to ~${NGN(pq)}.</b> Estimate at 27% p.a. over 60 months, half your income free for repayments. Firm figures come with the offers.</div>`:''}
       <div class="f2">
-        <div class="field"><label>Net monthly income (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}">
+        <div class="field"><label>Net monthly income (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}" oninput="S.applicant.income=+this.value||0;save()" onchange="renderApply()">
           <div class="hint">Take-home, after tax and pension.</div></div>
-        <div class="field"><label>Existing monthly loan repayments (₦)</label><input class="inp" id="fOb" type="number" step="10000" value="${a.obligations}">
+        <div class="field"><label>Existing monthly loan repayments (₦)</label><input class="inp" id="fOb" type="number" step="10000" value="${a.obligations}" oninput="S.applicant.obligations=+this.value||0;save()" onchange="renderApply()">
           <div class="hint">Other loans, card minimums, rent-to-own.</div></div>
       </div>
+      <div class="f2">
+        <div class="field"><label>Bank your salary is paid into</label>
+          <select class="inp" id="fBank">${NG_BANKS.map(b=>`<option ${a.salaryBank===b?'selected':''}>${b}</option>`).join('')}</select></div>
+        <div class="field"><label>Account number</label><input class="inp mono" id="fAcct" inputmode="numeric" maxlength="10" value="${a.accountNumber||''}" placeholder="10-digit NUBAN">
+          <div class="hint">For salary checks and disbursement paperwork only.</div></div>
+      </div>
+      <div class="field"><label>Account name</label><input class="inp" id="fAcctName" value="${a.accountName||''}" placeholder="exactly as the bank has it"></div>
+      <div class="warnbox" style="margin-bottom:16px;font-size:12.5px"><b>We will never ask for your BVN, card number, PIN or OTP.</b> Your bank collects your BVN directly at the offer stage — never through this site or anyone claiming to be Midas.</div>
       <div class="field">
         <label style="display:flex;gap:9px;align-items:flex-start;font-weight:450;cursor:pointer">
           <input type="checkbox" id="fDom" ${a.salaryDomiciled?'checked':''} style="margin-top:3px">
@@ -1065,6 +1090,26 @@ function renderApply(){
       <div class="row" style="gap:10px">
         <button class="btn btn-g" onclick="S.step=2;save();renderApply()">← Back</button>
         <button class="btn btn-p" onclick="saveStep3()">Continue →</button>
+      </div>`;
+  }
+  else if (S.step === 4){
+    const d=S.docs||{};
+    const row=(kind,label,hint)=>`
+      <div class="between" style="padding:14px 0;border-top:1px solid var(--line);gap:14px;flex-wrap:wrap">
+        <div><b style="font-size:14.5px">${label}</b><div class="tiny faint">${hint}</div></div>
+        ${d[kind]?`<span class="tag ok">✓ ${d[kind].name.slice(0,26)}</span>`
+         :`<label class="btn btn-g btn-sm" style="cursor:pointer">Attach<input type="file" accept="image/*,.pdf" hidden onchange="attachDoc('${kind}',this)"></label>`}
+      </div>`;
+    c.innerHTML = `
+      <h3>Your documents</h3>
+      <p class="muted tiny" style="margin:6px 0 14px">Phone photos are fine. These go to the bank with your file — having them ready is what keeps the 48-hour clock honest.</p>
+      ${row('id','Government ID','Driver\u2019s licence, NIN slip, passport or voter\u2019s card')}
+      ${row('income','Proof of income','Latest payslip, or a 3-month bank statement')}
+      ${row('work','Work ID or employment letter','Optional — speeds up salary confirmation')}
+      <div style="border-top:1px solid var(--line)"></div>
+      <div class="row" style="gap:10px;margin-top:18px">
+        <button class="btn btn-g" onclick="S.step=3;save();renderApply()">← Back</button>
+        <button class="btn btn-p" onclick="saveStep4()">${(d.id&&d.income)?'Continue →':'Continue — attach later →'}</button>
       </div>`;
   }
   else {
@@ -1093,22 +1138,30 @@ function renderApply(){
         : `<button class="btn btn-p" id="vBtn" onclick="doVerify()">Connect and verify income</button>
            <p class="tiny faint" style="margin-top:12px">Demo: this simulates the provider callback. No connection is made.</p>`}
       <div class="row" style="gap:10px;margin-top:16px">
-        <button class="btn btn-g btn-sm" onclick="S.step=3;save();renderApply()">← Back</button>
+        <button class="btn btn-g btn-sm" onclick="S.step=4;save();renderApply()">← Back</button>
       </div>`;
   }
 }
 function saveStep2(){
   const a = S.applicant || {income:850000,obligations:120000,salaryDomiciled:false};
-  a.name=$('#fName').value.trim(); a.phone=$('#fPhone').value.trim(); a.email=$('#fEmail').value.trim();
+  a.name=$('#fName').value.trim(); a.phone=$('#fPhone').value.trim(); a.whatsapp=($('#fWa').value.trim()||$('#fPhone').value.trim()); a.email=$('#fEmail').value.trim();
   a.employment=$('#fEmp').value; a.yearsEmployed=+$('#fYrs').value||0;
   if(!a.name||!a.phone){ alert('Name and phone are needed so a lender can come back to you.'); return; }
   S.applicant=a; S.step=3; save(); renderApply();
 }
 function saveStep3(){
   const a=S.applicant; a.income=+$('#fInc').value||0; a.obligations=+$('#fOb').value||0; a.salaryDomiciled=$('#fDom').checked;
+  a.salaryBank=$('#fBank').value; a.accountNumber=$('#fAcct').value.replace(/\D/g,''); a.accountName=$('#fAcctName').value.trim();
   if(a.income<50000){ alert('Enter your net monthly income.'); return; }
+  if(a.accountNumber && a.accountNumber.length!==10){ alert('A NUBAN account number is 10 digits.'); return; }
+  track('prequal_shown',{max:prequalMax(a.income,a.obligations)});
   S.applicant=a; S.step=4; save(); renderApply();
 }
+function attachDoc(kind, input){
+  const f=input.files&&input.files[0]; if(!f) return;
+  S.docs=S.docs||{}; S.docs[kind]={name:f.name,size:f.size,at:Date.now()}; save(); track('doc_attached',{kind}); renderApply();
+}
+function saveStep4(){ S.step=5; save(); renderApply(); }
 function doVerify(){ track('income_verify_started');
   const b=$('#vBtn'); b.disabled=true; b.textContent='Contacting provider…';
   setTimeout(()=>{ b.textContent='Reading 6 months of inflows…'; },700);
