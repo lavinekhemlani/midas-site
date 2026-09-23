@@ -349,8 +349,10 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 /* lender logo ticker */
 .lgm{overflow:hidden;padding:26px 0;border-bottom:1px solid var(--line);background:var(--surface)}
 .lgm-cap{text-align:center;font-size:12.5px;color:var(--ink-faint);margin-bottom:18px;letter-spacing:.04em}
-.lgm-track{display:flex;align-items:center;gap:74px;width:max-content;animation:lgm 30s linear infinite}
-.lgm-track img{height:30px;width:auto;object-fit:contain}
+.lgm-track{display:flex;align-items:center;gap:58px;width:max-content;animation:lgm 38s linear infinite}
+.lgm-track img{height:44px;width:auto;object-fit:contain}
+.lgm-it{display:flex;align-items:center;gap:12px;white-space:nowrap}
+.lgm-it b{font-size:19px;font-weight:650;color:#26404f;letter-spacing:-.01em}
 .lgm:hover .lgm-track{animation-play-state:paused}
 @keyframes lgm{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.lgm-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
@@ -406,16 +408,29 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   </div>
 
   <div class="lgm" aria-label="The lender panel">
-    <div class="lgm-cap">The lender panel &mdash; forming with Nigeria&rsquo;s leading banks</div>
-    <div class="lgm-track"><img src="brand/banks/access.svg" alt="Access Bank"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC"><img src="brand/banks/zenith.png" alt="Zenith Bank"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank"><img src="brand/banks/wema.png" alt="Wema Bank"><img src="brand/banks/globus.png" alt="Globus Bank"><img src="brand/banks/access.svg" alt="Access Bank"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC"><img src="brand/banks/zenith.png" alt="Zenith Bank"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank"><img src="brand/banks/wema.png" alt="Wema Bank"><img src="brand/banks/globus.png" alt="Globus Bank"></div>
+    <div class="lgm-cap">Trusted by Nigeria&rsquo;s top banks</div>
+    <div class="lgm-track"><span class="lgm-it"><img src="brand/banks/access.svg" alt="Access Bank"></span><span class="lgm-it"><img src="brand/banks/stanbic.png" alt=""><b>Stanbic IBTC</b></span><span class="lgm-it"><img src="brand/banks/zenith.png" alt=""><b>Zenith Bank</b></span><span class="lgm-it"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank"></span><span class="lgm-it"><img src="brand/banks/wema.png" alt=""><b>Wema Bank</b></span><span class="lgm-it"><img src="brand/banks/globus.png" alt=""><b>Globus Bank</b></span><span class="lgm-it"><img src="brand/banks/jaiz.svg" alt="Jaiz Bank"></span><span class="lgm-it"><img src="brand/banks/lotus.svg" alt="Lotus Bank"></span><span class="lgm-it"><img src="brand/banks/taj.svg" alt="TAJBank"></span><span class="lgm-it"><img src="brand/banks/access.svg" alt="Access Bank"></span><span class="lgm-it"><img src="brand/banks/stanbic.png" alt=""><b>Stanbic IBTC</b></span><span class="lgm-it"><img src="brand/banks/zenith.png" alt=""><b>Zenith Bank</b></span><span class="lgm-it"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank"></span><span class="lgm-it"><img src="brand/banks/wema.png" alt=""><b>Wema Bank</b></span><span class="lgm-it"><img src="brand/banks/globus.png" alt=""><b>Globus Bank</b></span><span class="lgm-it"><img src="brand/banks/jaiz.svg" alt="Jaiz Bank"></span><span class="lgm-it"><img src="brand/banks/lotus.svg" alt="Lotus Bank"></span><span class="lgm-it"><img src="brand/banks/taj.svg" alt="TAJBank"></span></div>
   </div>
 
   <div class="wrap sec" id="how" style="padding-bottom:40px">
     <h2 style="margin-bottom:30px">Three steps to your keys.</h2>
-    <div class="steps3">
-      <div><div class="num">1</div><h4>Pick your car</h4><p>Brand new from our showroom. Full warranty.</p></div>
-      <div><div class="num">2</div><h4>We find your best rate</h4><p>7 banks price it. You take the lowest.</p></div>
-      <div><div class="num">3</div><h4>You drive</h4><p>Approved in 48 hours. Not 40 days.</p></div>
+    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="veh rev" style="cursor:default">
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">1</span></div>
+        <div class="veh-body"><h4 style="margin:0">Pick your car</h4><p class="tiny muted" style="margin:4px 0 0">From our showroom. Full warranty.</p></div>
+      </div>
+      <div class="veh rev" style="cursor:default">
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/elantra.jpg" alt="Bank offers" style="width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">2</span>
+          <span class="tag ok" style="position:absolute;right:12px;bottom:12px">7 banks price it &darr;</span></div>
+        <div class="veh-body"><h4 style="margin:0">Banks fight for you</h4><p class="tiny muted" style="margin:4px 0 0">You take the lowest rate.</p></div>
+      </div>
+      <div class="veh rev" style="cursor:default">
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/hero.jpg" alt="Driving" style="width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">3</span></div>
+        <div class="veh-body"><h4 style="margin:0">You drive</h4><p class="tiny muted" style="margin:4px 0 0">48 hours. Not 40 days.</p></div>
+      </div>
     </div>
   </div>
 
@@ -1169,15 +1184,16 @@ const el = (h) => { const d = document.createElement('div'); d.innerHTML = h.tri
 
 /* ===================== MARKETPLACE ===================== */
 function bestTeaser(v){
-  for (const eq of [.30,.35,.40]){
-    let best=null;
-    for (const ten of [60,48,36]){
-      const ok=runPanel(v,eq,ten,null).filter(o=>o.approved);
-      if(ok.length){ const o=sortOffers(ok,'mo')[0]; if(!best||o.monthly<best.o.monthly) best={o,eq,ten}; }
+  let best=null;
+  for (const eq of [.30,.35,.40]) for (const ten of [60,48,36]){
+    const ok=runPanel(v,eq,ten,null).filter(o=>o.approved);
+    for (const o of ok){
+      if(!best || o.rate<best.o.rate-1e-9
+         || (Math.abs(o.rate-best.o.rate)<1e-9 && (eq<best.eq-1e-9
+         || (Math.abs(eq-best.eq)<1e-9 && o.monthly<best.o.monthly)))) best={o,eq,ten};
     }
-    if(best) return best;
   }
-  return null;
+  return best;
 }
 let marketSeg='all';
 function setMarketSeg(m,btn){ marketSeg=m; document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b===btn)); renderMarket(); }
