@@ -591,6 +591,8 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <h2 style="margin:10px 0 14px">Vehicle finance origination, done properly.</h2>
     <p class="muted" style="max-width:66ch">Midas originates fully documented vehicle-finance applications for a panel of Nigerian banks, on new and certified pre-owned stock from an established national dealer network. Each file arrives complete: a numbered proforma invoice, a certified vehicle with fixed pricing, verified income, and the customer&rsquo;s documentation &mdash; ready for your credit process, not a lead to be chased.</p>
 
+    <div style="margin:22px 0 6px;border-radius:14px;overflow:hidden"><img src="cars/showroom.jpg" alt="Stallion showroom" style="width:100%;max-height:280px;object-fit:cover;display:block"></div>
+    <p class="tiny faint" style="margin-bottom:14px">The dealer network behind the flow &mdash; showrooms and service centres in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan.</p>
     <p class="muted" style="max-width:66ch;margin-top:14px"><b style="color:var(--ink)">The model is proven in this market.</b> Through a comparable origination platform, Stanbic IBTC disbursed over &#8358;4&nbsp;billion of vehicle loans in its first six months, and vehicle &amp; asset finance desks across the industry are actively growing this book. The question is no longer whether digitally originated auto finance performs in Nigeria &mdash; it is which institutions take the flow.</p>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">The quality of the risk asset</h3>
@@ -643,9 +645,9 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 </section>
 
 <div class="wrap sec" id="quotesWrap" hidden>
-  <div class="eyebrow">From our buyers <span id="quotesTag" class="tag" style="margin-left:8px;vertical-align:1px">sample &middot; first buyers’ words land here</span></div>
   <h2 style="margin:10px 0 24px">What people say after the keys.</h2>
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px" id="quotesGrid"></div>
+  <p class="tiny faint" id="quotesNote" style="margin-top:12px">Illustrative until our first deliveries &mdash; real buyers and their photos replace these.</p>
 </div>
 
 <section class="wrap partners" aria-labelledby="partnersTitle">
@@ -798,20 +800,28 @@ const LENDERS = (() => {
    SAMPLE set below, visibly tagged as sample — the tag drops off
    automatically the day the real file lands. */
 const SAMPLE_QUOTES=[
-  {name:'Adaeze O.', city:'Lekki, Lagos', vehicle:'2026 Hyundai Creta',
+  {name:'Adaeze O.', city:'Lekki, Lagos', vehicle:'2026 Hyundai Creta', img:'cars/creta.jpg',
    quote:'I applied on Tuesday from my office. Thursday the bank called with an offer. Saturday I drove the Creta home.'},
-  {name:'Emeka N.', city:'Port Harcourt', vehicle:'2026 Hyundai Elantra',
+  {name:'Emeka N.', city:'Port Harcourt', vehicle:'2026 Hyundai Elantra', img:'cars/elantra.jpg',
    quote:'The part I did not believe was that nobody asked me to pay anything except into the bank\u2019s own account. That is when I knew it was real.'},
-  {name:'Fatima B.', city:'Wuse, Abuja', vehicle:'2026 Hyundai Tucson',
+  {name:'Fatima B.', city:'Wuse, Abuja', vehicle:'2026 Hyundai Tucson', img:'cars/tucson.jpg',
    quote:'Three banks came back with offers. I took the lowest one \u2014 my monthly is less than I was paying to rent.'}
 ];
 function renderQuotes(qs, sample){
-  const w=document.getElementById('quotesWrap'), g=document.getElementById('quotesGrid'), t=document.getElementById('quotesTag');
+  const w=document.getElementById('quotesWrap'), g=document.getElementById('quotesGrid'), t=document.getElementById('quotesNote');
   if(!w||!g) return;
+  const initials=n=>n.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();
   g.innerHTML=qs.slice(0,6).map(q=>`
-    <div class="card pad" style="display:flex;flex-direction:column;gap:10px">
-      <p style="font-size:14.5px;line-height:1.55">&ldquo;${q.quote}&rdquo;</p>
-      <div class="tiny muted" style="margin-top:auto"><b style="color:var(--ink)">${q.name}</b> · ${q.city}${q.vehicle?` · ${q.vehicle}`:''}</div>
+    <div class="card" style="display:flex;flex-direction:column;overflow:hidden">
+      ${q.img?`<div style="aspect-ratio:16/8;overflow:hidden"><img src="${q.img}" alt="${q.vehicle||''}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`:''}
+      <div class="pad" style="display:flex;flex-direction:column;gap:12px;flex:1">
+        <p style="font-size:14.5px;line-height:1.55">&ldquo;${q.quote}&rdquo;</p>
+        <div style="display:flex;align-items:center;gap:10px;margin-top:auto">
+          ${q.photo?`<img src="${q.photo}" alt="${q.name}" style="width:38px;height:38px;border-radius:50%;object-fit:cover">`
+            :`<div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:grid;place-items:center;font-weight:650;font-size:13px;flex:none">${initials(q.name)}</div>`}
+          <div class="tiny muted"><b style="color:var(--ink)">${q.name}</b><br>${q.city}${q.vehicle?` · ${q.vehicle}`:''}</div>
+        </div>
+      </div>
     </div>`).join('');
   if(t) t.hidden=!sample;
   w.hidden=false;
@@ -1613,12 +1623,14 @@ function renderBanksCalc(){
   if(rows) rows.innerHTML=[10,25,50,100].map(n=>`
     <tr><td>${n}</td><td class="r mono">${naira(n*12*27000000)}</td><td class="r mono">${naira(n*12*16900000)}</td></tr>`).join('');
   const seats=$('#seatGrid');
-  const PANEL=[['Access Bank','Onboarding',1],['Stanbic IBTC','In discussion',0],['Zenith Bank','In discussion',0],
-               ['Fidelity Bank','In discussion',0],['Wema Bank','In discussion',0],['Globus Bank','In discussion',0]];
-  if(seats) seats.innerHTML=PANEL.map(([n,st,hot])=>`
-    <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px">
-      <b>${n}</b><span class="tiny" style="color:${hot?'var(--naira,#1f7a4d)':'var(--ink-soft)'};font-weight:550">${st}</span>
-    </div>`).join('');
+  const PANEL=[['Access Bank','brand/banks/access.svg','Onboarding',1],['Stanbic IBTC','brand/banks/stanbic.png','In discussion',0],
+               ['Zenith Bank','brand/banks/zenith.png','In discussion',0],['Fidelity Bank','brand/banks/fidelity.svg','In discussion',0],
+               ['Wema Bank','brand/banks/wema.png','In discussion',0],['Globus Bank','brand/banks/globus.png','In discussion',0]];
+  if(seats) seats.innerHTML='<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px">'+PANEL.map(([n,logo,st,hot])=>`
+    <div class="card" style="padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <img src="${logo}" alt="${n}" style="height:30px;max-width:82%;object-fit:contain">
+      <div><b style="font-size:13.5px">${n}</b><div class="tiny" style="color:${hot?'var(--naira,#1f7a4d)':'var(--ink-soft)'};font-weight:550;margin-top:2px">${st}</div></div>
+    </div>`).join('')+'</div>';
 }
 function renderDesk(){
   const sel=$('#dkCar');
