@@ -24,7 +24,7 @@
 <meta name="twitter:image" content="https://midascfo.com/og-midas.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
 :root{
   --ink:#0e1420; --ink-soft:#49556b; --ink-faint:#7c889e;
@@ -35,8 +35,8 @@
   --good:#1f7a4d; --good-soft:#e8f5ee;
   --warn:#b4721c; --warn-soft:#fdf3e3;
   --bad:#b03c31; --bad-soft:#fcecea;
-  --display:'Inter Tight',system-ui,sans-serif;
-  --body:'Inter',system-ui,sans-serif;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'Instrument Sans',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --shadow:0 1px 2px rgba(14,20,32,.04),0 8px 24px rgba(14,20,32,.06);
   --shadow-lg:0 2px 4px rgba(14,20,32,.05),0 20px 50px rgba(14,20,32,.12);
@@ -323,6 +323,14 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   .g4{grid-template-columns:repeat(2,1fr) !important}
   .hero-cta .btn{flex:1;justify-content:center}
 }
+/* lender logo ticker */
+.lgm{overflow:hidden;padding:26px 0;border-bottom:1px solid var(--line);background:var(--surface)}
+.lgm-cap{text-align:center;font-size:12.5px;color:var(--ink-faint);margin-bottom:18px;letter-spacing:.04em}
+.lgm-track{display:flex;align-items:center;gap:74px;width:max-content;animation:lgm 30s linear infinite}
+.lgm-track img{height:30px;width:auto;object-fit:contain}
+.lgm:hover .lgm-track{animation-play-state:paused}
+@keyframes lgm{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.lgm-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
 </style>
 </head>
 <body>
@@ -366,6 +374,11 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <span class="rb-live"><span class="auc-dot"></span>BEST RATES RIGHT NOW</span>
       <div class="rb-items" id="ratesBoard"></div>
     </div>
+  </div>
+
+  <div class="lgm" aria-label="The lender panel">
+    <div class="lgm-cap">The lender panel &mdash; forming with Nigeria&rsquo;s leading banks</div>
+    <div class="lgm-track"><img src="brand/banks/access.svg" alt="Access Bank"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC"><img src="brand/banks/zenith.png" alt="Zenith Bank"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank"><img src="brand/banks/wema.png" alt="Wema Bank"><img src="brand/banks/globus.png" alt="Globus Bank"><img src="brand/banks/access.svg" alt="Access Bank"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC"><img src="brand/banks/zenith.png" alt="Zenith Bank"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank"><img src="brand/banks/wema.png" alt="Wema Bank"><img src="brand/banks/globus.png" alt="Globus Bank"></div>
   </div>
 
   <div class="wrap sec" id="how" style="padding-bottom:40px">
@@ -1623,13 +1636,13 @@ function renderBanksCalc(){
   if(rows) rows.innerHTML=[10,25,50,100].map(n=>`
     <tr><td>${n}</td><td class="r mono">${naira(n*12*27000000)}</td><td class="r mono">${naira(n*12*16900000)}</td></tr>`).join('');
   const seats=$('#seatGrid');
-  const PANEL=[['Access Bank','brand/banks/access.svg','Onboarding',1],['Stanbic IBTC','brand/banks/stanbic.png','In discussion',0],
-               ['Zenith Bank','brand/banks/zenith.png','In discussion',0],['Fidelity Bank','brand/banks/fidelity.svg','In discussion',0],
-               ['Wema Bank','brand/banks/wema.png','In discussion',0],['Globus Bank','brand/banks/globus.png','In discussion',0]];
-  if(seats) seats.innerHTML='<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px">'+PANEL.map(([n,logo,st,hot])=>`
-    <div class="card" style="padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
-      <img src="${logo}" alt="${n}" style="height:30px;max-width:82%;object-fit:contain">
-      <div><b style="font-size:13.5px">${n}</b><div class="tiny" style="color:${hot?'var(--naira,#1f7a4d)':'var(--ink-soft)'};font-weight:550;margin-top:2px">${st}</div></div>
+  const PANEL=[['Access Bank','brand/banks/access.svg'],['Stanbic IBTC','brand/banks/stanbic.png'],
+               ['Zenith Bank','brand/banks/zenith.png'],['Fidelity Bank','brand/banks/fidelity.svg'],
+               ['Wema Bank','brand/banks/wema.png'],['Globus Bank','brand/banks/globus.png']];
+  if(seats) seats.innerHTML='<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">'+PANEL.map(([n,logo])=>`
+    <div class="card" style="padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <img src="${logo}" alt="${n}" style="height:32px;max-width:84%;object-fit:contain">
+      <b style="font-size:13px">${n}</b>
     </div>`).join('')+'</div>';
 }
 function renderDesk(){
