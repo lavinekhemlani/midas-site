@@ -86,7 +86,7 @@ button,input,select{font:inherit;color:inherit}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
 .pad{padding:22px}
 .grid{display:grid;gap:18px}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--accent);text-transform:none}
 .muted{color:var(--ink-soft)}
 .faint{color:var(--ink-faint)}
 .tiny{font-size:12.5px}
@@ -384,6 +384,11 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <h2>Pay monthly. Drive today.</h2>
       </div>
     </div>
+    <div class="seg" id="segMarket" style="margin-bottom:18px">
+      <button class="on" onclick="setMarketSeg('all',this)">All</button>
+      <button onclick="setMarketSeg('new',this)">Brand new</button>
+      <button onclick="setMarketSeg('used',this)">Pre-owned</button>
+    </div>
     <div class="veh-grid" id="vehGrid"></div>
     <p class="tiny faint" style="margin-top:14px">Showroom prices, synced from Auto OS. Monthly amounts are the best current bank offer at 30% down over 60 months &mdash; your own offer depends on your income.</p>
   </div>
@@ -581,51 +586,36 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 
 <!-- ===================== BANK INTAKE ===================== -->
 <section class="view" id="v-banks">
-  <div class="wrap" style="padding-top:34px;max-width:860px">
-    <div class="eyebrow">For banks</div>
-    <h2 style="margin:8px 0 10px">Join the panel. Price files that arrive complete.</h2>
-    <p class="muted" style="max-width:62ch">Every application reaches you with a numbered PFI, a certified vehicle, and a verified income summary — homework done before it hits your queue. Assessment runs in your environment, on your policy. You pay nothing to join; you earn on every loan you win.</p>
-    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0">
-      <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">48h</div><div class="tiny muted">decision target, against an industry norm of 40&ndash;45 days</div></div>
-      <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Your policy</div><div class="tiny muted">you set rates, ceilings and appetite; change them any time</div></div>
-      <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Secured</div><div class="tiny muted">brand-new collateral, 20&ndash;70% down, lien on title, salary domiciliation</div></div>
-    </div>
-    <div class="card pad" style="margin-bottom:18px">
-      <div class="eyebrow">The regulated shape of the deal</div>
-      <h3 style="margin:10px 0 4px;font-size:1.15rem">Six positions. Yours run in your environment.</h3>
-      <p class="tiny muted" style="margin-bottom:14px">Built to the requirement your peers set: credit assessment sits on the bank's side, reached over an API — never inside the dealer's system.</p>
-      <div style="display:grid;gap:0">
-        ${'' /* rendered by renderBanksCalc */}
-        <div id="sixSteps"></div>
-      </div>
-    </div>
-    <div class="card pad" style="margin-bottom:18px">
-      <div class="eyebrow">What this earns you</div>
-      <h3 style="margin:10px 0 4px;font-size:1.15rem" id="bkEarnHead">Fund 25 cars a month.</h3>
-      <p class="tiny muted">Your team does one thing: price the file in your own system. Midas finds the customer, certifies the car, verifies the income and holds their hand to disbursement.</p>
-      <label class="tiny" style="font-weight:550;display:block;margin-top:14px">Cars you fund per month — <b class="mono" id="bkN">25</b></label>
-      <input type="range" class="rng" min="5" max="200" step="5" value="25" id="bkSlider">
-      <div class="grid g4" style="grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px">
-        <div><div class="tiny faint">Principal originated / year</div><div style="font-family:var(--display);font-size:1.45rem;font-weight:650" id="bkPrin">—</div></div>
-        <div><div class="tiny faint">Interest income, life of one year's loans</div><div style="font-family:var(--display);font-size:1.45rem;font-weight:650;color:var(--naira,#1f7a4d)" id="bkInt">—</div></div>
-        <div><div class="tiny faint">Cost to join the panel</div><div style="font-family:var(--display);font-size:1.45rem;font-weight:650">₦0</div></div>
-      </div>
-      <p class="tiny faint" style="margin-top:12px">Illustrative: average loan ₦27M at 26% p.a. over 48 months, secured on brand-new collateral with lien and salary domiciliation. Your rates, your policy.</p>
-    </div>
-    <div class="card pad" style="margin-bottom:18px">
-      <div class="eyebrow">The founding panel</div>
-      <h3 style="margin:10px 0 4px;font-size:1.15rem">The panel is forming now.</h3>
-      <p class="tiny muted" style="margin-bottom:12px">Founding lenders shape the credit-policy templates and get first look at every file in their segment.</p>
-      <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:10px" id="seatGrid"></div>
-      <p class="tiny faint" style="margin-top:10px">Panel formation in progress — statuses as of September 2026. A listing reflects live onboarding or discussion, not a signed lending agreement.</p>
-    </div>
-    <div class="card pad">
-      <b>Three steps to live:</b>
-      <p class="tiny muted" style="margin-top:8px">1&nbsp;&middot;&nbsp;A 30-minute call on policy and commercials &nbsp;&nbsp;2&nbsp;&middot;&nbsp;Your tech team + ours stand up the sandbox (the <a href="app.html#/axis/integration" style="color:var(--accent)">integration spec is public</a>) &nbsp;&nbsp;3&nbsp;&middot;&nbsp;You price your first live file.</p>
-      <div class="row" style="gap:10px;margin-top:14px;flex-wrap:wrap">
-        <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" onclick="track('bank_call_booked_click')">Book the 30-minute call &rarr;</a>
-        <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20lender%20panel%20%E2%80%94%20[Bank%20name]&body=Bank%3A%0AName%20and%20role%3A%0APhone%3A%0ABest%20time%20to%20talk%3A">Email us instead</a>
-      </div>
+  <div class="wrap" style="padding-top:38px;max-width:780px;padding-bottom:30px">
+    <div class="eyebrow">For financial institutions</div>
+    <h2 style="margin:10px 0 14px">Vehicle finance origination, done properly.</h2>
+    <p class="muted" style="max-width:66ch">Midas originates fully documented vehicle-finance applications for a panel of Nigerian banks, on new and certified pre-owned stock from an established national dealer network. Each file arrives complete: a numbered proforma invoice, a certified vehicle with fixed pricing, verified income, and the customer&rsquo;s documentation &mdash; ready for your credit process, not a lead to be chased.</p>
+
+    <p class="muted" style="max-width:66ch;margin-top:14px"><b style="color:var(--ink)">The model is proven in this market.</b> Through a comparable origination platform, Stanbic IBTC disbursed over &#8358;4&nbsp;billion of vehicle loans in its first six months, and vehicle &amp; asset finance desks across the industry are actively growing this book. The question is no longer whether digitally originated auto finance performs in Nigeria &mdash; it is which institutions take the flow.</p>
+
+    <h3 style="margin:34px 0 8px;font-size:1.1rem">The quality of the risk asset</h3>
+    <p class="muted" style="max-width:66ch">These are the facilities your credit policy already favours: <b style="color:var(--ink)">equity contributions of 20&ndash;70%</b> paid directly into your account before disbursement; <b style="color:var(--ink)">lien on title</b>; comprehensive insurance; <b style="color:var(--ink)">salary domiciliation</b> where applicable; income verified through a licensed provider rather than declared; and collateral that is either brand new with full warranty or inspected and graded. Your credit committee retains full discretion on every file &mdash; assessment runs inside your own environment, over an API. Nothing sits in the dealer&rsquo;s systems.</p>
+
+    <h3 style="margin:34px 0 8px;font-size:1.1rem">How a facility originates</h3>
+    <div id="sixSteps"></div>
+
+    <h3 style="margin:34px 0 8px;font-size:1.1rem">Indicative economics</h3>
+    <p class="tiny muted" style="margin-bottom:10px">Average facility of &#8358;27M at 26% p.a. over 48 months, for illustration. Rates and tenors are set by your institution.</p>
+    <div class="tb-wrap"><table class="tb" style="max-width:640px" id="bkTable">
+      <thead><tr><th>Facilities funded monthly</th><th class="r">Principal originated p.a.</th><th class="r">Gross interest, life of book</th></tr></thead>
+      <tbody id="bkRows"></tbody>
+    </table></div>
+    <p class="tiny faint" style="margin-top:8px">There is no fee to join the panel. Midas is remunerated by its commercial partners, not by your institution or the borrower.</p>
+
+    <h3 style="margin:34px 0 8px;font-size:1.1rem">The founding panel</h3>
+    <div id="seatGrid" style="max-width:640px"></div>
+    <p class="tiny faint" style="margin-top:8px">Positions as of September 2026, reflecting live onboarding or discussions &mdash; not signed lending agreements. One founding position remains open.</p>
+
+    <h3 style="margin:34px 0 8px;font-size:1.1rem">Next step</h3>
+    <p class="muted" style="font-size:14.5px;max-width:66ch">A thirty-minute conversation on credit policy and commercials; thereafter your technology team and ours establish the sandbox &mdash; <a href="app.html#/axis/integration" style="color:var(--accent)">the integration specification is published</a>. We would welcome the conversation at your convenience.</p>
+    <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
+      <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" onclick="track('bank_call_booked_click')">Arrange the conversation &rarr;</a>
+      <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20lender%20panel%20%E2%80%94%20[Institution]&body=Institution%3A%0AName%20and%20title%3A%0ATelephone%3A%0AConvenient%20time%3A">Write to us</a>
     </div>
   </div>
 </section>
@@ -764,7 +754,12 @@ const VEHICLES = [
   {id:'V-1002', year:2026, make:'Hyundai', model:'Elantra', body:'sedan', price:38500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/elantra.jpg', tag:'Executive saloon'},
   {id:'V-1003', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:62000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/tucson.jpg', tag:'Family flagship'},
   {id:'V-1004', year:2026, make:'Changan', model:'Hunter 4×4', body:'pickup', price:49500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/hunter.jpg', tag:'Work + weekend'},
-  {id:'V-1005', year:2026, make:'MG', model:'T60 4×4', body:'pickup', price:46500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/t60.jpg', tag:'Built for business'}
+  {id:'V-1005', year:2026, make:'MG', model:'T60 4×4', body:'pickup', price:46500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/t60.jpg', tag:'Built for business'},
+  {id:'U-2001', year:2019, make:'Toyota', model:'Corolla LE', body:'sedan', price:16500000, km:62000, origin:'Foreign', grade:'A', score:178, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2002', year:2016, make:'Toyota', model:'Camry SE', body:'sedan', price:12800000, km:118000, origin:'Local', grade:'B', score:151, loc:'Victoria Island, Lagos', cyl:4, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2003', year:2021, make:'Hyundai', model:'Elantra', body:'sedan', price:21500000, km:41000, origin:'Foreign', grade:'A', score:186, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2004', year:2018, make:'Lexus', model:'RX 350', body:'suv', price:38500000, km:88000, origin:'Foreign', grade:'A', score:181, loc:'Victoria Island, Lagos', cyl:6, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
+  {id:'U-2005', year:2013, make:'Toyota', model:'Sienna XLE', body:'van', price:11500000, km:143000, origin:'Local', grade:'B', score:144, loc:'Ikeja, Lagos', cyl:6, trans:'Automatic', img:null, tag:'Certified pre-owned', warranty:'6-month engine & gearbox'}
 ];
 
 /* ---------- LENDER PANEL (70, masked) ---------- */
@@ -848,6 +843,11 @@ fetch('inventory.json').then(r=>r.ok?r.json():null).then(rows=>{
 
 /* full spec sheets, Autochek-parity (engine, fuel, colours, features) */
 const SPECS={
+  'U-2005': {engine:'3.5L V6',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'8',ext:'Grey',inter:'Grey fabric',features:["Rear camera","Bluetooth","ABS brakes","Dual airbags","Air conditioning","Power sliding doors","Cruise control"]},
+  'U-2001': {engine:'1.8L · 4-cylinder',fuel:'Petrol',gearbox:'CVT automatic',drive:'Front-wheel drive',seats:'5',ext:'Silver',inter:'Grey fabric',features:["Rear camera","Touchscreen · Apple CarPlay","Bluetooth","ABS brakes","Dual airbags","Alloy wheels","Air conditioning","Keyless entry","Power windows"]},
+  'U-2002': {engine:'2.5L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Black',inter:'Black fabric',features:["Rear camera","Bluetooth","ABS brakes","Dual airbags","Alloy wheels","Air conditioning","Cruise control","Power windows"]},
+  'U-2003': {engine:'1.6L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Phantom Black',inter:'Grey fabric',features:["Rear camera","8\u2033 touchscreen · CarPlay / Android Auto","Bluetooth","ABS brakes","Dual airbags","Alloy wheels","Air conditioning","Cruise control"]},
+  'U-2004': {engine:'3.5L V6',fuel:'Petrol',gearbox:'8-speed automatic',drive:'All-wheel drive',seats:'5',ext:'Nebula Grey',inter:'Black leather',features:["Rear camera","Touchscreen navigation","Bluetooth","ABS brakes","8 airbags","Alloy wheels","Dual-zone climate","Sunroof","Power tailgate"]},
   'V-1001': {engine:'1.5L · 4-cylinder',fuel:'Petrol',gearbox:'CVT automatic',drive:'Front-wheel drive',seats:'5',ext:'Dynamic Red',inter:'Black fabric',features:["Rear camera", "8\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Keyless entry", "Power windows", "Central locking"]},
   'V-1002': {engine:'1.6L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Phantom Black',inter:'Grey fabric',features:["Rear camera", "8\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Power windows", "Central locking"]},
   'V-1003': {engine:'2.0L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Titan Grey',inter:'Black leather',features:["Rear camera", "10\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "6 airbags", "Alloy wheels", "Dual-zone climate control", "Cruise control", "Keyless start", "Roof rails"]},
@@ -997,21 +997,25 @@ function bestTeaser(v){
   const ok = runPanel(v, .30, 60, null).filter(o=>o.approved);
   return ok.length ? sortOffers(ok,'mo')[0] : null;
 }
+let marketSeg='all';
+function setMarketSeg(m,btn){ marketSeg=m; document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b===btn)); renderMarket(); }
 function renderMarket(){
   const g = $('#vehGrid'); if (!g) return;
   const rb=$('#ratesBoard');
   if(rb){ rb.innerHTML=VEHICLES.map(v=>{const t=bestTeaser(v);return t?`<span class="rb-it">${v.model} <b>${pct(t.rate*100)}</b> <span class="dn">▾</span> · ${NGN(t.monthly)}/mo</span>`:'';}).join(''); }
   g.innerHTML = '';
-  VEHICLES.forEach(v => {
+  const rows = VEHICLES.filter(v => marketSeg==='all' ? true : marketSeg==='new' ? v.origin==='Brand new' : v.origin!=='Brand new');
+  rows.forEach(v => {
     const t = bestTeaser(v);
+    const isNew = v.origin==='Brand new';
     g.appendChild(el(`
       <article class="veh" onclick="openCar('${v.id}')">
-        <div class="veh-img"><img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" loading="lazy" />
-          <div class="veh-badges"><span class="tag ok">Brand new</span><span class="tag" style="background:rgba(255,255,255,.92)">${v.tag}</span></div>
+        <div class="veh-img">${v.img?`<img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" loading="lazy" />`:carSVG(v.body)}
+          <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${isNew?v.tag:(v.km/1000).toFixed(0)+'K km · Grade '+v.grade}</span></div>
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
-          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">5-yr warranty</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
+          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">${isNew?'In stock · Lagos':'Inspected · '+v.loc.split(',')[0]}</span></div>
           <div class="veh-mo-big">${t?NGN(t.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)} · from 30% down${t?` · best rate <b style="color:var(--naira)">${pct(t.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
@@ -1044,17 +1048,17 @@ function heroTicker(){
 /* ===================== CAR DETAIL ===================== */
 function renderCar(){
   const v = vehicle(); if (!v){ location.hash = '#/market'; return; }
-  $('#carImg').innerHTML = `<img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" style="width:100%;height:100%;object-fit:cover;display:block" />`;
+  $('#carImg').innerHTML = v.img ? `<img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" style="width:100%;height:100%;object-fit:cover;display:block" />` : carSVG(v.body);
   const age = 2026 - v.year;
   $('#carInfo').innerHTML = `
     <div class="between" style="align-items:flex-start">
       <div><h2 style="font-size:1.5rem">${v.make} ${v.model} ${v.year}</h2>
-        <p class="muted tiny" style="margin-top:5px">Brand new · ${v.loc}</p></div>
-      <span class="tag ok" style="font-size:12.5px;padding:7px 12px">🛡 5-yr / 100,000 km warranty</span>
+        <p class="muted tiny" style="margin-top:5px">${v.origin==='Brand new'?'Brand new':'Certified pre-owned · '+(v.km/1000).toFixed(0)+'K km'} · ${v.loc}</p></div>
+      <span class="tag ok" style="font-size:12.5px;padding:7px 12px">🛡 ${v.origin==='Brand new'?'5-yr / 100,000 km warranty':'Inspected · Grade '+v.grade+' · 6-mo warranty'}</span>
     </div>
     <hr class="sep">
     <div class="grid g4" style="grid-template-columns:repeat(4,1fr);gap:14px">
-      ${[['Condition','Brand new'],['Mileage','0 km'],['Warranty','5 yr / 100,000 km'],['Service','Nationwide centres']]
+      ${[['Condition',v.origin==='Brand new'?'Brand new':'Pre-owned · '+v.origin+' used'],['Mileage',(v.km/1000).toFixed(0)+'K km'],['Warranty',v.origin==='Brand new'?'5 yr / 100,000 km':'6-month engine & gearbox'],['Service','Nationwide centres']]
         .map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-weight:550;margin-top:2px">${x}</div></div>`).join('')}
     </div>
     <hr class="sep">
@@ -1591,29 +1595,30 @@ function renderDealer(){
 /* ===================== ROUTER ===================== */
 function renderBanksCalc(){
   const steps=[
-    ['Midas','Customer picks the car','Certified stock, priced live, on their phone.'],
-    ['Midas','Proforma invoice issued','A numbered PFI fixes car, price and structure. Valid 7 days.'],
-    ['Your bank','Credit assessment','The file crosses the API into your environment. Your scoring, your bureau checks, your rules.'],
-    ['Your bank','Offer letter','Terms return with your reference. Target 48 hours — the industry runs 40–45 days.'],
-    ['Your bank','Down payment lands with you','The customer pays equity directly into your account. Never to the dealer, never to Midas.'],
-    ['You → dealer','Disbursement & keys','You pay the dealer, the lien registers, keys in 24 hours. You collect for the tenor.']];
+    ['Midas','The customer selects a vehicle','Certified stock at fixed showroom pricing, on their phone or at the showroom.'],
+    ['Midas','Proforma invoice issued','A numbered PFI fixes the vehicle, price and structure. Valid seven days.'],
+    ['Your institution','Credit assessment','The file crosses the API into your environment. Your scoring, your bureau checks, your rules \u2014 your credit committee\u2019s discretion throughout.'],
+    ['Your institution','Offer letter','Terms issued under your reference. Target: 48 hours, against an industry norm of 40\u201345 days.'],
+    ['Your institution','Equity contribution received','The customer pays the down payment directly into your account. It never passes through the dealer or Midas.'],
+    ['Your institution','Disbursement and delivery','You disburse to the dealer, the lien is registered, and the customer collects within 24 hours. The facility amortises to your book.']];
   const sx=$('#sixSteps');
   if(sx) sx.innerHTML=steps.map((st,i)=>`
-    <div style="display:grid;grid-template-columns:34px 96px 1fr;gap:12px;padding:11px 0;${i?'border-top:1px solid var(--line);':''}align-items:baseline">
-      <div class="mono" style="font-size:1.25rem;font-weight:650;color:var(--accent)">${i+1}</div>
-      <div><span class="tag ${st[0].startsWith('Your')||st[0].startsWith('You')?'ok':''}" style="font-size:10.5px">${st[0]}</span></div>
-      <div><b style="font-size:14px">${st[1]}</b><div class="tiny muted" style="margin-top:2px">${st[2]}</div></div>
+    <div style="display:grid;grid-template-columns:24px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline">
+      <div class="mono" style="font-weight:650;color:var(--accent)">${i+1}</div>
+      <div><b style="font-size:14.5px">${st[1]}</b><span class="tiny faint" style="margin-left:9px">${st[0]}</span>
+      <div class="tiny muted" style="margin-top:2px">${st[2]}</div></div>
     </div>`).join('');
+  const naira=n=> n>=1e9 ? '\u20a6'+(n/1e9).toFixed(1).replace(/\.0$/,'')+'bn' : NGNs(n);
+  const rows=$('#bkRows');
+  if(rows) rows.innerHTML=[10,25,50,100].map(n=>`
+    <tr><td>${n}</td><td class="r mono">${naira(n*12*27000000)}</td><td class="r mono">${naira(n*12*16900000)}</td></tr>`).join('');
   const seats=$('#seatGrid');
-  const PANEL=[['Access Bank','Onboarding','ok'],['Stanbic IBTC','In discussion','a'],['Zenith Bank','In discussion','a'],
-               ['Fidelity Bank','In discussion','a'],['Wema Bank','In discussion','a'],['Globus Bank','In discussion','a']];
-  if(seats) seats.innerHTML=PANEL.map(([n,st,cl])=>`<div class="card pad-sm" style="padding:12px 14px"><b style="font-size:13.5px">${n}</b><div class="tiny"><span class="tag ${cl}" style="margin-top:4px">${st}</span></div></div>`).join('')
-    + `<div class="card pad-sm" style="padding:12px 14px;border-style:dashed"><b style="font-size:13.5px">Your bank</b><div class="tiny faint" style="margin-top:4px">Seat open — 30 minutes to find out</div></div>`;
-  const sl=$('#bkSlider');
-  const upd=()=>{const n=+sl.value;$('#bkN').textContent=n;$('#bkEarnHead').textContent='Fund '+n+' cars a month.';
-    const prin=n*12*27000000; const intr=n*12*16900000;
-    $('#bkPrin').textContent=NGNs(prin); $('#bkInt').textContent=NGNs(intr);};
-  if(sl){sl.oninput=upd; upd();}
+  const PANEL=[['Access Bank','Onboarding',1],['Stanbic IBTC','In discussion',0],['Zenith Bank','In discussion',0],
+               ['Fidelity Bank','In discussion',0],['Wema Bank','In discussion',0],['Globus Bank','In discussion',0]];
+  if(seats) seats.innerHTML=PANEL.map(([n,st,hot])=>`
+    <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px">
+      <b>${n}</b><span class="tiny" style="color:${hot?'var(--naira,#1f7a4d)':'var(--ink-soft)'};font-weight:550">${st}</span>
+    </div>`).join('');
 }
 function renderDesk(){
   const sel=$('#dkCar');
