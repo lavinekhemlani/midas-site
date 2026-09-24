@@ -257,6 +257,9 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .foot-bar .fb-links{display:flex;gap:18px;margin-top:10px}
 .foot-bar .fb-links a{text-decoration:none}
 .foot-bar .fb-links a:hover{color:var(--ink);text-decoration:underline}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){.g3,.g2{grid-template-columns:1fr}}
 /* motion */
 .rev{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
 .rev.on{opacity:1;transform:none}
@@ -417,7 +420,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 
   <div class="wrap sec" id="how" style="padding-bottom:40px">
     <h2 style="margin-bottom:30px">Three steps to your keys.</h2>
-    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px">
+    <div class="g3">
       <div class="veh rev" style="cursor:default">
         <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;height:100%;object-fit:cover">
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">1</span></div>
@@ -682,10 +685,28 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <div class="eyebrow">Non-interest finance</div>
     <h2 style="margin:10px 0 12px">Own your car the halal way.</h2>
     <p class="muted" style="max-width:58ch">No interest, ever. You pay an agreed rental-profit charge, fixed and written down on day one. Nothing floats, nothing compounds.</p>
-    <div class="grid rev" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px">
-      <div class="card pad"><div class="mono" style="color:var(--accent);font-weight:650">1</div><b style="font-size:14px">The bank buys the car</b><div class="tiny muted" style="margin-top:3px">At the showroom price. It owns it.</div></div>
-      <div class="card pad"><div class="mono" style="color:var(--accent);font-weight:650">2</div><b style="font-size:14px">You drive and pay monthly</b><div class="tiny muted" style="margin-top:3px">A fixed rent. Ownership passes step by step.</div></div>
-      <div class="card pad"><div class="mono" style="color:var(--accent);font-weight:650">3</div><b style="font-size:14px">It becomes yours</b><div class="tiny muted" style="margin-top:3px">At the end of the term, outright.</div></div>
+    <div class="chiprow rev" style="margin-top:16px">
+      <span class="ch"><b>No interest, ever</b></span>
+      <span class="ch"><b>Fixed on day one</b></span>
+      <span class="ch"><b>No hidden fees</b></span>
+      <span class="ch"><b>Licensed non-interest banks</b></span>
+    </div>
+    <div class="g3" style="margin-top:14px">
+      <div class="veh rev" style="cursor:default">
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/showroom.jpg" alt="The bank buys the car" style="width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:#1d7a4f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">1</span></div>
+        <div class="veh-body"><h4 style="margin:0">The bank buys the car</h4><p class="tiny muted" style="margin:4px 0 0">At the showroom price. It owns it.</p></div>
+      </div>
+      <div class="veh rev" style="cursor:default">
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/hero.jpg" alt="You drive" style="width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:#1d7a4f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">2</span></div>
+        <div class="veh-body"><h4 style="margin:0">You drive, pay a fixed rent</h4><p class="tiny muted" style="margin:4px 0 0">Ownership passes to you step by step.</p></div>
+      </div>
+      <div class="veh rev" style="cursor:default">
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/tucson.jpg" alt="It becomes yours" style="width:100%;height:100%;object-fit:cover">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:#1d7a4f;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">3</span></div>
+        <div class="veh-body"><h4 style="margin:0">It becomes yours</h4><p class="tiny muted" style="margin:4px 0 0">At the end of the term, outright.</p></div>
+      </div>
     </div>
 
     <h3 style="margin:32px 0 8px;font-size:1.1rem">Two structures, both simple</h3>
@@ -699,6 +720,19 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <div class="tiny muted" style="margin-top:3px">The bank buys the car at the showroom price and sells it to you at a disclosed, fixed margin, paid in equal monthly instalments. You own the car from day one; the bank holds a lien until you finish paying.</div>
       </div>
     </div>
+
+    <div class="card pad rev" style="margin-top:26px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+      <img src="brand/people/ibrahim.jpg" alt="Ibrahim S." style="width:54px;height:54px;border-radius:50%;object-fit:cover">
+      <div style="flex:1;min-width:220px">
+        <p style="margin:0;font-size:15px;line-height:1.6">&ldquo;I do not take interest. Here the bank buys the car and I rent it until it is mine. That is why I applied.&rdquo;</p>
+        <div class="tiny faint" style="margin-top:6px">Ibrahim S. &middot; Kano &middot; 2026 Hyundai Creta &middot; illustrative</div>
+      </div>
+    </div>
+
+    <div class="rev" style="margin-top:26px;padding:18px;border:1px solid var(--line);border-radius:14px;display:flex;gap:34px;align-items:center;flex-wrap:wrap;justify-content:center;background:var(--surface)">
+      <img src="brand/banks/jaiz.svg" alt="Jaiz Bank" style="height:30px"><img src="brand/banks/lotus.svg" alt="Lotus Bank" style="height:30px"><img src="brand/banks/taj.svg" alt="TAJBank" style="height:30px">
+    </div>
+    <p class="tiny faint" style="margin-top:8px;text-align:center">Built for Nigeria&rsquo;s licensed non-interest banks.</p>
 
     <h3 style="margin:32px 0 8px;font-size:1.1rem">What stays the same</h3>
     <p class="muted" style="max-width:64ch;font-size:14.5px">The same cars, the same application, the same 48-hour target. Your down payment still goes directly to the bank, never to the dealer or Midas. Tick <b>non-interest finance</b> when you apply and only compliant offers reach you.</p>
@@ -850,28 +884,38 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </div>
     <p>Banks compete for every loan. Dealers sell more cars. Buyers get the lowest rate.</p>
   </div>
-  <div class="pgrid">
-    <article class="pcard bank rev">
-      <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10 12 4l9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8"/><path d="M3 20h18"/></svg></div>
-      <div class="pk">For banks</div>
-      <h3>Join the panel. Price every loan.</h3>
-      <p>See pre-qualified buyers, bid your rate in real time and fund only the deals that fit your policy.</p>
-      <div class="pacts">
-        <a class="pmain" href="#/banks">Join the panel <span>&rarr;</span></a>
-        <a class="plink" href="app.html#/axis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Console</a>
-        <a class="plink" href="#/bank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>Panel view</a>
+  <div class="pgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <article class="veh rev" style="cursor:default">
+      <div class="veh-img" style="aspect-ratio:16/7;background:#fff;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;align-items:center;justify-items:center;padding:16px">
+        <img src="brand/banks/access.svg" alt="Access Bank" style="height:24px;max-width:90%;object-fit:contain">
+        <img src="brand/banks/stanbic.png" alt="Stanbic IBTC" style="height:26px;max-width:90%;object-fit:contain">
+        <img src="brand/banks/zenith.png" alt="Zenith Bank" style="height:26px;max-width:90%;object-fit:contain">
+        <img src="brand/banks/fidelity.svg" alt="Fidelity Bank" style="height:22px;max-width:90%;object-fit:contain">
+        <img src="brand/banks/wema.png" alt="Wema Bank" style="height:26px;max-width:90%;object-fit:contain">
+        <img src="brand/banks/globus.png" alt="Globus Bank" style="height:26px;max-width:90%;object-fit:contain">
+      </div>
+      <div class="veh-body">
+        <div class="eyebrow">For banks</div>
+        <h3 style="margin:6px 0 4px">Join the panel. Price every loan.</h3>
+        <p class="tiny muted" style="margin:0 0 12px">Pre-qualified buyers, complete files, your credit rules.</p>
+        <div class="row" style="gap:8px;flex-wrap:wrap">
+          <a class="btn btn-p btn-sm" href="#/banks">Join the panel &rarr;</a>
+          <a class="btn btn-g btn-sm" href="app.html#/axis">Console</a>
+          <a class="btn btn-g btn-sm" href="#/bank">Panel view</a>
+        </div>
       </div>
     </article>
-    <article class="pcard dealer rev">
-      <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4h-2M3 13v4h2"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/><path d="M3 13h18"/></svg></div>
-      <div class="pk">For dealerships</div>
-      <h3>List your stock. Browsers become buyers.</h3>
-      <p>Every car carries a monthly price and a bank panel behind it. Free to list, and you're paid on disbursement.</p>
-      <div class="pacts">
-        <a class="pmain" href="#/dealers">List your stock <span>&rarr;</span></a>
-        <a class="plink" href="#/desk">Showroom desk</a>
-        <a class="plink" href="app.html#/stallion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Dealer desk</a>
-        <a class="plink" href="#/dealer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>The numbers</a>
+    <article class="veh rev" style="cursor:default">
+      <div class="veh-img" style="aspect-ratio:16/7"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;height:100%;object-fit:cover"></div>
+      <div class="veh-body">
+        <div class="eyebrow">For dealerships</div>
+        <h3 style="margin:6px 0 4px">List your stock. Browsers become buyers.</h3>
+        <p class="tiny muted" style="margin:0 0 12px">Every car carries a monthly price. Free to list, paid on disbursement.</p>
+        <div class="row" style="gap:8px;flex-wrap:wrap">
+          <a class="btn btn-p btn-sm" href="#/dealers">List your stock &rarr;</a>
+          <a class="btn btn-g btn-sm" href="#/desk">Showroom desk</a>
+          <a class="btn btn-g btn-sm" href="app.html#/stallion">Dealer desk</a>
+        </div>
       </div>
     </article>
   </div>
@@ -886,7 +930,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </div>
     <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
     <div><h5>Partners</h5><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
-    <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a></div>
+    <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a><a href="app.html#/ops">Operations console</a></div>
     <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a></div>
   </div>
   <div class="bf-bot">
@@ -1941,25 +1985,35 @@ function renderPost(){
       <a class="btn btn-wa" href="https://wa.me/2348058963692" target="_blank" rel="noopener">Ask on WhatsApp</a>
     </div>`;
 }
-let revObs=null;
 function cntUp(el){
   const t=+el.dataset.cnt, d=900, st=performance.now();
   const f=n=>{const k=Math.min(1,(n-st)/d);el.textContent=Math.round(t*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f);};
   requestAnimationFrame(f);
 }
-function initReveal(){
-  if(!('IntersectionObserver' in window)) { document.querySelectorAll('.rev').forEach(n=>n.classList.add('on')); return; }
-  if(!revObs) revObs=new IntersectionObserver(es=>es.forEach(e=>{
-    if(!e.isIntersecting) return;
-    e.target.classList.add('on');
-    e.target.querySelectorAll('[data-cnt]').forEach(cntUp);
-    revObs.unobserve(e.target);
-  }),{threshold:.1});
+let revTick=false;
+function revealCheck(){
+  revTick=false;
   document.querySelectorAll('.rev:not(.on)').forEach(n=>{
-    const p=n.parentElement; const sibs=p?[...p.children].filter(c=>c.classList&&c.classList.contains('rev')):[n];
-    n.style.transitionDelay=(sibs.indexOf(n)%6)*70+'ms';
-    revObs.observe(n);
+    if(n.offsetParent===null) return;               /* inside a hidden view */
+    const r=n.getBoundingClientRect();
+    if(r.top < innerHeight*0.96 && r.bottom > 0){
+      const p=n.parentElement; const sibs=p?[...p.children].filter(c=>c.classList&&c.classList.contains('rev')&&!c.classList.contains('on')):[n];
+      n.style.transitionDelay=Math.max(0,sibs.indexOf(n)%6)*70+'ms';
+      n.classList.add('on');
+      n.querySelectorAll('[data-cnt]').forEach(cntUp);
+    }
   });
+}
+function onRevScroll(){ if(!revTick){ revTick=true; requestAnimationFrame(revealCheck); } }
+let revBound=false;
+function initReveal(){
+  if(!revBound){ revBound=true;
+    addEventListener('scroll', onRevScroll, {passive:true});
+    addEventListener('resize', onRevScroll, {passive:true});
+  }
+  revealCheck();
+  setTimeout(revealCheck, 350);
+  setTimeout(revealCheck, 1000);
 }
 const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,bank:renderBank,dealer:renderDealer,desk:renderDesk,halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 function route(){
