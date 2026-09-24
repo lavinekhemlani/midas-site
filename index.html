@@ -1240,11 +1240,11 @@ const SPECS={
   'U-2002': {engine:'2.5L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Black',inter:'Black fabric',features:["Rear camera","Bluetooth","ABS brakes","Dual airbags","Alloy wheels","Air conditioning","Cruise control","Power windows"]},
   'U-2003': {engine:'1.6L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Phantom Black',inter:'Grey fabric',features:["Rear camera","8\u2033 touchscreen · CarPlay / Android Auto","Bluetooth","ABS brakes","Dual airbags","Alloy wheels","Air conditioning","Cruise control"]},
   'U-2004': {engine:'3.5L V6',fuel:'Petrol',gearbox:'8-speed automatic',drive:'All-wheel drive',seats:'5',ext:'Nebula Grey',inter:'Black leather',features:["Rear camera","Touchscreen navigation","Bluetooth","ABS brakes","8 airbags","Alloy wheels","Dual-zone climate","Sunroof","Power tailgate"]},
-  'V-1001': {engine:'1.5L · 4-cylinder',fuel:'Petrol',gearbox:'CVT automatic',drive:'Front-wheel drive',seats:'5',ext:'Dynamic Red',inter:'Black fabric',features:["Rear camera", "8\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Keyless entry", "Power windows", "Central locking"]},
-  'V-1002': {engine:'1.6L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Phantom Black',inter:'Grey fabric',features:["Rear camera", "8\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Power windows", "Central locking"]},
-  'V-1003': {engine:'2.0L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Titan Grey',inter:'Black leather',features:["Rear camera", "10\\u2033 touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "6 airbags", "Alloy wheels", "Dual-zone climate control", "Cruise control", "Keyless start", "Roof rails"]},
-  'V-1004': {engine:'2.0L turbo · 4-cylinder',fuel:'Petrol',gearbox:'Automatic',drive:'4×4 double cab',seats:'5',ext:'Glacier White',inter:'Black fabric',features:["Rear camera", "10\\u2033 touchscreen", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Hill descent control", "Tow bar ready", "Load-bed liner"]},
-  'V-1005': {engine:'2.0L turbo diesel · 4-cylinder',fuel:'Diesel',gearbox:'Automatic',drive:'4×4 double cab',seats:'5',ext:'Metal Black',inter:'Black fabric',features:["Rear camera", "10\\u2033 touchscreen \u00b7 Apple CarPlay", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Hill descent control", "Load-bed liner"]},
+  'V-1001': {engine:'1.5L · 4-cylinder',fuel:'Petrol',gearbox:'CVT automatic',drive:'Front-wheel drive',seats:'5',ext:'Dynamic Red',inter:'Black fabric',features:["Rear camera", "8″ touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Keyless entry", "Power windows", "Central locking"]},
+  'V-1002': {engine:'1.6L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Phantom Black',inter:'Grey fabric',features:["Rear camera", "8″ touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Power windows", "Central locking"]},
+  'V-1003': {engine:'2.0L · 4-cylinder',fuel:'Petrol',gearbox:'6-speed automatic',drive:'Front-wheel drive',seats:'5',ext:'Titan Grey',inter:'Black leather',features:["Rear camera", "10″ touchscreen \u00b7 Apple CarPlay / Android Auto", "Bluetooth", "ABS brakes", "6 airbags", "Alloy wheels", "Dual-zone climate control", "Cruise control", "Keyless start", "Roof rails"]},
+  'V-1004': {engine:'2.0L turbo · 4-cylinder',fuel:'Petrol',gearbox:'Automatic',drive:'4×4 double cab',seats:'5',ext:'Glacier White',inter:'Black fabric',features:["Rear camera", "10″ touchscreen", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Hill descent control", "Tow bar ready", "Load-bed liner"]},
+  'V-1005': {engine:'2.0L turbo diesel · 4-cylinder',fuel:'Diesel',gearbox:'Automatic',drive:'4×4 double cab',seats:'5',ext:'Metal Black',inter:'Black fabric',features:["Rear camera", "10″ touchscreen \u00b7 Apple CarPlay", "Bluetooth", "ABS brakes", "Dual airbags", "Alloy wheels", "Air conditioning", "Cruise control", "Hill descent control", "Load-bed liner"]},
 };
 
 /* ---------- APPLICATION STATE ---------- */
@@ -1541,7 +1541,22 @@ function renderDeal(){
     ${best ? `
     <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="location.hash='#/apply'">See my offers →</button>
     <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
-    : `<div class="warnbox" style="margin-top:16px">${S.halal?'The non-interest bank will not price this structure yet. Add to the down payment or shorten the term.':'No bank will price this yet. Add to the down payment, or take longer to pay.'}</div>`}`;
+    : `<div class="warnbox" style="margin-top:16px">${S.halal?'The non-interest bank will not price this structure yet.':'No bank will price this structure yet.'}</div>
+    <button class="btn btn-a" style="width:100%;margin-top:12px" onclick="fixStructure()">Fix it for me →</button>
+    ${S.halal?`<button class="btn btn-g" style="width:100%;margin-top:8px" onclick="S.halal=false;save();renderDeal()">Show offers from all banks</button>`:''}
+    <button class="btn btn-g" style="width:100%;margin-top:8px" onclick="location.hash='#/apply'">Start my application anyway →</button>`}`;
+}
+/* Find the nearest structure the current panel (halal filter respected) will price. */
+function fixStructure(){
+  const v=vehicle(); if(!v) return;
+  for (const eq of [.30,.35,.40,.45,.50,.55,.60]){
+    for (const ten of [60,48,36,30,24]){
+      let ok=runPanel(v,eq,ten,S.applicant).filter(o=>o.approved);
+      if(S.halal) ok=ok.filter(o=>isHalalLender(o.lender));
+      if(ok.length){ S.equityPct=eq; S.tenor=ten; save(); renderDeal(); track('structure_fixed',{eq,ten}); return; }
+    }
+  }
+  if(S.halal){ S.halal=false; save(); renderDeal(); }
 }
 </script>
 <script>
