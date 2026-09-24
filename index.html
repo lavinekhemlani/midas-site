@@ -257,6 +257,38 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .foot-bar .fb-links{display:flex;gap:18px;margin-top:10px}
 .foot-bar .fb-links a{text-decoration:none}
 .foot-bar .fb-links a:hover{color:var(--ink);text-decoration:underline}
+.photostrip{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin:20px 0}
+.photostrip .ps{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/9}
+.photostrip .ps img{width:100%;height:100%;object-fit:cover;display:block}
+.photostrip .ps span{position:absolute;left:8px;bottom:8px;background:rgba(10,20,32,.72);color:#fff;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:7px}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.statcard{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:22px 18px;text-align:center}
+.statcard .sv{font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em;color:var(--accent)}
+.statcard .sk{font-size:12.5px;color:var(--ink-soft);margin-top:6px;line-height:1.45}
+.flow{display:grid;grid-template-columns:1fr 22px 1fr 22px 1.35fr 22px 1fr;gap:8px;align-items:stretch;margin:18px 0}
+.flow .fs{border:1px solid var(--line);border-radius:14px;background:#fdf9f1;padding:18px 14px;text-align:center}
+.flow .fs .fi{color:var(--accent);margin-bottom:8px}
+.flow .fs b{display:block;font-size:14px;line-height:1.3}
+.flow .fs .tiny{margin-top:5px}
+.flow .fs.dark{background:linear-gradient(160deg,#0b2a4a,#123f6e);border:none;color:#fff}
+.flow .fs.dark .tiny{color:#b9cadd}
+.flow .fs.dark .pill{display:inline-block;background:#e8833a;color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.05em;padding:4px 11px;border-radius:999px;margin-bottom:9px}
+.flow .fa{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:18px}
+.cklist .ck{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.cklist .ck svg{flex:none;margin-top:2px;color:var(--accent)}
+.cklist .ck b{font-size:14.5px}
+.numlist .nl{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.numlist .nl .nn{flex:none;width:24px;height:24px;border-radius:50%;background:#0b2a4a;color:#fff;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.tilerow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.tile{background:#fdf9f1;border:1px solid var(--line);border-radius:14px;padding:18px 14px;text-align:center}
+.tile svg{color:var(--accent)}
+.tile b{display:block;font-size:13.5px;margin-top:8px;line-height:1.3}
+.tile .tiny{margin-top:4px}
+.pilotband{background:linear-gradient(160deg,#0b2a4a,#123f6e);border-radius:16px;padding:24px 26px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin:24px 0;color:#fff}
+.pilotband .pb-big{font-family:var(--display);font-size:1.7rem;font-weight:650;white-space:nowrap}
+.pilotband .pb-big em{font-style:normal;color:#f0c060}
+.pilotband p{margin:0;font-size:13.5px;color:#c7d5e6;flex:1;min-width:240px}
+@media(max-width:760px){.photostrip{grid-template-columns:1fr 1fr}.statrow{grid-template-columns:1fr}.flow{grid-template-columns:1fr}.flow .fa{transform:rotate(90deg);padding:2px 0}.tilerow{grid-template-columns:1fr 1fr}}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:720px){.g3,.g2{grid-template-columns:1fr}}
@@ -808,22 +840,63 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <h2 style="margin:10px 0 14px">Vehicle finance origination, done properly.</h2>
     <p class="muted" style="max-width:60ch">Complete files, not leads: a numbered PFI, a certified vehicle at a fixed price, verified income and full KYC &mdash; delivered to your credit team over an API.</p>
 
-    <div style="margin:22px 0 6px;border-radius:14px;overflow:hidden"><img src="cars/showroom.jpg" alt="Stallion showroom" style="width:100%;max-height:280px;object-fit:cover;display:block"></div>
-    <p class="tiny faint" style="margin-bottom:14px">The dealer network behind the flow &mdash; showrooms and service centres in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan.</p>
-    <p class="muted rev" style="max-width:60ch;margin-top:14px"><b style="color:var(--ink)">Proven in this market:</b> Stanbic IBTC disbursed over &#8358;4bn of vehicle loans in its first six months on a comparable platform.</p>
-
-    <h3 class="rev" style="margin:34px 0 4px;font-size:1.1rem">The risk asset</h3>
-    <div class="chiprow rev">
-      <span class="ch"><b>20&ndash;70% equity</b> &mdash; paid to your account</span>
-      <span class="ch"><b>Lien on title</b></span>
-      <span class="ch"><b>Comprehensive insurance</b></span>
-      <span class="ch"><b>Salary domiciliation</b></span>
-      <span class="ch"><b>Verified income</b>, not declared</span>
-      <span class="ch"><b>Your committee&rsquo;s full discretion</b></span>
+    <p class="tiny faint" style="margin:6px 0 0">Hyundai &middot; Nissan &middot; MG &middot; Honda franchises in Nigeria &mdash; showrooms in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan.</p>
+    <div class="photostrip rev">
+      <div class="ps"><img src="cars/showroom.jpg" alt="Honda dealership, Lagos"><span>Our Honda dealership, Lagos</span></div>
+      <div class="ps"><img src="cars/tucson.jpg" alt="Tucson"><span>Tucson</span></div>
+      <div class="ps"><img src="cars/creta.jpg" alt="Creta"><span>Creta</span></div>
+      <div class="ps"><img src="cars/elantra.jpg" alt="Elantra"><span>Elantra</span></div>
     </div>
 
-    <h3 style="margin:34px 0 8px;font-size:1.1rem">How a facility originates</h3>
-    <div id="sixSteps" class="stepflow"></div>
+    <div class="statrow rev">
+      <div class="statcard"><div class="sv">48 hrs</div><div class="sk">approval to keys &mdash;<br>versus 40&ndash;45 days today</div></div>
+      <div class="statcard"><div class="sv">100%</div><div class="sk">of credit decisions made inside<br>your own environment</div></div>
+      <div class="statcard"><div class="sv">&#8358;0</div><div class="sk">credit risk or deposits held by us &mdash;<br>dealer &amp; technology rail, not a lender</div></div>
+    </div>
+
+    <h3 style="margin:30px 0 6px;font-size:1.1rem">How a loan happens</h3>
+    <div class="flow rev">
+      <div class="fs"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4h-2M3 13v4h2"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg></div><b>Customer picks the car</b><div class="tiny muted">Showroom or online.<br>Proforma invoice.</div></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></div><b>Midas prepares the file</b><div class="tiny muted">Complete documents,<br>to your checklist.</div></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs dark"><span class="pill">INSIDE YOUR BANK</span><b>Credit assessment &middot; offer &middot; equity in &middot; disbursement</b><div class="tiny">On your own infrastructure &mdash; nothing to explain to the CBN.</div></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.8 12.2 21 2M15 8l2 2M18 5l2 2"/></svg></div><b>Keys in 48 hours</b><div class="tiny muted">You pay the dealer;<br>customer drives home.</div></div>
+    </div>
+    <p class="tiny faint" style="text-align:center;margin-top:2px">Connected by <b>one API link</b> &mdash; customer files in, decisions out. The credit engine never leaves your bank.</p>
+
+    <div class="g2" style="margin-top:28px">
+      <div>
+        <h3 style="margin:0 0 4px;font-size:1.05rem">What your bank gets</h3>
+        <div class="cklist rev">
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 5-6"/></svg><div><b>Credit-ready customers, not leads</b><div class="tiny muted">Documented and shortlisted before they reach your desk.</div></div></div>
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4h-2M3 13v4h2"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg><div><b>Vehicles as collateral</b><div class="tiny muted">Brand new with warranty, or inspected and graded &mdash; titled and delivered by our own franchises. 20&ndash;70% equity paid into your account first.</div></div></div>
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><div><b>We fund and run the marketing</b><div class="tiny muted">Co-branded campaigns across showrooms and digital &mdash; your pipeline filled at no cost to the bank.</div></div></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="margin:0 0 4px;font-size:1.05rem">To start, we need</h3>
+        <div class="numlist rev">
+          <div class="nl"><span class="nn">1</span><div><b style="font-size:14.5px">Your credit team&rsquo;s document checklist</b></div></div>
+          <div class="nl"><span class="nn">2</span><div><b style="font-size:14.5px">One call: our CTO &times; your technology team</b><div class="tiny muted">to scope the bank-hosted API &mdash; <a href="app.html#/axis/integration" style="color:var(--accent)">the specification is published</a>.</div></div></div>
+          <div class="nl"><span class="nn">3</span><div><b style="font-size:14.5px">A named pilot owner at the bank</b></div></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:30px 0 4px;font-size:1.05rem">The car stays in our hands &mdash; your collateral stays protected</h3>
+    <div class="tilerow rev">
+      <div class="tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4L15 12l-3-3z"/></svg><b>Maintenance &amp; genuine parts</b><div class="tiny muted">Serviced at our workshops, on a plan built into the loan.</div></div>
+      <div class="tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><b>SOS roadside assistance</b><div class="tiny muted">Nationwide help for every financed car, day or night.</div></div>
+      <div class="tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.4 8 10 4.6-1.6 8-5 8-10V6z"/></svg><b>Insurance &amp; tracking</b><div class="tiny muted">Comprehensive cover and a tracker on every car.</div></div>
+      <div class="tile"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M15.5 14.7c2.8.2 5.2 1.7 6 4.3"/></svg><b>Your customers first</b><div class="tiny muted">Pre-approved offers for your salary-account holders.</div></div>
+    </div>
+
+    <div class="pilotband rev">
+      <span class="pb-big">30&ndash;40 applicants &rarr; <em>10 cars</em></span>
+      <p>First pilot cycle, growing to 20&ndash;25 vehicles across the programme &mdash; the pioneer lender sets the template for the panel.</p>
+    </div>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">Indicative economics</h3>
     <p class="tiny muted" style="margin-bottom:10px">Average facility of &#8358;27M at 26% p.a. over 48 months, for illustration. Rates and tenors are set by your institution.</p>
@@ -850,22 +923,63 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 
 <!-- ===================== DEALER INTAKE ===================== -->
 <section class="view" id="v-dealers">
-  <div class="wrap" style="padding-top:34px;max-width:860px">
+  <div class="wrap" style="padding-top:34px;max-width:860px;padding-bottom:26px">
     <div class="eyebrow">For dealerships</div>
     <h2 style="margin:8px 0 10px">Your stock, financed. Browsers become buyers.</h2>
-    <p class="muted" style="max-width:62ch">List your certified vehicles on Midas and every card carries a monthly price and a bank panel behind it. You keep selling the car; the banks fund it; you get paid on disbursement — and the customer never pays a deposit to anyone but the bank.</p>
-    <div class="grid" style="grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0">
-      <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Free listing</div><div class="tiny muted">no fee to list; Midas earns from the financing side</div></div>
-      <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Your price</div><div class="tiny muted">showroom price, unchanged — financing is added on top, not carved out</div></div>
-      <div class="card pad"><div style="font-family:var(--display);font-size:1.5rem;font-weight:650">Fast papers</div><div class="tiny muted">PFI issued digitally; funds land in your account on disbursement</div></div>
+    <p class="muted" style="max-width:58ch">Every car you list carries a monthly price and a bank panel behind it. You keep your price; the bank pays you.</p>
+
+    <div class="photostrip rev">
+      <div class="ps"><img src="cars/showroom.jpg" alt="Showroom"><span>Lagos showroom</span></div>
+      <div class="ps"><img src="cars/creta.jpg" alt="Creta"><span>Brand new</span></div>
+      <div class="ps"><img src="cars/used-corolla.jpg" alt="Certified pre-owned"><span>Certified pre-owned</span></div>
+      <div class="ps"><img src="cars/t60.jpg" alt="Commercial"><span>Commercial</span></div>
     </div>
-    <div class="card pad">
-      <b>To list your first vehicles</b>
-      <p class="tiny muted" style="margin-top:8px">Send stock as a simple sheet (make, model, year, price, mileage, photos) or connect your inventory system — the <span class="mono">inventory.json</span> feed format is published in the codebase.</p>
-      <div class="row" style="gap:10px;margin-top:14px;flex-wrap:wrap">
-        <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call &rarr;</a>
-        <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20dealership%20listing%20%E2%80%94%20[Dealership%20name]&body=Dealership%3A%0ACity%2Fshowrooms%3A%0ABrands%20carried%3A%0AName%20and%20role%3A%0APhone%3A">Email your stock list</a>
+
+    <div class="statrow rev">
+      <div class="statcard"><div class="sv">&#8358;0</div><div class="sk">to list &mdash; Midas earns from<br>the financing side, not from you</div></div>
+      <div class="statcard"><div class="sv">Your price</div><div class="sk">showroom price unchanged &mdash;<br>financing sits on top</div></div>
+      <div class="statcard"><div class="sv">48 hrs</div><div class="sk">from application to offer letter &mdash;<br>buyers stop walking away</div></div>
+    </div>
+
+    <h3 style="margin:30px 0 6px;font-size:1.1rem">How a sale happens</h3>
+    <div class="flow rev">
+      <div class="fs"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div><b>Buyer finds your car</b><div class="tiny muted">On Midas, or in your<br>showroom via the desk.</div></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg></div><b>Midas arranges the loan</b><div class="tiny muted">PFI issued on your price.<br>Banks bid on the file.</div></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs dark"><span class="pill">PAID ON DISBURSEMENT</span><b>The bank pays your account directly</b><div class="tiny">Full showroom price. No discounts, no waiting on the buyer.</div></div>
+      <div class="fa">&rarr;</div>
+      <div class="fs"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.8 12.2 21 2M15 8l2 2M18 5l2 2"/></svg></div><b>You hand over the keys</b><div class="tiny muted">Within 24 hours of<br>the money landing.</div></div>
+    </div>
+
+    <div class="g2" style="margin-top:28px">
+      <div>
+        <h3 style="margin:0 0 4px;font-size:1.05rem">What your dealership gets</h3>
+        <div class="cklist rev">
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 5-6"/></svg><div><b>More buyers for the same stock</b><div class="tiny muted">A monthly price on every card turns browsers into applicants.</div></div></div>
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><div><b>The showroom desk</b><div class="tiny muted">Your staff send a customer their car by WhatsApp &mdash; the link opens ready to finance, your showroom on the file. <a href="#/desk" style="color:var(--accent)">Try it &rarr;</a></div></div></div>
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg><div><b>Your numbers, live</b><div class="tiny muted">Pipeline, funded deals and payout timing in the dealer desk.</div></div></div>
+        </div>
       </div>
+      <div>
+        <h3 style="margin:0 0 4px;font-size:1.05rem">To start, we need</h3>
+        <div class="numlist rev">
+          <div class="nl"><span class="nn">1</span><div><b style="font-size:14.5px">Your stock list</b><div class="tiny muted">A simple sheet &mdash; make, model, year, price, mileage, photos &mdash; or connect your inventory system (<span class="mono">inventory.json</span>).</div></div></div>
+          <div class="nl"><span class="nn">2</span><div><b style="font-size:14.5px">A named contact per showroom</b><div class="tiny muted">Whoever hands over the keys.</div></div></div>
+          <div class="nl"><span class="nn">3</span><div><b style="font-size:14.5px">Your bank account for disbursement</b></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pilotband rev">
+      <span class="pb-big">List <em>10 cars</em> in the first cycle</span>
+      <p>Certified stock only &mdash; inspected and graded before it goes live. Growing with the programme to 20&ndash;25 vehicles.</p>
+    </div>
+
+    <div class="row" style="gap:10px;flex-wrap:wrap">
+      <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call &rarr;</a>
+      <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20dealership%20listing%20%E2%80%94%20[Dealership%20name]&body=Dealership%3A%0ACity%2Fshowrooms%3A%0ABrands%20carried%3A%0AName%20and%20role%3A%0APhone%3A">Email your stock list</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20run%20a%20dealership%20and%20want%20to%20list%20stock%20on%20Midas" target="_blank" rel="noopener">WhatsApp Amit</a>
     </div>
   </div>
 </section>
