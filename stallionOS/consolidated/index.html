@@ -1,0 +1,116 @@
+<!DOCTYPE html><html lang="en"><head><script>(function(){
+var K='stallionos_unlock_v1',H='57fa8bccaff22730843336788692c4f3f57f94be63553eb09c484dbd1ad0e330',S='stallionos.v1.';
+try{if(localStorage.getItem(K)===H)return}catch(e){}
+window.stop();
+function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){
+return ('0'+x.toString(16)).slice(-2)}).join('')}
+document.documentElement.innerHTML='<head><meta charset="utf-8">'+
+'<meta name="viewport" content="width=device-width,initial-scale=1">'+
+'<meta name="robots" content="noindex,nofollow">'+
+'<title>StallionOS</title><style>'+
+'*{margin:0;padding:0;box-sizing:border-box}'+
+'body{min-height:100vh;display:flex;align-items:center;justify-content:center;'+
+'background:#0d1b3e;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;padding:24px}'+
+'.c{width:100%;max-width:400px;text-align:center}'+
+'.m{width:54px;height:54px;margin:0 auto 22px}'+
+'h1{color:#fff;font-size:21px;font-weight:600;letter-spacing:.2px;margin-bottom:7px}'+
+'p.s{color:#8a93a6;font-size:13.5px;margin-bottom:28px}'+
+'form{display:flex;flex-direction:column;gap:11px}'+
+'input{width:100%;padding:13px 15px;border:1px solid #2a3a5e;border-radius:7px;'+
+'background:#132449;color:#fff;font-size:15px;outline:none;transition:border-color .15s}'+
+'input:focus{border-color:#c99c32}'+
+'input::placeholder{color:#6b7a99}'+
+'button{width:100%;padding:13px;border:0;border-radius:7px;cursor:pointer;'+
+'background:linear-gradient(135deg,#D1AA29,#B8891C);color:#0d1b3e;font-size:15px;font-weight:700;letter-spacing:.2px}'+
+'button:hover{filter:brightness(1.07)}'+
+'.e{color:#ff8b8b;font-size:13px;min-height:18px;margin-top:4px}'+
+'.f{color:#5c6a85;font-size:11.5px;margin-top:26px;letter-spacing:.4px}'+
+'</style></head><body><div class="c">'+
+'<svg class="m" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+'<circle cx="15" cy="15" r="13.5" stroke="#C99C32" stroke-width="1.6"/>'+
+'<circle cx="15" cy="15" r="6" stroke="#C99C32" stroke-width="1.6"/></svg>'+
+'<h1>StallionOS</h1><p class="s">Group command center &middot; restricted access</p>'+
+'<form id="g"><input id="p" type="password" placeholder="Access password" '+
+'autocomplete="current-password" autofocus><button type="submit">Enter</button>'+
+'<div class="e" id="e"></div></form>'+
+'<div class="f">STALLION GROUP</div></div></body>';
+var f=document.getElementById('g'),p=document.getElementById('p'),e=document.getElementById('e');
+f.addEventListener('submit',function(ev){ev.preventDefault();
+if(!window.crypto||!crypto.subtle){e.textContent='This browser is not supported.';return}
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(S+p.value)).then(function(b){
+if(hex(b)===H){try{localStorage.setItem(K,H)}catch(x){}location.reload()}
+else{e.textContent='Incorrect password.';p.value='';p.focus()}})});
+})()</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>StallionOS — Consolidated Financials</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#faf8f5;color:#26221c;padding-block:0 60px}
+.bar{display:flex;align-items:center;gap:14px;padding:14px 28px;background:#fff;border-bottom:1px solid #eae5dc;position:sticky;top:0}
+.logo{font-size:19px;font-weight:700;background:linear-gradient(135deg,#D1AA29,#B8891C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar .sec{font-size:12px;letter-spacing:1.6px;color:#8a8272;text-transform:uppercase}
+.bar nav{margin-left:auto;display:flex;gap:18px} .bar a{font-size:13px;color:#B8891C;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1{font-size:26px;font-weight:650;margin:30px 0 4px} p.sub{color:#8a8272;font-size:13.5px;margin-bottom:22px}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.kpi{flex:1 1 190px;background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:14px 18px}
+.kpi .l{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#8a8272}
+.kpi .v{font-size:23px;font-weight:650;margin-top:3px} .kpi .s{font-size:12px;color:#8a8272}
+.card{background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:20px 22px;margin-bottom:20px}
+.card h2{font-size:15px;font-weight:650;margin-bottom:13px}
+.tblwrap{overflow-x:auto} table{border-collapse:collapse;width:100%;font-size:13.5px;white-space:nowrap}
+th{text-align:right;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:#8a8272;padding:8px 11px;border-bottom:1.5px solid #e2dbce}
+th.l,td.l{text-align:left} td{text-align:right;padding:9px 11px;border-bottom:1px solid #f0ece2;font-variant-numeric:tabular-nums}
+td.l{font-weight:600} td.l .d{display:block;font-weight:400;font-size:11.5px;color:#8a8272}
+td.neg{color:#b3402e} tr.tot td{border-top:2px solid #d9d0bd;border-bottom:0;font-weight:650;background:#fdf9ef}
+td.sh{position:relative;min-width:88px;color:#8a8272;font-size:12px}
+td.sh span{position:absolute;left:11px;top:50%;transform:translateY(-50%);height:16px;background:#f0e6cc;border-radius:3px;z-index:0}
+.warn{background:#fdf6f4;border:1px solid #e4b6ac;border-radius:10px;padding:16px 20px;margin-bottom:20px}
+.warn h3{font-size:13.5px;color:#b3402e;margin-bottom:8px;letter-spacing:.4px;text-transform:uppercase}
+.warn ul{list-style:none} .warn li{font-size:13.5px;padding:4px 0 4px 16px;position:relative;line-height:1.45}
+.warn li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:2px;background:#b3402e}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px} @media(max-width:860px){.cols{grid-template-columns:1fr}}
+ul.pl{list-style:none} ul.pl li{padding:8px 0 8px 18px;position:relative;border-bottom:1px solid #f0ece2;font-size:13.5px;line-height:1.4}
+ul.pl li:last-child{border-bottom:0} ul.pl li::before{content:"";position:absolute;left:0;top:14px;width:7px;height:7px;border-radius:2px;background:#C99C32}
+.foot{font-size:12px;color:#8a8272;line-height:1.7}
+</style></head><body>
+<div class="bar"><span class="logo">StallionOS</span><span class="sec">Group Command Center</span>
+<nav><a href="/stallionOS/group/">Working capital</a><a href="/stallionOS/cashflow/">Treasury</a><a href="/stallionOS/dashboard/">Platform &rarr;</a></nav></div>
+<div class="wrap">
+<h1>Consolidated Financials</h1>
+<p class="sub">Four connected entities &middot; read from each company's live Dynamics 365 reporting, 23&ndash;24 September 2026 &middot; &#8358; millions unless stated</p>
+
+<div class="kpis">
+<div class="kpi"><div class="l">Group revenue</div><div class="v">&#8358;562.3bn</div><div class="s">year to date</div></div>
+<div class="kpi"><div class="l">Group net result</div><div class="v">&#8358;67.7bn</div><div class="s">12.0% margin</div></div>
+<div class="kpi"><div class="l">Total assets</div><div class="v">&#8358;220.0bn</div><div class="s">&#8358;157.1bn liabilities</div></div>
+<div class="kpi"><div class="l">Net working capital</div><div class="v">&#8358;135.7bn</div><div class="s">&#8358;35.7bn excluding the parked &#8358;100bn facility</div></div>
+</div>
+
+<div class="card"><h2>Entity contribution</h2><div class="tblwrap"><table>
+<tr><th class="l">Entity</th><th>Revenue</th><th>Net result</th><th>Margin</th><th>Assets</th><th>Liabilities</th><th>NWC</th><th class="l">Share of assets</th></tr>
+<tr><td class='l'>Premium Aquaculture<span class='d'>Fish · Aug 26</span></td><td>481,140</td><td>63,746</td><td>13.2%</td><td>194,790</td><td>140,885</td><td><b>136,505</b></td><td class='sh'><span style='width:89%'></span>89%</td></tr><tr><td class='l'>Polypack Flexi<span class='d'>Polypropylene · Jun 26</span></td><td>14,920</td><td>2,572</td><td>17.2%</td><td>20,016</td><td>11,871</td><td class="neg"><b>-1,187</b></td><td class='sh'><span style='width:9%'></span>9%</td></tr><tr><td class='l'>Premium Agrochemicals<span class='d'>Fertilizer · Sep 26</span></td><td>65,590</td><td>2,874</td><td>4.4%</td><td>5,060</td><td>3,939</td><td><b>817</b></td><td class='sh'><span style='width:2%'></span>2%</td></tr><tr><td class='l'>Polypack BSW<span class='d'>Polypropylene · Aug 26</span></td><td>620</td><td class="neg">-1,483</td><td class="neg">-239.2%</td><td>126</td><td>421</td><td class="neg"><b>-424</b></td><td class='sh'><span style='width:0%'></span>0%</td></tr><tr class='tot'><td class='l'>GROUP — 4 connected entities</td><td>562,270</td><td>67,709</td><td>12.0%</td><td>219,992</td><td>157,116</td><td><b>135,711</b></td><td></td></tr></table></div></div>
+
+<div class="warn"><h3>Read this before using the totals</h3><ul>
+<li><b>The consolidation does not tie out — a &#8358;27.4bn gap.</b> Assets less liabilities is &#8358;62.9bn, while equity plus retained result is &#8358;90.3bn. Expected at this stage, and it is the number that must reach zero before anyone signs anything.</li>
+<li><b>Mixed period ends.</b> Flexi is June, Premium and BSW August, Agro September. These are not the same balance-sheet date.</li>
+<li><b>No intercompany eliminations.</b> Due-to and due-from related-party balances are still in the numbers; Flexi alone carries &#8358;82m due from related parties.</li>
+<li><b>Divisional reports use opposite sign conventions</b> for liabilities and equity. Normalised by hand here, which is exactly the manual step the system is meant to remove.</li>
+</ul></div>
+
+<div class="cols">
+<div class="card"><h2>What the numbers say</h2><ul class="pl">
+<li><b>The group is Premium Aquaculture.</b> Fish is 88% of assets, 86% of revenue and 94% of profit. The other three are, financially, a rounding error against it.</li>
+<li><b>One entity is loss-making:</b> Polypack BSW, &#8358;1.48bn negative year to date and deepening &#8358;200&ndash;350m a month.</li>
+<li><b>Group margin is 12.0%</b> — but that is Premium's margin wearing a group hat.</li>
+<li><b>Working capital is concentrated too:</b> &#8358;136.5bn of &#8358;135.7bn group NWC sits in Premium; every other entity is near zero or negative.</li>
+</ul></div>
+<div class="card"><h2>To make this audit-grade</h2><ul class="pl">
+<li><b>Align the period ends</b> — one common close date across all four.</li>
+<li><b>Get the intercompany matrix</b> so due-to and due-from can be eliminated pair by pair.</li>
+<li><b>Add the missing entities.</b> Four of roughly 69 are connected; auto, rice and the UAE trading companies are absent, and auto is the largest business by volume.</li>
+<li><b>Bring in the ledgers</b> — the 523,410 transactions already sitting in the Easy Reports SQL sync would replace hand-normalised summaries with real detail.</li>
+</ul></div>
+</div>
+
+<p class="foot">Sources: Premium Aquaculture (Aug-26), Premium Agrochemicals (Sep-26), Polypack Flexi (Jun-26), Polypack BSW (Aug-26), each read from its own tenant's Power BI Finance app. Every entity's components reconcile to its own reported totals to the naira; the gap above arises only on combination. Treasury (Platinum Corporation FZE, USD) is reported separately and not consolidated here. Internal use only.</p>
+</div></body></html>
