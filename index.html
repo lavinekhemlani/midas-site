@@ -1688,7 +1688,10 @@ function saveStep3(){
 }
 function attachDoc(kind, input){
   const f=input.files&&input.files[0]; if(!f) return;
-  S.docs=S.docs||{}; S.docs[kind]={name:f.name,size:f.size,at:Date.now()}; save(); track('doc_attached',{kind}); renderApply();
+  if(f.size > 2.5*1024*1024){ alert('That file is too big — please attach one under 2.5 MB (a phone photo is fine).'); input.value=''; return; }
+  const rd=new FileReader();
+  rd.onload=()=>{ S.docs=S.docs||{}; S.docs[kind]={name:f.name,size:f.size,type:f.type,data:rd.result,at:Date.now()}; save(); track('doc_attached',{kind}); renderApply(); };
+  rd.readAsDataURL(f);
 }
 function saveStep4(){ S.step=5; save(); renderApply(); }
 function doVerify(){ track('income_verify_started');
@@ -1701,7 +1704,18 @@ function pfiNumber(){
   const seq=1000+Math.abs((S.vehicleId+''+(S.submittedAt||0)).split('').reduce((a,c)=>a*31+c.charCodeAt(0)|0,7))%9000;
   return 'MD-PFI-'+d.getFullYear()+'-'+seq;
 }
-function submitApp(){ if(!(S.consentPrivacy&&S.consentBureau)) return; S.consentAt=Date.now(); S.submittedAt=Date.now(); S.accepted=null; save(); track('application_submitted'); location.hash='#/offers'; }
+const MIDAS_API = window.MIDAS_API_BASE || (location.hostname.endsWith('midascfo.com') ? 'https://midas-auto-dev-t3nqqmcsxq-ew.a.run.app' : location.origin);
+function submitApp(){ if(!(S.consentPrivacy&&S.consentBureau)) return; S.consentAt=Date.now(); S.submittedAt=Date.now(); S.accepted=null; save(); track('application_submitted');
+  try{
+    const v=vehicle();
+    fetch(MIDAS_API+'/api/applications',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+      pfi:S.pfi||undefined, applicant:S.applicant, vehicleId:v&&v.id, vehicle:v?`${v.year} ${v.make} ${v.model}`:'',
+      price:v&&v.price, equityPct:S.equityPct, tenor:S.tenor, halal:!!S.halal,
+      consentAt:new Date(S.consentAt).toISOString(), source:'storefront',
+      docs:Object.entries(S.docs||{}).map(([kind,d])=>({kind,name:d.name,data:d.data}))
+    })}).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.id){ S.serverRef=j.id; save(); const el=document.getElementById('svrRef'); if(el){ el.textContent='File received by Midas — ref '+j.id; el.hidden=false; } } }).catch(()=>{});
+  }catch(e){}
+  location.hash='#/offers'; }
 </script>
 <script>
 /* ===================== OFFERS / LIVE AUCTION ===================== */
