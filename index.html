@@ -292,6 +292,8 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:720px){.g3,.g2{grid-template-columns:1fr}}
+@media(max-width:900px){#trustRow{grid-template-columns:1fr 1fr !important}}
+@media(max-width:560px){#trustRow{grid-template-columns:1fr !important}}
 /* motion */
 .rev{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
 .rev.on{opacity:1;transform:none}
@@ -380,6 +382,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   .wrap{padding:0 16px}
   .g4{grid-template-columns:repeat(2,1fr) !important}
   .hero-cta .btn{flex:1;justify-content:center}
+  #heroPrice{display:none}
 }
 /* lender logo ticker */
 .lgm{overflow:hidden;padding:26px 0;border-bottom:1px solid var(--line);background:var(--surface)}
@@ -423,19 +426,21 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <img class="bg" src="cars/hero.jpg" alt="Brand-new Hyundai Creta" />
     <div class="veil"></div>
     <div class="wrap"><div class="in">
-      <h1>The best loan for<br>your new car.</h1>
-      <p class="sub"><b>7 banks price your loan.</b> You take the lowest rate. Keys in 48 hours.</p>
+      <h1>Buy a new car.<br>Pay monthly.<br>Drive in 48 hours.</h1>
+      <p class="sub">Seven Nigerian banks look at one application and each sends you a price. You pick the lowest. We hand you the keys at our showroom.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
-        <a href="#inv" class="btn btn-a btn-lg" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See the cars &rarr;</a>
+        <a href="#inv" class="btn btn-a btn-lg" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See cars and monthly prices &rarr;</a>
+        <a href="tel:+2348058963692" class="btn btn-lg" style="background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)">Call 0805 896 3692</a>
         <a href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" class="btn btn-wa btn-lg">Chat on WhatsApp</a>
       </div>
       <div class="chiprow">
-        <span class="chip">🏦 7 banks, one application</span>
-        <span class="chip">🛡 5-year warranty</span>
-        <span class="chip">⚡ Decision in 48 hours</span>
+        <span class="chip"><b>&#8358;0</b>&nbsp;to apply</span>
+        <span class="chip"><b>5-year</b>&nbsp;manufacturer warranty</span>
+        <span class="chip"><b>7</b>&nbsp;showrooms nationwide</span>
         <a class="chip" href="#/halal" style="text-decoration:none">&#9770; Halal option</a>
       </div>
     </div></div>
+    <div id="heroPrice" hidden style="position:absolute;right:26px;bottom:26px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 12px 34px rgba(10,20,32,.28);max-width:270px"></div>
   </div>
 
   <div class="ratesboard">
@@ -456,18 +461,18 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <div class="veh rev" style="cursor:default">
         <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;height:100%;object-fit:cover">
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">1</span></div>
-        <div class="veh-body"><h4 style="margin:0">Pick your car</h4><p class="tiny muted" style="margin:4px 0 0">From our showroom. Full warranty.</p></div>
+        <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Brand-new or certified used. The price is fixed for 7 days.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
         <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/elantra.jpg" alt="Bank offers" style="width:100%;height:100%;object-fit:cover">
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">2</span>
           <span class="tag ok" style="position:absolute;right:12px;bottom:12px">7 banks price it &darr;</span></div>
-        <div class="veh-body"><h4 style="margin:0">Banks fight for you</h4><p class="tiny muted" style="margin:4px 0 0">You take the lowest rate.</p></div>
+        <div class="veh-body"><h4 style="margin:0">Banks fight for you</h4><p class="tiny muted" style="margin:4px 0 0">Up to 7 banks price your loan. You take the lowest.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
         <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/hero.jpg" alt="Driving" style="width:100%;height:100%;object-fit:cover">
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">3</span></div>
-        <div class="veh-body"><h4 style="margin:0">You drive</h4><p class="tiny muted" style="margin:4px 0 0">48 hours. Not 40 days.</p></div>
+        <div class="veh-body"><h4 style="margin:0">Pay the bank, collect keys</h4><p class="tiny muted" style="margin:4px 0 0">Your down payment goes to the bank, not to us. Then you drive home.</p></div>
       </div>
     </div>
   </div>
@@ -491,7 +496,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
         <div class="veh-img" style="aspect-ratio:16/6;position:relative;background:linear-gradient(135deg,#0d3b2e,#1d7a4f);display:flex;align-items:center;justify-content:center">
           <span style="font-family:var(--display);color:#eafff3;font-size:1.5rem;font-weight:650">&#9770; No interest. Ever.</span></div>
         <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Halal finance &mdash; rent to own</h3>
-          <p class="tiny muted" style="margin:4px 0 0">The bank buys the car. You pay a fixed monthly rent until it is yours.</p>
+          <p class="tiny muted" style="margin:4px 0 0">With Jaiz, Lotus and TAJBank &mdash; the bank buys the car, you pay a fixed rent until it is yours. Written down on day one; never changes.</p>
           <b style="color:var(--accent);font-size:13.5px">How it works &rarr;</b></div>
       </a>
     </div>
@@ -502,7 +507,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     </div>
     <a href="#/halal" class="tag a" style="margin-left:12px;text-decoration:none;padding:7px 12px;font-size:12.5px">&#9770; Non-interest (halal) option available</a>
     <div class="veh-grid" id="vehGrid"></div>
-    <p class="tiny faint" style="margin-top:14px">Showroom prices, synced from Auto OS. Monthly amounts are the best current bank offer at 30% down over 60 months &mdash; your own offer depends on your income.</p>
+    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.</p>
   </div>
 
   <div class="wrap sec" style="padding-top:26px">
@@ -510,12 +515,12 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch" id="humanGrid">
         <div style="padding:36px 34px">
           <h2>Buy from people you can meet.</h2>
-          <p class="muted" style="margin-top:10px;max-width:46ch">Brand-new cars &mdash; Honda, Hyundai, Nissan, Changan, MG &mdash; with the loan built in. Real showrooms, real warranty, real people. Come and see the cars, or talk to Amit. He will walk you through everything.</p>
+          <p class="muted" style="margin-top:10px;max-width:46ch">Honda, Hyundai, Nissan, MG and Changan &mdash; sold from our own showrooms, thirty years selling cars in Nigeria. Come and touch the car before you apply.</p>
           <div class="person">
             <div class="pav">AS</div>
             <div>
               <div style="font-weight:600;font-size:15.5px">Amit Sharma</div>
-              <div class="tiny muted">Sales &middot; Midas</div>
+              <div class="tiny muted">Sales, Lagos &middot; replies on WhatsApp within 5 minutes</div>
               <div class="pnum mono">0805 896 3692</div>
             </div>
           </div>
@@ -764,7 +769,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <div class="rev" style="margin-top:26px;padding:18px;border:1px solid var(--line);border-radius:14px;display:flex;gap:34px;align-items:center;flex-wrap:wrap;justify-content:center;background:var(--surface)">
       <img src="brand/banks/jaiz.svg" alt="Jaiz Bank" style="height:30px"><img src="brand/banks/lotus.svg" alt="Lotus Bank" style="height:30px"><img src="brand/banks/taj.svg" alt="TAJBank" style="height:30px">
     </div>
-    <p class="tiny faint" style="margin-top:8px;text-align:center">Built for Nigeria&rsquo;s licensed non-interest banks.</p>
+    <p class="tiny faint" style="margin-top:8px;text-align:center">With Jaiz Bank, Lotus Bank and TAJBank &mdash; Nigeria&rsquo;s licensed non-interest banks.</p>
 
     <h3 style="margin:32px 0 8px;font-size:1.1rem">What stays the same</h3>
     <p class="muted" style="max-width:64ch;font-size:14.5px">The same cars, the same application, the same 48-hour target. Your down payment still goes directly to the bank, never to the dealer or Midas. Tick <b>non-interest finance</b> when you apply and only compliant offers reach you.</p>
@@ -1035,11 +1040,19 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   </div>
 </section>
 
+<div class="wrap" style="padding-top:6px;padding-bottom:8px">
+  <div class="g3" style="grid-template-columns:repeat(4,1fr)" id="trustRow">
+    <div class="rev" style="border-top:2px solid var(--ink);padding-top:12px"><b style="font-size:14px">Your money goes to the bank only</b><p class="tiny muted" style="margin:5px 0 0">The offer letter names the bank account. Anyone asking for a deposit elsewhere &mdash; even claiming to be Midas &mdash; is a fraud. Report it.</p></div>
+    <div class="rev" style="border-top:2px solid var(--ink);padding-top:12px"><b style="font-size:14px">Licensed banks decide</b><p class="tiny muted" style="margin:5px 0 0">Every loan is priced and approved inside the bank&rsquo;s own system. Midas prepares your file; the bank lends.</p></div>
+    <div class="rev" style="border-top:2px solid var(--ink);padding-top:12px"><b style="font-size:14px">Your data, protected</b><p class="tiny muted" style="margin:5px 0 0">Handled under the Nigeria Data Protection Act 2023. We never sell your information.</p></div>
+    <div class="rev" style="border-top:2px solid var(--ink);padding-top:12px"><b style="font-size:14px">Real showrooms, real warranty</b><p class="tiny muted" style="margin:5px 0 0">Cars sold from our own showrooms with the manufacturer&rsquo;s warranty and after-sales service.</p></div>
+  </div>
+</div>
 <div class="wrap bigfoot">
   <div class="bf-cols">
     <div>
       <img src="brand/wordmark.svg" alt="Midas" style="height:22px;margin-bottom:10px">
-      <div class="tiny muted" style="max-width:34ch">Financing at the best rate any bank will give. Vehicles today; education loans and mortgages next.</div>
+      <div class="tiny muted" style="max-width:38ch">Midas arranges vehicle financing between you, licensed Nigerian banks and the showroom. Midas is not a lender and never holds your money.</div>
       <a class="btn btn-wa btn-sm" style="margin-top:12px;display:inline-flex" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
@@ -1419,6 +1432,11 @@ function openCar(id){ S.vehicleId = id; save(); track('car_viewed',{id}); locati
 
 /* hero ticker */
 function heroTicker(){
+  const hp=$('#heroPrice');
+  if(hp){ const hv=VEHICLES[0], ht=bestTeaser(hv);
+    if(ht){ hp.hidden=false; hp.innerHTML=`<div class="tiny muted">${hv.year} ${hv.make} ${hv.model} &middot; from</div>
+      <div style="font-family:var(--display);font-size:1.6rem;font-weight:650;letter-spacing:-.02em">${NGN(ht.o.monthly)}<span style="font-size:.85rem;color:var(--ink-faint);font-weight:400">/month</span></div>
+      <div class="tiny faint">${Math.round(ht.eq*100)}% down &middot; ${ht.ten} months &middot; best bank offer today</div>`; } }
   const box = $('#heroAuc'); if (!box) return;
   const v = VEHICLES[0];
   const offers = sortOffers(runPanel(v, .35, 36, null).filter(o => o.approved), 'cost').slice(0, 5);
