@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head><script>(function(){
+var K='stallionos_unlock_v1',H='57fa8bccaff22730843336788692c4f3f57f94be63553eb09c484dbd1ad0e330',S='stallionos.v1.';
+try{if(localStorage.getItem(K)===H)return}catch(e){}
+window.stop();
+function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){
+return ('0'+x.toString(16)).slice(-2)}).join('')}
+document.documentElement.innerHTML='<head><meta charset="utf-8">'+
+'<meta name="viewport" content="width=device-width,initial-scale=1">'+
+'<meta name="robots" content="noindex,nofollow">'+
+'<title>StallionOS</title><style>'+
+'*{margin:0;padding:0;box-sizing:border-box}'+
+'body{min-height:100vh;display:flex;align-items:center;justify-content:center;'+
+'background:#0d1b3e;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;padding:24px}'+
+'.c{width:100%;max-width:400px;text-align:center}'+
+'.m{width:54px;height:54px;margin:0 auto 22px}'+
+'h1{color:#fff;font-size:21px;font-weight:600;letter-spacing:.2px;margin-bottom:7px}'+
+'p.s{color:#8a93a6;font-size:13.5px;margin-bottom:28px}'+
+'form{display:flex;flex-direction:column;gap:11px}'+
+'input{width:100%;padding:13px 15px;border:1px solid #2a3a5e;border-radius:7px;'+
+'background:#132449;color:#fff;font-size:15px;outline:none;transition:border-color .15s}'+
+'input:focus{border-color:#c99c32}'+
+'input::placeholder{color:#6b7a99}'+
+'button{width:100%;padding:13px;border:0;border-radius:7px;cursor:pointer;'+
+'background:linear-gradient(135deg,#D1AA29,#B8891C);color:#0d1b3e;font-size:15px;font-weight:700;letter-spacing:.2px}'+
+'button:hover{filter:brightness(1.07)}'+
+'.e{color:#ff8b8b;font-size:13px;min-height:18px;margin-top:4px}'+
+'.f{color:#5c6a85;font-size:11.5px;margin-top:26px;letter-spacing:.4px}'+
+'</style></head><body><div class="c">'+
+'<svg class="m" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+'<circle cx="15" cy="15" r="13.5" stroke="#C99C32" stroke-width="1.6"/>'+
+'<circle cx="15" cy="15" r="6" stroke="#C99C32" stroke-width="1.6"/></svg>'+
+'<h1>StallionOS</h1><p class="s">Group command center &middot; restricted access</p>'+
+'<form id="g"><input id="p" type="password" placeholder="Access password" '+
+'autocomplete="current-password" autofocus><button type="submit">Enter</button>'+
+'<div class="e" id="e"></div></form>'+
+'<div class="f">STALLION GROUP</div></div></body>';
+var f=document.getElementById('g'),p=document.getElementById('p'),e=document.getElementById('e');
+f.addEventListener('submit',function(ev){ev.preventDefault();
+if(!window.crypto||!crypto.subtle){e.textContent='This browser is not supported.';return}
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(S+p.value)).then(function(b){
+if(hex(b)===H){try{localStorage.setItem(K,H)}catch(x){}location.reload()}
+else{e.textContent='Incorrect password.';p.value='';p.focus()}})});
+})()</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>StallionOS — Polypack BSW</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#faf8f5;color:#26221c;padding-block:0 60px}
+.bar{display:flex;align-items:center;gap:14px;padding:14px 28px;background:#fff;border-bottom:1px solid #eae5dc;position:sticky;top:0;z-index:20}
+.logo{font-size:19px;font-weight:700;background:linear-gradient(135deg,#D1AA29,#B8891C);-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none}
+.bar .sec{font-size:12px;letter-spacing:1.6px;color:#8a8272;text-transform:uppercase}
+.bar nav{margin-left:auto;display:flex;gap:16px;align-items:center}
+.bar a{font-size:13px;color:#B8891C;text-decoration:none}
+.fx{display:flex;border:1px solid #e2dbce;border-radius:99px;overflow:hidden;margin-left:6px}
+.fx button{border:0;background:#fff;color:#8a8272;font-size:12px;font-weight:700;padding:5px 12px;cursor:pointer}
+.fx button.on{background:#0d1b3e;color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1{font-size:27px;font-weight:650;margin:30px 0 4px}
+p.sub{color:#8a8272;font-size:13.5px;margin-bottom:22px}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.kpi{flex:1 1 190px;background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:15px 18px;
+  animation:rise .5s ease backwards}
+.kpi:nth-child(2){animation-delay:.07s}.kpi:nth-child(3){animation-delay:.14s}.kpi:nth-child(4){animation-delay:.21s}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.kpi .l{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#8a8272}
+.kpi .v{font-size:24px;font-weight:650;margin-top:3px}
+.kpi .s{font-size:12px;color:#8a8272}
+.card{background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:20px 22px;margin-bottom:20px}
+.card h2{font-size:15px;font-weight:650;margin-bottom:14px}
+.bars{display:flex;flex-direction:column;gap:10px}
+.brow{display:grid;grid-template-columns:190px 1fr 110px;gap:12px;align-items:center;font-size:13.5px}
+.brow .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.track{height:20px;background:#f3eee4;border-radius:5px;overflow:hidden}
+.fill{height:100%;border-radius:5px;width:var(--w);animation:grow 1s cubic-bezier(.2,.7,.3,1) backwards}
+@keyframes grow{from{width:0}to{width:var(--w)}}
+@media(prefers-reduced-motion:reduce){.kpi,.fill{animation:none}}
+.brow .n{text-align:right;font-variant-numeric:tabular-nums;color:#4a4436}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:right;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:#8a8272;padding:8px 11px;border-bottom:1.5px solid #e2dbce}
+th.l,td.l{text-align:left} td{text-align:right;padding:10px 11px;border-bottom:1px solid #f0ece2;font-variant-numeric:tabular-nums}
+td.l{font-weight:600} td.l a{color:#0d1b3e;text-decoration:none} td.l a:hover{color:#B8891C}
+td.l .d{display:block;font-weight:400;font-size:11.5px;color:#8a8272}
+tr.tot td{border-top:2px solid #d9d0bd;border-bottom:0;font-weight:650;background:#fdf9ef}
+.neg{color:#b3402e}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:860px){.grid{grid-template-columns:1fr}.brow{grid-template-columns:130px 1fr 92px}}
+.foot{font-size:12px;color:#8a8272;line-height:1.7}
+.tile{display:block;background:#fff;border:1px solid #eae5dc;border-radius:12px;padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
+.tile:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(13,27,62,.09)}
+.tile .n{font-size:16px;font-weight:650}.tile .dv{font-size:11.5px;color:#8a8272;text-transform:uppercase;letter-spacing:.8px}
+.tile .big{font-size:22px;font-weight:700;margin-top:8px}
+.tile .m{font-size:12px;color:#8a8272}
+</style></head><body>
+<div class="bar"><a class="logo" href="/stallionOS/dashboard-global/">StallionOS</a><span class="sec">Group Command Center</span>
+<nav><a href="/stallionOS/dashboard-global/">Global</a><a href="/stallionOS/consolidated/">Consolidated</a><a href="/stallionOS/group/">Working capital</a><a href="/stallionOS/cashflow/">Treasury</a><a href="/stallionOS/footprint/">Footprint</a><span class="fx"><button data-c="USD">USD</button><button data-c="NGN">&#8358;</button></span></nav></div>
+<div class="wrap"><h1>Polypack BSW</h1><p class="sub">Packaging &middot; Premier Polypack — BSW Division</p>
+<div class="kpis">
+<div class="kpi"><div class="l">Sales</div><div class="v" data-ngnm="625.0">$408,497</div><div class="s">Smallest unit: 625M sales vs Flexi 13.51bn. Order book 1.68b</div></div>
+<div class="kpi"><div class="l">Gross profit</div><div class="v" data-ngnm="90.0">$58,824</div><div class="s">14.4% margin</div></div>
+<div class="kpi"><div class="l">Net working capital</div><div class="v" data-ngnm="-423.89">-$277,052</div><div class="s">CA -3M &minus; CL 421M</div></div>
+<div class="kpi"><div class="l">Result YTD</div><div class="v" data-ngnm="-1483.17">-$969,392</div><div class="s">as at 2026-08</div></div>
+</div>
+<div class="grid"><div class="card"><h2>Top customers</h2><div class="bars"><div class="brow"><span class="t">Dufil Prima Foods (1)</span><span class="track"><span class="fill" style="--w:100.0%;background:#7a1f3a;animation-delay:0.00s"></span></span><span class="n" data-ngnm="130.0">$84,967</span></div><div class="brow"><span class="t">Crown Flour Mills</span><span class="track"><span class="fill" style="--w:92.3%;background:#7a1f3a;animation-delay:0.06s"></span></span><span class="n" data-ngnm="120.0">$78,431</span></div><div class="brow"><span class="t">Dufil Prima Foods (2)</span><span class="track"><span class="fill" style="--w:92.3%;background:#7a1f3a;animation-delay:0.12s"></span></span><span class="n" data-ngnm="120.0">$78,431</span></div><div class="brow"><span class="t">Royal Salt Limited</span><span class="track"><span class="fill" style="--w:38.5%;background:#7a1f3a;animation-delay:0.18s"></span></span><span class="n" data-ngnm="50.0">$32,680</span></div><div class="brow"><span class="t">West Africa Soy Ind.</span><span class="track"><span class="fill" style="--w:38.5%;background:#7a1f3a;animation-delay:0.24s"></span></span><span class="n" data-ngnm="50.0">$32,680</span></div></div></div><div class="card"><h2>Gross profit by product</h2><div class="bars"><div class="brow"><span class="t">LAMINATED SACKS</span><span class="track"><span class="fill" style="--w:100.0%;background:#1f7a63;animation-delay:0.00s"></span></span><span class="n" data-ngnm="37.04">$24,209</span></div><div class="brow"><span class="t">AUTO CUT UNLAM-50KG</span><span class="track"><span class="fill" style="--w:36.0%;background:#1f7a63;animation-delay:0.06s"></span></span><span class="n" data-ngnm="13.32">$8,706</span></div><div class="brow"><span class="t">AUT CTTNG LMNTD-50KG</span><span class="track"><span class="fill" style="--w:34.2%;background:#1f7a63;animation-delay:0.12s"></span></span><span class="n" data-ngnm="12.66">$8,275</span></div><div class="brow"><span class="t">CONVERTEX-50 KG</span><span class="track"><span class="fill" style="--w:17.6%;background:#1f7a63;animation-delay:0.18s"></span></span><span class="n" data-ngnm="6.52">$4,261</span></div><div class="brow"><span class="t">PLAIN SACKS</span><span class="track"><span class="fill" style="--w:16.3%;background:#1f7a63;animation-delay:0.24s"></span></span><span class="n" data-ngnm="6.02">$3,935</span></div><div class="brow"><span class="t">CONVERTEX-10 KG</span><span class="track"><span class="fill" style="--w:13.0%;background:#1f7a63;animation-delay:0.30s"></span></span><span class="n" data-ngnm="4.81">$3,144</span></div><div class="brow"><span class="t">AUTO CUT UNLAM</span><span class="track"><span class="fill" style="--w:6.3%;background:#1f7a63;animation-delay:0.36s"></span></span><span class="n" data-ngnm="2.35">$1,536</span></div></div></div></div>
+
+<div class="card"><h2>Balance sheet position</h2>
+<table><tr><th class="l">Line</th><th>Amount</th></tr>
+<tr><td class="l">Cash &amp; bank</td><td data-ngnm="93.8">$61,307</td></tr>
+<tr><td class="l">Receivables</td><td class="neg" data-ngnm="-4706.14">-$3.1m</td></tr>
+<tr><td class="l">Inventory</td><td data-ngnm="4342.17">$2.8m</td></tr>
+<tr><td class="l">Current assets</td><td data-ngnm="-2.85">-$1,863</td></tr>
+<tr><td class="l">Current liabilities</td><td data-ngnm="421.04">$275,190</td></tr>
+<tr class="tot"><td class="l">Net working capital</td><td data-ngnm="-423.89">-$277,052</td></tr>
+</table></div>
+<p class="foot">Sales and inventory read from Premier Polypack — BSW Division's Power BI apps (2026-09-24 20:12); balance sheet from its Finance app. Smallest unit: 625M sales vs Flexi 13.51bn. Order book 1.68bn is 2.7x current sales.</p>
+</div>
+<script>
+(function(){
+  var FX=1530.0, mode=localStorage.getItem('sos_ccy')||'USD';
+  function fmt(ngnM){ // value stored in NGN millions
+    if(mode==='USD'){var v=ngnM*1e6/FX;return v>=1e9?'$'+(v/1e9).toFixed(2)+'bn':v>=1e6?'$'+(v/1e6).toFixed(1)+'m':'$'+Math.round(v).toLocaleString();}
+    var n=ngnM*1e6;return n>=1e9?'\u20a6'+(n/1e9).toFixed(2)+'bn':n>=1e6?'\u20a6'+(n/1e6).toFixed(1)+'m':'\u20a6'+Math.round(n).toLocaleString();
+  }
+  function paint(){
+    document.querySelectorAll('[data-ngnm]').forEach(function(el){el.textContent=fmt(parseFloat(el.dataset.ngnm));});
+    document.querySelectorAll('.fx button').forEach(function(b){b.classList.toggle('on',b.dataset.c===mode);});
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.fx button'); if(!b)return;
+    mode=b.dataset.c; try{localStorage.setItem('sos_ccy',mode)}catch(x){} paint();
+  });
+  paint();
+})();
+</script>
+</body></html>

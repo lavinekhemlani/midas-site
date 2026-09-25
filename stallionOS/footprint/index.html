@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><script>(function(){
+var K='stallionos_unlock_v1',H='57fa8bccaff22730843336788692c4f3f57f94be63553eb09c484dbd1ad0e330',S='stallionos.v1.';
+try{if(localStorage.getItem(K)===H)return}catch(e){}
+window.stop();
+function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){
+return ('0'+x.toString(16)).slice(-2)}).join('')}
+document.documentElement.innerHTML='<head><meta charset="utf-8">'+
+'<meta name="viewport" content="width=device-width,initial-scale=1">'+
+'<meta name="robots" content="noindex,nofollow">'+
+'<title>StallionOS</title><style>'+
+'*{margin:0;padding:0;box-sizing:border-box}'+
+'body{min-height:100vh;display:flex;align-items:center;justify-content:center;'+
+'background:#0d1b3e;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;padding:24px}'+
+'.c{width:100%;max-width:400px;text-align:center}'+
+'.m{width:54px;height:54px;margin:0 auto 22px}'+
+'h1{color:#fff;font-size:21px;font-weight:600;letter-spacing:.2px;margin-bottom:7px}'+
+'p.s{color:#8a93a6;font-size:13.5px;margin-bottom:28px}'+
+'form{display:flex;flex-direction:column;gap:11px}'+
+'input{width:100%;padding:13px 15px;border:1px solid #2a3a5e;border-radius:7px;'+
+'background:#132449;color:#fff;font-size:15px;outline:none;transition:border-color .15s}'+
+'input:focus{border-color:#c99c32}'+
+'input::placeholder{color:#6b7a99}'+
+'button{width:100%;padding:13px;border:0;border-radius:7px;cursor:pointer;'+
+'background:linear-gradient(135deg,#D1AA29,#B8891C);color:#0d1b3e;font-size:15px;font-weight:700;letter-spacing:.2px}'+
+'button:hover{filter:brightness(1.07)}'+
+'.e{color:#ff8b8b;font-size:13px;min-height:18px;margin-top:4px}'+
+'.f{color:#5c6a85;font-size:11.5px;margin-top:26px;letter-spacing:.4px}'+
+'</style></head><body><div class="c">'+
+'<svg class="m" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+'<circle cx="15" cy="15" r="13.5" stroke="#C99C32" stroke-width="1.6"/>'+
+'<circle cx="15" cy="15" r="6" stroke="#C99C32" stroke-width="1.6"/></svg>'+
+'<h1>StallionOS</h1><p class="s">Group command center &middot; restricted access</p>'+
+'<form id="g"><input id="p" type="password" placeholder="Access password" '+
+'autocomplete="current-password" autofocus><button type="submit">Enter</button>'+
+'<div class="e" id="e"></div></form>'+
+'<div class="f">STALLION GROUP</div></div></body>';
+var f=document.getElementById('g'),p=document.getElementById('p'),e=document.getElementById('e');
+f.addEventListener('submit',function(ev){ev.preventDefault();
+if(!window.crypto||!crypto.subtle){e.textContent='This browser is not supported.';return}
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(S+p.value)).then(function(b){
+if(hex(b)===H){try{localStorage.setItem(K,H)}catch(x){}location.reload()}
+else{e.textContent='Incorrect password.';p.value='';p.focus()}})});
+})()</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>StallionOS — Group Footprint</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#faf8f5;color:#26221c;padding-block:0 60px}
+.bar{display:flex;align-items:center;gap:14px;padding:14px 28px;background:#fff;border-bottom:1px solid #eae5dc;position:sticky;top:0;z-index:5}
+.logo{font-size:19px;font-weight:700;background:linear-gradient(135deg,#D1AA29,#B8891C);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar .sec{font-size:12px;letter-spacing:1.6px;color:#8a8272;text-transform:uppercase}
+.bar nav{margin-left:auto;display:flex;gap:18px} .bar a{font-size:13px;color:#B8891C;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1{font-size:26px;font-weight:650;margin:30px 0 4px} p.sub{color:#8a8272;font-size:13.5px;margin-bottom:20px}
+.map{background:linear-gradient(160deg,#0d1b3e,#132449);border-radius:14px;padding:6px;margin-bottom:20px;box-shadow:0 10px 30px rgba(13,27,62,.18)}
+.map svg{width:100%;height:auto;display:block;border-radius:10px}
+.key{display:flex;gap:20px;align-items:center;padding:10px 16px 14px;color:#9aa7c7;font-size:12px}
+.key i{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:-1px}
+.kpis{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.kpi{flex:1 1 180px;background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:14px 18px}
+.kpi .l{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:#8a8272}
+.kpi .v{font-size:23px;font-weight:650;margin-top:3px} .kpi .s{font-size:12px;color:#8a8272}
+.card{background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:20px 22px;margin-bottom:20px}
+.card h2{font-size:15px;font-weight:650;margin-bottom:13px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:right;font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:#8a8272;padding:8px 11px;border-bottom:1.5px solid #e2dbce}
+th.l,td.l{text-align:left} td{text-align:right;padding:9px 11px;border-bottom:1px solid #f0ece2;font-variant-numeric:tabular-nums}
+td.l{font-weight:600} td.s{font-weight:400;color:#8a8272;font-size:12.5px}
+span.live{background:#C99C32;color:#0d1b3e;font-size:9.5px;font-weight:800;letter-spacing:.6px;border-radius:99px;padding:1px 7px;margin-left:8px;text-transform:uppercase}
+.divs{display:flex;flex-wrap:wrap;gap:10px}
+.dv{flex:1 1 150px;background:#f6f3ec;border-radius:10px;padding:12px 14px}
+.dv .n{display:block;font-size:20px;font-weight:700;color:#0d1b3e}
+.dv .t{font-size:12px;color:#5f6773}
+.foot{font-size:12px;color:#8a8272;line-height:1.7}
+</style></head><body>
+<div class="bar"><span class="logo">StallionOS</span><span class="sec">Group Command Center</span>
+<nav><a href="/stallionOS/dashboard-global/">Global</a><a href="/stallionOS/consolidated/">Consolidated</a><a href="/stallionOS/group/">Working capital</a><a href="/stallionOS/cashflow/">Treasury</a></nav></div>
+<div class="wrap">
+<h1>Group Footprint</h1>
+<p class="sub">70 legal entities across 8 countries &middot; 93 company files in Tally &middot; circle size scales with entity count</p>
+
+<div class="map">
+<svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+  <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#C99C32" stop-opacity=".16"/><stop offset="100%" stop-color="#C99C32" stop-opacity="0"/>
+  </radialGradient></defs>
+  <rect width="1000" height="520" fill="none"/>
+  <ellipse cx="917" cy="119" rx="170" ry="120" fill="url(#glow)"/>
+  <line x1="0" y1="65" x2="1000" y2="65" stroke="#ffffff" stroke-opacity=".04"/><line x1="0" y1="130" x2="1000" y2="130" stroke="#ffffff" stroke-opacity=".04"/><line x1="0" y1="195" x2="1000" y2="195" stroke="#ffffff" stroke-opacity=".04"/><line x1="0" y1="260" x2="1000" y2="260" stroke="#ffffff" stroke-opacity=".04"/><line x1="0" y1="325" x2="1000" y2="325" stroke="#ffffff" stroke-opacity=".04"/><line x1="0" y1="390" x2="1000" y2="390" stroke="#ffffff" stroke-opacity=".04"/><line x1="0" y1="455" x2="1000" y2="455" stroke="#ffffff" stroke-opacity=".04"/>
+  <line x1="83" y1="0" x2="83" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="167" y1="0" x2="167" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="250" y1="0" x2="250" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="333" y1="0" x2="333" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="417" y1="0" x2="417" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="500" y1="0" x2="500" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="583" y1="0" x2="583" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="667" y1="0" x2="667" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="750" y1="0" x2="750" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="833" y1="0" x2="833" y2="520" stroke="#ffffff" stroke-opacity=".04"/><line x1="917" y1="0" x2="917" y2="520" stroke="#ffffff" stroke-opacity=".04"/>
+  <path d="M287,351 Q602,6 917,119" fill="none" stroke="#C99C32" stroke-opacity=".28" stroke-width="1.2"/><path d="M152,368 Q535,-18 917,119" fill="none" stroke="#C99C32" stroke-opacity=".28" stroke-width="1.2"/><path d="M338,398 Q627,15 917,119" fill="none" stroke="#C99C32" stroke-opacity=".28" stroke-width="1.2"/><path d="M90,374 Q503,-30 917,119" fill="none" stroke="#C99C32" stroke-opacity=".28" stroke-width="1.2"/><path d="M793,124 Q855,97 917,119" fill="none" stroke="#C99C32" stroke-opacity=".28" stroke-width="1.2"/><path d="M199,347 Q558,-10 917,119" fill="none" stroke="#C99C32" stroke-opacity=".28" stroke-width="1.2"/><circle cx="287" cy="351" r="45.7" fill="#C99C32" fill-opacity="0.9" stroke="#F0CB5B" stroke-width="1.6"/><text x="287" y="355" text-anchor="middle" font-size="12.5" font-weight="700" fill="#0d1b3e">33</text><circle cx="917" cy="119" r="35.1" fill="#3a4a6b" fill-opacity="0.55" stroke="#61729a" stroke-width="1.6"/><text x="917" y="123" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dfe5f2">19</text><circle cx="152" cy="368" r="23.0" fill="#3a4a6b" fill-opacity="0.55" stroke="#61729a" stroke-width="1.6"/><text x="152" y="372" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dfe5f2">7</text><circle cx="338" cy="398" r="20.4" fill="#3a4a6b" fill-opacity="0.55" stroke="#61729a" stroke-width="1.6"/><text x="338" y="402" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dfe5f2">5</text><circle cx="90" cy="374" r="17.3" fill="#3a4a6b" fill-opacity="0.55" stroke="#61729a" stroke-width="1.6"/><text x="90" y="378" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dfe5f2">3</text><circle cx="793" cy="124" r="13.2" fill="#3a4a6b" fill-opacity="0.55" stroke="#61729a" stroke-width="1.6"/><text x="793" y="128" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dfe5f2">1</text><circle cx="199" cy="347" r="13.2" fill="#3a4a6b" fill-opacity="0.55" stroke="#61729a" stroke-width="1.6"/><text x="199" y="351" text-anchor="middle" font-size="12.5" font-weight="700" fill="#dfe5f2">1</text><text x="287" y="296" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">Nigeria</text><text x="917" y="75" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">UAE</text><text x="152" y="336" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">Ghana</text><text x="338" y="369" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">Cameroon</text><text x="90" y="348" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">Côte d'Ivoire</text><text x="793" y="102" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">Saudi Arabia</text><text x="199" y="325" text-anchor="middle" font-size="12.5" font-weight="600" fill="#e8edf7">Benin</text>
+  <text x="26" y="494" font-size="12" fill="#6b7ba3">Atlantic &middot; BVI holding company shown in the table</text>
+</svg>
+<div class="key">
+  <span><i style="background:#C99C32"></i>connected to StallionOS today</span>
+  <span><i style="background:#3a4a6b"></i>not yet connected</span>
+  <span>lines: entities reporting into the UAE holding structure</span>
+</div>
+</div>
+
+<div class="kpis">
+<div class="kpi"><div class="l">Legal entities</div><div class="v">70</div><div class="s">from 93 Tally company files</div></div>
+<div class="kpi"><div class="l">Countries</div><div class="v">8</div><div class="s">West Africa, Gulf, Caribbean</div></div>
+<div class="kpi"><div class="l">Connected</div><div class="v">4</div><div class="s">Premium, Agro, Polypack &times;2 &mdash; all Nigeria</div></div>
+<div class="kpi"><div class="l">Largest cluster</div><div class="v">Nigeria 33</div><div class="s">UAE 19 holdings &amp; trading</div></div>
+</div>
+
+<div class="card"><h2>Entities by country</h2>
+<table><tr><th class="l">Country</th><th>Entities</th><th class="l">Examples</th></tr><tr><td class="l">Nigeria<span class=live>live</span></td><td>33</td><td class="l s">AFRICAN ATLANTIC INTERNATIONAL AGENCIES LIMITED, AFRICAR RENTALS LIMITED, FISH DIVISION LAOGS …</td></tr><tr><td class="l">UAE</td><td>19</td><td class="l s">AFRICAN ATLANTIC DWC LLC, ELITE PROPERTY HOLDINGS LIMITED, GROUP COMPANY - CHQ …</td></tr><tr><td class="l">Ghana</td><td>7</td><td class="l s">AFRICAN ATLANTIC INTERNATIONAL MARITIME LIMITED, AUTOMOBILES INDUSTRIES LIMITED, GHANA AUTO GROUP COMPANY …</td></tr><tr><td class="l">Cameroon</td><td>5</td><td class="l s">AFRICAN ATLANTIC INTERNATIONAL MARITIME LTD, CAMEROON GROUP COMPANY, GLOBAL COMMODITES TRADING LTD …</td></tr><tr><td class="l">Côte d'Ivoire</td><td>3</td><td class="l s">SONAM ABIDJAN - COMMODITITES, SONAM ABIDJAN - FISH, STE. SONAM SARL</td></tr><tr><td class="l">BVI</td><td>1</td><td class="l s">PLATINUM CAPITAL INDUSTRIES LIMITED</td></tr><tr><td class="l">Saudi Arabia</td><td>1</td><td class="l s">ROWAD MARKETING COMPANY LIMITED</td></tr><tr><td class="l">Benin</td><td>1</td><td class="l s">STE PREMIUM RICE MILL INDUSTRIES SARL</td></tr></table></div>
+
+<div class="card"><h2>By division</h2><div class="divs"><div class="dv"><span class="n">17</span><span class="t">Trading & Holdings</span></div><div class="dv"><span class="n">17</span><span class="t">Automotive</span></div><div class="dv"><span class="n">6</span><span class="t">Fish & Seafood</span></div><div class="dv"><span class="n">4</span><span class="t">Maritime</span></div><div class="dv"><span class="n">3</span><span class="t">Food & Rice</span></div><div class="dv"><span class="n">2</span><span class="t">Packaging</span></div><div class="dv"><span class="n">1</span><span class="t">Agrochemicals</span></div><div class="dv"><span class="n">1</span><span class="t">Steel & Mining</span></div></div>
+<p class="foot" style="margin-top:12px">Division inferred from entity names; 19 further entities are holding or dormant vehicles without a clear trading name.</p></div>
+
+<p class="foot">Source: Tally company list (received 22 September 2026), parsed to data/group-snapshot/tally-universe.json. Entity count normalises Tally's one-file-per-fiscal-year convention &mdash; 93 files resolve to 70 distinct legal entities. Internal use only.</p>
+</div></body></html>
