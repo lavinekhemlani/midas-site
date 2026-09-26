@@ -393,6 +393,17 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
   .hero-cta .btn{flex:1;justify-content:center}
   #heroPrice{display:none}
 }
+.kobo-fab{position:fixed;right:16px;bottom:16px;z-index:60;display:inline-flex;align-items:center;gap:9px;
+  background:var(--brand,#0b2a4a);color:#fff;border:0;border-radius:999px;padding:9px 18px 9px 9px;cursor:pointer;
+  box-shadow:0 10px 28px rgba(10,20,32,.3);font:600 14.5px var(--body),system-ui,sans-serif;transition:.16s}
+.kobo-fab:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(10,20,32,.36)}
+.kobo-fab svg{flex:none;animation:kobob 3.4s ease-in-out infinite}
+@keyframes kobob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-3px) rotate(3deg)}}
+.view#v-chat ~ * .kobo-fab{display:none}
+@media(max-width:520px){.kobo-fab span{display:none}.kobo-fab{padding:9px}}
+@media (prefers-reduced-motion:reduce){.kobo-fab svg{animation:none}}
+.cb.bot{position:relative}
+.kobo-line{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .chatwrap{max-width:640px;margin:0 auto}
 .chatlog{display:flex;flex-direction:column;gap:12px;padding:8px 0 4px}
 .cb{max-width:82%;padding:13px 16px;border-radius:16px;font-size:15px;line-height:1.5}
@@ -462,7 +473,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="used" onclick="gotoSeg('used');return false;">Used cars</a>
-      <a href="#/chat" data-nav="chat">Ask Midas</a>
+      <a href="#/chat" data-nav="chat">Ask Kobo</a>
       <a href="#/halal" data-nav="halal">Halal finance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/learn" data-nav="learn">Learn</a>
@@ -497,7 +508,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
         <a class="chip" href="#/halal" style="text-decoration:none">&#9770; Halal option</a>
       </div>
     </div></div>
-    <div id="heroPrice" hidden style="position:absolute;right:26px;bottom:26px;background:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 12px 34px rgba(10,20,32,.28);max-width:270px"></div>
+    <div id="heroPrice" hidden style="position:absolute;right:26px;bottom:26px;background:#fff;color:var(--ink);border-radius:14px;padding:14px 18px;box-shadow:0 12px 34px rgba(10,20,32,.28);max-width:270px"></div>
   </div>
 
   <div class="ratesboard">
@@ -721,6 +732,72 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
   <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px" id="countryWrap"></div>
 </section>
 
+<!-- ===================== FLEET ===================== -->
+<section class="view" id="v-fleet">
+  <div class="wrap" style="padding-top:34px;max-width:860px;padding-bottom:26px">
+    <div class="eyebrow">For companies</div>
+    <h2 style="margin:8px 0 10px">Fleets, financed in days.</h2>
+    <p class="muted" style="max-width:58ch">Buying five vehicles or fifty, the same panel prices your fleet. Own them or rent them &mdash; you choose which suits your books.</p>
+
+    <div class="photostrip rev">
+      <div class="ps"><img src="cars/showroom.jpg" alt="Showroom"><span>Delivered from our showrooms</span></div>
+      <div class="ps"><img src="cars/hunter.jpg" alt="Pickup"><span>Pickups</span></div>
+      <div class="ps"><img src="cars/t60.jpg" alt="Commercial"><span>Commercial</span></div>
+      <div class="ps"><img src="cars/tucson.jpg" alt="Executive"><span>Executive</span></div>
+    </div>
+
+    <div class="statrow rev">
+      <div class="statcard"><div class="sv">5&ndash;50+</div><div class="sk">vehicles in a single<br>facility</div></div>
+      <div class="statcard"><div class="sv">48 hrs</div><div class="sk">indicative terms on<br>a complete file</div></div>
+      <div class="statcard"><div class="sv">One file</div><div class="sk">priced by the whole panel,<br>not one relationship bank</div></div>
+    </div>
+
+    <div class="g2" style="margin-top:8px">
+      <div class="card pad rev">
+        <div class="eyebrow">Option one</div>
+        <h3 style="margin:6px 0 6px;font-size:1.1rem">Fleet to own</h3>
+        <p class="tiny muted" style="margin:0 0 10px">A term facility against the vehicles. You hold the asset on your balance sheet, the bank holds the lien, and the fleet is yours at the end.</p>
+        <div class="tiny muted">Best when the vehicles are core to operations and you want the residual value.</div>
+      </div>
+      <div class="card pad rev">
+        <div class="eyebrow">Option two</div>
+        <h3 style="margin:6px 0 6px;font-size:1.1rem">Fleet to rent</h3>
+        <p class="tiny muted" style="margin:0 0 10px">An operating lease. A fixed monthly figure covering the vehicle, maintenance and insurance, off your balance sheet, replaced at the end of term.</p>
+        <div class="tiny muted">Best when you want a predictable monthly cost and no disposal risk.</div>
+      </div>
+    </div>
+
+    <h3 class="rev" style="margin:28px 0 6px;font-size:1.1rem">Run your fleet numbers</h3>
+    <div class="card pad rev">
+      <div class="f2">
+        <div class="field"><label>Vehicle</label><select class="inp" id="flCar" onchange="renderFleet()"></select></div>
+        <div class="field"><label>How many?</label><input class="inp" id="flQty" type="number" min="1" max="200" value="10" oninput="renderFleet()"></div>
+      </div>
+      <div class="f2">
+        <div class="field"><label>Deposit</label><select class="inp" id="flEq" onchange="renderFleet()">
+          <option value="0.20">20%</option><option value="0.30" selected>30%</option><option value="0.40">40%</option><option value="0.50">50%</option></select></div>
+        <div class="field"><label>Paying back over</label><select class="inp" id="flTen" onchange="renderFleet()">
+          <option value="36">36 months</option><option value="48" selected>48 months</option><option value="60">60 months</option></select></div>
+      </div>
+      <div id="flOut" style="margin-top:6px"></div>
+      <p class="tiny faint" style="margin-top:10px">Indicative, from the same panel that prices our retail loans. Your bank sets the final rate on its own credit assessment.</p>
+    </div>
+
+    <h3 class="rev" style="margin:28px 0 4px;font-size:1.05rem">What we need to start</h3>
+    <div class="numlist rev">
+      <div class="nl"><span class="nn">1</span><div><b style="font-size:14.5px">The vehicles and quantity</b><div class="tiny muted">Or tell us the job and we will specify them.</div></div></div>
+      <div class="nl"><span class="nn">2</span><div><b style="font-size:14.5px">Two years of audited accounts</b><div class="tiny muted">Company facilities are assessed on the balance sheet, not a salary slip.</div></div></div>
+      <div class="nl"><span class="nn">3</span><div><b style="font-size:14.5px">A named contact for the paperwork</b></div></div>
+    </div>
+
+    <div class="row" style="gap:10px;margin-top:20px;flex-wrap:wrap">
+      <a class="btn btn-a" href="mailto:lavine@zenith-grp.co?subject=Fleet%20financing%20enquiry&body=Company%3A%0AVehicles%20needed%3A%0AQuantity%3A%0AOwn%20or%20rent%3A%0AContact%3A">Send a fleet enquiry &rarr;</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20we%20need%20financing%20for%20a%20company%20fleet" target="_blank" rel="noopener">WhatsApp Amit</a>
+      <a class="btn btn-g" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== CREDITS ===================== -->
 <section class="view" id="v-credits">
   <div class="wrap" style="padding-top:38px;max-width:620px;padding-bottom:30px">
@@ -744,9 +821,11 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 <section class="view" id="v-chat">
   <div class="wrap" style="padding-top:30px;padding-bottom:30px">
     <div class="chatwrap">
-      <div class="eyebrow">Ask Midas</div>
-      <h2 style="margin:8px 0 4px">Tell me the car you want.</h2>
-      <p class="muted" style="margin-bottom:12px;font-size:14.5px">A few questions and I will show you what the banks will actually pay for.</p>
+      <div class="kobo-line"><span id="koboHead"></span>
+        <div><div class="eyebrow" style="margin:0">Kobo &middot; Midas</div>
+        <div class="tiny muted">Answers in seconds. Never asks for your BVN or PIN.</div></div></div>
+      <h2 style="margin:4px 0 4px">Tell me the car you want.</h2>
+      <p class="muted" style="margin-bottom:12px;font-size:14.5px">A few questions and I will show you what the banks will actually pay for &mdash; yours, not an advert.</p>
       <div class="chatlog" id="chatLog"></div>
       <div id="chatAsk"></div>
     </div>
@@ -1154,6 +1233,9 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     <div class="rev" style="border-top:2px solid var(--ink);padding-top:12px"><b style="font-size:14px">Real showrooms, real warranty</b><p class="tiny muted" style="margin:5px 0 0">Cars sold from our own showrooms with the manufacturer&rsquo;s warranty and after-sales service.</p></div>
   </div>
 </div>
+<button class="kobo-fab" id="koboFab" onclick="startChat()" aria-label="Chat with Kobo">
+  <span id="koboMark"></span><span>Ask Kobo</span>
+</button>
 <div class="wrap bigfoot">
   <div class="bf-cols">
     <div>
@@ -1162,7 +1244,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
       <a class="btn btn-wa btn-sm" style="margin-top:12px;display:inline-flex" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
-    <div><h5>Partners</h5><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
+    <div><h5>Partners</h5><a href="#/fleet">For companies</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
     <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a><a href="app.html#/ops">Operations console</a></div>
     <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/credits">Photo credits</a></div>
   </div>
@@ -2497,6 +2579,29 @@ function renderDesk(){
   ['dkCar','dkName','dkPhone','dkRef'].forEach(i=>{const n=$('#'+i); n.oninput=update; n.onchange=update;});
   update();
 }
+function renderFleet(){
+  const sel=$('#flCar'); if(!sel) return;
+  if(!sel.options.length) sel.innerHTML=VEHICLES.map(v=>`<option value="${v.id}">${v.year} ${v.make} ${v.model} — ${NGNs(v.price)}</option>`).join('');
+  const v=VEHICLES.find(x=>x.id===sel.value)||VEHICLES[0];
+  const qty=Math.max(1,Math.min(200,parseInt($('#flQty').value,10)||1));
+  const eq=parseFloat($('#flEq').value), ten=parseInt($('#flTen').value,10);
+  /* A company is assessed on its balance sheet, so affordability is not the
+     binding test here — price the facility and let the bank do the rest. */
+  const ok=runPanel(v,eq,ten,null).filter(o=>o.approved);
+  const best=ok.length?sortOffers(ok,'cost')[0]:null;
+  const total=v.price*qty, deposit=total*eq, financed=total-deposit;
+  const out=$('#flOut');
+  out.innerHTML=`
+    <div class="g3" style="margin-top:4px">
+      <div class="statcard"><div class="sv" style="font-size:1.5rem">${NGNs(total)}</div><div class="sk">${qty} vehicle${qty>1?'s':''}, total price</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.5rem">${NGNs(deposit)}</div><div class="sk">deposit at ${Math.round(eq*100)}%</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.5rem">${NGNs(financed)}</div><div class="sk">facility required</div></div>
+    </div>
+    ${best?`<div class="pilotband" style="margin:16px 0 0">
+      <span class="pb-big">${NGN(best.monthly*qty)} <em>/month</em></span>
+      <p>The whole fleet, ${ten} months at ${pct(best.rate*100)} indicative &mdash; about ${NGN(best.monthly)} per vehicle. Best of ${LENDERS.length} banks today.</p>
+    </div>`:`<div class="warnbox" style="margin-top:14px">No bank prices this structure yet. Raise the deposit or shorten the term.</div>`}`;
+}
 const COUNTRIES={
  GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0104,eta:'early 2027',banks:'GCB Bank, Absa Ghana, Stanbic Bank Ghana',city:'Accra'},
  BJ:{name:'Benin',flag:'\u{1F1E7}\u{1F1EF}',cur:'CFA',rate:0.39,eta:'2027',banks:'Bank of Africa, Ecobank, UBA B\u00e9nin',city:'Cotonou'}};
@@ -2599,6 +2704,16 @@ function initReveal(){
    rest of the site uses — nothing here is generated prose, so it
    cannot quote a payment a bank would not actually make. */
 let CHAT = null;
+/* Kobo — a gold kobo coin, the smallest Nigerian denomination. Drawn
+   inline so there is no image to load and nothing to look generated. */
+function koboSVG(size){ const d=size||40; return `<svg viewBox="0 0 64 64" width="${d}" height="${d}" aria-hidden="true">
+  <circle cx="32" cy="32" r="30" fill="#c8862a"/>
+  <circle cx="30" cy="29" r="26" fill="#f0c060"/>
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#b5771f" stroke-width="1.8" opacity=".5"/>
+  <circle cx="24.5" cy="29" r="3.3" fill="#2a1c06"/><circle cx="40" cy="29" r="3.3" fill="#2a1c06"/>
+  <circle cx="25.6" cy="27.9" r="1.05" fill="#fff"/><circle cx="41.1" cy="27.9" r="1.05" fill="#fff"/>
+  <path d="M23.5 38.5c3.3 3.8 14.3 3.8 17.6 0" stroke="#2a1c06" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+</svg>`; }
 function startChat(){ CHAT=null; location.hash='#/chat'; }
 function chatSay(who, html){
   const log=$('#chatLog'); if(!log) return;
@@ -2617,7 +2732,7 @@ function chatNumber(ph, hint){
     ${hint?`<p class="tiny faint" style="margin-top:7px">${hint}</p>`:''}`;
 }
 const CHAT_STEPS=[
-  { k:'use', q:'What do you need the car for?',
+  { k:'use', q:'Hello! I am Kobo. I watch every naira so you do not overpay.<br>What do you need the car for?',
     chips:[{v:'family',l:'My family'},{v:'work',l:'Work and business'},{v:'first',l:'My first car'},{v:'any',l:'Not sure yet'}] },
   { k:'cond', q:'Brand new, or a good pre-owned one?',
     chips:[{v:'new',l:'Brand new'},{v:'used',l:'Pre-owned, cheaper'},{v:'any',l:'Show me both'}] },
@@ -2628,6 +2743,7 @@ const CHAT_STEPS=[
 ];
 function renderChat(){
   const log=$('#chatLog'); if(!log) return;
+  const kh=$('#koboHead'); if(kh && !kh.innerHTML) kh.innerHTML=koboSVG(48);
   if(!CHAT){ CHAT={i:0,ans:{}}; log.innerHTML=''; chatStep(); }
 }
 function chatStep(){
@@ -2702,7 +2818,7 @@ function chatResults(){
     </div>`);
 }
 
-const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,credits:()=>{},halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 const VIEW_OF={signup:'login'};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
@@ -2712,6 +2828,8 @@ function route(){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   const node=$('#v-'+(VIEW_OF[page]||page)); if(node) node.classList.add('on');
   document.querySelectorAll('#tnav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===(VIEW_OF[page]||page)));
+  const fab=document.getElementById('koboFab');
+  if(fab){ fab.hidden = (page==='chat'); const km=document.getElementById('koboMark'); if(km && !km.innerHTML) km.innerHTML=koboSVG(30); }
   try{ VIEWS[page](); }catch(e){ console.error(e); }
   initReveal();
   if(page==='market') heroTicker();
