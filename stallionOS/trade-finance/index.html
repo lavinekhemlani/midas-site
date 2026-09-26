@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="en"><head><script>(function(){
+var K='stallionos_unlock_v1',H='57fa8bccaff22730843336788692c4f3f57f94be63553eb09c484dbd1ad0e330',S='stallionos.v1.';
+try{if(localStorage.getItem(K)===H)return}catch(e){}
+window.stop();
+function hex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){
+return ('0'+x.toString(16)).slice(-2)}).join('')}
+document.documentElement.innerHTML='<head><meta charset="utf-8">'+
+'<meta name="viewport" content="width=device-width,initial-scale=1">'+
+'<meta name="robots" content="noindex,nofollow">'+
+'<title>StallionOS</title><style>'+
+'*{margin:0;padding:0;box-sizing:border-box}'+
+'body{min-height:100vh;display:flex;align-items:center;justify-content:center;'+
+'background:#0d1b3e;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;padding:24px}'+
+'.c{width:100%;max-width:400px;text-align:center}'+
+'.m{width:54px;height:54px;margin:0 auto 22px}'+
+'h1{color:#fff;font-size:21px;font-weight:600;letter-spacing:.2px;margin-bottom:7px}'+
+'p.s{color:#8a93a6;font-size:13.5px;margin-bottom:28px}'+
+'form{display:flex;flex-direction:column;gap:11px}'+
+'input{width:100%;padding:13px 15px;border:1px solid #2a3a5e;border-radius:7px;'+
+'background:#132449;color:#fff;font-size:15px;outline:none;transition:border-color .15s}'+
+'input:focus{border-color:#c99c32}'+
+'input::placeholder{color:#6b7a99}'+
+'button{width:100%;padding:13px;border:0;border-radius:7px;cursor:pointer;'+
+'background:linear-gradient(135deg,#D1AA29,#B8891C);color:#0d1b3e;font-size:15px;font-weight:700;letter-spacing:.2px}'+
+'button:hover{filter:brightness(1.07)}'+
+'.e{color:#ff8b8b;font-size:13px;min-height:18px;margin-top:4px}'+
+'.f{color:#5c6a85;font-size:11.5px;margin-top:26px;letter-spacing:.4px}'+
+'</style></head><body><div class="c">'+
+'<svg class="m" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+'<circle cx="15" cy="15" r="13.5" stroke="#C99C32" stroke-width="1.6"/>'+
+'<circle cx="15" cy="15" r="6" stroke="#C99C32" stroke-width="1.6"/></svg>'+
+'<h1>StallionOS</h1><p class="s">Group command center &middot; restricted access</p>'+
+'<form id="g"><input id="p" type="password" placeholder="Access password" '+
+'autocomplete="current-password" autofocus><button type="submit">Enter</button>'+
+'<div class="e" id="e"></div></form>'+
+'<div class="f">STALLION GROUP</div></div></body>';
+var f=document.getElementById('g'),p=document.getElementById('p'),e=document.getElementById('e');
+f.addEventListener('submit',function(ev){ev.preventDefault();
+if(!window.crypto||!crypto.subtle){e.textContent='This browser is not supported.';return}
+crypto.subtle.digest('SHA-256',new TextEncoder().encode(S+p.value)).then(function(b){
+if(hex(b)===H){try{localStorage.setItem(K,H)}catch(x){}location.reload()}
+else{e.textContent='Incorrect password.';p.value='';p.focus()}})});
+})()</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StallionOS — Trade Finance</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;background:#faf8f5;color:#26221c;padding-block:0 60px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid #eae5dc;padding:26px 0 20px;margin-bottom:28px}
+.bc{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#8a8272;margin-bottom:9px}
+h1{font-size:31px;font-weight:600;letter-spacing:-.4px}
+.sub-h{color:#8a8272;font-size:14px;margin-top:7px;max-width:74ch}
+h2{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:#8a8272;margin:36px 0 14px;font-weight:600}
+.card{background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:20px 22px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
+.k{background:#fff;border:1px solid #eae5dc;border-radius:10px;padding:17px 19px}
+.k .lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8a8272}
+.k .val{font-size:26px;font-weight:600;margin-top:6px;letter-spacing:-.5px}
+.k .note{font-size:12.5px;color:#8a8272;margin-top:4px}
+.bk{margin-bottom:19px}
+.bh{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;font-size:14px}
+.bh span{color:#8a8272;font-size:12.5px}
+.bp{font-size:11.5px;margin-top:5px;font-weight:600}
+.tr{height:9px;background:#f0ebe2;border-radius:5px;overflow:hidden;margin-top:6px}
+.fl{height:100%;border-radius:5px}
+.ob{margin-bottom:14px}
+.oh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:13.5px;flex-wrap:wrap}
+.oh span{color:#8a8272;font-size:12.5px}
+.oh .sub{flex:1;font-size:12px;color:#b5ad9d}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8a8272;padding:0 9px 10px;font-weight:600;border-bottom:1px solid #eae5dc}
+th:last-child,td:last-child{text-align:right}
+td{padding:9px;border-bottom:1px solid #f0ebe2}
+.lede{background:#fff;border:1px solid #eae5dc;border-left:3px solid #b3402e;border-radius:0 10px 10px 0;padding:17px 20px}
+.foot{color:#8a8272;font-size:12.5px;margin-top:11px;max-width:82ch}
+nav a{color:#8a8272;text-decoration:none;font-size:13px;margin-right:17px}
+nav a:hover{color:#26221c}
+.scroll{overflow-x:auto}
+.mm{border-left:3px solid #C99C32;padding:2px 0 2px 15px;margin-bottom:15px}
+.mm p{color:#8a8272;font-size:13px;margin-top:5px;max-width:80ch}
+.mm code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;background:#f7f4ed;padding:1px 5px;border-radius:3px;color:#26221c}
+@media(max-width:620px){h1{font-size:25px}.k .val{font-size:22px}}
+</style></head><body><div class="wrap">
+<header>
+  <div class="bc">StallionOS · Group Command Center</div>
+  <h1>Trade Finance</h1>
+  <p class="sub-h">The group's UAE trade finance book — 108 open drawings across two banks,
+  read from the CBD/ENBD workbook. Platinum Corporation FZE / PLAT-DMCC (UAE trading arm).</p>
+  <nav style="margin-top:14px">
+    <a href="../dashboard-global/">Global</a><a href="../consolidated/">Consolidated</a>
+    <a href="../cash-optimization/">Cash optimization</a><a href="../cashflow/">Treasury</a>
+  </nav>
+</header>
+
+<div class="lede">
+  <b style="color:#b3402e">CBD is at 97.5% utilisation</b> — $264,927 of headroom
+  remaining on a $10,615,133 line. ENBD holds
+  $8,353,158 free. This figure sits in row 2 of a 936-row sheet inside a
+  23-tab workbook whose oldest tabs date to 2009.
+</div>
+
+<h2>Position</h2>
+<div class="kpis">
+  <div class="k"><div class="lab">Open exposure</div><div class="val">$15,679,826</div>
+    <div class="note">108 drawings</div></div>
+  <div class="k"><div class="lab">Total limits</div><div class="val">$24,297,911</div>
+    <div class="note">CBD and ENBD combined</div></div>
+  <div class="k"><div class="lab">Overdue</div>
+    <div class="val" style="color:#4a7c59">$0</div>
+    <div class="note">nothing past due</div></div>
+  <div class="k"><div class="lab">Due in final 3 weeks</div><div class="val">$4,543,895</div>
+    <div class="note">60% of the 13-week total</div></div>
+</div>
+
+<h2>Facility headroom</h2>
+<div class="card"><div class="bk">
+      <div class="bh"><b>CBD</b>
+        <span>$10,350,207 drawn of $10,615,133 · <b style="color:#b3402e">$264,927 free</b></span></div>
+      <div class="tr"><div class="fl" style="width:97.5%;background:#b3402e"></div></div>
+      <div class="bp" style="color:#b3402e">97.5% utilised</div>
+    </div><div class="bk">
+      <div class="bh"><b>ENBD</b>
+        <span>$5,329,619 drawn of $13,682,777 · <b style="color:#C99C32">$8,353,158 free</b></span></div>
+      <div class="tr"><div class="fl" style="width:39.0%;background:#C99C32"></div></div>
+      <div class="bp" style="color:#C99C32">39.0% utilised</div>
+    </div>
+  <p class="foot">Utilisation is drawn against limit. A line above 90% leaves no room to fund the next
+  shipment — the constraint binds on new trades before it shows up in cash.</p>
+</div>
+
+<h2>13-week maturity ladder</h2>
+<div class="card"><svg viewBox="0 0 1000 250" style="width:100%;height:auto" xmlns="http://www.w3.org/2000/svg"><rect x="34" y="194" width="56" height="12" rx="4" fill="#C99C32"/><text x="62.0" y="187" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.12M</text><text x="62.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W02</text><rect x="104" y="112" width="56" height="94" rx="4" fill="#C99C32"/><text x="132.0" y="105" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.95M</text><text x="132.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W03</text><rect x="174" y="149" width="56" height="57" rx="4" fill="#C99C32"/><text x="202.0" y="142" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.57M</text><text x="202.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W04</text><rect x="244" y="141" width="56" height="65" rx="4" fill="#C99C32"/><text x="272.0" y="134" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.65M</text><text x="272.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W05</text><rect x="314" y="176" width="56" height="30" rx="4" fill="#C99C32"/><text x="342.0" y="169" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.30M</text><text x="342.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W06</text><rect x="384" y="201" width="56" height="5" rx="4" fill="#C99C32"/><text x="412.0" y="194" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.05M</text><text x="412.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W07</text><rect x="454" y="171" width="56" height="35" rx="4" fill="#C99C32"/><text x="482.0" y="164" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.35M</text><text x="482.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W09</text><rect x="524" y="201" width="56" height="5" rx="4" fill="#C99C32"/><text x="552.0" y="194" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">0.05M</text><text x="552.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W10</text><rect x="594" y="34" width="56" height="172" rx="4" fill="#b3402e"/><text x="622.0" y="27" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">1.73M</text><text x="622.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W11</text><rect x="664" y="38" width="56" height="168" rx="4" fill="#b3402e"/><text x="692.0" y="31" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">1.69M</text><text x="692.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W12</text><rect x="734" y="94" width="56" height="112" rx="4" fill="#b3402e"/><text x="762.0" y="87" text-anchor="middle" font-size="11.5" fill="#26221c" font-weight="600">1.13M</text><text x="762.0" y="226" text-anchor="middle" font-size="10.5" fill="#8a8272">W13</text><line x1="24" y1="206" x2="990" y2="206" stroke="#e2dbce" stroke-width="1.5"/></svg>
+  <p class="foot">Settlements by week from 2026-09-24. A further $7,285,753
+  falls beyond thirteen weeks and $805,860 carries no due date in the workbook.</p>
+</div>
+
+<h2>What the facility funds</h2><div class="card"><div class="ob">
+          <div class="oh"><b>CONSUMER GOODS</b><span class="sub">Trading and distribution</span><span>$10,350,207 · 66%</span></div>
+          <div class="tr"><div class="fl" style="width:66.0%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>FISH</b><span class="sub">Premium Aquaculture</span><span>$2,428,352 · 15%</span></div>
+          <div class="tr"><div class="fl" style="width:15.5%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>PLASTIC</b><span class="sub">Polypack — Flexi and BSW</span><span>$1,744,560 · 11%</span></div>
+          <div class="tr"><div class="fl" style="width:11.1%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>AUTO</b><span class="sub">Automotive division</span><span>$1,156,707 · 7%</span></div>
+          <div class="tr"><div class="fl" style="width:7.4%;background:#C99C32"></div></div>
+        </div></div>
+<p class="foot" style="margin-top:-6px">This is the link between the financing and the operating
+companies: the UAE arm draws on these lines to buy fish, petrochemical feedstock and vehicles, which
+are then supplied into the Nigerian entities. The same flow appears in those entities' books as
+intercompany purchases from Platinum.</p>
+
+<h2>By bank</h2><div class="card"><div class="ob">
+          <div class="oh"><b>CBD</b><span>$10,350,207 · 66%</span></div>
+          <div class="tr"><div class="fl" style="width:66.0%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>ENBD</b><span>$5,329,619 · 34%</span></div>
+          <div class="tr"><div class="fl" style="width:34.0%;background:#C99C32"></div></div>
+        </div></div>
+<h2>By origin</h2><div class="card"><div class="ob">
+          <div class="oh"><b>SAUDI A</b><span>$7,998,528 · 51%</span></div>
+          <div class="tr"><div class="fl" style="width:51.0%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>NIGERIA</b><span>$7,681,298 · 49%</span></div>
+          <div class="tr"><div class="fl" style="width:49.0%;background:#C99C32"></div></div>
+        </div></div>
+<h2>Largest counterparties</h2><div class="card"><div class="ob">
+          <div class="oh"><b>JMARR SEAFOODS LTD</b><span>$2,351,679 · 18%</span></div>
+          <div class="tr"><div class="fl" style="width:18.0%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>PARLEVLIET &amp; VAN DER PLAS B.V</b><span>$1,805,150 · 14%</span></div>
+          <div class="tr"><div class="fl" style="width:13.8%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>EXXONMOBIL PETROCHEM</b><span>$1,671,120 · 13%</span></div>
+          <div class="tr"><div class="fl" style="width:12.8%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>LAR/SAPI</b><span>$1,530,306 · 12%</span></div>
+          <div class="tr"><div class="fl" style="width:11.7%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>MEEM AGRO</b><span>$1,063,256 · 8%</span></div>
+          <div class="tr"><div class="fl" style="width:8.1%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>SAHYADRI</b><span>$864,526 · 7%</span></div>
+          <div class="tr"><div class="fl" style="width:6.6%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>JBS S/A</b><span>$722,421 · 6%</span></div>
+          <div class="tr"><div class="fl" style="width:5.5%;background:#C99C32"></div></div>
+        </div><div class="ob">
+          <div class="oh"><b>ALLANA SONS</b><span>$586,463 · 4%</span></div>
+          <div class="tr"><div class="fl" style="width:4.5%;background:#C99C32"></div></div>
+        </div></div>
+
+<h2>Caught in the workbook</h2><div class="card"><div class="mm">
+          <div class="oh"><b>Plena Alimentos</b><span>$153,948 · due 2026-01-09</span></div>
+          <p>Settled under <code>FSA2513296-26CRE001 / LCD-5002228442</code> instead of its own
+          <code>FSA2513383-26CRE001 / LCD-5002228780</code>. The two cancel exactly, so the obligation is
+          discharged — but read literally the workbook shows this drawing 153,948 unpaid
+          and the other over-settled by the same amount.</p>
+        </div><p class="foot">A settlement booked against the wrong reference leaves one drawing looking overdue and another over-settled by an identical amount, for the same supplier. Matched and reported here rather than silently netted. Read at face value the book would show $153,948 past due that is not actually owed.</p></div>
+
+<h2>Open drawings</h2>
+<div class="card"><div class="scroll">
+  <table><thead><tr><th>Supplier</th><th>Product</th><th>Origin</th><th>Bank</th><th>Due</th><th>USD</th></tr></thead>
+  <tbody><tr><td>AL HAMD AGRO</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-07</td><td><b>$119,958</b></td></tr><tr><td>BANSAL FINEFOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-08</td><td><b>$61,500</b></td></tr><tr><td>BANSAL FINEFOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-08</td><td><b>$75,750</b></td></tr><tr><td>SAHYADRI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-08</td><td><b>$110,733</b></td></tr><tr><td>EXCEL FOODS PVT</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-09</td><td><b>$26,992</b></td></tr><tr><td>SAHYADRI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-09</td><td><b>$139,766</b></td></tr><tr><td>SAHYADRI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-09</td><td><b>$54,286</b></td></tr><tr><td>ENDEAVOUR MEATS PTY LTD</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-09</td><td><b>$152,340</b></td></tr><tr><td>MONDIAL FOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-10</td><td><b>$41,378</b></td></tr><tr><td>SAHYADRI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-10</td><td><b>$50,775</b></td></tr><tr><td>SAHYADRI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-10</td><td><b>$108,572</b></td></tr><tr><td>MEEM AGRO</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-14</td><td><b>$127,687</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-15</td><td><b>$99,900</b></td></tr><tr><td>ISCON BALAJI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-16</td><td><b>$45,400</b></td></tr><tr><td>AFFCO NEW ZEALAND</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-17</td><td><b>$63,259</b></td></tr><tr><td>ALLANA CONSUMER</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-17</td><td><b>$24,982</b></td></tr><tr><td>AFFCO NEWZEALAND</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-20</td><td><b>$149,906</b></td></tr><tr><td>AFFCO NEWZEALAND</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-21</td><td><b>$149,605</b></td></tr><tr><td>MONDIAL FOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-21</td><td><b>$41,378</b></td></tr><tr><td>SAHYADRI FARMERS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-22</td><td><b>$54,286</b></td></tr><tr><td>MONDIAL FOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-22</td><td><b>$42,840</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-22</td><td><b>$91,206</b></td></tr><tr><td>BANSAL FINEFOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-22</td><td><b>$132,699</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-22</td><td><b>$99,900</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-22</td><td><b>$99,900</b></td></tr><tr><td>MEEM AGRO</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-10-28</td><td><b>$128,063</b></td></tr><tr><td>ASANDAS SONS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-03</td><td><b>$75,270</b></td></tr><tr><td>BANSAL FINEFOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-04</td><td><b>$142,500</b></td></tr><tr><td>SAHYADRI FARMERS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-04</td><td><b>$81,429</b></td></tr><tr><td>MONDIAL FOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-06</td><td><b>$49,378</b></td></tr><tr><td>JBS S/A</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-25</td><td><b>$190,303</b></td></tr><tr><td>JBS S/A</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-25</td><td><b>$161,274</b></td></tr><tr><td>MONDIAL FOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-11-28</td><td><b>$51,100</b></td></tr><tr><td>ASANDAS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-03</td><td><b>$27,544</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-03</td><td><b>$94,500</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-03</td><td><b>$94,500</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-03</td><td><b>$94,500</b></td></tr><tr><td>EXCEL FOODS</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-04</td><td><b>$52,634</b></td></tr><tr><td>AL NASIR EXPORT</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-04</td><td><b>$145,800</b></td></tr><tr><td>LAR/SAPI</td><td>CONSUMER GOODS</td><td>SAUDI A</td><td>CBD</td><td style="color:#26221c">2026-12-04</td><td><b>$94,500</b></td></tr></tbody></table></div>
+  <p class="foot">Showing the 40 nearest by due date of 108 open drawings.
+  Each is netted by reference — a drawing counts as open only where its settlements do not cancel it.</p>
+</div>
+
+<p class="foot" style="margin-top:32px">Source: FACILITY AVAILABLE BANK — CBD-ENBD, 24 September 2026,
+sheet '&lt;&lt; WORKING SHEET &gt;&gt;'. Covers Platinum Corporation FZE / PLAT-DMCC (UAE trading arm) only — Nigerian bank facilities
+are not yet in this view.</p>
+</div></body></html>

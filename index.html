@@ -2706,13 +2706,22 @@ function initReveal(){
 let CHAT = null;
 /* Kobo — a gold kobo coin, the smallest Nigerian denomination. Drawn
    inline so there is no image to load and nothing to look generated. */
-function koboSVG(size){ const d=size||40; return `<svg viewBox="0 0 64 64" width="${d}" height="${d}" aria-hidden="true">
-  <circle cx="32" cy="32" r="30" fill="#c8862a"/>
-  <circle cx="30" cy="29" r="26" fill="#f0c060"/>
-  <circle cx="32" cy="32" r="23" fill="none" stroke="#b5771f" stroke-width="1.8" opacity=".5"/>
-  <circle cx="24.5" cy="29" r="3.3" fill="#2a1c06"/><circle cx="40" cy="29" r="3.3" fill="#2a1c06"/>
-  <circle cx="25.6" cy="27.9" r="1.05" fill="#fff"/><circle cx="41.1" cy="27.9" r="1.05" fill="#fff"/>
-  <path d="M23.5 38.5c3.3 3.8 14.3 3.8 17.6 0" stroke="#2a1c06" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+function koboSVG(size){ const d=size||40, u='k'+Math.random().toString(36).slice(2,7); return `<svg viewBox="0 0 72 72" width="${d}" height="${d}" aria-hidden="true">
+  <defs>
+    <radialGradient id="${u}f" cx="38%" cy="32%" r="72%">
+      <stop offset="0" stop-color="#ffe9ab"/><stop offset="55%" stop-color="#f2c45c"/><stop offset="100%" stop-color="#cf8f27"/>
+    </radialGradient>
+  </defs>
+  <circle cx="36" cy="36" r="34" fill="#b8791d"/>
+  <circle cx="36" cy="35" r="32" fill="url(#${u}f)"/>
+  <circle cx="36" cy="36" r="26" fill="none" stroke="#c99433" stroke-width="1.6" opacity=".45"/>
+  <ellipse cx="36" cy="20" rx="20" ry="7" fill="#fff6dc" opacity=".35"/>
+  <ellipse cx="28.5" cy="34" rx="3.4" ry="4.2" fill="#3b2a0e"/>
+  <ellipse cx="43.5" cy="34" rx="3.4" ry="4.2" fill="#3b2a0e"/>
+  <circle cx="29.7" cy="32.4" r="1.25" fill="#fff"/><circle cx="44.7" cy="32.4" r="1.25" fill="#fff"/>
+  <ellipse cx="23" cy="42.5" rx="3.6" ry="2.4" fill="#e8964f" opacity=".45"/>
+  <ellipse cx="49" cy="42.5" rx="3.6" ry="2.4" fill="#e8964f" opacity=".45"/>
+  <path d="M27 42.5c2.6 5 15.4 5 18 0" stroke="#3b2a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
 </svg>`; }
 function startChat(){ CHAT=null; location.hash='#/chat'; }
 function chatSay(who, html){
