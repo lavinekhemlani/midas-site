@@ -319,6 +319,15 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 @media (prefers-reduced-motion:reduce){.rev{opacity:1;transform:none;transition:none}.hero-photo .bg{animation:none}.stepflow:before{animation:none}}
 .foot-bar .fb-r{max-width:44ch;text-align:right;font-size:12px;line-height:1.5}
 @media(max-width:820px){.pgrid{grid-template-columns:1fr}.pcard{min-height:0;padding:26px 22px 22px}.foot-bar .fb-r{text-align:left}}
+@media(max-width:800px){.grid[style*="340px"],.grid[style*="320px"]{grid-template-columns:1fr!important}}
+body[data-page="apply"] #quotesWrap,body[data-page="apply"] .partners,body[data-page="offers"] #quotesWrap,body[data-page="offers"] .partners,body[data-page="status"] #quotesWrap,body[data-page="status"] .partners,body[data-page="login"] #quotesWrap,body[data-page="login"] .partners,body[data-page="account"] #quotesWrap,body[data-page="account"] .partners{display:none}
+body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[data-page="login"] #v-login,body[data-page="apply"] #v-apply,body[data-page="offers"] #v-offers{padding-bottom:48px}
+.acct-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0;border-top:1px solid var(--line);cursor:pointer;text-decoration:none;color:inherit}
+.acct-row>.row{flex:1 1 auto;min-width:0}
+.doc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.doc-row>div{min-width:0}.doc-row .btn{flex:none}
+.acct-row:hover .acct-go{color:var(--accent)}
+.acct-go{font-weight:550;white-space:nowrap}
 .timeline{display:grid;gap:0}
 .tl{display:grid;grid-template-columns:26px 1fr;gap:14px;padding-bottom:20px;position:relative}
 .tl:not(:last-child)::before{content:"";position:absolute;left:12px;top:24px;bottom:0;width:2px;background:var(--line)}
@@ -384,6 +393,20 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   .hero-cta .btn{flex:1;justify-content:center}
   #heroPrice{display:none}
 }
+.chatwrap{max-width:640px;margin:0 auto}
+.chatlog{display:flex;flex-direction:column;gap:12px;padding:8px 0 4px}
+.cb{max-width:82%;padding:13px 16px;border-radius:16px;font-size:15px;line-height:1.5}
+.cb.bot{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
+.cb.me{background:var(--brand,#0b2a4a);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+.cb b{font-weight:650}
+.cchips{display:flex;flex-wrap:wrap;gap:9px;margin:4px 0 2px}
+.cchip{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:11px 17px;font-size:14.5px;cursor:pointer;transition:.14s;font-family:inherit;color:var(--ink)}
+.cchip:hover{border-color:var(--accent);background:#fdf9f1}
+.cinput{display:flex;gap:9px;margin-top:6px}
+.cinput input{flex:1;padding:14px 15px;border:1px solid var(--line-2);border-radius:11px;font-size:16px;background:var(--surface);font-family:inherit}
+.ctyping{display:inline-flex;gap:4px;align-items:center}
+.ctyping i{width:6px;height:6px;border-radius:50%;background:var(--ink-faint);display:block;animation:bkw 1.1s infinite}
+.ctyping i:nth-child(2){animation-delay:.18s}.ctyping i:nth-child(3){animation-delay:.36s}
 .bkprog{margin:18px 0 22px}
 .bkprog-t{font-size:14px;color:var(--ink-soft);margin-bottom:8px}
 .bkbar{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
@@ -439,6 +462,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="used" onclick="gotoSeg('used');return false;">Used cars</a>
+      <a href="#/chat" data-nav="chat">Ask Midas</a>
       <a href="#/halal" data-nav="halal">Halal finance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/learn" data-nav="learn">Learn</a>
@@ -447,6 +471,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <a href="#/dealers" data-nav="dealers">For dealerships</a>
     </nav>
     <div class="tspacer"></div>
+    <a class="btn btn-g btn-sm" id="navAuth" href="#/login" style="margin-right:8px">Log in</a>
     <a class="btn btn-a btn-sm" href="#/apply" onclick="startApply();return false;">Apply now</a>
     <a class="btn btn-wa btn-sm" style="margin-left:8px" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">🟢&nbsp;WhatsApp us</a>
   </div>
@@ -462,7 +487,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
       <p class="sub">Seven Nigerian banks look at one application and each sends you a price. You pick the lowest. We hand you the keys at our showroom.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
         <a class="btn btn-a btn-lg" href="#/apply" onclick="startApply();return false;">Apply now &rarr;</a>
-        <a href="#inv" class="btn btn-lg" style="background:#fff;color:var(--ink)" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See cars and prices</a>
+        <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#/chat" onclick="startChat();return false;">Help me choose &rarr;</a>
         <a href="tel:+2348058963692" class="btn btn-lg" style="background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)">Call 0805 896 3692</a>
               </div>
       <div class="chiprow">
@@ -607,7 +632,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <!-- ===================== OFFERS / AUCTION ===================== -->
 <section class="view" id="v-offers">
   <div class="wrap" style="padding-top:34px;max-width:780px">
-    <div class="eyebrow">Your offers</div>
+    <div class="eyebrow">Indicative offers</div>
     <h2 style="margin:8px 0 6px" id="offHead">The banks are looking at your file.</h2>
     <p class="muted" id="offSub"></p>
 
@@ -643,6 +668,25 @@ table.tb tbody tr:hover{background:var(--surface-2)}
   </div>
 </section>
 
+<!-- ===================== ACCOUNT: LOG IN / SIGN UP ===================== -->
+<section class="view" id="v-login">
+  <div class="wrap" style="padding-top:34px;max-width:520px;padding-bottom:40px">
+    <div class="eyebrow" id="loginEyebrow">Your account</div>
+    <h2 style="margin:8px 0 8px" id="loginHead">Log in</h2>
+    <p class="muted" style="margin-bottom:22px" id="loginSub">Your application, your offers and your documents &mdash; in one place.</p>
+    <div class="card pad" id="loginCard"></div>
+    <p class="tiny muted" style="margin-top:16px">&#128274; We never ask for your BVN, card number, PIN or OTP.</p>
+  </div>
+</section>
+
+<section class="view" id="v-account">
+  <div class="wrap" style="padding-top:34px;max-width:900px;padding-bottom:40px">
+    <div class="eyebrow">My account</div>
+    <h2 style="margin:8px 0 22px" id="acctHead">My account</h2>
+    <div id="acctBody"></div>
+  </div>
+</section>
+
 <!-- ===================== LENDER CONSOLE ===================== -->
 <section class="view" id="v-bank">
   <div class="wrap" style="padding-top:34px">
@@ -675,6 +719,38 @@ table.tb tbody tr:hover{background:var(--surface-2)}
 <!-- ===================== COUNTRY ===================== -->
 <section class="view" id="v-country">
   <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px" id="countryWrap"></div>
+</section>
+
+<!-- ===================== CREDITS ===================== -->
+<section class="view" id="v-credits">
+  <div class="wrap" style="padding-top:38px;max-width:620px;padding-bottom:30px">
+    <div class="eyebrow">Photo credits</div>
+    <h2 style="margin:10px 0 10px">Where these pictures come from.</h2>
+    <p class="muted" style="font-size:14.5px">Stock photography used while our own showroom photographs are being taken. Each image is used under its licence, with the photographer credited.</p>
+    <div class="cklist" style="margin-top:14px">
+      <div class="ck"><div><b>Hyundai Creta</b> &mdash; Dairokkan9, CC BY-SA 4.0</div></div>
+      <div class="ck"><div><b>Hyundai Elantra</b> &mdash; Mr.choppers, CC BY-SA 3.0</div></div>
+      <div class="ck"><div><b>Hyundai Tucson</b> &mdash; Ethan Llamas, CC BY-SA 4.0</div></div>
+      <div class="ck"><div><b>Changan Hunter</b> &mdash; Retired electrician, CC0</div></div>
+      <div class="ck"><div><b>MG pickup</b> &mdash; Captainmorlypogi1959, CC BY-SA 4.0</div></div>
+      <div class="ck"><div><b>Pre-owned vehicles</b> &mdash; Wikimedia Commons contributors, CC BY-SA</div></div>
+      <div class="ck"><div><b>Buyer portraits</b> &mdash; computer-generated, not photographs of real customers</div></div>
+    </div>
+    <p class="tiny faint" style="margin-top:16px">Sourced from Wikimedia Commons. These are placeholders: every one will be replaced with a photograph of the actual vehicle in our own showroom before launch.</p>
+  </div>
+</section>
+
+<!-- ===================== CHAT ===================== -->
+<section class="view" id="v-chat">
+  <div class="wrap" style="padding-top:30px;padding-bottom:30px">
+    <div class="chatwrap">
+      <div class="eyebrow">Ask Midas</div>
+      <h2 style="margin:8px 0 4px">Tell me the car you want.</h2>
+      <p class="muted" style="margin-bottom:12px;font-size:14.5px">A few questions and I will show you what the banks will actually pay for.</p>
+      <div class="chatlog" id="chatLog"></div>
+      <div id="chatAsk"></div>
+    </div>
+  </div>
 </section>
 
 <!-- ===================== ABOUT ===================== -->
@@ -1088,7 +1164,7 @@ table.tb tbody tr:hover{background:var(--surface-2)}
     <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
     <div><h5>Partners</h5><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
     <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a><a href="app.html#/ops">Operations console</a></div>
-    <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a></div>
+    <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/credits">Photo credits</a></div>
   </div>
   <div class="bf-bot">
     <span>&copy; 2026 Midas &middot; Lagos &middot; Abuja &middot; Port Harcourt</span>
@@ -1223,15 +1299,30 @@ function renderQuotes(qs, sample){
   const w=document.getElementById('quotesWrap'), g=document.getElementById('quotesGrid'), t=document.getElementById('quotesNote');
   if(!w||!g) return;
   const initials=n=>n.split(/\s+/).map(x=>x[0]).join('').slice(0,2).toUpperCase();
-  g.innerHTML=qs.slice(0,9).map(q=>`
+  /* Nine different grounds so the portraits don't read as one studio set. */
+  const GROUND=[
+    'radial-gradient(circle at 50% 38%,#fdf1dc,#efd9b4)',
+    'radial-gradient(circle at 50% 38%,#e6f0ea,#c9ded2)',
+    'radial-gradient(circle at 50% 38%,#e8eef7,#c8d8ea)',
+    'radial-gradient(circle at 50% 38%,#fae6dd,#e8c3b2)',
+    'radial-gradient(circle at 50% 38%,#eceae4,#d2cec4)',
+    'radial-gradient(circle at 50% 38%,#f3e9f2,#d8c6d6)',
+    'radial-gradient(circle at 50% 38%,#e4f1f2,#c0dcdf)',
+    'radial-gradient(circle at 50% 38%,#f7edd6,#ddc79a)',
+    'radial-gradient(circle at 50% 38%,#e9ecdf,#ccd2b8)'];
+  g.innerHTML=qs.slice(0,9).map((q,i)=>`
     <div class="card" style="display:flex;flex-direction:column;overflow:hidden">
-      ${q.img?`<div style="aspect-ratio:16/8;overflow:hidden"><img src="${q.img}" alt="${q.vehicle||''}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>`:''}
+      <div style="background:${GROUND[i%GROUND.length]};padding:26px 0 22px;display:grid;place-items:center">
+        ${q.photo?`<img src="${q.photo}" alt="${q.name}" loading="lazy"
+            style="width:132px;height:132px;border-radius:50%;object-fit:cover;object-position:center 18%;
+                   box-shadow:0 6px 20px rgba(16,32,43,.18);border:4px solid rgba(255,255,255,.9);transform:scale(1.02)">`
+          :`<div style="width:132px;height:132px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:650;font-size:38px;border:4px solid rgba(255,255,255,.9)">${initials(q.name)}</div>`}
+      </div>
       <div class="pad" style="display:flex;flex-direction:column;gap:12px;flex:1">
         <p style="font-size:14.5px;line-height:1.55">&ldquo;${q.quote}&rdquo;</p>
         <div style="display:flex;align-items:center;gap:10px;margin-top:auto">
-          ${q.photo?`<img src="${q.photo}" alt="${q.name}" style="width:38px;height:38px;border-radius:50%;object-fit:cover">`
-            :`<div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:grid;place-items:center;font-weight:650;font-size:13px;flex:none">${initials(q.name)}</div>`}
-          <div class="tiny muted"><b style="color:var(--ink)">${q.name}</b><br>${q.city}${q.vehicle?` · ${q.vehicle}`:''}</div>
+          ${q.img?`<img src="${q.img}" alt="${q.vehicle||''}" loading="lazy" style="width:56px;height:40px;border-radius:7px;object-fit:cover;flex:none">`:''}
+          <div class="tiny muted"><b style="color:var(--ink)">${q.name}</b><br>${q.city}${q.vehicle?` &middot; ${q.vehicle}`:''}</div>
         </div>
       </div>
     </div>`).join('');
@@ -1556,24 +1647,31 @@ function renderDeal(){
   const earn=incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0);
   $('#carDeal').innerHTML = `
     ${best ? `
+    <div class="tiny muted" style="font-weight:550;margin-bottom:4px">Monthly repayment</div>
     <div style="font-family:var(--display);font-size:2.3rem;font-weight:650;letter-spacing:-.025em;line-height:1">${NGN(best.monthly)}<span style="font-size:1rem;color:var(--ink-faint);font-weight:400"> /month</span></div>
-    <p class="tiny muted" style="margin-top:7px">${S.halal?pct(best.rate*100)+' fixed profit margin · non-interest bank':pct(best.rate*100)+' yearly · best of '+LENDERS.length+' banks today'} · answer in ${best.hours}h</p>`
+    <p class="tiny muted" style="margin-top:7px">${S.halal?pct(best.rate*100)+' fixed profit margin · non-interest bank':pct(best.rate*100)+' p.a. · best of '+LENDERS.length+' banks today'} · answer in ${best.hours}h</p>`
     : `
     <div style="font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em">${NGN(v.price)}</div>
     <p class="tiny muted" style="margin-top:6px">Showroom price. Same for everybody.</p>`}
     <hr class="sep">
-    <label class="tiny" style="font-weight:550">Down payment · <b class="mono">${NGN(v.price*eq)}</b> (${pct(eq*100,0)})</label>
+    <label class="tiny" style="font-weight:550">Equity contribution (down payment) · <b class="mono">${NGN(v.price*eq)}</b> (${pct(eq*100,0)})</label>
     <input type="range" class="rng" min="20" max="70" step="1" value="${eq*100}" oninput="S.equityPct=this.value/100;save();renderDeal()">
-    <label class="tiny" style="font-weight:550;display:block;margin-top:12px">Paying it back over · <b class="mono">${ten} months</b></label>
+    <label class="tiny" style="font-weight:550;display:block;margin-top:12px">Tenor · <b class="mono">${ten} months</b></label>
     <input type="range" class="rng" min="12" max="60" step="6" value="${ten}" oninput="S.tenor=+this.value;save();renderDeal()">
     <label style="display:flex;gap:8px;align-items:center;margin-top:12px;cursor:pointer;font-size:13px">
       <input type="checkbox" ${S.halal?'checked':''} onchange="S.halal=this.checked;save();renderDeal()">
       <span>&#9770; Non-interest (halal) offers only · <a href="#/halal" style="color:var(--accent)" onclick="event.stopPropagation()">how it works</a></span></label>
     <hr class="sep">
-    <div class="kv"><span class="k">Car price</span><span class="v">${NGN(v.price)}</span></div>
-    <div class="kv"><span class="k">Your down payment</span><span class="v">${NGN(v.price*eq)}</span></div>
-    <div class="kv"><span class="k">The loan</span><span class="v">${NGN(loan)}</span></div>
-    <div class="kv"><span class="k">Works on take-home pay of</span><span class="v">~${NGNs(Math.ceil(earn/50000)*50000)}/mo</span></div>
+    <div class="kv"><span class="k">Showroom price</span><span class="v">${NGN(v.price)}</span></div>
+    <div class="kv"><span class="k">Equity contribution (${pct(eq*100,0)})</span><span class="v">${NGN(v.price*eq)}</span></div>
+    <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(loan)}</span></div>
+    ${best ? `
+    <div class="kv"><span class="k">Interest rate</span><span class="v">${pct(best.rate*100)} p.a.</span></div>
+    <div class="kv"><span class="k">Monthly repayment × ${ten}</span><span class="v">${NGN(best.monthly)}</span></div>
+    <div class="kv"><span class="k">Management fee &amp; tracker</span><span class="v">${NGN(best.fees)}</span></div>
+    <div class="kv"><span class="k">Comprehensive insurance (${ten} mo)</span><span class="v">${NGN(best.insurance)}</span></div>
+    <div class="kv"><span class="k"><b>Total repayment, all-in</b></span><span class="v">${NGN(best.allIn)}</span></div>` : ''}
+    <div class="kv"><span class="k">Needs net monthly income of</span><span class="v">~${NGNs(Math.ceil(earn/50000)*50000)}/mo</span></div>
     ${best ? `
     <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="location.hash='#/apply'">Apply now →</button>
     <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
@@ -1593,6 +1691,139 @@ function fixStructure(){
     }
   }
   if(S.halal){ S.halal=false; save(); renderDeal(); }
+}
+</script>
+<script>
+/* ===================== ACCOUNT ===================== */
+/* Where the pilot API lives. Same origin when the Node server serves this page;
+   the dev Cloud Run service from midascfo.com; localhost when opened off disk. */
+const MIDAS_API = window.MIDAS_API_BASE || (location.hostname.endsWith('midascfo.com') ? 'https://midas-auto-dev-t3nqqmcsxq-ew.a.run.app' : (location.protocol==='file:' ? 'http://localhost:8080' : location.origin));
+const AUTH_KEY='midas-auth-customer';
+let AUTH=loadAuth();
+function loadAuth(){ try{ const a=JSON.parse(localStorage.getItem(AUTH_KEY)); if(a&&a.user&&(a.token||a.offline)) return a; }catch(e){} return null; }
+function setAuth(a){ AUTH=a; try{ if(a) localStorage.setItem(AUTH_KEY,JSON.stringify(a)); else localStorage.removeItem(AUTH_KEY); }catch(e){} paintAuth(); }
+function paintAuth(){ const n=document.getElementById('navAuth'); if(!n) return;
+  if(AUTH){ n.textContent=(AUTH.user.name||'My account').split(' ')[0]; n.href='#/account'; n.title='My account'; }
+  else { n.textContent='Log in'; n.href='#/login'; n.title=''; } }
+/* Every call to the pilot API. A 401 means the session lapsed — drop it quietly. */
+async function api(path, opts){ opts=opts||{};
+  const h={'content-type':'application/json'}; if(AUTH&&AUTH.token) h.authorization='Bearer '+AUTH.token;
+  const r=await fetch(MIDAS_API+path, Object.assign({}, opts, {headers:Object.assign(h, opts.headers||{}), body: opts.body!==undefined && typeof opts.body!=='string' ? JSON.stringify(opts.body) : opts.body}));
+  let j=null; try{ j=await r.json(); }catch(e){}
+  if(r.status===401 && AUTH && AUTH.token){ setAuth(null); }
+  if(!r.ok){ const e=new Error((j&&j.error)||('Request failed ('+r.status+')')); e.status=r.status; throw e; }
+  return j; }
+const docUrl=(id,file)=>MIDAS_API+'/api/applications/'+id+'/docs/'+file+'?token='+encodeURIComponent((AUTH&&AUTH.token)||'');
+const DOC_KINDS={id:'Government ID',income:'Proof of income',work:'Work ID / employment letter',statement:'Bank statement (6 months)',payslip:'Payslip',utility:'Proof of address',pfi:'Proforma invoice',invoice:'Vehicle invoice',inspection:'Inspection report',insurance:'Insurance quote',valuation:'Valuation report','offer-letter':'Offer letter',other:'Other document'};
+const docLabel=k=>DOC_KINDS[k]||k;
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function statusTone(s){ s=String(s||''); if(/Declined|Cancelled|Expired/.test(s)) return 'b'; if(/Accepted|Disbursed|Completed|Approved|Offer Issued/.test(s)) return 'ok'; if(/Requested|Conditional/.test(s)) return 'w'; return ''; }
+
+/* The account form. `next` is where to go afterwards: 'apply' continues the application, anything else opens the account page. */
+function accountForm(mode, next){
+  const u=(S.applicant||{});
+  const signup = mode==='signup';
+  return `
+    <div class="seg" style="margin-bottom:18px">
+      <button type="button" class="${signup?'':'on'}" onclick="renderAuthForm('login','${next}')">Log in</button>
+      <button type="button" class="${signup?'on':''}" onclick="renderAuthForm('signup','${next}')">Create account</button>
+    </div>
+    <form onsubmit="return submitAuth(event,'${mode}','${next}')" autocomplete="on">
+    ${signup?`
+      <div class="f2">
+        <div class="field"><label>Your name</label><input class="inp" name="name" value="${esc(u.name||'')}" placeholder="Adeola Bakare" required autocomplete="name"></div>
+        <div class="field"><label>Phone</label><input class="inp" name="phone" type="tel" value="${esc(u.phone||'')}" placeholder="0803 555 0100" required autocomplete="tel"></div>
+      </div>
+      <div class="f2">
+        <div class="field"><label>WhatsApp (if different)</label><input class="inp" name="whatsapp" type="tel" value="${esc(u.whatsapp||'')}" placeholder="same as phone if empty"></div>
+        <div class="field"><label>Email (optional)</label><input class="inp" name="email" type="email" value="${esc(u.email||'')}" placeholder="you@company.com" autocomplete="email"><div class="hint">Your offer letters are copied here.</div></div>
+      </div>
+      <div class="field"><label>Choose a password</label><input class="inp" name="password" type="password" minlength="8" required autocomplete="new-password" placeholder="at least 8 characters"></div>`
+    :`
+      <div class="field"><label>Phone or email</label><input class="inp" name="login" value="${esc(u.phone||u.email||'')}" placeholder="0803 555 0100" required autocomplete="username"></div>
+      <div class="field"><label>Password</label><input class="inp" name="password" type="password" required autocomplete="current-password"></div>`}
+    <div id="authMsg" class="tiny" style="min-height:18px;margin:-6px 0 12px;color:var(--bad)"></div>
+    <button class="btn btn-p" type="submit" id="authBtn" style="width:100%">${signup?'Create my account →':'Log in →'}</button>
+    <p class="tiny faint" style="margin-top:12px">${signup?'By creating an account you agree to the <a href="#/terms" style="color:var(--accent)">terms</a> and the <a href="#/privacy" style="color:var(--accent)">privacy notice</a> (Nigeria Data Protection Act, 2023).':'Forgotten your password? Message Amit on <a href="https://wa.me/2348058963692" style="color:var(--accent)" target="_blank" rel="noopener">WhatsApp</a> and we will reset it.'}</p>
+    </form>`;
+}
+function renderAuthForm(mode,next){
+  const host=document.getElementById(next==='apply'?'applyCard':'loginCard'); if(!host) return;
+  if(next==='apply'){
+    host.innerHTML=`<h3>${mode==='signup'?'Create your account':'Welcome back'}</h3>
+      <p class="muted tiny" style="margin:6px 0 18px">${mode==='signup'?'So your offers and documents have a home, and you can pick up where you left off.':'Log in to continue your application.'}</p>${accountForm(mode,'apply')}
+      <div class="row" style="gap:10px;margin-top:14px"><button class="btn btn-g btn-sm" onclick="S.step=1;save();renderApply()">← Back</button></div>`;
+  } else {
+    document.getElementById('loginHead').textContent= mode==='signup'?'Create your account':'Log in';
+    document.getElementById('loginSub').textContent= mode==='signup'?'Five minutes to apply. Your offers, documents and status stay here.':'Your application, your offers and your documents — in one place.';
+    host.innerHTML=accountForm(mode,next);
+  }
+}
+async function submitAuth(ev,mode,next){
+  ev.preventDefault();
+  const f=ev.target, msg=document.getElementById('authMsg'), btn=document.getElementById('authBtn');
+  const body={}; new FormData(f).forEach((v,k)=>body[k]=String(v).trim());
+  btn.disabled=true; msg.textContent='';
+  try{
+    const j=await api(mode==='signup'?'/api/auth/signup':'/api/auth/login',{method:'POST',body});
+    setAuth({token:j.token,user:j.user}); track(mode==='signup'?'account_created':'logged_in');
+    /* carry the account details into the application */
+    S.applicant=Object.assign({employment:'Salaried',yearsEmployed:3,income:850000,obligations:120000,salaryDomiciled:false},S.applicant||{},{name:j.user.name,phone:j.user.phone||'',whatsapp:j.user.whatsapp||j.user.phone||'',email:j.user.email||''});
+    save(); afterAuth(next, mode);
+  }catch(e){
+    btn.disabled=false;
+    if(e.status){ msg.textContent=e.message; return false; }
+    /* No API — the storefront still runs off a laptop. Carry on locally, honestly labelled. */
+    msg.innerHTML='The application service is not reachable right now. <button type="button" class="btn btn-g btn-sm" style="margin-top:6px" onclick="offlineAuth(\''+next+'\')">Continue without an account (offline demo)</button>';
+  }
+  return false;
+}
+function offlineAuth(next){
+  const f=document.querySelector('#'+(next==='apply'?'applyCard':'loginCard')+' form'); const body={}; if(f) new FormData(f).forEach((v,k)=>body[k]=String(v).trim());
+  const u={name:body.name||(S.applicant&&S.applicant.name)||'Guest',phone:body.phone||body.login||'',email:body.email||'',whatsapp:body.whatsapp||''};
+  setAuth({offline:true,token:null,user:u});
+  S.applicant=Object.assign({employment:'Salaried',yearsEmployed:3,income:850000,obligations:120000,salaryDomiciled:false},S.applicant||{},u); save(); afterAuth(next,'signup');
+}
+function afterAuth(next, mode){
+  if(next==='apply'){ S.step=Math.max(S.step||1,2); save(); if(location.hash==='#/apply') renderApply(); else location.hash='#/apply'; return; }
+  if(mode==='signup'){ location.hash = S.vehicleId ? '#/car' : '#/market'; return; }
+  location.hash='#/account';
+}
+function logout(){ setAuth(null); track('logged_out'); location.hash='#/market'; }
+function renderLogin(){ if(AUTH){ location.hash='#/account'; return; } renderAuthForm(location.hash==='#/signup'?'signup':'login','account'); }
+
+async function renderAccount(){
+  const b=document.getElementById('acctBody');
+  if(!AUTH){ location.hash='#/login'; return; }
+  const u=AUTH.user;
+  document.getElementById('acctHead').textContent='Hello, '+(u.name||'').split(' ')[0]+'.';
+  b.innerHTML=`<div class="grid" style="grid-template-columns:1fr 320px;align-items:start">
+    <div id="acctApps"><div class="card pad muted">Loading your applications…</div></div>
+    <div class="card pad">
+      <div class="eyebrow">Your details</div>
+      <div class="kv" style="margin-top:8px"><span class="k">Name</span><span class="v" style="font-family:var(--body)">${esc(u.name)}</span></div>
+      <div class="kv"><span class="k">Phone</span><span class="v">${esc(u.phone||'—')}</span></div>
+      <div class="kv"><span class="k">WhatsApp</span><span class="v">${esc(u.whatsapp||u.phone||'—')}</span></div>
+      <div class="kv"><span class="k">Email</span><span class="v" style="font-family:var(--body)">${esc(u.email||'—')}</span></div>
+      ${AUTH.offline?'<div class="warnbox" style="margin-top:12px">Offline demo account — nothing is saved to Midas.</div>':''}
+      <button class="btn btn-g btn-sm" style="width:100%;margin-top:16px" onclick="logout()">Sign out</button>
+    </div></div>`;
+  let apps=[];
+  if(AUTH.token){ try{ apps=await api('/api/applications'); }catch(e){ apps=null; } }
+  const host=document.getElementById('acctApps'); if(!host) return;
+  if(apps===null){ host.innerHTML='<div class="card pad"><div class="warnbox">Could not reach the application service. Your saved application is still on this phone.</div></div>'; return; }
+  if(!apps.length){
+    host.innerHTML=`<div class="card pad"><h3>No application yet.</h3><p class="muted" style="margin:8px 0 16px">Pick a car, see the monthly repayment, and apply. Seven banks price one file.</p>
+      <div class="row" style="gap:10px;flex-wrap:wrap"><a class="btn btn-a" href="#/market">Choose a car →</a>${S.vehicleId?'<a class="btn btn-g" href="#/apply" onclick="startApply();return false;">Continue my application</a>':''}</div></div>`;
+    return;
+  }
+  host.innerHTML=`<div class="card pad"><div class="between" style="margin-bottom:10px"><h3>Your applications</h3><a class="btn btn-g btn-sm" href="#/market">New application</a></div>
+    ${apps.map(a=>`<a class="acct-row" href="#/status" onclick="S.serverRef='${esc(a.id)}';save()">
+      <div class="row" style="gap:14px;min-width:0">${a.image?`<img src="${esc(a.image)}" alt="" style="width:96px;aspect-ratio:16/10;object-fit:cover;border-radius:9px">`:''}
+        <div><b style="font-size:15px">${esc(a.vehicle||'Vehicle')}</b><div class="tiny muted" style="margin-top:2px">${esc(a.id)} · ${a.price?NGN(a.price):''} · ${Math.round((a.equityPct||0)*100)}% equity · ${a.tenor||'—'} months</div>
+        <div style="margin-top:6px"><span class="tag ${statusTone(a.status)}">${esc(a.status)}</span>${a.offers?` <span class="tag ok">${a.offers} offer${a.offers>1?'s':''} waiting</span>`:''}</div></div></div>
+      <span class="acct-go">${a.offers?'See the offer':'View'} &rarr;</span>
+    </a>`).join('')}</div>`;
 }
 </script>
 <script>
@@ -1624,19 +1855,21 @@ function renderApply(){
           <div class="tiny muted">${NGN(v.price)} · Brand new · 5-yr warranty</div></div>
       </div>
       <div class="f2" style="margin-top:20px">
-        <div class="field"><label>Down payment — ${pct(S.equityPct*100,0)}</label>
+        <div class="field"><label>Equity contribution (down payment) — ${pct(S.equityPct*100,0)}</label>
           <input type="range" class="rng" min="20" max="70" value="${S.equityPct*100}" oninput="S.equityPct=this.value/100;save();renderApply()">
-          <div class="hint">${NGN(v.price*S.equityPct)} down · ${NGN(loan)} financed</div></div>
+          <div class="hint">${NGN(v.price*S.equityPct)} equity · ${NGN(loan)} facility from the bank</div></div>
         <div class="field"><label>Tenor — ${S.tenor} months</label>
           <input type="range" class="rng" min="12" max="60" step="6" value="${S.tenor}" oninput="S.tenor=+this.value;save();renderApply()">
-          <div class="hint">Longer tenor lowers the monthly and raises the total cost.</div></div>
+          <div class="hint">A longer tenor lowers the monthly repayment and raises the total cost.</div></div>
       </div>
       <div class="field" style="margin-top:6px"><label>Have a car to trade in? (optional)</label>
         <input class="inp" id="fTradeIn" value="${S.tradeIn||''}" placeholder="e.g. 2018 Toyota Camry, 90K km" onchange="S.tradeIn=this.value;save()">
-        <div class="hint">We'll value it at the showroom and it can count toward your down payment.</div></div>
+        <div class="hint">We'll value it at the showroom and it can count toward your equity contribution.</div></div>
       <button class="btn btn-p" onclick="S.step=2;save();renderApply()">Continue →</button>`;
   }
   else if (S.step === 2){
+    /* The account is created here, inside the flow — nobody signs up before seeing a price. */
+    if(!AUTH){ renderAuthForm('signup','apply'); return; }
     c.innerHTML = `
       <h3>About you</h3>
       <p class="muted tiny" style="margin:6px 0 18px">So the bank knows who you are.</p>
@@ -1665,9 +1898,9 @@ function renderApply(){
       <p class="muted tiny" style="margin:6px 0 18px">So banks only offer what you can pay.</p>
       ${pq>0?`<div class="note" style="margin-bottom:16px"><b>Banks could lend you up to ~${NGN(pq)}.</b> <span class="tiny">Firm figures come with the offers.</span></div>`:''}
       <div class="f2">
-        <div class="field"><label>What you take home monthly (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}" oninput="S.applicant.income=+this.value||0;save()" onchange="renderApply()">
-          <div class="hint">After tax.</div></div>
-        <div class="field"><label>Loans you already pay monthly (₦)</label><input class="inp" id="fOb" type="number" step="10000" value="${a.obligations}" oninput="S.applicant.obligations=+this.value||0;save()" onchange="renderApply()">
+        <div class="field"><label>Net monthly income (₦)</label><input class="inp" id="fInc" type="number" step="10000" value="${a.income}" oninput="S.applicant.income=+this.value||0;save()" onchange="renderApply()">
+          <div class="hint">What lands in your account after tax and pension.</div></div>
+        <div class="field"><label>Existing monthly loan repayments (₦)</label><input class="inp" id="fOb" type="number" step="10000" value="${a.obligations}" oninput="S.applicant.obligations=+this.value||0;save()" onchange="renderApply()">
           <div class="hint">Put 0 if none.</div></div>
       </div>
       <div class="f2">
@@ -1773,18 +2006,19 @@ function pfiNumber(){
   const seq=1000+Math.abs((S.vehicleId+''+(S.submittedAt||0)).split('').reduce((a,c)=>a*31+c.charCodeAt(0)|0,7))%9000;
   return 'MD-PFI-'+d.getFullYear()+'-'+seq;
 }
-const MIDAS_API = window.MIDAS_API_BASE || (location.hostname.endsWith('midascfo.com') ? 'https://midas-auto-dev-t3nqqmcsxq-ew.a.run.app' : location.origin);
-function submitApp(){ if(!(S.consentPrivacy&&S.consentBureau)) return; S.consentAt=Date.now(); S.submittedAt=Date.now(); S.accepted=null; save(); track('application_submitted');
+/* The file goes to Midas under the customer's account (api() carries the session), so the
+   banks can open it and the customer can follow it on #/status. Off-line, the flow still runs. */
+function submitApp(){ if(!(S.consentPrivacy&&S.consentBureau)) return; S.consentAt=Date.now(); S.submittedAt=Date.now(); S.accepted=null; S.serverRef=null; save(); track('application_submitted');
   try{
     const v=vehicle();
-    fetch(MIDAS_API+'/api/applications',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
+    api('/api/applications',{method:'POST',body:{
       pfi:S.pfi||undefined, applicant:S.applicant, vehicleId:v&&v.id, vehicle:v?`${v.year} ${v.make} ${v.model}`:'',
       price:v&&v.price, image:v&&v.img, equityPct:S.equityPct, tenor:S.tenor, halal:!!S.halal,
       estMonthly:(()=>{try{let o=runPanel(v,S.equityPct,S.tenor,S.applicant).filter(x=>x.approved);if(S.halal)o=o.filter(x=>isHalalLender(x.lender));return o.length?sortOffers(o,'cost')[0].monthly:null;}catch(e){return null;}})(),
       estRate:(()=>{try{let o=runPanel(v,S.equityPct,S.tenor,S.applicant).filter(x=>x.approved);if(S.halal)o=o.filter(x=>isHalalLender(x.lender));return o.length?sortOffers(o,'cost')[0].rate:null;}catch(e){return null;}})(),
-      consentAt:new Date(S.consentAt).toISOString(), source:'storefront',
+      consentAt:new Date(S.consentAt).toISOString(), source:'storefront', ref:S.ref||undefined, showroom:S.ref||undefined,
       docs:Object.entries(S.docs||{}).map(([kind,d])=>({kind,name:d.name,data:d.data}))
-    })}).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.id){ S.serverRef=j.id; save(); const el=document.getElementById('svrRef'); if(el){ el.textContent='File received by Midas — ref '+j.id; el.hidden=false; } } }).catch(()=>{});
+    }}).then(j=>{ if(j&&j.id){ S.serverRef=j.id; save(); const el=document.getElementById('svrRef'); if(el){ el.textContent='File received by Midas — ref '+j.id; el.hidden=false; } } }).catch(()=>{});
   }catch(e){}
   location.hash='#/offers'; }
 </script>
@@ -1855,7 +2089,7 @@ function renderOffers(){
       row.classList.add(o.approved?'yes':'no');
       row.querySelector('.bk-res').innerHTML = o.approved
         ? `<div class="bk-mo">${NGN(o.monthly)}<span> /month</span></div>
-           <div class="bk-yes">Yes \u00b7 answer in ${o.hours} hours</div>
+           <div class="bk-yes">Yes \u00b7 ${pct(o.rate*100)} p.a. \u00b7 answer in ${o.hours} hours</div>
            <button class="btn btn-a btn-sm" style="margin-top:8px" onclick="accept('${o.lender.id}')">Choose this bank</button>`
         : `<div class="bk-no">Not this time</div>
            <div class="tiny muted" style="max-width:34ch">${plainReason((o.declines&&o.declines[0])||'')}</div>`;
@@ -1876,7 +2110,7 @@ function finishOffers(v,app,ok,best,dearest){
       <div class="w-sub">${bankName(best.lender)} \u00b7 ${S.tenor} months \u00b7 answer in ${best.hours} hours</div>
       ${save>0?`<div class="w-save">You save ${NGN(save)} against the most expensive bank</div>`:''}
       <div style="margin-top:18px"><button class="btn btn-a btn-lg" onclick="accept('${best.lender.id}')">Take this offer &rarr;</button></div>
-      <p class="tiny" style="color:#9fb5cd;margin:12px 0 0">Nothing is signed yet. The bank sends you a written offer letter to sign.</p>
+      <p class="tiny" style="color:#9fb5cd;margin:12px 0 0">Indicative \u2014 priced from each bank\u2019s published policy. Nothing is signed: the bank\u2019s own offer letter lands on <a href="#/status" style="color:#f0c060">your application page</a>.</p>
     </div>`;
     $('#offHead').textContent=ok.length===1?'One bank said yes.':ok.length+' banks said yes.';
   } else {
@@ -1902,15 +2136,143 @@ function applyFix(kind,val){
   else if(kind==='car') S.vehicleId=val;
   save(); renderOffers();
 }
+/* The customer's pick from the indicative round. Recorded on the file so the credit
+   officer sees which price the customer expects; the bank's own offer letter is the real one. */
 function accept(id){
   track('offer_accepted',{lender:id});
   S.accepted=id; S.acceptedAt=Date.now(); save();
+  if(AUTH&&AUTH.token&&S.serverRef){
+    try{ const v=vehicle(); const o=v?runPanel(v,S.equityPct,S.tenor,S.applicant).find(x=>x.lender.id===id):null;
+      api('/api/applications/'+S.serverRef+'/events',{method:'POST',body:{action:'Indicative offer preferred',detail:bankName(o?o.lender:{id})+(o?' · '+NGN(o.monthly)+'/month · '+pct(o.rate*100)+' p.a. · '+o.tenor+' months':'')}}).catch(()=>{}); }catch(e){}
+  }
   if(location.hash==='#/status') route(); else location.hash='#/status';
 }
 
 /* ===================== STATUS ===================== */
-function renderStatus(){
+/* Logged in: the file as Midas holds it — real bank decisions, real offers, documents,
+   and the accept button. Otherwise the local walk-through the demo has always shown. */
+async function renderStatus(){
   const v=vehicle();
+  if(AUTH&&AUTH.token){
+    $('#stHead').textContent='Your application';
+    $('#stBody').innerHTML='<div class="card pad muted">Fetching your file from Midas…</div>';
+    let apps=null; try{ apps=await api('/api/applications'); }catch(e){ apps=null; }
+    if(apps&&apps.length){
+      const pick=apps.find(a=>a.id===S.serverRef)||apps[0];
+      let rec=null; try{ rec=await api('/api/applications/'+pick.id); }catch(e){}
+      if(rec){ renderLiveStatus(rec, apps); return; }
+    }
+    if(apps&&!apps.length&&!S.accepted){
+      $('#stHead').textContent='No application yet';
+      $('#stBody').innerHTML='<div class="card pad"><p class="muted" style="margin:0 0 14px">Nothing on file yet. It takes 5 minutes on your phone.</p><button class="btn btn-a" onclick="startApply()">Apply now &rarr;</button> <a class="btn btn-g" href="#/market">See the cars</a></div>'; return;
+    }
+  }
+  renderLocalStatus(v);
+}
+function fmtWhen(iso, dateOnly){ if(!iso) return ''; const d=new Date(iso); if(isNaN(d)) return ''; const s=d.toLocaleDateString('en-NG',{day:'numeric',month:'short'}); return dateOnly?s:s+', '+d.toLocaleTimeString('en-NG',{hour:'2-digit',minute:'2-digit'}); }
+function uploadControl(id, kind, sfx){
+  const opts=Object.keys(DOC_KINDS).filter(k=>!['pfi','invoice','inspection','valuation','offer-letter'].includes(k));
+  return `<div class="row" style="gap:8px;flex-wrap:wrap"><select class="inp" id="upKind-${sfx}" style="width:auto;padding:9px 12px;font-size:14px">${opts.map(k=>`<option value="${k}" ${k===kind?'selected':''}>${esc(DOC_KINDS[k])}</option>`).join('')}</select>
+    <label class="btn btn-p btn-sm" style="cursor:pointer">Attach a photo or PDF<input type="file" accept="image/*,.pdf" hidden onchange="uploadLiveDoc('${esc(id)}','${sfx}',this)"></label><span class="tiny muted" id="upMsg-${sfx}"></span></div>`;
+}
+async function uploadLiveDoc(id,sfx,input){
+  const f=input.files&&input.files[0]; if(!f) return;
+  const kind=(document.getElementById('upKind-'+sfx)||{}).value||'other'; const msg=document.getElementById('upMsg-'+sfx);
+  if(f.size>3*1024*1024){ if(msg) msg.textContent='Under 3 MB please — a phone photo is fine.'; input.value=''; return; }
+  const rd=new FileReader();
+  rd.onload=async()=>{ try{ if(msg) msg.textContent='Uploading…'; await api('/api/applications/'+id+'/docs',{method:'POST',body:{kind,name:f.name,data:rd.result}}); track('doc_uploaded_live',{kind}); renderStatus(); }catch(e){ if(msg) msg.textContent=e.message; } };
+  rd.readAsDataURL(f);
+}
+async function acceptLive(id,org){
+  if(!confirm('Accept this offer? The bank will prepare your offer letter for signature. Nothing is paid until you sign it.')) return;
+  try{ await api('/api/applications/'+id+'/accept',{method:'POST',body:{org}}); track('offer_accepted_live',{org}); renderStatus(); }catch(e){ alert(e.message); }
+}
+function renderLiveStatus(r, apps){
+  const now=Date.now(); const st=r.status||'Submitted to Lenders';
+  const latest={}; (r.decisions||[]).forEach(d=>latest[d.org]=d); const banks=Object.values(latest);
+  const live=banks.filter(d=>d.action==='Offer issued'&&d.offer&&Date.parse(d.offer.validUntil)>now);
+  const acc=r.accepted; const accOffer=acc?(r.decisions||[]).filter(d=>d.org===acc.org&&d.action==='Offer issued').pop():null;
+  const decided=banks.length>0; const docs=r.docs||[];
+  const heads={'Submitted to Lenders':'The banks are looking at your file.','Under Lender Review':'The banks are looking at your file.','Additional Information Requested':'One more document, please.','Approved':'Approved — your offer letter is on its way.','Conditional Approval':'Approved, with conditions.','Offer Issued':'You have an offer.','Offer Accepted':'Offer accepted — pay your equity to the bank.','Disbursed':'Funds released — collect your keys.','Completed':'Keys in hand. Enjoy the drive.','Declined':'No offer this time.','Expired':'The offer lapsed.','Cancelled':'Application withdrawn.'};
+  $('#stHead').textContent=heads[st]||st;
+  const steps=[
+    ['1 · Car selected', esc(r.vehicle||'')+(r.price?' · '+NGN(r.price)+' showroom price':''), 'done'],
+    ['2 · Application submitted', 'Ref '+esc(r.id)+' · '+fmtWhen(r.receivedAt)+' · '+docs.length+' document'+(docs.length===1?'':'s')+' on file', 'done'],
+    ['3 · Banks assess your file — in their own environment', st==='Additional Information Requested'?'A bank has asked for one more document — see below.':decided?'Decisions are coming back.':'Your file is with the panel. Target: 48 hours.', decided?'done':'now'],
+    ['4 · Offer letter', acc?'Accepted — '+esc(acc.orgName):live.length?live.length+' offer'+(live.length>1?'s':'')+' waiting for you below':(st==='Approved'||st==='Conditional Approval')?'Approved in principle — the formal offer follows':'Arrives here and on WhatsApp', (live.length||acc)?'done':(decided&&!/Declined|Cancelled/.test(st)?'now':'')],
+    ['5 · Equity contribution — paid to the bank', accOffer?'Pay '+NGN(accOffer.offer.equity)+' into the account on the offer letter'+(accOffer.offer.payTo?' — '+esc(accOffer.offer.payTo):'')+'. Never to the dealer, never to Midas.':'Only after you accept an offer. Never to the dealer, never to Midas.', r.disbursedAt?'done':(acc?'now':'')],
+    ['6 · Disbursement & pickup', r.deliveredAt?'Delivered '+fmtWhen(r.deliveredAt):r.disbursedAt?'The bank has paid the showroom. Keys within 24 hours.':'The bank pays the showroom; you collect the keys.', r.deliveredAt?'done':(r.disbursedAt?'now':'')],
+  ];
+  const bankCard=d=>{
+    const o=d.offer;
+    if(d.action==='Offer issued'&&o){
+      const isLive=Date.parse(o.validUntil)>now, mine=acc&&acc.org===d.org;
+      return `<div class="winner" style="margin-bottom:14px">
+        <div class="w-k">${mine?'Accepted offer':'Offer letter'} · ${esc(d.orgName)}</div>
+        <div class="w-mo">${NGN(o.monthly)}<span> /month</span></div>
+        <div class="w-sub">${pct(o.rate*100)} p.a. · ${o.tenor} months · facility ${NGN(o.loan)} · equity contribution ${NGN(o.equity)}</div>
+        <div class="w-sub" style="margin-top:6px">Management fee ${NGN(o.mgmtFee)} · total repayment ${NGN(o.totalRepay)} · valid until ${fmtWhen(o.validUntil,true)}</div>
+        ${(d.conditions||[]).length?`<div class="w-sub" style="margin-top:6px">Conditions: ${esc(d.conditions.join(' · '))}</div>`:''}
+        ${d.note?`<div class="w-sub" style="margin-top:8px;font-style:italic">“${esc(d.note)}”</div>`:''}
+        ${mine?`<div class="w-save">✓ Accepted ${fmtWhen(acc.at)}</div>`:acc?`<div class="w-sub" style="margin-top:10px">You accepted another bank.</div>`:isLive?`<div style="margin-top:16px"><button class="btn btn-a btn-lg" onclick="acceptLive('${esc(r.id)}','${esc(d.org)}')">Accept this offer &rarr;</button></div><p class="tiny" style="color:#9fb5cd;margin:10px 0 0">Accepting asks the bank to prepare the offer letter for signature. Your equity is paid only to the bank.</p>`:`<div class="w-sub" style="margin-top:10px">This offer has lapsed. Ask the bank to reissue it.</div>`}
+      </div>`;
+    }
+    const tone={'Approved':'ok','Conditionally approved':'ok','Information requested':'w','Declined':'b','Disbursed':'ok'}[d.action]||'';
+    const text={
+      'Approved':'Approved in principle. The formal offer letter with your monthly repayment follows.',
+      'Conditionally approved':'Can finance this car subject to: '+esc((d.conditions||[]).join(', ')||'conditions on the offer letter')+'.',
+      'Information requested':'Needs <b>'+esc(docLabel(d.document))+'</b> before deciding.'+(d.note?' “'+esc(d.note)+'”':''),
+      'Declined':'Could not make an offer this time.'+(d.note?' “'+esc(d.note)+'”':'')+' A larger equity contribution, a longer tenor or a different car often changes the answer.',
+      'Disbursed':'Has paid the showroom. Your keys are ready.',
+    }[d.action]||esc(d.action);
+    return `<div class="card pad" style="margin-bottom:12px"><div class="between" style="align-items:flex-start;gap:12px"><div><b>${esc(d.orgName)}</b> <span class="tag ${tone}">${esc(d.action)}</span><p class="tiny muted" style="margin-top:6px">${text}</p></div><span class="tiny faint" style="white-space:nowrap">${fmtWhen(d.at)}</span></div>
+      ${d.action==='Information requested'&&!acc?`<div style="margin-top:12px">${uploadControl(r.id,d.document,'ask-'+esc(d.org))}</div>`:''}</div>`;
+  };
+  const indicative=(!banks.length&&S.accepted&&S.vehicleId===r.vehicleId)?(()=>{ const v=vehicle(); const o=v?runPanel(v,S.equityPct,S.tenor,S.applicant).find(x=>x.lender.id===S.accepted&&x.approved):null; return o?`<div class="note" style="margin-bottom:12px"><b>Your indicative pick: ${bankName(o.lender)} at ${NGN(o.monthly)}/month.</b> <span class="tiny">The bank’s formal offer letter replaces this once it is issued.</span></div>`:''; })():'';
+  const facility=accOffer?accOffer.offer:(live[0]?live[0].offer:null);
+  $('#stBody').innerHTML=`
+    <div class="grid" style="grid-template-columns:1fr 340px;align-items:start">
+      <div>
+        <div class="card pad"><div class="timeline">${steps.map(([t,s,c])=>`<div class="tl ${c}"><div class="d">${c==='done'?'✓':''}</div><div><h4>${t}</h4><p>${s}</p></div></div>`).join('')}</div></div>
+        <div style="margin-top:18px"><h3 style="margin-bottom:10px">From the banks</h3>
+          ${indicative}${banks.length?banks.slice().sort((x,y)=>(y.action==='Offer issued')-(x.action==='Offer issued')).map(bankCard).join(''):'<div class="card pad muted tiny">No bank has answered yet. Each bank prices the file under its own policy; answers land here and on WhatsApp.</div>'}
+        </div>
+        <div class="card pad" style="margin-top:18px"><div class="between"><h3>Documents on file</h3><span class="tiny muted">${docs.length} document${docs.length===1?'':'s'}</span></div>
+          ${docs.map(d=>`<div class="doc-row"><div><b style="font-size:14px">${esc(docLabel(d.kind))}</b><div class="tiny faint">${esc(d.label||d.file)} · ${d.by&&d.by.role==='dealer'?'added by the showroom':d.by&&d.by.role==='bank'?'from '+esc(d.by.orgName||'the bank'):'added by you'} · ${fmtWhen(d.uploadedAt)}</div></div><a class="btn btn-g btn-sm" href="${docUrl(r.id,d.file)}" target="_blank" rel="noopener">View</a></div>`).join('')||'<p class="tiny muted" style="margin-top:8px">No documents yet.</p>'}
+          ${/Cancelled|Completed/.test(st)?'':`<div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line)"><div class="tiny" style="font-weight:550;margin-bottom:8px">Add a document</div>${uploadControl(r.id,'other','add')}</div>`}
+        </div>
+        <div class="card pad" style="margin-top:18px"><h3>History</h3>${(r.events||[]).slice().reverse().slice(0,12).map(e=>`<div class="between" style="padding:8px 0;border-top:1px solid var(--line);gap:12px"><div><b style="font-size:13.5px">${esc(e.action)}</b> <span class="tag">${esc(e.actor)}</span><div class="tiny faint">${esc(e.detail||'')}</div></div><span class="tiny faint" style="white-space:nowrap">${fmtWhen(e.at)}</span></div>`).join('')}</div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        ${r.image?`<img src="${esc(r.image)}" alt="" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block">`:''}
+        <div class="pad">
+        <div class="eyebrow">${facility?(accOffer?'Your facility':'Best offer on the table'):'Indicative structure'}</div>
+        ${facility?`<h3 style="margin:8px 0 14px;font-size:1.3rem">${NGN(facility.monthly)}<span style="font-size:.9rem;color:var(--ink-faint);font-weight:400">/month</span></h3>
+          <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${esc(r.vehicle)}</span></div>
+          <div class="kv"><span class="k">Showroom price</span><span class="v">${NGN(facility.price)}</span></div>
+          <div class="kv"><span class="k">Equity contribution</span><span class="v">${NGN(facility.equity)}</span></div>
+          <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(facility.loan)}</span></div>
+          <div class="kv"><span class="k">Interest rate</span><span class="v">${pct(facility.rate*100)} p.a.</span></div>
+          <div class="kv"><span class="k">Tenor</span><span class="v">${facility.tenor} months</span></div>
+          <hr class="sep">
+          <div class="kv"><span class="k">Management fee (${pct(facility.mgmtFeePct*100)})</span><span class="v">${NGN(facility.mgmtFee)}</span></div>
+          <div class="kv"><span class="k"><b>Total repayment</b></span><span class="v">${NGN(facility.totalRepay)}</span></div>`
+        :`<h3 style="margin:8px 0 14px;font-size:1.3rem">${r.estMonthly?NGN(r.estMonthly):'—'}<span style="font-size:.9rem;color:var(--ink-faint);font-weight:400">/month · indicative</span></h3>
+          <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${esc(r.vehicle)}</span></div>
+          <div class="kv"><span class="k">Showroom price</span><span class="v">${NGN(r.price||0)}</span></div>
+          <div class="kv"><span class="k">Equity contribution (${Math.round((r.equityPct||0)*100)}%)</span><span class="v">${NGN((r.price||0)*(r.equityPct||0))}</span></div>
+          <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN((r.price||0)*(1-(r.equityPct||0)))}</span></div>
+          <div class="kv"><span class="k">Tenor</span><span class="v">${r.tenor||'—'} months</span></div>
+          ${r.estRate?`<div class="kv"><span class="k">Indicative rate</span><span class="v">${pct(r.estRate*100)} p.a.</span></div>`:''}
+          <p class="tiny faint" style="margin-top:10px">Your real monthly repayment arrives on the bank’s offer letter.</p>`}
+        ${apps.length>1?`<hr class="sep"><label class="tiny muted">Another application</label><select class="inp" style="margin-top:6px;padding:9px 12px;font-size:14px" onchange="S.serverRef=this.value;save();renderStatus()">${apps.map(x=>`<option value="${esc(x.id)}" ${x.id===r.id?'selected':''}>${esc(x.vehicle)} · ${esc(x.status)}</option>`).join('')}</select>`:''}
+        <a class="btn btn-wa btn-sm" style="width:100%;margin-top:16px" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, about my application '+r.id)}" target="_blank" rel="noopener">Ask Amit on WhatsApp</a>
+        <button class="btn btn-g btn-sm" style="width:100%;margin-top:8px" onclick="reset()">Start a new application</button>
+        </div>
+      </div>
+    </div>`;
+}
+function renderLocalStatus(v){
   if(!v||!S.accepted){ $('#stBody').innerHTML='<div class="card pad"><p class="muted" style="margin:0 0 14px">No live application yet. It takes 5 minutes on your phone.</p><button class="btn btn-a" onclick="startApply()">Apply now &rarr;</button> <a class="btn btn-g" href="#/market">See the cars</a></div>'; return; }
   const panel=runPanel(v,S.equityPct,S.tenor,S.applicant);
   const o=panel.find(x=>x.lender.id===S.accepted && x.approved);
@@ -1922,10 +2284,10 @@ function renderStatus(){
     ['2 · Proforma invoice issued',pfi+' · fixes the price and structure · valid 7 days','done'],
     ['3 · Credit assessment — in the bank\u2019s own environment','One file to '+LENDERS.length+' banks over a secure API. Scoring runs on bank infrastructure, not ours.','done'],
     ['4 · Offer letter',bankName(o.lender)+' · '+pct(o.rate*100)+' p.a. · '+NGN(o.monthly)+'/month · target '+o.hours+'h','done'],
-    ['5 · Down payment — paid to the bank','Pay '+NGN(o.equity)+' directly into the bank\u2019s account. Never to the dealer, never to Midas.','now'],
+    ['5 · Equity contribution — paid to the bank','Pay '+NGN(o.equity)+' directly into the bank\u2019s account. Never to the dealer, never to Midas.','now'],
     ['6 · Disbursement & pickup','The bank pays the dealer. Keys within 24 hours of your equity landing.',''],
   ];
-  $('#stHead').textContent='Accepted — '+o.lender.id;
+  $('#stHead').textContent='Indicative offer chosen — '+bankName(o.lender);
   $('#stBody').innerHTML=`
     <div class="grid" style="grid-template-columns:1fr 340px;align-items:start">
       <div>
@@ -1942,8 +2304,8 @@ function renderStatus(){
         <hr class="sep">
         <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${v.year} ${v.make} ${v.model} · ${v.id}</span></div>
         <div class="kv"><span class="k">Certified price</span><span class="v">${NGN(v.price)}</span></div>
-        <div class="kv"><span class="k">Down payment (${pct(S.equityPct*100,0)})</span><span class="v">${NGN(o.equity)}</span></div>
-        <div class="kv"><span class="k">Balance financed</span><span class="v">${NGN(o.loan)} · ${o.tenor} months</span></div>
+        <div class="kv"><span class="k">Equity contribution (${pct(S.equityPct*100,0)})</span><span class="v">${NGN(o.equity)}</span></div>
+        <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(o.loan)} · ${o.tenor} months</span></div>
         <div class="kv"><span class="k">Financing bank</span><span class="v" style="font-family:var(--body)">${bankName(o.lender)}</span></div>
         <p class="tiny muted" style="margin-top:12px">Present this PFI number in any conversation with the bank or the showroom. Your down payment is payable only to the account named on the bank's offer letter.</p>
       </div>
@@ -1953,15 +2315,15 @@ function renderStatus(){
         <h3 style="margin:8px 0 14px;font-size:1.3rem">${NGN(o.monthly)}<span style="font-size:.9rem;color:var(--ink-faint);font-weight:400">/month</span></h3>
         <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${v.year} ${v.make}</span></div>
         <div class="kv"><span class="k">Price</span><span class="v">${NGN(v.price)}</span></div>
-        <div class="kv"><span class="k">Equity paid</span><span class="v">${NGN(o.equity)}</span></div>
-        <div class="kv"><span class="k">Financed</span><span class="v">${NGN(o.loan)}</span></div>
-        <div class="kv"><span class="k">Rate</span><span class="v">${pct(o.rate*100)} p.a.</span></div>
+        <div class="kv"><span class="k">Equity contribution</span><span class="v">${NGN(o.equity)}</span></div>
+        <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(o.loan)}</span></div>
+        <div class="kv"><span class="k">Interest rate</span><span class="v">${pct(o.rate*100)} p.a.</span></div>
         <div class="kv"><span class="k">Tenor</span><span class="v">${o.tenor} months</span></div>
         <hr class="sep">
-        <div class="kv"><span class="k">Interest</span><span class="v">${NGN(o.interest)}</span></div>
-        <div class="kv"><span class="k">Insurance (${o.tenor}mo)</span><span class="v">${NGN(o.insurance)}</span></div>
-        <div class="kv"><span class="k">Fees & tracker</span><span class="v">${NGN(o.fees)}</span></div>
-        <div class="kv"><span class="k"><b>Total all-in</b></span><span class="v">${NGN(o.allIn)}</span></div>
+        <div class="kv"><span class="k">Total interest</span><span class="v">${NGN(o.interest)}</span></div>
+        <div class="kv"><span class="k">Comprehensive insurance (${o.tenor} mo)</span><span class="v">${NGN(o.insurance)}</span></div>
+        <div class="kv"><span class="k">Management fee &amp; tracker</span><span class="v">${NGN(o.fees)}</span></div>
+        <div class="kv"><span class="k"><b>Total repayment, all-in</b></span><span class="v">${NGN(o.allIn)}</span></div>
         <button class="btn btn-g btn-sm" style="width:100%;margin-top:16px" onclick="reset()">Start a new application</button>
       </div>
     </div>`;
@@ -2231,13 +2593,125 @@ function initReveal(){
   setTimeout(revealCheck, 350);
   setTimeout(revealCheck, 1000);
 }
-const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,bank:renderBank,dealer:renderDealer,desk:renderDesk,halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+/* ===================== ASK MIDAS =====================
+   A guided conversation that ends in real cars at real monthly
+   prices. Every number comes from the same pricing engine the
+   rest of the site uses — nothing here is generated prose, so it
+   cannot quote a payment a bank would not actually make. */
+let CHAT = null;
+function startChat(){ CHAT=null; location.hash='#/chat'; }
+function chatSay(who, html){
+  const log=$('#chatLog'); if(!log) return;
+  log.appendChild(el(`<div class="cb ${who}">${html}</div>`));
+  log.lastChild.scrollIntoView({block:'nearest'});
+}
+function chatAsk(html){ const a=$('#chatAsk'); if(a) a.innerHTML=html; }
+function chatChips(opts){
+  return '<div class="cchips">'+opts.map(o=>
+    `<button class="cchip" onclick="chatAnswer('${o.v}','${o.l.replace(/'/g,"&#39;")}')">${o.l}</button>`).join('')+'</div>';
+}
+function chatNumber(ph, hint){
+  return `<div class="cinput"><input id="chatNum" inputmode="numeric" placeholder="${ph}"
+      onkeydown="if(event.key==='Enter')chatAnswer('num',this.value)">
+    <button class="btn btn-a" onclick="chatAnswer('num',document.getElementById('chatNum').value)">Send</button></div>
+    ${hint?`<p class="tiny faint" style="margin-top:7px">${hint}</p>`:''}`;
+}
+const CHAT_STEPS=[
+  { k:'use', q:'What do you need the car for?',
+    chips:[{v:'family',l:'My family'},{v:'work',l:'Work and business'},{v:'first',l:'My first car'},{v:'any',l:'Not sure yet'}] },
+  { k:'cond', q:'Brand new, or a good pre-owned one?',
+    chips:[{v:'new',l:'Brand new'},{v:'used',l:'Pre-owned, cheaper'},{v:'any',l:'Show me both'}] },
+  { k:'pay', q:'Roughly how much can you pay each month?',
+    number:'e.g. 450000', hint:'In naira. Just the number \u2014 I use it to see which cars the banks will approve for you.' },
+  { k:'halal', q:'Do you want non-interest (halal) offers only?',
+    chips:[{v:'yes',l:'Yes, halal only'},{v:'no',l:'No, any bank'}] },
+];
+function renderChat(){
+  const log=$('#chatLog'); if(!log) return;
+  if(!CHAT){ CHAT={i:0,ans:{}}; log.innerHTML=''; chatStep(); }
+}
+function chatStep(){
+  const st=CHAT_STEPS[CHAT.i];
+  if(!st) return chatResults();
+  chatSay('bot', st.q);
+  chatAsk(st.chips ? chatChips(st.chips) : chatNumber(st.number, st.hint));
+}
+function chatAnswer(v, label){
+  const st=CHAT_STEPS[CHAT.i]; if(!st) return;
+  if(v==='num'){
+    const n=parseInt(String(label).replace(/[^\d]/g,''),10);
+    if(!n || n<20000){ chatSay('bot','Give me a number in naira \u2014 for example 450000.'); return; }
+    CHAT.ans[st.k]=n; chatSay('me', NGN(n)+' a month');
+  } else {
+    CHAT.ans[st.k]=v; chatSay('me', label);
+  }
+  CHAT.i++; chatAsk('<div class="cb bot" style="max-width:120px"><span class="ctyping"><i></i><i></i><i></i></span></div>');
+  setTimeout(chatStep, 420);
+}
+function chatResults(){
+  const a=CHAT.ans;
+  const target=a.pay;
+  /* A monthly they can carry implies roughly 3x that in income at a 33% ceiling. */
+  const applicant={ name:'', phone:'', employment:'Salaried', yearsEmployed:3,
+    income: Math.round(target*3), obligations:0, salaryDomiciled:false };
+  const pool=VEHICLES.filter(v=>{
+    if(a.cond==='new') return v.origin==='Brand new';
+    if(a.cond==='used') return v.origin!=='Brand new';
+    return true;
+  }).filter(v=>{
+    if(a.use==='family') return ['suv','mpv','sedan'].includes(v.body);
+    if(a.use==='work')   return ['pickup','suv','mpv'].includes(v.body);
+    return true;
+  });
+  const hits=[];
+  for(const v of (pool.length?pool:VEHICLES)){
+    let best=null;
+    for(const eq of [.30,.35,.40,.50]) for(const ten of [60,48]){
+      let ok=runPanel(v,eq,ten,applicant).filter(o=>o.approved);
+      if(a.halal==='yes') ok=ok.filter(o=>isHalalLender(o.lender));
+      if(!ok.length) continue;
+      const o=sortOffers(ok,'mo')[0];
+      if(o.monthly<=target && (!best || o.monthly<best.o.monthly)) best={o,eq,ten};
+    }
+    if(best) hits.push({v,...best});
+  }
+  hits.sort((x,y)=>x.o.monthly-y.o.monthly);
+  if(!hits.length){
+    const cheapest=[...VEHICLES].sort((x,y)=>x.price-y.price)[0];
+    chatSay('bot', `At ${NGN(target)} a month${a.halal==='yes'?' on non-interest terms':''} no bank will price a car yet. Two things usually fix it: a bigger deposit, or telling me a slightly higher monthly.`);
+    chatAsk(`<div class="cchips">
+      <button class="cchip" onclick="startChat()">Start again</button>
+      <button class="cchip" onclick="startApply('${cheapest.id}')">Apply anyway &mdash; the bank decides</button>
+      </div><div style="margin-top:10px"><a class="btn btn-wa btn-sm" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, I can pay about '+NGN(target)+' a month. Which car can I get?')}" target="_blank" rel="noopener">Ask Amit on WhatsApp</a></div>`);
+    return;
+  }
+  chatSay('bot', `Good news \u2014 <b>${hits.length} car${hits.length>1?'s':''}</b> the banks will price at ${NGN(target)} a month or less${a.halal==='yes'?', all non-interest':''}.`);
+  chatAsk('<div class="g3" style="margin-top:6px">'+hits.slice(0,3).map(h=>`
+    <article class="veh" style="cursor:pointer" onclick="S.equityPct=${h.eq};S.tenor=${h.ten};${a.halal==='yes'?'S.halal=true;':''}save();openCar('${h.v.id}')">
+      <div class="veh-img" style="aspect-ratio:16/10">${h.v.img?`<img src="${h.v.img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:carSVG(h.v.body)}</div>
+      <div class="veh-body">
+        <div class="veh-title" style="font-size:1rem">${h.v.make} ${h.v.model} ${h.v.year}</div>
+        <div class="veh-mo-big" style="font-size:1.35rem">${NGN(h.o.monthly)}<span> /month</span></div>
+        <div class="tiny muted">${Math.round(h.eq*100)}% down &middot; ${h.ten} months &middot; ${NGNs(h.v.price)}</div>
+        <button class="btn btn-a btn-sm" style="width:100%;margin-top:9px" onclick="event.stopPropagation();S.equityPct=${h.eq};S.tenor=${h.ten};${a.halal==='yes'?'S.halal=true;':''}startApply('${h.v.id}')">Apply for this one</button>
+      </div>
+    </article>`).join('')+'</div>'+
+    `<div class="cchips" style="margin-top:14px">
+      <button class="cchip" onclick="startChat()">Start again</button>
+      <button class="cchip" onclick="gotoSeg('all')">See every car</button>
+    </div>`);
+}
+
+const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,credits:()=>{},halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+const VIEW_OF={signup:'login'};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
   const page=VIEWS[h]?h:'market';
+  document.body.dataset.page=VIEW_OF[page]||page;
+  paintAuth();
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
-  const node=$('#v-'+page); if(node) node.classList.add('on');
-  document.querySelectorAll('#tnav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===page));
+  const node=$('#v-'+(VIEW_OF[page]||page)); if(node) node.classList.add('on');
+  document.querySelectorAll('#tnav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===(VIEW_OF[page]||page)));
   try{ VIEWS[page](); }catch(e){ console.error(e); }
   initReveal();
   if(page==='market') heroTicker();
