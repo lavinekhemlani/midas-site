@@ -505,6 +505,13 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     
   </div>
 
+  <style>
+  .offrow{display:flex;align-items:center;gap:8px;border-radius:9px;padding:7px 10px;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+  .offrow .offlogo{height:15px;width:auto;max-width:76px;object-fit:contain;flex:0 0 auto}
+  .offamt{margin-left:auto;font:700 13.5px/1 Inter,system-ui,sans-serif;color:#16202b;font-variant-numeric:tabular-nums}
+  .offtag{background:#1d7a4f;color:#fff;border-radius:5px;padding:2px 6px;font:700 8.5px/1.4 Inter,system-ui,sans-serif;letter-spacing:.08em}
+  @media(max-width:560px){.offamt{font-size:12.5px}.offrow .offlogo{height:13px}}
+  </style>
   <div class="ratesboard">
     <div class="wrap rb-in">
       <span class="rb-live"><span class="auc-dot"></span>BEST RATES RIGHT NOW</span>
@@ -526,10 +533,16 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
         <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Brand-new or certified used. The price is fixed for 7 days.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/elantra.jpg" alt="Bank offers" style="width:100%;height:100%;object-fit:cover">
-          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">2</span>
-          <span class="tag ok" style="position:absolute;right:12px;bottom:12px">7 banks price it &darr;</span></div>
-        <div class="veh-body"><h4 style="margin:0">Banks fight for you</h4><p class="tiny muted" style="margin:4px 0 0">Up to 7 banks price your loan. You take the lowest.</p></div>
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative;background:#0b2a4a;display:block">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;z-index:2">2</span>
+          <div style="position:absolute;inset:0;padding:14px 12px 12px;display:flex;flex-direction:column;justify-content:center;gap:7px">
+            <div style="display:flex;align-items:center;gap:6px;padding-left:44px;color:#9fb5cd;font:600 10px/1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase"><span class="auc-dot"></span>7 banks pricing now</div>
+            <div class="offrow" style="background:#fff;border:2px solid #1d7a4f"><img src="brand/banks/access.svg" alt="Access Bank" class="offlogo"><b class="offamt" style="color:#1d7a4f">&#8358;348,007</b><span class="offtag">BEST</span></div>
+            <div class="offrow" style="background:rgba(255,255,255,.93)"><img src="brand/banks/zenith.png" alt="Zenith Bank" class="offlogo"><b class="offamt">&#8358;372,400</b></div>
+            <div class="offrow" style="background:rgba(255,255,255,.82)"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank" class="offlogo"><b class="offamt">&#8358;391,880</b></div>
+          </div>
+        </div>
+        <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">Every bank sends its price to one screen. You choose.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
         <div class="veh-img" style="aspect-ratio:16/10;position:relative"><img src="cars/hero.jpg" alt="Driving" style="width:100%;height:100%;object-fit:cover">
@@ -2600,34 +2613,58 @@ function renderFleet(){
     </div>`:`<div class="warnbox" style="margin-top:14px">No bank prices this structure yet. Raise the deposit or shorten the term.</div>`}`;
 }
 const COUNTRIES={
- GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0104,eta:'early 2027',banks:'GCB Bank, Absa Ghana, Stanbic Bank Ghana',city:'Accra'},
- BJ:{name:'Benin',flag:'\u{1F1E7}\u{1F1EF}',cur:'CFA',rate:0.39,eta:'2027',banks:'Bank of Africa, Ecobank, UBA B\u00e9nin',city:'Cotonou'}};
+ GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0076,banks:'GCB Bank, Absa Ghana, Stanbic Bank Ghana',city:'Accra',
+     towns:'Accra &middot; Tema',
+     head:'Stallion is already in Accra.',
+     sub:'We sell cars here today. Now we are putting the banks behind them \u2014 every price on this page in Ghana cedis.',
+     lang:'English &middot; Twi',
+     wa:'Hello, I want Midas in Ghana \u2014 put me on the waiting list',
+     cta:'Join the Ghana list'},
+ BJ:{name:'B\u00e9nin',flag:'\u{1F1E7}\u{1F1EF}',cur:'FCFA',rate:0.39,banks:'Bank of Africa, Ecobank B\u00e9nin, UBA B\u00e9nin',city:'Cotonou',
+     towns:'Cotonou &middot; Porto-Novo',
+     head:'D\u00e9j\u00e0 \u00e0 Cotonou.',
+     sub:'Nos voitures sont d\u00e9j\u00e0 l\u00e0. Nous ajoutons les banques \u2014 tous les prix ici en francs CFA. <span class="faint">(Our cars are already there. We are adding the banks.)</span>',
+     lang:'Fran\u00e7ais &middot; Fon',
+     wa:'Bonjour, je veux Midas au B\u00e9nin \u2014 inscrivez-moi sur la liste',
+     cta:'Rejoindre la liste'}};
 let curCountry='GH';
 function setCountry(c){
   if(c==='NG'){ location.hash='#/market'; return; }
-  curCountry=c; location.hash='#/country';
+  curCountry=c;
   const el=document.getElementById('ctrySel'); if(el) el.value=c;
+  const want='#/country/'+c;
+  if(location.hash===want){ route(); } else { location.hash=want; }
 }
 function renderCountry(){
   const w=$('#countryWrap'); if(!w) return;
-  const C=COUNTRIES[curCountry]||COUNTRIES.GH;
-  const lc=n=>C.cur+' '+Math.round(n*C.rate).toLocaleString('en-US');
+  const seg=(location.hash.split('/')[2]||'').toUpperCase();
+  if(COUNTRIES[seg]) curCountry=seg;
+  const sel=document.getElementById('ctrySel'); if(sel) sel.value=curCountry;
+  const C=COUNTRIES[curCountry];
+  const lc=n=>C.cur+'\u00a0'+Math.round(n*C.rate).toLocaleString('en-US');
+  const fr=curCountry==='BJ';
   const picks=VEHICLES.slice(0,3);
   w.innerHTML=`
     <div class="eyebrow">Midas ${C.name}</div>
-    <h2 style="margin:10px 0 10px">${C.flag} Coming to ${C.city} \u2014 ${C.eta}.</h2>
-    <p class="muted" style="max-width:54ch">Same idea: banks compete to finance your car, priced in ${C.cur}.</p>
+    <h2 style="margin:10px 0 10px">${C.flag} ${C.head}</h2>
+    <p class="muted" style="max-width:60ch">${C.sub}</p>
+    <div class="g3" style="margin:22px 0 4px">
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.towns}</div><div class="sk">${fr?'Nos concessions':'Our showrooms'}</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">3</div><div class="sk">${fr?'banques en discussion':'banks in talks'}</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.lang}</div><div class="sk">${fr?'on vous parle':'we speak your language'}</div></div>
+    </div>
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:22px 0">
-      ${picks.map(v=>`<article class="veh rev">
+      ${picks.map(v=>{const t=bestTeaser(v);return `<article class="veh rev">
         <div class="veh-img" style="aspect-ratio:16/9">${v.img?`<img src="${v.img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:carSVG(v.body)}</div>
         <div class="veh-body"><div class="veh-title" style="font-size:1rem">${v.make} ${v.model} ${v.year}</div>
-        <div class="veh-full" style="margin-top:6px">around <b style="color:var(--naira)">${lc(v.price)}</b></div></div>
-      </article>`).join('')}
+        ${t?`<div class="veh-mo" style="margin-top:6px"><b>${lc(t.o.monthly)}</b><span> ${fr?'/mois':'/month'}</span></div>`:''}
+        <div class="tiny faint" style="margin-top:4px">${fr?'prix comptant':'cash price'} ${lc(v.price)}</div></div>
+      </article>`}).join('')}
     </div>
-    <p class="tiny faint">Indicative ${C.cur} pricing at today\u2019s rates, before local duties. Lender panel forming with ${C.banks}.</p>
+    <p class="tiny faint">${fr?`Prix indicatifs en ${C.cur} au taux du jour, hors droits locaux. Panel bancaire en formation avec ${C.banks}.`:`Indicative ${C.cur} pricing at today\u2019s rates, before local duties. Lender panel forming with ${C.banks}.`}</p>
     <div class="row" style="gap:10px;margin-top:18px;flex-wrap:wrap">
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello, I want Midas in '+C.name+' \u2014 put me on the waiting list')}" target="_blank" rel="noopener">Join the ${C.name} waiting list</a>
-      <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">See the Nigeria site &rarr;</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent(C.wa)}" target="_blank" rel="noopener">${C.cta}</a>
+      <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">${fr?'Voir le site Nigeria':'See the Nigeria site'} &rarr;</a>
     </div>`;
 }
 const LEARN_POSTS=[
