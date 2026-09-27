@@ -64,6 +64,9 @@ button,input,select{font:inherit;color:inherit}
 .logo .sub{color:var(--ink-faint);font-weight:450;font-size:13px;letter-spacing:0}
 .tnav{display:flex;gap:4px;margin-left:8px}
 .tnav a{padding:7px 12px;border-radius:8px;text-decoration:none;font-size:14px;color:var(--ink-soft);font-weight:450;white-space:nowrap}
+.tnav a{position:relative}
+.tnav a::after{content:'';position:absolute;left:12px;right:calc(100% - 12px);bottom:2px;height:2px;border-radius:2px;background:var(--accent);transition:right .28s cubic-bezier(.16,1,.3,1)}
+.tnav a:hover::after,.tnav a.on::after{right:12px}
 .tnav a:hover{background:var(--surface-2);color:var(--ink)}
 .tnav a.on{background:var(--surface-2);color:var(--ink);font-weight:500}
 .tspacer{flex:1}
@@ -73,6 +76,10 @@ button,input,select{font:inherit;color:inherit}
 /* ---------- buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:10px;border:1px solid transparent;font-weight:500;font-size:14.5px;cursor:pointer;text-decoration:none;transition:.14s;white-space:nowrap}
 .btn:disabled{opacity:.45;cursor:not-allowed}
+.btn{transition:transform .16s ease,background .16s ease,box-shadow .16s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
 .btn-p{background:var(--brand);color:#fff}
 .btn-p:hover:not(:disabled){background:#08213a}
 .btn-a{background:var(--accent);color:#fff}
@@ -174,8 +181,13 @@ hr.sep{border:0;border-top:1px solid var(--line);margin:18px 0}
 .auc-top{padding:16px 20px;border-bottom:1px solid #1d2941;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .auc-top .t{font-family:var(--display);font-weight:600;font-size:15px}
 .auc-live{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:#7ee0a8;font-family:var(--mono)}
-.auc-dot{width:7px;height:7px;border-radius:50%;background:#3ddc84;animation:pulse 1.25s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.72)}}
+.auc-dot{width:7px;height:7px;border-radius:50%;background:#3ddc84;animation:pulse 2.2s ease infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(61,220,132,.45)}50%{box-shadow:0 0 0 5px rgba(61,220,132,0)}}
+/* cost bars — the cheapest bar is the shortest */
+.wf{height:6px;border-radius:6px;background:var(--surface-2);overflow:hidden;margin-top:9px}
+.wf i{display:block;height:100%;width:0;border-radius:6px;background:var(--ink-faint);transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+.wf.best i{background:linear-gradient(90deg,#c8862a,#f0c060)}
+@media (prefers-reduced-motion:reduce){.auc-dot{animation:none}.wf i{transition:none}}
 .auc-bar{height:3px;background:#1d2941;overflow:hidden}
 .auc-bar i{display:block;height:100%;background:linear-gradient(90deg,#c8862a,#f0b955);transition:width .35s}
 .auc-body{max-height:440px;overflow-y:auto}
@@ -2174,6 +2186,7 @@ function renderOffers(){
 
   const best=sortOffers(ok,'cost')[0];
   const dearest=sortOffers(ok,'cost')[ok.length-1];
+  const maxMo=ok.length?Math.max(...ok.map(x=>x.monthly)):1;
   let answered=0;
   rows.forEach((o,i)=>{
     aucTimers.push(setTimeout(()=>{
@@ -2181,10 +2194,13 @@ function renderOffers(){
       row.classList.add(o.approved?'yes':'no');
       row.querySelector('.bk-res').innerHTML = o.approved
         ? `<div class="bk-mo">${NGN(o.monthly)}<span> /month</span></div>
+           <div class="wf${best&&o.lender.id===best.lender.id?' best':''}"><i data-w="${Math.round(o.monthly/maxMo*100)}"></i></div>
            <div class="bk-yes">Yes \u00b7 ${pct(o.rate*100)} p.a. \u00b7 answer in ${o.hours} hours</div>
            <button class="btn btn-a btn-sm" style="margin-top:8px" onclick="accept('${o.lender.id}')">Choose this bank</button>`
         : `<div class="bk-no">Not this time</div>
            <div class="tiny muted" style="max-width:34ch">${plainReason((o.declines&&o.declines[0])||'')}</div>`;
+      const bar=row.querySelector('.wf i');
+      if(bar) requestAnimationFrame(()=>{bar.style.width=bar.dataset.w+'%';});
       answered++;
       $('#offCount').textContent=answered+' of '+rows.length;
       $('#aucBar').style.width=Math.round(answered/rows.length*100)+'%';
