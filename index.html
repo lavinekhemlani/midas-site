@@ -2631,25 +2631,25 @@ function renderFleet(){
 const COUNTRIES={
  GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0076,banks:'GCB Bank, Absa Ghana, Stanbic Bank Ghana',city:'Accra',
      towns:'Accra &middot; Tema', lang:'English &middot; Twi',
-     head:'Launching in Accra.',
-     sub:'The showrooms are open, the cars are on the ground and three banks are signed to the panel. Every price on this page in Ghana cedis.',
+     head:'Live in Accra.',
+     sub:'Showrooms open. Three banks on the panel. Applications open today \u2014 every price in Ghana cedis.',
      l:{show:'Our showrooms',banks:'banks signed up',lang:'we speak your language',mo:'/month',cash:'cash price',
-        join:'Join the Ghana launch list',partner:'Partner with us',nig:'See the Nigeria site',
+        join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',
         pbHead:'Banks and dealers in Ghana',
         pbBody:'We are signing the panel now. If you lend, or you sell cars in Accra or Tema, this is the moment to be on it.',
         note:n=>`Indicative ${n} pricing at today\u2019s rates, before local duties. Lender panel: `},
-     wa:'Hello, I want Midas in Ghana \u2014 put me on the launch list',
+     wa:'Hello, I want to buy a car with Midas in Ghana',
      wp:'Hello, I want to partner with Midas in Ghana \u2014 I am a bank / dealership'},
  BJ:{name:'B\u00e9nin',flag:'\u{1F1E7}\u{1F1EF}',cur:'FCFA',rate:0.39,banks:'Bank of Africa, Ecobank B\u00e9nin, UBA B\u00e9nin',city:'Cotonou',
      towns:'Cotonou &middot; Porto-Novo', lang:'Fran\u00e7ais &middot; Fon',
-     head:'Lancement \u00e0 Cotonou.',
-     sub:'Nos concessions sont ouvertes, les voitures sont l\u00e0 et trois banques ont sign\u00e9. Tous les prix ici en francs CFA. <span class="faint">(Showrooms open, cars on the ground, three banks signed.)</span>',
+     head:'En direct \u00e0 Cotonou.',
+     sub:'Concessions ouvertes. Trois banques au panel. Demandes ouvertes d\u00e8s aujourd\u2019hui \u2014 tous les prix en francs CFA. <span class="faint">(Live: apply today.)</span>',
      l:{show:'Nos concessions',banks:'banques partenaires',lang:'on vous parle',mo:'/mois',cash:'prix comptant',
-        join:'Rejoindre la liste de lancement',partner:'Devenir partenaire',nig:'Voir le site Nigeria',
+        join:'Faire une demande',partner:'Devenir partenaire',nig:'Voir le site Nigeria',
         pbHead:'Banques et concessionnaires au B\u00e9nin',
         pbBody:'Nous constituons le panel maintenant. Si vous financez, ou si vous vendez des voitures \u00e0 Cotonou, c\u2019est le moment.',
         note:n=>`Prix indicatifs en ${n} au taux du jour, hors droits locaux. Panel bancaire : `},
-     wa:'Bonjour, je veux Midas au B\u00e9nin \u2014 inscrivez-moi sur la liste de lancement',
+     wa:'Bonjour, je veux acheter une voiture avec Midas au B\u00e9nin',
      wp:'Bonjour, je souhaite devenir partenaire de Midas au B\u00e9nin \u2014 banque / concession'}};
 let curCountry='GH';
 function setCountry(c){
@@ -2678,7 +2678,7 @@ function renderCountry(){
       <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.lang}</div><div class="sk">${L.lang}</div></div>
     </div>
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:22px 0">
-      ${picks.map(v=>{const t=bestTeaser(v);return `<article class="veh rev">
+      ${picks.map(v=>{const t=bestTeaser(v);return `<article class="veh rev" onclick="openCar('${v.id}')" style="cursor:pointer">
         <div class="veh-img" style="aspect-ratio:16/9">${v.img?`<img src="${v.img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:carSVG(v.body)}</div>
         <div class="veh-body"><div class="veh-title" style="font-size:1rem">${v.make} ${v.model} ${v.year}</div>
         ${t?`<div class="veh-mo" style="margin-top:6px"><b>${lc(t.o.monthly)}</b><span> ${L.mo}</span></div>`:''}
@@ -2687,7 +2687,8 @@ function renderCountry(){
     </div>
     <p class="tiny faint">${L.note(C.cur)}${C.banks}.</p>
     <div class="row" style="gap:10px;margin-top:18px;flex-wrap:wrap">
-      <a class="btn btn-wa" href="${wa(C.wa)}" target="_blank" rel="noopener">${L.join}</a>
+      <a class="btn btn-a" href="#/apply" onclick="startApply(); return false">${L.join} &rarr;</a>
+      <a class="btn btn-wa" href="${wa(C.wa)}" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">${L.nig} &rarr;</a>
     </div>
     <div class="pilotband" style="margin:30px 0 0;display:block">
