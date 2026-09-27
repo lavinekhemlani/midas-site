@@ -2614,19 +2614,27 @@ function renderFleet(){
 }
 const COUNTRIES={
  GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0076,banks:'GCB Bank, Absa Ghana, Stanbic Bank Ghana',city:'Accra',
-     towns:'Accra &middot; Tema',
-     head:'Stallion is already in Accra.',
-     sub:'We sell cars here today. Now we are putting the banks behind them \u2014 every price on this page in Ghana cedis.',
-     lang:'English &middot; Twi',
-     wa:'Hello, I want Midas in Ghana \u2014 put me on the waiting list',
-     cta:'Join the Ghana list'},
+     towns:'Accra &middot; Tema', lang:'English &middot; Twi',
+     head:'Launching in Accra.',
+     sub:'The showrooms are open, the cars are on the ground and the banks are ready to lend. Every price on this page in Ghana cedis.',
+     l:{show:'Our showrooms',banks:'banks ready to lend',lang:'we speak your language',mo:'/month',cash:'cash price',
+        join:'Join the Ghana launch list',partner:'Partner with us',nig:'See the Nigeria site',
+        pbHead:'Banks and dealers in Ghana',
+        pbBody:'We are signing the panel now. If you lend, or you sell cars in Accra or Tema, this is the moment to be on it.',
+        note:n=>`Indicative ${n} pricing at today\u2019s rates, before local duties. Lender panel forming with `},
+     wa:'Hello, I want Midas in Ghana \u2014 put me on the launch list',
+     wp:'Hello, I want to partner with Midas in Ghana \u2014 I am a bank / dealership'},
  BJ:{name:'B\u00e9nin',flag:'\u{1F1E7}\u{1F1EF}',cur:'FCFA',rate:0.39,banks:'Bank of Africa, Ecobank B\u00e9nin, UBA B\u00e9nin',city:'Cotonou',
-     towns:'Cotonou &middot; Porto-Novo',
-     head:'D\u00e9j\u00e0 \u00e0 Cotonou.',
-     sub:'Nos voitures sont d\u00e9j\u00e0 l\u00e0. Nous ajoutons les banques \u2014 tous les prix ici en francs CFA. <span class="faint">(Our cars are already there. We are adding the banks.)</span>',
-     lang:'Fran\u00e7ais &middot; Fon',
-     wa:'Bonjour, je veux Midas au B\u00e9nin \u2014 inscrivez-moi sur la liste',
-     cta:'Rejoindre la liste'}};
+     towns:'Cotonou &middot; Porto-Novo', lang:'Fran\u00e7ais &middot; Fon',
+     head:'Lancement \u00e0 Cotonou.',
+     sub:'Nos concessions sont ouvertes, les voitures sont l\u00e0 et les banques sont pr\u00eates \u00e0 financer. Tous les prix ici en francs CFA. <span class="faint">(Showrooms open, cars on the ground, banks ready.)</span>',
+     l:{show:'Nos concessions',banks:'banques pr\u00eates \u00e0 financer',lang:'on vous parle',mo:'/mois',cash:'prix comptant',
+        join:'Rejoindre la liste de lancement',partner:'Devenir partenaire',nig:'Voir le site Nigeria',
+        pbHead:'Banques et concessionnaires au B\u00e9nin',
+        pbBody:'Nous constituons le panel maintenant. Si vous financez, ou si vous vendez des voitures \u00e0 Cotonou, c\u2019est le moment.',
+        note:n=>`Prix indicatifs en ${n} au taux du jour, hors droits locaux. Panel bancaire en formation avec `},
+     wa:'Bonjour, je veux Midas au B\u00e9nin \u2014 inscrivez-moi sur la liste de lancement',
+     wp:'Bonjour, je souhaite devenir partenaire de Midas au B\u00e9nin \u2014 banque / concession'}};
 let curCountry='GH';
 function setCountry(c){
   if(c==='NG'){ location.hash='#/market'; return; }
@@ -2640,31 +2648,36 @@ function renderCountry(){
   const seg=(location.hash.split('/')[2]||'').toUpperCase();
   if(COUNTRIES[seg]) curCountry=seg;
   const sel=document.getElementById('ctrySel'); if(sel) sel.value=curCountry;
-  const C=COUNTRIES[curCountry];
+  const C=COUNTRIES[curCountry], L=C.l;
   const lc=n=>C.cur+'\u00a0'+Math.round(n*C.rate).toLocaleString('en-US');
-  const fr=curCountry==='BJ';
+  const wa=t=>'https://wa.me/2348058963692?text='+encodeURIComponent(t);
   const picks=VEHICLES.slice(0,3);
   w.innerHTML=`
     <div class="eyebrow">Midas ${C.name}</div>
     <h2 style="margin:10px 0 10px">${C.flag} ${C.head}</h2>
     <p class="muted" style="max-width:60ch">${C.sub}</p>
     <div class="g3" style="margin:22px 0 4px">
-      <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.towns}</div><div class="sk">${fr?'Nos concessions':'Our showrooms'}</div></div>
-      <div class="statcard"><div class="sv" style="font-size:1.15rem">3</div><div class="sk">${fr?'banques en discussion':'banks in talks'}</div></div>
-      <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.lang}</div><div class="sk">${fr?'on vous parle':'we speak your language'}</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.towns}</div><div class="sk">${L.show}</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">3</div><div class="sk">${L.banks}</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">${C.lang}</div><div class="sk">${L.lang}</div></div>
     </div>
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:22px 0">
       ${picks.map(v=>{const t=bestTeaser(v);return `<article class="veh rev">
         <div class="veh-img" style="aspect-ratio:16/9">${v.img?`<img src="${v.img}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:carSVG(v.body)}</div>
         <div class="veh-body"><div class="veh-title" style="font-size:1rem">${v.make} ${v.model} ${v.year}</div>
-        ${t?`<div class="veh-mo" style="margin-top:6px"><b>${lc(t.o.monthly)}</b><span> ${fr?'/mois':'/month'}</span></div>`:''}
-        <div class="tiny faint" style="margin-top:4px">${fr?'prix comptant':'cash price'} ${lc(v.price)}</div></div>
+        ${t?`<div class="veh-mo" style="margin-top:6px"><b>${lc(t.o.monthly)}</b><span> ${L.mo}</span></div>`:''}
+        <div class="tiny faint" style="margin-top:4px">${L.cash} ${lc(v.price)}</div></div>
       </article>`}).join('')}
     </div>
-    <p class="tiny faint">${fr?`Prix indicatifs en ${C.cur} au taux du jour, hors droits locaux. Panel bancaire en formation avec ${C.banks}.`:`Indicative ${C.cur} pricing at today\u2019s rates, before local duties. Lender panel forming with ${C.banks}.`}</p>
+    <p class="tiny faint">${L.note(C.cur)}${C.banks}.</p>
     <div class="row" style="gap:10px;margin-top:18px;flex-wrap:wrap">
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent(C.wa)}" target="_blank" rel="noopener">${C.cta}</a>
-      <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">${fr?'Voir le site Nigeria':'See the Nigeria site'} &rarr;</a>
+      <a class="btn btn-wa" href="${wa(C.wa)}" target="_blank" rel="noopener">${L.join}</a>
+      <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">${L.nig} &rarr;</a>
+    </div>
+    <div class="pilotband" style="margin:30px 0 0;display:block">
+      <h3 style="margin:0 0 6px;font-size:1.35rem">${L.pbHead}</h3>
+      <p style="margin:0 0 16px;max-width:62ch">${L.pbBody}</p>
+      <a class="btn btn-a" href="${wa(C.wp)}" target="_blank" rel="noopener">${L.partner} &rarr;</a>
     </div>`;
 }
 const LEARN_POSTS=[
