@@ -512,7 +512,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
         <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#/chat" onclick="startChat();return false;">Help me choose &rarr;</a>
         <a href="tel:+2348058963692" class="btn btn-lg" style="background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)">Call 0805 896 3692</a>
               </div>
-      <p class="tiny" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">&#8358;0 to apply &nbsp;&middot;&nbsp; 5-year manufacturer warranty &nbsp;&middot;&nbsp; 7 showrooms nationwide &nbsp;&middot;&nbsp; <a href="#/halal" style="color:rgba(255,255,255,.92);text-decoration:underline">halal option</a></p>
+      <p class="tiny" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free to apply &nbsp;&middot;&nbsp; 5-year manufacturer warranty &nbsp;&middot;&nbsp; 7 showrooms nationwide &nbsp;&middot;&nbsp; <a href="#/halal" style="color:rgba(255,255,255,.92);text-decoration:underline">halal option</a></p>
     </div></div>
     
   </div>
@@ -524,6 +524,8 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
   .offtag{background:#1d7a4f;color:#fff;border-radius:5px;padding:2px 6px;font:700 8.5px/1.4 Inter,system-ui,sans-serif;letter-spacing:.08em}
   @media(max-width:560px){.offamt{font-size:12.5px}.offrow .offlogo{height:13px}}
   </style>
+  <div id="ctryStrip" hidden style="background:#0b2a4a;color:#d8dee6"><div class="wrap" style="padding:10px 0;font-size:13.5px" id="ctryStripIn"></div></div>
+
   <div class="ratesboard">
     <div class="wrap rb-in">
       <span class="rb-live"><span class="auc-dot"></span>BEST RATES RIGHT NOW</span>
@@ -1294,8 +1296,11 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
    Prototype engine: residual value model, lender panel, pricing.
    Asset class is parameterised so mortgages slot onto the same rails.
    ============================================================ */
-const NGN = n => '₦' + Math.round(n).toLocaleString('en-NG');
-const NGNs = n => n >= 1e6 ? '₦' + (n/1e6).toFixed(n>=1e7?1:2).replace(/\.0+$/,'') + 'M' : NGN(n);
+let curCountry='NG';
+const CCY = { NG:{sym:'₦', rate:1}, GH:{sym:'GH₵ ', rate:0.0076}, BJ:{sym:'FCFA ', rate:0.39} };
+function curC(){ try{ return CCY[curCountry] || CCY.NG; }catch(e){ return CCY.NG; } }
+const NGN = n => { const c = curC(); return c.sym + Math.round(n*c.rate).toLocaleString('en-US'); };
+const NGNs = n => { const c = curC(); const v = n*c.rate; return v >= 1e6 ? c.sym + (v/1e6).toFixed(v>=1e7?1:2).replace(/\.0+$/,'') + 'M' : c.sym + Math.round(v).toLocaleString('en-US'); };
 const pct = (n,d=1) => n.toFixed(d) + '%';
 const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
 
@@ -2139,11 +2144,16 @@ function submitApp(){ if(!(S.consentPrivacy&&S.consentBureau)) return; S.consent
 let sortMode='cost', aucTimers=[], aucDone=false;
 function bankNo(l){ return String(l.id).replace(/\D/g,'').replace(/^0+/,'') || '1'; }
 function isHouse(l){ return !!l.house || l.id==='LP-01'; }
-function bankName(l){ return (l.label && !/^LP-/.test(l.label)) ? l.label : (isHouse(l) ? 'Access Bank' : 'Bank ' + bankNo(l)); }
+const CTRY_BANKS={ GH:['GCB Bank','Absa Ghana','Stanbic Bank Ghana'], BJ:['Bank of Africa','Ecobank B\u00e9nin','UBA B\u00e9nin'] };
+function bankName(l){
+  const arr=CTRY_BANKS[curCountry];
+  if(arr){ if(isHouse(l)) return arr[0]; const n=bankNo(l); if(n===2) return arr[1]; if(n===3) return arr[2]; return 'Bank '+n; }
+  return (l.label && !/^LP-/.test(l.label)) ? l.label : (isHouse(l) ? 'Access Bank' : 'Bank ' + bankNo(l)); }
 function bankKind(l){ return ({'Tier-1 Commercial':'Commercial bank','Tier-2 Commercial':'Commercial bank',
   'Non-Interest (Murabaha)':'Non-interest bank','Captive / OEM':'Manufacturer\u2019s own bank',
   'Finance House / Leasing':'Finance house','Microfinance':'Microfinance bank'})[l.tier] || 'Bank'; }
-function bankMark(l){ return isHouse(l)
+function bankMark(l){ if(CTRY_BANKS[curCountry]) return '<span class="bk-num">'+(isHouse(l)?1:bankNo(l))+'</span>';
+  return isHouse(l)
   ? '<img src="brand/banks/access.svg" alt="Access Bank" style="height:16px;max-width:34px;object-fit:contain">'
   : '<span class="bk-num">'+bankNo(l)+'</span>'; }
 
@@ -2659,14 +2669,14 @@ const COUNTRIES={
         note:n=>`Prix indicatifs en ${n} au taux du jour, hors droits locaux. Panel bancaire : `},
      wa:'Bonjour, je veux acheter une voiture avec Midas au B\u00e9nin',
      wp:'Bonjour, je souhaite devenir partenaire de Midas au B\u00e9nin \u2014 banque / concession'}};
-let curCountry='GH';
+
 function setCountry(c){
-  if(c==='NG'){ location.hash='#/market'; return; }
-  curCountry=c;
-  const el=document.getElementById('ctrySel'); if(el) el.value=c;
-  const want='#/country/'+c;
-  if(location.hash===want){ route(); } else { location.hash=want; }
+  curCountry = CCY[c] ? c : 'NG';
+  try{ localStorage.setItem('midas_ctry', curCountry); }catch(e){}
+  const el=document.getElementById('ctrySel'); if(el) el.value=curCountry;
+  if(location.hash==='#/market' || location.hash==='' || location.hash==='#/'){ route(); } else { location.hash='#/market'; }
 }
+try{ const qc=new URLSearchParams(location.search).get('ctry'); const sc=qc||localStorage.getItem('midas_ctry'); if(sc && CCY[sc]) curCountry=sc; }catch(e){}
 function renderCountry(){
   const w=$('#countryWrap'); if(!w) return;
   const seg=(location.hash.split('/')[2]||'').toUpperCase();
@@ -2913,6 +2923,7 @@ function route(){
   if(fab){ fab.hidden = (page==='chat'); const km=document.getElementById('koboMark'); if(km && !km.innerHTML) km.innerHTML=koboSVG(30); }
   try{ VIEWS[page](); }catch(e){ console.error(e); }
   initReveal();
+  updateCountryUI();
   if(page==='market') heroTicker();
   window.scrollTo(0,0);
 }
@@ -2921,6 +2932,22 @@ document.querySelectorAll('#sortSeg button').forEach(b=>b.onclick=()=>{
   b.classList.add('on'); sortMode=b.dataset.s; renderOffers();
 });
 const _pp=$('#panelPill'); if(_pp) _pp.textContent=LENDERS.length+' lenders on panel';
+
+const CTRY_UI={
+ GH:{strip:'\u{1F1EC}\u{1F1ED} <b style="color:#f0c060">Midas Ghana</b> &nbsp;\u00b7&nbsp; every price in GH\u20b5 at today\u2019s rate &nbsp;\u00b7&nbsp; showrooms in Accra &amp; Tema &nbsp;\u00b7&nbsp; 3 banks signed &nbsp;\u00b7&nbsp; <a href="#/country/GH" style="color:#f0c060">about \u2192</a>', cap:'Trusted by Ghana\u2019s top banks'},
+ BJ:{strip:'\u{1F1E7}\u{1F1EF} <b style="color:#f0c060">Midas B\u00e9nin</b> &nbsp;\u00b7&nbsp; tous les prix en FCFA &nbsp;\u00b7&nbsp; concessions \u00e0 Cotonou &amp; Porto-Novo &nbsp;\u00b7&nbsp; 3 banques au panel &nbsp;\u00b7&nbsp; <a href="#/country/BJ" style="color:#f0c060">\u00e0 propos \u2192</a>', cap:'La confiance des grandes banques du B\u00e9nin'}};
+function updateCountryUI(){
+  const el=document.getElementById('ctrySel'); if(el) el.value=curCountry;
+  const st=document.getElementById('ctryStrip'), si=document.getElementById('ctryStripIn');
+  const u=CTRY_UI[curCountry];
+  if(st){ st.hidden=!u; if(u&&si) si.innerHTML=u.strip; }
+  const cap=document.querySelector('.lgm-cap'); if(cap) cap.textContent = u ? u.cap : 'Trusted by Nigeria\u2019s top banks';
+  const tr=document.querySelector('.lgm-track');
+  if(tr){ if(!tr.dataset.ng) tr.dataset.ng = tr.innerHTML;
+    const arr=CTRY_BANKS[curCountry];
+    tr.innerHTML = arr ? (arr.concat(arr,arr,arr).map(b=>'<span class="lgm-it"><b>'+b+'</b></span>').join('')) : tr.dataset.ng; }
+}
+
 window.addEventListener('hashchange',route);
 route();
 </script>
