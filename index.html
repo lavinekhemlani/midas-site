@@ -475,8 +475,8 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
       <a href="#/chat" data-nav="chat">Ask Kobo</a>
       <a href="#/halal" data-nav="halal">Halal finance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
-      <a href="#/learn" data-nav="learn">Learn</a>
       <a href="#/status" data-nav="status">My application</a>
+      <a href="#/fleet" data-nav="fleet">For companies</a>
       <a href="#/banks" data-nav="banks">For banks</a>
       <a href="#/dealers" data-nav="dealers">For dealerships</a>
     </nav>
@@ -546,13 +546,20 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
         <h2>Pay monthly. Drive today.</h2>
       </div>
     </div>
-    <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px">
+    <div class="g3" style="margin-bottom:22px">
       <a class="veh rev" href="#/market" onclick="gotoSeg('used');return false;" style="text-decoration:none;color:inherit">
         <div class="veh-img" style="aspect-ratio:16/6;position:relative"><img src="cars/used-corolla.jpg" alt="Certified used cars" style="width:100%;height:100%;object-fit:cover">
           <span class="tag" style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94)">Inspected &amp; graded</span></div>
         <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Certified used cars</h3>
           <p class="tiny muted" style="margin:4px 0 0">From &#8358;11.5M full price. 6-month engine &amp; gearbox warranty.</p>
           <b style="color:var(--accent);font-size:13.5px">See pre-owned &rarr;</b></div>
+      </a>
+      <a class="veh rev" href="#/fleet" style="text-decoration:none;color:inherit">
+        <div class="veh-img" style="aspect-ratio:16/6;position:relative"><img src="cars/t60.jpg" alt="Company fleets" style="width:100%;height:100%;object-fit:cover">
+          <span class="tag" style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94)">5 to 50+ vehicles</span></div>
+        <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Company fleets</h3>
+          <p class="tiny muted" style="margin:4px 0 0">Fleet to own or fleet to rent. Banks lend against bulk orders.</p>
+          <b style="color:var(--accent);font-size:13.5px">For companies &rarr;</b></div>
       </a>
       <a class="veh rev" href="#/halal" style="text-decoration:none;color:inherit">
         <div class="veh-img" style="aspect-ratio:16/6;position:relative;background:linear-gradient(135deg,#0d3b2e,#1d7a4f);display:flex;align-items:center;justify-content:center">
@@ -731,7 +738,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
   <div class="wrap" style="padding-top:34px;max-width:860px;padding-bottom:26px">
     <div class="eyebrow">For companies</div>
     <h2 style="margin:8px 0 10px">Fleets, financed in days.</h2>
-    <p class="muted" style="max-width:58ch">Buying five vehicles or fifty, the same panel prices your fleet. Own them or rent them &mdash; you choose which suits your books.</p>
+    <p class="muted" style="max-width:60ch">Buying five vehicles or fifty, the same panel prices your fleet. Banks lend more readily against a bulk order than a single car &mdash; one file, one security package, one disbursement.</p>
 
     <div class="photostrip rev">
       <div class="ps"><img src="cars/showroom.jpg" alt="Showroom"><span>Delivered from our showrooms</span></div>
