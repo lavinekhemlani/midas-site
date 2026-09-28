@@ -761,6 +761,9 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     </div>
 
     <div id="offWinner"></div>
+    <!-- When nothing clears, the way out belongs here — above seven rejections,
+         not below them. -->
+    <div id="offFix"></div>
 
     <div class="seg" id="sortSeg" style="margin-bottom:14px">
       <button class="on" data-s="cost">Cheapest in total</button>
@@ -769,7 +772,6 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     </div>
 
     <div id="offList"></div>
-    <div id="offFix"></div>
 
     <div class="card pad" style="margin-top:18px">
       <b style="font-size:14.5px">Your money goes to the bank only</b>
@@ -2317,7 +2319,12 @@ function renderApply(){
      loses the red borders or the sentence telling the customer what is missing. */
   const E=S.laErr||null;
   const secHtml=secs.map((title,i)=>{
-    const st=(i<S.laMax?'done':'')+(i===S.laOpen?' open':'');
+    /* The tick means "this section is actually complete", not "you walked past it" —
+       sections can now be filled in any order. */
+    const complete = (i===5)
+      ? ['c1','c2','c3','c4'].every(k=>L.c[k]==='yes')
+      : !lfCheck(i);
+    const st=(complete?'done':'')+(i===S.laOpen?' open':'');
     const last=i===secs.length-1;
     const err=(E&&E.sec===i)?`<div class="lf-err"><span>&#9888;&#65039;</span><span>${E.msg}</span></div>`:'';
     return `<div class="lf-sec ${st}" id="lfs-${i}">
@@ -2338,7 +2345,10 @@ function renderApply(){
     (E.pills||[]).forEach(k=>{ const el=document.getElementById('lfp-'+k); if(el) el.classList.add('err'); });
   }
 }
-function lfOpen(i){ if(i<=S.laMax){ S.laOpen=i; S.laErr=null; save(); renderApply(); } }
+/* Any section opens, any time. Autochek's form lets you wander, and so does
+   this one — a header that silently refuses to open just reads as broken.
+   Order is not enforced here; completeness is enforced on submit. */
+function lfOpen(i){ S.laOpen = (S.laOpen===i ? -1 : i); S.laErr=null; save(); renderApply(); }
 
 /* What each section needs, and what the bank will reject it for. A missing
    answer used to fail in silence — the customer pressed Next and nothing at
@@ -2370,6 +2380,18 @@ function lfPills(i){ return i===2?[['domiciled', S.la.emp==='Salaried'
   : 'whether you will route sales through the lending bank']]:[]; }
 
 function lfNext(i){
+  const bad=lfCheck(i);
+  if(bad){
+    S.laErr=bad; save(); renderApply();
+    const first=document.getElementById('lf-'+bad.fields[0])||document.getElementById('lfp-'+bad.pills[0]);
+    if(first){ first.scrollIntoView({behavior:'smooth',block:'center'}); if(first.focus) try{first.focus({preventScroll:true});}catch(e){} }
+    return;
+  }
+  S.laErr=null; S.laMax=Math.max(S.laMax,i+1); S.laOpen=i+1; save(); renderApply();
+  const el=document.getElementById('lfs-'+(i+1)); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+/* Checks one section and returns what is still missing, or null. */
+function lfCheck(i){
   const L=S.la, fields=[], pills=[], want=[];
   lfRules(i).forEach(([k,label,check])=>{
     const raw=L[k]==null?'':String(L[k]).trim();
@@ -2377,28 +2399,25 @@ function lfNext(i){
     if(check){ const msg=check(raw); if(msg){ fields.push(k); want.push(msg); } }
   });
   lfPills(i).forEach(([k,label])=>{ if(!L[k]){ pills.push(k); want.push(label); } });
-
-  if(want.length){
-    const list=want.length===1?want[0]
-      :want.slice(0,-1).join(', ')+' and '+want[want.length-1];
-    S.laErr={sec:i,fields,pills,
-      msg:`Still needed before the banks can price this: <b>${list}</b>.`};
-    save(); renderApply();
-    const first=document.getElementById('lf-'+fields[0])||document.getElementById('lfp-'+pills[0]);
-    if(first){ first.scrollIntoView({behavior:'smooth',block:'center'}); if(first.focus) try{first.focus({preventScroll:true});}catch(e){} }
-    return;
-  }
-
-  S.laErr=null; S.laMax=Math.max(S.laMax,i+1); S.laOpen=i+1; save(); renderApply();
-  const el=document.getElementById('lfs-'+(i+1)); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  if(!want.length) return null;
+  const list = want.length===1 ? want[0] : want.slice(0,-1).join(', ')+' and '+want[want.length-1];
+  return {sec:i, fields, pills, msg:`Still needed before the banks can price this: <b>${list}</b>.`};
 }
+
 function lfSubmit(){
   const L=S.la, v=vehicle();
+  /* Sections open in any order now, so submit is where the whole file is checked. */
+  for(let i=0;i<5;i++){
+    const bad=lfCheck(i);
+    if(bad){ S.laErr=bad; S.laOpen=i; save(); renderApply();
+      const el=document.getElementById('lfs-'+i); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      return; }
+  }
   const missing=['c1','c2','c3','c4'].filter(k=>L.c[k]!=='yes');
   if(missing.length){
     S.laErr={sec:5,fields:[],pills:[],
       msg:`Every bank on the panel needs all four consents before it can look at your file. <b>${missing.length} still unanswered.</b>`};
-    save(); renderApply();
+    S.laOpen=5; save(); renderApply();
     const el=document.getElementById('lfs-5'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
@@ -2580,12 +2599,15 @@ function finishOffers(v,app,ok,best,dearest){
       <p class="tiny" style="color:#9fb5cd;margin:12px 0 0">Indicative \u2014 priced from each bank\u2019s published policy. Nothing is signed: the bank\u2019s own offer letter lands on <a href="#/status" style="color:#f0c060">your application page</a>.</p>
     </div>`;
     $('#offHead').textContent=ok.length===1?'One bank said yes.':ok.length+' banks said yes.';
+    const seg=$('#sortSeg'); if(seg) seg.hidden=false;
+    $('#offFix').innerHTML='';
   } else {
     const fixes=solveFix(v,app);
-    $('#offHead').textContent='No bank can do it at this price yet.';
-    $('#offFix').innerHTML=`<div class="card pad">
+    $('#offHead').textContent='Not at this price — but here is what does clear.';
+    const seg=$('#sortSeg'); if(seg) seg.hidden=true;
+    $('#offFix').innerHTML=`<div class="card pad" style="margin-bottom:18px">
       <b style="font-size:15px">Here is how to fix it</b>
-      <p class="tiny muted" style="margin:6px 0 14px">The monthly payment is too big against the income you entered. Any one of these usually clears it.</p>
+      <p class="tiny muted" style="margin:6px 0 14px">The monthly payment is too big against the income you entered. Any one of these usually clears it &mdash; one tap and the panel re-prices.</p>
       ${fixes.map(f=>`<div class="between" style="padding:12px 0;border-top:1px solid var(--line);gap:12px;flex-wrap:wrap;align-items:center">
         <span style="font-size:14px">${f.txt}</span>
         <button class="btn btn-a btn-sm" onclick="applyFix('${f.k}','${f.v}')">Do this</button></div>`).join('')
