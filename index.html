@@ -530,7 +530,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 .lf-con{display:flex;flex-direction:column;gap:6px;padding:10px 0;border-top:1px solid var(--line)}
 .lf-con:first-child{border-top:none}
 .lf-con p{font-size:14.5px}
-@media(max-width:640px){.lf-grid,.lf-add{grid-template-columns:1fr}}
+@media(max-width:640px){.lf-grid,.lf-add{grid-template-columns:1fr}.lf-h{padding:14px 16px;font-size:15px}.lf-b{padding:4px 16px 16px}.lf-next{width:100%}.lf-car img{width:76px;height:54px}.lf-title{font-size:1.5rem}.fbar{flex-wrap:nowrap}.fbar .btn{padding:12px 16px}}
 </style>
 </head>
 <body>
@@ -1836,7 +1836,7 @@ function heroTicker(){
   offers.forEach((o,i) => setTimeout(() => {
     if (!box.isConnected) return;
     box.appendChild(el(`<div class="auc-row ${i===0?'best':''}">
-      <div><div class="lp">${o.lender.id}</div><div class="lt">${o.lender.tier}</div></div>
+      <div><div class="lp">${bankName(o.lender)}</div><div class="lt">${o.lender.tier}</div></div>
       <div class="v"><span class="vk">rate</span><b>${pct(o.rate*100)}</b></div>
       <div class="v"><span class="vk">monthly</span><b>${NGN(o.monthly)}</b></div>
       <div class="v"><span class="vk">decision</span><b>${o.hours}h</b></div>
@@ -2302,18 +2302,34 @@ function submitApp(){ if(!(S.consentPrivacy&&S.consentBureau)) return; S.consent
 let sortMode='cost', aucTimers=[], aucDone=false;
 function bankNo(l){ return String(l.id).replace(/\D/g,'').replace(/^0+/,'') || '1'; }
 function isHouse(l){ return !!l.house || l.id==='LP-01'; }
+
+/* Assign each masked lender a real panel identity (name + logo). */
+(function(){
+  const NI=[['Jaiz Bank','jaiz.svg'],['Lotus Bank','lotus.svg'],['TAJBank','taj.svg']];
+  const GEN=[['Stanbic IBTC','stanbic.png'],['Zenith Bank','zenith.png'],['Fidelity Bank','fidelity.svg'],['Wema Bank','wema.png'],['Globus Bank','globus.png']];
+  LENDERS.forEach(l=>{
+    if(isHouse(l)){ l._n='Access Bank'; l._g='access.svg'; return; }
+    if(/Non-Interest/.test(l.tier||'')){ const e=NI.shift(); if(e){l._n=e[0];l._g=e[1];return;} }
+    if(/Captive/.test(l.tier||'')){ l._n='Hyundai Capital'; l._g=null; return; }
+    const e=GEN.shift(); if(e){ l._n=e[0]; l._g=e[1]; } else { l._n='Bank '+bankNo(l); l._g=null; }
+  });
+})();
+const CTRY_LOGOS={'GCB Bank':'gcb.png','Absa Ghana':'absagh.png','Stanbic Bank Ghana':'stanbicgh.png','Bank of Africa':'boa.png','Ecobank B\u00e9nin':'ecobank.png','UBA B\u00e9nin':'uba.png'};
 const CTRY_BANKS={ GH:['GCB Bank','Absa Ghana','Stanbic Bank Ghana'], BJ:['Bank of Africa','Ecobank B\u00e9nin','UBA B\u00e9nin'] };
 function bankName(l){
   const arr=CTRY_BANKS[curCountry];
   if(arr){ if(isHouse(l)) return arr[0]; const n=bankNo(l); if(n===2) return arr[1]; if(n===3) return arr[2]; return 'Bank '+n; }
-  return (l.label && !/^LP-/.test(l.label)) ? l.label : (isHouse(l) ? 'Access Bank' : 'Bank ' + bankNo(l)); }
+  return l._n || ((l.label && !/^LP-/.test(l.label)) ? l.label : (isHouse(l) ? 'Access Bank' : 'Bank ' + bankNo(l))); }
 function bankKind(l){ return ({'Tier-1 Commercial':'Commercial bank','Tier-2 Commercial':'Commercial bank',
   'Non-Interest (Murabaha)':'Non-interest bank','Captive / OEM':'Manufacturer\u2019s own bank',
   'Finance House / Leasing':'Finance house','Microfinance':'Microfinance bank'})[l.tier] || 'Bank'; }
-function bankMark(l){ if(CTRY_BANKS[curCountry]) return '<span class="bk-num">'+(isHouse(l)?1:bankNo(l))+'</span>';
-  return isHouse(l)
-  ? '<img src="brand/banks/access.svg" alt="Access Bank" style="height:16px;max-width:34px;object-fit:contain">'
-  : '<span class="bk-num">'+bankNo(l)+'</span>'; }
+function bankMark(l){
+  const nm=bankName(l);
+  if(CTRY_BANKS[curCountry]){ const g=CTRY_LOGOS[nm];
+    return g ? '<img src="brand/banks/'+g+'" alt="" style="height:22px;width:22px;border-radius:5px;object-fit:cover">'
+             : '<span class="bk-num">'+(isHouse(l)?1:bankNo(l))+'</span>'; }
+  return l._g ? '<img src="brand/banks/'+l._g+'" alt="'+nm+'" style="height:18px;max-width:40px;object-fit:contain">'
+              : '<span class="bk-num">'+(isHouse(l)?'H':bankNo(l))+'</span>'; }
 
 /* Engine decline strings, said the way a person would say them. */
 function plainReason(d){
