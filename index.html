@@ -519,7 +519,11 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 .lf-field label b{color:#c0392b}
 .lf input,.lf select{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font-size:16px;background:var(--surface);color:var(--ink)}
 .lf input:focus,.lf select:focus{outline:none;border-color:var(--accent)}
-.lf input.err{border-color:#c0392b;background:#fdf3f2}
+.lf input.err,.lf select.err{border-color:#c0392b;background:#fdf3f2}
+.lf-pills.err .lf-pill{border-color:#c0392b}
+.lf-err{display:flex;gap:9px;align-items:flex-start;margin-top:14px;padding:11px 14px;border-radius:10px;
+  background:#fdf3f2;border:1px solid #f0c9c4;color:#8e2019;font-size:14px;line-height:1.45}
+.lf-err b{font-weight:650}
 .lf-pills{display:flex;gap:8px;flex-wrap:wrap}
 .lf-pill{border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;font-size:14px;background:var(--surface);cursor:pointer}
 .lf-pill.sel{border-color:var(--naira);color:var(--naira);background:var(--naira-soft);font-weight:600}
@@ -2218,11 +2222,17 @@ function renderApply(){
     <input id="lf-${k}" type="${type||'text'}" placeholder="${ph||''}" value="${(L[k]??'')}" ${extra||''}
       oninput="S.la.${k}=this.value"></div>`;
   const Fo=(k,label,ph,type,full)=>F(k,label,ph,type,full).replace(' <b>*</b>','');
-  const pills=(k,opts,cb)=>`<div class="lf-pills">`+opts.map(o=>
+  const pills=(k,opts,cb)=>`<div class="lf-pills" id="lfp-${k}">`+opts.map(o=>
     `<button type="button" class="lf-pill ${L[k]===o?'sel':''}" onclick="S.la.${k}='${o}';${cb||''}save();renderApply()">${o}</button>`).join('')+`</div>`;
-  const sel=(k,label,opts,full)=>`
+  /* A dropdown the customer never touches still shows its first option, so that
+     is the answer they believe they gave. Commit it, or the file reaches the bank
+     with no salary bank on it. */
+  const sel=(k,label,opts,full)=>{
+    if(L[k]===undefined||L[k]===null||L[k]==='') L[k]=opts[0];
+    return `
     <div class="lf-field ${full?'full':''}"><label>${label} <b>*</b></label>
     <select id="lf-${k}" onchange="S.la.${k}=this.value;save()">${opts.map(o=>`<option ${String(L[k])===String(o)?'selected':''}>${o}</option>`).join('')}</select></div>`;
+  };
 
   const bodies=[
   /* 0 Quick Info */ `
@@ -2303,13 +2313,16 @@ function renderApply(){
           <button type="button" class="lf-pill ${L.c[k]==='no'?'sel':''}" onclick="S.la.c.${k}='no';save();renderApply()">No</button>
         </div></div>`).join('')}`
   ];
-  const reqBySec=[['first','last','phone','email','nin','bvn','dob'],['address'],[ (L.emp==='Salaried'?'employer':'bizname'),'income','years','salAcct'],[],['equityN'],[]];
+  /* Anything the check flagged last time is repainted here, so a re-render never
+     loses the red borders or the sentence telling the customer what is missing. */
+  const E=S.laErr||null;
   const secHtml=secs.map((title,i)=>{
     const st=(i<S.laMax?'done':'')+(i===S.laOpen?' open':'');
     const last=i===secs.length-1;
+    const err=(E&&E.sec===i)?`<div class="lf-err"><span>&#9888;&#65039;</span><span>${E.msg}</span></div>`:'';
     return `<div class="lf-sec ${st}" id="lfs-${i}">
       <div class="lf-h" onclick="lfOpen(${i})"><span>${title} <span class="tick">&nbsp;&#10003;</span></span><span class="chev">&#9662;</span></div>
-      <div class="lf-b">${bodies[i]}
+      <div class="lf-b">${bodies[i]}${err}
         <button class="btn btn-a lf-next" onclick="${last?'lfSubmit()':`lfNext(${i})`}">${last?'Submit application &rarr;':'Next'}</button>
       </div></div>`;
   }).join('');
@@ -2320,24 +2333,76 @@ function renderApply(){
       <div class="tiny muted">${NGNs(v.price)} &middot; ${t?NGN(t.o.monthly)+'/month indicative':''} &middot; <a href="#/market" style="color:var(--accent)">change car</a></div></div></div>
     ${secHtml}
     <p class="tiny muted" style="margin-top:14px">&#128274; Your details go only to licensed banks on the panel. We never ask for a card number, PIN or OTP.</p>`;
+  if(E){
+    (E.fields||[]).forEach(k=>{ const el=document.getElementById('lf-'+k); if(el) el.classList.add('err'); });
+    (E.pills||[]).forEach(k=>{ const el=document.getElementById('lfp-'+k); if(el) el.classList.add('err'); });
+  }
 }
-function lfOpen(i){ if(i<=S.laMax){ S.laOpen=i; save(); renderApply(); } }
+function lfOpen(i){ if(i<=S.laMax){ S.laOpen=i; S.laErr=null; save(); renderApply(); } }
+
+/* What each section needs, and what the bank will reject it for. A missing
+   answer used to fail in silence — the customer pressed Next and nothing at
+   all happened, which is the fastest way to lose an application. Now every
+   check names the field, marks it, and says what to do. */
+const LF_RULES={
+  0:[['first','your first name'],['last','your last name'],
+     ['phone','a phone number',v=>/^\d{10,14}$/.test(v.replace(/\D/g,''))?'':'a phone number with at least 10 digits'],
+     ['email','an email address',v=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim())?'':'an email address that looks like you@example.com'],
+     ['nin','your NIN',v=>/^\d{11}$/.test(v.replace(/\D/g,''))?'':'your NIN — it is exactly 11 digits'],
+     ['bvn','your BVN',v=>/^\d{11}$/.test(v.replace(/\D/g,''))?'':'your BVN — it is exactly 11 digits'],
+     ['dob','your date of birth',v=>{const a=(Date.now()-new Date(v))/31557600000;
+       return a>=18&&a<=70?'':'a date of birth — banks finance applicants between 18 and 70'}]],
+  1:[['address','your home address']],
+  3:[],
+  4:[['equityN','how much you can put down',v=>(+String(v).replace(/[^\d]/g,'')>0)?'':'a down payment amount']]
+};
+function lfRules(i){
+  if(i===2){ const sal=S.la.emp==='Salaried';
+    return [[sal?'employer':'bizname', sal?"your employer's name":'your business name'],
+      ['income','your net monthly income',v=>(+String(v).replace(/[^\d]/g,'')>=50000)?'':'your net monthly income in naira'],
+      ['years', sal?'how long you have been with this employer':'how long the business has traded'],
+      ['salAcct','your account number',v=>/^\d{10}$/.test(v.replace(/\D/g,''))?'':'your account number — a NUBAN is exactly 10 digits']];
+  }
+  return LF_RULES[i]||[];
+}
+function lfPills(i){ return i===2?[['domiciled', S.la.emp==='Salaried'
+  ? 'whether you will move your salary account to the lending bank'
+  : 'whether you will route sales through the lending bank']]:[]; }
+
 function lfNext(i){
-  const req={0:['first','last','phone','email','nin','bvn','dob'],1:['address'],
-    2:[(S.la.emp==='Salaried'?'employer':'bizname'),'income','years','salAcct'],3:[],4:['equityN']}[i]||[];
-  let ok=true;
-  req.forEach(k=>{ const el=document.getElementById('lf-'+k);
-    const bad=!S.la[k]||String(S.la[k]).trim()==='';
-    if(el) el.classList.toggle('err',bad); if(bad) ok=false; });
-  if(i===2 && !S.la.domiciled){ ok=false; }
-  if(!ok) return;
-  S.laMax=Math.max(S.laMax,i+1); S.laOpen=i+1; save(); renderApply();
+  const L=S.la, fields=[], pills=[], want=[];
+  lfRules(i).forEach(([k,label,check])=>{
+    const raw=L[k]==null?'':String(L[k]).trim();
+    if(!raw){ fields.push(k); want.push(label); return; }
+    if(check){ const msg=check(raw); if(msg){ fields.push(k); want.push(msg); } }
+  });
+  lfPills(i).forEach(([k,label])=>{ if(!L[k]){ pills.push(k); want.push(label); } });
+
+  if(want.length){
+    const list=want.length===1?want[0]
+      :want.slice(0,-1).join(', ')+' and '+want[want.length-1];
+    S.laErr={sec:i,fields,pills,
+      msg:`Still needed before the banks can price this: <b>${list}</b>.`};
+    save(); renderApply();
+    const first=document.getElementById('lf-'+fields[0])||document.getElementById('lfp-'+pills[0]);
+    if(first){ first.scrollIntoView({behavior:'smooth',block:'center'}); if(first.focus) try{first.focus({preventScroll:true});}catch(e){} }
+    return;
+  }
+
+  S.laErr=null; S.laMax=Math.max(S.laMax,i+1); S.laOpen=i+1; save(); renderApply();
   const el=document.getElementById('lfs-'+(i+1)); if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function lfSubmit(){
   const L=S.la, v=vehicle();
-  const cons=['c1','c2','c3','c4'].every(k=>L.c[k]==='yes');
-  if(!cons){ alert('Please answer Yes to each consent to continue — the banks require it.'); return; }
+  const missing=['c1','c2','c3','c4'].filter(k=>L.c[k]!=='yes');
+  if(missing.length){
+    S.laErr={sec:5,fields:[],pills:[],
+      msg:`Every bank on the panel needs all four consents before it can look at your file. <b>${missing.length} still unanswered.</b>`};
+    save(); renderApply();
+    const el=document.getElementById('lfs-5'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  S.laErr=null;
   const empMap={'Salaried':'Salaried','Business owner':'Director/Owner','Self-employed':'Self-employed'};
   S.applicant={ name:(L.first||'')+' '+(L.last||''), phone:L.phone, email:L.email,
     employment:empMap[L.emp]||'Salaried', income:+String(L.income).replace(/[^\d]/g,'')||0,
