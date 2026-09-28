@@ -470,6 +470,35 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 .lgm:hover .lgm-track{animation-play-state:paused}
 @keyframes lgm{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion: reduce){.lgm-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}}
+
+/* ---- Autochek-style search & filters ---- */
+.fbar{display:flex;gap:10px;margin:14px 0 10px}
+.fbar input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:10px;padding:13px 16px;font-size:16px;background:var(--surface)}
+.fbar input:focus{outline:none;border-color:var(--accent)}
+.fpills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.fpill{position:relative}
+.fpill>button{border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;font-size:13.5px;color:var(--ink);cursor:pointer;display:flex;gap:8px;align-items:center}
+.fpill>button.on{border-color:var(--accent);color:var(--accent);font-weight:600}
+.fpop{position:absolute;left:0;top:calc(100% + 6px);z-index:60;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(11,42,74,.14);padding:8px;min-width:220px;display:none}
+.fpop.open{display:block}
+.fpop button{display:block;width:100%;text-align:left;background:none;border:0;padding:10px 12px;border-radius:8px;font-size:14px;color:var(--ink);cursor:pointer}
+.fpop button:hover{background:var(--surface-2)}
+.fpop button.sel{background:var(--naira-soft);color:var(--naira);font-weight:600}
+.fcount{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:2px 0 16px;font-size:14px}
+.fclear{color:var(--accent);cursor:pointer;text-decoration:underline;background:none;border:0;font-size:13.5px}
+.ftog{display:flex;gap:8px;align-items:center;margin-left:auto;cursor:pointer;font-size:13.5px;color:var(--ink-soft)}
+.ftog i{width:40px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background .18s}
+.ftog i::after{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .18s}
+.ftog.on i{background:var(--naira)}
+.ftog.on i::after{left:21px}
+.fmodal{position:fixed;inset:0;z-index:120;background:rgba(11,42,74,.45);display:none;align-items:center;justify-content:center;padding:16px}
+.fmodal.open{display:flex}
+.fmodal .fm-in{background:var(--surface);border-radius:16px;max-width:640px;width:100%;max-height:86vh;overflow:auto;padding:22px}
+.fm-h{font-weight:700;font-size:14px;margin:14px 0 8px}
+.fm-row{display:flex;gap:8px;flex-wrap:wrap}
+.fm-chip{border:1.5px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13.5px;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:86px}
+.fm-chip.sel{border-color:var(--naira);color:var(--naira);font-weight:600;background:var(--naira-soft)}
+@media(max-width:640px){.fbar{flex-wrap:wrap}.fpop{position:fixed;left:16px;right:16px;top:auto}}
 </style>
 </head>
 <body>
@@ -488,7 +517,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
       <a href="#/halal" data-nav="halal">Halal finance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/status" data-nav="status">My application</a>
-      <a href="#/fleet" data-nav="fleet">For companies</a>
+      <a href="#/fleet" data-nav="fleet">For corporates</a>
       <a href="#/banks" data-nav="banks">For banks</a>
       <a href="#/dealers" data-nav="dealers">For dealerships</a>
     </nav>
@@ -573,6 +602,24 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
         <h2>Pay monthly. Drive today.</h2>
       </div>
     </div>
+    <div class="fbar">
+      <input id="fq" type="search" placeholder="Search &mdash; e.g. Hyundai new, Corolla, SUV" oninput="MF.q=this.value" onkeydown="if(event.key==='Enter')applyFilters()">
+      <button class="btn btn-a" onclick="applyFilters()">Search</button>
+    </div>
+    <div class="fpills">
+      <div class="fpill"><button id="fpb-make" onclick="toggleFP('make')">Brand &amp; model <span>&#9662;</span></button><div class="fpop" id="fp-make"></div></div>
+      <div class="fpill"><button id="fpb-price" onclick="toggleFP('price')">Car price <span>&#9662;</span></button><div class="fpop" id="fp-price"></div></div>
+      <div class="fpill"><button id="fpb-fin" onclick="toggleFP('fin')">Financing <span>&#9662;</span></button><div class="fpop" id="fp-fin"></div></div>
+      <div class="fpill"><button id="fpb-year" onclick="toggleFP('year')">Year <span>&#9662;</span></button><div class="fpop" id="fp-year"></div></div>
+      <div class="fpill"><button id="fpb-loc" onclick="toggleFP('loc')">Location <span>&#9662;</span></button><div class="fpop" id="fp-loc"></div></div>
+      <div class="fpill"><button onclick="openFM()">More filters <span>&#9662;</span></button></div>
+    </div>
+    <div class="fcount">
+      <b id="fcount">All</b>
+      <button class="fclear" onclick="clearFilters()">Clear all filters</button>
+      <span class="ftog" id="ftog" onclick="finOnly=!finOnly;applyFilters()"><span>Show financing only</span><i></i></span>
+    </div>
+
     <div class="g3" style="margin-bottom:22px">
       <a class="veh rev" href="#/market" onclick="gotoSeg('used');return false;" style="text-decoration:none;color:inherit">
         <div class="veh-img" style="aspect-ratio:16/6;position:relative"><img src="cars/used-corolla.jpg" alt="Certified used cars" style="width:100%;height:100%;object-fit:cover">
@@ -1281,13 +1328,30 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
       <a class="btn btn-wa btn-sm" style="margin-top:12px;display:inline-flex" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp us</a>
     </div>
     <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
-    <div><h5>Partners</h5><a href="#/fleet">For companies</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
+    <div><h5>Partners</h5><a href="#/fleet">For corporates</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
     <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a><a href="app.html#/ops">Operations console</a></div>
     <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/credits">Photo credits</a></div>
   </div>
   <div class="bf-bot">
     <span>&copy; 2026 Midas &middot; Lagos &middot; Abuja &middot; Port Harcourt</span>
     <span>Pilot build &mdash; panel pricing indicative until each bank&rsquo;s signed policy is live.</span>
+  </div>
+</div>
+
+<div class="fmodal" id="fmodal" onclick="if(event.target===this)closeFM()">
+  <div class="fm-in">
+    <div class="between"><b style="font-size:16px">More filters</b><button class="fclear" onclick="closeFM()">Close</button></div>
+    <div class="fm-h">Mileage</div>
+    <div class="fm-row" id="fm-km"></div>
+    <div class="fm-h">Transmission</div>
+    <div class="fm-row" id="fm-trans"></div>
+    <div class="fm-h">Selling condition</div>
+    <div class="fm-row" id="fm-origin"></div>
+    <div class="fm-h">Body type</div>
+    <div class="fm-row" id="fm-body"></div>
+    <div class="fm-h">Cylinders</div>
+    <div class="fm-row" id="fm-cyl"></div>
+    <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="closeFM();applyFilters()">Apply</button>
   </div>
 </div>
 <script>
@@ -1643,13 +1707,81 @@ function bestTeaser(v){
 let marketSeg='all';
 function setMarketSeg(m,btn){ marketSeg=m; document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b===btn)); renderMarket(); }
 function gotoSeg(m){ marketSeg=m; location.hash='#/market'; renderMarket(); const inv=document.getElementById('inv'); if(inv) setTimeout(()=>inv.scrollIntoView({behavior:'smooth'}),60); }
+
+/* ---------- search & filters (Autochek-style) ---------- */
+let MF={q:'',make:'',pband:'',fin:'',year:0,loc:'',km:'',trans:'',origin:'',body:'',cyl:0};
+let finOnly=false;
+const PBANDS=[['','Any price'],['0-15','Under '+NGNs(15e6)],['15-30',NGNs(15e6)+' \u2013 '+NGNs(30e6)],['30-45',NGNs(30e6)+' \u2013 '+NGNs(45e6)],['45-999','Over '+NGNs(45e6)]];
+const FINOPTS=[['','Any financing'],['halal','Halal only'],['mo400','Monthly under '+NGN(400000)],['mo800','Monthly under '+NGN(800000)]];
+function fpOptions(){
+  const makes=[...new Set(VEHICLES.map(v=>v.make))];
+  const years=[...new Set(VEHICLES.map(v=>v.year))].sort((a,b)=>b-a);
+  const locs=[...new Set(VEHICLES.map(v=>v.loc.split(',')[0]))];
+  const opt=(id,val,label,cur)=>`<button class="${String(cur)===String(val)?'sel':''}" onclick="setMF('${id}','${val}')">${label}</button>`;
+  $('#fp-make').innerHTML=opt('make','','All brands',MF.make)+makes.map(m=>opt('make',m,m,MF.make)).join('');
+  $('#fp-price').innerHTML=PBANDS.map(([v,l])=>opt('pband',v,l,MF.pband)).join('');
+  $('#fp-fin').innerHTML=FINOPTS.map(([v,l])=>opt('fin',v,l,MF.fin)).join('');
+  $('#fp-year').innerHTML=opt('year',0,'Any year',MF.year)+years.map(y=>opt('year',y,y,MF.year)).join('');
+  $('#fp-loc').innerHTML=opt('loc','','Anywhere',MF.loc)+locs.map(l=>opt('loc',l,l,MF.loc)).join('');
+  const chip=(id,val,label,cur)=>`<button class="fm-chip ${String(cur)===String(val)?'sel':''}" onclick="setMF('${id}','${val}',true)">${label}</button>`;
+  $('#fm-km').innerHTML=[['','Any'],['0-30','0 \u2013 30k km'],['30-60','30 \u2013 60k km'],['60-120','60 \u2013 120k km'],['120-999','120k+ km']].map(([v,l])=>chip('km',v,l,MF.km)).join('');
+  $('#fm-trans').innerHTML=[['','Any'],['Automatic','Automatic'],['6-speed','Manual / 6-speed']].map(([v,l])=>chip('trans',v,l,MF.trans)).join('');
+  $('#fm-origin').innerHTML=[['','Any'],['Brand new','Brand new'],['Foreign','Foreign used'],['Local','Locally used']].map(([v,l])=>chip('origin',v,l,MF.origin)).join('');
+  $('#fm-body').innerHTML=[['','Any'],['suv','SUV'],['sedan','Sedan'],['pickup','Pickup'],['van','Bus / Van']].map(([v,l])=>chip('body',v,l,MF.body)).join('');
+  $('#fm-cyl').innerHTML=[[0,'Any'],[4,'4-cyl'],[6,'6-cyl']].map(([v,l])=>chip('cyl',v,l,MF.cyl)).join('');
+}
+function setMF(k,v,keepOpen){
+  MF[k]=(k==='year'||k==='cyl')?+v:v;
+  if(!keepOpen) closeFPs();
+  applyFilters();
+  if(keepOpen) fpOptions();
+}
+function toggleFP(id){
+  const el=$('#fp-'+id); const was=el.classList.contains('open');
+  closeFPs(); if(!was){ fpOptions(); el.classList.add('open'); }
+}
+function closeFPs(){ document.querySelectorAll('.fpop').forEach(p=>p.classList.remove('open')); }
+document.addEventListener('click',e=>{ if(!e.target.closest('.fpill')) closeFPs(); });
+function openFM(){ fpOptions(); $('#fmodal').classList.add('open'); }
+function closeFM(){ $('#fmodal').classList.remove('open'); }
+function inBand(val,band,mult){ if(!band) return true; const [a,b]=band.split('-').map(Number); return val>=a*mult && val<b*mult; }
+function filterVehicles(){
+  let rows=VEHICLES.filter(v => marketSeg==='all' ? true : marketSeg==='new' ? v.origin==='Brand new' : v.origin!=='Brand new');
+  if(MF.q){ const toks=MF.q.toLowerCase().split(/\s+/).filter(Boolean);
+    rows=rows.filter(v=>{ const hay=(v.make+' '+v.model+' '+v.year+' '+v.body+' '+v.origin+' '+(v.tag||'')+' '+v.loc).toLowerCase();
+      return toks.every(t=>hay.includes(t)); }); }
+  if(MF.make) rows=rows.filter(v=>v.make===MF.make);
+  if(MF.pband) rows=rows.filter(v=>inBand(v.price,MF.pband,1e6));
+  if(MF.year) rows=rows.filter(v=>v.year>=MF.year);
+  if(MF.loc) rows=rows.filter(v=>v.loc.split(',')[0]===MF.loc);
+  if(MF.km) rows=rows.filter(v=>inBand(v.km,MF.km,1000));
+  if(MF.trans) rows=rows.filter(v=>v.trans===MF.trans);
+  if(MF.origin) rows=rows.filter(v=>v.origin===MF.origin);
+  if(MF.body) rows=rows.filter(v=>v.body===MF.body);
+  if(MF.cyl) rows=rows.filter(v=>v.cyl===MF.cyl);
+  if(MF.fin==='halal') rows=rows.filter(v=>{ const ok=runPanel(v,.35,48,null).filter(o=>o.approved&&isHalalLender(o.lender)); return ok.length>0; });
+  if(MF.fin==='mo400'||MF.fin==='mo800'){ const cap=MF.fin==='mo400'?400000:800000;
+    rows=rows.filter(v=>{ const t=bestTeaser(v); return t && t.o.monthly<=cap; }); }
+  if(finOnly) rows=rows.filter(v=>bestTeaser(v));
+  return rows;
+}
+function applyFilters(){ closeFPs(); renderMarket(); }
+function clearFilters(){ MF={q:'',make:'',pband:'',fin:'',year:0,loc:'',km:'',trans:'',origin:'',body:'',cyl:0}; finOnly=false; const q=$('#fq'); if(q)q.value=''; applyFilters(); }
+function paintFilterUI(rows){
+  const c=$('#fcount'); if(c) c.textContent=`All (${rows.length} result${rows.length===1?'':'s'})`;
+  const t=$('#ftog'); if(t) t.classList.toggle('on',finOnly);
+  const on={make:MF.make,price:MF.pband,fin:MF.fin,year:MF.year,loc:MF.loc};
+  for(const k in on){ const b=$('#fpb-'+k); if(b) b.classList.toggle('on',!!on[k]); }
+}
+
 function renderMarket(){
   const g = $('#vehGrid'); if (!g) return;
   document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b.dataset.seg===marketSeg));
   const rb=$('#ratesBoard');
   if(rb){ rb.innerHTML=VEHICLES.map(v=>{const t=bestTeaser(v);return t?`<span class="rb-it">${v.model} <b>${pct(t.o.rate*100)}</b> <span class="dn">▾</span> · ${NGN(t.o.monthly)}/mo</span>`:'';}).join(''); }
   g.innerHTML = '';
-  const rows = VEHICLES.filter(v => marketSeg==='all' ? true : marketSeg==='new' ? v.origin==='Brand new' : v.origin!=='Brand new');
+  const rows = filterVehicles();
+  paintFilterUI(rows);
   rows.forEach(v => {
     const t = bestTeaser(v);
     const isNew = v.origin==='Brand new';
@@ -2944,8 +3076,9 @@ function updateCountryUI(){
   const cap=document.querySelector('.lgm-cap'); if(cap) cap.textContent = u ? u.cap : 'Trusted by Nigeria\u2019s top banks';
   const tr=document.querySelector('.lgm-track');
   if(tr){ if(!tr.dataset.ng) tr.dataset.ng = tr.innerHTML;
+    const LGO={'GCB Bank':'gcb.png','Absa Ghana':'absagh.png','Stanbic Bank Ghana':'stanbicgh.png','Bank of Africa':'boa.png','Ecobank B\u00e9nin':'ecobank.png','UBA B\u00e9nin':'uba.png'};
     const arr=CTRY_BANKS[curCountry];
-    tr.innerHTML = arr ? (arr.concat(arr,arr,arr).map(b=>'<span class="lgm-it"><b>'+b+'</b></span>').join('')) : tr.dataset.ng; }
+    tr.innerHTML = arr ? (arr.concat(arr,arr,arr).map(b=>'<span class="lgm-it"><img src="brand/banks/'+LGO[b]+'" alt="" style="height:26px;width:26px;border-radius:6px;object-fit:cover"><b>'+b+'</b></span>').join('')) : tr.dataset.ng; }
 }
 
 window.addEventListener('hashchange',route);
