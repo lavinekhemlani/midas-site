@@ -1823,11 +1823,11 @@ function renderMarket(){
     g.appendChild(el(`
       <article class="veh rev" onclick="openCar('${v.id}')">
         <div class="veh-img">${v.img?`<img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" loading="lazy" />`:carSVG(v.body)}
-          <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${v.tag}${v.stock?' · '+v.stock+' units':''}</span></div>
+          <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${v.tag}</span></div>
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
-          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">${v.stock?v.stock+' in stock':'In stock'}</span></div>
+          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)} · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
