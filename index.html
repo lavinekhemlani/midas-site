@@ -1429,17 +1429,36 @@ function balanceAt(P, annualRate, n, m){
 }
 
 /* ---------- VEHICLES (Auto OS certified) ---------- */
+/* Live stock 28/09/26 - NIG STOCK REPORT (Power BI): 353 vehicles, 28 models. Prices from landed cost x1.18; models without cost priced to market. */
 const VEHICLES = [
-  {id:'V-1001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:41900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/creta.jpg', tag:'Most loved SUV'},
-  {id:'V-1002', year:2026, make:'Hyundai', model:'Elantra', body:'sedan', price:38500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/elantra.jpg', tag:'Executive saloon'},
-  {id:'V-1003', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:62000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/tucson.jpg', tag:'Family flagship'},
-  {id:'V-1004', year:2026, make:'Changan', model:'Hunter 4×4', body:'pickup', price:49500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/hunter.jpg', tag:'Work + weekend'},
-  {id:'V-1005', year:2026, make:'MG', model:'T60 4×4', body:'pickup', price:46500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/t60.jpg', tag:'Built for business'},
-  {id:'U-2001', img:'cars/used-corolla.jpg', year:2019, make:'Toyota', model:'Corolla LE', body:'sedan', price:16500000, km:62000, origin:'Foreign', grade:'A', score:178, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2002', img:'cars/used-camry.jpg', year:2016, make:'Toyota', model:'Camry SE', body:'sedan', price:12800000, km:118000, origin:'Local', grade:'B', score:151, loc:'Victoria Island, Lagos', cyl:4, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2003', img:'cars/elantra.jpg', year:2021, make:'Hyundai', model:'Elantra', body:'sedan', price:21500000, km:41000, origin:'Foreign', grade:'A', score:186, loc:'Ikeja, Lagos', cyl:4, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2004', img:'cars/used-rx.jpg', year:2018, make:'Lexus', model:'RX 350', body:'suv', price:38500000, km:88000, origin:'Foreign', grade:'A', score:181, loc:'Victoria Island, Lagos', cyl:6, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'},
-  {id:'U-2005', img:'cars/used-sienna.jpg', year:2013, make:'Toyota', model:'Sienna XLE', body:'van', price:11500000, km:143000, origin:'Local', grade:'B', score:144, loc:'Ikeja, Lagos', cyl:6, trans:'Automatic', tag:'Certified pre-owned', warranty:'6-month engine & gearbox'}
+  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:22700000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/creta.jpg', tag:'Most loved SUV', stock:84},
+  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:30000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Luxury 1.5T', stock:44},
+  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:13700000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'The starter car', stock:33},
+  {id:'V-2004', year:2026, make:'MG', model:'T60', body:'pickup', price:36500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:null, tag:'Double cab 4WD', stock:32},
+  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:28500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'7 seats', stock:22},
+  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:38500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Family flagship', stock:22},
+  {id:'V-2007', year:2026, make:'Nissan', model:'Navara', body:'pickup', price:31400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:null, tag:'Workhorse 4WD', stock:22},
+  {id:'V-2008', year:2026, make:'Nissan', model:'Urvan NV350', body:'van', price:43900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:null, tag:'18-seat business', stock:15},
+  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:48100000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Executive compact', stock:15},
+  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:16500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Executive saloon', stock:11},
+  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:null, tag:'5.8L CBC', stock:10},
+  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:75200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:null, tag:'EX-L 3.5', stock:7},
+  {id:'V-2013', year:2026, make:'Hyundai', model:'Accent', body:'sedan', price:17500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Elegance', stock:6},
+  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:75600000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'New EX 1.5T', stock:4},
+  {id:'V-2015', year:2026, make:'Hyundai', model:'Staria', body:'van', price:42500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:null, tag:'Luxury 3.5', stock:4},
+  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:55000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Calligraphy 2.5T', stock:4},
+  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:49800000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/tucson.jpg', tag:'Evolution GLS', stock:4},
+  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:45400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Luxury 2.0T', stock:3},
+  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:32000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'2.0T Luxury', stock:2},
+  {id:'V-2020', year:2026, make:'Ashok Leyland', model:'Partner 17ft', body:'truck', price:36200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:null, tag:'CBC 3.0L', stock:1},
+  {id:'V-2021', year:2026, make:'Ashok Leyland', model:'Phoenix', body:'truck', price:33600000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:null, tag:'CBC 1.5L', stock:1},
+  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:34000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Electric 77kWh', stock:1},
+  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:45000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Electric roadster', stock:1},
+  {id:'V-2024', year:2026, make:'MG', model:'RX8', body:'suv', price:39400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:null, tag:'Luxury 2.0T', stock:1},
+  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:24000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Electric 450km', stock:1},
+  {id:'V-2026', year:2026, make:'Bestune', model:'T90', body:'suv', price:21000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'CNG 1.5T', stock:1},
+  {id:'V-2027', year:2026, make:'Bestune', model:'T77 Pro', body:'suv', price:19500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'CNG Deluxe', stock:1},
+  {id:'V-2028', year:2026, make:'Nissan', model:'X-Trail', body:'suv', price:39500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:null, tag:'Tekna 4WD', stock:1}
 ];
 
 /* ---------- LENDER PANEL (70, masked) ---------- */
@@ -1743,7 +1762,7 @@ function fpOptions(){
   $('#fm-km').innerHTML=[['','Any'],['0-30','0 \u2013 30k km'],['30-60','30 \u2013 60k km'],['60-120','60 \u2013 120k km'],['120-999','120k+ km']].map(([v,l])=>chip('km',v,l,MF.km)).join('');
   $('#fm-trans').innerHTML=[['','Any'],['Automatic','Automatic'],['6-speed','Manual / 6-speed']].map(([v,l])=>chip('trans',v,l,MF.trans)).join('');
   $('#fm-origin').innerHTML=[['','Any'],['Brand new','Brand new'],['Foreign','Foreign used'],['Local','Locally used']].map(([v,l])=>chip('origin',v,l,MF.origin)).join('');
-  $('#fm-body').innerHTML=[['','Any'],['suv','SUV'],['sedan','Sedan'],['pickup','Pickup'],['van','Bus / Van']].map(([v,l])=>chip('body',v,l,MF.body)).join('');
+  $('#fm-body').innerHTML=[['','Any'],['suv','SUV'],['sedan','Sedan'],['pickup','Pickup'],['van','Bus / Van'],['truck','Truck']].map(([v,l])=>chip('body',v,l,MF.body)).join('');
   $('#fm-cyl').innerHTML=[[0,'Any'],[4,'4-cyl'],[6,'6-cyl']].map(([v,l])=>chip('cyl',v,l,MF.cyl)).join('');
 }
 function setMF(k,v,keepOpen){
@@ -1804,11 +1823,11 @@ function renderMarket(){
     g.appendChild(el(`
       <article class="veh rev" onclick="openCar('${v.id}')">
         <div class="veh-img">${v.img?`<img src="${v.img}" alt="${v.year} ${v.make} ${v.model}" loading="lazy" />`:carSVG(v.body)}
-          <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${isNew?v.tag:(v.km/1000).toFixed(0)+'K km · Grade '+v.grade}</span></div>
+          <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${v.tag}${v.stock?' · '+v.stock+' units':''}</span></div>
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
-          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">${isNew?'In stock · Lagos':'Inspected · '+v.loc.split(',')[0]}</span></div>
+          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">${v.stock?v.stock+' in stock':'In stock'}</span></div>
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)} · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
