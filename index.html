@@ -546,7 +546,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="used" onclick="gotoSeg('used');return false;">Used cars</a>
       <a href="#/chat" data-nav="chat">Ask Kobo</a>
-      <a href="#/halal" data-nav="halal">Halal finance</a>
+      <a href="#/halal" data-nav="halal">Halal finance</a><a href="#/insurance" data-nav="insurance">Insurance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/status" data-nav="status">My application</a>
       <a href="#/fleet" data-nav="fleet">For corporates</a>
@@ -993,6 +993,29 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 </section>
 
 <!-- ===================== HALAL FINANCE ===================== -->
+
+<section class="view" id="v-insurance">
+  <div class="wrap" style="padding-top:38px;max-width:900px;padding-bottom:40px">
+    <div class="eyebrow">Auto insurance</div>
+    <h2 style="margin:10px 0 12px">Cover, built into the loan.</h2>
+    <p class="muted" style="max-width:60ch">Every financed car is insured before it leaves the showroom. Pay it monthly, inside the same loan &mdash; not as a surprise on top.</p>
+    <div class="g3" style="margin:26px 0">
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">Comprehensive</div><div class="sk">theft, accident, third party &mdash; 60 months</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">Takaful &#9789;</div><div class="sk">halal cover &mdash; shared pool, no interest</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">Tracker included</div><div class="sk">fitted before delivery, lowers your premium</div></div>
+    </div>
+    <div class="card pad" style="margin-bottom:22px">
+      <b style="font-size:15px">How it works</b>
+      <p class="tiny muted" style="margin:8px 0 0">Tick <b>Comprehensive insurance</b> on the loan form and the premium is financed with the car. Choosing the halal loan? Your cover is Takaful &mdash; a shared protection pool, certified the same way the loan is. Claims are handled by the insurer, not by us.</p>
+    </div>
+    <p class="tiny faint">Partner panel forming with Nigeria&rsquo;s licensed insurers, conventional and Takaful. Premiums are set by the insurer.</p>
+    <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
+      <a class="btn btn-a" href="#/apply" onclick="startApply(); return false">Get covered with your loan &rarr;</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${''}Hello, I want an auto insurance quote from Midas" target="_blank" rel="noopener">WhatsApp a quote</a>
+    </div>
+  </div>
+</section>
+
 <section class="view" id="v-halal">
   <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px">
     <div class="eyebrow">Non-interest finance</div>
@@ -3102,7 +3125,7 @@ function chatResults(){
     </div>`);
 }
 
-const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},insurance:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 const VIEW_OF={signup:'login'};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
