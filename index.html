@@ -352,6 +352,71 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 
 /* ---------- consumer skin ---------- */
 :root{--naira:#0d8a45;--naira-soft:#e7f6ee;--wa:#1fae54}
+/* In partner mode the page is living inside somebody else's app. Strip every
+   trace of the website so it reads as a screen, not a destination. */
+body.rp-embed .topbar, body.rp-embed .bigfoot, body.rp-embed #ctryStrip, body.rp-embed .lgm{display:none!important}
+body.rp-embed .rp{padding-top:0}
+body.rp-embed .rp-partner{margin-top:0}
+.kobo-fab[hidden]{display:none!important}
+/* ============ REPAIR — mobile-first, partner-embeddable ============ */
+.rp{max-width:520px;margin:0 auto;padding:0 16px 120px}
+.rp-partner{display:flex;align-items:center;gap:10px;background:#0b1526;color:#fff;padding:10px 16px;margin:0 -16px 0;font-size:13px}
+.rp-partner b{color:#f0c060}
+.rp-partner .pdot{width:7px;height:7px;border-radius:50%;background:#2fbc8b;flex:none}
+.rp-hero{background:linear-gradient(160deg,#0b2a4a,#0e1420);color:#fff;margin:0 -16px;padding:26px 20px 24px;border-radius:0 0 22px 22px}
+.rp-hero h1{font-family:var(--display);font-size:1.75rem;line-height:1.12;margin:8px 0 8px;letter-spacing:-.4px}
+.rp-hero p{color:#9fb5cd;font-size:14.5px;line-height:1.5;margin:0}
+.rp-eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#f0c060;font-weight:600}
+.rp-appr{display:flex;gap:12px;align-items:center;background:rgba(47,188,139,.12);border:1px solid rgba(47,188,139,.3);border-radius:14px;padding:12px 14px;margin-top:16px}
+.rp-appr .amt{font-family:var(--mono);font-size:1.35rem;font-weight:600;color:#6ee7b7;line-height:1}
+.rp-appr .lbl{font-size:11.5px;color:#9fb5cd;margin-top:3px}
+.rp-step{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin:26px 0 10px}
+.rp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rp-job{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 12px;cursor:pointer;text-align:left;transition:.15s;display:flex;flex-direction:column;gap:3px;min-height:92px;justify-content:space-between}
+.rp-job:active{transform:scale(.98)}
+.rp-job.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px rgba(200,134,42,.12)}
+.rp-job .ic{font-size:20px;line-height:1}
+.rp-job .nm{font-weight:600;font-size:14px;color:var(--ink);line-height:1.25}
+.rp-job .pr{font-family:var(--mono);font-size:12.5px;color:var(--ink-faint)}
+.rp-job.sel .pr{color:var(--accent)}
+.rp-car{display:flex;gap:10px;overflow-x:auto;padding:2px 0 8px;margin:0 -16px;padding-left:16px;padding-right:16px;scrollbar-width:none}
+.rp-car::-webkit-scrollbar{display:none}
+.rp-cc{flex:none;width:132px;background:var(--surface);border:1.5px solid var(--line);border-radius:13px;padding:10px;cursor:pointer;text-align:left}
+.rp-cc.sel{border-color:var(--accent);background:var(--accent-soft)}
+.rp-cc img{width:100%;height:62px;object-fit:cover;border-radius:8px;background:var(--surface-2)}
+.rp-cc .nm{font-weight:600;font-size:12.5px;margin-top:7px;line-height:1.2}
+.rp-cc .yr{font-size:11px;color:var(--ink-faint)}
+.rp-sum{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px;margin-top:8px}
+.rp-row{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--line)}
+.rp-row:last-child{border-bottom:none}
+.rp-row .k{font-size:13.5px;color:var(--ink-soft)}
+.rp-row .v{font-family:var(--mono);font-size:14px;font-weight:600}
+.rp-big{text-align:center;padding:18px 0 6px}
+.rp-big .n{font-family:var(--mono);font-size:2.4rem;font-weight:600;color:var(--ink);line-height:1;letter-spacing:-1px}
+.rp-big .s{font-size:13px;color:var(--ink-faint);margin-top:6px}
+.rp-terms{display:flex;gap:8px;margin-top:14px}
+.rp-term{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;background:var(--surface)}
+.rp-term.sel{border-color:var(--accent);background:var(--accent-soft)}
+.rp-term .m{font-weight:600;font-size:15px}
+.rp-term .p{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint);margin-top:2px}
+.rp-term.sel .p{color:var(--accent)}
+.rp-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom));z-index:40}
+.rp-cta .inr{max-width:520px;margin:0 auto;display:flex;gap:10px;align-items:center}
+.rp-cta .btn{flex:1;justify-content:center;padding:15px;font-size:15.5px;border-radius:13px}
+.rp-cta .mini{font-size:11.5px;color:var(--ink-faint);line-height:1.3}
+.rp-ok{text-align:center;padding:30px 0 10px}
+.rp-ok .tick{width:64px;height:64px;border-radius:50%;background:var(--good-soft);color:var(--good);display:grid;place-items:center;font-size:30px;margin:0 auto 16px}
+.rp-ok h2{font-family:var(--display);font-size:1.6rem;margin:0 0 8px}
+.rp-journey{background:var(--brand);color:#fff;border-radius:16px;padding:18px;margin-top:22px}
+.rp-journey h4{font-size:14px;margin:0 0 4px;color:#f0c060}
+.rp-journey p{font-size:13px;color:#9fb5cd;line-height:1.5;margin:0 0 12px}
+.rp-ladder{display:flex;align-items:center;gap:6px}
+.rp-rung{flex:1;text-align:center;padding:9px 4px;border-radius:9px;background:rgba(255,255,255,.07);font-size:11px;line-height:1.3}
+.rp-rung.on{background:rgba(240,192,96,.18);color:#f0c060;font-weight:600}
+.rp-rung .a{display:block;font-family:var(--mono);font-size:12px;margin-top:2px}
+.rp-banks{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.rp-banks img{height:16px;max-width:38px;object-fit:contain;opacity:.75}
+@media(min-width:560px){ .rp-hero{border-radius:22px;margin:16px 0 0} .rp-partner{margin:0;border-radius:12px 12px 0 0} }
 .hero-photo{position:relative;color:#fff;overflow:hidden;background:#0b1526}
 .hero-photo img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;opacity:.94}
 .hero-photo .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,12,26,.88) 0%,rgba(5,12,26,.62) 44%,rgba(5,12,26,.12) 78%)}
@@ -562,7 +627,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     <nav class="tnav" id="tnav">
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="used" onclick="gotoSeg('used');return false;">Used cars</a>
-      <a href="#/chat" data-nav="chat">Ask Kobo</a>
+      <a href="#/chat" data-nav="chat">Ask Midas</a>
       <a href="#/halal" data-nav="halal">Halal finance</a><a href="#/insurance" data-nav="insurance">Insurance</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/status" data-nav="status">My application</a>
@@ -937,7 +1002,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
   <div class="wrap" style="padding-top:30px;padding-bottom:30px">
     <div class="chatwrap">
       <div class="kobo-line"><span id="koboHead"></span>
-        <div><div class="eyebrow" style="margin:0">Kobo &middot; Midas</div>
+        <div><div class="eyebrow" style="margin:0">Midas AI</div>
         <div class="tiny muted">Answers in seconds. Never asks for your BVN or PIN.</div></div></div>
       <h2 style="margin:4px 0 4px">Tell me the car you want.</h2>
       <p class="muted" style="margin-bottom:12px;font-size:14.5px">A few questions and I will show you what the banks will actually pay for &mdash; yours, not an advert.</p>
@@ -1017,6 +1082,9 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 
 <!-- ===================== HALAL FINANCE ===================== -->
 
+<section class="view" id="v-repair">
+  <div id="rpRoot" class="rp"></div>
+</section>
 <section class="view" id="v-insurance">
   <div class="wrap" style="padding-top:38px;max-width:900px;padding-bottom:40px">
     <div class="eyebrow">Auto insurance</div>
@@ -1379,8 +1447,8 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     <div class="rev" style="border-top:2px solid var(--ink);padding-top:12px"><b style="font-size:14px">Real showrooms, real warranty</b><p class="tiny muted" style="margin:5px 0 0">Cars sold from our own showrooms with the manufacturer&rsquo;s warranty and after-sales service.</p></div>
   </div>
 </div>
-<button class="kobo-fab" id="koboFab" onclick="startChat()" aria-label="Chat with Kobo">
-  <span id="koboMark"></span><span>Ask Kobo</span>
+<button class="kobo-fab" id="koboFab" onclick="startChat()" aria-label="Chat with Midas AI">
+  <span id="koboMark"></span><span>Ask Midas</span>
 </button>
 <div class="wrap bigfoot">
   <div class="bf-cols">
@@ -3211,7 +3279,7 @@ function chatNumber(ph, hint){
     ${hint?`<p class="tiny faint" style="margin-top:7px">${hint}</p>`:''}`;
 }
 const CHAT_STEPS=[
-  { k:'use', q:'Hello! I am Kobo. I watch every naira so you do not overpay.<br>What do you need the car for?',
+  { k:'use', q:'Hello! I am Midas AI. I watch every naira so you do not overpay.<br>What do you need the car for?',
     chips:[{v:'family',l:'My family'},{v:'work',l:'Work and business'},{v:'first',l:'My first car'},{v:'any',l:'Not sure yet'}] },
   { k:'cond', q:'Brand new, or a good pre-owned one?',
     chips:[{v:'new',l:'Brand new'},{v:'used',l:'Pre-owned, cheaper'},{v:'any',l:'Show me both'}] },
@@ -3297,7 +3365,179 @@ function chatResults(){
     </div>`);
 }
 
-const VIEWS={market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},insurance:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+/* ===================== REPAIR FINANCE (mobile-first) =====================
+   Built for the Surfin / EasyCash partnership. A user arrives from an SMS or
+   from a link inside the partner's app, picks what is broken, and leaves with
+   the work booked and the cost spread. Nothing here needs an install.
+   ?p=easycash puts it in partner mode: the customer is already verified, so
+   we skip identity entirely and lead with the limit. */
+
+const RP_JOBS=[
+ {k:'tyres',  ic:'\u{1F6DE}', nm:'Tyres',          d:'Set of four, fitted & balanced', p:185000},
+ {k:'batt',   ic:'\u{1F50B}', nm:'Battery',        d:'New battery, fitted same day',   p:125000},
+ {k:'brakes', ic:'\u{1F6D1}', nm:'Brakes',         d:'Pads, discs, all four wheels',   p:95000},
+ {k:'ac',     ic:'❄️', nm:'Air conditioning', d:'Compressor, regas, leak fix', p:160000},
+ {k:'susp',   ic:'\u{1F527}', nm:'Suspension',     d:'Shocks, bushes, alignment',      p:340000},
+ {k:'clutch', ic:'⚙️', nm:'Clutch',      d:'Full clutch kit & labour',       p:420000},
+ {k:'gearbox',ic:'\u{1F39B}️', nm:'Gearbox',  d:'Rebuild or replacement',         p:880000},
+ {k:'engine', ic:'\u{1F6E0}️', nm:'Engine',   d:'Overhaul, parts & labour',       p:1450000},
+ {k:'service',ic:'\u{1F9F4}', nm:'Full service',   d:'Oil, filters, 40-point check',   p:85000},
+ {k:'body',   ic:'\u{1F3A8}', nm:'Body & paint',   d:'Panel repair and respray',       p:260000}
+];
+const RP_CARS=[
+ {k:'corolla', nm:'Toyota Corolla', yr:'2011–2016'},
+ {k:'camry',   nm:'Toyota Camry',   yr:'2010–2015'},
+ {k:'accord',  nm:'Honda Accord',   yr:'2010–2014'},
+ {k:'sienna',  nm:'Toyota Sienna',  yr:'2009–2014'},
+ {k:'elantra', nm:'Hyundai Elantra',yr:'2012–2017'},
+ {k:'highl',   nm:'Toyota Highlander',yr:'2011–2016'},
+ {k:'crv',     nm:'Honda CR-V',     yr:'2012–2016'},
+ {k:'other',   nm:'Another car',    yr:'Tell us at the shop'}
+];
+const RP_TERMS=[{m:3,r:0},{m:4,r:0},{m:6,r:0.015}];
+const RP_SHOPS=['Victoria Island','Ikeja','Lekki Phase 1','Apapa','Surulere'];
+
+const RP_PARTNERS={
+  easycash:{id:'easycash',nm:'EasyCash',limit:2000000,user:'Chinedu',
+            wallet:'Repayments come out of your EasyCash wallet.'},
+  stallion:{id:'stallion',nm:'Stallion Victoria Island',limit:1500000,user:'there',
+            wallet:'Repayments by card, transfer or payroll deduction.'}
+};
+function rpPartner(){
+  const q=new URLSearchParams(location.search);
+  const h=location.hash.split('?')[1]||'';
+  const p=(q.get('p')||new URLSearchParams(h).get('p')||'').toLowerCase();
+  return RP_PARTNERS[p]||null;
+}
+function rpState(){ if(!S.rp) S.rp={job:null,car:null,term:3,done:false}; return S.rp; }
+function rpPick(k){ rpState().job=k; save(); renderRepair(); setTimeout(()=>{const e=document.getElementById('rpStep2'); if(e) e.scrollIntoView({behavior:'smooth',block:'start'});},90); }
+function rpCar(k){ rpState().car=k; save(); renderRepair(); setTimeout(()=>{const e=document.getElementById('rpStep3'); if(e) e.scrollIntoView({behavior:'smooth',block:'start'});},90); }
+function rpTerm(m){ rpState().term=m; save(); renderRepair(); }
+function rpAccept(){ rpState().done=true; save(); renderRepair(); window.scrollTo(0,0); track('repair_accepted',{job:rpState().job}); }
+function rpRestart(){ S.rp={job:null,car:null,term:3,done:false}; save(); renderRepair(); window.scrollTo(0,0); }
+
+function renderRepair(){
+  const root=document.getElementById('rpRoot'); if(!root) return;
+  const P=rpPartner(), R=rpState();
+  /* set here rather than in route(), because every tap re-renders in place */
+  document.body.classList.toggle('rp-embed', !!P);
+  const job=RP_JOBS.find(j=>j.k===R.job)||null;
+  const car=RP_CARS.find(c=>c.k===R.car)||null;
+  const term=RP_TERMS.find(t=>t.m===R.term)||RP_TERMS[0];
+  const total=job? Math.round(job.p*(1+term.r*term.m)) : 0;
+  const perMonth=job? Math.round(total/term.m) : 0;
+  const bar=document.querySelector('.rp-cta'); if(bar) bar.remove();
+
+  if(R.done){
+    const shop=RP_SHOPS[Math.abs((R.job||'x').length*7)%RP_SHOPS.length];
+    const nextLimit=Math.min(P?P.limit*1.75:3500000, Math.max(total*2.2,600000));
+    root.innerHTML=`
+      <div class="rp-ok">
+        <div class="tick">&#10003;</div>
+        <h2>Approved. Work is booked.</h2>
+        <p class="muted" style="font-size:14.5px">${job.nm} on your ${car?car.nm:'car'} at Midas ${shop}. Bring the car any day this week.</p>
+      </div>
+      <div class="rp-sum">
+        <div class="rp-row"><span class="k">Job</span><span class="v">${job.nm}</span></div>
+        <div class="rp-row"><span class="k">Total</span><span class="v">${NGN(total)}</span></div>
+        <div class="rp-row"><span class="k">You pay</span><span class="v">${NGN(perMonth)} &times; ${term.m}</span></div>
+        <div class="rp-row"><span class="k">First payment</span><span class="v">In 30 days</span></div>
+        <div class="rp-row"><span class="k">Workshop</span><span class="v">Midas ${shop}</span></div>
+      </div>
+      <div class="rp-journey">
+        <h4>This is the first rung</h4>
+        <p>Pay these ${term.m} instalments on time and your limit moves. Every repair you finance with us builds a record the banks can read.</p>
+        <div class="rp-ladder">
+          <div class="rp-rung on">Now<span class="a">${NGNs(total)}</span></div>
+          <div class="rp-rung">Next<span class="a">${NGNs(nextLimit)}</span></div>
+          <div class="rp-rung">Then<span class="a">A car</span></div>
+        </div>
+      </div>
+      <div style="margin-top:18px;text-align:center">
+        <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I just booked a '+job.nm+' repair. ')}" target="_blank" rel="noopener">Message the workshop</a>
+        <div style="margin-top:12px"><a href="#/repair" onclick="rpRestart()" class="tiny muted">Start another repair</a></div>
+      </div>`;
+    return;
+  }
+
+  const head = P ? `
+    <div class="rp-partner"><span class="pdot"></span><span>Continued from <b>${P.nm}</b> &middot; identity already verified</span></div>
+    <div class="rp-hero">
+      <div class="rp-eyebrow">Midas repair finance</div>
+      <h1>${P.user==='there'?'Fix it now, pay over time.':'Hello '+P.user+'. Fix it now, pay over time.'}</h1>
+      <p>${P.id==='easycash'?'Your '+P.nm+' account is verified, so there is nothing to fill in.':'Checked in at '+P.nm+'. Nothing to fill in.'} Pick what is wrong and we will book it.</p>
+      <div class="rp-appr">
+        <div><div class="amt">${NGN(P.limit)}</div><div class="lbl">Pre-approved, available today</div></div>
+      </div>
+    </div>`
+  : `<div class="rp-hero">
+      <div class="rp-eyebrow">Midas repair finance</div>
+      <h1>Fix the car now. Pay over three months.</h1>
+      <p>No interest. No deposit. Approved in about a minute, at a Midas workshop near you.</p>
+    </div>`;
+
+  root.innerHTML = head + `
+    <div class="rp-step">1 &middot; What needs fixing?</div>
+    <div class="rp-grid">
+      ${RP_JOBS.map(j=>`
+        <button class="rp-job ${R.job===j.k?'sel':''}" onclick="rpPick('${j.k}')">
+          <span class="ic">${j.ic}</span>
+          <span><span class="nm">${j.nm}</span></span>
+          <span class="pr">from ${NGNs(j.p)}</span>
+        </button>`).join('')}
+    </div>
+
+    ${job?`
+    <div id="rpStep2"></div>
+    <div class="rp-step">2 &middot; Which car?</div>
+    <div class="rp-car">
+      ${RP_CARS.map(c=>`
+        <button class="rp-cc ${R.car===c.k?'sel':''}" onclick="rpCar('${c.k}')">
+          ${carSVG? '<div style="height:62px;display:grid;place-items:center;background:var(--surface-2);border-radius:8px">'+carSVG(c.k==='sienna'?'van':(c.k==='highl'||c.k==='crv'?'suv':'sedan'))+'</div>' : '<div style="height:62px;background:var(--surface-2);border-radius:8px"></div>'}
+          <div class="nm">${c.nm}</div><div class="yr">${c.yr}</div>
+        </button>`).join('')}
+    </div>`:''}
+
+    ${job&&car?`
+    <div id="rpStep3"></div>
+    <div class="rp-step">3 &middot; Your plan</div>
+    <div class="rp-sum">
+      <div class="rp-big">
+        <div class="n">${NGN(perMonth)}</div>
+        <div class="s">per month for ${term.m} months &middot; ${term.r===0?'0% interest':'1.5% a month'}</div>
+      </div>
+      <div class="rp-terms">
+        ${RP_TERMS.map(t=>{const tot=Math.round(job.p*(1+t.r*t.m));return `
+          <button class="rp-term ${R.term===t.m?'sel':''}" onclick="rpTerm(${t.m})">
+            <div class="m">${t.m} mo</div><div class="p">${NGNs(Math.round(tot/t.m))}</div>
+          </button>`}).join('')}
+      </div>
+      <div style="margin-top:14px">
+        <div class="rp-row"><span class="k">${job.nm} &middot; ${car.nm}</span><span class="v">${NGN(job.p)}</span></div>
+        <div class="rp-row"><span class="k">Interest</span><span class="v">${term.r===0?'₦0':NGN(total-job.p)}</span></div>
+        <div class="rp-row"><span class="k">Deposit today</span><span class="v">₦0</span></div>
+        <div class="rp-row"><span class="k">Total</span><span class="v">${NGN(total)}</span></div>
+      </div>
+      <p class="tiny muted" style="margin-top:12px">Genuine parts, 12-month warranty on the work, fitted at a Midas workshop. ${P?P.wallet:'Repayments by card or transfer.'}</p>
+    </div>`:''}
+
+    <div style="margin-top:22px;padding:14px;background:var(--surface-2);border-radius:14px">
+      <div class="tiny" style="font-weight:600;margin-bottom:4px">Priced by the panel, not by us</div>
+      <div class="tiny muted">Eight lenders see the same file and the cheapest one wins.</div>
+      <div class="rp-banks">
+        <img src="brand/banks/access.svg" alt=""><img src="brand/banks/stanbic.png" alt=""><img src="brand/banks/zenith.png" alt=""><img src="brand/banks/fidelity.svg" alt=""><img src="brand/banks/jaiz.svg" alt=""><img src="brand/banks/wema.png" alt="">
+      </div>
+    </div>`;
+
+  const cta=document.createElement('div');
+  cta.className='rp-cta';
+  cta.innerHTML = (job&&car)
+    ? `<div class="inr"><div class="mini">${NGN(perMonth)}<br>a month</div><button class="btn btn-a" onclick="rpAccept()">Book it &rarr;</button></div>`
+    : `<div class="inr"><div class="mini">${job?'Now pick your car':'Pick what needs fixing'}</div><button class="btn btn-a" disabled style="opacity:.4">Book it &rarr;</button></div>`;
+  document.body.appendChild(cta);
+}
+
+const VIEWS={repair:renderRepair,market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},insurance:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 const VIEW_OF={signup:'login'};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
@@ -3308,7 +3548,13 @@ function route(){
   const node=$('#v-'+(VIEW_OF[page]||page)); if(node) node.classList.add('on');
   document.querySelectorAll('#tnav a').forEach(a=>a.classList.toggle('on',a.dataset.nav===(VIEW_OF[page]||page)));
   const fab=document.getElementById('koboFab');
-  if(fab){ fab.hidden = (page==='chat'); const km=document.getElementById('koboMark'); if(km && !km.innerHTML) km.innerHTML=koboSVG(30); }
+  if(fab){ fab.hidden = (page==='chat'||page==='repair'); const km=document.getElementById('koboMark'); if(km && !km.innerHTML) km.innerHTML=koboSVG(30); }
+  /* the repair flow owns the bottom of the screen; drop its bar on the way out */
+  if(page!=='repair'){ const b=document.querySelector('.rp-cta'); if(b) b.remove(); }
+  /* every arrival at /repair starts clean — a demo should never open on
+     somebody else's finished approval */
+  else { S.rp={job:null,car:null,term:3,done:false}; }
+  document.body.classList.toggle('rp-embed', page==='repair' && !!rpPartner());
   try{ VIEWS[page](); }catch(e){ console.error(e); }
   initReveal();
   updateCountryUI();
