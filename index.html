@@ -699,7 +699,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
     </div>
     <a href="#/halal" class="tag a" style="margin-left:12px;text-decoration:none;padding:7px 12px;font-size:12.5px">&#9770; Non-interest (halal) option available</a>
     <div class="veh-grid" id="vehGrid"></div>
-    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.</p>
+    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude 7.5% VAT.</p>
   </div>
 
   <div class="wrap sec" style="padding-top:26px">
@@ -1475,34 +1475,36 @@ function balanceAt(P, annualRate, n, m){
 }
 
 /* ---------- VEHICLES (Auto OS certified) ---------- */
-/* Live stock 28/09/26 - NIG STOCK REPORT (Power BI): 353 vehicles, 28 models. Prices from landed cost x1.18; models without cost priced to market. */
+/* Live stock 28/09/26 - NIG STOCK REPORT (Power BI): 353 vehicles, 28 models.
+   Prices: entry-trim retail, ex-VAT, from dealer lists - Hyundai 03/09/26, Honda 01/05/26,
+   Bestune 27/08/26, MG 07/10/26. Nissan, Ashok Leyland, MG RX8, Bestune T77 Pro not on those lists. */
 const VEHICLES = [
-  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:22700000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/creta-1.jpg', tag:'Most loved SUV', stock:84, imgs:['cars/g/creta-1.jpg','cars/g/creta-2.jpg','cars/g/creta-3.jpg']},
-  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:30000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx5-1.jpg', tag:'Luxury 1.5T', stock:44, imgs:['cars/g/rx5-1.jpg','cars/g/rx5-2.jpg','cars/g/rx5-3.jpg']},
-  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:13700000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandi10-1.jpg', tag:'The starter car', stock:33, imgs:['cars/g/grandi10-1.jpg','cars/g/grandi10-2.jpg','cars/g/grandi10-3.jpg']},
-  {id:'V-2004', year:2026, make:'MG', model:'T60', body:'pickup', price:36500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/t60-1.jpg', tag:'Double cab 4WD', stock:32, imgs:['cars/g/t60-1.jpg','cars/g/t60-2.jpg','cars/g/t60-3.jpg']},
-  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:28500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandcreta-1.jpg', tag:'7 seats', stock:22, imgs:['cars/g/grandcreta-1.jpg','cars/g/grandcreta-2.jpg','cars/g/grandcreta-3.jpg']},
-  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:38500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/santafe-1.jpg', tag:'Family flagship', stock:22, imgs:['cars/g/santafe-1.jpg','cars/g/santafe-2.jpg','cars/g/santafe-3.jpg']},
+  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:38000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/creta-1.jpg', tag:'Most loved SUV', stock:84, imgs:['cars/g/creta-1.jpg','cars/g/creta-2.jpg','cars/g/creta-3.jpg']},
+  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:39000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx5-1.jpg', tag:'Luxury 1.5T', stock:44, imgs:['cars/g/rx5-1.jpg','cars/g/rx5-2.jpg','cars/g/rx5-3.jpg']},
+  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:26000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandi10-1.jpg', tag:'The starter car', stock:33, imgs:['cars/g/grandi10-1.jpg','cars/g/grandi10-2.jpg','cars/g/grandi10-3.jpg']},
+  {id:'V-2004', year:2026, make:'MG', model:'T60', body:'pickup', price:37000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/t60-1.jpg', tag:'Double cab 4WD', stock:32, imgs:['cars/g/t60-1.jpg','cars/g/t60-2.jpg','cars/g/t60-3.jpg']},
+  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:47000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandcreta-1.jpg', tag:'7 seats', stock:22, imgs:['cars/g/grandcreta-1.jpg','cars/g/grandcreta-2.jpg','cars/g/grandcreta-3.jpg']},
+  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:77000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/santafe-1.jpg', tag:'Family flagship', stock:22, imgs:['cars/g/santafe-1.jpg','cars/g/santafe-2.jpg','cars/g/santafe-3.jpg']},
   {id:'V-2007', year:2026, make:'Nissan', model:'Navara', body:'pickup', price:31400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/navara-1.jpg', tag:'Workhorse 4WD', stock:22, imgs:['cars/g/navara-1.jpg','cars/g/navara-2.jpg','cars/g/navara-3.jpg']},
   {id:'V-2008', year:2026, make:'Nissan', model:'Urvan NV350', body:'van', price:43900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/urvan-1.jpg', tag:'18-seat business', stock:15, imgs:['cars/g/urvan-1.jpg','cars/g/urvan-2.jpg','cars/g/urvan-3.jpg']},
-  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:48100000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', tag:'Executive compact', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg']},
-  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:16500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg']},
+  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:41500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', tag:'LX 1.5', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg']},
+  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:27000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg']},
   {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-1.jpg', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg']},
-  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:75200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg']},
-  {id:'V-2013', year:2026, make:'Hyundai', model:'Accent', body:'sedan', price:17500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/accent-1.jpg', tag:'Elegance', stock:6, imgs:['cars/g/accent-1.jpg','cars/g/accent-2.jpg','cars/g/accent-3.jpg']},
-  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:75600000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', tag:'New EX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg']},
-  {id:'V-2015', year:2026, make:'Hyundai', model:'Staria', body:'van', price:42500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/staria-1.jpg', tag:'Luxury 3.5', stock:4, imgs:['cars/g/staria-1.jpg','cars/g/staria-2.jpg','cars/g/staria-3.jpg']},
-  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:55000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/palisade-1.jpg', tag:'Calligraphy 2.5T', stock:4, imgs:['cars/g/palisade-1.jpg','cars/g/palisade-2.jpg','cars/g/palisade-3.jpg']},
-  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:49800000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/tucson-1.jpg', tag:'Evolution GLS', stock:4, imgs:['cars/g/tucson-1.jpg','cars/g/tucson-2.jpg','cars/g/tucson-3.jpg']},
-  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:45400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx9-1.jpg', tag:'Luxury 2.0T', stock:3, imgs:['cars/g/rx9-1.jpg','cars/g/rx9-2.jpg','cars/g/rx9-3.jpg']},
-  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:32000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg7-1.jpg', tag:'2.0T Luxury', stock:2, imgs:['cars/g/mg7-1.jpg','cars/g/mg7-2.jpg','cars/g/mg7-3.jpg']},
+  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:112000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg']},
+  {id:'V-2013', year:2026, make:'Hyundai', model:'Accent', body:'sedan', price:35500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/accent-1.jpg', tag:'Elegance', stock:6, imgs:['cars/g/accent-1.jpg','cars/g/accent-2.jpg','cars/g/accent-3.jpg']},
+  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:71500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', tag:'LX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg']},
+  {id:'V-2015', year:2026, make:'Hyundai', model:'Staria', body:'van', price:67000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/staria-1.jpg', tag:'Luxury 3.5', stock:4, imgs:['cars/g/staria-1.jpg','cars/g/staria-2.jpg','cars/g/staria-3.jpg']},
+  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:103000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/palisade-1.jpg', tag:'Limited 2.5T', stock:4, imgs:['cars/g/palisade-1.jpg','cars/g/palisade-2.jpg','cars/g/palisade-3.jpg']},
+  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/tucson-1.jpg', tag:'Elegance 2.0', stock:4, imgs:['cars/g/tucson-1.jpg','cars/g/tucson-2.jpg','cars/g/tucson-3.jpg']},
+  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:64000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx9-1.jpg', tag:'Luxury 2.0T', stock:3, imgs:['cars/g/rx9-1.jpg','cars/g/rx9-2.jpg','cars/g/rx9-3.jpg']},
+  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg7-1.jpg', tag:'2.0T Luxury', stock:2, imgs:['cars/g/mg7-1.jpg','cars/g/mg7-2.jpg','cars/g/mg7-3.jpg']},
   {id:'V-2020', year:2026, make:'Ashok Leyland', model:'Partner 17ft', body:'truck', price:36200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alpartner-1.jpg', tag:'CBC 3.0L', stock:1, imgs:['cars/g/alpartner-1.jpg']},
   {id:'V-2021', year:2026, make:'Ashok Leyland', model:'Phoenix', body:'truck', price:33600000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alphoenix-1.jpg', tag:'CBC 1.5L', stock:1, imgs:['cars/g/alphoenix-1.jpg','cars/g/alphoenix-2.jpg','cars/g/alphoenix-3.jpg']},
-  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:34000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/s6ev-1.jpg', tag:'Electric 77kWh', stock:1, imgs:['cars/g/s6ev-1.jpg','cars/g/s6ev-2.jpg','cars/g/s6ev-3.jpg']},
-  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:45000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/cyberster-1.jpg', tag:'Electric roadster', stock:1, imgs:['cars/g/cyberster-1.jpg','cars/g/cyberster-2.jpg','cars/g/cyberster-3.jpg']},
+  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:56000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/s6ev-1.jpg', tag:'Electric 77kWh', stock:1, imgs:['cars/g/s6ev-1.jpg','cars/g/s6ev-2.jpg','cars/g/s6ev-3.jpg']},
+  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:95000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/cyberster-1.jpg', tag:'Electric roadster', stock:1, imgs:['cars/g/cyberster-1.jpg','cars/g/cyberster-2.jpg','cars/g/cyberster-3.jpg']},
   {id:'V-2024', year:2026, make:'MG', model:'RX8', body:'suv', price:39400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/rx8-1.jpg', tag:'Luxury 2.0T', stock:1, imgs:['cars/g/rx8-1.jpg','cars/g/rx8-2.jpg','cars/g/rx8-3.jpg']},
-  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:24000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/e311-1.jpg', tag:'Electric 450km', stock:1, imgs:['cars/g/e311-1.jpg','cars/g/e311-2.jpg','cars/g/e311-3.jpg']},
-  {id:'V-2026', year:2026, make:'Bestune', model:'T90', body:'suv', price:21000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t90-1.jpg', tag:'CNG 1.5T', stock:1, imgs:['cars/g/t90-1.jpg','cars/g/t90-2.jpg','cars/g/t90-3.jpg']},
+  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:35000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/e311-1.jpg', tag:'Electric 450km', stock:1, imgs:['cars/g/e311-1.jpg','cars/g/e311-2.jpg','cars/g/e311-3.jpg']},
+  {id:'V-2026', year:2026, make:'Bestune', model:'T90', body:'suv', price:43000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t90-1.jpg', tag:'1.5T Deluxe', stock:1, imgs:['cars/g/t90-1.jpg','cars/g/t90-2.jpg','cars/g/t90-3.jpg']},
   {id:'V-2027', year:2026, make:'Bestune', model:'T77 Pro', body:'suv', price:19500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t77-1.jpg', tag:'CNG Deluxe', stock:1, imgs:['cars/g/t77-1.jpg','cars/g/t77-2.jpg','cars/g/t77-3.jpg']},
   {id:'V-2028', year:2026, make:'Nissan', model:'X-Trail', body:'suv', price:39500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/xtrail-1.jpg', tag:'Tekna 4WD', stock:1, imgs:['cars/g/xtrail-1.jpg','cars/g/xtrail-2.jpg','cars/g/xtrail-3.jpg']}
 ];
@@ -1887,7 +1889,7 @@ function renderMarket(){
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
           <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
-          <div class="veh-full">Full price ${NGNs(v.price)} · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
+          <div class="veh-full">Full price ${NGNs(v.price)}* · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
             <button class="btn btn-a btn-sm" style="flex:2" onclick="event.stopPropagation();startApply('${v.id}')">Apply now</button>
             <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
@@ -2036,7 +2038,7 @@ function renderDeal(){
     <div style="font-family:var(--display);font-size:2.3rem;font-weight:650;letter-spacing:-.025em;line-height:1">${NGN(best.monthly)}<span style="font-size:1rem;color:var(--ink-faint);font-weight:400"> /month</span></div>
     <p class="tiny muted" style="margin-top:7px">${S.halal?pct(best.rate*100)+' fixed profit margin · non-interest bank':pct(best.rate*100)+' p.a. · best of '+LENDERS.length+' banks today'} · answer in ${best.hours}h</p>`
     : `
-    <div style="font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em">${NGN(v.price)}</div>
+    <div style="font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em">${NGN(v.price)}*</div>
     <p class="tiny muted" style="margin-top:6px">Showroom price. Same for everybody.</p>`}
     <hr class="sep">
     <label class="tiny" style="font-weight:550">Equity contribution (down payment) · <b class="mono">${NGN(v.price*eq)}</b> (${pct(eq*100,0)})</label>
@@ -2047,7 +2049,7 @@ function renderDeal(){
       <input type="checkbox" ${S.halal?'checked':''} onchange="S.halal=this.checked;save();renderDeal()">
       <span>&#9770; Non-interest (halal) offers only · <a href="#/halal" style="color:var(--accent)" onclick="event.stopPropagation()">how it works</a></span></label>
     <hr class="sep">
-    <div class="kv"><span class="k">Showroom price</span><span class="v">${NGN(v.price)}</span></div>
+    <div class="kv"><span class="k">Showroom price</span><span class="v">${NGN(v.price)}*</span></div>
     <div class="kv"><span class="k">Equity contribution (${pct(eq*100,0)})</span><span class="v">${NGN(v.price*eq)}</span></div>
     <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(loan)}</span></div>
     ${best ? `
@@ -2057,6 +2059,7 @@ function renderDeal(){
     <div class="kv"><span class="k">Comprehensive insurance (${ten} mo)</span><span class="v">${NGN(best.insurance)}</span></div>
     <div class="kv"><span class="k"><b>Total repayment, all-in</b></span><span class="v">${NGN(best.allIn)}</span></div>` : ''}
     <div class="kv"><span class="k">Needs net monthly income of</span><span class="v">~${NGNs(Math.ceil(earn/50000)*50000)}/mo</span></div>
+    <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT.</p>
     ${best ? `
     <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="location.hash='#/apply'">Apply now →</button>
     <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
@@ -2814,11 +2817,11 @@ function renderLocalStatus(v){
         </div>
         <hr class="sep">
         <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${v.year} ${v.make} ${v.model} · ${v.id}</span></div>
-        <div class="kv"><span class="k">Certified price</span><span class="v">${NGN(v.price)}</span></div>
+        <div class="kv"><span class="k">Certified price</span><span class="v">${NGN(v.price)}*</span></div>
         <div class="kv"><span class="k">Equity contribution (${pct(S.equityPct*100,0)})</span><span class="v">${NGN(o.equity)}</span></div>
         <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(o.loan)} · ${o.tenor} months</span></div>
         <div class="kv"><span class="k">Financing bank</span><span class="v" style="font-family:var(--body)">${bankName(o.lender)}</span></div>
-        <p class="tiny muted" style="margin-top:12px">Present this PFI number in any conversation with the bank or the showroom. Your down payment is payable only to the account named on the bank's offer letter.</p>
+        <p class="tiny muted" style="margin-top:12px">Present this PFI number in any conversation with the bank or the showroom. Your down payment is payable only to the account named on the bank's offer letter.<br>* Prices exclude 7.5% VAT.</p>
       </div>
       </div>
       <div class="card pad">
