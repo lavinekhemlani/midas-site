@@ -611,6 +611,29 @@ body.rp-embed .rp-partner{margin-top:0}
 .gal-thumbs img{width:88px;height:58px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent;opacity:.72;transition:opacity .15s,border-color .15s}
 .gal-thumbs img.on{border-color:var(--accent);opacity:1}
 .gal-count{position:absolute;right:12px;bottom:12px;background:rgba(11,42,74,.82);color:#fff;border-radius:999px;padding:4px 12px;font-size:12px}
+/* loan calculator (#/calculator) */
+.calc-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:18px;align-items:start}
+@media(max-width:860px){.calc-grid{grid-template-columns:1fr}}
+.cb-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:560px){.cb-row{grid-template-columns:1fr 1fr}}
+.cb{border:1px solid var(--line-2);border-radius:12px;background:var(--surface);padding:12px 8px 10px;display:flex;flex-direction:column;align-items:center;gap:7px;cursor:pointer;text-align:center;font:inherit;color:var(--ink);transition:.14s}
+.cb img{height:26px;max-width:84%;object-fit:contain}
+.cb .cb-n{font-size:13px;font-weight:550;line-height:1.2}
+.cb .cb-r{font-size:11.5px;color:var(--ink-soft);line-height:1.3}
+.cb:hover{border-color:var(--accent)}
+.cb.on{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px rgba(200,134,42,.12)}
+.calc-big{font-family:var(--display);font-size:2.4rem;font-weight:650;letter-spacing:-.025em;line-height:1;color:var(--ink)}
+.calc-big em{font-style:normal;font-size:1rem;color:var(--ink-faint);font-weight:400;letter-spacing:0}
+.calc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 4px}
+@media(max-width:560px){.calc-stats{grid-template-columns:1fr 1fr}}
+.calc-stats .statcard{padding:14px 10px}
+.calc-stats .sv{font-size:1.25rem}
+.calc-tbl{max-height:380px;overflow:auto;border:1px solid var(--line);border-radius:12px;-webkit-overflow-scrolling:touch}
+.calc-tbl .tb th{position:sticky;top:0;background:var(--surface);padding-top:10px;z-index:1}
+.calc-tbl .tb th,.calc-tbl .tb td{padding-left:12px;padding-right:12px;white-space:nowrap}
+.calc-tbl .tb tr:last-child td{border-bottom:0}
+.calc-tbl .r{text-align:right}
+.calc-win td{background:var(--accent-soft)}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -628,7 +651,7 @@ body.rp-embed .rp-partner{margin-top:0}
       <a href="#/market" data-nav="market">Cars</a>
       <a href="#/market" data-nav="used" onclick="gotoSeg('used');return false;">Used cars</a>
       <a href="#/chat" data-nav="chat">Ask Midas</a>
-      <a href="#/halal" data-nav="halal">Halal finance</a><a href="#/insurance" data-nav="insurance">Insurance</a>
+      <a href="#/halal" data-nav="halal">Halal finance</a><a href="#/insurance" data-nav="insurance">Insurance</a><a href="#/calculator" data-nav="calculator">Calculator</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/status" data-nav="status">My application</a>
       <a href="#/fleet" data-nav="fleet">For corporates</a>
@@ -707,6 +730,7 @@ body.rp-embed .rp-partner{margin-top:0}
         <div class="veh-body"><h4 style="margin:0">Pay the bank, collect keys</h4><p class="tiny muted" style="margin:4px 0 0">Your down payment goes to the bank, not to us. Then you drive home.</p></div>
       </div>
     </div>
+    <p class="muted rev" style="margin-top:22px;font-size:14.5px">Want the numbers before you choose? <a href="#/calculator" style="color:var(--accent);font-weight:550">Open the loan calculator &rarr;</a></p>
   </div>
 
   <div class="wrap" style="padding-bottom:8px" id="inv">
@@ -1085,6 +1109,82 @@ body.rp-embed .rp-partner{margin-top:0}
 <section class="view" id="v-repair">
   <div id="rpRoot" class="rp"></div>
 </section>
+<!-- ===================== LOAN CALCULATOR ===================== -->
+
+<section class="view" id="v-calculator">
+  <div class="wrap" style="padding-top:38px;max-width:1040px;padding-bottom:48px">
+    <div class="eyebrow">Loan calculator</div>
+    <h2 style="margin:10px 0 12px">Know your monthly before you apply.</h2>
+    <p class="muted" style="max-width:62ch">Pick a bank, a car and a down payment. See the monthly repayment, the interest you will pay over the term and every fee the bank adds &mdash; month by month, with nothing hidden.</p>
+
+    <div class="calc-grid" style="margin-top:26px">
+      <div class="card pad rev">
+        <div class="tiny muted" style="font-weight:550;margin-bottom:8px">Bank</div>
+        <div class="cb-row" id="cbRow"></div>
+        <p class="tiny muted" id="cbNote" style="margin:0 0 18px"></p>
+
+        <div class="field"><label>Car</label>
+          <select class="inp" id="ccCar" onchange="calcSet('car',this.value)"></select></div>
+        <div class="field"><label>Price <span class="faint" id="ccCur"></span></label>
+          <input class="inp mono" id="ccPrice" type="number" min="0" step="1000" inputmode="numeric" oninput="calcSet('price',this.value)"></div>
+
+        <label class="tiny" style="font-weight:550">Down payment &middot; <b class="mono" id="ccEqL"></b></label>
+        <input type="range" class="rng" id="ccEq" min="10" max="70" step="1" oninput="calcSet('eq',this.value)">
+        <label class="tiny" style="font-weight:550;display:block;margin-top:12px">Paying back over &middot; <b class="mono" id="ccTenL"></b></label>
+        <input type="range" class="rng" id="ccTen" min="12" max="60" step="6" oninput="calcSet('ten',this.value)">
+
+        <div class="f2" style="margin-top:18px">
+          <div class="field" style="margin-bottom:0"><label>Interest rate, % per year</label>
+            <input class="inp mono" id="ccRate" type="number" min="0" max="80" step="0.5" inputmode="decimal" oninput="calcSet('rate',this.value)"></div>
+          <div class="field" style="margin-bottom:0"><label>How interest is charged</label>
+            <div class="seg" id="ccMethod" style="display:flex;width:100%">
+              <button type="button" data-m="reducing" onclick="calcSet('method','reducing')" style="flex:1">Reducing balance</button>
+              <button type="button" data-m="flat" onclick="calcSet('method','flat')" style="flex:1">Flat rate</button></div></div>
+        </div>
+        <p class="tiny faint" id="ccMethodNote" style="margin-top:8px"></p>
+        <label style="display:flex;gap:8px;align-items:center;margin-top:12px;cursor:pointer;font-size:13px">
+          <input type="checkbox" id="ccIns" checked onchange="calcSet('ins',this.checked)">
+          <span>Include comprehensive insurance and the tracker in the total cost</span></label>
+      </div>
+
+      <div>
+        <div class="card pad rev" id="ccOut"></div>
+        <div class="card pad rev" style="margin-top:16px">
+          <div class="row" style="justify-content:space-between;gap:10px;flex-wrap:wrap">
+            <b style="font-size:15px">Same car, bank by bank</b>
+            <span class="tiny faint">your down payment and term</span></div>
+          <div id="ccCompare" style="margin-top:12px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card pad" style="margin-top:18px">
+      <div class="row" style="justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+        <div><b style="font-size:15px">Repayment schedule</b><div class="tiny muted" id="ccSchedSub" style="margin-top:2px"></div></div>
+        <div class="seg"><button type="button" id="ccByYear" onclick="calcSet('monthly',false)">By year</button><button type="button" id="ccByMonth" onclick="calcSet('monthly',true)">Every month</button></div>
+      </div>
+      <div class="calc-tbl" id="ccSched"></div>
+    </div>
+
+    <div class="g2" style="margin-top:18px">
+      <div class="card pad">
+        <b style="font-size:15px">Reducing balance or flat rate?</b>
+        <p class="tiny muted" style="margin:8px 0 0">Banks charge interest on a <b>reducing balance</b>: each month you pay interest only on what you still owe, so the interest share of every repayment falls as the loan shrinks. A <b>flat rate</b> charges interest on the full amount for the whole term. A flat 15% costs about the same as 26% on a reducing balance &mdash; always ask which one you are being quoted.</p>
+      </div>
+      <div class="card pad">
+        <b style="font-size:15px">What the bank adds on</b>
+        <p class="tiny muted" style="margin:8px 0 0">A one-off <b>management fee</b> of about 1% of the loan, a <b>GPS tracker</b> fitted before delivery, and <b>comprehensive insurance</b> for the full term, which the bank requires because the car is its security. The calculator shows all three so there is no surprise on top.</p>
+      </div>
+    </div>
+
+    <p class="tiny faint" style="margin-top:16px">Indicative only. Access Bank and Stanbic IBTC appear as worked examples at typical rates; the final rate, fees and insurance premium are set by the bank in its own offer letter after a credit assessment. Prices exclude 7.5% VAT.</p>
+    <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
+      <a class="btn btn-a" href="#/apply" onclick="calcApply();return false">Apply with these numbers &rarr;</a>
+      <a class="btn btn-wa" id="ccWa" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp these numbers</a>
+    </div>
+  </div>
+</section>
+
 <section class="view" id="v-insurance">
   <div class="wrap" style="padding-top:38px;max-width:900px;padding-bottom:40px">
     <div class="eyebrow">Auto insurance</div>
@@ -3537,7 +3637,158 @@ function renderRepair(){
   document.body.appendChild(cta);
 }
 
-const VIEWS={repair:renderRepair,market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},insurance:()=>{},country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+/* ---------- LOAN CALCULATOR (customer-facing, #/calculator) ----------
+   Two Nigerian banks as worked examples, plus "another bank" so a buyer can
+   type the rate from any offer letter. Amortisation reuses pmt(); the fee,
+   tracker and insurance assumptions come from the asset-class config so the
+   calculator agrees with the car page and the offers desk. */
+const CALC_BANKS=[
+  {id:'access',  n:'Access Bank',  g:'brand/banks/access.svg',  product:'Access Auto Loan',            rate:26, minEq:.10, maxTen:60, fee:.01,
+   note:'Typical terms: 10% down, up to 60 months, interest on a reducing balance. A salary account with Access usually earns a lower rate.'},
+  {id:'stanbic', n:'Stanbic IBTC', g:'brand/banks/stanbic.png', product:'Vehicle &amp; Asset Finance', rate:28, minEq:.20, maxTen:60, fee:.01,
+   note:'Typical terms: 20% down, up to 60 months, interest on a reducing balance. Finances brand-new and certified used cars.'},
+  {id:'other',   n:'Another bank', g:null,                      product:'Your own numbers',             rate:30, minEq:.10, maxTen:60, fee:.01,
+   note:'Type the rate and terms from any bank’s offer and see what it really costs over the term.'}
+];
+const CALC={bank:'access', car:'', price:0, eq:.10, ten:60, rate:26, method:'reducing', ins:true, monthly:false};
+function calcBank(){ return CALC_BANKS.find(b=>b.id===CALC.bank)||CALC_BANKS[0]; }
+/* Month-by-month table. Reducing balance is the ordinary annuity (pmt);
+   flat rate charges interest on the opening balance every month. */
+function calcSchedule(P, ratePct, n, method){
+  const r=ratePct/100/12, rows=[]; let bal=P;
+  const M = method==='flat' ? P/n + P*r : pmt(P, ratePct/100, n);
+  for(let m=1;m<=n;m++){
+    const int = method==='flat' ? P*r : bal*r;
+    const prin = method==='flat' ? P/n : M-int;
+    bal=Math.max(0,bal-prin);
+    rows.push({m, pay:M, int, prin, bal});
+  }
+  return {M, rows, interest:rows.reduce((s,x)=>s+x.int,0)};
+}
+function calcQuote(price, eq, ten, ratePct, method, ins, bank){
+  const deposit=price*eq, loan=price-deposit;
+  const s=calcSchedule(loan, ratePct, ten, method);
+  const mgmt=loan*(bank?bank.fee:A.mgmtFee), tracker=ins?A.trackerFee:0;
+  const insurance=ins?price*A.insurancePA*(ten/12):0;
+  const toBank=s.M*ten+mgmt;
+  return {deposit, loan, monthly:s.M, interest:s.interest, mgmt, tracker, insurance, toBank, allIn:deposit+toBank+tracker+insurance, rows:s.rows};
+}
+function calcSet(k,v){
+  let sync=true;
+  if(k==='bank'){ const b=CALC_BANKS.find(x=>x.id===v); if(!b) return; CALC.bank=v; CALC.rate=b.rate;
+    if(CALC.eq<b.minEq) CALC.eq=b.minEq; if(CALC.ten>b.maxTen) CALC.ten=b.maxTen; }
+  else if(k==='car'){ CALC.car=v; const c=VEHICLES.find(x=>x.id===v); if(c) CALC.price=c.price; }
+  else if(k==='price'){ const n=parseFloat(v); CALC.price = isFinite(n)&&n>0 ? n/curC().rate : 0; CALC.car=''; const s=$('#ccCar'); if(s) s.value=''; sync=false; }
+  else if(k==='eq'){ CALC.eq=clamp((parseFloat(v)||10)/100,.10,.70); }
+  else if(k==='ten'){ CALC.ten=clamp(parseInt(v,10)||60,12,60); }
+  else if(k==='rate'){ const n=parseFloat(v); if(!(isFinite(n)&&n>=0)) return; CALC.rate=Math.min(80,n); sync=false; }
+  else if(k==='method'){ CALC.method=v==='flat'?'flat':'reducing'; }
+  else if(k==='ins'){ CALC.ins=!!v; }
+  else if(k==='monthly'){ CALC.monthly=!!v; }
+  calcPaint(sync);
+}
+function renderCalc(){
+  const sel=$('#ccCar'); if(!sel) return;
+  sel.innerHTML='<option value="">Type a price below</option>'+VEHICLES.map(v=>`<option value="${v.id}">${v.year} ${v.make} ${v.model} — ${NGNs(v.price)}</option>`).join('');
+  /* open on the car the buyer was just looking at */
+  if(!CALC.price){ const v=vehicle()||VEHICLES[0]; if(v){ CALC.car=v.id; CALC.price=v.price; } }
+  calcPaint(true);
+}
+function calcPaint(sync){
+  if(!$("#ccOut")) return;
+  const b=calcBank();
+  if(sync){
+    const row=$('#cbRow'); if(row) row.innerHTML=CALC_BANKS.map(x=>`
+      <button type="button" class="cb${x.id===CALC.bank?' on':''}" onclick="calcSet('bank','${x.id}')">
+        ${x.g?`<img src="${x.g}" alt="${x.n}">`:`<span style="width:26px;height:26px;border-radius:50%;border:1.5px dashed var(--line-2);display:grid;place-items:center;font-size:16px;color:var(--ink-faint);line-height:1">+</span>`}
+        <span class="cb-n">${x.n}</span><span class="cb-r">${x.id==='other'?'any rate you are quoted':x.rate+'% p.a. · '+Math.round(x.minEq*100)+'% down'}</span></button>`).join('');
+    const sel=$('#ccCar'); if(sel) sel.value=CALC.car||'';
+    const p=$('#ccPrice'); if(p) p.value=CALC.price?Math.round(CALC.price*curC().rate):'';
+    const r=$('#ccRate'); if(r) r.value=CALC.rate;
+    const e=$('#ccEq'); if(e){ e.min=Math.round(b.minEq*100); e.value=Math.round(CALC.eq*100); }
+    const t=$('#ccTen'); if(t){ t.max=b.maxTen; t.value=CALC.ten; }
+    const ins=$('#ccIns'); if(ins) ins.checked=CALC.ins;
+  }
+  const note=$('#cbNote'); if(note) note.innerHTML=`<b>${b.product}</b> — ${b.note}`;
+  const cur=$('#ccCur'); if(cur) cur.textContent='('+curC().sym.trim()+')';
+  $('#ccEqL').textContent=`${NGN(CALC.price*CALC.eq)} (${Math.round(CALC.eq*100)}%)`;
+  $('#ccTenL').textContent=CALC.ten+' months';
+  document.querySelectorAll('#ccMethod button').forEach(x=>x.classList.toggle('on',x.dataset.m===CALC.method));
+  $('#ccMethodNote').textContent = CALC.method==='flat'
+    ? 'Flat rate: interest is charged on the full loan every month, even as you pay it down.'
+    : 'Reducing balance: interest is charged only on what you still owe. This is how banks amortise a car loan.';
+  $('#ccByYear').classList.toggle('on',!CALC.monthly); $('#ccByMonth').classList.toggle('on',CALC.monthly);
+
+  const out=$('#ccOut');
+  if(!(CALC.price>0)){
+    out.innerHTML='<div class="warnbox">Enter the price of the car to see your numbers.</div>';
+    $('#ccCompare').innerHTML=''; $('#ccSched').innerHTML=''; $('#ccSchedSub').textContent='';
+    return;
+  }
+  const q=calcQuote(CALC.price, CALC.eq, CALC.ten, CALC.rate, CALC.method, CALC.ins, b);
+  const belowFloor = CALC.eq < b.minEq-1e-9;
+  const income=Math.ceil((q.monthly/0.45)/50000)*50000;
+  const car=VEHICLES.find(x=>x.id===CALC.car);
+  const carLabel = car ? `${car.year} ${car.make} ${car.model}` : 'Car at '+NGN(CALC.price);
+  out.innerHTML=`
+    <div class="tiny muted" style="font-weight:550;margin-bottom:6px">Monthly repayment to ${b.id==='other'?'the bank':b.n}</div>
+    <div class="calc-big">${NGN(q.monthly)} <em>/month × ${CALC.ten}</em></div>
+    <p class="tiny muted" style="margin-top:7px">${carLabel} · ${pct(CALC.rate,1)} p.a. ${CALC.method==='flat'?'flat':'reducing balance'} · ${Math.round(CALC.eq*100)}% down</p>
+    ${belowFloor?`<div class="warnbox" style="margin-top:10px">${b.n} asks for at least ${Math.round(b.minEq*100)}% down. Move the slider up or pick another bank.</div>`:''}
+    <div class="calc-stats">
+      <div class="statcard"><div class="sv">${NGNs(q.interest)}</div><div class="sk">total interest</div></div>
+      <div class="statcard"><div class="sv">${NGNs(q.allIn)}</div><div class="sk">total cost of the car</div></div>
+      <div class="statcard"><div class="sv">~${NGNs(income)}</div><div class="sk">net income needed / month</div></div>
+    </div>
+    <hr class="sep">
+    <div class="kv"><span class="k">Car price</span><span class="v">${NGN(CALC.price)}*</span></div>
+    <div class="kv"><span class="k">Down payment (${Math.round(CALC.eq*100)}%)</span><span class="v">${NGN(q.deposit)}</span></div>
+    <div class="kv"><span class="k">Amount financed</span><span class="v">${NGN(q.loan)}</span></div>
+    <div class="kv"><span class="k">Monthly repayment × ${CALC.ten}</span><span class="v">${NGN(q.monthly)}</span></div>
+    <div class="kv"><span class="k">Interest over ${CALC.ten} months</span><span class="v">${NGN(q.interest)}</span></div>
+    <div class="kv"><span class="k">Management fee (${pct(b.fee*100,0)} of loan)</span><span class="v">${NGN(q.mgmt)}</span></div>
+    ${CALC.ins?`<div class="kv"><span class="k">GPS tracker, one-off</span><span class="v">${NGN(q.tracker)}</span></div>
+    <div class="kv"><span class="k">Comprehensive insurance, ${CALC.ten} months</span><span class="v">${NGN(q.insurance)}</span></div>`:''}
+    <div class="kv"><span class="k"><b>Repaid to the bank</b></span><span class="v">${NGN(q.toBank)}</span></div>
+    <div class="kv"><span class="k"><b>Total cost of the car, all-in</b></span><span class="v">${NGN(q.allIn)}</span></div>
+    <div class="kv"><span class="k">Cost of credit (interest + fee, as % of loan)</span><span class="v">${pct((q.interest+q.mgmt)/q.loan*100,1)}</span></div>
+    <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT. Income needed assumes repayments at 45% of net pay, the panel’s usual ceiling.</p>`;
+
+  /* the two example banks side by side, each at its own typical rate */
+  const cmp=CALC_BANKS.filter(x=>x.id!=='other').map(x=>{
+    const eq=Math.max(CALC.eq,x.minEq), ten=Math.min(CALC.ten,x.maxTen);
+    const rate = x.id===CALC.bank ? CALC.rate : x.rate;
+    return {x, eq, ten, rate, q:calcQuote(CALC.price, eq, ten, rate, CALC.method, CALC.ins, x), raised:eq>CALC.eq+1e-9};
+  });
+  const bestM=Math.min(...cmp.map(c=>c.q.monthly));
+  $('#ccCompare').innerHTML=`<div class="calc-tbl" style="max-height:none"><table class="tb">
+    <thead><tr><th>Bank</th><th class="r">Rate</th><th class="r">Monthly</th><th class="r">Interest</th><th class="r">All-in</th></tr></thead>
+    <tbody>${cmp.map(c=>`<tr class="${c.q.monthly===bestM?'calc-win':''}">
+      <td><div class="row" style="gap:8px">${c.x.g?`<img src="${c.x.g}" alt="" style="height:18px;max-width:40px;object-fit:contain">`:''}<div><b>${c.x.n}</b>${c.raised?`<div class="tiny faint">needs ${Math.round(c.eq*100)}% down</div>`:''}</div></div></td>
+      <td class="r mono">${pct(c.rate,1)}</td><td class="r mono"><b>${NGN(c.q.monthly)}</b></td><td class="r mono">${NGNs(c.q.interest)}</td><td class="r mono">${NGNs(c.q.allIn)}</td></tr>`).join('')}</tbody></table></div>
+    <p class="tiny faint" style="margin-top:8px">Lowest monthly highlighted. Each bank at its typical rate; the bank you picked at the rate shown on the left. Same car, same term.</p>`;
+
+  /* schedule, by year or every month */
+  let rows;
+  if(CALC.monthly) rows=q.rows.map(r=>({label:'Month '+r.m, pay:r.pay, prin:r.prin, int:r.int, bal:r.bal}));
+  else { const yrs={}; q.rows.forEach(r=>{ const y=Math.ceil(r.m/12); const o=yrs[y]||(yrs[y]={label:'Year '+y, pay:0, prin:0, int:0, bal:0}); o.pay+=r.pay; o.prin+=r.prin; o.int+=r.int; o.bal=r.bal; }); rows=Object.values(yrs); }
+  $('#ccSchedSub').textContent=`${NGN(q.loan)} at ${pct(CALC.rate,1)} ${CALC.method==='flat'?'flat':'reducing'} over ${CALC.ten} months`;
+  $('#ccSched').innerHTML=`<table class="tb"><thead><tr><th>${CALC.monthly?'Month':'Year'}</th><th class="r">Paid</th><th class="r">Principal</th><th class="r">Interest</th><th class="r">Still owed</th></tr></thead>
+    <tbody>${rows.map(r=>`<tr><td>${r.label}</td><td class="r mono">${NGN(r.pay)}</td><td class="r mono">${NGN(r.prin)}</td><td class="r mono">${NGN(r.int)}</td><td class="r mono">${NGN(r.bal)}</td></tr>`).join('')}
+    <tr><td><b>Total</b></td><td class="r mono"><b>${NGN(q.monthly*CALC.ten)}</b></td><td class="r mono"><b>${NGN(q.loan)}</b></td><td class="r mono"><b>${NGN(q.interest)}</b></td><td class="r mono">—</td></tr></tbody></table>`;
+
+  const wa=$('#ccWa'); if(wa){
+    const msg=`Hello Amit, I used the Midas loan calculator: ${car?carLabel:'a car at '+NGN(CALC.price)}, ${Math.round(CALC.eq*100)}% down, ${CALC.ten} months at ${pct(CALC.rate,1)} with ${b.n} — about ${NGN(q.monthly)}/month. I want to apply.`;
+    wa.href='https://wa.me/2348058963692?text='+encodeURIComponent(msg);
+  }
+}
+function calcApply(){
+  if(CALC.car) S.vehicleId=CALC.car;
+  S.equityPct=clamp(CALC.eq,.10,.75); S.tenor=CALC.ten; save();
+  track('calc_apply',{bank:CALC.bank, eq:CALC.eq, ten:CALC.ten, rate:CALC.rate});
+  startApply(CALC.car||undefined);
+}
+const VIEWS={repair:renderRepair,market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},insurance:()=>{},calculator:renderCalc,country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 const VIEW_OF={signup:'login'};
 function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
