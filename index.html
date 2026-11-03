@@ -911,6 +911,12 @@ input,select,textarea{font-size:17px}
 .sl-row:last-child{border-bottom:0}.sl-row span{color:var(--ink-faint)}.sl-row b{font-weight:600;color:var(--ink);text-align:right}
 .car-sec{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--brand);margin:26px 0 12px}
 @media(max-width:640px){#carInfo{padding:18px 16px 22px!important}.car-h{font-size:1.45rem}.cstats{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+.mph-wrap{align-items:flex-start!important}
+.mph-2up{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mph-2up .mph-cc img{aspect-ratio:4/3}
+.mph-2up .mph-cc-b{display:block;padding:7px 8px 8px}
+.mph-2up .mph-cc-b b{display:block;font-size:12px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mph-2up .mph-cc-b span{font-size:14.5px}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -1012,8 +1018,7 @@ input,select,textarea{font-size:17px}
             <div class="mph-top"><span>Midas</span><span class="mph-live">Cars</span></div>
             <div class="mph-body">
               <div class="mph-search">SUV &middot; under &#8358;1.2M a month</div>
-              <div class="mph-cc"><img src="cars/g/creta-1-w800.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Hyundai Creta</b><span>&#8358;1,134,720<em>/month</em></span><i>10% down &middot; 60 months</i></div></div>
-              <div class="mph-cc"><img src="cars/g/navara-1-w800.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Nissan Navara</b><span>&#8358;937,637<em>/month</em></span></div></div>
+              <div class="mph-2up"><div class="mph-cc"><img src="cars/g/creta-1-w480.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Hyundai Creta</b><span>&#8358;1.13M<em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/navara-1-w480.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Nissan Navara</b><span>&#8358;938K<em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/grandi10-1-w480.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Grand i10</b><span>&#8358;776K<em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/tucson-1-w480.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Hyundai Tucson</b><span>&#8358;1.79M<em>/mo</em></span></div></div></div>
             </div></div></div>
         </div>
         <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Every car shows its monthly price. Brand new, with the manufacturer&rsquo;s warranty.</p></div>
