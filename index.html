@@ -364,7 +364,7 @@ body[data-page="status"] #v-status,body[data-page="account"] #v-account,body[dat
 .tl p{font-size:13px;color:var(--ink-soft)}
 
 /* ---------- consumer skin ---------- */
-:root{--naira:#0d8a45;--naira-soft:#e7f6ee;--wa:#1fae54}
+:root{--naira:#0b2a4a;--naira-soft:#e8eef6;--wa:#1fae54}
 /* In partner mode the page is living inside somebody else's app. Strip every
    trace of the website so it reads as a screen, not a destination. */
 body.rp-embed .topbar, body.rp-embed .bigfoot, body.rp-embed #ctryStrip, body.rp-embed .lgm{display:none!important}
@@ -851,6 +851,19 @@ input,select,textarea{font-size:17px}
 .calc-tbl .r{text-align:right}
 .calc-win td{background:var(--accent-soft)}
 .mk-av{display:inline-grid;place-items:center;border-radius:50%;background:var(--brand);box-shadow:0 0 0 2px rgba(200,134,42,.35);flex:none}
+.mph-wrap{aspect-ratio:auto!important;min-height:230px;position:relative;background:linear-gradient(160deg,#eef1f6,#dde4ee);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.mph{width:74%;max-width:310px;background:#0e1420;border-radius:30px 30px 0 0;padding:8px 8px 0;box-shadow:0 18px 40px rgba(11,42,74,.25);margin-top:48px}
+.mph-in{background:#fff;border-radius:23px 23px 0 0;overflow:hidden}
+.mph-top{background:var(--brand);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:13px 15px;font-family:var(--display);font-weight:600;font-size:15px}
+.mph-live{font:600 10.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:#cfdbea;display:flex;align-items:center;gap:6px}
+.mph-live i{width:7px;height:7px;border-radius:50%;background:#f0c060;box-shadow:0 0 0 3px rgba(240,192,96,.25)}
+.mph-body{padding:11px 11px 14px;display:flex;flex-direction:column;gap:7px}
+.mph-car{font-size:12.5px;color:var(--ink-soft);margin:0 2px 2px}
+.mph .offrow{border-radius:13px}
+.mph-best{background:#fff;border:2px solid var(--brand)}.mph-best .offamt{color:var(--brand)}
+.mph-row{background:var(--surface-2)}
+.mph-tag{background:var(--accent);color:#fff;font:700 10.5px/1 var(--body);letter-spacing:.08em;padding:6px 8px;border-radius:7px;margin-left:8px}
+.logo:focus{outline:none}.logo:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -864,10 +877,10 @@ input,select,textarea{font-size:17px}
       <a href="#/chat" data-nav="chat">Ask Midas</a>
       <a href="#/market" data-nav="how" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
       <a href="#/banks" data-nav="banks">For banks</a>
+      <a href="#/fleet" data-nav="fleet">For corporates</a>
       <details class="tmore"><summary>More</summary>
         <div class="tmore-m">
           <a href="#/insurance" data-nav="insurance">Insurance</a>
-          <a href="#/fleet" data-nav="fleet">For companies</a>
           <a href="#/dealers" data-nav="dealers">For dealerships</a>
           <a href="#/calculator" data-nav="calculator">Loan calculator</a>
           <a href="#/repair" data-nav="repair">Repair finance</a>
@@ -886,15 +899,15 @@ input,select,textarea{font-size:17px}
     </select>
     <a class="tlink" id="navAuth" href="#/login">Log in</a>
     <a class="btn btn-a btn-sm tapply" href="#/apply" onclick="startApply();return false;">Apply</a>
-    <a class="twa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg></a>
+    <a class="twa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg></a>
     <button class="tburger" onclick="tMenu()" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
   </div>
   <div class="tsheet" id="tsheet" hidden>
     <a href="#/market">Cars</a><a href="#/chat">Ask Midas</a><a href="#/market" onclick="location.hash='#/market';setTimeout(()=>document.getElementById('how').scrollIntoView({behavior:'smooth'}),80);return false;">How it works</a>
     <a href="#/calculator">Loan calculator</a><a href="#/repair">Repair finance</a><a href="#/insurance">Insurance</a><a href="#/status">My application</a>
-    <a href="#/fleet">For companies</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a>
+    <a href="#/fleet">For corporates</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a>
     <div class="tsheet-cta"><a class="btn btn-a" href="#/apply" onclick="startApply();return false;">Apply now</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">WhatsApp us</a></div>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">WhatsApp us</a></div>
   </div>
 </div>
 
@@ -909,7 +922,7 @@ input,select,textarea{font-size:17px}
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
         <a class="btn btn-a btn-lg" href="#/apply" onclick="startApply();return false;">Apply now &rarr;</a>
         <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#/chat" onclick="startChat();return false;">Help me choose &rarr;</a>
-        <a href="tel:+2348058963692" id="heroCall" class="btn btn-lg" style="background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4)">Call 0805 896 3692</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" style="gap:10px"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>WhatsApp</a>
               </div>
       <p class="tiny" id="heroFine" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free to apply &nbsp;&middot;&nbsp; 5-year manufacturer warranty &nbsp;&middot;&nbsp; 7 showrooms nationwide</p>
     </div></div>
@@ -933,7 +946,7 @@ input,select,textarea{font-size:17px}
   </div>
 
   <div class="lgm" aria-label="The lender panel">
-    <div class="lgm-cap">Paid by any of these banks? You can apply.</div>
+    <div class="lgm-cap">Nigeria’s top banks</div>
     <div class="lgm-track"><span class="lgm-it"><img src="brand/banks/access.svg" alt="Access Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/zenith.png" alt="" loading="lazy" decoding="async"><b>Zenith Bank</b></span><span class="lgm-it"><span class="bk-ini">GTB</span><b>GTBank</b></span><span class="lgm-it"><span class="bk-ini">FBN</span><b>First Bank</b></span><span class="lgm-it"><img src="brand/banks/uba.png" alt="" loading="lazy" decoding="async"><b>UBA</b></span><span class="lgm-it"><img src="brand/banks/stanbic.png" alt="" loading="lazy" decoding="async"><b>Stanbic IBTC</b></span><span class="lgm-it"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/wema.png" alt="" loading="lazy" decoding="async"><b>Wema Bank</b></span><span class="lgm-it"><img src="brand/banks/globus.png" alt="" loading="lazy" decoding="async"><b>Globus Bank</b></span><span class="lgm-it"><img src="brand/banks/jaiz.svg" alt="Jaiz Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/lotus.svg" alt="Lotus Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/access.svg" alt="Access Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/zenith.png" alt="" loading="lazy" decoding="async"><b>Zenith Bank</b></span><span class="lgm-it"><span class="bk-ini">GTB</span><b>GTBank</b></span><span class="lgm-it"><span class="bk-ini">FBN</span><b>First Bank</b></span><span class="lgm-it"><img src="brand/banks/uba.png" alt="" loading="lazy" decoding="async"><b>UBA</b></span><span class="lgm-it"><img src="brand/banks/stanbic.png" alt="" loading="lazy" decoding="async"><b>Stanbic IBTC</b></span><span class="lgm-it"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/wema.png" alt="" loading="lazy" decoding="async"><b>Wema Bank</b></span><span class="lgm-it"><img src="brand/banks/globus.png" alt="" loading="lazy" decoding="async"><b>Globus Bank</b></span><span class="lgm-it"><img src="brand/banks/jaiz.svg" alt="Jaiz Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/lotus.svg" alt="Lotus Bank" loading="lazy" decoding="async"></span></div>
   </div>
 
@@ -950,14 +963,16 @@ input,select,textarea{font-size:17px}
         <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Brand-new or certified used. The price is fixed for 7 days.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img" style="aspect-ratio:16/10;position:relative;background:#0b2a4a;display:block">
+        <div class="veh-img mph-wrap">
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;z-index:2">2</span>
-          <div style="position:absolute;inset:0;padding:14px 12px 12px;display:flex;flex-direction:column;justify-content:center;gap:7px">
-            <div style="display:flex;align-items:center;gap:6px;padding-left:44px;color:#9fb5cd;font:600 10px/1 Inter,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase"><span class="auc-dot"></span>Partner banks pricing now</div>
-            <div class="offrow" style="background:#fff;border:2px solid #1d7a4f"><img src="brand/banks/access.svg" alt="Access Bank" class="offlogo" loading="lazy" decoding="async"><b class="offamt" style="color:#1d7a4f">&#8358;348,007</b><span class="offtag">BEST</span></div>
-            <div class="offrow" style="background:rgba(255,255,255,.93)"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC" class="offlogo" loading="lazy" decoding="async"><b class="offamt">&#8358;372,400</b></div>
-            <div class="offrow" style="background:rgba(255,255,255,.82)"><img src="brand/banks/lotus.svg" alt="Lotus Bank" class="offlogo" loading="lazy" decoding="async"><b class="offamt">&#8358;391,880</b></div>
-          </div>
+          <div class="mph"><div class="mph-in">
+            <div class="mph-top"><span>Midas</span><span class="mph-live"><i></i>Banks pricing now</span></div>
+            <div class="mph-body">
+              <div class="mph-car">Hyundai Creta &middot; 10% down &middot; 60 months</div>
+              <div class="offrow mph-best"><img src="brand/banks/access.svg" alt="Access Bank" class="offlogo"><b class="offamt">&#8358;348,007</b><span class="mph-tag">BEST</span></div>
+              <div class="offrow mph-row"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC" class="offlogo"><b class="offamt">&#8358;372,400</b></div>
+              <div class="offrow mph-row"><img src="brand/banks/lotus.svg" alt="Lotus Bank" class="offlogo"><b class="offamt">&#8358;391,880</b></div>
+            </div></div></div>
         </div>
         <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">Every bank sends its price to one screen. You choose.</p></div>
       </div>
@@ -995,7 +1010,14 @@ input,select,textarea{font-size:17px}
       <span class="ftog" id="ftog" onclick="finOnly=!finOnly;applyFilters()"><span>Show financing only</span><i></i></span>
     </div>
 
-    <div style="margin-bottom:22px">
+    <div class="seg" id="segMarket" style="margin-bottom:18px" hidden>
+      <button class="on" data-seg="all" onclick="setMarketSeg('all',this)">All</button>
+      <button data-seg="new" onclick="setMarketSeg('new',this)">Brand new</button>
+      <button data-seg="used" onclick="setMarketSeg('used',this)">Pre-owned</button>
+    </div>
+    <div class="veh-grid" id="vehGrid"></div>
+    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude 7.5% VAT.</p>
+    <div style="margin:26px 0 8px">
       <a class="veh rev" href="#/fleet" style="text-decoration:none;color:inherit">
         <div class="veh-img" style="aspect-ratio:16/6;position:relative"><picture data-auto><source type="image/avif" srcset="cars/t60-w480.avif 480w, cars/t60-w800.avif 800w, cars/t60-w1200.avif 1200w, cars/t60-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/t60-w480.webp 480w, cars/t60-w800.webp 800w, cars/t60-w1200.webp 1200w, cars/t60-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/t60.jpg" alt="Company fleets" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
           <span class="tag" style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94)">5 to 50+ vehicles</span></div>
@@ -1004,13 +1026,6 @@ input,select,textarea{font-size:17px}
           <b style="color:var(--accent);font-size:13.5px">For companies &rarr;</b></div>
       </a>
     </div>
-    <div class="seg" id="segMarket" style="margin-bottom:18px" hidden>
-      <button class="on" data-seg="all" onclick="setMarketSeg('all',this)">All</button>
-      <button data-seg="new" onclick="setMarketSeg('new',this)">Brand new</button>
-      <button data-seg="used" onclick="setMarketSeg('used',this)">Pre-owned</button>
-    </div>
-    <div class="veh-grid" id="vehGrid"></div>
-    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude 7.5% VAT.</p>
   </div>
 
   <div class="wrap sec" style="padding-top:26px">
@@ -1020,16 +1035,15 @@ input,select,textarea{font-size:17px}
           <h2>Buy from people you can meet.</h2>
           <p class="muted" style="margin-top:10px;max-width:46ch">Honda, Hyundai, Nissan, MG and Changan &mdash; sold from our own showrooms, thirty years selling cars in Nigeria. Come and touch the car before you apply.</p>
           <div class="person">
-            <div class="pav">AS</div>
+            <div class="pav" style="background:var(--brand)"><img src="brand/mark.svg" alt="" style="width:28px;height:28px"></div>
             <div>
-              <div style="font-weight:600;font-size:15.5px">Amit Sharma</div>
-              <div class="tiny muted">Sales, Lagos &middot; replies on WhatsApp within 5 minutes</div>
+              <div style="font-weight:600;font-size:15.5px">Midas on WhatsApp</div>
+              <div class="tiny muted">Replies in minutes, day and night &middot; finds your car and your bank</div>
               <div class="pnum mono">0805 896 3692</div>
             </div>
           </div>
           <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
-            <a class="btn btn-p" href="tel:+2348058963692">&#128222;&nbsp;Call Amit</a>
-            <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">WhatsApp Amit</a>
+            <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">Message Midas</a>
           </div>
           <p class="tiny faint" style="margin-top:20px">Showrooms &middot; Victoria Island &middot; Ikeja &middot; Abuja &middot; Port Harcourt &middot; Kano &middot; Enugu &middot; Ibadan</p>
         </div>
@@ -1213,7 +1227,7 @@ input,select,textarea{font-size:17px}
 
     <div class="row" style="gap:10px;margin-top:20px;flex-wrap:wrap">
       <a class="btn btn-a" href="mailto:lavine@zenith-grp.co?subject=Fleet%20financing%20enquiry&body=Company%3A%0AVehicles%20needed%3A%0AQuantity%3A%0AOwn%20or%20rent%3A%0AContact%3A">Send a fleet enquiry &rarr;</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20we%20need%20financing%20for%20a%20company%20fleet" target="_blank" rel="noopener">WhatsApp Amit</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20we%20need%20financing%20for%20a%20company%20fleet" target="_blank" rel="noopener">Message Midas</a>
       <a class="btn btn-g" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
@@ -1295,7 +1309,7 @@ input,select,textarea{font-size:17px}
       <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0b2a4a,#2a5a8f);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">MK</div>
         <b style="display:block;margin-top:12px">Manoj Kurapati</b><div class="tiny muted">Technology. The platform, the API, the consoles.</div></div>
       <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#1d7a4f,#3fae7a);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">AS</div>
-        <b style="display:block;margin-top:12px">Amit Sharma</b><div class="tiny muted">Sales, Lagos. The person on the other end of the WhatsApp button.</div></div>
+        <b style="display:block;margin-top:12px">Amit Sharma</b><div class="tiny muted">Sales, Lagos.</div></div>
     </div>
     <p class="tiny faint" style="margin-top:16px">Behind the team sits the Stallion Group&rsquo;s automotive network &mdash; three decades of vehicle distribution in Nigeria.</p>
   </div>
@@ -1494,7 +1508,7 @@ input,select,textarea{font-size:17px}
     <div class="row" style="gap:10px;margin-top:22px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="S.halal=true;startApply();return false;">Apply now &mdash; halal only &rarr;</a>
       <a class="btn btn-g" href="#/market" onclick="S.halal=true;save()">See the cars</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Salaam%20Amit%2C%20I%20want%20halal%20non-interest%20financing%20for%20a%20car" target="_blank" rel="noopener">Ask on WhatsApp</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Salaam%20Midas%2C%20I%20want%20halal%20non-interest%20financing%20for%20a%20car" target="_blank" rel="noopener">Ask on WhatsApp</a>
     </div>
     <p class="tiny faint" style="margin-top:16px">Non-interest products are provided by licensed non-interest banks and governed by each bank&rsquo;s own Sharia advisory board. Midas arranges the transaction; it does not issue Sharia certification.</p>
   </div>
@@ -1712,7 +1726,7 @@ input,select,textarea{font-size:17px}
     <div class="row" style="gap:10px;flex-wrap:wrap">
       <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call &rarr;</a>
       <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20dealership%20listing%20%E2%80%94%20[Dealership%20name]&body=Dealership%3A%0ACity%2Fshowrooms%3A%0ABrands%20carried%3A%0AName%20and%20role%3A%0APhone%3A">Email your stock list</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Amit%2C%20I%20run%20a%20dealership%20and%20want%20to%20list%20stock%20on%20Midas" target="_blank" rel="noopener">WhatsApp Amit</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20run%20a%20dealership%20and%20want%20to%20list%20stock%20on%20Midas" target="_blank" rel="noopener">Message Midas</a>
     </div>
   </div>
 </section>
@@ -1893,7 +1907,7 @@ const VEHICLES = [
   {id:'V-2008', year:2026, make:'Nissan', model:'Urvan NV350', body:'van', price:43900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/urvan-1.jpg', tag:'18-seat business', stock:15, imgs:['cars/g/urvan-1.jpg','cars/g/urvan-2.jpg','cars/g/urvan-3.jpg','cars/g/urvan-4.jpg','cars/g/urvan-5.jpg','cars/g/urvan-6.jpg']},
   {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:41500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', tag:'LX 1.5', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg','cars/g/hrv-4.jpg','cars/g/hrv-5.jpg','cars/g/hrv-6.jpg']},
   {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:27000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg','cars/g/mg5-4.jpg','cars/g/mg5-5.jpg','cars/g/mg5-6.jpg']},
-  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-1.jpg', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg','cars/g/al1718-4.jpg','cars/g/al1718-5.jpg']},
+  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-4.jpg', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-4.jpg','cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg','cars/g/al1718-5.jpg']},
   {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:112000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg','cars/g/pilot-4.jpg','cars/g/pilot-5.jpg','cars/g/pilot-6.jpg']},
   {id:'V-2013', year:2026, make:'Hyundai', model:'Accent', body:'sedan', price:35500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/accent-1.jpg', tag:'Elegance', stock:6, imgs:['cars/g/accent-1.jpg','cars/g/accent-2.jpg','cars/g/accent-3.jpg','cars/g/accent-4.jpg','cars/g/accent-5.jpg','cars/g/accent-6.jpg']},
   {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:71500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', tag:'LX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg','cars/g/crv-4.jpg','cars/g/crv-5.jpg','cars/g/crv-6.jpg']},
@@ -2335,7 +2349,7 @@ function renderMarket(){
           <div class="veh-full">Full price ${NGNs(v.price)}* · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
             <button class="btn btn-a btn-sm" style="flex:2" onclick="event.stopPropagation();startApply('${v.id}')">Apply now</button>
-            <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
+            <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
           </div>
         </div>
       </article>`));
@@ -2613,7 +2627,7 @@ function accountForm(mode, next){
       <div class="field"><label>Password</label><input class="inp" name="password" type="password" required autocomplete="current-password"></div>`}
     <div id="authMsg" class="tiny" style="min-height:18px;margin:-6px 0 12px;color:var(--bad)"></div>
     <button class="btn btn-p" type="submit" id="authBtn" style="width:100%">${signup?'Create my account →':'Log in →'}</button>
-    <p class="tiny faint" style="margin-top:12px">${signup?'By creating an account you agree to the <a href="#/terms" style="color:var(--accent)">terms</a> and the <a href="#/privacy" style="color:var(--accent)">privacy notice</a> (Nigeria Data Protection Act, 2023).':'Forgotten your password? Message Amit on <a href="https://wa.me/2348058963692" style="color:var(--accent)" target="_blank" rel="noopener">WhatsApp</a> and we will reset it.'}</p>
+    <p class="tiny faint" style="margin-top:12px">${signup?'By creating an account you agree to the <a href="#/terms" style="color:var(--accent)">terms</a> and the <a href="#/privacy" style="color:var(--accent)">privacy notice</a> (Nigeria Data Protection Act, 2023).':'Forgotten your password? Message Midas on <a href="https://wa.me/2348058963692" style="color:var(--accent)" target="_blank" rel="noopener">WhatsApp</a> and we will reset it.'}</p>
     </form>`;
 }
 function renderAuthForm(mode,next){
@@ -3157,10 +3171,10 @@ function finishOffers(v,app,ok,best,dearest){
       ${fixes.map(f=>`<div class="between" style="padding:12px 0;border-top:1px solid var(--line);gap:12px;flex-wrap:wrap;align-items:center">
         <span style="font-size:14px">${f.txt}</span>
         <button class="btn btn-a btn-sm" onclick="applyFix('${f.k}','${f.v}')">Do this</button></div>`).join('')
-        || '<p class="tiny muted">Talk to Amit \u2014 he will find a car that works for your budget.</p>'}
+        || '<p class="tiny muted">Message Midas \u2014 we will find a car that works for your budget.</p>'}
       ${S.halal?`<div style="padding:12px 0;border-top:1px solid var(--line)"><button class="btn btn-g btn-sm" onclick="S.halal=false;save();renderOffers()">Also show interest-based banks</button></div>`:''}
       <div class="row" style="gap:10px;margin-top:14px;flex-wrap:wrap">
-        <a class="btn btn-wa btn-sm" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, no bank priced my application. Can you help?')}" target="_blank" rel="noopener">Ask Amit on WhatsApp</a>
+        <a class="btn btn-wa btn-sm" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, no bank priced my application. Can you help?')}" target="_blank" rel="noopener">Message Midas on WhatsApp</a>
       </div></div>`;
   }
 }
@@ -3301,7 +3315,7 @@ function renderLiveStatus(r, apps){
           ${r.estRate?`<div class="kv"><span class="k">Indicative rate</span><span class="v">${pct(r.estRate*100)} p.a.</span></div>`:''}
           <p class="tiny faint" style="margin-top:10px">Your real monthly repayment arrives on the bank’s offer letter.</p>`}
         ${apps.length>1?`<hr class="sep"><label class="tiny muted">Another application</label><select class="inp" style="margin-top:6px;padding:9px 12px;font-size:14px" onchange="S.serverRef=this.value;save();renderStatus()">${apps.map(x=>`<option value="${esc(x.id)}" ${x.id===r.id?'selected':''}>${esc(x.vehicle)} · ${esc(x.status)}</option>`).join('')}</select>`:''}
-        <a class="btn btn-wa btn-sm" style="width:100%;margin-top:16px" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Amit, about my application '+r.id)}" target="_blank" rel="noopener">Ask Amit on WhatsApp</a>
+        <a class="btn btn-wa btn-sm" style="width:100%;margin-top:16px" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, about my application '+r.id)}" target="_blank" rel="noopener">Message Midas on WhatsApp</a>
         <button class="btn btn-g btn-sm" style="width:100%;margin-top:8px" onclick="reset()">Start a new application</button>
         </div>
       </div>
@@ -4349,7 +4363,7 @@ function calcPaint(sync){
     <tr><td><b>Total</b></td><td class="r mono"><b>${NGN(q.monthly*CALC.ten)}</b></td><td class="r mono"><b>${NGN(q.loan)}</b></td><td class="r mono"><b>${NGN(q.interest)}</b></td><td class="r mono">—</td></tr></tbody></table>`;
 
   const wa=$('#ccWa'); if(wa){
-    const msg=`Hello Amit, I used the Midas loan calculator: ${car?carLabel:'a car at '+NGN(CALC.price)}, ${Math.round(CALC.eq*100)}% down, ${CALC.ten} months at ${pct(CALC.rate,1)} with ${b.n} — about ${NGN(q.monthly)}/month. I want to apply.`;
+    const msg=`Hello Midas, I used the loan calculator: ${car?carLabel:'a car at '+NGN(CALC.price)}, ${Math.round(CALC.eq*100)}% down, ${CALC.ten} months at ${pct(CALC.rate,1)} with ${b.n} — about ${NGN(q.monthly)}/month. I want to apply.`;
     wa.href='https://wa.me/2348058963692?text='+encodeURIComponent(msg);
   }
 }
@@ -4405,7 +4419,7 @@ function updateCountryUI(){
   const st=document.getElementById('ctryStrip'), si=document.getElementById('ctryStripIn');
   const u=CTRY_UI[curCountry];
   if(st){ st.hidden=!u; if(u&&si) si.innerHTML=u.strip; }
-  const cap=document.querySelector('.lgm-cap'); if(cap) cap.textContent = u ? u.cap : 'Paid by any of these banks? You can apply.';
+  const cap=document.querySelector('.lgm-cap'); if(cap) cap.textContent = u ? u.cap : 'Nigeria’s top banks';
   const hc=document.getElementById('heroCall'); if(hc) hc.hidden = curCountry!=='NG';
   const lg=document.querySelector('.lgm'); if(lg) lg.hidden=!!MKT2[curCountry];
   const hf=document.getElementById('heroFine');
