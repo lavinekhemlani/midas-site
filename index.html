@@ -885,6 +885,32 @@ input,select,textarea{font-size:17px}
 .mph-car-row b{display:block;font-size:13px;color:var(--ink);line-height:1.2}
 .mph-car-row span{font-family:var(--display);font-weight:600;font-size:15px;color:var(--brand)}
 .mph-car-row em{font-style:normal;font-family:var(--body);font-size:11px;color:var(--ink-faint);margin-left:2px}
+.mph-wrap,.step-img{height:300px;min-height:0!important;aspect-ratio:auto!important;position:relative;overflow:hidden}
+.step-img>img,.step-img picture img{width:100%;height:100%;object-fit:cover}
+.mph{margin-top:40px!important}
+@media(max-width:640px){.mph-wrap,.step-img{height:280px}}
+.mph-cc{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.mph-cc img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.mph-cc-b{padding:8px 11px 10px;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:2px 8px}
+.mph-cc-b b{font-size:14px;color:var(--ink)}
+.mph-cc-b span{font-family:var(--display);font-weight:600;font-size:17px;color:var(--brand)}
+.mph-cc-b em{font-style:normal;font-family:var(--body);font-size:11px;color:var(--ink-faint);margin-left:2px}
+.mph-cc-b i{font-style:normal;font-size:11.5px;color:var(--ink-faint);width:100%}
+/* car page, app style */
+#carInfo{padding:24px 24px 28px!important}
+.car-h{font-size:1.75rem;color:var(--brand);margin:0}.car-h span{color:var(--ink-faint);font-weight:500}
+.car-pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+.car-pills span{background:var(--surface-2);color:var(--ink-soft);border-radius:999px;padding:7px 13px;font-size:14px;font-weight:500}
+.cstats{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(130px,1fr))!important;gap:10px!important}
+.cstat{border-left:0!important;background:linear-gradient(160deg,#f4f6fa,#eaeef5);border-radius:16px;padding:14px 16px!important}
+.cstat-v{font-size:1.45rem!important;color:var(--brand)!important}
+.cstat-l{font-size:13px!important;color:var(--ink-soft)!important}
+.car-src{font-size:13px;color:var(--ink-faint);margin:8px 2px 0}.car-src a{color:inherit}
+.spec-list{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:22px;background:#fff}
+.sl-row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 18px;border-bottom:1px solid var(--line);font-size:15.5px}
+.sl-row:last-child{border-bottom:0}.sl-row span{color:var(--ink-faint)}.sl-row b{font-weight:600;color:var(--ink);text-align:right}
+.car-sec{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--brand);margin:26px 0 12px}
+@media(max-width:640px){#carInfo{padding:18px 16px 22px!important}.car-h{font-size:1.45rem}.cstats{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -986,9 +1012,8 @@ input,select,textarea{font-size:17px}
             <div class="mph-top"><span>Midas</span><span class="mph-live">Cars</span></div>
             <div class="mph-body">
               <div class="mph-search">SUV &middot; under &#8358;1.2M a month</div>
-              <div class="mph-car-row"><img src="cars/g/creta-1-w480.webp" alt="" loading="lazy" decoding="async"><div><b>Hyundai Creta</b><span>&#8358;1,134,720<em>/month</em></span></div></div>
-              <div class="mph-car-row"><img src="cars/g/navara-1-w480.webp" alt="" loading="lazy" decoding="async"><div><b>Nissan Navara</b><span>&#8358;937,637<em>/month</em></span></div></div>
-              <div class="mph-car-row"><img src="cars/g/grandi10-1-w480.webp" alt="" loading="lazy" decoding="async"><div><b>Hyundai Grand i10</b><span>&#8358;776,388<em>/month</em></span></div></div>
+              <div class="mph-cc"><img src="cars/g/creta-1-w800.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Hyundai Creta</b><span>&#8358;1,134,720<em>/month</em></span><i>10% down &middot; 60 months</i></div></div>
+              <div class="mph-cc"><img src="cars/g/navara-1-w800.webp" alt="" loading="lazy" decoding="async"><div class="mph-cc-b"><b>Nissan Navara</b><span>&#8358;937,637<em>/month</em></span></div></div>
             </div></div></div>
         </div>
         <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Every car shows its monthly price. Brand new, with the manufacturer&rsquo;s warranty.</p></div>
@@ -1008,7 +1033,7 @@ input,select,textarea{font-size:17px}
         <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">Every bank sends its price to one screen. You choose.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><picture data-auto><source type="image/avif" srcset="cars/g/accent-6-w480.avif 480w, cars/g/accent-6-w800.avif 800w, cars/g/accent-6-w1200.avif 1200w, cars/g/accent-6-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/g/accent-6-w480.webp 480w, cars/g/accent-6-w800.webp 800w, cars/g/accent-6-w1200.webp 1200w, cars/g/accent-6-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/g/accent-6.jpg" alt="Getting into a new Hyundai Accent" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
+        <div class="veh-img step-img"><picture data-auto><source type="image/avif" srcset="cars/g/accent-6-w480.avif 480w, cars/g/accent-6-w800.avif 800w, cars/g/accent-6-w1200.avif 1200w, cars/g/accent-6-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/g/accent-6-w480.webp 480w, cars/g/accent-6-w800.webp 800w, cars/g/accent-6-w1200.webp 1200w, cars/g/accent-6-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/g/accent-6.jpg" alt="Getting into a new Hyundai Accent" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;z-index:2">3</span></div>
         <div class="veh-body"><h4 style="margin:0">The bank pays. You drive away.</h4><p class="tiny muted" style="margin:4px 0 0">You pay your down payment to the bank. The bank pays the showroom, and you collect your keys.</p></div>
       </div>
@@ -1928,31 +1953,31 @@ function balanceAt(P, annualRate, n, m){
    Prices: entry-trim retail, ex-VAT, from dealer lists - Hyundai 03/09/26, Honda 01/05/26,
    Bestune 27/08/26, MG 07/10/26. Nissan, Ashok Leyland, MG RX8, Bestune T77 Pro not on those lists. */
 const VEHICLES = [
-  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:38000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/creta-1.jpg', tag:'Most loved SUV', stock:84, imgs:['cars/g/creta-1.jpg','cars/g/creta-2.jpg','cars/g/creta-3.jpg','cars/g/creta-4.jpg','cars/g/creta-5.jpg','cars/g/creta-6.jpg']},
-  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:39000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx5-1.jpg', tag:'Luxury 1.5T', stock:44, imgs:['cars/g/rx5-1.jpg','cars/g/rx5-2.jpg','cars/g/rx5-3.jpg','cars/g/rx5-4.jpg','cars/g/rx5-5.jpg','cars/g/rx5-6.jpg']},
-  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:26000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandi10-1.jpg', tag:'The starter car', stock:33, imgs:['cars/g/grandi10-1.jpg','cars/g/grandi10-2.jpg','cars/g/grandi10-3.jpg','cars/g/grandi10-4.jpg','cars/g/grandi10-5.jpg','cars/g/grandi10-6.jpg']},
+  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:38000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/creta-1.jpg', pos:'67% 50%', tag:'Most loved SUV', stock:84, imgs:['cars/g/creta-1.jpg','cars/g/creta-2.jpg','cars/g/creta-3.jpg','cars/g/creta-4.jpg','cars/g/creta-5.jpg','cars/g/creta-6.jpg']},
+  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:39000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx5-1.jpg', pos:'46% 50%', tag:'Luxury 1.5T', stock:44, imgs:['cars/g/rx5-1.jpg','cars/g/rx5-2.jpg','cars/g/rx5-3.jpg','cars/g/rx5-4.jpg','cars/g/rx5-5.jpg','cars/g/rx5-6.jpg']},
+  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:26000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandi10-1.jpg', pos:'41% 50%', tag:'The starter car', stock:33, imgs:['cars/g/grandi10-1.jpg','cars/g/grandi10-2.jpg','cars/g/grandi10-3.jpg','cars/g/grandi10-4.jpg','cars/g/grandi10-5.jpg','cars/g/grandi10-6.jpg']},
   {id:'V-2004', year:2026, make:'MG', model:'T60', body:'pickup', price:37000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/t60-1.jpg', tag:'Double cab 4WD', stock:32, imgs:['cars/g/t60-1.jpg','cars/g/t60-2.jpg','cars/g/t60-3.jpg','cars/g/t60-4.jpg','cars/g/t60-5.jpg','cars/g/t60-6.jpg']},
-  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:47000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandcreta-1.jpg', tag:'7 seats', stock:22, imgs:['cars/g/grandcreta-1.jpg','cars/g/grandcreta-2.jpg','cars/g/grandcreta-3.jpg','cars/g/grandcreta-4.jpg','cars/g/grandcreta-5.jpg','cars/g/grandcreta-6.jpg']},
-  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:77000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/santafe-1.jpg', tag:'Family flagship', stock:22, imgs:['cars/g/santafe-1.jpg','cars/g/santafe-2.jpg','cars/g/santafe-3.jpg','cars/g/santafe-4.jpg','cars/g/santafe-5.jpg','cars/g/santafe-6.jpg']},
+  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:47000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandcreta-1.jpg', pos:'65% 50%', tag:'7 seats', stock:22, imgs:['cars/g/grandcreta-1.jpg','cars/g/grandcreta-2.jpg','cars/g/grandcreta-3.jpg','cars/g/grandcreta-4.jpg','cars/g/grandcreta-5.jpg','cars/g/grandcreta-6.jpg']},
+  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:77000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/santafe-1.jpg', pos:'52% 50%', tag:'Family flagship', stock:22, imgs:['cars/g/santafe-1.jpg','cars/g/santafe-2.jpg','cars/g/santafe-3.jpg','cars/g/santafe-4.jpg','cars/g/santafe-5.jpg','cars/g/santafe-6.jpg']},
   {id:'V-2007', year:2026, make:'Nissan', model:'Navara', body:'pickup', price:31400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/navara-1.jpg', tag:'Workhorse 4WD', stock:22, imgs:['cars/g/navara-1.jpg','cars/g/navara-2.jpg','cars/g/navara-3.jpg','cars/g/navara-4.jpg','cars/g/navara-5.jpg','cars/g/navara-6.jpg']},
   {id:'V-2008', year:2026, make:'Nissan', model:'Urvan NV350', body:'van', price:43900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/urvan-1.jpg', tag:'18-seat business', stock:15, imgs:['cars/g/urvan-1.jpg','cars/g/urvan-2.jpg','cars/g/urvan-3.jpg','cars/g/urvan-4.jpg','cars/g/urvan-5.jpg','cars/g/urvan-6.jpg']},
-  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:41500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', tag:'LX 1.5', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg','cars/g/hrv-4.jpg','cars/g/hrv-5.jpg','cars/g/hrv-6.jpg']},
-  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:27000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg','cars/g/mg5-4.jpg','cars/g/mg5-5.jpg','cars/g/mg5-6.jpg']},
-  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-4.jpg', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-4.jpg','cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg','cars/g/al1718-5.jpg']},
-  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:112000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg','cars/g/pilot-4.jpg','cars/g/pilot-5.jpg','cars/g/pilot-6.jpg']},
+  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:41500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', pos:'32% 50%', tag:'LX 1.5', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg','cars/g/hrv-4.jpg','cars/g/hrv-5.jpg','cars/g/hrv-6.jpg']},
+  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:27000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', pos:'21% 50%', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg','cars/g/mg5-4.jpg','cars/g/mg5-5.jpg','cars/g/mg5-6.jpg']},
+  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-4.jpg', pos:'67% 50%', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-4.jpg','cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg','cars/g/al1718-5.jpg']},
+  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:112000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', pos:'65% 50%', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg','cars/g/pilot-4.jpg','cars/g/pilot-5.jpg','cars/g/pilot-6.jpg']},
   {id:'V-2013', year:2026, make:'Hyundai', model:'Accent', body:'sedan', price:35500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/accent-1.jpg', tag:'Elegance', stock:6, imgs:['cars/g/accent-1.jpg','cars/g/accent-2.jpg','cars/g/accent-3.jpg','cars/g/accent-4.jpg','cars/g/accent-5.jpg','cars/g/accent-6.jpg']},
-  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:71500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', tag:'LX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg','cars/g/crv-4.jpg','cars/g/crv-5.jpg','cars/g/crv-6.jpg']},
+  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:71500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', pos:'67% 50%', tag:'LX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg','cars/g/crv-4.jpg','cars/g/crv-5.jpg','cars/g/crv-6.jpg']},
   {id:'V-2015', year:2026, make:'Hyundai', model:'Staria', body:'van', price:67000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/staria-1.jpg', tag:'Luxury 3.5', stock:4, imgs:['cars/g/staria-1.jpg','cars/g/staria-2.jpg','cars/g/staria-3.jpg','cars/g/staria-4.jpg','cars/g/staria-5.jpg']},
-  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:103000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/palisade-1.jpg', tag:'Limited 2.5T', stock:4, imgs:['cars/g/palisade-1.jpg','cars/g/palisade-2.jpg','cars/g/palisade-3.jpg','cars/g/palisade-4.jpg','cars/g/palisade-5.jpg','cars/g/palisade-6.jpg']},
-  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/tucson-1.jpg', tag:'Elegance 2.0', stock:4, imgs:['cars/g/tucson-1.jpg','cars/g/tucson-2.jpg','cars/g/tucson-3.jpg','cars/g/tucson-4.jpg','cars/g/tucson-5.jpg','cars/g/tucson-6.jpg']},
-  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:64000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx9-1.jpg', tag:'Luxury 2.0T', stock:3, imgs:['cars/g/rx9-1.jpg','cars/g/rx9-2.jpg','cars/g/rx9-3.jpg','cars/g/rx9-4.jpg','cars/g/rx9-5.jpg','cars/g/rx9-6.jpg']},
-  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg7-1.jpg', tag:'2.0T Luxury', stock:2, imgs:['cars/g/mg7-1.jpg','cars/g/mg7-2.jpg','cars/g/mg7-3.jpg','cars/g/mg7-4.jpg','cars/g/mg7-5.jpg','cars/g/mg7-6.jpg']},
-  {id:'V-2020', year:2026, make:'Ashok Leyland', model:'Partner 17ft', body:'truck', price:36200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alpartner-1.jpg', tag:'CBC 3.0L', stock:1, imgs:['cars/g/alpartner-1.jpg','cars/g/alpartner-2.jpg','cars/g/alpartner-3.jpg']},
+  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:103000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/palisade-1.jpg', pos:'17% 50%', tag:'Limited 2.5T', stock:4, imgs:['cars/g/palisade-1.jpg','cars/g/palisade-2.jpg','cars/g/palisade-3.jpg','cars/g/palisade-4.jpg','cars/g/palisade-5.jpg','cars/g/palisade-6.jpg']},
+  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/tucson-1.jpg', pos:'92% 50%', tag:'Elegance 2.0', stock:4, imgs:['cars/g/tucson-1.jpg','cars/g/tucson-2.jpg','cars/g/tucson-3.jpg','cars/g/tucson-4.jpg','cars/g/tucson-5.jpg','cars/g/tucson-6.jpg']},
+  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:64000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx9-1.jpg', pos:'100% 50%', tag:'Luxury 2.0T', stock:3, imgs:['cars/g/rx9-1.jpg','cars/g/rx9-2.jpg','cars/g/rx9-3.jpg','cars/g/rx9-4.jpg','cars/g/rx9-5.jpg','cars/g/rx9-6.jpg']},
+  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg7-1.jpg', pos:'73% 50%', tag:'2.0T Luxury', stock:2, imgs:['cars/g/mg7-1.jpg','cars/g/mg7-2.jpg','cars/g/mg7-3.jpg','cars/g/mg7-4.jpg','cars/g/mg7-5.jpg','cars/g/mg7-6.jpg']},
+  {id:'V-2020', year:2026, make:'Ashok Leyland', model:'Partner 17ft', body:'truck', price:36200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alpartner-1.jpg', pos:'33% 50%', tag:'CBC 3.0L', stock:1, imgs:['cars/g/alpartner-1.jpg','cars/g/alpartner-2.jpg','cars/g/alpartner-3.jpg']},
   {id:'V-2021', year:2026, make:'Ashok Leyland', model:'Phoenix', body:'truck', price:33600000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alphoenix-1.jpg', tag:'CBC 1.5L', stock:1, imgs:['cars/g/alphoenix-1.jpg','cars/g/alphoenix-2.jpg','cars/g/alphoenix-3.jpg','cars/g/alphoenix-4.jpg']},
-  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:56000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/s6ev-1.jpg', tag:'Electric 77kWh', stock:1, imgs:['cars/g/s6ev-1.jpg','cars/g/s6ev-2.jpg','cars/g/s6ev-3.jpg','cars/g/s6ev-4.jpg','cars/g/s6ev-5.jpg','cars/g/s6ev-6.jpg']},
-  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:95000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/cyberster-1.jpg', tag:'Electric roadster', stock:1, imgs:['cars/g/cyberster-1.jpg','cars/g/cyberster-2.jpg','cars/g/cyberster-3.jpg','cars/g/cyberster-4.jpg','cars/g/cyberster-5.jpg','cars/g/cyberster-6.jpg']},
+  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:56000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/s6ev-1.jpg', pos:'84% 50%', tag:'Electric 77kWh', stock:1, imgs:['cars/g/s6ev-1.jpg','cars/g/s6ev-2.jpg','cars/g/s6ev-3.jpg','cars/g/s6ev-4.jpg','cars/g/s6ev-5.jpg','cars/g/s6ev-6.jpg']},
+  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:95000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/cyberster-1.jpg', pos:'61% 50%', tag:'Electric roadster', stock:1, imgs:['cars/g/cyberster-1.jpg','cars/g/cyberster-2.jpg','cars/g/cyberster-3.jpg','cars/g/cyberster-4.jpg','cars/g/cyberster-5.jpg','cars/g/cyberster-6.jpg']},
   {id:'V-2024', year:2026, make:'MG', model:'RX8', body:'suv', price:39400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/rx8-1.jpg', tag:'Luxury 2.0T', stock:1, imgs:['cars/g/rx8-1.jpg','cars/g/rx8-2.jpg','cars/g/rx8-3.jpg','cars/g/rx8-4.jpg','cars/g/rx8-5.jpg','cars/g/rx8-6.jpg']},
-  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:35000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/e311-1.jpg', tag:'Electric 450km', stock:1, imgs:['cars/g/e311-1.jpg','cars/g/e311-2.jpg','cars/g/e311-3.jpg','cars/g/e311-4.jpg','cars/g/e311-5.jpg']},
+  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:35000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/e311-1.jpg', pos:'45% 50%', tag:'Electric 450km', stock:1, imgs:['cars/g/e311-1.jpg','cars/g/e311-2.jpg','cars/g/e311-3.jpg','cars/g/e311-4.jpg','cars/g/e311-5.jpg']},
   {id:'V-2026', year:2026, make:'Bestune', model:'T90', body:'suv', price:43000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t90-1.jpg', tag:'1.5T Deluxe', stock:1, imgs:['cars/g/t90-1.jpg','cars/g/t90-2.jpg','cars/g/t90-3.jpg','cars/g/t90-4.jpg']},
   {id:'V-2027', year:2026, make:'Bestune', model:'T77 Pro', body:'suv', price:19500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t77-1.jpg', tag:'CNG Deluxe', stock:1, imgs:['cars/g/t77-1.jpg','cars/g/t77-2.jpg','cars/g/t77-3.jpg','cars/g/t77-4.jpg','cars/g/t77-5.jpg','cars/g/t77-6.jpg']},
   {id:'V-2028', year:2026, make:'Nissan', model:'X-Trail', body:'suv', price:39500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/xtrail-1.jpg', tag:'Tekna 4WD', stock:1, imgs:['cars/g/xtrail-1.jpg','cars/g/xtrail-2.jpg','cars/g/xtrail-3.jpg','cars/g/xtrail-4.jpg','cars/g/xtrail-5.jpg','cars/g/xtrail-6.jpg']}
@@ -2161,6 +2186,8 @@ function evaluate(lender, v, equityPct, tenor, app){
               if (app.salaryDomiciled) g -= .005; }
     rate = clamp(g, .115, .24);
   }
+  /* Nigerian banks price car loans at 25-30%: scale the engine's spread into that band */
+  if (curCountry==='NG') rate = clamp(.25 + (rate - .24) * (.05 / .16), .25, .30);
   if (MKT2[curCountry] && lender.mk){
     const M=MKT2[curCountry];
     let g = M.base + (v.grade==='C' ? .012 : v.grade==='B' ? .004 : 0) + (age > 6 ? .006 : 0) + (tenor > 48 ? .004 : 0);
@@ -2370,7 +2397,7 @@ function renderMarket(){
     const isNew = v.origin==='Brand new';
     g.appendChild(el(`
       <article class="veh rev" onclick="openCar('${v.id}')">
-        <div class="veh-img">${v.img?`${pic(v.img, `alt="${v.year} ${v.make} ${v.model}" loading="lazy"`)}`:carSVG(v.body)}
+        <div class="veh-img">${v.img?`${pic(v.img, `alt="${v.year} ${v.make} ${v.model}" loading="lazy" style="object-position:${v.pos||'50% 50%'}"`)}`:carSVG(v.body)}
           <div class="veh-badges"><span class="tag ${isNew?'ok':'a'}">${isNew?'Brand new':'Certified pre-owned'}</span><span class="tag" style="background:rgba(255,255,255,.92)">${v.tag}</span></div>
         </div>
         <div class="veh-body">
@@ -2469,8 +2496,7 @@ function carStats(v){
     if(v.length>11){ const m=v.match(/[\d.,]+\s*(?:-?inch|in\b|″|hp|ps|kw|kwh|nm|km\/l|l\/100\s?km|km|kg|mm|l\b|s\b|min|%)?/i); if(m) v=m[0].replace(/-?inch|\bin\b/i,'″').trim(); }
     return {v,l}; };
   return `<div class="cstats">${h.map(x=>{ const t=tidy(x); return `<div class="cstat"><div class="cstat-v">${t.v}</div><div class="cstat-l">${t.l}</div></div>`; }).join('')}</div>
-    <p class="tiny faint" style="margin:8px 0 0">Manufacturer figures${h[0].source?` &middot; <a href="${h[0].source}" target="_blank" rel="noopener" style="color:inherit">source</a>`:''}</p>
-    <hr class="sep">`;
+    <p class="car-src">Manufacturer figures${h[0].source?` &middot; <a href="${h[0].source}" target="_blank" rel="noopener">source</a>`:''}</p>`;
 }
 function ytThumb(id){ return `https://i.ytimg.com/vi/${id}/${window.LITE?'mqdefault':'hqdefault'}.jpg`; }
 function ytPlay(btn,id){ btn.outerHTML=`<iframe class="yt-frame" src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`; track('car_video',{id}); }
@@ -2480,41 +2506,24 @@ function carWatch(v){
   if(!off&&!revs.length) return '';
   const tile=(x,big)=>`<button class="yt ${big?'yt-big':''}" onclick="ytPlay(this,'${x.id}')" aria-label="Play ${(x.title||'').replace(/"/g,'&quot;')}">
       <img src="${ytThumb(x.id)}" alt="" loading="lazy"><span class="yt-p"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span></button>`;
-  return `<div class="tiny faint" style="margin-bottom:10px">Watch it on the road</div>
+  return `<div class="car-sec">Watch it on the road</div>
     ${off?`<div class="ytw">${tile(off,true)}<div class="yt-cap"><b>${off.title||v.make+' '+v.model}</b> &middot; ${off.channel||v.make}</div></div>`:''}
     ${revs.length?`<div class="ytrow">${revs.map(r=>`<div class="ytw">${tile(r)}<div class="yt-cap"><b>${r.channel}</b>${r.why?` &middot; ${r.why}`:''}</div></div>`).join('')}</div>`:''}
-    <p class="tiny faint" style="margin-top:8px">Videos play from YouTube. Reviewers are independent of Midas.</p>
-    <hr class="sep">`;
+    <p class="car-src" style="font-style:italic">*Videos play from YouTube. Reviewers are independent of Midas.</p>`;
 }
 function renderCar(){
   let v = vehicle(); if (!v){ S.vehicleId=VEHICLES[0].id; save(); v=vehicle(); }
   renderGallery(v);
   const age = 2026 - v.year;
+  const sp=SPECS[v.id]||{}, isNew=v.origin==='Brand new';
+  const facts=[['Engine',sp.engine],['Fuel',sp.fuel],['Gearbox',sp.gearbox||v.trans],['Drive',sp.drive],['Seats',sp.seats],
+    ['Warranty',isNew?'5 years / 100,000 km':'6-month engine & gearbox'],['Service','Nationwide centres']].filter(([k,x])=>x);
   $('#carInfo').innerHTML = `
-    <div class="car-top">
-      <div><h2 style="font-size:1.5rem">${v.make} ${v.model} ${v.year}</h2>
-        <p class="muted tiny" style="margin-top:5px">${v.origin==='Brand new'?'Brand new':'Certified pre-owned · '+(v.km/1000).toFixed(0)+'K km'} · ${v.loc}</p></div>
-      <span class="tag ok" style="font-size:12.5px;padding:7px 12px">🛡 ${v.origin==='Brand new'?'5-yr / 100,000 km warranty':'Inspected · Grade '+v.grade+' · 6-mo warranty'}</span>
-    </div>
-    <hr class="sep">
+    <h2 class="car-h">${v.make} ${v.model} <span>${v.year}</span></h2>
+    <div class="car-pills"><span>${isNew?'Brand new':'Certified pre-owned'}</span><span>&#128737; ${isNew?'5-yr warranty':'6-mo warranty'}</span><span>${v.loc}</span></div>
     ${carStats(v)}
-    <div class="kgrid">
-      ${[['Condition',v.origin==='Brand new'?'Brand new':'Pre-owned · '+v.origin+' used'],...(v.km?[['Mileage',(v.km/1000).toFixed(0)+'K km']]:[]),['Warranty',v.origin==='Brand new'?'5 yr / 100,000 km':'6-month engine & gearbox'],['Service','Nationwide centres']]
-        .map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-weight:550;margin-top:2px">${x}</div></div>`).join('')}
-    </div>
-    <hr class="sep">
-    ${(SPECS[v.id]?`
-    <div class="tiny faint" style="margin-bottom:10px">Specifications</div>
-    <div class="kgrid">
-      ${[['Engine',SPECS[v.id].engine],['Fuel',SPECS[v.id].fuel],['Gearbox',SPECS[v.id].gearbox],['Drive',SPECS[v.id].drive],
-         ['Seats',SPECS[v.id].seats],['Exterior',SPECS[v.id].ext],['Interior',SPECS[v.id].inter],['Vehicle ID',v.id]]
-        .filter(([k,x])=>x).map(([k,x])=>`<div><div class="tiny faint">${k}</div><div style="font-weight:550;margin-top:2px">${x}</div></div>`).join('')}
-    </div>
-    <p class="tiny faint" style="margin-top:10px">VIN and registration papers shared at the showroom or on request.</p>
-    <hr class="sep">
-    <div class="tiny faint" style="margin-bottom:9px">Features</div>
-    <div class="specrow">${(SPECS[v.id].features||[]).map(f=>`<span class="sp">${f}</span>`).join('')}</div>
-    <hr class="sep">`:'')}
+    <div class="spec-list">${facts.map(([k,x])=>`<div class="sl-row"><span>${k}</span><b>${x}</b></div>`).join('')}</div>
+    ${(sp.features||[]).length?`<div class="car-sec">What you get</div><div class="specrow">${sp.features.map(f=>`<span class="sp">${f}</span>`).join('')}</div>`:''}
     ${carWatch(v)}
 `;
   /* About half the panel only lends on some makes from 20% down. Opening on a
