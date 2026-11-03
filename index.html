@@ -1003,6 +1003,36 @@ input,select,textarea{font-size:17px}
   .ftog{display:none}.fcount{margin:0 0 12px}
 }
 @media(max-width:760px){#humanGrid{grid-template-columns:1fr!important}#humanGrid>div:last-child{display:none}#humanGrid>div:first-child{padding:26px 20px!important}}
+/* sheet: ID photos and the send-off */
+.qs-hint{font-size:14px;color:var(--ink-soft);margin:10px 2px 0}.qs-hint b{color:var(--ink)}
+.qs-skip{display:block;width:100%;margin-top:10px;border:0;background:none;font:inherit;font-size:15.5px;color:var(--ink-soft);padding:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.qs-doc{border:1.5px solid var(--line);border-radius:18px;padding:14px;margin-bottom:12px}
+.qs-doc>b{display:block;font-size:16.5px;color:var(--ink)}.qs-doc>span{display:block;font-size:13.5px;color:var(--ink-faint);margin:2px 0 12px}
+.qs-docbtns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qs-dbtn{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:84px;border:1.5px solid var(--line-2);border-radius:14px;background:var(--naira-soft);color:var(--brand);font-size:15px;font-weight:650;cursor:pointer;text-align:center;padding:10px}
+.qs-dbtn input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+.qs-dbtn:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.qs-dbtn.cam{display:none}.qs-docbtns{grid-template-columns:1fr}}
+.qs-thumbs{display:flex;gap:10px;margin:0 0 12px;flex-wrap:wrap}
+.qs-thumb{position:relative;width:96px;height:72px;border-radius:12px;overflow:hidden;background:var(--surface-2);display:grid;place-items:center}
+.qs-thumb img{width:100%;height:100%;object-fit:cover}.qs-thumb i{font-style:normal;font-weight:700;color:var(--brand)}
+.qs-thumb button{position:absolute;top:4px;right:4px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(11,20,36,.7);color:#fff;font-size:17px;line-height:1;cursor:pointer}
+.qs-send{margin-top:8px}.qs-send .btn-wa{display:flex;align-items:center;justify-content:center;gap:10px}
+.qs-sendstep{display:flex;gap:12px;align-items:flex-start;margin:16px 0 4px}
+.qs-sendstep i{flex:none;width:28px;height:28px;border-radius:50%;background:var(--brand);color:#f0c060;font-style:normal;font-weight:700;display:grid;place-items:center;font-size:14px}
+.qs-sendstep b{display:block;font-size:16.5px;color:var(--ink)}.qs-sendstep span{font-size:14px;color:var(--ink-soft)}
+.qs-spin{width:44px;height:44px;border-radius:50%;border:4px solid var(--line);border-top-color:var(--accent);margin:18px auto 6px;animation:qsSpin .8s linear infinite}
+@keyframes qsSpin{to{transform:rotate(360deg)}}
+/* finish + status */
+.qs-next{margin:18px 0 0;padding:14px 16px;border-radius:16px;background:var(--surface-2);font-size:14.5px;color:var(--ink-soft)}
+.qs-next b{display:block;color:var(--ink);font-size:15px;margin-bottom:8px}
+.qs-next div{display:flex;gap:10px;align-items:flex-start;padding:5px 0}
+.qs-next i{flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-2);font-style:normal;font-size:12px;font-weight:700;display:grid;place-items:center;color:var(--brand)}
+.st-send{margin-bottom:18px;border:2px solid var(--accent)}
+.st-send-in{display:flex;gap:14px;align-items:center;margin-bottom:14px}.st-send-in img{width:84px;height:56px;object-fit:cover;border-radius:12px;flex:none}
+.st-send-in b{display:block;font-size:17px;color:var(--ink)}.st-send-in span{font-size:14.5px;color:var(--ink-soft)}
+.st-send .btn-wa{width:100%;display:flex;align-items:center;justify-content:center;gap:10px}
+@media(max-width:820px){.st-grid{grid-template-columns:1fr!important}}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -1972,7 +2002,7 @@ const CCY = { NG:{sym:'₦', rate:1}, GH:{sym:'GH₵ ', rate:0.0076}, BJ:{sym:'
   EG:{sym:'E£ ', rate:0.0343}, MA:{sym:'MAD ', rate:0.0067}, ET:{sym:'Br ', rate:0.112}, ZA:{sym:'R ', rate:0.0116}, KE:{sym:'KSh ', rate:0.0921} };
 function curC(){ try{ return CCY[curCountry] || CCY.NG; }catch(e){ return CCY.NG; } }
 const NGN = n => { const c = curC(); return c.sym + Math.round(n*c.rate).toLocaleString('en-US'); };
-const NGNs = n => { const c = curC(); const v = n*c.rate; return v >= 1e6 ? c.sym + (v/1e6).toFixed(v>=1e7?1:2).replace(/\.0+$/,'') + 'M' : c.sym + Math.round(v).toLocaleString('en-US'); };
+const NGNs = n => { const c = curC(); const v = n*c.rate; return v >= 1e6 ? c.sym + (v/1e6).toFixed(v>=1e7?1:2).replace(/(\.\d*?)0+$/,'$1').replace(/\.$/,'') + 'M' : c.sym + Math.round(v).toLocaleString('en-US'); };
 const pct = (n,d=1) => n.toFixed(d) + '%';
 /* ---------- photos: AVIF/WebP at the width the screen needs ----------
    IMGSET lists the widths tools/optimize_images.py made for each photo; a
@@ -2524,7 +2554,7 @@ const QS_DEBT=[[0,'None'],[60000,''],[200000,''],[450000,'']];
 const QS_BANKS={NG:['Access','GTBank','Zenith','First Bank','UBA','Stanbic IBTC','Fidelity','Other'],
                 GH:['Stanbic Ghana','Absa','Ecobank','CalBank','GCB','Fidelity Ghana','FNB','Other']};
 function qsBand([a,b]){ return !a?'Under '+NGNs(b):!b?'Over '+NGNs(a):NGNs(a)+' – '+NGNs(b); }
-function qsSteps(){ return ['pay','loans',...(QS.fixed?[]:['pick']),'down','result','name','phone','work','bank','id','agree']; }
+function qsSteps(){ return ['pay','loans',...(QS.fixed?[]:['pick']),'down','result','name','phone','work','bank','id','docs','agree','done']; }
 function qualOpen(id){ QS={id:id||null,fixed:!!id,i:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id:id||'budget'}); }
 function qualClose(){ const el=document.getElementById('qSheet'); if(el) el.hidden=true; document.body.style.overflow=''; }
 function qualNext(){ QS.i++; QS.err=''; qualRender(); }
@@ -2549,7 +2579,7 @@ function qualRender(){
   const head=`<div class="qs-top"><button class="qs-x" onclick="qualClose()" aria-label="Close">&times;</button>
     ${v?`<div class="qs-car">${v.img?`<img src="${v.img}" alt="">`:''}<div><b>${v.make} ${v.model}</b><span>${NGNs(v.price)}</span></div>${chip}</div>`:`<div class="qs-car"><div><b>Find your car</b><span>3 quick taps</span></div></div>`}</div>
     <div class="qs-bar"><i style="width:${Math.max(6,pctDone)}%"></i></div>`;
-  const back=QS.i>0&&step!=='result'?'<button class="qs-back" onclick="qualBack()">&larr; Back</button>':'';
+  const back=QS.i>0&&step!=='result'&&step!=='done'?'<button class="qs-back" onclick="qualBack()">&larr; Back</button>':'';
   const err=QS.err?`<p class="qs-err">${QS.err}</p>`:'';
   let body='';
   if(step==='pay') body=`<h3>How much do you take home each month?</h3><p class="qs-sub">No BVN. It won’t affect your credit.</p>
@@ -2570,7 +2600,7 @@ function qualRender(){
         <div class="qs-big">${NGN(h.o.monthly)}<span>/month</span></div>
         <p class="qs-sub">${NGNs(v.price*h.e)} down &middot; ${h.t} months &middot; ${h.n} bank${h.n>1?'s':''} ready</p>
         <button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Get my real offers &rarr;</button>
-        <p class="qs-fine">6 quick questions. About 2 minutes.</p></div>`;
+        <p class="qs-fine">A few quick questions. About 2 minutes.</p></div>`;
     } else { const fit=qsFits().slice(0,3);
       body=`<div class="qs-res"><h3>This one is a stretch today.</h3><p class="qs-sub">${fit.length?'These fit your pay:':'Message us and we’ll find a car that fits.'}</p>
         ${fit.map(c=>`<button class="qs-alt" onclick="QS.id='${c.id}';QS.i=qsSteps().indexOf('down');qualRender()"><b>${c.name}</b><span>${c.monthly}/mo</span></button>`).join('')}
@@ -2591,11 +2621,45 @@ function qualRender(){
   else if(step==='id'){ const lab=curCountry==='NG'?['Your BVN','11 digits','qsBvn',11]:curCountry==='GH'?['Your Ghana Card number','GHA-123456789-0','qsGh',16]:['Your national ID number','As on your ID card','qsNat',24];
     body=`<h3>${lab[0]}</h3><p class="qs-sub">Only to confirm it’s you. It gives no one access to your money.</p>
     <div class="qs-fields"><input id="${lab[2]}" ${curCountry==='NG'?'inputmode="numeric"':''} maxlength="${lab[3]}" placeholder="${lab[1]}" value="${QS.idv||''}"></div>
-    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('id')">Next</button>`; }
+    ${curCountry==='NG'?'<p class="qs-hint">Don’t know it? Dial <b>*565*0#</b> from the number linked to your bank.</p>':''}
+    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('id')">Next</button>
+    <button class="qs-skip" onclick="QS.idv='';QS.err='';qualNext()">I don’t have it with me</button>`; }
+  else if(step==='docs'){ const d=QS.docs||(QS.docs=[]), hasId=d.some(x=>x.kind==='id');
+    const idTypes=curCountry==='NG'?'NIN slip, driver’s licence, voter’s card or passport':curCountry==='GH'?'Ghana Card, driver’s licence or passport':'National ID, driver’s licence or passport';
+    const slot=(kind,title,sub)=>{ const have=d.filter(x=>x.kind===kind);
+      return `<div class="qs-doc"><b>${title}</b><span>${sub}</span>
+        ${have.length?`<div class="qs-thumbs">${have.map(x=>`<div class="qs-thumb">${x.type.startsWith('image/')?`<img src="${x.url}" alt="">`:'<i>PDF</i>'}<button type="button" aria-label="Remove" onclick="qsDocDel('${x.key}')">&times;</button></div>`).join('')}</div>`:''}
+        <div class="qs-docbtns">
+          <label class="qs-dbtn cam"><input type="file" accept="image/*" capture="environment" onchange="qsDocAdd(this,'${kind}')">${QS_CAM}<span>Take a photo</span></label>
+          <label class="qs-dbtn"><input type="file" accept="image/*,application/pdf" onchange="qsDocAdd(this,'${kind}')">${QS_FILE}<span>From my phone</span></label>
+        </div></div>`; };
+    body=`<h3>A photo of your ID</h3><p class="qs-sub">The bank needs it. A clear photo on a table is perfect.</p>
+      ${slot('id','Your ID',idTypes)}
+      ${slot('income','Payslip or bank statement','Optional. It can get you a better rate.')}
+      ${QS.busy?'<p class="qs-hint">Getting your photo ready&hellip;</p>':''}${err}
+      ${hasId?'<button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Next</button>':'<button class="qs-skip" onclick="qualNext()">I’ll send it later</button>'}`; }
   else if(step==='agree') body=`<h3>Last step</h3>
     <ul class="qs-agree"><li>Midas sends your file to our partner banks</li><li>The banks check your credit</li><li>The bank owns the car until the loan is paid</li><li>We never ask for your PIN, and never call your family</li></ul>
     <button class="btn btn-a btn-lg qs-go" onclick="qsSubmit()">I agree &mdash; send to the banks</button>
     <p class="qs-fine">By tapping you accept the <a href="#/terms" onclick="qualClose()">terms</a> and <a href="#/privacy" onclick="qualClose()">privacy notice</a>.</p>`;
+  else if(step==='done'){ const files=qsShareFiles(), canShare=!!(files.length&&navigator.canShare&&navigator.canShare({files}));
+    body=QS.sending?`<div class="qs-res"><div class="qs-spin"></div><h3>Sending your file&hellip;</h3></div>`
+    :`<div class="qs-res"><div class="qs-tick">&#10003;</div>
+      <h3>${QS.posted?'Midas has your file':'Your file is ready'}</h3>
+      <p class="qs-sub">Reference <b>${QS.ref}</b></p></div>
+      ${QS.posted?`<p class="qs-sub" style="text-align:center">A Midas adviser will message you on ${QS.phone} shortly.</p>`
+      :`<div class="qs-send">
+        <div class="qs-sendstep"><i>1</i><div><b>Send it to Midas</b><span>Your details are already typed in. Just tap send.</span></div></div>
+        <a class="btn btn-wa btn-lg qs-go" href="${qsWaLink(v)}" target="_blank" rel="noopener" onclick="track('lead_whatsapp_open',{id:'${v.id}'})">${QS_WA}Send to Midas</a>
+        ${files.length?`<div class="qs-sendstep"><i>2</i><div><b>Send your ID photo</b><span>${canShare?'Tap below, then pick Midas.':'Attach it in the same chat.'}</span></div></div>
+        ${canShare?`<button class="btn btn-a btn-lg qs-go" onclick="qsShareDocs()">${QS.shared?'Sent &#10003; &middot; send again':'Send my photo'+(files.length>1?'s':'')}</button>`:''}`:''}
+      </div>`}
+      <div class="qs-next"><b>What happens next</b>
+        <div><i>1</i>Midas checks your details, usually within minutes</div>
+        <div><i>2</i>The bank checks your credit, 24 to 48 hours</div>
+        <div><i>3</i>You get your offer letter, pay your down payment to the bank, and drive away</div></div>
+      <button class="qs-skip" onclick="qualClose();location.hash='#/offers'">See my bank offers &rarr;</button>`;
+    if(!QS.sending&&!QS.cheered){ QS.cheered=true; setTimeout(midasConfetti,120); } }
   b.innerHTML=head+back+body;
   const first=b.querySelector('.qs-fields input'); if(first){ first.focus({preventScroll:true}); b.querySelectorAll('.qs-fields input').forEach(x=>x.onkeydown=e=>{ if(e.key==='Enter') b.querySelector('.qs-go')&&b.querySelector('.qs-go').click(); }); }
 }
@@ -2610,7 +2674,7 @@ function qsSave(step){
     if(!['NG','GH'].includes(curCountry)&&raw.replace(/\s/g,'').length<5) return bad('Please add your ID number.'); }
   qualNext();
 }
-function qsSubmit(){
+async function qsSubmit(){
   const v=VEHICLES.find(x=>x.id===QS.id), h=QS.hit||qsFind(v), r=curC().rate;
   S.vehicleId=v.id; S.equityPct=h?h.e:QS.eq; S.tenor=h?h.t:60;
   S.la=Object.assign(S.la&&S.la.ctry===curCountry?S.la:{}, {ctry:curCountry,emp:'Salaried',first:QS.first,last:QS.last,phone:QS.phone,
@@ -2619,9 +2683,69 @@ function qsSubmit(){
   if(curCountry==='NG') S.la.bvn=QS.idv; else if(curCountry==='GH') S.la.ghcard=QS.idv; else S.la.natid=QS.idv;
   S.applicant={name:QS.first+' '+QS.last,phone:QS.phone,email:'',employment:'Salaried',income:Math.round(QS.inc),obligations:Math.round(QS.debt||0),
     country:curCountry,yearsEmployed:QS.years||1,salaryDomiciled:false,bank:QS.salBank||'',nuban:''};
-  S.verified=true; save(); track('loanform_submitted',{id:v.id,via:'sheet'});
-  qualClose(); location.hash='#/offers';
+  S.verified=true; QS.ref=QS.ref||('MD-'+Date.now().toString(36).slice(-6).toUpperCase()); S.qsRef=QS.ref;
+  S.qsWa=null; save(); track('loanform_submitted',{id:v.id,via:'sheet'});
+  QS.sending=true; QS.i=qsSteps().indexOf('done'); qualRender();
+  try{
+    const body={applicant:S.applicant, vehicleId:v.id, vehicle:`${v.year} ${v.make} ${v.model}`, price:v.price, image:v.img,
+      equityPct:S.equityPct, tenor:S.tenor, estMonthly:h?h.o.monthly:null, estRate:h?h.o.rate:null,
+      consentAt:new Date().toISOString(), source:'storefront', ref:QS.ref, country:curCountry, employer:QS.employer,
+      salaryBank:QS.salBank||'', idNumber:QS.idv||undefined, docs:(QS.docs||[]).map(d=>({kind:d.kind,name:d.name,data:d.data}))};
+    const j=await Promise.race([api('/api/applications',{method:'POST',body}), new Promise((_,no)=>setTimeout(()=>no(new Error('timeout')),8000))]);
+    if(j&&j.id){ QS.posted=true; S.serverRef=j.id; save(); track('lead_posted',{id:v.id}); }
+  }catch(err){ track('lead_post_failed',{why:String(err&&err.message||err)}); }
+  QS.sending=false; S.qsWa=QS.posted?null:qsWaLink(v); save(); qualRender();
 }
+/* The application as a WhatsApp message the buyer sends with one tap. No BVN in the text. */
+function qsWaLink(v){ const h=QS.hit, eq=S.equityPct||QS.eq||.1, yrs=QS.years==null?'':QS.years<1?' (under 1 year)':QS.years<3?' (1–3 years)':' (over 3 years)';
+  const lines=[`Hello Midas, I want the ${v.year} ${v.make} ${v.model}.`, `Ref: ${QS.ref}`, `Name: ${QS.first} ${QS.last}`, `Phone: ${QS.phone}`,
+    `Take-home pay: about ${NGNs(QS.inc)} a month`, QS.debt?`Other loans: about ${NGNs(QS.debt)} a month`:'No other loans',
+    QS.employer?`Work: ${QS.employer}${yrs}`:'', QS.salBank?`Salary bank: ${QS.salBank}`:'',
+    `Down payment: ${NGNs(v.price*eq)} (${Math.round(eq*100)}%), ${S.tenor||60} months`, h?`Estimate: ${NGN(h.o.monthly)} a month`:'',
+    (QS.docs||[]).length?'I will send my ID photo next.':'I will send my ID photo in this chat.'].filter(Boolean);
+  return 'https://wa.me/2348058963692?text='+encodeURIComponent(lines.join('\n')); }
+/* ID and payslip photos: camera or files, shrunk on the phone to ~300 KB so they send on a slow network */
+const QS_WA='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>';
+const QS_CAM='<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.6"/></svg>';
+const QS_FILE='<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-9 9"/></svg>';
+function qsShrink(file){ return new Promise(res=>{ const u=URL.createObjectURL(file), img=new Image();
+  img.onload=()=>{ const k=Math.min(1,1600/Math.max(img.naturalWidth,img.naturalHeight)), c=document.createElement('canvas');
+    c.width=Math.round(img.naturalWidth*k); c.height=Math.round(img.naturalHeight*k); c.getContext('2d').drawImage(img,0,0,c.width,c.height); URL.revokeObjectURL(u);
+    c.toBlob(b=>res(b&&b.size<file.size?b:file),'image/jpeg',.82); };
+  img.onerror=()=>{ URL.revokeObjectURL(u); res(file); }; img.src=u; }); }
+async function qsDocAdd(inp,kind){
+  const f=inp.files&&inp.files[0]; inp.value=''; if(!f) return;
+  QS.err=''; QS.busy=true; qualRender();
+  try{
+    const isPdf=f.type==='application/pdf'||/\.pdf$/i.test(f.name);
+    if(!isPdf&&!/^image\//.test(f.type||'image/')) throw new Error('Please use a photo or a PDF.');
+    const blob=isPdf?f:await qsShrink(f);
+    if(blob.size>3*1024*1024) throw new Error(isPdf?'That PDF is too big. Take a photo of the page instead.':'That photo is too big. Try again.');
+    const data=await new Promise((ok,no)=>{ const r=new FileReader(); r.onload=()=>ok(r.result); r.onerror=no; r.readAsDataURL(blob); });
+    const type=isPdf?'application/pdf':(blob.type||'image/jpeg');
+    (QS.docs||(QS.docs=[])).push({key:Math.random().toString(36).slice(2,8),kind,type,blob,data,name:(kind==='id'?'ID':'Income')+(isPdf?'.pdf':'.jpg'),url:URL.createObjectURL(blob)});
+    track('doc_added',{kind,kb:Math.round(blob.size/1024)});
+  }catch(err){ QS.err=err.message||'That file did not work. Try a photo instead.'; }
+  QS.busy=false; qualRender();
+}
+function qsDocDel(key){ QS.docs=(QS.docs||[]).filter(x=>x.key!==key); qualRender(); }
+function qsShareFiles(){ return (QS.docs||[]).map((d,i)=>new File([d.blob],`Midas-${QS.ref||'file'}-${d.kind}-${i+1}.${d.type==='application/pdf'?'pdf':'jpg'}`,{type:d.type})); }
+function midasConfetti(){
+  try{ navigator.vibrate&&navigator.vibrate([25,40,25]); }catch(e){}
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const c=document.createElement('canvas'), g=c.getContext('2d'), d=Math.min(2,devicePixelRatio||1), W=innerWidth, H=innerHeight;
+  c.width=W*d; c.height=H*d; c.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:95'; g.scale(d,d); document.body.appendChild(c);
+  const cols=['#0b1f3a','#16335c','#d4a537','#f0c060','#ffffff','#1fae54'];
+  const P=Array.from({length:Math.min(140,Math.round(W/3))},()=>({x:W/2+(Math.random()-.5)*W*.3,y:H*.42,vx:(Math.random()-.5)*13,vy:-Math.random()*14-5,
+    w:6+Math.random()*7,h:9+Math.random()*9,r:Math.random()*6,vr:(Math.random()-.5)*.35,c:cols[Math.random()*cols.length|0]}));
+  const t0=performance.now();
+  (function f(t){ const k=(t-t0)/2600; g.clearRect(0,0,W,H);
+    P.forEach(p=>{ p.vy+=.34; p.vx*=.992; p.x+=p.vx; p.y+=p.vy; p.r+=p.vr; g.save(); g.globalAlpha=Math.max(0,1-k*k); g.translate(p.x,p.y); g.rotate(p.r);
+      g.fillStyle=p.c; g.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.abs(Math.cos(p.r*2))); g.restore(); });
+    if(k<1) requestAnimationFrame(f); else c.remove(); })(t0);
+}
+async function qsShareDocs(){ try{ await navigator.share({files:qsShareFiles(), title:'Midas '+QS.ref}); QS.shared=true; track('docs_shared',{n:(QS.docs||[]).length}); qualRender(); }catch(err){} }
+
 function startApply(id){
   if(id) S.vehicleId=id;
   if(!S.vehicleId || !VEHICLES.find(v=>v.id===S.vehicleId)) S.vehicleId=VEHICLES[0].id;
@@ -3580,56 +3704,49 @@ function renderLocalStatus(v){
   const o=panel.find(x=>x.lender.id===S.accepted && x.approved);
   if(!o){ $('#stHead').textContent='Offer no longer valid';
     $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>The structure changed after this offer was accepted.</b> '+S.accepted+' will not price the deal as it now stands. Go back to the offers and take a live one.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the offers →</a></div>'; return; }
-  const okCount=panel.filter(x=>x.approved).length;
-  const pfi=pfiNumber();
-  const steps=[['1 · Car selected & certified',v.year+' '+v.make+' '+v.model+' · Auto OS Grade '+v.grade,'done'],
-    ['2 · Proforma invoice issued',pfi+' · fixes the price and structure · valid 7 days','done'],
-    ['3 · Credit assessment — in the bank\u2019s own environment','One file to '+LENDERS.length+' banks over a secure API. Scoring runs on bank infrastructure, not ours.','done'],
-    ['4 · Offer letter',bankName(o.lender)+' · '+pct(o.rate*100)+' p.a. · '+NGN(o.monthly)+'/month · target '+o.hours+'h','done'],
-    ['5 · Equity contribution — paid to the bank','Pay '+NGN(o.equity)+' directly into the bank\u2019s account. Never to the dealer, never to Midas.','now'],
-    ['6 · Disbursement & pickup','The bank pays the dealer. Keys within 24 hours of your equity landing.',''],
-  ];
-  $('#stHead').textContent='Indicative offer chosen — '+bankName(o.lender);
+  const sent=!!S.serverRef, A=S.applicant||{}, first=(A.name||'').split(' ')[0];
+  const steps=[['Application filled in',`${v.year} ${v.make} ${v.model}${S.qsRef?' &middot; ref '+S.qsRef:''}`,'done'],
+    ['You chose your bank',`${bankName(o.lender)} &middot; about ${NGN(o.monthly)} a month for ${o.tenor} months`,'done'],
+    [sent?'Midas has your file':'Send your file to Midas',sent?'An adviser will message you shortly.':'One tap. An adviser replies in minutes, day and night.',sent?'done':'now'],
+    ['The bank checks your credit','Usually 24 to 48 hours. We keep you posted.',sent?'now':''],
+    ['Your offer letter','The bank sends it. Read it, then say yes.',''],
+    ['Pay your down payment to the bank',`${NGN(o.equity)}, only into the account on the bank’s letter. Never to Midas or the dealer.`,''],
+    ['Collect your car','The bank pays the showroom. You drive away.','']];
+  $('#stHead').textContent=sent?'Midas has your file':(first?first+', you’re nearly there':'You’re nearly there');
   $('#stBody').innerHTML=`
-    <div class="grid" style="grid-template-columns:1fr 340px;align-items:start">
-      <div>
+    ${sent?'':`<div class="card pad st-send"><div class="st-send-in">${v.img?`<img src="${v.img}" alt="">`:''}<div><b>Last step: send your file to Midas</b><span>Your details are already typed in. Just tap send.</span></div></div>
+      <a class="btn btn-wa btn-lg" href="${stWaLink(v,o)}" target="_blank" rel="noopener" onclick="track('lead_whatsapp_open',{id:'${v.id}',from:'status'})">${QS_WA}Send to Midas</a></div>`}
+    <div class="grid st-grid" style="grid-template-columns:1fr 340px;align-items:start">
       <div class="card pad">
-        <div class="timeline">${steps.map(([t,s,c])=>`<div class="tl ${c}"><div class="d">${c==='done'?'✓':''}</div><div><h4>${t}</h4><p>${s}</p></div></div>`).join('')}</div>
-      </div>
-      <div class="card pad" id="pfiDoc" style="margin-top:18px">
-        <div class="between" style="align-items:flex-start">
-          <div><div class="eyebrow">Proforma invoice</div>
-            <h3 style="margin:8px 0 2px;font-family:var(--mono);font-size:1.05rem">${pfi}</h3>
-            <p class="tiny faint">Issued ${new Date(S.submittedAt||Date.now()).toLocaleDateString('en-NG',{day:'numeric',month:'long',year:'numeric'})} · valid 7 days</p></div>
-          <button class="btn btn-g btn-sm" onclick="window.print()">Print / save PDF</button>
-        </div>
-        <hr class="sep">
-        <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${v.year} ${v.make} ${v.model} · ${v.id}</span></div>
-        <div class="kv"><span class="k">Certified price</span><span class="v">${NGN(v.price)}*</span></div>
-        <div class="kv"><span class="k">Equity contribution (${pct(S.equityPct*100,0)})</span><span class="v">${NGN(o.equity)}</span></div>
-        <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(o.loan)} · ${o.tenor} months</span></div>
-        <div class="kv"><span class="k">Financing bank</span><span class="v" style="font-family:var(--body)">${bankName(o.lender)}</span></div>
-        <p class="tiny muted" style="margin-top:12px">Present this PFI number in any conversation with the bank or the showroom. Your down payment is payable only to the account named on the bank's offer letter.<br>* Prices exclude 7.5% VAT.</p>
-      </div>
+        <div class="timeline">${steps.map(([t,x,c])=>`<div class="tl ${c}"><div class="d">${c==='done'?'✓':''}</div><div><h4>${t}</h4><p>${x}</p></div></div>`).join('')}</div>
       </div>
       <div class="card pad">
-        <div class="eyebrow">Your facility</div>
+        <div class="eyebrow">Your loan, estimated</div>
         <h3 style="margin:8px 0 14px;font-size:1.3rem">${NGN(o.monthly)}<span style="font-size:.9rem;color:var(--ink-faint);font-weight:400">/month</span></h3>
-        <div class="kv"><span class="k">Vehicle</span><span class="v" style="font-family:var(--body)">${v.year} ${v.make}</span></div>
-        <div class="kv"><span class="k">Price</span><span class="v">${NGN(v.price)}</span></div>
-        <div class="kv"><span class="k">Equity contribution</span><span class="v">${NGN(o.equity)}</span></div>
-        <div class="kv"><span class="k">Facility amount</span><span class="v">${NGN(o.loan)}</span></div>
-        <div class="kv"><span class="k">Interest rate</span><span class="v">${pct(o.rate*100)} p.a.</span></div>
-        <div class="kv"><span class="k">Tenor</span><span class="v">${o.tenor} months</span></div>
+        <div class="kv"><span class="k">Car price</span><span class="v">${NGN(v.price)}*</span></div>
+        <div class="kv"><span class="k">Down payment (${pct(S.equityPct*100,0)})</span><span class="v">${NGN(o.equity)}</span></div>
+        <div class="kv"><span class="k">Loan</span><span class="v">${NGN(o.loan)}</span></div>
+        <div class="kv"><span class="k">Interest rate</span><span class="v">${pct(o.rate*100)} a year</span></div>
+        <div class="kv"><span class="k">Months</span><span class="v">${o.tenor}</span></div>
         <hr class="sep">
         <div class="kv"><span class="k">Total interest</span><span class="v">${NGN(o.interest)}</span></div>
-        <div class="kv"><span class="k">Comprehensive insurance (${o.tenor} mo)</span><span class="v">${NGN(o.insurance)}</span></div>
-        <div class="kv"><span class="k">Management fee &amp; tracker</span><span class="v">${NGN(o.fees)}</span></div>
-        <div class="kv"><span class="k"><b>Total repayment, all-in</b></span><span class="v">${NGN(o.allIn)}</span></div>
+        <div class="kv"><span class="k">Insurance (${o.tenor} months)</span><span class="v">${NGN(o.insurance)}</span></div>
+        <div class="kv"><span class="k">Fees &amp; tracker</span><span class="v">${NGN(o.fees)}</span></div>
+        <div class="kv"><span class="k"><b>Total you pay back</b></span><span class="v">${NGN(o.allIn)}</span></div>
+        <p class="tiny faint" style="margin:12px 0 0">An estimate from ${bankName(o.lender)}’s published rules. The bank’s offer letter is final. * Prices exclude 7.5% VAT.</p>
         <button class="btn btn-g btn-sm" style="width:100%;margin-top:16px" onclick="reset()">Start a new application</button>
       </div>
     </div>`;
 }
+/* The same file as a WhatsApp message, built from what is saved (works after a reload). No BVN. */
+function stWaLink(v,o){ const A=S.applicant||{}, L=S.la||{}, y=+L.years, yrs=!y?'':y<1?' (under 1 year)':y<3?' (1–3 years)':' (over 3 years)';
+  const lines=[`Hello Midas, I want the ${v.year} ${v.make} ${v.model}.`, S.qsRef?`Ref: ${S.qsRef}`:'', A.name?`Name: ${A.name}`:'', A.phone?`Phone: ${A.phone}`:'',
+    A.income?`Take-home pay: about ${NGNs(A.income)} a month`:'', A.obligations?`Other loans: about ${NGNs(A.obligations)} a month`:'No other loans',
+    L.employer?`Work: ${L.employer}${yrs}`:'', A.bank?`Salary bank: ${A.bank}`:'',
+    `Down payment: ${NGNs(o.equity)} (${Math.round(S.equityPct*100)}%), ${o.tenor} months`, `Bank I chose: ${bankName(o.lender)}, about ${NGN(o.monthly)} a month`,
+    'I will send my ID photo in this chat.'].filter(Boolean);
+  return 'https://wa.me/2348058963692?text='+encodeURIComponent(lines.join('\n')); }
+
 function reset(){ localStorage.removeItem(KEY); S=load(); location.hash='#/market'; }
 </script>
 <script>
