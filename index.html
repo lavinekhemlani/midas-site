@@ -1101,7 +1101,7 @@ input,select,textarea{font-size:17px}
         <button class="btn btn-a btn-lg" onclick="qualOpen(null)">Find my car &rarr;</button>
         <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#inv" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See the cars</a>
               </div>
-      <p class="tiny" id="heroFine" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free &nbsp;&middot;&nbsp; No BVN to start &nbsp;&middot;&nbsp; 5-year warranty</p>
+      <p class="tiny" id="heroFine" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free &nbsp;&middot;&nbsp; No BVN to start &nbsp;&middot;&nbsp; Manufacturer warranty</p>
     </div></div>
     
   </div>
@@ -1201,7 +1201,7 @@ input,select,textarea{font-size:17px}
               <div class="offrow mph-row"><img src="brand/banks/lotus.svg" alt="Lotus Bank" class="offlogo"><b class="offamt">&#8358;391,880</b></div>
             </div></div></div>
         </div>
-        <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">Every bank sends its price to one screen. You choose.</p></div>
+        <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">See every bank’s estimate side by side. You choose.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
         <div class="veh-img step-img"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy driver in his new car" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%"></picture>
@@ -1231,7 +1231,7 @@ input,select,textarea{font-size:17px}
           </div>
           <p class="tiny faint" style="margin-top:20px">Showrooms &middot; Victoria Island &middot; Ikeja &middot; Abuja &middot; Port Harcourt &middot; Kano &middot; Enugu &middot; Ibadan</p>
         </div>
-        <div style="min-height:320px;background:url('cars/showroom.jpg') center/cover;background-image:image-set(url('cars/showroom-w800.avif') type('image/avif'),url('cars/showroom-w800.webp') type('image/webp'),url('cars/showroom.jpg') type('image/jpeg'))"></div>
+        <div style="min-height:320px;background:url('cars/driver-happy.jpg') center/cover;background-image:image-set(url('cars/driver-happy-w800.avif') type('image/avif'),url('cars/driver-happy-w800.webp') type('image/webp'),url('cars/driver-happy.jpg') type('image/jpeg'))"></div>
       </div>
     </div>
     <p style="text-align:center;margin-top:22px;font-size:14.5px;color:var(--ink-soft)"><b style="color:var(--ink)">What you need:</b> your ID &middot; your phone &middot; your salary details. That's all.</p>
@@ -1261,12 +1261,12 @@ input,select,textarea{font-size:17px}
 <!-- ===================== OFFERS / AUCTION ===================== -->
 <section class="view" id="v-offers">
   <div class="wrap" style="padding-top:34px;max-width:780px">
-    <div class="eyebrow">Indicative offers</div>
-    <h2 style="margin:8px 0 6px" id="offHead">The banks are looking at your file.</h2>
+    <div class="eyebrow">Estimated offers</div>
+    <h2 style="margin:8px 0 6px" id="offHead">Working out each bank’s price&hellip;</h2>
     <p class="muted" id="offSub"></p>
 
     <div class="bkprog">
-      <div class="bkprog-t"><b id="offCount">0 of 8</b> banks have answered</div>
+      <div class="bkprog-t"><b id="offCount">0 of 8</b> banks priced</div>
       <div class="bkbar"><i id="aucBar"></i></div>
     </div>
 
@@ -1285,7 +1285,7 @@ input,select,textarea{font-size:17px}
 
     <div class="card pad" style="margin-top:18px">
       <b style="font-size:14.5px">Your money goes to the bank only</b>
-      <p class="tiny muted" style="margin:6px 0 0">When you choose an offer, your down payment is paid into that bank&rsquo;s own account &mdash; never to the dealer, never to Midas. We will never ask for your BVN, PIN or OTP.</p>
+      <p class="tiny muted" style="margin:6px 0 0">When you choose an offer, your down payment is paid into that bank&rsquo;s own account &mdash; never to the dealer, never to Midas. We will never ask for your PIN, OTP or card number.</p>
     </div>
   </div>
 </section>
@@ -1306,7 +1306,7 @@ input,select,textarea{font-size:17px}
     <h2 style="margin:8px 0 8px" id="loginHead">Log in</h2>
     <p class="muted" style="margin-bottom:22px" id="loginSub">Your application, your offers and your documents &mdash; in one place.</p>
     <div class="card pad" id="loginCard"></div>
-    <p class="tiny muted" style="margin-top:16px">&#128274; We never ask for your BVN, card number, PIN or OTP.</p>
+    <p class="tiny muted" style="margin-top:16px">&#128274; We never ask for your PIN, OTP or card number.</p>
   </div>
 </section>
 
@@ -1360,7 +1360,7 @@ input,select,textarea{font-size:17px}
     <p class="muted" style="max-width:60ch">Buying five vehicles or fifty, the same partner banks price your fleet. Banks lend more readily against a bulk order than a single car &mdash; one file, one security package, one disbursement.</p>
 
     <div class="photostrip rev">
-      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Showroom" loading="lazy" decoding="async"></picture><span>Delivered from our showrooms</span></div>
+      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy Midas driver" loading="lazy" decoding="async"></picture><span>Drive away happy</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/hunter-w480.avif 480w, cars/hunter-w800.avif 800w, cars/hunter-w1200.avif 1200w, cars/hunter-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/hunter-w480.webp 480w, cars/hunter-w800.webp 800w, cars/hunter-w1200.webp 1200w, cars/hunter-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/hunter.jpg" alt="Pickup" loading="lazy" decoding="async"></picture><span>Pickups</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/t60-w480.avif 480w, cars/t60-w800.avif 800w, cars/t60-w1200.avif 1200w, cars/t60-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/t60-w480.webp 480w, cars/t60-w800.webp 800w, cars/t60-w1200.webp 1200w, cars/t60-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/t60.jpg" alt="Commercial" loading="lazy" decoding="async"></picture><span>Commercial</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/tucson-w480.avif 480w, cars/tucson-w800.avif 800w, cars/tucson-w1200.avif 1200w, cars/tucson-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/tucson-w480.webp 480w, cars/tucson-w800.webp 800w, cars/tucson-w1200.webp 1200w, cars/tucson-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/tucson.jpg" alt="Executive" loading="lazy" decoding="async"></picture><span>Executive</span></div>
@@ -1434,11 +1434,11 @@ input,select,textarea{font-size:17px}
       <div class="ck"><div><b>Pre-owned vehicles</b> &mdash; Wikimedia Commons contributors, CC BY-SA</div></div>
       <div class="ck"><div><b>Buyer portraits</b> &mdash; computer-generated, not photographs of real customers</div></div>
     </div>
-    <p class="tiny faint" style="margin-top:16px">Sourced from Wikimedia Commons. These are placeholders: every one will be replaced with a photograph of the actual vehicle in our own showroom before launch.</p>
+    <p class="tiny faint" style="margin-top:16px">Car photos are the manufacturers’ own press images, used to show each model.</p>
   </div>
 
     <h3 style="margin:26px 0 10px;font-size:1.05rem">Vehicle photography</h3>
-    <p class="tiny muted" style="margin-bottom:14px">Model photographs are from Wikimedia Commons, used under their licences and credited below. Showroom photography of our own stock is being shot now and will replace these.</p>
+    <p class="tiny muted" style="margin-bottom:14px">Car photos are the manufacturers’ own press images. Older photos credited below came from Wikimedia Commons under their licences.</p>
     <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)">Model</th><th style="text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)">File</th><th style="text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)">Photographer</th><th style="text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)">Licence</th></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland 1718</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">A typical Indian lorry waits for it's load of CTC tea (28145808723).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">shankar s. from Dubai, united arab emirates</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY 2.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland 1718</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Lorry,borewell,near kallakurichi,Tamil Nadu422.JPG</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">தகவலுழவன்</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland 1718</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">TamilNadu Lorry.JPG</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Saravankm</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland Partner</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Iraqi Army (IA) 4th Battalion (BN), 1ST Brigade (BGDE), Iraqi Intervention Force (IIF), Soldiers ride in a convoy on their way to walk a field patrol on the outskirts of the village - DPLA - 0ebbad1e768db6335bb4ad6307c8324f.jpeg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Department of Defense. American Forces Information Service. Defense Visual Information Cen</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Public domain</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland Phoenix</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland G45 Cab on Tipper (ACCL Built).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Ask27</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland Phoenix</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland G45 Dumper.JPG</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Ask27</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland Phoenix</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Ashok Leyland Tipper Truck 726.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Premnath Kudva</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune E311</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 FAW Bestune T55.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><span style=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune E311</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T55 IMG001.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:Zotyefan&amp;action=edit&amp;redli</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune E311</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T55 img01.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:FAWFTW&amp;action=edit&amp;redlink</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T77 Pro</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2018 FAW Bestune T77.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><span style=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T77 Pro</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T77 012.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Jengtin</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T77 Pro</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T77 013.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Jengtin</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T90</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Bestune T90 black front.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">T</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T90</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T90 001.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:JustAnotherCarDesigner&amp;action=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T90</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Bestune T90 002.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:JustAnotherCarDesigner&amp;action=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda CR-V</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda CR-V EX-L 4WD in Radiant Red Metallic, rear right.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Mr.choppe</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda CR-V</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda CR-V EX-L AWD, rear right, 11-13-2022.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Mer</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda CR-V</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda CR-V e-HEV RS 4WD.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Chanokchon<</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda HR-V</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda HR-V LX AWD, front right, 11-13-2022.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Mer</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda HR-V</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda HR-V LX AWD, rear right, 11-13-2022.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Mer</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda HR-V</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda HR-V (3rd generation, North America) IMG 8339.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda Pilot</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda Pilot Touring, front.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Kevauto</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda Pilot</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda Pilot Touring, rear.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Kevauto</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Honda Pilot</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Honda Pilot TrailSport, rear left, 05-08-2023.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Mer</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Accent</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">0 Hyundai Accent (RB) 2.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Benespit</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Accent</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Dodge Attitude (52729195656).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Wikimedia Commons contributor</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY 2.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Accent</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Accent RB.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Dicky0615</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Creta</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2024 Hyundai Creta Alpha.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Chanokchon<</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Creta</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Creta 1.5 Design 2024.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">RL GNZLZ</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Creta</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Creta 1.5 GLS 2024 (1).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/wiki/User:Captainmorlypogi1959 title=User:Captainmorlyp</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Grand Creta</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 Hyundai Alcazar 1.5 Prestige (India) front view.png</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">AMAN AUTOMOBILES</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Grand Creta</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 Hyundai Alcazar 2.0 Signature (India) front view.png</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hindi DriveSpark</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Grand Creta</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 Hyundai Alcazar 2.0 Signature (India) interior.png</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hindi DriveSpark</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY 3.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Grand i10</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 Hyundai Grand i10 Nios 1.0AT Standard red front view in Brunei.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:AIMHO%27S_REBELLION_8490s&amp;acti</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Grand i10</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Hyundai i10 (AC3) Autofrühling Ulm IMG 9346.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Grand i10</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Hyundai i10 (AC3) Autofrühling Ulm IMG 9349.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Palisade</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Hyundai Palisade (facelift).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><span style=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Palisade</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Palisade 2023.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:Calreyn88&amp;action=edit&amp;redl</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Palisade</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Palisade IMG 7301.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Santa Fe</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2024 Hyundai Santa Fe (MX5) IMG 5295.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Santa Fe</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2024 Hyundai Santa Fe (MX5) IMG 5309.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Santa Fe</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2024 Hyundai Santa Fe Calligraphy BS O24.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MrWalkr</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Staria</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Staria 1X7A0321.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Staria</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Staria 1X7A0326.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Staria</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Staria 1X7A0875.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Tucson</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">HYUNDAI TUCSON 4WD, POLICIA, SLOVAKIA 01.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Oto Zap</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Tucson</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">HYUNDAI TUCSON 4WD, POLICIA, SLOVAKIA 02.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Oto Zap</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Hyundai Tucson</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">HYUNDAI TUCSON 4WD, POLICIA, SLOVAKIA 03.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Oto Zap</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 5</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 5 II facelift 004.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:JustAnotherCarDesigner&amp;action=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 5</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 5 II facelift 005.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:JustAnotherCarDesigner&amp;action=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 5</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 5 II facelift 006.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:JustAnotherCarDesigner&amp;action=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 7</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 7 (2nd generation) GIMS 2024 1X7A2008.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 7</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 7 (2nd generation) GIMS 2024 1X7A2400.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 7</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG 7 II 001.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:JustAnotherCarDesigner&amp;action=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG Cyberster</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG Cyberster, BAS 24, Brussels (P1170240).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Matti Blume</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG Cyberster</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG Cyberster, GIMS 2024, Le Grand-Saconnex (GIMS0135).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Matti Blume</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG Cyberster</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG Cyberster, IAA Mobility 2023, Munich (P1110360).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Matti Blume</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX5</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 SAIC Roewe RX5 ePlus.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><span style=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX5</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 SAIC Roewe RX5 ePlus (front).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><span style=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX5</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2021 SAIC Roewe RX5 ePlus (rear).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><span style=</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX8</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Roewe RX8 004.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Jengtin</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX8</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Roewe RX8 005.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Jengtin</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX8</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Roewe RX8 008 (cropped).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Jengtin</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX9</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG ONE 1.5 Lux 2024 (1).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:Ethan_Llamas&amp;action=edit&amp;r</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX9</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG ONE 1.5 Lux 2024 (2).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:Ethan_Llamas&amp;action=edit&amp;r</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG RX9</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG One 004.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:China_Street_Shots&amp;action=edit</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG S6 EV</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG ZS (crossover, second generation) Automesse Ludwigsburg 2025 DSC 2617.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG S6 EV</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG ZS (crossover, second generation) Automesse Ludwigsburg 2025 DSC 2618.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG S6 EV</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">MG ZS (crossover, second generation) DSC 8542.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG T60</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Maxus T60 China 2017-03-29.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Navigator84</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG T60</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Maxus T60 DX Valpo.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Kmaster</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">MG T60</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Maxus T60 MAX Auto Zuerich 2025 DSC 3516.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexander Migl</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Navara</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Navara 4x4 PRO4x 2023.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/wiki/User:Captainmorlypogi1959 title=User:Captainmorlyp</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Navara</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Navara 4x4 PRO4x 2023 (1).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/wiki/User:Captainmorlypogi1959 title=User:Captainmorlyp</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Navara</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Navara 4x4 PRO4x 2023 (2).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/wiki/User:Captainmorlypogi1959 title=User:Captainmorlyp</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Urvan</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan NV350 Urvan (Pennsylvania), front right, 12-10-2022.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Mer</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Urvan</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan NV350 Urvan 2.5 15-Seater 2019.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:Ethan_Llamas&amp;action=edit&amp;r</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan Urvan</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan NV350 Urvan 2.5 15-Seater 2019 (1).jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)"><a href=//commons.wikimedia.org/w/index.php?title=User:Ethan_Llamas&amp;action=edit&amp;r</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan X-Trail</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">2023 Nissan X-Trail Ti rear.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">LuvsMG481</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan X-Trail</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan X-Trail (T33) 1X7A7179.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr><tr><td style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan X-Trail</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Nissan X-Trail (T33) 1X7A7199.jpg</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">Alexand</td><td class="tiny muted" style="padding:7px 6px;border-bottom:1px solid var(--line)">CC BY-SA 4.0</td></tr></table></div>
 </section>
 
@@ -1458,7 +1458,7 @@ input,select,textarea{font-size:17px}
         onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askSend();}"></textarea>
       <button class="ask-send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </form>
-    <p class="ask-fine">Figures are estimates from each bank&rsquo;s published rules. The bank makes the final decision.</p>
+    <p class="ask-fine">Figures are estimates from each bank&rsquo;s usual terms. The bank makes the final decision.</p>
   </div>
 </section>
 
@@ -1468,7 +1468,7 @@ input,select,textarea{font-size:17px}
     <div class="eyebrow">About Midas</div>
     <h2 style="margin:10px 0 12px">Cars, financed properly.</h2>
     <p class="muted" style="max-width:58ch">Most Nigerians pay cash for cars because a loan takes forty days and a miracle. Midas puts a group of banks behind every car, so an offer comes back in 48 hours and the keys follow your down payment.</p>
-    <div style="margin:22px 0;border-radius:14px;overflow:hidden"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;max-height:300px;object-fit:cover;display:block" loading="lazy" decoding="async"></picture></div>
+    <div style="margin:22px 0;border-radius:14px;overflow:hidden"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy Midas driver" style="width:100%;max-height:300px;object-fit:cover;display:block" loading="lazy" decoding="async"></picture></div>
     <div class="grid rev" style="grid-template-columns:repeat(4,1fr);gap:14px;text-align:center;margin:26px 0">
       <div><div class="bignum" data-cnt="48">0</div><div class="tiny muted">hour offer target</div></div>
       <div><div class="bignum" data-cnt="7">0</div><div class="tiny muted">partner banks</div></div>
@@ -1493,8 +1493,6 @@ input,select,textarea{font-size:17px}
         <b style="display:block;margin-top:12px">Lavine Hemlani</b><div class="tiny muted">Founder. Builds the bank partnerships and the capital side.</div></div>
       <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0b2a4a,#2a5a8f);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">MK</div>
         <b style="display:block;margin-top:12px">Manoj Kurapati</b><div class="tiny muted">Technology. The platform, the API, the consoles.</div></div>
-      <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0b2a4a,#123f6e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">AS</div>
-        <b style="display:block;margin-top:12px">Amit Sharma</b><div class="tiny muted">Sales, Lagos.</div></div>
     </div>
     <p class="tiny faint" style="margin-top:16px">Behind the team sits a national automotive network &mdash; three decades of vehicle distribution in Nigeria.</p>
   </div>
@@ -1615,20 +1613,20 @@ input,select,textarea{font-size:17px}
   <div class="wrap" style="padding-top:38px;max-width:900px;padding-bottom:40px">
     <div class="eyebrow">Auto insurance</div>
     <h2 style="margin:10px 0 12px">Cover, built into the loan.</h2>
-    <p class="muted" style="max-width:60ch">Every financed car is insured before it leaves the showroom. Pay it monthly, inside the same loan &mdash; not as a surprise on top.</p>
+    <p class="muted" style="max-width:60ch">Add insurance to your car loan and pay it monthly, inside the same loan &mdash; not as a surprise on top.</p>
     <div class="g3" style="margin:26px 0">
       <div class="statcard"><div class="sv" style="font-size:1.15rem">Comprehensive</div><div class="sk">theft, accident, third party &mdash; 60 months</div></div>
-      <div class="statcard"><div class="sv" style="font-size:1.15rem">Takaful &#9789;</div><div class="sk">halal cover &mdash; shared pool, no interest</div></div>
+      <div class="statcard"><div class="sv" style="font-size:1.15rem">Pay monthly</div><div class="sk">inside your car loan, not a lump sum</div></div>
       <div class="statcard"><div class="sv" style="font-size:1.15rem">Tracker included</div><div class="sk">fitted before delivery, lowers your premium</div></div>
     </div>
     <div class="card pad" style="margin-bottom:22px">
       <b style="font-size:15px">How it works</b>
-      <p class="tiny muted" style="margin:8px 0 0">Tick <b>Comprehensive insurance</b> on the loan form and the premium is financed with the car. Choosing the halal loan? Your cover is Takaful &mdash; a shared protection pool, certified the same way the loan is. Claims are handled by the insurer, not by us.</p>
+      <p class="tiny muted" style="margin:8px 0 0">Tick <b>Comprehensive insurance</b> on the loan form and the premium is financed with the car.</p>
     </div>
-    <p class="tiny faint">Partnerships forming with Nigeria&rsquo;s licensed insurers, conventional and Takaful. Premiums are set by the insurer.</p>
+    <p class="tiny faint">Cover comes from licensed insurers. The insurer sets the price.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="startApply(); return false">Get covered with your loan &rarr;</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${''}Hello, I want an auto insurance quote from Midas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Get a quote</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20a%20car%20insurance%20quote" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Get a quote</a>
     </div>
   </div>
 </section>
@@ -1646,7 +1644,7 @@ input,select,textarea{font-size:17px}
     </div>
     <div class="g3" style="margin-top:14px">
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="The bank buys the car" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="The bank buys the car" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:#0b2a4a;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">1</span></div>
         <div class="veh-body"><h4 style="margin:0">The bank buys the car</h4><p class="tiny muted" style="margin:4px 0 0">At the showroom price. It owns it.</p></div>
       </div>
@@ -1768,7 +1766,7 @@ input,select,textarea{font-size:17px}
       <a class="btn btn-g" href="app.html#/axis/integration">API specification</a>
     </div>
     <div class="photostrip rev">
-      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Hyundai Tucson" loading="lazy" decoding="async"></picture><span>Our Honda dealership, Lagos</span></div>
+      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy Midas driver" loading="lazy" decoding="async"></picture><span>Drive away happy</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/tucson-w480.avif 480w, cars/tucson-w800.avif 800w, cars/tucson-w1200.avif 1200w, cars/tucson-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/tucson-w480.webp 480w, cars/tucson-w800.webp 800w, cars/tucson-w1200.webp 1200w, cars/tucson-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/tucson.jpg" alt="Tucson" loading="lazy" decoding="async"></picture><span>Tucson</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/creta-w480.avif 480w, cars/creta-w800.avif 800w, cars/creta-w1200.avif 1200w, cars/creta-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/creta-w480.webp 480w, cars/creta-w800.webp 800w, cars/creta-w1200.webp 1200w, cars/creta-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/creta.jpg" alt="Creta" loading="lazy" decoding="async"></picture><span>Creta</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/elantra-w480.avif 480w, cars/elantra-w800.avif 800w, cars/elantra-w1200.avif 1200w, cars/elantra-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/elantra-w480.webp 480w, cars/elantra-w800.webp 800w, cars/elantra-w1200.webp 1200w, cars/elantra-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/elantra.jpg" alt="Elantra" loading="lazy" decoding="async"></picture><span>Elantra</span></div>
@@ -1799,7 +1797,7 @@ input,select,textarea{font-size:17px}
         <h3 style="margin:0 0 4px;font-size:1.05rem">What your bank gets</h3>
         <div class="cklist rev">
           <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m8.5 12.5 2.5 2.5 5-6"/></svg><div><b>Credit-ready customers, not leads</b><div class="tiny muted">Documented and shortlisted before they reach your desk.</div></div></div>
-          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4h-2M3 13v4h2"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg><div><b>Vehicles as collateral</b><div class="tiny muted">Brand new with warranty, or inspected and graded &mdash; titled and delivered by our own franchises. 20&ndash;70% equity paid into your account first.</div></div></div>
+          <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M3 13l2-6h14l2 6v4h-2M3 13v4h2"/><circle cx="7.5" cy="17" r="1.8"/><circle cx="16.5" cy="17" r="1.8"/></svg><div><b>Vehicles as collateral</b><div class="tiny muted">Brand new with warranty, or inspected and graded &mdash; titled and delivered by our own franchises. 10&ndash;70% equity paid into your account first.</div></div></div>
           <div class="ck"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/></svg><div><b>We fund and run the marketing</b><div class="tiny muted">Co-branded campaigns across showrooms and digital &mdash; your pipeline filled at no cost to the bank.</div></div></div>
         </div>
       </div>
@@ -1834,7 +1832,7 @@ input,select,textarea{font-size:17px}
     </table></div>
     <p class="tiny faint" style="margin-top:8px">Zero licence fee, zero platform fee and zero commission for banks. Midas is paid by the dealers when a car is sold &mdash; never by your institution or the borrower.</p>
 
-    <p class="muted" style="max-width:66ch;margin-top:14px">A <b style="color:var(--ink)">non-interest window</b> is reserved for licensed Islamic banks &mdash; Murabaha and Ijara wa Iqtina structures, serving the roughly half of Nigeria that will not take an interest-bearing loan. We would particularly welcome that conversation.</p>
+    
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">Banks we are working with</h3>
     <div id="seatGrid" style="max-width:640px"></div>
@@ -1856,14 +1854,13 @@ input,select,textarea{font-size:17px}
     <h2 style="margin:8px 0 10px">Your stock, financed. Browsers become buyers.</h2>
     <p class="muted" style="max-width:58ch">Every car you list carries a monthly price and partner banks behind it. You keep your price; the bank pays you.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
-      <a class="btn btn-p" href="app.html#/stallion">Launch the dealer desk &rarr;</a>
       <a class="btn btn-g" href="#/desk">Showroom desk</a>
     </div>
 
     <div class="photostrip rev">
-      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Showroom" loading="lazy" decoding="async"></picture><span>Lagos showroom</span></div>
+      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy Midas driver" loading="lazy" decoding="async"></picture><span>Drive away happy</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/creta-w480.avif 480w, cars/creta-w800.avif 800w, cars/creta-w1200.avif 1200w, cars/creta-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/creta-w480.webp 480w, cars/creta-w800.webp 800w, cars/creta-w1200.webp 1200w, cars/creta-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/creta.jpg" alt="Creta" loading="lazy" decoding="async"></picture><span>Brand new</span></div>
-      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/used-corolla-w480.avif 480w, cars/used-corolla-w800.avif 800w, cars/used-corolla-w1200.avif 1200w, cars/used-corolla-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/used-corolla-w480.webp 480w, cars/used-corolla-w800.webp 800w, cars/used-corolla-w1200.webp 1200w, cars/used-corolla-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/used-corolla.jpg" alt="Hyundai Palisade" loading="lazy" decoding="async"></picture><span>Certified pre-owned</span></div>
+      <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/used-camry-w480.avif 480w, cars/used-camry-w800.avif 800w, cars/used-camry-w900.avif 900w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/used-camry-w480.webp 480w, cars/used-camry-w800.webp 800w, cars/used-camry-w900.webp 900w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/used-camry.jpg" alt="Toyota Camry" loading="lazy" decoding="async"></picture><span>Certified pre-owned</span></div>
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/t60-w480.avif 480w, cars/t60-w800.avif 800w, cars/t60-w1200.avif 1200w, cars/t60-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/t60-w480.webp 480w, cars/t60-w800.webp 800w, cars/t60-w1200.webp 1200w, cars/t60-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/t60.jpg" alt="Commercial" loading="lazy" decoding="async"></picture><span>Commercial</span></div>
     </div>
 
@@ -1943,12 +1940,12 @@ input,select,textarea{font-size:17px}
       </div>
     </article>
     <article class="veh rev pcard2">
-      <div class="veh-img" style="aspect-ratio:16/9"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Hyundai Tucson" style="width:100%;height:100%;object-fit:cover"></picture></div>
+      <div class="veh-img" style="aspect-ratio:16/9"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy Midas driver" style="width:100%;height:100%;object-fit:cover"></picture></div>
       <div class="veh-body">
         <div class="eyebrow">For dealerships</div>
         <h3 style="margin:6px 0 6px">List your stock. Sell more cars.</h3>
         <p class="tiny muted" style="margin:0 0 16px">Every car carries a monthly price. Free to list, paid when the loan pays out.</p>
-        <div class="row" style="gap:10px;flex-wrap:wrap"><a class="btn btn-p btn-sm" href="#/dealers">List your stock &rarr;</a><a class="btn btn-g btn-sm" href="app.html#/stallion">Dealer desk</a></div>
+        <div class="row" style="gap:10px;flex-wrap:wrap"><a class="btn btn-p btn-sm" href="#/dealers">List your stock &rarr;</a></div>
       </div>
     </article>
   </div>
@@ -2158,7 +2155,7 @@ const SAMPLE_QUOTES=[
    quote:'The part I did not believe was that nobody asked me to pay anything except into the bank\u2019s own account. That is when I knew it was real.'},
   {name:'Fatima B.', city:'Wuse, Abuja', vehicle:'2026 Hyundai Tucson', img:'cars/tucson.jpg', photo:'brand/people/fatima.jpg',
    quote:'Three banks came back with offers. I took the lowest one \u2014 my monthly is less than I was paying to rent.'},
-  {name:'Tunde A.', city:'Surulere, Lagos', vehicle:'2019 Toyota Corolla', img:'cars/used-corolla.jpg', photo:'brand/people/tunde.jpg',
+  {name:'Tunde A.', city:'Surulere, Lagos', vehicle:'2019 Toyota Corolla', img:'cars/used-camry.jpg', photo:'brand/people/tunde.jpg',
    quote:'I thought used cars had no financing. This Corolla was inspected and graded, and two banks priced it.'},
   {name:'Ngozi E.', city:'Enugu', vehicle:'2016 Toyota Camry', img:'cars/used-camry.jpg', photo:'brand/people/ngozi.jpg',
    quote:'My brother checked everything for scam. The offer letter came from the bank itself \u2014 he told me to sign.'},
@@ -2261,7 +2258,7 @@ function track(evt, props){
 }   // one-line switch if the storefront ships as Zeecar
 const KEY = 'midas-v2';
 let S = load();
-if(!/^#\/halal/.test(location.hash)) S.halal=false;
+S.halal=false;
 function load(){
   try { const r = JSON.parse(localStorage.getItem(KEY)); if (r) return r; } catch(e){}
   return { vehicleId:null, equityPct:.10, tenor:60, halal:false, step:1, applicant:null, verified:false, accepted:null, submittedAt:null };
@@ -2541,7 +2538,7 @@ function renderMarket(){
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
-          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
+          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'Warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)}* · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot"><button class="btn btn-a btn-sm" style="flex:1" onclick="event.stopPropagation();qualOpen('${v.id}')">Get this car</button></div>
@@ -2615,8 +2612,8 @@ function qualRender(){
       body=`<div class="qs-res"><div class="qs-tick">&#10003;</div>
         <h3>${same?'Good news. You can get this car!':'You can get this car with a bit more down.'}</h3>
         <div class="qs-big">${NGN(h.o.monthly)}<span>/month</span></div>
-        <p class="qs-sub">${NGNs(v.price*h.e)} down &middot; ${h.t} months &middot; ${h.n} bank${h.n>1?'s':''} ready</p>
-        <button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Get my real offers &rarr;</button>
+        <p class="qs-sub">${NGNs(v.price*h.e)} down &middot; ${h.t} months &middot; ${h.n} bank${h.n>1?'s':''} fit your pay</p>
+        <button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Get this car &rarr;</button>
         <p class="qs-fine">A few quick questions. About 2 minutes.</p></div>`;
     } else { const fit=qsFits().slice(0,3);
       body=`<div class="qs-res"><h3>This one is a stretch today.</h3><p class="qs-sub">${fit.length?'These fit your pay:':'Message us and we’ll find a car that fits.'}</p>
@@ -2657,8 +2654,8 @@ function qualRender(){
       ${QS.busy?'<p class="qs-hint">Getting your photo ready&hellip;</p>':''}${err}
       ${hasId?'<button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Next</button>':'<button class="qs-skip" onclick="qualNext()">I’ll send it later</button>'}`; }
   else if(step==='agree') body=`<h3>Last step</h3>
-    <ul class="qs-agree"><li>Midas sends your file to our partner banks</li><li>The banks check your credit</li><li>The bank owns the car until the loan is paid</li><li>We never ask for your PIN, and never call your family</li></ul>
-    <button class="btn btn-a btn-lg qs-go" onclick="qsSubmit()">I agree &mdash; send to the banks</button>
+    <ul class="qs-agree"><li>Midas checks your details, then sends your file to our partner banks</li><li>The banks check your credit</li><li>The bank owns the car until the loan is paid</li><li>We never ask for your PIN, and never call your family</li></ul>
+    <button class="btn btn-a btn-lg qs-go" onclick="qsSubmit()">I agree &mdash; send to Midas</button>
     <p class="qs-fine">By tapping you accept the <a href="#/terms" onclick="qualClose()">terms</a> and <a href="#/privacy" onclick="qualClose()">privacy notice</a>.</p>`;
   else if(step==='done'){ const files=qsShareFiles(), canShare=!!(files.length&&navigator.canShare&&navigator.canShare({files}));
     body=QS.sending?`<div class="qs-res"><div class="qs-spin"></div><h3>Sending your file&hellip;</h3></div>`
@@ -2869,10 +2866,10 @@ function renderCar(){
   const age = 2026 - v.year;
   const sp=SPECS[v.id]||{}, isNew=v.origin==='Brand new';
   const facts=[['Engine',sp.engine],['Fuel',sp.fuel],['Gearbox',sp.gearbox||v.trans],['Drive',sp.drive],['Seats',sp.seats],
-    ['Warranty',isNew?'5 years / 100,000 km':'6-month engine & gearbox'],['Service','Nationwide centres']].filter(([k,x])=>x);
+    ['Warranty',isNew?'Manufacturer’s warranty':'6-month engine & gearbox'],['Service','Nationwide centres']].filter(([k,x])=>x);
   $('#carInfo').innerHTML = `
     <h2 class="car-h">${v.make} ${v.model} <span>${v.year}</span></h2>
-    <div class="car-pills"><span>${isNew?'Brand new':'Certified pre-owned'}</span><span>&#128737; ${isNew?'5-yr warranty':'6-mo warranty'}</span><span>${v.loc}</span></div>
+    <div class="car-pills"><span>${isNew?'Brand new':'Certified pre-owned'}</span><span>&#128737; ${isNew?'Manufacturer warranty':'6-mo warranty'}</span><span>${v.loc}</span></div>
     ${carStats(v)}
     <div class="spec-list">${facts.map(([k,x])=>`<div class="sl-row"><span>${k}</span><b>${x}</b></div>`).join('')}</div>
     ${(sp.features||[]).length?`<div class="car-sec">What you get</div><div class="specrow">${sp.features.map(f=>`<span class="sp">${f}</span>`).join('')}</div>`:''}
@@ -3082,7 +3079,7 @@ async function renderAccount(){
       <div class="kv"><span class="k">Phone</span><span class="v">${esc(u.phone||'—')}</span></div>
       <div class="kv"><span class="k">WhatsApp</span><span class="v">${esc(u.whatsapp||u.phone||'—')}</span></div>
       <div class="kv"><span class="k">Email</span><span class="v" style="font-family:var(--body)">${esc(u.email||'—')}</span></div>
-      ${AUTH.offline?'<div class="warnbox" style="margin-top:12px">Offline demo account — nothing is saved to Midas.</div>':''}
+      ${AUTH.offline?'<div class="warnbox" style="margin-top:12px">We couldn’t reach our server, so this account is only on your phone. Message Midas to finish.</div>':''}
       <button class="btn btn-g btn-sm" style="width:100%;margin-top:16px" onclick="logout()">Sign out</button>
     </div></div>`;
   let apps=[];
@@ -3461,8 +3458,8 @@ function bankName(l){
   const arr=CTRY_BANKS[curCountry];
   if(arr){ if(isHouse(l)) return arr[0]; const n=+bankNo(l); return arr[n-1] || ('Bank '+n); }
   return l._n || ((l.label && !/^LP-/.test(l.label)) ? l.label : (isHouse(l) ? 'Access Bank' : 'Bank ' + bankNo(l))); }
-function bankKind(l){ return ({'Tier-1 Commercial':'Commercial bank','Tier-2 Commercial':'Commercial bank',
-  'Non-Interest (Murabaha)':'Non-interest bank','Captive / OEM':'Manufacturer\u2019s own bank',
+function bankKind(l){ const nm=bankName(l); if(/Merchant/.test(nm)) return 'Merchant bank'; if(/Wema/.test(nm)) return 'Commercial bank'; return ({'Tier-1 Commercial':'Commercial bank','Tier-2 Commercial':'Commercial bank',
+  'Non-Interest (Murabaha)':'Licensed bank','Captive / OEM':'Bank',
   'Finance House / Leasing':'Finance house','Microfinance':'Microfinance bank'})[l.tier] || 'Bank'; }
 function bankMark(l){
   const nm=bankName(l);
@@ -3484,7 +3481,6 @@ function plainReason(d){
   if((m=/Below minimum ticket (.+)/.exec(d))) return 'This loan is smaller than they do (their minimum is '+m[1]+')';
   if((m=/Income below (.+)\/mo floor/.exec(d))) return 'They need a higher monthly income (at least '+m[1]+')';
   if(/^DTI/.test(d)) return 'The monthly payment is too big for your income';
-  if(/non-interest/i.test(d)) return 'Not a non-interest bank \u2014 you asked for halal offers only';
   return d;
 }
 
@@ -3498,7 +3494,7 @@ function renderOffers(){
     ok=ok.filter(o=>isHalalLender(o.lender));
   }
   $('#offSub').textContent=`${v.year} ${v.make} ${v.model} \u00b7 ${NGN(v.price*S.equityPct)} down \u00b7 paying back over ${S.tenor} months`;
-  $('#offHead').textContent = S.halal ? 'The non-interest banks are looking at your file.' : 'The banks are looking at your file.';
+  $('#offHead').textContent='Working out each bank’s price…';
 
   const rows=sortOffers(ok,sortMode).concat(no);
   const list=$('#offList'); list.innerHTML=''; $('#offWinner').innerHTML=''; $('#offFix').innerHTML='';
@@ -3511,7 +3507,7 @@ function renderOffers(){
         <div><b style="font-size:15px">${bankName(o.lender)}</b>
         <div class="tiny faint">${bankKind(o.lender)}</div></div></div>
       <div class="bk-res"><span class="bk-wait"><i></i><i></i><i></i></span>
-        <span class="tiny muted" style="margin-left:6px">Checking your file&hellip;</span></div>
+        <span class="tiny muted" style="margin-left:6px">Working it out&hellip;</span></div>
     </div>`));
   });
   $('#offCount').textContent='0 of '+rows.length;
@@ -3528,9 +3524,9 @@ function renderOffers(){
       row.querySelector('.bk-res').innerHTML = o.approved
         ? `<div class="bk-mo">${NGN(o.monthly)}<span> /month</span></div>
            <div class="wf${best&&o.lender.id===best.lender.id?' best':''}"><i data-w="${Math.round(o.monthly/maxMo*100)}"></i></div>
-           <div class="bk-yes">Yes \u00b7 ${pct(o.rate*100)} p.a. \u00b7 answer in ${o.hours} hours</div>
+           <div class="bk-yes">Estimate \u00b7 ${pct(o.rate*100)} a year</div>
            <button class="btn btn-a btn-sm" style="margin-top:8px" onclick="accept('${o.lender.id}')">Choose this bank</button>`
-        : `<div class="bk-no">Not this time</div>
+        : `<div class="bk-no">Doesn’t fit yet</div>
            <div class="tiny muted" style="max-width:34ch">${plainReason((o.declines&&o.declines[0])||'')}</div>`;
       const bar=row.querySelector('.wf i');
       if(bar) requestAnimationFrame(()=>{bar.style.width=bar.dataset.w+'%';});
@@ -3546,14 +3542,14 @@ function finishOffers(v,app,ok,best,dearest){
   if(best){
     const save=dearest&&dearest!==best?(dearest.allIn-best.allIn):0;
     $('#offWinner').innerHTML=`<div class="winner">
-      <div class="w-k">Your best offer</div>
+      <div class="w-k">Your best estimate</div>
       <div class="w-mo">${NGN(best.monthly)}<span> /month</span></div>
-      <div class="w-sub">${bankName(best.lender)} \u00b7 ${S.tenor} months \u00b7 answer in ${best.hours} hours</div>
+      <div class="w-sub">${bankName(best.lender)} \u00b7 ${pct(best.rate*100)} a year \u00b7 ${S.tenor} months</div>
       ${save>0?`<div class="w-save">You save ${NGN(save)} against the most expensive bank</div>`:''}
-      <div style="margin-top:18px"><button class="btn btn-a btn-lg" onclick="accept('${best.lender.id}')">Take this offer &rarr;</button></div>
-      <p class="tiny" style="color:#9fb5cd;margin:12px 0 0">Indicative \u2014 priced from each bank\u2019s published policy. Nothing is signed: the bank\u2019s own offer letter lands on <a href="#/status" style="color:#f0c060">your application page</a>.</p>
+      <div style="margin-top:18px"><button class="btn btn-a btn-lg" onclick="accept('${best.lender.id}')">Choose this bank &rarr;</button></div>
+      <p class="tiny" style="color:#9fb5cd;margin:12px 0 0">An estimate from each bank’s usual terms, not an approval. The bank checks your details and sends you the real offer letter.</p>
     </div>`;
-    $('#offHead').textContent=ok.length===1?'One bank said yes.':ok.length+' banks said yes.';
+    $('#offHead').textContent=ok.length===1?'One bank fits your pay.':ok.length+' banks fit your pay.';
     const seg=$('#sortSeg'); if(seg) seg.hidden=false;
     $('#offFix').innerHTML='';
   } else {
@@ -3721,7 +3717,7 @@ function renderLocalStatus(v){
   const panel=runPanel(v,S.equityPct,S.tenor,S.applicant);
   const o=panel.find(x=>x.lender.id===S.accepted && x.approved);
   if(!o){ $('#stHead').textContent='Offer no longer valid';
-    $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>The structure changed after this offer was accepted.</b> '+S.accepted+' will not price the deal as it now stands. Go back to the offers and take a live one.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the offers →</a></div>'; return; }
+    $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>Your loan details changed.</b> That bank can’t offer this loan as it now stands. Go back to the offers and take a live one.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the offers →</a></div>'; return; }
   const sent=!!S.serverRef, A=S.applicant||{}, first=(A.name||'').split(' ')[0];
   const steps=[['Application filled in',`${v.year} ${v.make} ${v.model}${S.qsRef?' &middot; ref '+S.qsRef:''}`,'done'],
     ['You chose your bank',`${bankName(o.lender)} &middot; about ${NGN(o.monthly)} a month for ${o.tenor} months`,'done'],
@@ -3751,7 +3747,7 @@ function renderLocalStatus(v){
         <div class="kv"><span class="k">Insurance (${o.tenor} months)</span><span class="v">${NGN(o.insurance)}</span></div>
         <div class="kv"><span class="k">Fees &amp; tracker</span><span class="v">${NGN(o.fees)}</span></div>
         <div class="kv"><span class="k"><b>Total you pay back</b></span><span class="v">${NGN(o.allIn)}</span></div>
-        <p class="tiny faint" style="margin:12px 0 0">An estimate from ${bankName(o.lender)}’s published rules. The bank’s offer letter is final. * Prices exclude 7.5% VAT.</p>
+        <p class="tiny faint" style="margin:12px 0 0">An estimate from ${bankName(o.lender)}’s usual terms, not an approval. The bank’s offer letter is final. * Prices exclude 7.5% VAT.</p>
         <button class="btn btn-g btn-sm" style="width:100%;margin-top:16px" onclick="reset()">Start a new application</button>
       </div>
     </div>`;
@@ -4066,13 +4062,11 @@ function renderCountry(){
 }
 const LEARN_POSTS=[
  {id:'how-it-works',img:'cars/hero.jpg',mins:3,title:'How car finance works in Nigeria',
-  body:`<p>You pick the car. Banks compete to fund it. The winner sends an offer letter in about 48 hours.</p><p>Your down payment goes <b>straight into the bank\u2019s account</b> \u2014 never to a dealer, never to us. The bank pays the showroom, a lien goes on the title, and you collect the keys within 24 hours.</p><p>You pay monthly until the loan ends and the lien comes off. That is the whole thing.</p>`},
- {id:'equity',img:'cars/showroom.jpg',mins:2,title:'What is an equity contribution?',
-  body:`<p>Your part of the price \u2014 usually 30\u201350%. The bank funds the rest.</p><p>Two rules keep you safe: it is paid <b>only into the lending bank\u2019s account</b>, and only after you hold a signed offer letter. Anyone asking for a \u201cdeposit\u201d before an offer letter is not financing your car.</p><p>More equity means a smaller loan, a lower monthly and a faster yes.</p>`},
- {id:'halal',img:'cars/tucson.jpg',mins:3,title:'Halal car finance, explained',
-  body:`<p>No interest \u2014 the bank buys the car and you pay a <b>fixed rental-profit charge</b>, agreed on day one.</p><p>Rent-to-own (<i>Ijara wa Iqtina</i>): the bank owns the car, you rent it, ownership passes to you step by step. Cost-plus (<i>Murabaha</i>): the bank sells it to you at a disclosed margin, paid monthly.</p><p>Licensed non-interest banks provide these under their own Sharia boards. Tick \u201cnon-interest\u201d when you apply. <a href="#/halal" style="color:var(--accent)">More here.</a></p>`},
- {id:'new-vs-used',img:'cars/used-corolla.jpg',mins:3,title:'Brand new, foreign used, Nigerian used',
-  body:`<p><b>Brand new</b>: 5-year warranty, longest tenors, lowest rates.</p><p><b>Foreign used (tokunbo)</b>: cheaper, but the bank prices the age \u2014 expect a bit more equity and a shorter tenor. Every unit we list is inspected and graded first.</p><p><b>Nigerian used</b>: cheapest to buy; fewer banks accept it, so grading matters most. If the card shows a monthly, a bank has already said it would price it.</p>`},
+  body:`<p>You pick the car. Our partner banks price it, you choose the best, and the bank sends an offer letter, usually within 48 hours.</p><p>Your down payment goes <b>straight into the bank\u2019s account</b> \u2014 never to a dealer, never to us. The bank pays the showroom, a lien goes on the title, and you collect the keys within 24 hours.</p><p>You pay monthly until the loan ends and the lien comes off. That is the whole thing.</p>`},
+ {id:'equity',img:'cars/driver-happy.jpg',mins:2,title:'What is a down payment?',
+  body:`<p>Your part of the price \u2014 from 10%. The bank funds the rest.</p><p>Two rules keep you safe: it is paid <b>only into the lending bank\u2019s account</b>, and only after you hold a signed offer letter. Anyone asking for a \u201cdeposit\u201d before an offer letter is not financing your car.</p><p>More equity means a smaller loan, a lower monthly and a faster yes.</p>`},
+ {id:'new-vs-used',img:'cars/used-camry.jpg',mins:3,title:'Brand new, foreign used, Nigerian used',
+  body:`<p><b>Brand new</b>: the manufacturer’s warranty, the longest loans and the lowest rates.</p><p><b>Foreign used (tokunbo)</b>: cheaper, but the bank prices the age \u2014 expect a bit more equity and a shorter tenor. Every unit we list is inspected and graded first.</p><p><b>Nigerian used</b>: cheapest to buy; fewer banks accept it, so grading matters most. If the card shows a monthly, a bank has already said it would price it.</p>`},
  {id:'monthly',img:'cars/creta.jpg',mins:2,title:'How banks set your monthly payment',
   body:`<p>Three dials: the <b>loan size</b> (price minus your equity), the <b>rate</b> the bank quotes, and the <b>tenor</b> (months to repay).</p><p>Banks also check the payment fits inside roughly half your verified monthly income after other obligations. That is why two people can get different offers on the same car.</p><p>Move any dial on the car page and watch the monthly move.</p>`}];
 let curPost=LEARN_POSTS[0].id;
@@ -4224,7 +4218,7 @@ const MT={
     return { car:askName(v), id:v.id, price:NGN(v.price), down_payment:NGN(v.price*eq), loan:NGN(loan), terms:`${Math.round(eq*100)}% down, ${ten} months`,
       offers:ok.slice(0,6).map(o=>({bank:bankName(o.lender), rate:pct(o.rate*100), monthly:NGN(o.monthly), total_interest:NGN(o.monthly*ten-loan), total_repayable:NGN(o.monthly*ten+v.price*eq), decision_hours:o.hours})),
       banks_declining:all.filter(o=>!o.approved).slice(0,3).map(o=>({bank:bankName(o.lender), reason:(o.declines||[])[0]||'Outside policy'})),
-      salary_needed:NGN(incomeNeeded(v,eq,ten)), note:'Estimates from each bank’s published rules; the bank makes the final decision.' };
+      salary_needed:NGN(incomeNeeded(v,eq,ten)), note:'Estimates from each bank’s usual terms; the bank makes the final decision.' };
   },
   affordability(a){
     const inc=askFromLocal(a.monthly_income), debts=askFromLocal(a.existing_monthly_debts||0);
@@ -4292,7 +4286,7 @@ function renderChat(){
   const log=$('#chatLog'); if(!log) return;
   const kh=$('#koboHead'); if(kh && !kh.innerHTML) kh.innerHTML=koboSVG(40);
   if(!CHAT){ CHAT={msgs:[],busy:false,local:false,said:false}; log.innerHTML='';
-    askPush(askMd(`Hi, I'm **Midas**. Tell me what you earn, what you'd like to pay each month, or the car you've got your eye on. I'll check every partner bank and show you what they'd actually approve, with the real interest.`));
+    askPush(askMd(`Hi, I'm **Midas**. Tell me what you earn, what you'd like to pay each month, or the car you've got your eye on. I'll check every partner bank and show you estimated monthly payments, with the real interest.`));
     askSugs(); }
 }
 async function askSend(){
@@ -4369,7 +4363,7 @@ function askFallback(t){
     if(q.try_instead){ terms.down_payment_percent=q.try_instead.down_payment_percent; q=MT.quote_car({car_id:v.id,...terms}); }
     if(!q.offers.length){ askPush(askMd(`The **${askName(v)}** needs a bigger income or down payment than you've told me. Ask me for something close to it, or let a Midas adviser work it out with you.`)+askWaBtn(`Hello Midas, I want the ${askName(v)}. Can you help me get it?`)); return; }
     const b=q.offers[0];
-    say(`**${q.car}**, ${q.price} cash. On ${q.terms}:\n- Best offer: **${b.monthly}/month** from ${b.bank} at **${b.rate}**\n- Interest over the loan: **${b.total_interest}**\n- Salary banks usually want: about **${q.salary_needed}** a month\n\n${q.offers.length>1?`${q.offers.length} banks said yes. `:''}Put more down or shorten the term and the interest falls. Estimates; the bank decides.`);
+    say(`**${q.car}**, ${q.price} cash. On ${q.terms}:\n- Best offer: **${b.monthly}/month** from ${b.bank} at **${b.rate}**\n- Interest over the loan: **${b.total_interest}**\n- Salary banks usually want: about **${q.salary_needed}** a month\n\n${q.offers.length>1?`${q.offers.length} banks fit your pay. `:''}Put more down or shorten the term and the interest falls. Estimates; the bank decides.`);
     askCards([v],terms.down_payment_percent/100,ten); MT.start_application({car_id:v.id,...terms}); return;
   }
   if(/earn|salary|income|take home|take-home|i make/.test(L)&&nums.length){
@@ -4416,7 +4410,7 @@ const RP_JOBS=[
  {k:'gearbox',ic:'\u{1F39B}️', nm:'Gearbox',  d:'Rebuild or replacement',         p:880000},
  {k:'engine', ic:'\u{1F6E0}️', nm:'Engine',   d:'Overhaul, parts & labour',       p:1450000},
  {k:'service',ic:'\u{1F9F4}', nm:'Full service',   d:'Oil, filters, 40-point check',   p:85000},
- {k:'body',   ic:'\u{1F3A8}', nm:'Body & paint',   d:'Panel repair and respray',       p:260000},
+ {k:'body',   ic:'\u{1F3A8}', nm:'Body & paint',   d:'Dent repair and respray',       p:260000},
  {k:'diag',   ic:'\u{1F50D}', nm:'Not sure',       d:'Inspection; quote from your photo', p:45000}
 ];
 const RP_CARS=[
@@ -4450,16 +4444,16 @@ function rpPhotoDel(i){ RP_PHOTOS.splice(i,1); renderRepair(); }
 function rpShop(k){ rpState().shop=k; save(); renderRepair(); }
 
 const RP_PARTNERS={
-  easycash:{id:'easycash',nm:'EasyCash',limit:2000000,user:'Chinedu',
+  easycash:{id:'easycash',nm:'EasyCash',limit:2000000,user:'there',
             wallet:'Repayments come out of your EasyCash wallet.'},
-  stallion:{id:'stallion',nm:'Victoria Island workshop',limit:1500000,user:'there',
+  vi:{id:'vi',nm:'Victoria Island workshop',limit:1500000,user:'there',
             wallet:'Repayments by card, transfer or payroll deduction.'}
 };
 function rpPartner(){
   const q=new URLSearchParams(location.search);
   const h=location.hash.split('?')[1]||'';
   const p=(q.get('p')||new URLSearchParams(h).get('p')||'').toLowerCase();
-  return RP_PARTNERS[p]||null;
+  return RP_PARTNERS[p==='stallion'?'vi':p]||null;
 }
 function rpState(){ if(!S.rp) S.rp={job:null,car:null,term:3,done:false}; return S.rp; }
 function rpPick(k){ rpState().job=k; save(); renderRepair(); setTimeout(()=>{const e=document.getElementById('rpStep2'); if(e) e.scrollIntoView({behavior:'smooth',block:'start'});},90); }
@@ -4486,8 +4480,8 @@ function renderRepair(){
     root.innerHTML=`
       <div class="rp-ok">
         <div class="tick">&#10003;</div>
-        <h2>Approved. Work is booked.</h2>
-        <p class="muted" style="font-size:14.5px">${job.nm} on your ${car?car.nm:'car'} at ${shop}. Bring the car any day this week.</p>
+        <h2>Your repair request is ready</h2>
+        <p class="muted" style="font-size:14.5px">${job.nm} on your ${car?car.nm:'car'} at ${shop}. Send it to Midas and an adviser confirms the price and a time.</p>
       </div>
       <div class="rp-sum">
         <div class="rp-row"><span class="k">Job</span><span class="v">${job.nm}</span></div>
@@ -4507,7 +4501,7 @@ function renderRepair(){
         </div>
       </div>
       <div style="margin-top:18px;text-align:center">
-        <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I just booked a '+job.nm+' repair at '+shop+'.'+(RP_PHOTOS.length?' I will send my '+RP_PHOTOS.length+' photo(s) here.':''))}" target="_blank" rel="noopener">${RP_PHOTOS.length?'Send your photos to the workshop':'Message the workshop'}</a>
+        <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I want a '+job.nm+' repair at '+shop+', paid over '+term.m+' months.'+(RP_PHOTOS.length?' I will send my '+RP_PHOTOS.length+' photo(s) here.':''))}" target="_blank" rel="noopener">Send to Midas</a>
         <a class="btn btn-g" style="margin-left:8px" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(shopO.addr)}" target="_blank" rel="noopener">Directions</a>
         <div style="margin-top:12px"><a href="#/repair" onclick="rpRestart()" class="tiny muted">Start another repair</a></div>
       </div>`;
@@ -4521,13 +4515,13 @@ function renderRepair(){
       <h1>${P.user==='there'?'Fix it now, pay over time.':'Hello '+P.user+'. Fix it now, pay over time.'}</h1>
       <p>${P.id==='easycash'?'Your '+P.nm+' account is verified, so there is nothing to fill in.':'Checked in at '+P.nm+'. Nothing to fill in.'} Pick what is wrong and we will book it.</p>
       <div class="rp-appr">
-        <div><div class="amt">${NGN(P.limit)}</div><div class="lbl">Pre-approved, available today</div></div>
+        <div><div class="amt">${NGN(P.limit)}</div><div class="lbl">Your limit, subject to checks</div></div>
       </div>
     </div>`
   : `<div class="rp-hero">
       <div class="rp-eyebrow">Midas repair finance</div>
       <h1>Fix the car now. Pay over three months.</h1>
-      <p>No interest over three or four months. No deposit. Approved in about a minute, at a partner workshop in ${curCountry==='GH'?'Accra':'Lagos'}.</p>
+      <p>No interest over three or four months. No deposit. Apply in a minute, at a partner workshop in ${curCountry==='GH'?'Accra':'Lagos'}.</p>
     </div>`;
 
   const lo=job?Math.round(job.p*0.85):0, hi=job?Math.round(job.p*1.25):0;
@@ -4600,15 +4594,7 @@ function renderRepair(){
       <p class="tiny muted" style="margin-top:12px">Genuine parts, 12-month warranty on the work, fitted at a partner workshop. ${P?P.wallet:'Repayments by card or transfer.'}</p>
     </div>`:''}
     ${shopBlock}
-
-    <div style="margin-top:22px;padding:14px;background:var(--surface-2);border-radius:14px">
-      <div class="tiny" style="font-weight:600;margin-bottom:4px">Priced by the banks, not by us</div>
-      <div class="tiny muted">Partner lenders see the same file and the cheapest one wins.</div>
-      <div class="rp-banks">
-        ${curCountry==='GH' ? '<img src="brand/banks/stanbicgh.png" alt=""><img src="brand/banks/absagh.png" alt=""><img src="brand/banks/ecobank.png" alt="">'
-          : '<img src="brand/banks/stanbic.png" alt=""><img src="brand/banks/access.svg" alt=""><img src="brand/banks/lotus.svg" alt=""><img src="brand/banks/wema.png" alt="">'}
-      </div>
-    </div>`;
+`;
 
   const cta=document.createElement('div');
   cta.className='rp-cta';
@@ -4769,7 +4755,7 @@ function calcApply(){
   track('calc_apply',{bank:CALC.bank, eq:CALC.eq, ten:CALC.ten, rate:CALC.rate});
   startApply(CALC.car||undefined);
 }
-const VIEWS={repair:renderRepair,market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},halal:()=>{},insurance:()=>{},calculator:renderCalc,country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
+const VIEWS={repair:renderRepair,market:renderMarket,car:renderCar,apply:renderApply,offers:renderOffers,status:renderStatus,login:renderLogin,signup:renderLogin,account:renderAccount,bank:renderBank,dealer:renderDealer,desk:renderDesk,chat:renderChat,fleet:renderFleet,credits:()=>{},insurance:()=>{},calculator:renderCalc,country:renderCountry,about:()=>{},team:()=>{},careers:()=>{},learn:renderLearn,post:renderPost,privacy:()=>{},terms:()=>{},banks:renderBanksCalc,dealers:()=>{}};
 const VIEW_OF={signup:'login'};
 function tMenu(open){ const sh=document.getElementById('tsheet'), b=document.querySelector('.tburger'); if(!sh) return;
   const on=open===undefined?sh.hidden:open; sh.hidden=!on; if(b) b.setAttribute('aria-expanded',on); }
@@ -4821,8 +4807,8 @@ function updateCountryUI(){
   const lg=document.querySelector('.lgm'); if(lg) lg.hidden=!!MKT2[curCountry];
   const hf=document.getElementById('heroFine');
   if(hf){ if(!hf.dataset.ng) hf.dataset.ng=hf.innerHTML;
-    hf.innerHTML = curCountry==='GH' ? 'Free to apply &nbsp;&middot;&nbsp; 5-year manufacturer warranty &nbsp;&middot;&nbsp; showroom in Kaneshie, Accra &nbsp;&middot;&nbsp; from 12% a year'
-                 : curCountry==='BJ' ? 'Demande gratuite &nbsp;&middot;&nbsp; garantie constructeur 5 ans &nbsp;&middot;&nbsp; concessions \u00e0 Cotonou'
+    hf.innerHTML = curCountry==='GH' ? 'Free to apply &nbsp;&middot;&nbsp; manufacturer warranty &nbsp;&middot;&nbsp; showroom in Kaneshie, Accra &nbsp;&middot;&nbsp; from 12% a year'
+                 : curCountry==='BJ' ? 'Demande gratuite &nbsp;&middot;&nbsp; garantie constructeur &nbsp;&middot;&nbsp; concessions \u00e0 Cotonou'
                  : MKT2[curCountry] ? (curCountry==='MA' ? 'Demande gratuite &nbsp;&middot;&nbsp; garantie constructeur &nbsp;&middot;&nbsp; prix en dirhams' : 'Free to apply &nbsp;&middot;&nbsp; manufacturer warranty &nbsp;&middot;&nbsp; every price in '+COUNTRIES[curCountry].cur)
                  : hf.dataset.ng; }
   const tr=document.querySelector('.lgm-track');
