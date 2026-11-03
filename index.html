@@ -2504,7 +2504,7 @@ const BUDGETS=[600000,900000,1200000,2000000];
 function renderBudget(){
   const el=document.getElementById('budgetChips'); if(!el) return;
   const cnt=cap=>VEHICLES.filter(v=>{ const t=bestTeaser(v); return t && (!cap || t.o.monthly<=cap); }).length;
-  el.innerHTML=BUDGETS.map(c=>`<button class="${MF.maxMo===c?'on':''}" onclick="MF.maxMo=MF.maxMo===${c}?0:${c};applyFilters()">Under ${NGNs(c)}<small>${cnt(c)} car${cnt(c)===1?'':'s'}</small></button>`).join('')
+  el.innerHTML=BUDGETS.map(niceN).map(c=>`<button class="${MF.maxMo===c?'on':''}" onclick="MF.maxMo=MF.maxMo===${c}?0:${c};applyFilters()">Under ${NGNs(c)}<small>${cnt(c)} car${cnt(c)===1?'':'s'}</small></button>`).join('')
     +`<button class="${!MF.maxMo?'on':''}" onclick="MF.maxMo=0;applyFilters()">Any<small>${cnt(0)} cars</small></button>`;
 }
 function clearFilters(){ MF={q:'',make:'',pband:'',fin:'',year:0,loc:'',km:'',trans:'',origin:'',body:'',cyl:0}; finOnly=false; const q=$('#fq'); if(q)q.value=''; applyFilters(); }
@@ -2553,8 +2553,17 @@ let QS={};
 const QS_INC=[[0,300000],[300000,600000],[600000,1000000],[1000000,2000000],[2000000,4000000],[4000000,0]];
 const QS_DEBT=[[0,'None'],[60000,''],[200000,''],[450000,'']];
 const QS_BANKS={NG:['Access','GTBank','Zenith','First Bank','UBA','Stanbic IBTC','Fidelity','Other'],
-                GH:['Stanbic Ghana','Absa','Ecobank','CalBank','GCB','Fidelity Ghana','FNB','Other']};
-function qsBand([a,b]){ return !a?'Under '+NGNs(b):!b?'Over '+NGNs(a):NGNs(a)+' – '+NGNs(b); }
+                GH:['Stanbic Ghana','Absa','Ecobank','CalBank','GCB','Fidelity Ghana','FNB','Other'],
+                KE:['KCB','Equity','Co-op Bank','NCBA','Absa Kenya','Stanbic Kenya','I&M','Other'],
+                ZA:['Standard Bank','FNB','Absa','Nedbank','Capitec','Investec','Other'],
+                EG:['National Bank of Egypt','Banque Misr','CIB','QNB','Banque du Caire','AAIB','Other'],
+                MA:['Attijariwafa','Banque Populaire','Bank of Africa','CIH','Crédit du Maroc','Société Générale','Other'],
+                ET:['Commercial Bank of Ethiopia','Awash','Dashen','Abyssinia','Hibret','Wegagen','Other'],
+                BJ:['Ecobank','BOA Bénin','Orabank','NSIA Banque','UBA Bénin','BIIC','Other']};
+const QS_PHONE={NG:'0803 000 0000',GH:'024 000 0000',KE:'0712 000 000',ZA:'082 000 0000',EG:'010 0000 0000',MA:'06 00 00 00 00',ET:'091 000 0000',BJ:'01 97 00 00 00'};
+/* a naira amount moved to the nearest round number in the buyer's own currency (KSh 55,260 -> KSh 55,000) */
+function niceN(n){ const r=curC().rate, v=n*r; if(!v) return n; const p=Math.pow(10,Math.floor(Math.log10(v))-1); return Math.round(v/p)*p/r; }
+function qsBand([a,b]){ return !a?'Under '+NGNs(niceN(b)):!b?'Over '+NGNs(niceN(a)):NGNs(niceN(a))+' – '+NGNs(niceN(b)); }
 function qsSteps(){ return ['pay','loans',...(QS.fixed?[]:['pick']),'down','result','name','phone','work','bank','id','docs','agree','done']; }
 function qualOpen(id){ QS={id:id||null,fixed:!!id,i:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id:id||'budget'}); }
 function qualClose(){ const el=document.getElementById('qSheet'); if(el) el.hidden=true; document.body.style.overflow=''; }
@@ -2586,7 +2595,7 @@ function qualRender(){
   if(step==='pay') body=`<h3>How much do you take home each month?</h3><p class="qs-sub">No BVN. It won’t affect your credit.</p>
     <div class="qs-chips">${QS_INC.map(([a,c])=>`<button onclick="qualPick('inc',${a&&c?(a+c)/2:a?a*1.25:c*.75})">${qsBand([a,c])}</button>`).join('')}</div>`;
   else if(step==='loans') body=`<h3>Do you pay any other loans?</h3><p class="qs-sub">Each month, in total.</p>
-    <div class="qs-chips">${QS_DEBT.map(([d,l],i)=>`<button onclick="qualPick('debt',${d})">${l||(i===1?'Under '+NGNs(100000):i===2?NGNs(100000)+' – '+NGNs(300000):'Over '+NGNs(300000))}</button>`).join('')}</div>`;
+    <div class="qs-chips">${QS_DEBT.map(([d,l],i)=>`<button onclick="qualPick('debt',${d})">${l||(i===1?'Under '+NGNs(niceN(100000)):i===2?NGNs(niceN(100000))+' – '+NGNs(niceN(300000)):'Over '+NGNs(niceN(300000)))}</button>`).join('')}</div>`;
   else if(step==='pick'){ const fit=qsFits().slice(0,6);
     body=fit.length?`<h3>${fit.length} cars fit your pay</h3><p class="qs-sub">Tap the one you want.</p>
       <div class="qs-pick">${fit.map(c=>{ const car=VEHICLES.find(x=>x.id===c.id); return `<button onclick="QS.id='${c.id}';qualNext()">${car&&car.img?`<img src="${car.img}" alt="">`:''}<b>${c.name.replace(/ \d{4}$/,'')}</b><span>${c.monthly}<em>/mo</em></span></button>`; }).join('')}</div>`
@@ -2611,7 +2620,7 @@ function qualRender(){
     <div class="qs-fields"><input id="qsFirst" placeholder="First name" autocomplete="given-name" value="${QS.first||''}"><input id="qsLast" placeholder="Last name" autocomplete="family-name" value="${QS.last||''}"></div>
     ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('name')">Next</button>`;
   else if(step==='phone') body=`<h3>Your phone number</h3><p class="qs-sub">The bank’s offer arrives here, on WhatsApp.</p>
-    <div class="qs-fields"><input id="qsPhone" type="tel" inputmode="tel" placeholder="${curCountry==='GH'?'024 000 0000':'0803 000 0000'}" autocomplete="tel" value="${QS.phone||''}"></div>
+    <div class="qs-fields"><input id="qsPhone" type="tel" inputmode="tel" placeholder="${QS_PHONE[curCountry]||'0803 000 0000'}" autocomplete="tel" value="${QS.phone||''}"></div>
     ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('phone')">Next</button>`;
   else if(step==='work') body=`<h3>Where do you work?</h3><p class="qs-sub">Or the name of your business.</p>
     <div class="qs-fields"><input id="qsEmployer" placeholder="Employer or business" autocomplete="organization" value="${QS.employer||''}"></div>
