@@ -2324,6 +2324,12 @@ function evaluate(lender, v, equityPct, tenor, app){
               if (app.salaryDomiciled) g -= .005; }
     rate = clamp(g, .115, .24);
   }
+  if (curCountry==='BJ' && lender.bji!=null){
+    let b = BJ_BASE[lender.bji] ?? .11;
+    b += (age > 6 ? .006 : 0) + (tenor > 48 ? .004 : 0);
+    if (app) b += ({Salaried:0,'Director/Owner':.004,Professional:.002,'Self-employed':.008,Gig:.014,Trader:.012})[app.employment] ?? .005;
+    rate = clamp(b, .09, .15);
+  }
   /* Nigerian banks price car loans at 25-30%: scale the engine's spread into that band */
   if (curCountry==='NG') rate = clamp(.25 + (rate - .24) * (.05 / .16), .25, .30);
   if (MKT2[curCountry] && lender.mk){
@@ -2354,11 +2360,17 @@ function evaluate(lender, v, equityPct, tenor, app){
    commercial-bank lenders so eligibility rules stay sane, priced off the rates
    the banks quoted (Stanbic and FNB ~12%, Ecobank ~13%, CalBank ~14%,
    Absa 14-17%, Fidelity ~15%). */
-let _ghPanel=null;
+let _ghPanel=null, _bjPanel=null;
+const BJ_BASE=[.10,.105,.11];   /* WAEMU bank car loans, under the BCEAO usury ceiling */
 function panelLenders(){
   if(curCountry==='NG') return LENDERS.filter(l=>l.id!=='LP-07');
   if(MKT2[curCountry]) return _mkPanel[curCountry] || (_mkPanel[curCountry]=[Object.assign({},LENDERS.find(l=>/^Tier/.test(l.tier)),
     {id:curCountry+'-01',_n:'Midas estimate',mk:true,house:true,makes:null,minEq:.10,maxTen:60,ghi:null})]);
+  if(curCountry==='BJ'){
+    if(!_bjPanel){ const src=LENDERS.filter(l=>/^Tier/.test(l.tier));
+      _bjPanel=CTRY_BANKS.BJ.map((n,i)=>Object.assign({},src[i%src.length],{id:'BJ-0'+(i+1),_n:n,bji:i,ghi:null,house:i===0,makes:null,minEq:.10})); }
+    return _bjPanel;
+  }
   if(curCountry!=='GH') return LENDERS;
   if(!_ghPanel){ const src=LENDERS.filter(l=>/^Tier/.test(l.tier));
     _ghPanel=CTRY_BANKS.GH.map((n,i)=>Object.assign({},src[i%src.length],{id:'GH-'+String(i+1).padStart(2,'0'),_n:n,_g:CTRY_LOGOS[n]||null,ghi:i,house:i===0,makes:null,minEq:i===1?.20:.10})); }
