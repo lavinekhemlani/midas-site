@@ -1173,7 +1173,7 @@ input,select,textarea{font-size:17px}
       <button data-seg="used" onclick="setMarketSeg('used',this)">Pre-owned</button>
     </div>
     <div class="veh-grid" id="vehGrid"></div>
-    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude 7.5% VAT.</p>
+    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude <span class="vat-n">7.5% VAT</span>.</p>
     <div style="margin:26px 0 8px">
       <a class="veh rev" href="#/fleet" style="text-decoration:none;color:inherit">
         <div class="veh-img" style="aspect-ratio:16/6;position:relative"><picture data-auto><source type="image/avif" srcset="cars/t60-w480.avif 480w, cars/t60-w800.avif 800w, cars/t60-w1200.avif 1200w, cars/t60-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/t60-w480.webp 480w, cars/t60-w800.webp 800w, cars/t60-w1200.webp 1200w, cars/t60-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/t60.jpg" alt="Company fleets" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
@@ -1612,7 +1612,7 @@ input,select,textarea{font-size:17px}
       </div>
     </div>
 
-    <p class="tiny faint" style="margin-top:16px">Indicative only. Access Bank and Stanbic IBTC appear as worked examples at typical rates; the final rate, fees and insurance premium are set by the bank in its own offer letter after a credit assessment. Prices exclude 7.5% VAT.</p>
+    <p class="tiny faint" style="margin-top:16px">Indicative only. Access Bank and Stanbic IBTC appear as worked examples at typical rates; the final rate, fees and insurance premium are set by the bank in its own offer letter after a credit assessment. Prices exclude <span class="vat-n">7.5% VAT</span>.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="calcApply();return false">Apply with these numbers &rarr;</a>
       <a class="btn btn-wa" id="ccWa" href="https://wa.me/2348058963692" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Send these numbers</a>
@@ -2549,7 +2549,7 @@ function renderMarket(){
         </div>
         <div class="veh-body">
           <div class="veh-title">${v.make} ${v.model} ${v.year}</div>
-          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'Warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
+          <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'Warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">${STOCK_CITY[curCountry]?'In stock · '+STOCK_CITY[curCountry]:'Available to order'}</span></div>
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)}* · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot"><button class="btn btn-a btn-sm" style="flex:1" onclick="event.stopPropagation();qualOpen('${v.id}')">Get this car</button></div>
@@ -2577,6 +2577,11 @@ const QS_BANKS={NG:['Access','GTBank','Zenith','First Bank','UBA','Stanbic IBTC'
                 BJ:['Ecobank','BOA Bénin','Orabank','NSIA Banque','UBA Bénin','BIIC','Other']};
 const QS_PHONE={NG:'0803 000 0000',GH:'024 000 0000',KE:'0712 000 000',ZA:'082 000 0000',EG:'010 0000 0000',MA:'06 00 00 00 00',ET:'091 000 0000',BJ:'01 97 00 00 00'};
 /* a naira amount moved to the nearest round number in the buyer's own currency (KSh 55,260 -> KSh 55,000) */
+/* VAT note in the buyer's own market */
+const STOCK_CITY={NG:'Lagos',GH:'Accra',BJ:'Cotonou'};
+const VAT_TXT={NG:'7.5% VAT',GH:'VAT and levies',KE:'16% VAT',ZA:'15% VAT',EG:'14% VAT',MA:'20% VAT',ET:'15% VAT',BJ:'18% VAT'};
+function vatTxt(){ return VAT_TXT[curCountry]||'VAT'; }
+function paintVat(){ document.querySelectorAll('.vat-n').forEach(e=>e.textContent=vatTxt()); }
 function niceN(n){ const r=curC().rate, v=n*r; if(!v) return n; const p=Math.pow(10,Math.floor(Math.log10(v))-1); return Math.round(v/p)*p/r; }
 function qsBand([a,b]){ return !a?'Under '+NGNs(niceN(b)):!b?'Over '+NGNs(niceN(a)):NGNs(niceN(a))+' – '+NGNs(niceN(b)); }
 function qsSteps(){ return ['pay','loans',...(QS.fixed?[]:['pick']),'down','result','name','phone','work','bank','id','docs','agree','done']; }
@@ -2955,7 +2960,7 @@ function renderDeal(){
     <div class="kv"><span class="k">Comprehensive insurance (${ten} mo)</span><span class="v">${NGN(best.insurance)}</span></div>
     <div class="kv"><span class="k"><b>Total repayment, all-in</b></span><span class="v">${NGN(best.allIn)}</span></div>` : ''}
     <div class="kv"><span class="k">Needs net monthly income of</span><span class="v">~${NGNs(Math.ceil(earn/50000)*50000)}/mo</span></div>
-    <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT.</p>
+    <p class="tiny faint" style="margin-top:8px">* Prices exclude ${vatTxt()}.</p>
     ${best ? `
     <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="qualOpen('${v.id}')">Get this car →</button>
     <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
@@ -3758,7 +3763,7 @@ function renderLocalStatus(v){
         <div class="kv"><span class="k">Insurance (${o.tenor} months)</span><span class="v">${NGN(o.insurance)}</span></div>
         <div class="kv"><span class="k">Fees &amp; tracker</span><span class="v">${NGN(o.fees)}</span></div>
         <div class="kv"><span class="k"><b>Total you pay back</b></span><span class="v">${NGN(o.allIn)}</span></div>
-        <p class="tiny faint" style="margin:12px 0 0">An estimate from ${bankName(o.lender)}’s usual terms, not an approval. The bank’s offer letter is final. * Prices exclude 7.5% VAT.</p>
+        <p class="tiny faint" style="margin:12px 0 0">An estimate from ${bankName(o.lender)}’s usual terms, not an approval. The bank’s offer letter is final. * Prices exclude ${vatTxt()}.</p>
         <button class="btn btn-g btn-sm" style="width:100%;margin-top:16px" onclick="reset()">Start a new application</button>
       </div>
     </div>`;
@@ -4730,7 +4735,7 @@ function calcPaint(sync){
     <div class="kv"><span class="k"><b>Repaid to the bank</b></span><span class="v">${NGN(q.toBank)}</span></div>
     <div class="kv"><span class="k"><b>Total cost of the car, all-in</b></span><span class="v">${NGN(q.allIn)}</span></div>
     <div class="kv"><span class="k">Cost of credit (interest + fee, as % of loan)</span><span class="v">${pct((q.interest+q.mgmt)/q.loan*100,1)}</span></div>
-    <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT. Income needed assumes repayments at 45% of net pay, the banks’ usual ceiling.</p>`;
+    <p class="tiny faint" style="margin-top:8px">* Prices exclude ${vatTxt()}. Income needed assumes repayments at 45% of net pay, the banks’ usual ceiling.</p>`;
 
   /* the two example banks side by side, each at its own typical rate */
   const cmp=CALC_BANKS.filter(x=>x.id!=='other').map(x=>{
@@ -4775,6 +4780,7 @@ function route(){
   const h=(location.hash.replace('#/','')||'market').split('/')[0];
   const page=VIEWS[h]?h:'market';
   document.body.dataset.page=VIEW_OF[page]||page;
+  try{ paintVat(); }catch(e){}
   paintAuth();
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   const node=$('#v-'+(VIEW_OF[page]||page)); if(node) node.classList.add('on');
