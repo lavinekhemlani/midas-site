@@ -850,7 +850,7 @@ input,select,textarea{font-size:17px}
 .calc-tbl .tb tr:last-child td{border-bottom:0}
 .calc-tbl .r{text-align:right}
 .calc-win td{background:var(--accent-soft)}
-.mk-av{display:inline-grid;place-items:center;border-radius:50%;background:var(--brand);box-shadow:0 0 0 2px rgba(200,134,42,.35);flex:none}
+.mk-av{display:inline-grid;place-items:center;border-radius:28%;background:linear-gradient(160deg,#123f6e,#0b2a4a);flex:none}
 .mph-wrap{aspect-ratio:auto!important;min-height:230px;position:relative;background:linear-gradient(160deg,#eef1f6,#dde4ee);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
 .mph{width:74%;max-width:310px;background:#0e1420;border-radius:30px 30px 0 0;padding:8px 8px 0;box-shadow:0 18px 40px rgba(11,42,74,.25);margin-top:48px}
 .mph-in{background:#fff;border-radius:23px 23px 0 0;overflow:hidden}
@@ -873,6 +873,18 @@ input,select,textarea{font-size:17px}
 @media(max-width:560px){.trust4{grid-template-columns:1fr}.trc{display:grid;grid-template-columns:46px 1fr;column-gap:14px}.trc-i{grid-row:span 2;margin:0}}
 @media(max-width:1400px){.topbar-in{gap:14px}.tnav{margin-left:4px}.tnav a,.tmore summary{padding:8px 9px;font-size:15px}.twa{display:none}}
 @media(max-width:1180px){.tnav a[data-nav="how"]{display:none}}
+.bigfoot{max-width:none!important;margin:48px 0 0!important;background:var(--brand);color:#cfdbea;padding:48px max(24px,calc((100vw - 1152px)/2)) 26px!important}
+.bigfoot a{color:#dbe5f1!important}.bigfoot a:hover{color:#fff!important}
+.bigfoot h5{color:#f0c060!important}
+.bigfoot .tiny.muted{color:#a9bbd1!important}
+.bigfoot .bf-bot{border-top:1px solid rgba(255,255,255,.12)!important;color:#93a8c2}
+.bf-wa{margin-top:16px;display:inline-flex!important;gap:8px;color:#fff!important;background:var(--wa)!important;border:0!important}
+.mph-search{background:var(--surface-2);border-radius:12px;padding:9px 12px;font-size:12.5px;color:var(--ink-soft);margin-bottom:2px}
+.mph-car-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:6px}
+.mph-car-row img{width:64px;height:44px;object-fit:cover;border-radius:9px;flex:none}
+.mph-car-row b{display:block;font-size:13px;color:var(--ink);line-height:1.2}
+.mph-car-row span{font-family:var(--display);font-weight:600;font-size:15px;color:var(--brand)}
+.mph-car-row em{font-style:normal;font-family:var(--body);font-size:11px;color:var(--ink-faint);margin-left:2px}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -905,6 +917,7 @@ input,select,textarea{font-size:17px}
       <option value="MA">&#127474;&#127462; Morocco</option>
       <option value="ET">&#127466;&#127481; Ethiopia</option>
       <option value="ZA">&#127487;&#127462; South Africa</option>
+      <option value="KE">&#127472;&#127466; Kenya</option>
     </select>
     <a class="tlink" id="navAuth" href="#/login">Log in</a>
     <a class="btn btn-a btn-sm tapply" href="#/apply" onclick="startApply();return false;">Apply</a>
@@ -954,22 +967,31 @@ input,select,textarea{font-size:17px}
     </div>
   </div>
 
-  <div class="lgm" aria-label="The lender panel">
+  <div class="lgm" aria-label="Nigeria’s top banks">
     <div class="lgm-cap">Nigeria’s top banks</div>
     <div class="lgm-track"><span class="lgm-it"><img src="brand/banks/access.svg" alt="Access Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/zenith.png" alt="" loading="lazy" decoding="async"><b>Zenith Bank</b></span><span class="lgm-it"><span class="bk-ini">GTB</span><b>GTBank</b></span><span class="lgm-it"><span class="bk-ini">FBN</span><b>First Bank</b></span><span class="lgm-it"><img src="brand/banks/uba.png" alt="" loading="lazy" decoding="async"><b>UBA</b></span><span class="lgm-it"><img src="brand/banks/stanbic.png" alt="" loading="lazy" decoding="async"><b>Stanbic IBTC</b></span><span class="lgm-it"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/wema.png" alt="" loading="lazy" decoding="async"><b>Wema Bank</b></span><span class="lgm-it"><img src="brand/banks/globus.png" alt="" loading="lazy" decoding="async"><b>Globus Bank</b></span><span class="lgm-it"><img src="brand/banks/jaiz.svg" alt="Jaiz Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/lotus.svg" alt="Lotus Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/access.svg" alt="Access Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/zenith.png" alt="" loading="lazy" decoding="async"><b>Zenith Bank</b></span><span class="lgm-it"><span class="bk-ini">GTB</span><b>GTBank</b></span><span class="lgm-it"><span class="bk-ini">FBN</span><b>First Bank</b></span><span class="lgm-it"><img src="brand/banks/uba.png" alt="" loading="lazy" decoding="async"><b>UBA</b></span><span class="lgm-it"><img src="brand/banks/stanbic.png" alt="" loading="lazy" decoding="async"><b>Stanbic IBTC</b></span><span class="lgm-it"><img src="brand/banks/fidelity.svg" alt="Fidelity Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/wema.png" alt="" loading="lazy" decoding="async"><b>Wema Bank</b></span><span class="lgm-it"><img src="brand/banks/globus.png" alt="" loading="lazy" decoding="async"><b>Globus Bank</b></span><span class="lgm-it"><img src="brand/banks/jaiz.svg" alt="Jaiz Bank" loading="lazy" decoding="async"></span><span class="lgm-it"><img src="brand/banks/lotus.svg" alt="Lotus Bank" loading="lazy" decoding="async"></span></div>
   </div>
 
   <div class="mkts"><div class="wrap mk-in">
-    <span class="mk-tag on">Live in</span><span class="mk-c">&#127475;&#127468; Nigeria</span><span class="mk-c">&#127468;&#127469; Ghana</span><span class="mk-c">&#127463;&#127471; B&eacute;nin</span><span class="mk-c">&#127466;&#127468; Egypt</span><span class="mk-c">&#127474;&#127462; Morocco</span><span class="mk-c">&#127466;&#127481; Ethiopia</span><span class="mk-c">&#127487;&#127462; South Africa</span>
+    <span class="mk-tag on">Live in</span><span class="mk-c">&#127475;&#127468; Nigeria</span><span class="mk-c">&#127468;&#127469; Ghana</span><span class="mk-c">&#127463;&#127471; B&eacute;nin</span><span class="mk-c">&#127466;&#127468; Egypt</span><span class="mk-c">&#127474;&#127462; Morocco</span><span class="mk-c">&#127466;&#127481; Ethiopia</span><span class="mk-c">&#127487;&#127462; South Africa</span><span class="mk-c">&#127472;&#127466; Kenya</span>
   </div></div>
 
   <div class="wrap sec" id="how" style="padding-bottom:40px">
     <h2 style="margin-bottom:30px">Three steps to your keys.</h2>
     <div class="g3">
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
-          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">1</span></div>
-        <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Brand-new or certified used. The price is fixed for 7 days.</p></div>
+        <div class="veh-img mph-wrap">
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;z-index:2">1</span>
+          <div class="mph"><div class="mph-in">
+            <div class="mph-top"><span>Midas</span><span class="mph-live">Cars</span></div>
+            <div class="mph-body">
+              <div class="mph-search">SUV &middot; under &#8358;1.2M a month</div>
+              <div class="mph-car-row"><img src="cars/g/creta-1-w480.webp" alt="" loading="lazy" decoding="async"><div><b>Hyundai Creta</b><span>&#8358;1,134,720<em>/month</em></span></div></div>
+              <div class="mph-car-row"><img src="cars/g/navara-1-w480.webp" alt="" loading="lazy" decoding="async"><div><b>Nissan Navara</b><span>&#8358;937,637<em>/month</em></span></div></div>
+              <div class="mph-car-row"><img src="cars/g/grandi10-1-w480.webp" alt="" loading="lazy" decoding="async"><div><b>Hyundai Grand i10</b><span>&#8358;776,388<em>/month</em></span></div></div>
+            </div></div></div>
+        </div>
+        <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Every car shows its monthly price. Brand new, with the manufacturer&rsquo;s warranty.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
         <div class="veh-img mph-wrap">
@@ -986,9 +1008,9 @@ input,select,textarea{font-size:17px}
         <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">Every bank sends its price to one screen. You choose.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><picture data-auto><source type="image/avif" srcset="cars/hero-w480.avif 480w, cars/hero-w800.avif 800w, cars/hero-w1200.avif 1200w, cars/hero-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/hero-w480.webp 480w, cars/hero-w800.webp 800w, cars/hero-w1200.webp 1200w, cars/hero-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/hero.jpg" alt="Driving" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
-          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px">3</span></div>
-        <div class="veh-body"><h4 style="margin:0">Pay the bank, collect keys</h4><p class="tiny muted" style="margin:4px 0 0">Your down payment goes to the bank, not to us. Then you drive home.</p></div>
+        <div class="veh-img" style="aspect-ratio:16/10;position:relative"><picture data-auto><source type="image/avif" srcset="cars/g/accent-6-w480.avif 480w, cars/g/accent-6-w800.avif 800w, cars/g/accent-6-w1200.avif 1200w, cars/g/accent-6-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/g/accent-6-w480.webp 480w, cars/g/accent-6-w800.webp 800w, cars/g/accent-6-w1200.webp 1200w, cars/g/accent-6-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/g/accent-6.jpg" alt="Getting into a new Hyundai Accent" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
+          <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;z-index:2">3</span></div>
+        <div class="veh-body"><h4 style="margin:0">The bank pays. You drive away.</h4><p class="tiny muted" style="margin:4px 0 0">You pay your down payment to the bank. The bank pays the showroom, and you collect your keys.</p></div>
       </div>
     </div>
     <p class="muted rev" style="margin-top:22px;font-size:14.5px">Want the numbers before you choose? <a href="#/calculator" style="color:var(--accent);font-weight:550">Open the loan calculator &rarr;</a></p>
@@ -1150,7 +1172,7 @@ input,select,textarea{font-size:17px}
     <p class="muted" style="margin-bottom:24px;max-width:70ch">Each lender runs its own credit policy against the same certified file. This is the underwriting view &mdash; the inputs, the rules that fired, and how the price was built.</p>
     <div class="grid" style="grid-template-columns:300px 1fr;align-items:start" id="bankLayout">
       <div class="card pad">
-        <label class="tiny muted" style="display:block;margin-bottom:7px;font-weight:500">Select a lender on the panel</label>
+        <label class="tiny muted" style="display:block;margin-bottom:7px;font-weight:500">Select a partner bank</label>
         <select class="inp" id="bankSel"></select>
         <hr class="sep">
         <div id="bankPolicy"></div>
@@ -1181,7 +1203,7 @@ input,select,textarea{font-size:17px}
   <div class="wrap" style="padding-top:34px;max-width:860px;padding-bottom:26px">
     <div class="eyebrow">For companies</div>
     <h2 style="margin:8px 0 10px">Fleets, financed in days.</h2>
-    <p class="muted" style="max-width:60ch">Buying five vehicles or fifty, the same panel prices your fleet. Banks lend more readily against a bulk order than a single car &mdash; one file, one security package, one disbursement.</p>
+    <p class="muted" style="max-width:60ch">Buying five vehicles or fifty, the same partner banks price your fleet. Banks lend more readily against a bulk order than a single car &mdash; one file, one security package, one disbursement.</p>
 
     <div class="photostrip rev">
       <div class="ps"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Showroom" loading="lazy" decoding="async"></picture><span>Delivered from our showrooms</span></div>
@@ -1193,7 +1215,7 @@ input,select,textarea{font-size:17px}
     <div class="statrow rev">
       <div class="statcard"><div class="sv">5&ndash;50+</div><div class="sk">vehicles in a single<br>facility</div></div>
       <div class="statcard"><div class="sv">48 hrs</div><div class="sk">indicative terms on<br>a complete file</div></div>
-      <div class="statcard"><div class="sv">One file</div><div class="sk">priced by the whole panel,<br>not one relationship bank</div></div>
+      <div class="statcard"><div class="sv">One file</div><div class="sk">priced by all our partner banks,<br>not one relationship bank</div></div>
     </div>
 
     <div class="g2" style="margin-top:8px">
@@ -1224,7 +1246,7 @@ input,select,textarea{font-size:17px}
           <option value="36">36 months</option><option value="48" selected>48 months</option><option value="60">60 months</option></select></div>
       </div>
       <div id="flOut" style="margin-top:6px"></div>
-      <p class="tiny faint" style="margin-top:10px">Indicative, from the same panel that prices our retail loans. Your bank sets the final rate on its own credit assessment.</p>
+      <p class="tiny faint" style="margin-top:10px">Indicative, from the same partner banks that price our retail loans. Your bank sets the final rate on its own credit assessment.</p>
     </div>
 
     <h3 class="rev" style="margin:28px 0 4px;font-size:1.05rem">What we need to start</h3>
@@ -1271,7 +1293,7 @@ input,select,textarea{font-size:17px}
   <div class="ask">
     <div class="ask-head">
       <span id="koboHead"></span>
-      <div><div class="ask-t">Midas</div><div class="ask-st">Checks every partner bank live &middot; never asks for your BVN or PIN</div></div>
+      <div><div class="ask-t">Midas</div></div>
       <button class="ask-new" onclick="CHAT=null;renderChat()" aria-label="New conversation">New chat</button>
     </div>
     <div class="ask-log" id="chatLog" aria-live="polite"></div>
@@ -1291,15 +1313,15 @@ input,select,textarea{font-size:17px}
   <div class="wrap" style="padding-top:38px;max-width:760px;padding-bottom:30px">
     <div class="eyebrow">About Midas</div>
     <h2 style="margin:10px 0 12px">Cars, financed properly.</h2>
-    <p class="muted" style="max-width:58ch">Most Nigerians pay cash for cars because a loan takes forty days and a miracle. Midas puts a panel of banks behind every car, so an offer comes back in 48 hours and the keys follow your down payment.</p>
+    <p class="muted" style="max-width:58ch">Most Nigerians pay cash for cars because a loan takes forty days and a miracle. Midas puts a group of banks behind every car, so an offer comes back in 48 hours and the keys follow your down payment.</p>
     <div style="margin:22px 0;border-radius:14px;overflow:hidden"><picture data-auto><source type="image/avif" srcset="cars/showroom-w480.avif 480w, cars/showroom-w800.avif 800w, cars/showroom-w1200.avif 1200w, cars/showroom-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/showroom-w480.webp 480w, cars/showroom-w800.webp 800w, cars/showroom-w1200.webp 1200w, cars/showroom-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/showroom.jpg" alt="Showroom" style="width:100%;max-height:300px;object-fit:cover;display:block" loading="lazy" decoding="async"></picture></div>
     <div class="grid rev" style="grid-template-columns:repeat(4,1fr);gap:14px;text-align:center;margin:26px 0">
       <div><div class="bignum" data-cnt="48">0</div><div class="tiny muted">hour offer target</div></div>
-      <div><div class="bignum" data-cnt="7">0</div><div class="tiny muted">banks on the panel</div></div>
+      <div><div class="bignum" data-cnt="7">0</div><div class="tiny muted">partner banks</div></div>
       <div><div class="bignum" data-cnt="6">0</div><div class="tiny muted">cities served</div></div>
       <div><div class="bignum" data-cnt="24">0</div><div class="tiny muted">hours to keys</div></div>
     </div>
-    <p class="muted rev" style="max-width:58ch">We are built with the Stallion Group&rsquo;s national dealer network &mdash; showrooms and service centres in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan. Vehicles first; education loans and mortgages ride the same rail next.</p>
+    <p class="muted rev" style="max-width:58ch">We are built with a national dealer network &mdash; showrooms and service centres in Lagos, Abuja, Port Harcourt, Kano, Enugu and Ibadan. Vehicles first; education loans and mortgages ride the same rail next.</p>
     <div class="row" style="gap:10px;margin-top:20px;flex-wrap:wrap">
       <a class="btn btn-p" href="#/market">See the cars &rarr;</a>
       <a class="btn btn-g" href="#/team">Meet the team</a>
@@ -1314,13 +1336,13 @@ input,select,textarea{font-size:17px}
     <h2 style="margin:10px 0 20px">Small team. Big rail.</h2>
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px">
       <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">LH</div>
-        <b style="display:block;margin-top:12px">Lavine Hemlani</b><div class="tiny muted">Founder. Builds the bank panel and the capital side.</div></div>
+        <b style="display:block;margin-top:12px">Lavine Hemlani</b><div class="tiny muted">Founder. Builds the bank partnerships and the capital side.</div></div>
       <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0b2a4a,#2a5a8f);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">MK</div>
         <b style="display:block;margin-top:12px">Manoj Kurapati</b><div class="tiny muted">Technology. The platform, the API, the consoles.</div></div>
       <div class="card pad rev"><div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#0b2a4a,#123f6e);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:650;font-size:17px">AS</div>
         <b style="display:block;margin-top:12px">Amit Sharma</b><div class="tiny muted">Sales, Lagos.</div></div>
     </div>
-    <p class="tiny faint" style="margin-top:16px">Behind the team sits the Stallion Group&rsquo;s automotive network &mdash; three decades of vehicle distribution in Nigeria.</p>
+    <p class="tiny faint" style="margin-top:16px">Behind the team sits a national automotive network &mdash; three decades of vehicle distribution in Nigeria.</p>
   </div>
 </section>
 
@@ -1449,7 +1471,7 @@ input,select,textarea{font-size:17px}
       <b style="font-size:15px">How it works</b>
       <p class="tiny muted" style="margin:8px 0 0">Tick <b>Comprehensive insurance</b> on the loan form and the premium is financed with the car. Choosing the halal loan? Your cover is Takaful &mdash; a shared protection pool, certified the same way the loan is. Claims are handled by the insurer, not by us.</p>
     </div>
-    <p class="tiny faint">Partner panel forming with Nigeria&rsquo;s licensed insurers, conventional and Takaful. Premiums are set by the insurer.</p>
+    <p class="tiny faint">Partnerships forming with Nigeria&rsquo;s licensed insurers, conventional and Takaful. Premiums are set by the insurer.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="startApply(); return false">Get covered with your loan &rarr;</a>
       <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${''}Hello, I want an auto insurance quote from Midas" target="_blank" rel="noopener">WhatsApp a quote</a>
@@ -1554,7 +1576,7 @@ input,select,textarea{font-size:17px}
     <p class="muted tiny" style="margin-bottom:22px">Plain language, as the Nigeria Data Protection Act (2023) intends. Questions: <a href="mailto:lavine@zenith-grp.co">lavine@zenith-grp.co</a>.</p>
     <div class="card pad" style="display:grid;gap:14px;font-size:14px">
       <div><b>What we collect.</b> What you type here: your name, phone, email, employment and income details, the car and structure you chose, and — with your consent — a verified income summary from a licensed open-banking provider. We never ask for a banking password, card PIN or OTP.</div>
-      <div><b>Why.</b> One purpose: to arrange vehicle financing for you. Your file goes to the licensed banks on the panel so they can price an offer, and to licensed credit bureaus only after you tick that consent.</div>
+      <div><b>Why.</b> One purpose: to arrange vehicle financing for you. Your file goes to the licensed partner banks so they can price an offer, and to licensed credit bureaus only after you tick that consent.</div>
       <div><b>Who sees it.</b> The banks pricing your application, the showroom completing your purchase, and our staff working on your file. We do not sell your information, ever, to anyone.</div>
       <div><b>Where money moves.</b> Your down payment is paid directly into the financing bank's account. Midas never holds your money.</div>
       <div><b>How long we keep it.</b> Active applications: while they are live. Funded loans: as long as the law requires financial records to be kept. Unsubmitted drafts stay only in your own browser and never reach us.</div>
@@ -1570,7 +1592,7 @@ input,select,textarea{font-size:17px}
     <h2 style="margin:8px 0 6px">The deal, plainly.</h2>
     <div class="card pad" style="display:grid;gap:14px;font-size:14px;margin-top:16px">
       <div><b>Midas is not a lender.</b> We arrange financing between you, licensed banks, and the showroom. Every loan decision is the bank's own, made in the bank's own systems. Loan contracts are between you and the bank.</div>
-      <div><b>Prices you see before an offer letter are indicative.</b> Monthly figures on this site are estimates from panel policy. Your binding terms arrive on the bank's offer letter, and only there.</div>
+      <div><b>Prices you see before an offer letter are indicative.</b> Monthly figures on this site are estimates from each bank’s policy. Your binding terms arrive on the bank's offer letter, and only there.</div>
       <div><b>The PFI</b> fixes the car and price for 7 days. It is not a loan approval.</div>
       <div><b>Your down payment goes only to the bank account named on the offer letter.</b> Anyone asking you to pay a deposit anywhere else — including anyone claiming to be Midas — is defrauding you. Report it to us immediately.</div>
       <div><b>Midas is paid by its partners,</b> not by you. There is no customer fee for applying.</div>
@@ -1586,7 +1608,7 @@ input,select,textarea{font-size:17px}
     <h2 style="margin:10px 0 14px">Vehicle finance origination, done properly.</h2>
     <p class="muted" style="max-width:60ch">Complete files, not leads: a numbered PFI, a certified vehicle at a fixed price, verified income and full KYC &mdash; delivered to your credit team over an API.</p>
 
-    <p class="tiny faint" style="margin:6px 0 0">Hyundai &middot; Nissan &middot; MG &middot; Honda franchises in Nigeria and Ghana &mdash; showrooms in Lagos, Abuja, Port Harcourt, Kano, Enugu, Ibadan and Accra. Two ways to work with us: a white-label platform for your own customers, or a seat on the open panel.</p>
+    <p class="tiny faint" style="margin:6px 0 0">Hyundai &middot; Nissan &middot; MG &middot; Honda franchises in Nigeria and Ghana &mdash; showrooms in Lagos, Abuja, Port Harcourt, Kano, Enugu, Ibadan and Accra. Two ways to work with us: a white-label platform for your own customers, or a place among our partner banks.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-p" href="app.html#/axis">Launch the bank console &rarr;</a>
       <a class="btn btn-g" href="app.html#/axis/integration">API specification</a>
@@ -1647,7 +1669,7 @@ input,select,textarea{font-size:17px}
 
     <div class="pilotband rev">
       <span class="pb-big">30&ndash;40 applicants &rarr; <em>10 cars</em></span>
-      <p>First pilot cycle, growing to 20&ndash;25 vehicles across the programme &mdash; the pioneer lender sets the template for the panel.</p>
+      <p>First pilot cycle, growing to 20&ndash;25 vehicles across the programme &mdash; the pioneer lender sets the template for every bank that follows.</p>
     </div>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">Indicative economics</h3>
@@ -1658,7 +1680,7 @@ input,select,textarea{font-size:17px}
     </table></div>
     <p class="tiny faint" style="margin-top:8px">Zero licence fee, zero platform fee and zero commission for banks. Midas is paid by the dealers when a car is sold &mdash; never by your institution or the borrower.</p>
 
-    <p class="muted" style="max-width:66ch;margin-top:14px">A <b style="color:var(--ink)">non-interest window</b> is reserved on the panel for licensed Islamic banks &mdash; Murabaha and Ijara wa Iqtina structures, serving the roughly half of Nigeria that will not take an interest-bearing loan. We would particularly welcome that conversation.</p>
+    <p class="muted" style="max-width:66ch;margin-top:14px">A <b style="color:var(--ink)">non-interest window</b> is reserved for licensed Islamic banks &mdash; Murabaha and Ijara wa Iqtina structures, serving the roughly half of Nigeria that will not take an interest-bearing loan. We would particularly welcome that conversation.</p>
 
     <h3 style="margin:34px 0 8px;font-size:1.1rem">Banks we are working with</h3>
     <div id="seatGrid" style="max-width:640px"></div>
@@ -1668,7 +1690,7 @@ input,select,textarea{font-size:17px}
     <p class="muted" style="font-size:14.5px;max-width:60ch">Thirty minutes on credit policy and commercials, then the sandbox &mdash; <a href="app.html#/axis/integration" style="color:var(--accent)">the integration specification is published</a>.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener" onclick="track('bank_call_booked_click')">Arrange the conversation &rarr;</a>
-      <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20lender%20panel%20%E2%80%94%20[Institution]&body=Institution%3A%0AName%20and%20title%3A%0ATelephone%3A%0AConvenient%20time%3A">Write to us</a>
+      <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20partner%20banks%20%E2%80%94%20[Institution]&body=Institution%3A%0AName%20and%20title%3A%0ATelephone%3A%0AConvenient%20time%3A">Write to us</a>
     </div>
   </div>
 </section>
@@ -1678,7 +1700,7 @@ input,select,textarea{font-size:17px}
   <div class="wrap" style="padding-top:34px;max-width:860px;padding-bottom:26px">
     <div class="eyebrow">For dealerships</div>
     <h2 style="margin:8px 0 10px">Your stock, financed. Browsers become buyers.</h2>
-    <p class="muted" style="max-width:58ch">Every car you list carries a monthly price and a bank panel behind it. You keep your price; the bank pays you.</p>
+    <p class="muted" style="max-width:58ch">Every car you list carries a monthly price and partner banks behind it. You keep your price; the bank pays you.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-p" href="app.html#/stallion">Launch the dealer desk &rarr;</a>
       <a class="btn btn-g" href="#/desk">Showroom desk</a>
@@ -1794,16 +1816,16 @@ input,select,textarea{font-size:17px}
     <div>
       <img src="brand/wordmark.svg" alt="Midas" style="height:22px;margin-bottom:10px">
       <div class="tiny muted" style="max-width:38ch">Midas arranges vehicle financing between you, licensed Nigerian banks and the showroom. Midas is not a lender and never holds your money.</div>
-      <a class="btn btn-wa btn-sm" style="margin-top:12px;display:inline-flex" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp us</a>
+      <a class="btn btn-wa btn-sm bf-wa" href="https://wa.me/2348058963692?text=Hello%20Midas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
     </div>
-    <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/halal">Halal finance</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
-    <div><h5>Partners</h5><a href="#/fleet">For corporates</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a><a href="#/desk">Showroom desk</a><a href="app.html#/axis">Bank console</a></div>
-    <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a><a href="app.html#/ops">Operations console</a></div>
+    <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/calculator">Loan calculator</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
+    <div><h5>Partners</h5><a href="#/fleet">For corporates</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a></div>
+    <div><h5>Company</h5><a href="#/about">About</a><a href="#/team">Team</a><a href="#/careers">Careers</a></div>
     <div><h5>Legal</h5><a href="#/privacy">Privacy</a><a href="#/terms">Terms</a><a href="#/credits">Photo credits</a></div>
   </div>
   <div class="bf-bot">
     <span>&copy; 2026 Midas &middot; Lagos &middot; Abuja &middot; Port Harcourt</span>
-    <span>Pilot build &mdash; panel pricing indicative until each bank&rsquo;s signed policy is live.</span>
+    <span>Prices are estimates until your bank confirms your offer.</span>
   </div>
 </div>
 
@@ -1831,7 +1853,7 @@ input,select,textarea{font-size:17px}
    ============================================================ */
 let curCountry='NG';
 const CCY = { NG:{sym:'₦', rate:1}, GH:{sym:'GH₵ ', rate:0.0076}, BJ:{sym:'FCFA ', rate:0.39},
-  EG:{sym:'E£ ', rate:0.0343}, MA:{sym:'MAD ', rate:0.0067}, ET:{sym:'Br ', rate:0.112}, ZA:{sym:'R ', rate:0.0116} };
+  EG:{sym:'E£ ', rate:0.0343}, MA:{sym:'MAD ', rate:0.0067}, ET:{sym:'Br ', rate:0.112}, ZA:{sym:'R ', rate:0.0116}, KE:{sym:'KSh ', rate:0.0921} };
 function curC(){ try{ return CCY[curCountry] || CCY.NG; }catch(e){ return CCY.NG; } }
 const NGN = n => { const c = curC(); return c.sym + Math.round(n*c.rate).toLocaleString('en-US'); };
 const NGNs = n => { const c = curC(); const v = n*c.rate; return v >= 1e6 ? c.sym + (v/1e6).toFixed(v>=1e7?1:2).replace(/\.0+$/,'') + 'M' : c.sym + Math.round(v).toLocaleString('en-US'); };
@@ -2182,7 +2204,7 @@ const GH_BASE=[.12,.12,.13,.14,.145,.15];
    typical car-loan rates there (mid-2026). No bank is named until one signs, so
    the offer reads as a Midas estimate and the bank confirms the rate. */
 const MKT2={EG:{base:.19,lo:.15,hi:.28,name:'Egypt'},MA:{base:.075,lo:.055,hi:.11,name:'Morocco'},
-            ET:{base:.17,lo:.15,hi:.24,name:'Ethiopia'},ZA:{base:.13,lo:.105,hi:.19,name:'South Africa'}};
+            ET:{base:.17,lo:.15,hi:.24,name:'Ethiopia'},ZA:{base:.13,lo:.105,hi:.19,name:'South Africa'},KE:{base:.14,lo:.12,hi:.2,name:'Kenya'}};
 const _mkPanel={};
 function runPanel(v, equityPct, tenor, app){
   return panelLenders().map(l => evaluate(l, v, equityPct, tenor, app));
@@ -2838,7 +2860,7 @@ function renderApply(){
           <label><input type="checkbox" ${L.addons.war?'checked':''} onchange="S.la.addons.war=this.checked;save()">Extended warranty</label>
           <label><input type="checkbox" ${L.addons.rsa?'checked':''} onchange="S.la.addons.rsa=this.checked;save()">Roadside assistance</label>
         </div></div>
-      <p class="tiny muted full" style="grid-column:1/-1">Interest rate is set by the bank that wins your file &mdash; the panel bids, you take the cheapest.</p>
+      <p class="tiny muted full" style="grid-column:1/-1">Interest rate is set by the bank that wins your file &mdash; the banks bid, you take the cheapest.</p>
     </div>`,
   /* 5 Documents */ docsBlock,
   /* 6 Consent */ `
@@ -2877,7 +2899,7 @@ function renderApply(){
       <div><b>${v.year} ${v.make} ${v.model}</b>
       <div class="tiny muted">${NGNs(v.price)} &middot; ${t?NGN(t.o.monthly)+'/month indicative':''} &middot; <a href="#/market" style="color:var(--accent)">change car</a></div></div></div>
     ${secHtml}
-    <p class="tiny muted" style="margin-top:14px">&#128274; Your details go only to licensed banks on the panel. We never ask for a card number, PIN or OTP.</p>`;
+    <p class="tiny muted" style="margin-top:14px">&#128274; Your details go only to licensed partner banks. We never ask for a card number, PIN or OTP.</p>`;
   if(E){
     (E.fields||[]).forEach(k=>{ const el=document.getElementById('lf-'+k); if(el) el.classList.add('err'); });
     (E.pills||[]).forEach(k=>{ const el=document.getElementById('lfp-'+k); if(el) el.classList.add('err'); });
@@ -2959,7 +2981,7 @@ function lfSubmit(){
   const missing=['c1','c2','c3','c4'].filter(k=>L.c[k]!=='yes');
   if(missing.length){
     S.laErr={sec:6,fields:[],pills:[],
-      msg:`Every bank on the panel needs all four consents before it can look at your file. <b>${missing.length} still unanswered.</b>`};
+      msg:`Every partner bank needs all four consents before it can look at your file. <b>${missing.length} still unanswered.</b>`};
     S.laOpen=6; save(); renderApply();
     const el=document.getElementById('lfs-6'); if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
     return;
@@ -3065,7 +3087,7 @@ const PANEL={
 })();
 const CTRY_LOGOS={'Stanbic Bank Ghana':'stanbicgh.png','Absa Ghana':'absagh.png','Ecobank Ghana':'ecobank.png','Bank of Africa':'boa.png','Ecobank B\u00e9nin':'ecobank.png','UBA B\u00e9nin':'uba.png'};
 /* Ghana: the six banks met in Accra on 2 Nov 2026, cheapest quote first. */
-const CTRY_BANKS={ EG:['Midas estimate'], MA:['Midas estimate'], ET:['Midas estimate'], ZA:['Midas estimate'], GH:['Stanbic Bank Ghana','FNB Ghana','Ecobank Ghana','CalBank','Absa Ghana','Fidelity Bank Ghana'], BJ:['Bank of Africa','Ecobank B\u00e9nin','UBA B\u00e9nin'] };
+const CTRY_BANKS={ KE:['Midas estimate'], EG:['Midas estimate'], MA:['Midas estimate'], ET:['Midas estimate'], ZA:['Midas estimate'], GH:['Stanbic Bank Ghana','FNB Ghana','Ecobank Ghana','CalBank','Absa Ghana','Fidelity Bank Ghana'], BJ:['Bank of Africa','Ecobank B\u00e9nin','UBA B\u00e9nin'] };
 function bankInitials(n){ const w=n.replace(/Bank|Ghana|B\u00e9nin/g,'').trim().split(/\s+/).filter(Boolean);
   return (w.length===1 ? w[0].slice(0,3) : w.map(x=>x[0]).join('').slice(0,3)).toUpperCase(); }
 function bankChip(n){ const g=CTRY_LOGOS[n];
@@ -3176,7 +3198,7 @@ function finishOffers(v,app,ok,best,dearest){
     const seg=$('#sortSeg'); if(seg) seg.hidden=true;
     $('#offFix').innerHTML=`<div class="card pad" style="margin-bottom:18px">
       <b style="font-size:15px">Here is how to fix it</b>
-      <p class="tiny muted" style="margin:6px 0 14px">The monthly payment is too big against the income you entered. Any one of these usually clears it &mdash; one tap and the panel re-prices.</p>
+      <p class="tiny muted" style="margin:6px 0 14px">The monthly payment is too big against the income you entered. Any one of these usually clears it &mdash; one tap and the banks re-price.</p>
       ${fixes.map(f=>`<div class="between" style="padding:12px 0;border-top:1px solid var(--line);gap:12px;flex-wrap:wrap;align-items:center">
         <span style="font-size:14px">${f.txt}</span>
         <button class="btn btn-a btn-sm" onclick="applyFix('${f.k}','${f.v}')">Do this</button></div>`).join('')
@@ -3256,7 +3278,7 @@ function renderLiveStatus(r, apps){
   const steps=[
     ['1 · Car selected', esc(r.vehicle||'')+(r.price?' · '+NGN(r.price)+' showroom price':''), 'done'],
     ['2 · Application submitted', 'Ref '+esc(r.id)+' · '+fmtWhen(r.receivedAt)+' · '+docs.length+' document'+(docs.length===1?'':'s')+' on file', 'done'],
-    ['3 · Banks assess your file — in their own environment', st==='Additional Information Requested'?'A bank has asked for one more document — see below.':decided?'Decisions are coming back.':'Your file is with the panel. Target: 48 hours.', decided?'done':'now'],
+    ['3 · Banks assess your file — in their own environment', st==='Additional Information Requested'?'A bank has asked for one more document — see below.':decided?'Decisions are coming back.':'Your file is with the banks. Target: 48 hours.', decided?'done':'now'],
     ['4 · Offer letter', acc?'Accepted — '+esc(acc.orgName):live.length?live.length+' offer'+(live.length>1?'s':'')+' waiting for you below':(st==='Approved'||st==='Conditional Approval')?'Approved in principle — the formal offer follows':'Arrives here and on WhatsApp', (live.length||acc)?'done':(decided&&!/Declined|Cancelled/.test(st)?'now':'')],
     ['5 · Equity contribution — paid to the bank', accOffer?'Pay '+NGN(accOffer.offer.equity)+' into the account on the offer letter'+(accOffer.offer.payTo?' — '+esc(accOffer.offer.payTo):'')+'. Never to the dealer, never to Midas.':'Only after you accept an offer. Never to the dealer, never to Midas.', r.disbursedAt?'done':(acc?'now':'')],
     ['6 · Disbursement & pickup', r.deliveredAt?'Delivered '+fmtWhen(r.deliveredAt):r.disbursedAt?'The bank has paid the showroom. Keys within 24 hours.':'The bank pays the showroom; you collect the keys.', r.deliveredAt?'done':(r.disbursedAt?'now':'')],
@@ -3335,7 +3357,7 @@ function renderLocalStatus(v){
   const panel=runPanel(v,S.equityPct,S.tenor,S.applicant);
   const o=panel.find(x=>x.lender.id===S.accepted && x.approved);
   if(!o){ $('#stHead').textContent='Offer no longer valid';
-    $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>The structure changed after this offer was accepted.</b> '+S.accepted+' will not price the deal as it now stands. Go back to the panel and take a live offer.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the panel →</a></div>'; return; }
+    $('#stBody').innerHTML='<div class="card pad"><div class="warnbox"><b>The structure changed after this offer was accepted.</b> '+S.accepted+' will not price the deal as it now stands. Go back to the offers and take a live one.</div><a href="#/offers" class="btn btn-p btn-sm" style="margin-top:14px">Back to the offers →</a></div>'; return; }
   const okCount=panel.filter(x=>x.approved).length;
   const pfi=pfiNumber();
   const steps=[['1 · Car selected & certified',v.year+' '+v.make+' '+v.model+' · Auto OS Grade '+v.grade,'done'],
@@ -3476,7 +3498,7 @@ function renderDealer(){
   const avgTicket=17400000, avgLoan=avgTicket*.65;
   const vol=fund*avgLoan, comm=vol*.022;
   const f=[['Certified units listed',listed,''],['Finance applications',apps,'31% of viewers start an application once a monthly number is on the card'],
-    ['Received ≥1 offer',bids,'88% — the panel is wide enough that almost everyone gets priced'],
+    ['Received ≥1 offer',bids,'88% — there are enough banks that almost everyone gets priced'],
     ['Accepted an offer',acc,'52% — choice converts; a single-bank offer converts far lower'],
     ['Funded & delivered',fund,'91% of acceptances complete']];
   $('#dealerBody').innerHTML=`
@@ -3501,9 +3523,9 @@ function renderDealer(){
         <div class="kv"><span class="k">Insurance placement</span><span class="v">7–12%</span></div>
         <div class="kv"><span class="k">Inspection & certification fee</span><span class="v">per unit</span></div>
         <hr class="sep">
-        <p class="tiny muted">The first bank partner is signed and pays commission on funded principal. Every additional lender on the panel costs Midas nothing to add and raises the odds any given customer gets priced — which is why the panel, not the rate, is the product.</p>
+        <p class="tiny muted">The first bank partner is signed and pays commission on funded principal. Every additional partner bank costs Midas nothing to add and raises the odds any given customer gets priced — which is why the choice of banks, not the rate, is the product.</p>
         <hr class="sep">
-        <div class="note tiny"><b>Next on the same rails.</b> The residual-value engine is asset-agnostic. Swap the depreciation curve for a property index and the identical panel mechanic runs a mortgage.</div>
+        <div class="note tiny"><b>Next on the same rails.</b> The residual-value engine is asset-agnostic. Swap the depreciation curve for a property index and the identical bank matching runs a mortgage.</div>
       </div>
     </div>`;
 }
@@ -3582,32 +3604,39 @@ function renderFleet(){
     </div>`:`<div class="warnbox" style="margin-top:14px">No bank prices this structure yet. Raise the deposit or shorten the term.</div>`}`;
 }
 const COUNTRIES={
+ KE:{name:'Kenya',flag:'\u{1F1F0}\u{1F1EA}',cur:'KSh',rate:0.0921,nb:'Free',banks:'',city:'Nairobi',
+     towns:'Nairobi &middot; Mombasa', lang:'English &middot; Kiswahili',
+     head:'Live in Nairobi.',
+     sub:'Apply today. Every price in Kenyan shillings, with car loans from about 14% a year. One form, and we match you with the bank that fits.',
+     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in Kenya',pbBody:'If you lend, or you sell cars in Kenya, this is the moment to join us.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
+     wa:'Hello, I want to buy a car with Midas in Kenya',
+     wp:'Hello, I want to partner with Midas in Kenya \u2014 I am a bank / dealership'},
  EG:{name:'Egypt',flag:'\u{1F1EA}\u{1F1EC}',cur:'E\u00a3',rate:0.0343,nb:'Free',banks:'',city:'Cairo',
      towns:'Cairo &middot; Alexandria', lang:'English &middot; \u0627\u0644\u0639\u0631\u0628\u064a\u0629',
      head:'Live in Cairo.',
      sub:'Apply today. Every price in Egyptian pounds, with car loans from about 17% a year. One form, and we match you with the bank that fits.',
-     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in Egypt',pbBody:'If you lend, or you sell cars in Egypt, this is the moment to be on the panel.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
+     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in Egypt',pbBody:'If you lend, or you sell cars in Egypt, this is the moment to join us.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
      wa:'Hello, I want to buy a car with Midas in Egypt',
      wp:'Hello, I want to partner with Midas in Egypt \u2014 I am a bank / dealership'},
  MA:{name:'Maroc',flag:'\u{1F1F2}\u{1F1E6}',cur:'MAD',rate:0.0067,nb:'Free',banks:'',city:'Casablanca',
      towns:'Casablanca &middot; Rabat', lang:'Fran\u00e7ais &middot; \u0627\u0644\u0639\u0631\u0628\u064a\u0629',
      head:'En direct \u00e0 Casablanca.',
      sub:'Faites votre demande aujourd\u2019hui. Tous les prix en dirhams, cr\u00e9dit auto \u00e0 partir d\u2019environ 6 % par an. Un seul formulaire, et nous vous orientons vers la bonne banque.',
-     l:{show:'Nos villes',banks:'pour faire une demande',lang:'on vous parle',mo:'/mois',cash:'prix comptant',join:'Faire une demande',partner:'Devenir partenaire',nig:'Voir le site Nigeria',pbHead:'Banques et concessionnaires au Maroc',pbBody:'Si vous financez des voitures ou en vendez au Maroc, rejoignez le panel.',note:n=>`Prix en ${n} au taux du jour, hors droits locaux. Les mensualit\u00e9s sont des estimations Midas ; votre banque confirme le taux`},
+     l:{show:'Nos villes',banks:'pour faire une demande',lang:'on vous parle',mo:'/mois',cash:'prix comptant',join:'Faire une demande',partner:'Devenir partenaire',nig:'Voir le site Nigeria',pbHead:'Banques et concessionnaires au Maroc',pbBody:'Si vous financez des voitures ou en vendez au Maroc, rejoignez-nous.',note:n=>`Prix en ${n} au taux du jour, hors droits locaux. Les mensualit\u00e9s sont des estimations Midas ; votre banque confirme le taux`},
      wa:'Bonjour, je veux acheter une voiture avec Midas au Maroc',
      wp:'Bonjour, je souhaite devenir partenaire de Midas au Maroc \u2014 banque / concession'},
  ET:{name:'Ethiopia',flag:'\u{1F1EA}\u{1F1F9}',cur:'Br',rate:0.112,nb:'Free',banks:'',city:'Addis Ababa',
      towns:'Addis Ababa', lang:'English &middot; \u12a0\u121b\u122d\u129b',
      head:'Live in Addis Ababa.',
      sub:'Apply today. Every price in birr, with car loans from about 16% a year. One form, and we match you with the bank that fits.',
-     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in Ethiopia',pbBody:'If you lend, or you sell cars in Ethiopia, this is the moment to be on the panel.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
+     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in Ethiopia',pbBody:'If you lend, or you sell cars in Ethiopia, this is the moment to join us.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
      wa:'Hello, I want to buy a car with Midas in Ethiopia',
      wp:'Hello, I want to partner with Midas in Ethiopia \u2014 I am a bank / dealership'},
  ZA:{name:'South Africa',flag:'\u{1F1FF}\u{1F1E6}',cur:'R',rate:0.0116,nb:'Free',banks:'',city:'Johannesburg',
      towns:'Johannesburg &middot; Cape Town', lang:'English &middot; isiZulu',
      head:'Live in Johannesburg.',
      sub:'Apply today. Every price in rand, with vehicle finance from about 12% a year. One form, and we match you with the lender that fits.',
-     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in South Africa',pbBody:'If you lend, or you sell cars in South Africa, this is the moment to be on the panel.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
+     l:{show:'Where we are',banks:'to apply',lang:'we speak your language',mo:'/month',cash:'cash price',join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',pbHead:'Banks and dealers in South Africa',pbBody:'If you lend, or you sell cars in South Africa, this is the moment to join us.',note:n=>`Prices in ${n} at today\u2019s rate, before local duties. Monthly figures are Midas estimates from typical car-loan rates; your bank confirms the final rate`},
      wa:'Hello, I want to buy a car with Midas in South Africa',
      wp:'Hello, I want to partner with Midas in South Africa \u2014 I am a bank / dealership'},
  GH:{name:'Ghana',flag:'\u{1F1EC}\u{1F1ED}',cur:'GH\u20B5',rate:0.0076,nb:6,banks:'Stanbic Bank Ghana, FNB Ghana, Ecobank Ghana, CalBank, Absa Ghana, Fidelity Bank Ghana',city:'Accra',
@@ -3617,19 +3646,19 @@ const COUNTRIES={
      l:{show:'Our showrooms',banks:'banks onboarding',lang:'we speak your language',mo:'/month',cash:'cash price',
         join:'Apply now',partner:'Partner with us',nig:'See the Nigeria site',
         pbHead:'Banks and dealers in Ghana',
-        pbBody:'We are signing the panel now. If you lend, or you sell cars in Accra or Tema, this is the moment to be on it.',
-        note:n=>`Indicative ${n} pricing at today\u2019s rates, before local duties. Lender panel: `},
+        pbBody:'We are signing partner banks now. If you lend, or you sell cars in Accra or Tema, this is the moment to be on it.',
+        note:n=>`Indicative ${n} pricing at today\u2019s rates, before local duties. Partner banks: `},
      wa:'Hello, I want to buy a car with Midas in Ghana',
      wp:'Hello, I want to partner with Midas in Ghana \u2014 I am a bank / dealership'},
  BJ:{name:'B\u00e9nin',flag:'\u{1F1E7}\u{1F1EF}',cur:'FCFA',rate:0.39,banks:'Bank of Africa, Ecobank B\u00e9nin, UBA B\u00e9nin',city:'Cotonou',
      towns:'Cotonou &middot; Porto-Novo', lang:'Fran\u00e7ais &middot; Fon',
      head:'En direct \u00e0 Cotonou.',
-     sub:'Concessions ouvertes. Trois banques au panel. Demandes ouvertes d\u00e8s aujourd\u2019hui \u2014 tous les prix en francs CFA. <span class="faint">(Live: apply today.)</span>',
+     sub:'Concessions ouvertes. Trois banques partenaires. Demandes ouvertes d\u00e8s aujourd\u2019hui \u2014 tous les prix en francs CFA. <span class="faint">(Live: apply today.)</span>',
      l:{show:'Nos concessions',banks:'banques partenaires',lang:'on vous parle',mo:'/mois',cash:'prix comptant',
         join:'Faire une demande',partner:'Devenir partenaire',nig:'Voir le site Nigeria',
         pbHead:'Banques et concessionnaires au B\u00e9nin',
-        pbBody:'Nous constituons le panel maintenant. Si vous financez, ou si vous vendez des voitures \u00e0 Cotonou, c\u2019est le moment.',
-        note:n=>`Prix indicatifs en ${n} au taux du jour, hors droits locaux. Panel bancaire : `},
+        pbBody:'Nous signons nos banques partenaires maintenant. Si vous financez, ou si vous vendez des voitures \u00e0 Cotonou, c\u2019est le moment.',
+        note:n=>`Prix indicatifs en ${n} au taux du jour, hors droits locaux. Banques partenaires : `},
      wa:'Bonjour, je veux acheter une voiture avec Midas au B\u00e9nin',
      wp:'Bonjour, je souhaite devenir partenaire de Midas au B\u00e9nin \u2014 banque / concession'}};
 
@@ -4002,7 +4031,7 @@ function askFallback(t){
     const r=MT.search_cars({body,condition:cond,max_monthly:mo||undefined,max_price:price||undefined,...terms});
     if(!r.count){
       const n=r.nearest||[];
-      say(n.length?`Nothing fits ${mo?`under **${NGN(askFromLocal(mo))}** a month`:'that'} even at 50% down. Closest: the **${n[0].name}** at **${n[0].monthly}/month** with ${n[0].down_payment} down.`:`Nothing on the panel matches that yet. Tell me a bit more, like your budget or what the car is for.`);
+      say(n.length?`Nothing fits ${mo?`under **${NGN(askFromLocal(mo))}** a month`:'that'} even at 50% down. Closest: the **${n[0].name}** at **${n[0].monthly}/month** with ${n[0].down_payment} down.`:`Nothing matches that yet. Tell me a bit more, like your budget or what the car is for.`);
       if(n.length) askCards(n.map(x=>askCar(x.id)),.50,ten); return; }
     const top=r.cars[0];
     say(`${r.count} car${r.count>1?'s':''} fit${mo?` under **${NGN(askFromLocal(mo))}** a month`:''}. Easiest to own: the **${top.name}** at **${top.monthly}/month** with ${top.down_payment} down, ${top.rate} from ${top.bank}.`);
@@ -4046,8 +4075,8 @@ const RP_TERMS=[{m:3,r:0},{m:4,r:0},{m:6,r:0.015}];
 /* Workshops by country. Addresses from the group's own messages; the Lagos
    Mainland workshop's street address is confirmed with the booking. */
 const RP_SHOPS_BY={
-  NG:[{k:'vi', nm:'Stallion Victoria Island', addr:'180B Kofo Abayomi Street, by Akin Adesola, Victoria Island, Lagos'},
-      {k:'ml', nm:'Stallion Mainland workshop', addr:'Lagos Mainland \u2014 exact address sent with your booking'}],
+  NG:[{k:'vi', nm:'Victoria Island workshop', addr:'180B Kofo Abayomi Street, by Akin Adesola, Victoria Island, Lagos'},
+      {k:'ml', nm:'Mainland workshop', addr:'Lagos Mainland \u2014 exact address sent with your booking'}],
   GH:[{k:'ail',nm:'AIL Accra (Hyundai)', addr:'Plot A1 & A2, Obetsebi Lamptey Circle, Kaneshie, Accra'}],
   BJ:[{k:'cot',nm:'Midas Cotonou', addr:'Cotonou \u2014 adresse envoy\u00e9e avec la r\u00e9servation'}]
 };
@@ -4065,7 +4094,7 @@ function rpShop(k){ rpState().shop=k; save(); renderRepair(); }
 const RP_PARTNERS={
   easycash:{id:'easycash',nm:'EasyCash',limit:2000000,user:'Chinedu',
             wallet:'Repayments come out of your EasyCash wallet.'},
-  stallion:{id:'stallion',nm:'Stallion Victoria Island',limit:1500000,user:'there',
+  stallion:{id:'stallion',nm:'Victoria Island workshop',limit:1500000,user:'there',
             wallet:'Repayments by card, transfer or payroll deduction.'}
 };
 function rpPartner(){
@@ -4215,7 +4244,7 @@ function renderRepair(){
     ${shopBlock}
 
     <div style="margin-top:22px;padding:14px;background:var(--surface-2);border-radius:14px">
-      <div class="tiny" style="font-weight:600;margin-bottom:4px">Priced by the panel, not by us</div>
+      <div class="tiny" style="font-weight:600;margin-bottom:4px">Priced by the banks, not by us</div>
       <div class="tiny muted">Partner lenders see the same file and the cheapest one wins.</div>
       <div class="rp-banks">
         ${curCountry==='GH' ? '<img src="brand/banks/stanbicgh.png" alt=""><img src="brand/banks/absagh.png" alt=""><img src="brand/banks/ecobank.png" alt="">'
@@ -4346,7 +4375,7 @@ function calcPaint(sync){
     <div class="kv"><span class="k"><b>Repaid to the bank</b></span><span class="v">${NGN(q.toBank)}</span></div>
     <div class="kv"><span class="k"><b>Total cost of the car, all-in</b></span><span class="v">${NGN(q.allIn)}</span></div>
     <div class="kv"><span class="k">Cost of credit (interest + fee, as % of loan)</span><span class="v">${pct((q.interest+q.mgmt)/q.loan*100,1)}</span></div>
-    <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT. Income needed assumes repayments at 45% of net pay, the panel’s usual ceiling.</p>`;
+    <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT. Income needed assumes repayments at 45% of net pay, the banks’ usual ceiling.</p>`;
 
   /* the two example banks side by side, each at its own typical rate */
   const cmp=CALC_BANKS.filter(x=>x.id!=='other').map(x=>{
@@ -4417,12 +4446,13 @@ document.querySelectorAll('#sortSeg button').forEach(b=>b.onclick=()=>{
 const _pp=$('#panelPill'); if(_pp) _pp.textContent=panelLenders().length+' lenders on panel';
 
 const CTRY_UI={
+ KE:{strip:'\u{1F1F0}\u{1F1EA} <b style="color:#f0c060">Midas Kenya</b> &nbsp;\u00b7&nbsp; every price in Kenyan shillings &nbsp;\u00b7&nbsp; car loans from about <b style="color:#fff">14% a year</b> &nbsp;\u00b7&nbsp; apply today, we match you with banks',cap:''},
  EG:{strip:'\u{1F1EA}\u{1F1EC} <b style="color:#f0c060">Midas Egypt</b> &nbsp;\u00b7&nbsp; every price in Egyptian pounds &nbsp;\u00b7&nbsp; car loans from about <b style="color:#fff">17% a year</b> &nbsp;\u00b7&nbsp; apply today, we match you with banks',cap:''},
  MA:{strip:'\u{1F1F2}\u{1F1E6} <b style="color:#f0c060">Midas Maroc</b> &nbsp;\u00b7&nbsp; every price in dirhams &nbsp;\u00b7&nbsp; car loans from about <b style="color:#fff">6% a year</b> &nbsp;\u00b7&nbsp; faites votre demande aujourd\u2019hui',cap:''},
  ET:{strip:'\u{1F1EA}\u{1F1F9} <b style="color:#f0c060">Midas Ethiopia</b> &nbsp;\u00b7&nbsp; every price in birr &nbsp;\u00b7&nbsp; car loans from about <b style="color:#fff">16% a year</b> &nbsp;\u00b7&nbsp; apply today, we match you with banks',cap:''},
  ZA:{strip:'\u{1F1FF}\u{1F1E6} <b style="color:#f0c060">Midas South Africa</b> &nbsp;\u00b7&nbsp; every price in rand &nbsp;\u00b7&nbsp; car loans from about <b style="color:#fff">12% a year</b> &nbsp;\u00b7&nbsp; apply today, we match you with lenders',cap:''},
  GH:{strip:'\u{1F1EC}\u{1F1ED} <b style="color:#f0c060">Midas Ghana</b> &nbsp;\u00b7&nbsp; every price in GH\u20b5 at today\u2019s rate &nbsp;\u00b7&nbsp; car loans from <b style="color:#fff">12% a year</b>, about 1% a month &nbsp;\u00b7&nbsp; six banks onboarding &nbsp;\u00b7&nbsp; <a href="#/country/GH" style="color:#f0c060">about \u2192</a>', cap:'Banks we work with in Ghana'},
- BJ:{strip:'\u{1F1E7}\u{1F1EF} <b style="color:#f0c060">Midas B\u00e9nin</b> &nbsp;\u00b7&nbsp; tous les prix en FCFA &nbsp;\u00b7&nbsp; concessions \u00e0 Cotonou &amp; Porto-Novo &nbsp;\u00b7&nbsp; 3 banques au panel &nbsp;\u00b7&nbsp; <a href="#/country/BJ" style="color:#f0c060">\u00e0 propos \u2192</a>', cap:'La confiance des grandes banques du B\u00e9nin'}};
+ BJ:{strip:'\u{1F1E7}\u{1F1EF} <b style="color:#f0c060">Midas B\u00e9nin</b> &nbsp;\u00b7&nbsp; tous les prix en FCFA &nbsp;\u00b7&nbsp; concessions \u00e0 Cotonou &amp; Porto-Novo &nbsp;\u00b7&nbsp; 3 banques partenaires &nbsp;\u00b7&nbsp; <a href="#/country/BJ" style="color:#f0c060">\u00e0 propos \u2192</a>', cap:'La confiance des grandes banques du B\u00e9nin'}};
 function updateCountryUI(){
   const el=document.getElementById('ctrySel'); if(el) el.value=curCountry;
   const st=document.getElementById('ctryStrip'), si=document.getElementById('ctryStripIn');

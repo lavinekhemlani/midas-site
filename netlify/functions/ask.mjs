@@ -30,6 +30,7 @@ const COUNTRY_NOTE = {
   EG: "The customer is shopping in Egypt. Prices are in Egyptian pounds. The monthly figures are Midas estimates from typical Egyptian car-loan rates; a bank confirms the final rate after they apply. Reply in Arabic if they write in Arabic.",
   MA: "The customer is shopping in Morocco. Prices are in dirhams. The monthly figures are Midas estimates from typical Moroccan car-loan rates; a bank confirms the final rate after they apply. Reply in French by default, or Arabic if they write in Arabic.",
   ET: "The customer is shopping in Ethiopia. Prices are in birr. The monthly figures are Midas estimates from typical Ethiopian car-loan rates; a bank confirms the final rate after they apply. Reply in Amharic if they write in Amharic.",
+  KE: "The customer is shopping in Kenya. Prices are in Kenyan shillings. The monthly figures are Midas estimates from typical Kenyan car-loan rates; a bank confirms the final rate after they apply. Reply in Swahili if they write in Swahili.",
   ZA: "The customer is shopping in South Africa. Prices are in rand. The monthly figures are Midas estimates from typical South African vehicle-finance rates; a lender confirms the final rate after they apply.",
 };
 
