@@ -850,6 +850,7 @@ input,select,textarea{font-size:17px}
 .calc-tbl .tb tr:last-child td{border-bottom:0}
 .calc-tbl .r{text-align:right}
 .calc-win td{background:var(--accent-soft)}
+.mk-av{display:inline-grid;place-items:center;border-radius:50%;background:var(--brand);box-shadow:0 0 0 2px rgba(200,134,42,.35);flex:none}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -3722,23 +3723,8 @@ function initReveal(){
 let CHAT = null;   /* Ask Midas conversation, see ASK MIDAS below */
 /* Kobo — a gold kobo coin, the smallest Nigerian denomination. Drawn
    inline so there is no image to load and nothing to look generated. */
-function koboSVG(size){ const d=size||40, u='k'+Math.random().toString(36).slice(2,7); return `<svg viewBox="0 0 72 72" width="${d}" height="${d}" aria-hidden="true">
-  <defs>
-    <radialGradient id="${u}f" cx="38%" cy="32%" r="72%">
-      <stop offset="0" stop-color="#ffe9ab"/><stop offset="55%" stop-color="#f2c45c"/><stop offset="100%" stop-color="#cf8f27"/>
-    </radialGradient>
-  </defs>
-  <circle cx="36" cy="36" r="34" fill="#b8791d"/>
-  <circle cx="36" cy="35" r="32" fill="url(#${u}f)"/>
-  <circle cx="36" cy="36" r="26" fill="none" stroke="#c99433" stroke-width="1.6" opacity=".45"/>
-  <ellipse cx="36" cy="20" rx="20" ry="7" fill="#fff6dc" opacity=".35"/>
-  <ellipse cx="28.5" cy="34" rx="3.4" ry="4.2" fill="#3b2a0e"/>
-  <ellipse cx="43.5" cy="34" rx="3.4" ry="4.2" fill="#3b2a0e"/>
-  <circle cx="29.7" cy="32.4" r="1.25" fill="#fff"/><circle cx="44.7" cy="32.4" r="1.25" fill="#fff"/>
-  <ellipse cx="23" cy="42.5" rx="3.6" ry="2.4" fill="#e8964f" opacity=".45"/>
-  <ellipse cx="49" cy="42.5" rx="3.6" ry="2.4" fill="#e8964f" opacity=".45"/>
-  <path d="M27 42.5c2.6 5 15.4 5 18 0" stroke="#3b2a0e" stroke-width="3" fill="none" stroke-linecap="round"/>
-</svg>`; }
+function koboSVG(size){ const d=size||40;   /* Midas's avatar: the gold mark on navy */
+  return `<span class="mk-av" style="width:${d}px;height:${d}px"><img src="brand/mark.svg" alt="" style="width:${Math.round(d*.56)}px;height:${Math.round(d*.56)}px"></span>`; }
 /* ===================== ASK MIDAS =====================
    Claude does the talking (netlify/functions/ask.mjs holds the key and the
    prompt); every tool it calls runs here against runPanel, so a number in the
