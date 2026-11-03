@@ -45,7 +45,8 @@ async function page(req) {
 async function media(req, event) {
   const cache = await caches.open(MEDIA);
   const cached = await cache.match(req);
-  const update = fetch(req).then((res) => {
+  // re-check with the server every time, so a photo replaced at the same address is picked up
+  const update = fetch(req, { cache: "no-cache" }).then((res) => {
     if (res.ok || res.type === "opaque") cache.put(req, res.clone()).then(() => trim(cache));
     return res;
   });

@@ -967,6 +967,34 @@ input,select,textarea{font-size:17px}
 .qs-go{width:100%;margin-top:10px}
 .qs-fine{font-size:12.5px;color:var(--ink-faint);margin:12px 0 0}
 .qs-alt{display:flex;justify-content:space-between;width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;margin:8px 0;font:inherit;font-size:15.5px;cursor:pointer}.qs-alt span{color:var(--brand);font-weight:600}
+/* homepage: cars first, less noise */
+.ratesboard,.mkts{display:none!important}
+.budget-chips{display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none}.budget-chips::-webkit-scrollbar{display:none}
+.budget-chips button{flex:0 0 auto;min-width:118px;border:1.5px solid var(--line-2);background:#fff;border-radius:16px;padding:12px 16px;font:inherit;font-size:16px;font-weight:650;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.budget-chips button small{font-size:12.5px;font-weight:500;color:var(--ink-faint)}
+.budget-chips button.on{border-color:var(--brand);background:var(--brand);color:#fff}.budget-chips button.on small{color:#cfdbea}
+@media(max-width:640px){.fpills{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none}.fpills::-webkit-scrollbar{display:none}.fbar .btn{display:none}.hero-photo h1{font-size:2.3rem}}
+.home-cta{display:none}
+@media(max-width:900px){
+  body[data-page="market"] .home-cta.show{display:block;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(247,248,250,0),rgba(247,248,250,.96) 30%)}
+  body[data-page="market"] .home-cta .btn{width:100%}
+  body[data-page="market"] .wa-fab{bottom:92px}
+}
+/* sheet: progress, pinned price, fields */
+.qs-bar{height:6px;border-radius:3px;background:var(--line);margin:12px 0 4px;overflow:hidden}.qs-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#f0c060);border-radius:3px;transition:width .35s ease}
+.qs-mo{margin-left:auto;margin-right:44px;background:var(--brand);color:#fff;border-radius:999px;padding:7px 12px;font-family:var(--display);font-weight:600;font-size:15px;white-space:nowrap}.qs-mo em{font-style:normal;font-family:var(--body);font-size:11px;opacity:.75;margin-left:2px}
+.qs-fields{display:flex;flex-direction:column;gap:10px}
+.qs-fields input{width:100%;font:inherit;font-size:18px;padding:16px 16px;border:1.5px solid var(--line-2);border-radius:14px;background:#fff;color:var(--ink)}
+.qs-fields input:focus{outline:none;border-color:var(--brand)}
+.qs-err{color:#b03c31;font-size:14.5px;margin:10px 2px 0}
+.qs-3{grid-template-columns:1fr 1fr 1fr!important}.qs-chips button.on{border-color:var(--brand);background:var(--naira-soft)}
+.qs-pick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qs-pick button{border:1.5px solid var(--line);background:#fff;border-radius:16px;padding:0 0 10px;overflow:hidden;font:inherit;cursor:pointer;text-align:left;display:flex;flex-direction:column}
+.qs-pick img{width:100%;aspect-ratio:16/10;object-fit:cover;margin-bottom:8px}.qs-pick b{font-size:14px;padding:0 10px;color:var(--ink)}.qs-pick span{font-family:var(--display);font-weight:600;font-size:16px;color:var(--brand);padding:0 10px}.qs-pick em{font-style:normal;font-size:11px;color:var(--ink-faint);margin-left:2px}
+.qs-agree{list-style:none;padding:0;margin:6px 0 16px}.qs-agree li{padding:12px 0 12px 32px;border-bottom:1px solid var(--line);position:relative;font-size:15.5px;color:var(--ink)}
+.qs-agree li:before{content:'\2713';position:absolute;left:4px;top:11px;width:20px;height:20px;border-radius:50%;background:var(--naira-soft);color:var(--brand);font-size:12px;display:grid;place-items:center;font-weight:700}
+.qs-fine a{color:inherit}
+@media(max-width:640px){#inv .sec-head h2{font-size:1.4rem}}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -1021,13 +1049,13 @@ input,select,textarea{font-size:17px}
     <picture data-auto><source type="image/avif" srcset="cars/hero-w480.avif 480w, cars/hero-w800.avif 800w, cars/hero-w1200.avif 1200w, cars/hero-w1600.avif 1600w" sizes="100vw"><source type="image/webp" srcset="cars/hero-w480.webp 480w, cars/hero-w800.webp 800w, cars/hero-w1200.webp 1200w, cars/hero-w1600.webp 1600w" sizes="100vw"><img class="bg" src="cars/hero.jpg" alt="Hyundai Creta" sizes="100vw" loading="eager" fetchpriority="high" /></picture>
     <div class="veil"></div>
     <div class="wrap"><div class="in">
-      <h1>Buy a new car.<br>Pay monthly.<br>Drive in 48 hours.</h1>
-      <p class="sub">3-minute application. Our partner banks find you the best financing.</p>
+      <h1>Buy a new car.<br>Pay monthly.</h1>
+      <p class="sub">Banks compete. You pick the cheapest.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
-        <a class="btn btn-a btn-lg" href="#/apply" onclick="startApply();return false;">Apply now &rarr;</a>
-        <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#/chat" onclick="startChat();return false;">Help me choose &rarr;</a>
+        <button class="btn btn-a btn-lg" onclick="qualOpen(null)">What can I afford? &rarr;</button>
+        <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#inv" onclick="document.getElementById('inv').scrollIntoView({behavior:'smooth'});return false;">See the cars</a>
               </div>
-      <p class="tiny" id="heroFine" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free to apply &nbsp;&middot;&nbsp; 5-year manufacturer warranty &nbsp;&middot;&nbsp; 7 showrooms nationwide</p>
+      <p class="tiny" id="heroFine" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free &nbsp;&middot;&nbsp; No BVN to start &nbsp;&middot;&nbsp; 5-year warranty</p>
     </div></div>
     
   </div>
@@ -1056,6 +1084,49 @@ input,select,textarea{font-size:17px}
   <div class="mkts"><div class="wrap mk-in">
     <span class="mk-tag on">Live in</span><span class="mk-c">&#127475;&#127468; Nigeria</span><span class="mk-c">&#127468;&#127469; Ghana</span><span class="mk-c">&#127463;&#127471; B&eacute;nin</span><span class="mk-c">&#127466;&#127468; Egypt</span><span class="mk-c">&#127474;&#127462; Morocco</span><span class="mk-c">&#127466;&#127481; Ethiopia</span><span class="mk-c">&#127487;&#127462; South Africa</span><span class="mk-c">&#127472;&#127466; Kenya</span>
   </div></div>
+
+  <div class="wrap" style="padding-bottom:8px" id="inv">
+    <div class="between" style="align-items:flex-end;margin-bottom:20px;flex-wrap:wrap">
+      <div class="sec-head" style="margin-bottom:0">
+        <h2>What can you pay a month?</h2>
+        <div class="budget-chips" id="budgetChips"></div>
+      </div>
+    </div>
+    <div class="fbar">
+      <input id="fq" type="search" placeholder="Search &mdash; e.g. Hyundai new, Corolla, SUV" oninput="MF.q=this.value" onkeydown="if(event.key==='Enter')applyFilters()">
+      <button class="btn btn-a" onclick="applyFilters()">Search</button>
+    </div>
+    <div class="fpills">
+      <div class="fpill"><button id="fpb-make" onclick="toggleFP('make')">Brand &amp; model <span>&#9662;</span></button><div class="fpop" id="fp-make"></div></div>
+      <div class="fpill"><button id="fpb-price" onclick="toggleFP('price')">Car price <span>&#9662;</span></button><div class="fpop" id="fp-price"></div></div>
+      <div class="fpill"><button id="fpb-fin" onclick="toggleFP('fin')">Financing <span>&#9662;</span></button><div class="fpop" id="fp-fin"></div></div>
+      <div class="fpill"><button id="fpb-year" onclick="toggleFP('year')">Year <span>&#9662;</span></button><div class="fpop" id="fp-year"></div></div>
+      <div class="fpill"><button id="fpb-loc" onclick="toggleFP('loc')">Location <span>&#9662;</span></button><div class="fpop" id="fp-loc"></div></div>
+      <div class="fpill"><button onclick="openFM()">More filters <span>&#9662;</span></button></div>
+    </div>
+    <div class="fcount">
+      <b id="fcount">All</b>
+      <button class="fclear" onclick="clearFilters()">Clear all filters</button>
+      <span class="ftog" id="ftog" onclick="finOnly=!finOnly;applyFilters()"><span>Show financing only</span><i></i></span>
+    </div>
+
+    <div class="seg" id="segMarket" style="margin-bottom:18px" hidden>
+      <button class="on" data-seg="all" onclick="setMarketSeg('all',this)">All</button>
+      <button data-seg="new" onclick="setMarketSeg('new',this)">Brand new</button>
+      <button data-seg="used" onclick="setMarketSeg('used',this)">Pre-owned</button>
+    </div>
+    <div class="veh-grid" id="vehGrid"></div>
+    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude 7.5% VAT.</p>
+    <div style="margin:26px 0 8px">
+      <a class="veh rev" href="#/fleet" style="text-decoration:none;color:inherit">
+        <div class="veh-img" style="aspect-ratio:16/6;position:relative"><picture data-auto><source type="image/avif" srcset="cars/t60-w480.avif 480w, cars/t60-w800.avif 800w, cars/t60-w1200.avif 1200w, cars/t60-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/t60-w480.webp 480w, cars/t60-w800.webp 800w, cars/t60-w1200.webp 1200w, cars/t60-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/t60.jpg" alt="Company fleets" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
+          <span class="tag" style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94)">5 to 50+ vehicles</span></div>
+        <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Company fleets</h3>
+          <p class="tiny muted" style="margin:4px 0 0">Fleet to own or fleet to rent. Banks lend against bulk orders.</p>
+          <b style="color:var(--accent);font-size:13.5px">For companies &rarr;</b></div>
+      </a>
+    </div>
+  </div>
 
   <div class="wrap sec" id="how" style="padding-bottom:40px">
     <h2 style="margin-bottom:30px">Three steps to your keys.</h2>
@@ -1093,49 +1164,6 @@ input,select,textarea{font-size:17px}
       </div>
     </div>
     <p class="muted rev" style="margin-top:22px;font-size:14.5px">Want the numbers before you choose? <a href="#/calculator" style="color:var(--accent);font-weight:550">Open the loan calculator &rarr;</a></p>
-  </div>
-
-  <div class="wrap" style="padding-bottom:8px" id="inv">
-    <div class="between" style="align-items:flex-end;margin-bottom:20px;flex-wrap:wrap">
-      <div class="sec-head" style="margin-bottom:0">
-        <div class="eyebrow">In the showroom now</div>
-        <h2>Pay monthly. Drive today.</h2>
-      </div>
-    </div>
-    <div class="fbar">
-      <input id="fq" type="search" placeholder="Search &mdash; e.g. Hyundai new, Corolla, SUV" oninput="MF.q=this.value" onkeydown="if(event.key==='Enter')applyFilters()">
-      <button class="btn btn-a" onclick="applyFilters()">Search</button>
-    </div>
-    <div class="fpills">
-      <div class="fpill"><button id="fpb-make" onclick="toggleFP('make')">Brand &amp; model <span>&#9662;</span></button><div class="fpop" id="fp-make"></div></div>
-      <div class="fpill"><button id="fpb-price" onclick="toggleFP('price')">Car price <span>&#9662;</span></button><div class="fpop" id="fp-price"></div></div>
-      <div class="fpill"><button id="fpb-fin" onclick="toggleFP('fin')">Financing <span>&#9662;</span></button><div class="fpop" id="fp-fin"></div></div>
-      <div class="fpill"><button id="fpb-year" onclick="toggleFP('year')">Year <span>&#9662;</span></button><div class="fpop" id="fp-year"></div></div>
-      <div class="fpill"><button id="fpb-loc" onclick="toggleFP('loc')">Location <span>&#9662;</span></button><div class="fpop" id="fp-loc"></div></div>
-      <div class="fpill"><button onclick="openFM()">More filters <span>&#9662;</span></button></div>
-    </div>
-    <div class="fcount">
-      <b id="fcount">All</b>
-      <button class="fclear" onclick="clearFilters()">Clear all filters</button>
-      <span class="ftog" id="ftog" onclick="finOnly=!finOnly;applyFilters()"><span>Show financing only</span><i></i></span>
-    </div>
-
-    <div class="seg" id="segMarket" style="margin-bottom:18px" hidden>
-      <button class="on" data-seg="all" onclick="setMarketSeg('all',this)">All</button>
-      <button data-seg="new" onclick="setMarketSeg('new',this)">Brand new</button>
-      <button data-seg="used" onclick="setMarketSeg('used',this)">Pre-owned</button>
-    </div>
-    <div class="veh-grid" id="vehGrid"></div>
-    <p class="tiny faint" style="margin-top:14px">Monthly price = the best bank offer today at the shown down payment. Your own offer depends on your income.<br>* Prices exclude 7.5% VAT.</p>
-    <div style="margin:26px 0 8px">
-      <a class="veh rev" href="#/fleet" style="text-decoration:none;color:inherit">
-        <div class="veh-img" style="aspect-ratio:16/6;position:relative"><picture data-auto><source type="image/avif" srcset="cars/t60-w480.avif 480w, cars/t60-w800.avif 800w, cars/t60-w1200.avif 1200w, cars/t60-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/t60-w480.webp 480w, cars/t60-w800.webp 800w, cars/t60-w1200.webp 1200w, cars/t60-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/t60.jpg" alt="Company fleets" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
-          <span class="tag" style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.94)">5 to 50+ vehicles</span></div>
-        <div class="veh-body"><h3 style="margin:0;font-size:1.15rem">Company fleets</h3>
-          <p class="tiny muted" style="margin:4px 0 0">Fleet to own or fleet to rent. Banks lend against bulk orders.</p>
-          <b style="color:var(--accent);font-size:13.5px">For companies &rarr;</b></div>
-      </a>
-    </div>
   </div>
 
   <div class="wrap sec" style="padding-top:26px">
@@ -1888,7 +1916,8 @@ input,select,textarea{font-size:17px}
     <div class="trc rev"><span class="trc-i"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2a2 2 0 0 1 1.9 1.4L19 16M4 16h16v3H4zM7 19v1.5M17 19v1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>Real showrooms, real warranty</h4><p>Cars sold from our own showrooms with the manufacturer&rsquo;s warranty and after-sales service.</p></div>
   </div>
 </div>
-<div class="qs" id="qSheet" hidden onclick="if(event.target===this)qualClose()"><div class="qs-in" role="dialog" aria-modal="true" aria-label="See if you qualify"><div id="qBody"></div></div></div>
+<div class="home-cta" id="homeCta"><button class="btn btn-a btn-lg" onclick="qualOpen(null)">What can I afford? &rarr;</button></div>
+<div class="qs" id="qSheet" hidden onclick="if(event.target===this)qualClose()"><div class="qs-in" role="dialog" aria-modal="true" aria-label="Get your car"><div id="qBody"></div></div></div>
 <a class="wa-fab" id="koboFab" href="https://wa.me/2348058963692?text=Hello%20Midas" target="_blank" rel="noopener" aria-label="Chat with us"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg></a>
 <div class="wrap bigfoot">
   <div class="bf-cols">
@@ -2373,7 +2402,7 @@ function setMarketSeg(m,btn){ marketSeg=m; document.querySelectorAll('#segMarket
 function gotoSeg(m){ marketSeg=m; location.hash='#/market'; renderMarket(); const inv=document.getElementById('inv'); if(inv) setTimeout(()=>inv.scrollIntoView({behavior:'smooth'}),60); }
 
 /* ---------- search & filters (Autochek-style) ---------- */
-let MF={q:'',make:'',pband:'',fin:'',year:0,loc:'',km:'',trans:'',origin:'',body:'',cyl:0};
+let MF={q:'',make:'',pband:'',fin:'',year:0,loc:'',km:'',trans:'',origin:'',body:'',cyl:0,maxMo:0};
 let finOnly=false;
 const PBANDS=[['','Any price'],['0-15','Under '+NGNs(15e6)],['15-30',NGNs(15e6)+' \u2013 '+NGNs(30e6)],['30-45',NGNs(30e6)+' \u2013 '+NGNs(45e6)],['45-999','Over '+NGNs(45e6)]];
 const FINOPTS=[['','Any financing'],['mo400','Monthly under '+NGN(400000)],['mo800','Monthly under '+NGN(800000)]];
@@ -2426,10 +2455,19 @@ function filterVehicles(){
   if(MF.fin==='halal') rows=rows.filter(v=>{ const ok=runPanel(v,.10,60,null).filter(o=>o.approved&&isHalalLender(o.lender)); return ok.length>0; });
   if(MF.fin==='mo400'||MF.fin==='mo800'){ const cap=MF.fin==='mo400'?400000:800000;
     rows=rows.filter(v=>{ const t=bestTeaser(v); return t && t.o.monthly<=cap; }); }
+  if(MF.maxMo) rows=rows.filter(v=>{ const t=bestTeaser(v); return t && t.o.monthly<=MF.maxMo; });
   if(finOnly) rows=rows.filter(v=>bestTeaser(v));
   return rows;
 }
 function applyFilters(){ closeFPs(); renderMarket(); }
+/* "What can you pay a month?" as big tap chips over the car list */
+const BUDGETS=[600000,900000,1200000,2000000];
+function renderBudget(){
+  const el=document.getElementById('budgetChips'); if(!el) return;
+  const cnt=cap=>VEHICLES.filter(v=>{ const t=bestTeaser(v); return t && (!cap || t.o.monthly<=cap); }).length;
+  el.innerHTML=BUDGETS.map(c=>`<button class="${MF.maxMo===c?'on':''}" onclick="MF.maxMo=MF.maxMo===${c}?0:${c};applyFilters()">Under ${NGNs(c)}<small>${cnt(c)} car${cnt(c)===1?'':'s'}</small></button>`).join('')
+    +`<button class="${!MF.maxMo?'on':''}" onclick="MF.maxMo=0;applyFilters()">Any<small>${cnt(0)} cars</small></button>`;
+}
 function clearFilters(){ MF={q:'',make:'',pband:'',fin:'',year:0,loc:'',km:'',trans:'',origin:'',body:'',cyl:0}; finOnly=false; const q=$('#fq'); if(q)q.value=''; applyFilters(); }
 function paintFilterUI(rows){
   const c=$('#fcount'); if(c) c.textContent=`All (${rows.length} result${rows.length===1?'':'s'})`;
@@ -2439,6 +2477,7 @@ function paintFilterUI(rows){
 }
 
 function renderMarket(){
+  renderBudget();
   const g = $('#vehGrid'); if (!g) return;
   document.querySelectorAll('#segMarket button').forEach(b=>b.classList.toggle('on',b.dataset.seg===marketSeg));
   const rb=$('#ratesBoard');
@@ -2459,75 +2498,127 @@ function renderMarket(){
           <div class="specrow"><span class="sp">${v.cyl}-cyl</span><span class="sp">${v.trans}</span><span class="sp">${isNew?'5-yr warranty':'6-mo warranty'}</span><span class="sp" style="background:var(--naira-soft);color:var(--naira)">In stock · Lagos</span></div>
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)}* · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
-          <div class="veh-foot">
-            <button class="btn btn-a btn-sm" style="flex:1" onclick="event.stopPropagation();qualOpen('${v.id}')">See if I qualify</button>
-          </div>
         </div>
       </article>`));
   });
 }
 
-/* ===================== SEE IF I QUALIFY =====================
-   Three taps, no BVN, no credit check: take-home pay, other loans, deposit.
-   Every bank's own rules (pay floor, debt-to-income, down payment) run on the
-   answers, so the result is the same number the offers page will show. */
+
+/* ===================== GET THIS CAR (one sheet, start to finish) =====================
+   The whole application happens in this sheet, one question per screen, with
+   the car and its monthly price in view the whole way. Pay, other loans and
+   down payment run every bank's own rules first (no BVN, no credit check);
+   the details banks need come only after the buyer has seen a yes. */
 let QS={};
 const QS_INC=[[0,300000],[300000,600000],[600000,1000000],[1000000,2000000],[2000000,4000000],[4000000,0]];
 const QS_DEBT=[[0,'None'],[60000,''],[200000,''],[450000,'']];
+const QS_BANKS={NG:['Access','GTBank','Zenith','First Bank','UBA','Stanbic IBTC','Fidelity','Other'],
+                GH:['Stanbic Ghana','Absa','Ecobank','CalBank','GCB','Fidelity Ghana','FNB','Other']};
 function qsBand([a,b]){ return !a?'Under '+NGNs(b):!b?'Over '+NGNs(a):NGNs(a)+' – '+NGNs(b); }
-function qualOpen(id){ QS={id,step:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id}); }
+function qsSteps(){ return ['pay','loans',...(QS.fixed?[]:['pick']),'down','result','name','phone','work','bank','id','agree']; }
+function qualOpen(id){ QS={id:id||null,fixed:!!id,i:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id:id||'budget'}); }
 function qualClose(){ const el=document.getElementById('qSheet'); if(el) el.hidden=true; document.body.style.overflow=''; }
-function qualPick(k,v){ QS[k]=v; QS.step++; qualRender(); }
-function qualBack(){ if(QS.step>0){ QS.step--; qualRender(); } }
+function qualNext(){ QS.i++; QS.err=''; qualRender(); }
+function qualPick(k,v){ QS[k]=v; qualNext(); }
+function qualBack(){ if(QS.i>0){ QS.i--; QS.err=''; if(qsSteps()[QS.i]==='result') QS.i--; qualRender(); } }
+function qsVal(id){ const e=document.getElementById(id); return e?e.value.trim():''; }
+function qsFind(v){
+  const app={name:'',phone:'',employment:QS.emp||'Salaried',yearsEmployed:3,income:QS.inc,obligations:QS.debt||0,salaryDomiciled:false};
+  for(const e of [QS.eq||.10,.20,.30,.40,.50].filter((x,i,a)=>x>=(QS.eq||.10)&&a.indexOf(x)===i)){
+    for(const t of [60,48,36]){ const ok=runPanel(v,e,t,app).filter(o=>o.approved); if(ok.length) return {e,t,o:sortOffers(ok,'mo')[0],n:ok.length}; }
+  }
+  return null;
+}
+function qsFits(){ const all=(typeof MT!=='undefined'?MT.affordability({monthly_income:Math.round(QS.inc*curC().rate),existing_monthly_debts:Math.round((QS.debt||0)*curC().rate)}).cars_that_fit:[]);
+  const cars=all.filter(c=>{ const v=VEHICLES.find(x=>x.id===c.id); return v&&v.body!=='truck'; }); return cars.length?cars:all; }
 function qualRender(){
-  const v=VEHICLES.find(x=>x.id===QS.id)||vehicle(); const b=document.getElementById('qBody'); if(!b||!v) return;
+  const steps=qsSteps(), step=steps[QS.i], b=document.getElementById('qBody'); if(!b) return;
+  const v=QS.id?VEHICLES.find(x=>x.id===QS.id):null;
+  const asked=steps.indexOf('result'), n=steps.length-1;
+  const pctDone=Math.round(QS.i/n*100);
+  const chip=QS.hit?`<span class="qs-mo">${NGN(QS.hit.o.monthly)}<em>/mo</em></span>`:'';
   const head=`<div class="qs-top"><button class="qs-x" onclick="qualClose()" aria-label="Close">&times;</button>
-    <div class="qs-car">${v.img?`<img src="${v.img}" alt="">`:''}<div><b>${v.make} ${v.model}</b><span>${NGNs(v.price)}</span></div></div>
-    ${QS.step<3?`<div class="qs-dots">${[0,1,2].map(i=>`<i class="${i<=QS.step?'on':''}"></i>`).join('')}</div>`:''}</div>`;
-  const back=QS.step>0&&QS.step<3?'<button class="qs-back" onclick="qualBack()">&larr; Back</button>':'';
+    ${v?`<div class="qs-car">${v.img?`<img src="${v.img}" alt="">`:''}<div><b>${v.make} ${v.model}</b><span>${NGNs(v.price)}</span></div>${chip}</div>`:`<div class="qs-car"><div><b>What can I afford?</b><span>3 quick taps</span></div></div>`}</div>
+    <div class="qs-bar"><i style="width:${Math.max(6,pctDone)}%"></i></div>`;
+  const back=QS.i>0&&step!=='result'?'<button class="qs-back" onclick="qualBack()">&larr; Back</button>':'';
+  const err=QS.err?`<p class="qs-err">${QS.err}</p>`:'';
   let body='';
-  if(QS.step===0) body=`<h3>How much do you take home each month?</h3><p class="qs-sub">3 quick questions. No BVN. It won’t affect your credit.</p>
+  if(step==='pay') body=`<h3>How much do you take home each month?</h3><p class="qs-sub">No BVN. It won’t affect your credit.</p>
     <div class="qs-chips">${QS_INC.map(([a,c])=>`<button onclick="qualPick('inc',${a&&c?(a+c)/2:a?a*1.25:c*.75})">${qsBand([a,c])}</button>`).join('')}</div>`;
-  else if(QS.step===1) body=`<h3>Do you pay any other loans each month?</h3><p class="qs-sub">Banks count every loan you already pay.</p>
+  else if(step==='loans') body=`<h3>Do you pay any other loans?</h3><p class="qs-sub">Each month, in total.</p>
     <div class="qs-chips">${QS_DEBT.map(([d,l],i)=>`<button onclick="qualPick('debt',${d})">${l||(i===1?'Under '+NGNs(100000):i===2?NGNs(100000)+' – '+NGNs(300000):'Over '+NGNs(300000))}</button>`).join('')}</div>`;
-  else if(QS.step===2) body=`<h3>How much can you pay down today?</h3><p class="qs-sub">Paid into the bank, never to us.</p>
+  else if(step==='pick'){ const fit=qsFits().slice(0,6);
+    body=fit.length?`<h3>${fit.length} cars fit your pay</h3><p class="qs-sub">Tap the one you want.</p>
+      <div class="qs-pick">${fit.map(c=>{ const car=VEHICLES.find(x=>x.id===c.id); return `<button onclick="QS.id='${c.id}';qualNext()">${car&&car.img?`<img src="${car.img}" alt="">`:''}<b>${c.name.replace(/ \d{4}$/,'')}</b><span>${c.monthly}<em>/mo</em></span></button>`; }).join('')}</div>`
+      :`<h3>Let’s find your car together.</h3><p class="qs-sub">Nothing fits that pay today. Message us and we’ll find one that does.</p>
+      <a class="btn btn-a qs-go" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20help%20me%20find%20a%20car" target="_blank" rel="noopener">Message Midas</a>`; }
+  else if(step==='down') body=`<h3>How much can you pay down?</h3><p class="qs-sub">Paid into the bank, never to us.</p>
     <div class="qs-chips">${[.10,.20,.30,.50].map(e=>`<button onclick="qualPick('eq',${e})">${NGNs(v.price*e)}<small>${Math.round(e*100)}% down</small></button>`).join('')}</div>`;
-  else body=qualResult(v);
+  else if(step==='result'){ QS.hit=qsFind(v); track('qualify_result',{id:v.id,ok:!!QS.hit});
+    if(QS.hit){ const h=QS.hit, same=h.e===QS.eq;
+      body=`<div class="qs-res"><div class="qs-tick">&#10003;</div>
+        <h3>${same?'Good news. You likely qualify!':'You can get this car!'}</h3>
+        <div class="qs-big">${NGN(h.o.monthly)}<span>/month</span></div>
+        <p class="qs-sub">${NGNs(v.price*h.e)} down &middot; ${h.t} months &middot; ${h.n} bank${h.n>1?'s':''} ready</p>
+        <button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Get my real offers &rarr;</button>
+        <p class="qs-fine">6 quick questions. About 2 minutes.</p></div>`;
+    } else { const fit=qsFits().slice(0,3);
+      body=`<div class="qs-res"><h3>This one is a stretch today.</h3><p class="qs-sub">${fit.length?'These fit your pay:':'Message us and we’ll find a car that fits.'}</p>
+        ${fit.map(c=>`<button class="qs-alt" onclick="QS.id='${c.id}';QS.i=qsSteps().indexOf('down');qualRender()"><b>${c.name}</b><span>${c.monthly}/mo</span></button>`).join('')}
+        <button class="btn btn-g qs-go" onclick="QS.i=0;qualRender()">Change my answers</button></div>`; } }
+  else if(step==='name') body=`<h3>Nice! What’s your name?</h3><p class="qs-sub">As it appears on your ID.</p>
+    <div class="qs-fields"><input id="qsFirst" placeholder="First name" autocomplete="given-name" value="${QS.first||''}"><input id="qsLast" placeholder="Last name" autocomplete="family-name" value="${QS.last||''}"></div>
+    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('name')">Next</button>`;
+  else if(step==='phone') body=`<h3>Your phone number</h3><p class="qs-sub">The bank’s offer arrives here, on WhatsApp.</p>
+    <div class="qs-fields"><input id="qsPhone" type="tel" inputmode="tel" placeholder="${curCountry==='GH'?'024 000 0000':'0803 000 0000'}" autocomplete="tel" value="${QS.phone||''}"></div>
+    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('phone')">Next</button>`;
+  else if(step==='work') body=`<h3>Where do you work?</h3><p class="qs-sub">Or the name of your business.</p>
+    <div class="qs-fields"><input id="qsEmployer" placeholder="Employer or business" autocomplete="organization" value="${QS.employer||''}"></div>
+    <p class="qs-sub" style="margin:14px 0 8px">How long have you been there?</p>
+    <div class="qs-chips qs-3">${[['Under 1 year',0.5],['1 – 3 years',2],['Over 3 years',4]].map(([l,y])=>`<button class="${QS.years===y?'on':''}" onclick="QS.years=${y};qsSave('work')">${l}</button>`).join('')}</div>${err}`;
+  else if(step==='bank'){ const list=QS_BANKS[curCountry]||['My bank'];
+    body=`<h3>Which bank is your pay paid into?</h3><p class="qs-sub">Banks often give their own customers a better rate.</p>
+    <div class="qs-chips">${list.map(x=>`<button onclick="qualPick('salBank','${x}')">${x}</button>`).join('')}</div>`; }
+  else if(step==='id'){ const lab=curCountry==='NG'?['Your BVN','11 digits','qsBvn',11]:curCountry==='GH'?['Your Ghana Card number','GHA-123456789-0','qsGh',16]:['Your national ID number','As on your ID card','qsNat',24];
+    body=`<h3>${lab[0]}</h3><p class="qs-sub">Only to confirm it’s you. It gives no one access to your money.</p>
+    <div class="qs-fields"><input id="${lab[2]}" ${curCountry==='NG'?'inputmode="numeric"':''} maxlength="${lab[3]}" placeholder="${lab[1]}" value="${QS.idv||''}"></div>
+    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('id')">Next</button>`; }
+  else if(step==='agree') body=`<h3>Last step</h3>
+    <ul class="qs-agree"><li>Midas sends your file to our partner banks</li><li>The banks check your credit</li><li>The bank owns the car until the loan is paid</li><li>We never ask for your PIN, and never call your family</li></ul>
+    <button class="btn btn-a btn-lg qs-go" onclick="qsSubmit()">I agree &mdash; send to the banks</button>
+    <p class="qs-fine">By tapping you accept the <a href="#/terms" onclick="qualClose()">terms</a> and <a href="#/privacy" onclick="qualClose()">privacy notice</a>.</p>`;
   b.innerHTML=head+back+body;
+  const first=b.querySelector('.qs-fields input'); if(first){ first.focus({preventScroll:true}); b.querySelectorAll('.qs-fields input').forEach(x=>x.onkeydown=e=>{ if(e.key==='Enter') b.querySelector('.qs-go')&&b.querySelector('.qs-go').click(); }); }
 }
-function qualResult(v){
-  const app={name:'',phone:'',employment:'Salaried',yearsEmployed:3,income:QS.inc,obligations:QS.debt,salaryDomiciled:false};
-  let hit=null;
-  for(const e of [QS.eq,.20,.30,.40,.50].filter((x,i,a)=>x>=QS.eq&&a.indexOf(x)===i)){
-    for(const t of [60,48,36]){ const ok=runPanel(v,e,t,app).filter(o=>o.approved); if(ok.length){ hit={e,t,o:sortOffers(ok,'mo')[0],n:ok.length}; break; } }
-    if(hit) break;
-  }
-  track('qualify_result',{id:v.id,ok:!!hit});
-  if(hit){
-    const same=hit.e===QS.eq;
-    return `<div class="qs-res ok"><div class="qs-tick">&#10003;</div>
-      <h3>${same?'Good news. You likely qualify.':'You can get this car.'}</h3>
-      <div class="qs-big">${NGN(hit.o.monthly)}<span>/month</span></div>
-      <p class="qs-sub">${NGN(v.price*hit.e)} down &middot; ${hit.t} months &middot; ${hit.n} bank${hit.n>1?'s':''} would price it${same?'':' (with a bigger down payment)'}</p>
-      <button class="btn btn-a btn-lg qs-go" onclick="qualGo(${hit.e},${hit.t})">Continue &mdash; 2 minutes</button>
-      <p class="qs-fine">An estimate from each bank’s rules. The bank confirms your offer.</p></div>`;
-  }
-  const fit=(typeof MT!=='undefined'?MT.affordability({monthly_income:Math.round(QS.inc*curC().rate),existing_monthly_debts:Math.round(QS.debt*curC().rate)}).cars_that_fit:[]).slice(0,3);
-  return `<div class="qs-res"><h3>This one is a stretch on your pay today.</h3>
-    <p class="qs-sub">${fit.length?'These fit your pay:':'Talk to us and we will find a car that fits.'}</p>
-    ${fit.map(c=>`<button class="qs-alt" onclick="qualClose();openCar('${c.id}')"><b>${c.name}</b><span>${c.monthly}/month</span></button>`).join('')}
-    <button class="btn btn-g qs-go" onclick="QS.step=0;qualRender()">Change my answers</button></div>`;
+function qsSave(step){
+  const bad=m=>{ QS.err=m; qualRender(); };
+  if(step==='name'){ QS.first=qsVal('qsFirst'); QS.last=qsVal('qsLast'); if(!QS.first||!QS.last) return bad('Please add your first and last name.'); }
+  if(step==='phone'){ QS.phone=qsVal('qsPhone'); if(QS.phone.replace(/\D/g,'').length<10) return bad('That number looks short. It needs at least 10 digits.'); }
+  if(step==='work'){ QS.employer=qsVal('qsEmployer'); if(!QS.employer) return bad('Please add where you work.'); if(QS.years==null) return; }
+  if(step==='id'){ const raw=qsVal(curCountry==='NG'?'qsBvn':curCountry==='GH'?'qsGh':'qsNat'); QS.idv=raw;
+    if(curCountry==='NG'&&!/^\d{11}$/.test(raw.replace(/\D/g,''))) return bad('A BVN is exactly 11 digits. Dial *565*0# to get yours.');
+    if(curCountry==='GH'&&!/^GHA-?\d{9}-?\d$/i.test(raw.replace(/\s/g,''))) return bad('It looks like GHA-123456789-0.');
+    if(!['NG','GH'].includes(curCountry)&&raw.replace(/\s/g,'').length<5) return bad('Please add your ID number.'); }
+  qualNext();
 }
-function qualGo(e,t){
-  S.vehicleId=QS.id; S.equityPct=e; S.tenor=t;
-  const r=curC().rate; S.qPre={income:String(Math.round(QS.inc*r)),obligations:String(Math.round(QS.debt*r)),equityN:Math.round(vehicle().price*e*r),term:t};
-  save(); qualClose(); startApply(QS.id);
+function qsSubmit(){
+  const v=VEHICLES.find(x=>x.id===QS.id), h=QS.hit||qsFind(v), r=curC().rate;
+  S.vehicleId=v.id; S.equityPct=h?h.e:QS.eq; S.tenor=h?h.t:60;
+  S.la=Object.assign(S.la&&S.la.ctry===curCountry?S.la:{}, {ctry:curCountry,emp:'Salaried',first:QS.first,last:QS.last,phone:QS.phone,
+    employer:QS.employer,years:String(QS.years),income:String(Math.round(QS.inc*r)),obligations:String(Math.round((QS.debt||0)*r)),
+    salBank:QS.salBank,equityN:Math.round(v.price*S.equityPct*r),term:S.tenor,c:{c1:'yes',c2:'yes',c3:'yes',c4:'yes'},addons:{trk:true,ins:true}});
+  if(curCountry==='NG') S.la.bvn=QS.idv; else if(curCountry==='GH') S.la.ghcard=QS.idv; else S.la.natid=QS.idv;
+  S.applicant={name:QS.first+' '+QS.last,phone:QS.phone,email:'',employment:'Salaried',income:Math.round(QS.inc),obligations:Math.round(QS.debt||0),
+    country:curCountry,yearsEmployed:QS.years||1,salaryDomiciled:false,bank:QS.salBank||'',nuban:''};
+  S.verified=true; save(); track('loanform_submitted',{id:v.id,via:'sheet'});
+  qualClose(); location.hash='#/offers';
 }
 function startApply(id){
   if(id) S.vehicleId=id;
   if(!S.vehicleId || !VEHICLES.find(v=>v.id===S.vehicleId)) S.vehicleId=VEHICLES[0].id;
   if(!S.step) S.step=1;
-  save(); track('apply_now',{id:S.vehicleId}); location.hash='#/apply';
+  save(); track('apply_now',{id:S.vehicleId});
+  qualOpen(id || (location.hash==='#/car' ? S.vehicleId : null));
 }
 function openCar(id){ S.vehicleId = id; galIx = 0; S.equityPct = .10; S.tenor = 60; save(); track('car_viewed',{id}); location.hash = '#/car'; }
 
@@ -2678,7 +2769,7 @@ function renderDeal(){
 
   const earn=incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0);
   const cs=document.getElementById('carSticky');
-  if(cs) cs.innerHTML = best ? `<div><b>${NGN(best.monthly)}</b><span>/month</span><small>${pct(eq*100,0)} down &middot; ${ten} months</small></div><button class="btn btn-a" onclick="qualOpen('${v.id}')">See if I qualify</button>` : '';
+  if(cs) cs.innerHTML = best ? `<div><b>${NGN(best.monthly)}</b><span>/month</span><small>${pct(eq*100,0)} down &middot; ${ten} months</small></div><button class="btn btn-a" onclick="qualOpen('${v.id}')">Get this car</button>` : '';
   $('#carDeal').innerHTML = `
     ${best ? `
     <div class="tiny muted" style="font-weight:550;margin-bottom:4px">Monthly repayment</div>
@@ -2707,7 +2798,7 @@ function renderDeal(){
     <div class="kv"><span class="k">Needs net monthly income of</span><span class="v">~${NGNs(Math.ceil(earn/50000)*50000)}/mo</span></div>
     <p class="tiny faint" style="margin-top:8px">* Prices exclude 7.5% VAT.</p>
     ${best ? `
-    <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="location.hash='#/apply'">Apply now →</button>
+    <button class="btn btn-a" style="width:100%;margin-top:18px" onclick="qualOpen('${v.id}')">Get this car →</button>
     <p class="tiny faint" style="margin-top:11px;text-align:center">Your final rate arrives on the bank's own offer letter.</p>`
     : `<div class="warnbox" style="margin-top:16px">${S.halal?'The non-interest bank will not price this structure yet.':'No bank will price this structure yet.'}</div>
     <button class="btn btn-a" style="width:100%;margin-top:12px" onclick="fixStructure()">Fix it for me →</button>
@@ -4658,6 +4749,9 @@ function renderWL(){
 
 window.addEventListener('hashchange',route);
 route();
+/* the sticky button appears once the hero has scrolled away */
+(function(){ const hero=document.querySelector('.hero-photo'), cta=document.getElementById('homeCta'); if(!hero||!cta||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(es=>cta.classList.toggle('show',!es[0].isIntersecting)).observe(hero); })();
 /* second visits load from the phone's own cache (sw.js) */
 if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost'))
   addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
