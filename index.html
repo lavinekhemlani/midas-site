@@ -919,6 +919,54 @@ input,select,textarea{font-size:17px}
 .mph-2up .mph-cc-b span{font-size:14.5px}
 .bigfoot a.bf-wa{display:inline-flex!important;align-items:center;gap:10px;padding:13px 22px!important;border-radius:14px;background:#1fae54!important;color:#fff!important;font-weight:600;font-size:15.5px;opacity:1!important;text-decoration:none;min-height:50px}
 .bigfoot a.bf-wa:hover{background:#188a42!important}
+/* primary buttons are navy everywhere; gold stays an accent */
+.btn-a{background:var(--brand)!important;color:#fff!important}
+.btn-a:hover:not(:disabled){background:var(--brand-2)!important}
+.hero-photo .btn-a{box-shadow:0 0 0 1px rgba(255,255,255,.28) inset}
+.topbar .tapply{background:#fff!important;color:var(--brand)!important}
+.topbar .tapply:hover{background:#eef2f8!important}
+/* bank logos read clearly inside the phone */
+.mph .offrow{padding:12px 14px}
+.mph .offrow .offlogo{height:26px!important;max-width:110px!important}
+@media(max-width:560px){.mph .offrow .offlogo{height:22px!important;max-width:92px!important}}
+.btn-wa{gap:9px}
+/* floating chat logo */
+.wa-fab{position:fixed;right:16px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#1fae54;color:#fff;display:grid;place-items:center;box-shadow:0 10px 26px rgba(14,20,32,.28);text-decoration:none}
+.wa-fab:hover{background:#188a42}
+.wa-fab[hidden]{display:none}
+/* car page: sticky price + one action */
+.car-sticky{display:none}
+@media(max-width:900px){
+  .car-sticky:not(:empty){display:flex;position:fixed;left:0;right:0;bottom:0;z-index:55;align-items:center;justify-content:space-between;gap:12px;background:#fff;padding:12px 16px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -8px 24px rgba(14,20,32,.12);border-top:1px solid var(--line)}
+  .car-sticky b{font-family:var(--display);font-size:1.35rem;color:var(--brand)}.car-sticky span{font-size:13px;color:var(--ink-faint);margin-left:3px}
+  .car-sticky small{display:block;font-size:12.5px;color:var(--ink-soft)}
+  .car-sticky .btn{flex:none}
+  body[data-page="car"] .wa-fab{bottom:96px}
+  body[data-page="car"] #v-car{padding-bottom:90px}
+}
+/* qualify sheet */
+.qs{position:fixed;inset:0;z-index:80;background:rgba(11,20,36,.55);display:flex;align-items:flex-end;justify-content:center}
+.qs[hidden]{display:none}
+.qs-in{background:#fff;width:100%;max-width:520px;border-radius:26px 26px 0 0;padding:18px 20px calc(24px + env(safe-area-inset-bottom));max-height:92dvh;overflow:auto;animation:qsUp .25s ease-out}
+@media(min-width:700px){.qs{align-items:center}.qs-in{border-radius:26px}}
+@keyframes qsUp{from{transform:translateY(40px);opacity:.4}to{transform:none;opacity:1}}
+.qs-top{display:flex;align-items:center;gap:12px;margin-bottom:6px;position:relative}
+.qs-x{position:absolute;right:-6px;top:-6px;width:40px;height:40px;border:0;background:var(--surface-2);border-radius:50%;font-size:24px;line-height:1;color:var(--ink-soft);cursor:pointer}
+.qs-car{display:flex;align-items:center;gap:12px}.qs-car img{width:72px;height:48px;object-fit:cover;border-radius:10px}
+.qs-car b{display:block;color:var(--brand);font-size:16px}.qs-car span{font-size:14px;color:var(--ink-faint)}
+.qs-dots{display:flex;gap:6px;margin-left:auto;margin-right:44px}.qs-dots i{width:22px;height:5px;border-radius:3px;background:var(--line)}.qs-dots i.on{background:var(--accent)}
+.qs-back{border:0;background:none;color:var(--ink-soft);font:inherit;font-size:15px;padding:8px 0;cursor:pointer}
+.qs h3{font-family:var(--display);color:var(--brand);font-size:1.45rem;margin:10px 0 6px;line-height:1.2}
+.qs-sub{color:var(--ink-soft);font-size:15px;margin:0 0 16px}
+.qs-chips{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qs-chips button{min-height:60px;border:1.5px solid var(--line-2);background:#fff;border-radius:16px;font:inherit;font-size:16.5px;font-weight:600;color:var(--ink);cursor:pointer;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.qs-chips button small{font-size:12.5px;font-weight:500;color:var(--ink-faint)}
+.qs-chips button:hover,.qs-chips button:focus{border-color:var(--brand);background:var(--naira-soft)}
+.qs-res{text-align:center;padding:6px 0}.qs-tick{width:62px;height:62px;border-radius:50%;background:var(--brand);color:#f0c060;font-size:30px;display:grid;place-items:center;margin:8px auto 4px}
+.qs-big{font-family:var(--display);font-size:2.4rem;font-weight:650;color:var(--brand);line-height:1.05;margin:6px 0}.qs-big span{font-size:1rem;color:var(--ink-faint);font-family:var(--body);font-weight:400;margin-left:4px}
+.qs-go{width:100%;margin-top:10px}
+.qs-fine{font-size:12.5px;color:var(--ink-faint);margin:12px 0 0}
+.qs-alt{display:flex;justify-content:space-between;width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;margin:8px 0;font:inherit;font-size:15.5px;cursor:pointer}.qs-alt span{color:var(--brand);font-weight:600}
 /* hero slideshow */
 .hero-photo .bg{transition:opacity 1.1s ease}
 </style>
@@ -963,7 +1011,7 @@ input,select,textarea{font-size:17px}
     <a href="#/calculator">Loan calculator</a><a href="#/repair">Repair finance</a><a href="#/insurance">Insurance</a><a href="#/status">My application</a>
     <a href="#/fleet">For corporates</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a>
     <div class="tsheet-cta"><a class="btn btn-a" href="#/apply" onclick="startApply();return false;">Apply now</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">WhatsApp us</a></div>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Chat with us</a></div>
   </div>
 </div>
 
@@ -978,7 +1026,6 @@ input,select,textarea{font-size:17px}
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap">
         <a class="btn btn-a btn-lg" href="#/apply" onclick="startApply();return false;">Apply now &rarr;</a>
         <a class="btn btn-lg" style="background:#fff;color:var(--ink)" href="#/chat" onclick="startChat();return false;">Help me choose &rarr;</a>
-        <a class="btn btn-lg btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener" style="gap:10px"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>WhatsApp</a>
               </div>
       <p class="tiny" id="heroFine" style="color:rgba(255,255,255,.72);margin-top:18px;font-size:13.5px">Free to apply &nbsp;&middot;&nbsp; 5-year manufacturer warranty &nbsp;&middot;&nbsp; 7 showrooms nationwide</p>
     </div></div>
@@ -1040,7 +1087,7 @@ input,select,textarea{font-size:17px}
         <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">Every bank sends its price to one screen. You choose.</p></div>
       </div>
       <div class="veh rev" style="cursor:default">
-        <div class="veh-img step-img"><picture data-auto><source type="image/avif" srcset="cars/g/accent-6-w480.avif 480w, cars/g/accent-6-w800.avif 800w, cars/g/accent-6-w1200.avif 1200w, cars/g/accent-6-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/g/accent-6-w480.webp 480w, cars/g/accent-6-w800.webp 800w, cars/g/accent-6-w1200.webp 1200w, cars/g/accent-6-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/g/accent-6.jpg" alt="Getting into a new Hyundai Accent" style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async"></picture>
+        <div class="veh-img step-img"><picture data-auto><source type="image/avif" srcset="cars/driver-happy-w480.avif 480w, cars/driver-happy-w800.avif 800w, cars/driver-happy-w1200.avif 1200w, cars/driver-happy-w1600.avif 1600w" sizes="(max-width:640px) 75vw, 40vw"><source type="image/webp" srcset="cars/driver-happy-w480.webp 480w, cars/driver-happy-w800.webp 800w, cars/driver-happy-w1200.webp 1200w, cars/driver-happy-w1600.webp 1600w" sizes="(max-width:640px) 75vw, 40vw"><img src="cars/driver-happy.jpg" alt="A happy driver in his new car" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%"></picture>
           <span style="position:absolute;left:12px;top:12px;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#c8862a,#f0c060);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;z-index:2">3</span></div>
         <div class="veh-body"><h4 style="margin:0">The bank pays. You drive away.</h4><p class="tiny muted" style="margin:4px 0 0">You pay your down payment to the bank. The bank pays the showroom, and you collect your keys.</p></div>
       </div>
@@ -1100,13 +1147,13 @@ input,select,textarea{font-size:17px}
           <div class="person">
             <div class="pav" style="background:var(--brand)"><img src="brand/mark.svg" alt="" style="width:28px;height:28px"></div>
             <div>
-              <div style="font-weight:600;font-size:15.5px">Midas on WhatsApp</div>
+              <div style="font-weight:600;font-size:15.5px">Chat with Midas</div>
               <div class="tiny muted">Replies in minutes, day and night &middot; finds your car and your bank</div>
               <div class="pnum mono">0805 896 3692</div>
             </div>
           </div>
           <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
-            <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener">Message Midas</a>
+            <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
           </div>
           <p class="tiny faint" style="margin-top:20px">Showrooms &middot; Victoria Island &middot; Ikeja &middot; Abuja &middot; Port Harcourt &middot; Kano &middot; Enugu &middot; Ibadan</p>
         </div>
@@ -1128,6 +1175,7 @@ input,select,textarea{font-size:17px}
         <div class="pad" id="carInfo"></div>
       </div>
       <div class="card pad" id="carDeal"></div>
+      <div class="car-sticky" id="carSticky"></div>
     </div>
   </div>
 </section>
@@ -1290,7 +1338,7 @@ input,select,textarea{font-size:17px}
 
     <div class="row" style="gap:10px;margin-top:20px;flex-wrap:wrap">
       <a class="btn btn-a" href="mailto:lavine@zenith-grp.co?subject=Fleet%20financing%20enquiry&body=Company%3A%0AVehicles%20needed%3A%0AQuantity%3A%0AOwn%20or%20rent%3A%0AContact%3A">Send a fleet enquiry &rarr;</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20we%20need%20financing%20for%20a%20company%20fleet" target="_blank" rel="noopener">Message Midas</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20we%20need%20financing%20for%20a%20company%20fleet" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
       <a class="btn btn-g" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
@@ -1484,7 +1532,7 @@ input,select,textarea{font-size:17px}
     <p class="tiny faint" style="margin-top:16px">Indicative only. Access Bank and Stanbic IBTC appear as worked examples at typical rates; the final rate, fees and insurance premium are set by the bank in its own offer letter after a credit assessment. Prices exclude 7.5% VAT.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="calcApply();return false">Apply with these numbers &rarr;</a>
-      <a class="btn btn-wa" id="ccWa" href="https://wa.me/2348058963692" target="_blank" rel="noopener">WhatsApp these numbers</a>
+      <a class="btn btn-wa" id="ccWa" href="https://wa.me/2348058963692" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Send these numbers</a>
     </div>
   </div>
 </section>
@@ -1506,7 +1554,7 @@ input,select,textarea{font-size:17px}
     <p class="tiny faint">Partnerships forming with Nigeria&rsquo;s licensed insurers, conventional and Takaful. Premiums are set by the insurer.</p>
     <div class="row" style="gap:10px;margin-top:16px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="startApply(); return false">Get covered with your loan &rarr;</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${''}Hello, I want an auto insurance quote from Midas" target="_blank" rel="noopener">WhatsApp a quote</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=${''}Hello, I want an auto insurance quote from Midas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Get a quote</a>
     </div>
   </div>
 </section>
@@ -1571,7 +1619,7 @@ input,select,textarea{font-size:17px}
     <div class="row" style="gap:10px;margin-top:22px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="S.halal=true;startApply();return false;">Apply now &mdash; halal only &rarr;</a>
       <a class="btn btn-g" href="#/market" onclick="S.halal=true;save()">See the cars</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Salaam%20Midas%2C%20I%20want%20halal%20non-interest%20financing%20for%20a%20car" target="_blank" rel="noopener">Ask on WhatsApp</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Salaam%20Midas%2C%20I%20want%20halal%20non-interest%20financing%20for%20a%20car" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Chat with us</a>
     </div>
     <p class="tiny faint" style="margin-top:16px">Non-interest products are provided by licensed non-interest banks and governed by each bank&rsquo;s own Sharia advisory board. Midas arranges the transaction; it does not issue Sharia certification.</p>
   </div>
@@ -1789,7 +1837,7 @@ input,select,textarea{font-size:17px}
     <div class="row" style="gap:10px;flex-wrap:wrap">
       <a class="btn btn-p" href="https://calendly.com/hemlani-lavine" target="_blank" rel="noopener">Book a call &rarr;</a>
       <a class="btn btn-g" href="mailto:lavine@zenith-grp.co?subject=Midas%20dealership%20listing%20%E2%80%94%20[Dealership%20name]&body=Dealership%3A%0ACity%2Fshowrooms%3A%0ABrands%20carried%3A%0AName%20and%20role%3A%0APhone%3A">Email your stock list</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20run%20a%20dealership%20and%20want%20to%20list%20stock%20on%20Midas" target="_blank" rel="noopener">Message Midas</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20run%20a%20dealership%20and%20want%20to%20list%20stock%20on%20Midas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
     </div>
   </div>
 </section>
@@ -1840,15 +1888,14 @@ input,select,textarea{font-size:17px}
     <div class="trc rev"><span class="trc-i"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 16l1.5-5a2 2 0 0 1 1.9-1.4h7.2a2 2 0 0 1 1.9 1.4L19 16M4 16h16v3H4zM7 19v1.5M17 19v1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>Real showrooms, real warranty</h4><p>Cars sold from our own showrooms with the manufacturer&rsquo;s warranty and after-sales service.</p></div>
   </div>
 </div>
-<button class="kobo-fab" id="koboFab" onclick="startChat()" aria-label="Chat with Midas AI">
-  <span id="koboMark"></span><span>Ask Midas</span>
-</button>
+<div class="qs" id="qSheet" hidden onclick="if(event.target===this)qualClose()"><div class="qs-in" role="dialog" aria-modal="true" aria-label="See if you qualify"><div id="qBody"></div></div></div>
+<a class="wa-fab" id="koboFab" href="https://wa.me/2348058963692?text=Hello%20Midas" target="_blank" rel="noopener" aria-label="Chat with us"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg></a>
 <div class="wrap bigfoot">
   <div class="bf-cols">
     <div>
       <img src="brand/wordmark.svg" alt="Midas" style="height:22px;margin-bottom:10px">
       <div class="tiny muted" style="max-width:38ch">Midas arranges vehicle financing between you, licensed Nigerian banks and the showroom. Midas is not a lender and never holds your money.</div>
-      <a class="btn btn-wa btn-sm bf-wa" href="https://wa.me/2348058963692?text=Hello%20Midas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
+      <a class="btn btn-wa btn-sm bf-wa" href="https://wa.me/2348058963692?text=Hello%20Midas" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
     </div>
     <div><h5>Buy</h5><a href="#/market">Cars</a><a href="#/calculator">Loan calculator</a><a href="#/status">My application</a><a href="#/learn">Learn</a></div>
     <div><h5>Partners</h5><a href="#/fleet">For corporates</a><a href="#/banks">For banks</a><a href="#/dealers">For dealerships</a></div>
@@ -1893,7 +1940,7 @@ const pct = (n,d=1) => n.toFixed(d) + '%';
 /* ---------- photos: AVIF/WebP at the width the screen needs ----------
    IMGSET lists the widths tools/optimize_images.py made for each photo; a
    photo not in it is served as-is. */
-const IMGSET=/*IMGSET*/{"cars/creta.jpg":[480,800,1200,1600],"cars/elantra.jpg":[480,800,1200,1600],"cars/hero.jpg":[480,800,1200,1600],"cars/hunter.jpg":[480,800,1200,1600],"cars/showroom.jpg":[480,800,1200,1600],"cars/t60.jpg":[480,800,1200,1600],"cars/tucson.jpg":[480,800,1200,1600],"cars/used-camry.jpg":[480,800,900],"cars/used-corolla.jpg":[480,800,1200,1600],"cars/used-rx.jpg":[480,800,900],"cars/used-sienna.jpg":[480,800,900],"cars/g/accent-1.jpg":[480,800,1200,1600],"cars/g/accent-2.jpg":[480,800,1200,1600],"cars/g/accent-3.jpg":[480,800,1200,1600],"cars/g/accent-4.jpg":[480,800,1200,1600],"cars/g/accent-5.jpg":[480,800,1200,1600],"cars/g/accent-6.jpg":[480,800,1200,1600],"cars/g/al1718-1.jpg":[480,800,1200,1440],"cars/g/al1718-2.jpg":[480,800,1200,1440],"cars/g/al1718-3.jpg":[480,800,1200,1440],"cars/g/al1718-4.jpg":[480,800,1200,1440],"cars/g/al1718-5.jpg":[480,800,1200,1440],"cars/g/alpartner-1.jpg":[480,800,1200,1440],"cars/g/alpartner-2.jpg":[480,800,1200,1440],"cars/g/alpartner-3.jpg":[480,800,1200,1440],"cars/g/alphoenix-1.jpg":[480,800,1200,1600],"cars/g/alphoenix-2.jpg":[480,800,1200,1440],"cars/g/alphoenix-3.jpg":[480,800,1200,1440],"cars/g/alphoenix-4.jpg":[480,800,1200,1440],"cars/g/creta-1.jpg":[480,800,1200,1600],"cars/g/creta-2.jpg":[480,800,1200,1600],"cars/g/creta-3.jpg":[480,800,1200,1600],"cars/g/creta-4.jpg":[480,800,1200,1600],"cars/g/creta-5.jpg":[480,800,1200,1600],"cars/g/creta-6.jpg":[480,800,1200,1600],"cars/g/crv-1.jpg":[480,800,1200,1600],"cars/g/crv-2.jpg":[480,800,1200,1600],"cars/g/crv-3.jpg":[480,800,1200,1600],"cars/g/crv-4.jpg":[480,800,1200,1600],"cars/g/crv-5.jpg":[480,800,1200,1600],"cars/g/crv-6.jpg":[480,800,1200,1600],"cars/g/cyberster-1.jpg":[480,800,1200,1600],"cars/g/cyberster-2.jpg":[480,800,1200,1600],"cars/g/cyberster-3.jpg":[480,800,1200,1600],"cars/g/cyberster-4.jpg":[480,800,1200,1600],"cars/g/cyberster-5.jpg":[480,800,1200,1600],"cars/g/cyberster-6.jpg":[480,800,1200,1600],"cars/g/e311-1.jpg":[480,800,1200,1600],"cars/g/e311-2.jpg":[480,800,1200,1600],"cars/g/e311-3.jpg":[480,800,1200,1600],"cars/g/e311-4.jpg":[480,800,1200,1600],"cars/g/e311-5.jpg":[480,800,1200,1600],"cars/g/grandcreta-1.jpg":[480,800,1200,1600],"cars/g/grandcreta-2.jpg":[480,800,1200,1600],"cars/g/grandcreta-3.jpg":[480,800,1200,1600],"cars/g/grandcreta-4.jpg":[480,800,1200,1600],"cars/g/grandcreta-5.jpg":[480,800,1200,1600],"cars/g/grandcreta-6.jpg":[480,800,1200,1600],"cars/g/grandi10-1.jpg":[480,800,1200,1600],"cars/g/grandi10-2.jpg":[480,800,1200,1600],"cars/g/grandi10-3.jpg":[480,800,1200,1600],"cars/g/grandi10-4.jpg":[480,800,1200,1600],"cars/g/grandi10-5.jpg":[480,800,1200,1600],"cars/g/grandi10-6.jpg":[480,800,1200,1600],"cars/g/hrv-1.jpg":[480,800,1200,1600],"cars/g/hrv-2.jpg":[480,800,1200,1600],"cars/g/hrv-3.jpg":[480,800,1200,1600],"cars/g/hrv-4.jpg":[480,800,1200,1600],"cars/g/hrv-5.jpg":[480,800,1200,1600],"cars/g/hrv-6.jpg":[480,800,1200,1600],"cars/g/mg5-1.jpg":[480,800,1200,1600],"cars/g/mg5-2.jpg":[480,800,1200,1600],"cars/g/mg5-3.jpg":[480,800,1200,1600],"cars/g/mg5-4.jpg":[480,800,1200,1600],"cars/g/mg5-5.jpg":[480,800,1200,1600],"cars/g/mg5-6.jpg":[480,800,1200,1600],"cars/g/mg7-1.jpg":[480,800,1200,1600],"cars/g/mg7-2.jpg":[480,800,1200,1600],"cars/g/mg7-3.jpg":[480,800,1200,1600],"cars/g/mg7-4.jpg":[480,800,1200,1600],"cars/g/mg7-5.jpg":[480,800,1200,1600],"cars/g/mg7-6.jpg":[480,800,1200,1600],"cars/g/navara-1.jpg":[480,800,1200,1600],"cars/g/navara-2.jpg":[480,800,1200,1600],"cars/g/navara-3.jpg":[480,800,1200,1600],"cars/g/navara-4.jpg":[480,800,1200,1600],"cars/g/navara-5.jpg":[480,800,1200,1600],"cars/g/navara-6.jpg":[480,800,1200,1600],"cars/g/palisade-1.jpg":[480,800,1200,1600],"cars/g/palisade-2.jpg":[480,800,1200,1600],"cars/g/palisade-3.jpg":[480,800,1200,1600],"cars/g/palisade-4.jpg":[480,800,1200,1600],"cars/g/palisade-5.jpg":[480,800,1200,1600],"cars/g/palisade-6.jpg":[480,800,1200,1600],"cars/g/pilot-1.jpg":[480,800,1200,1600],"cars/g/pilot-2.jpg":[480,800,1200,1600],"cars/g/pilot-3.jpg":[480,800,1200,1600],"cars/g/pilot-4.jpg":[480,800,1200,1600],"cars/g/pilot-5.jpg":[480,800,1200,1600],"cars/g/pilot-6.jpg":[480,800,1200,1600],"cars/g/rx5-1.jpg":[480,800,1200,1600],"cars/g/rx5-2.jpg":[480,800,1200,1600],"cars/g/rx5-3.jpg":[480,800,1200,1600],"cars/g/rx5-4.jpg":[480,800,1200,1600],"cars/g/rx5-5.jpg":[480,800,1200,1600],"cars/g/rx5-6.jpg":[480,800,1200,1600],"cars/g/rx8-1.jpg":[480,800,1200,1600],"cars/g/rx8-2.jpg":[480,800,1200,1600],"cars/g/rx8-3.jpg":[480,800,1200,1600],"cars/g/rx8-4.jpg":[480,800,1200,1600],"cars/g/rx8-5.jpg":[480,800,1200,1600],"cars/g/rx8-6.jpg":[480,800,1200,1600],"cars/g/rx9-1.jpg":[480,800,1200,1600],"cars/g/rx9-2.jpg":[480,800,1200,1600],"cars/g/rx9-3.jpg":[480,800,1200,1600],"cars/g/rx9-4.jpg":[480,800,1200,1600],"cars/g/rx9-5.jpg":[480,800,1200,1600],"cars/g/rx9-6.jpg":[480,800,1200,1600],"cars/g/s6ev-1.jpg":[480,800,1200,1600],"cars/g/s6ev-2.jpg":[480,800,1200,1600],"cars/g/s6ev-3.jpg":[480,800,1200,1600],"cars/g/s6ev-4.jpg":[480,800,1200,1600],"cars/g/s6ev-5.jpg":[480,800,1200,1600],"cars/g/s6ev-6.jpg":[480,800,1200,1600],"cars/g/santafe-1.jpg":[480,800,1200,1600],"cars/g/santafe-2.jpg":[480,800,1200,1600],"cars/g/santafe-3.jpg":[480,800,1200,1600],"cars/g/santafe-4.jpg":[480,800,1200,1600],"cars/g/santafe-5.jpg":[480,800,1200,1600],"cars/g/santafe-6.jpg":[480,800,1200,1600],"cars/g/staria-1.jpg":[480,800,1200,1600],"cars/g/staria-2.jpg":[480,800,1200,1600],"cars/g/staria-3.jpg":[480,800,1200,1600],"cars/g/staria-4.jpg":[480,800,1200,1600],"cars/g/staria-5.jpg":[480,800,1200,1600],"cars/g/t60-1.jpg":[480,800,1200,1600],"cars/g/t60-2.jpg":[480,800,1200,1600],"cars/g/t60-3.jpg":[480,800,1200,1600],"cars/g/t60-4.jpg":[480,800,1200,1600],"cars/g/t60-5.jpg":[480,800,1200,1600],"cars/g/t60-6.jpg":[480,800,1200,1600],"cars/g/t77-1.jpg":[480,800,1200,1600],"cars/g/t77-2.jpg":[480,800,1200,1600],"cars/g/t77-3.jpg":[480,800,1200,1600],"cars/g/t77-4.jpg":[480,800,1200,1600],"cars/g/t77-5.jpg":[480,800,1200,1600],"cars/g/t77-6.jpg":[480,800,1200,1600],"cars/g/t90-1.jpg":[480,800,1200,1600],"cars/g/t90-2.jpg":[480,800,1200,1600],"cars/g/t90-3.jpg":[480,800,1200,1600],"cars/g/t90-4.jpg":[480,800,1200,1600],"cars/g/tucson-1.jpg":[480,800,1200,1600],"cars/g/tucson-2.jpg":[480,800,1200,1600],"cars/g/tucson-3.jpg":[480,800,1200,1600],"cars/g/tucson-4.jpg":[480,800,1200,1600],"cars/g/tucson-5.jpg":[480,800,1200,1600],"cars/g/tucson-6.jpg":[480,800,1200,1600],"cars/g/urvan-1.jpg":[480,800,1200,1600],"cars/g/urvan-2.jpg":[480,800,1200,1600],"cars/g/urvan-3.jpg":[480,800,1200,1600],"cars/g/urvan-4.jpg":[480,800,1200,1600],"cars/g/urvan-5.jpg":[480,800,1200,1600],"cars/g/urvan-6.jpg":[480,800,1200,1600],"cars/g/xtrail-1.jpg":[480,800,1200,1600],"cars/g/xtrail-2.jpg":[480,800,1200,1600],"cars/g/xtrail-3.jpg":[480,800,1200,1600],"cars/g/xtrail-4.jpg":[480,800,1200,1600],"cars/g/xtrail-5.jpg":[480,800,1200,1600],"cars/g/xtrail-6.jpg":[480,800,1200,1600],"brand/people/adaeze.jpg":[256],"brand/people/amina.jpg":[256],"brand/people/emeka.jpg":[256],"brand/people/fatima.jpg":[256],"brand/people/ibrahim.jpg":[256],"brand/people/kelechi.jpg":[256],"brand/people/ngozi.jpg":[256],"brand/people/segun.jpg":[256],"brand/people/tunde.jpg":[256]}/*END IMGSET*/;
+const IMGSET=/*IMGSET*/{"cars/creta.jpg":[480,800,1200,1600],"cars/driver-happy.jpg":[480,800,1200,1600],"cars/elantra.jpg":[480,800,1200,1600],"cars/hero.jpg":[480,800,1200,1600],"cars/hunter.jpg":[480,800,1200,1600],"cars/showroom.jpg":[480,800,1200,1600],"cars/t60.jpg":[480,800,1200,1600],"cars/tucson.jpg":[480,800,1200,1600],"cars/used-camry.jpg":[480,800,900],"cars/used-corolla.jpg":[480,800,1200,1600],"cars/used-rx.jpg":[480,800,900],"cars/used-sienna.jpg":[480,800,900],"cars/g/accent-1.jpg":[480,800,1175],"cars/g/accent-2.jpg":[480,800,1068],"cars/g/accent-3.jpg":[480,800,1200,1505],"cars/g/accent-4.jpg":[480,800,1200,1600],"cars/g/accent-5.jpg":[480,800,1200,1600],"cars/g/accent-6.jpg":[480,800,1200,1270],"cars/g/al1718-1.jpg":[480,800,936],"cars/g/al1718-2.jpg":[480,800,864],"cars/g/al1718-3.jpg":[480,800,912],"cars/g/al1718-4.jpg":[480,779],"cars/g/al1718-5.jpg":[480,800,905],"cars/g/alpartner-1.jpg":[480,800,960],"cars/g/alpartner-2.jpg":[480,800,958],"cars/g/alpartner-3.jpg":[480,800,885],"cars/g/alphoenix-1.jpg":[480,800,1200,1600],"cars/g/alphoenix-2.jpg":[480,800,834],"cars/g/alphoenix-3.jpg":[480,800,838],"cars/g/alphoenix-4.jpg":[480,760],"cars/g/creta-1.jpg":[480,800,841],"cars/g/creta-2.jpg":[480,760],"cars/g/creta-3.jpg":[480,800,988],"cars/g/creta-4.jpg":[480,800,1200,1600],"cars/g/creta-5.jpg":[480,800,1200,1600],"cars/g/creta-6.jpg":[480,800,1010],"cars/g/crv-1.jpg":[480,800,965],"cars/g/crv-2.jpg":[480,760],"cars/g/crv-3.jpg":[480,800,887],"cars/g/crv-4.jpg":[480,800,1200,1600],"cars/g/crv-5.jpg":[480,800,1200,1600],"cars/g/crv-6.jpg":[480,800,1200,1600],"cars/g/cyberster-1.jpg":[480,800,1200,1600],"cars/g/cyberster-2.jpg":[480,800,1200,1600],"cars/g/cyberster-3.jpg":[480,800,1093],"cars/g/cyberster-4.jpg":[480,800,1200,1269],"cars/g/cyberster-5.jpg":[480,800,1200,1600],"cars/g/cyberster-6.jpg":[480,800,1200,1600],"cars/g/e311-1.jpg":[480,800,1200,1600],"cars/g/e311-2.jpg":[480,800,1200,1600],"cars/g/e311-3.jpg":[480,760],"cars/g/e311-4.jpg":[480,800,1200,1600],"cars/g/e311-5.jpg":[480,800,1200,1600],"cars/g/grandcreta-1.jpg":[480,800,839],"cars/g/grandcreta-2.jpg":[480,800,1010],"cars/g/grandcreta-3.jpg":[480,800,1009],"cars/g/grandcreta-4.jpg":[480,800,1200,1600],"cars/g/grandcreta-5.jpg":[480,800,1200,1600],"cars/g/grandcreta-6.jpg":[480,800,1200,1600],"cars/g/grandi10-1.jpg":[480,800,993],"cars/g/grandi10-2.jpg":[480,800,1200,1383],"cars/g/grandi10-3.jpg":[480,795],"cars/g/grandi10-4.jpg":[480,800,1200,1600],"cars/g/grandi10-5.jpg":[480,800,1200,1600],"cars/g/grandi10-6.jpg":[480,800,1032],"cars/g/hrv-1.jpg":[480,800,806],"cars/g/hrv-2.jpg":[480,800,945],"cars/g/hrv-3.jpg":[480,800,826],"cars/g/hrv-4.jpg":[480,800,1200,1600],"cars/g/hrv-5.jpg":[480,800,1200,1600],"cars/g/hrv-6.jpg":[480,800,1200,1600],"cars/g/mg5-1.jpg":[480,800,1200,1600],"cars/g/mg5-2.jpg":[480,800,1200,1600],"cars/g/mg5-3.jpg":[480,800,1200,1600],"cars/g/mg5-4.jpg":[480,800,1200,1600],"cars/g/mg5-5.jpg":[480,800,1200,1600],"cars/g/mg5-6.jpg":[480,800,1200,1600],"cars/g/mg7-1.jpg":[480,800,1130],"cars/g/mg7-2.jpg":[480,800,854],"cars/g/mg7-3.jpg":[480,800,1200,1600],"cars/g/mg7-4.jpg":[480,800,1200,1600],"cars/g/mg7-5.jpg":[480,800,1200,1600],"cars/g/mg7-6.jpg":[480,800,1200,1600],"cars/g/navara-1.jpg":[480,800],"cars/g/navara-2.jpg":[480,800,822],"cars/g/navara-3.jpg":[480,760],"cars/g/navara-4.jpg":[480,800,1200,1600],"cars/g/navara-5.jpg":[480,800,1200,1600],"cars/g/navara-6.jpg":[480,800,906],"cars/g/palisade-1.jpg":[480,800,1200,1260],"cars/g/palisade-2.jpg":[480,760],"cars/g/palisade-3.jpg":[480,760],"cars/g/palisade-4.jpg":[480,800,1200,1600],"cars/g/palisade-5.jpg":[480,800,1200,1600],"cars/g/palisade-6.jpg":[480,800,1200,1600],"cars/g/pilot-1.jpg":[480,760],"cars/g/pilot-2.jpg":[480,792],"cars/g/pilot-3.jpg":[480,800],"cars/g/pilot-4.jpg":[480,760],"cars/g/pilot-5.jpg":[480,800,1200,1600],"cars/g/pilot-6.jpg":[480,800,830],"cars/g/rx5-1.jpg":[480,800,1013],"cars/g/rx5-2.jpg":[480,800,1200,1279],"cars/g/rx5-3.jpg":[480,800,1200,1345],"cars/g/rx5-4.jpg":[480,800,1018],"cars/g/rx5-5.jpg":[480,800,1200,1600],"cars/g/rx5-6.jpg":[480,800,1200,1600],"cars/g/rx8-1.jpg":[480,800,1200,1600],"cars/g/rx8-2.jpg":[480,800,1200,1600],"cars/g/rx8-3.jpg":[480,800,1200,1600],"cars/g/rx8-4.jpg":[480,800,1200,1600],"cars/g/rx8-5.jpg":[480,800,1200,1600],"cars/g/rx8-6.jpg":[480,800,1200,1600],"cars/g/rx9-1.jpg":[480,800,1200,1398],"cars/g/rx9-2.jpg":[480,800,1200,1381],"cars/g/rx9-3.jpg":[480,800,1200,1341],"cars/g/rx9-4.jpg":[480,800,1200,1600],"cars/g/rx9-5.jpg":[480,800,1200,1600],"cars/g/rx9-6.jpg":[480,800,1200,1600],"cars/g/s6ev-1.jpg":[480,800,1200,1600],"cars/g/s6ev-2.jpg":[480,800,1200,1600],"cars/g/s6ev-3.jpg":[480,760],"cars/g/s6ev-4.jpg":[480,800,1200,1600],"cars/g/s6ev-5.jpg":[480,800,1200,1600],"cars/g/s6ev-6.jpg":[480,800,1200,1600],"cars/g/santafe-1.jpg":[480,774],"cars/g/santafe-2.jpg":[480,760],"cars/g/santafe-3.jpg":[480,760],"cars/g/santafe-4.jpg":[480,800,1200,1600],"cars/g/santafe-5.jpg":[480,800,1200,1600],"cars/g/santafe-6.jpg":[480,800,1200,1600],"cars/g/staria-1.jpg":[480,800,823],"cars/g/staria-2.jpg":[480,760],"cars/g/staria-3.jpg":[480,800,1200,1600],"cars/g/staria-4.jpg":[480,800,1200,1600],"cars/g/staria-5.jpg":[480,800,1200,1600],"cars/g/t60-1.jpg":[480,800,1086],"cars/g/t60-2.jpg":[480,800,1108],"cars/g/t60-3.jpg":[480,800,924],"cars/g/t60-4.jpg":[480,760],"cars/g/t60-5.jpg":[480,800,1200,1600],"cars/g/t60-6.jpg":[480,800,1200,1600],"cars/g/t77-1.jpg":[480,800,958],"cars/g/t77-2.jpg":[480,800,1125],"cars/g/t77-3.jpg":[480,760],"cars/g/t77-4.jpg":[480,800,965],"cars/g/t77-5.jpg":[480,800,1200,1600],"cars/g/t77-6.jpg":[480,800,1200,1600],"cars/g/t90-1.jpg":[480,800,1200,1600],"cars/g/t90-2.jpg":[480,800,879],"cars/g/t90-3.jpg":[480,800,1200,1600],"cars/g/t90-4.jpg":[480,800,1200,1600],"cars/g/tucson-1.jpg":[480,772],"cars/g/tucson-2.jpg":[480,800,1011],"cars/g/tucson-3.jpg":[480,785],"cars/g/tucson-4.jpg":[480,800,1200,1600],"cars/g/tucson-5.jpg":[480,800,1200,1600],"cars/g/tucson-6.jpg":[480,800,953],"cars/g/urvan-1.jpg":[480,800,861],"cars/g/urvan-2.jpg":[480,775],"cars/g/urvan-3.jpg":[480,800,862],"cars/g/urvan-4.jpg":[480,800,1200,1600],"cars/g/urvan-5.jpg":[480,800,818],"cars/g/urvan-6.jpg":[480,800,888],"cars/g/xtrail-1.jpg":[480,800,1127],"cars/g/xtrail-2.jpg":[480,800,1173],"cars/g/xtrail-3.jpg":[480,800,1022],"cars/g/xtrail-4.jpg":[480,800,1200,1600],"cars/g/xtrail-5.jpg":[480,800,1200,1600],"cars/g/xtrail-6.jpg":[480,800,1200,1600],"brand/people/adaeze.jpg":[256],"brand/people/amina.jpg":[256],"brand/people/emeka.jpg":[256],"brand/people/fatima.jpg":[256],"brand/people/ibrahim.jpg":[256],"brand/people/kelechi.jpg":[256],"brand/people/ngozi.jpg":[256],"brand/people/segun.jpg":[256],"brand/people/tunde.jpg":[256]}/*END IMGSET*/;
 const imgVar=(src,w,ext)=>src.replace(/\.(jpe?g|png)$/i,`-w${w}.${ext}`);
 function picSet(src,ext){ return (IMGSET[src]||[]).map(w=>`${imgVar(src,w,ext)} ${w}w`).join(', '); }
 function pic(src,attrs='',sizes='(max-width:640px) 75vw, 40vw'){   /* a touch under the true width: the next size down is still sharp on a phone */
@@ -1960,31 +2007,31 @@ function balanceAt(P, annualRate, n, m){
    Prices: entry-trim retail, ex-VAT, from dealer lists - Hyundai 03/09/26, Honda 01/05/26,
    Bestune 27/08/26, MG 07/10/26. Nissan, Ashok Leyland, MG RX8, Bestune T77 Pro not on those lists. */
 const VEHICLES = [
-  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:38000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/creta-1.jpg', pos:'67% 50%', tag:'Most loved SUV', stock:84, imgs:['cars/g/creta-1.jpg','cars/g/creta-2.jpg','cars/g/creta-3.jpg','cars/g/creta-4.jpg','cars/g/creta-5.jpg','cars/g/creta-6.jpg']},
-  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:39000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx5-1.jpg', pos:'46% 50%', tag:'Luxury 1.5T', stock:44, imgs:['cars/g/rx5-1.jpg','cars/g/rx5-2.jpg','cars/g/rx5-3.jpg','cars/g/rx5-4.jpg','cars/g/rx5-5.jpg','cars/g/rx5-6.jpg']},
-  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:26000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandi10-1.jpg', pos:'41% 50%', tag:'The starter car', stock:33, imgs:['cars/g/grandi10-1.jpg','cars/g/grandi10-2.jpg','cars/g/grandi10-3.jpg','cars/g/grandi10-4.jpg','cars/g/grandi10-5.jpg','cars/g/grandi10-6.jpg']},
+  {id:'V-2001', year:2026, make:'Hyundai', model:'Creta', body:'suv', price:38000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/creta-1.jpg', tag:'Most loved SUV', stock:84, imgs:['cars/g/creta-1.jpg','cars/g/creta-2.jpg','cars/g/creta-3.jpg','cars/g/creta-4.jpg','cars/g/creta-5.jpg','cars/g/creta-6.jpg']},
+  {id:'V-2002', year:2026, make:'MG', model:'RX5', body:'suv', price:39000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx5-1.jpg', tag:'Luxury 1.5T', stock:44, imgs:['cars/g/rx5-1.jpg','cars/g/rx5-2.jpg','cars/g/rx5-3.jpg','cars/g/rx5-4.jpg','cars/g/rx5-5.jpg','cars/g/rx5-6.jpg']},
+  {id:'V-2003', year:2026, make:'Hyundai', model:'Grand i10', body:'sedan', price:26000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandi10-1.jpg', tag:'The starter car', stock:33, imgs:['cars/g/grandi10-1.jpg','cars/g/grandi10-2.jpg','cars/g/grandi10-3.jpg','cars/g/grandi10-4.jpg','cars/g/grandi10-5.jpg','cars/g/grandi10-6.jpg']},
   {id:'V-2004', year:2026, make:'MG', model:'T60', body:'pickup', price:37000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/t60-1.jpg', tag:'Double cab 4WD', stock:32, imgs:['cars/g/t60-1.jpg','cars/g/t60-2.jpg','cars/g/t60-3.jpg','cars/g/t60-4.jpg','cars/g/t60-5.jpg','cars/g/t60-6.jpg']},
-  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:47000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandcreta-1.jpg', pos:'65% 50%', tag:'7 seats', stock:22, imgs:['cars/g/grandcreta-1.jpg','cars/g/grandcreta-2.jpg','cars/g/grandcreta-3.jpg','cars/g/grandcreta-4.jpg','cars/g/grandcreta-5.jpg','cars/g/grandcreta-6.jpg']},
-  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:77000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/santafe-1.jpg', pos:'52% 50%', tag:'Family flagship', stock:22, imgs:['cars/g/santafe-1.jpg','cars/g/santafe-2.jpg','cars/g/santafe-3.jpg','cars/g/santafe-4.jpg','cars/g/santafe-5.jpg','cars/g/santafe-6.jpg']},
+  {id:'V-2005', year:2026, make:'Hyundai', model:'Grand Creta', body:'suv', price:47000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/grandcreta-1.jpg', tag:'7 seats', stock:22, imgs:['cars/g/grandcreta-1.jpg','cars/g/grandcreta-2.jpg','cars/g/grandcreta-3.jpg','cars/g/grandcreta-4.jpg','cars/g/grandcreta-5.jpg','cars/g/grandcreta-6.jpg']},
+  {id:'V-2006', year:2026, make:'Hyundai', model:'Santa Fe', body:'suv', price:77000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/santafe-1.jpg', tag:'Family flagship', stock:22, imgs:['cars/g/santafe-1.jpg','cars/g/santafe-2.jpg','cars/g/santafe-3.jpg','cars/g/santafe-4.jpg','cars/g/santafe-5.jpg','cars/g/santafe-6.jpg']},
   {id:'V-2007', year:2026, make:'Nissan', model:'Navara', body:'pickup', price:31400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/navara-1.jpg', tag:'Workhorse 4WD', stock:22, imgs:['cars/g/navara-1.jpg','cars/g/navara-2.jpg','cars/g/navara-3.jpg','cars/g/navara-4.jpg','cars/g/navara-5.jpg','cars/g/navara-6.jpg']},
   {id:'V-2008', year:2026, make:'Nissan', model:'Urvan NV350', body:'van', price:43900000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/urvan-1.jpg', tag:'18-seat business', stock:15, imgs:['cars/g/urvan-1.jpg','cars/g/urvan-2.jpg','cars/g/urvan-3.jpg','cars/g/urvan-4.jpg','cars/g/urvan-5.jpg','cars/g/urvan-6.jpg']},
-  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:41500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', pos:'32% 50%', tag:'LX 1.5', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg','cars/g/hrv-4.jpg','cars/g/hrv-5.jpg','cars/g/hrv-6.jpg']},
-  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:27000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', pos:'21% 50%', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg','cars/g/mg5-4.jpg','cars/g/mg5-5.jpg','cars/g/mg5-6.jpg']},
-  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-4.jpg', pos:'67% 50%', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-4.jpg','cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg','cars/g/al1718-5.jpg']},
-  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:112000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', pos:'65% 50%', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg','cars/g/pilot-4.jpg','cars/g/pilot-5.jpg','cars/g/pilot-6.jpg']},
+  {id:'V-2009', year:2026, make:'Honda', model:'HR-V', body:'suv', price:41500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/hrv-1.jpg', tag:'LX 1.5', stock:15, imgs:['cars/g/hrv-1.jpg','cars/g/hrv-2.jpg','cars/g/hrv-3.jpg','cars/g/hrv-4.jpg','cars/g/hrv-5.jpg','cars/g/hrv-6.jpg']},
+  {id:'V-2010', year:2026, make:'MG', model:'5', body:'sedan', price:27000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg5-1.jpg', tag:'Executive saloon', stock:11, imgs:['cars/g/mg5-1.jpg','cars/g/mg5-2.jpg','cars/g/mg5-3.jpg','cars/g/mg5-4.jpg','cars/g/mg5-5.jpg','cars/g/mg5-6.jpg']},
+  {id:'V-2011', year:2026, make:'Ashok Leyland', model:'1718 Truck', body:'truck', price:55400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'6-speed', img:'cars/g/al1718-4.jpg', tag:'5.8L CBC', stock:10, imgs:['cars/g/al1718-4.jpg','cars/g/al1718-1.jpg','cars/g/al1718-2.jpg','cars/g/al1718-3.jpg','cars/g/al1718-5.jpg']},
+  {id:'V-2012', year:2026, make:'Honda', model:'Pilot', body:'suv', price:112000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/pilot-1.jpg', tag:'EX-L 3.5', stock:7, imgs:['cars/g/pilot-1.jpg','cars/g/pilot-2.jpg','cars/g/pilot-3.jpg','cars/g/pilot-4.jpg','cars/g/pilot-5.jpg','cars/g/pilot-6.jpg']},
   {id:'V-2013', year:2026, make:'Hyundai', model:'Accent', body:'sedan', price:35500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/accent-1.jpg', tag:'Elegance', stock:6, imgs:['cars/g/accent-1.jpg','cars/g/accent-2.jpg','cars/g/accent-3.jpg','cars/g/accent-4.jpg','cars/g/accent-5.jpg','cars/g/accent-6.jpg']},
-  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:71500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', pos:'67% 50%', tag:'LX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg','cars/g/crv-4.jpg','cars/g/crv-5.jpg','cars/g/crv-6.jpg']},
+  {id:'V-2014', year:2026, make:'Honda', model:'CR-V', body:'suv', price:71500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/crv-1.jpg', tag:'LX 1.5T', stock:4, imgs:['cars/g/crv-1.jpg','cars/g/crv-2.jpg','cars/g/crv-3.jpg','cars/g/crv-4.jpg','cars/g/crv-5.jpg','cars/g/crv-6.jpg']},
   {id:'V-2015', year:2026, make:'Hyundai', model:'Staria', body:'van', price:67000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/staria-1.jpg', tag:'Luxury 3.5', stock:4, imgs:['cars/g/staria-1.jpg','cars/g/staria-2.jpg','cars/g/staria-3.jpg','cars/g/staria-4.jpg','cars/g/staria-5.jpg']},
-  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:103000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/palisade-1.jpg', pos:'17% 50%', tag:'Limited 2.5T', stock:4, imgs:['cars/g/palisade-1.jpg','cars/g/palisade-2.jpg','cars/g/palisade-3.jpg','cars/g/palisade-4.jpg','cars/g/palisade-5.jpg','cars/g/palisade-6.jpg']},
-  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/tucson-1.jpg', pos:'92% 50%', tag:'Elegance 2.0', stock:4, imgs:['cars/g/tucson-1.jpg','cars/g/tucson-2.jpg','cars/g/tucson-3.jpg','cars/g/tucson-4.jpg','cars/g/tucson-5.jpg','cars/g/tucson-6.jpg']},
-  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:64000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx9-1.jpg', pos:'100% 50%', tag:'Luxury 2.0T', stock:3, imgs:['cars/g/rx9-1.jpg','cars/g/rx9-2.jpg','cars/g/rx9-3.jpg','cars/g/rx9-4.jpg','cars/g/rx9-5.jpg','cars/g/rx9-6.jpg']},
-  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg7-1.jpg', pos:'73% 50%', tag:'2.0T Luxury', stock:2, imgs:['cars/g/mg7-1.jpg','cars/g/mg7-2.jpg','cars/g/mg7-3.jpg','cars/g/mg7-4.jpg','cars/g/mg7-5.jpg','cars/g/mg7-6.jpg']},
-  {id:'V-2020', year:2026, make:'Ashok Leyland', model:'Partner 17ft', body:'truck', price:36200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alpartner-1.jpg', pos:'33% 50%', tag:'CBC 3.0L', stock:1, imgs:['cars/g/alpartner-1.jpg','cars/g/alpartner-2.jpg','cars/g/alpartner-3.jpg']},
+  {id:'V-2016', year:2026, make:'Hyundai', model:'Palisade', body:'suv', price:103000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/palisade-1.jpg', tag:'Limited 2.5T', stock:4, imgs:['cars/g/palisade-1.jpg','cars/g/palisade-2.jpg','cars/g/palisade-3.jpg','cars/g/palisade-4.jpg','cars/g/palisade-5.jpg','cars/g/palisade-6.jpg']},
+  {id:'V-2017', year:2026, make:'Hyundai', model:'Tucson', body:'suv', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/tucson-1.jpg', tag:'Elegance 2.0', stock:4, imgs:['cars/g/tucson-1.jpg','cars/g/tucson-2.jpg','cars/g/tucson-3.jpg','cars/g/tucson-4.jpg','cars/g/tucson-5.jpg','cars/g/tucson-6.jpg']},
+  {id:'V-2018', year:2026, make:'MG', model:'RX9', body:'suv', price:64000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/rx9-1.jpg', tag:'Luxury 2.0T', stock:3, imgs:['cars/g/rx9-1.jpg','cars/g/rx9-2.jpg','cars/g/rx9-3.jpg','cars/g/rx9-4.jpg','cars/g/rx9-5.jpg','cars/g/rx9-6.jpg']},
+  {id:'V-2019', year:2026, make:'MG', model:'7', body:'sedan', price:60000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/mg7-1.jpg', tag:'2.0T Luxury', stock:2, imgs:['cars/g/mg7-1.jpg','cars/g/mg7-2.jpg','cars/g/mg7-3.jpg','cars/g/mg7-4.jpg','cars/g/mg7-5.jpg','cars/g/mg7-6.jpg']},
+  {id:'V-2020', year:2026, make:'Ashok Leyland', model:'Partner 17ft', body:'truck', price:36200000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alpartner-1.jpg', tag:'CBC 3.0L', stock:1, imgs:['cars/g/alpartner-1.jpg','cars/g/alpartner-2.jpg','cars/g/alpartner-3.jpg']},
   {id:'V-2021', year:2026, make:'Ashok Leyland', model:'Phoenix', body:'truck', price:33600000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'6-speed', img:'cars/g/alphoenix-1.jpg', tag:'CBC 1.5L', stock:1, imgs:['cars/g/alphoenix-1.jpg','cars/g/alphoenix-2.jpg','cars/g/alphoenix-3.jpg','cars/g/alphoenix-4.jpg']},
-  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:56000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/s6ev-1.jpg', pos:'84% 50%', tag:'Electric 77kWh', stock:1, imgs:['cars/g/s6ev-1.jpg','cars/g/s6ev-2.jpg','cars/g/s6ev-3.jpg','cars/g/s6ev-4.jpg','cars/g/s6ev-5.jpg','cars/g/s6ev-6.jpg']},
-  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:95000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/cyberster-1.jpg', pos:'61% 50%', tag:'Electric roadster', stock:1, imgs:['cars/g/cyberster-1.jpg','cars/g/cyberster-2.jpg','cars/g/cyberster-3.jpg','cars/g/cyberster-4.jpg','cars/g/cyberster-5.jpg','cars/g/cyberster-6.jpg']},
+  {id:'V-2022', year:2026, make:'MG', model:'S6 EV', body:'suv', price:56000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/s6ev-1.jpg', tag:'Electric 77kWh', stock:1, imgs:['cars/g/s6ev-1.jpg','cars/g/s6ev-2.jpg','cars/g/s6ev-3.jpg','cars/g/s6ev-4.jpg','cars/g/s6ev-5.jpg','cars/g/s6ev-6.jpg']},
+  {id:'V-2023', year:2026, make:'MG', model:'Cyberster', body:'sedan', price:95000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/cyberster-1.jpg', tag:'Electric roadster', stock:1, imgs:['cars/g/cyberster-1.jpg','cars/g/cyberster-2.jpg','cars/g/cyberster-3.jpg','cars/g/cyberster-4.jpg','cars/g/cyberster-5.jpg','cars/g/cyberster-6.jpg']},
   {id:'V-2024', year:2026, make:'MG', model:'RX8', body:'suv', price:39400000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:6, trans:'Automatic', img:'cars/g/rx8-1.jpg', tag:'Luxury 2.0T', stock:1, imgs:['cars/g/rx8-1.jpg','cars/g/rx8-2.jpg','cars/g/rx8-3.jpg','cars/g/rx8-4.jpg','cars/g/rx8-5.jpg','cars/g/rx8-6.jpg']},
-  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:35000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/e311-1.jpg', pos:'45% 50%', tag:'Electric 450km', stock:1, imgs:['cars/g/e311-1.jpg','cars/g/e311-2.jpg','cars/g/e311-3.jpg','cars/g/e311-4.jpg','cars/g/e311-5.jpg']},
+  {id:'V-2025', year:2026, make:'Bestune', model:'E311', body:'suv', price:35000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/e311-1.jpg', tag:'Electric 450km', stock:1, imgs:['cars/g/e311-1.jpg','cars/g/e311-2.jpg','cars/g/e311-3.jpg','cars/g/e311-4.jpg','cars/g/e311-5.jpg']},
   {id:'V-2026', year:2026, make:'Bestune', model:'T90', body:'suv', price:43000000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t90-1.jpg', tag:'1.5T Deluxe', stock:1, imgs:['cars/g/t90-1.jpg','cars/g/t90-2.jpg','cars/g/t90-3.jpg','cars/g/t90-4.jpg']},
   {id:'V-2027', year:2026, make:'Bestune', model:'T77 Pro', body:'suv', price:19500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/t77-1.jpg', tag:'CNG Deluxe', stock:1, imgs:['cars/g/t77-1.jpg','cars/g/t77-2.jpg','cars/g/t77-3.jpg','cars/g/t77-4.jpg','cars/g/t77-5.jpg','cars/g/t77-6.jpg']},
   {id:'V-2028', year:2026, make:'Nissan', model:'X-Trail', body:'suv', price:39500000, km:0, origin:'Brand new', grade:'A', score:200, loc:'Showrooms nationwide', cyl:4, trans:'Automatic', img:'cars/g/xtrail-1.jpg', tag:'Tekna 4WD', stock:1, imgs:['cars/g/xtrail-1.jpg','cars/g/xtrail-2.jpg','cars/g/xtrail-3.jpg','cars/g/xtrail-4.jpg','cars/g/xtrail-5.jpg','cars/g/xtrail-6.jpg']}
@@ -2413,12 +2460,68 @@ function renderMarket(){
           <div class="veh-mo-big">${t?NGN(t.o.monthly):'—'}<span> /month</span></div>
           <div class="veh-full">Full price ${NGNs(v.price)}* · from ${t?Math.round(t.eq*100):30}% down${t?` · best rate <b style="color:var(--naira)">${pct(t.o.rate*100)}</b>`:''}</div>
           <div class="veh-foot">
-            <button class="btn btn-a btn-sm" style="flex:2" onclick="event.stopPropagation();startApply('${v.id}')">Apply now</button>
-            <a class="btn btn-wa btn-sm" style="flex:1" onclick="event.stopPropagation()" target="_blank" rel="noopener" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I am interested in the '+v.make+' '+v.model+' with a loan')}">WhatsApp</a>
+            <button class="btn btn-a btn-sm" style="flex:1" onclick="event.stopPropagation();qualOpen('${v.id}')">See if I qualify</button>
           </div>
         </div>
       </article>`));
   });
+}
+
+/* ===================== SEE IF I QUALIFY =====================
+   Three taps, no BVN, no credit check: take-home pay, other loans, deposit.
+   Every bank's own rules (pay floor, debt-to-income, down payment) run on the
+   answers, so the result is the same number the offers page will show. */
+let QS={};
+const QS_INC=[[0,300000],[300000,600000],[600000,1000000],[1000000,2000000],[2000000,4000000],[4000000,0]];
+const QS_DEBT=[[0,'None'],[60000,''],[200000,''],[450000,'']];
+function qsBand([a,b]){ return !a?'Under '+NGNs(b):!b?'Over '+NGNs(a):NGNs(a)+' – '+NGNs(b); }
+function qualOpen(id){ QS={id,step:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id}); }
+function qualClose(){ const el=document.getElementById('qSheet'); if(el) el.hidden=true; document.body.style.overflow=''; }
+function qualPick(k,v){ QS[k]=v; QS.step++; qualRender(); }
+function qualBack(){ if(QS.step>0){ QS.step--; qualRender(); } }
+function qualRender(){
+  const v=VEHICLES.find(x=>x.id===QS.id)||vehicle(); const b=document.getElementById('qBody'); if(!b||!v) return;
+  const head=`<div class="qs-top"><button class="qs-x" onclick="qualClose()" aria-label="Close">&times;</button>
+    <div class="qs-car">${v.img?`<img src="${v.img}" alt="">`:''}<div><b>${v.make} ${v.model}</b><span>${NGNs(v.price)}</span></div></div>
+    ${QS.step<3?`<div class="qs-dots">${[0,1,2].map(i=>`<i class="${i<=QS.step?'on':''}"></i>`).join('')}</div>`:''}</div>`;
+  const back=QS.step>0&&QS.step<3?'<button class="qs-back" onclick="qualBack()">&larr; Back</button>':'';
+  let body='';
+  if(QS.step===0) body=`<h3>How much do you take home each month?</h3><p class="qs-sub">3 quick questions. No BVN. It won’t affect your credit.</p>
+    <div class="qs-chips">${QS_INC.map(([a,c])=>`<button onclick="qualPick('inc',${a&&c?(a+c)/2:a?a*1.25:c*.75})">${qsBand([a,c])}</button>`).join('')}</div>`;
+  else if(QS.step===1) body=`<h3>Do you pay any other loans each month?</h3><p class="qs-sub">Banks count every loan you already pay.</p>
+    <div class="qs-chips">${QS_DEBT.map(([d,l],i)=>`<button onclick="qualPick('debt',${d})">${l||(i===1?'Under '+NGNs(100000):i===2?NGNs(100000)+' – '+NGNs(300000):'Over '+NGNs(300000))}</button>`).join('')}</div>`;
+  else if(QS.step===2) body=`<h3>How much can you pay down today?</h3><p class="qs-sub">Paid into the bank, never to us.</p>
+    <div class="qs-chips">${[.10,.20,.30,.50].map(e=>`<button onclick="qualPick('eq',${e})">${NGNs(v.price*e)}<small>${Math.round(e*100)}% down</small></button>`).join('')}</div>`;
+  else body=qualResult(v);
+  b.innerHTML=head+back+body;
+}
+function qualResult(v){
+  const app={name:'',phone:'',employment:'Salaried',yearsEmployed:3,income:QS.inc,obligations:QS.debt,salaryDomiciled:false};
+  let hit=null;
+  for(const e of [QS.eq,.20,.30,.40,.50].filter((x,i,a)=>x>=QS.eq&&a.indexOf(x)===i)){
+    for(const t of [60,48,36]){ const ok=runPanel(v,e,t,app).filter(o=>o.approved); if(ok.length){ hit={e,t,o:sortOffers(ok,'mo')[0],n:ok.length}; break; } }
+    if(hit) break;
+  }
+  track('qualify_result',{id:v.id,ok:!!hit});
+  if(hit){
+    const same=hit.e===QS.eq;
+    return `<div class="qs-res ok"><div class="qs-tick">&#10003;</div>
+      <h3>${same?'Good news. You likely qualify.':'You can get this car.'}</h3>
+      <div class="qs-big">${NGN(hit.o.monthly)}<span>/month</span></div>
+      <p class="qs-sub">${NGN(v.price*hit.e)} down &middot; ${hit.t} months &middot; ${hit.n} bank${hit.n>1?'s':''} would price it${same?'':' (with a bigger down payment)'}</p>
+      <button class="btn btn-a btn-lg qs-go" onclick="qualGo(${hit.e},${hit.t})">Continue &mdash; 2 minutes</button>
+      <p class="qs-fine">An estimate from each bank’s rules. The bank confirms your offer.</p></div>`;
+  }
+  const fit=(typeof MT!=='undefined'?MT.affordability({monthly_income:Math.round(QS.inc*curC().rate),existing_monthly_debts:Math.round(QS.debt*curC().rate)}).cars_that_fit:[]).slice(0,3);
+  return `<div class="qs-res"><h3>This one is a stretch on your pay today.</h3>
+    <p class="qs-sub">${fit.length?'These fit your pay:':'Talk to us and we will find a car that fits.'}</p>
+    ${fit.map(c=>`<button class="qs-alt" onclick="qualClose();openCar('${c.id}')"><b>${c.name}</b><span>${c.monthly}/month</span></button>`).join('')}
+    <button class="btn btn-g qs-go" onclick="QS.step=0;qualRender()">Change my answers</button></div>`;
+}
+function qualGo(e,t){
+  S.vehicleId=QS.id; S.equityPct=e; S.tenor=t;
+  const r=curC().rate; S.qPre={income:String(Math.round(QS.inc*r)),obligations:String(Math.round(QS.debt*r)),equityN:Math.round(vehicle().price*e*r),term:t};
+  save(); qualClose(); startApply(QS.id);
 }
 function startApply(id){
   if(id) S.vehicleId=id;
@@ -2574,6 +2677,8 @@ function renderDeal(){
   const rv = residualValue(v, ten);
 
   const earn=incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0);
+  const cs=document.getElementById('carSticky');
+  if(cs) cs.innerHTML = best ? `<div><b>${NGN(best.monthly)}</b><span>/month</span><small>${pct(eq*100,0)} down &middot; ${ten} months</small></div><button class="btn btn-a" onclick="qualOpen('${v.id}')">See if I qualify</button>` : '';
   $('#carDeal').innerHTML = `
     ${best ? `
     <div class="tiny muted" style="font-weight:550;margin-bottom:4px">Monthly repayment</div>
@@ -2771,6 +2876,7 @@ function renderApply(){
   const v = vehicle(); if (!v){ location.hash = '#/market'; return; }
   if(!S.la || S.la.ctry!==curCountry) S.la={ctry:curCountry,emp:'Salaried',tradeIn:'no',term:60,addons:{trk:true,ins:true},feesRoad:true,feesLic:false,
     equityN:Math.round(v.price*0.10*curC().rate), desiredMo:'', c:{}};
+  if(S.qPre){ Object.assign(S.la,S.qPre); S.qPre=null; save(); }
   const GH=curCountry==='GH', GEN=!['NG','GH'].includes(curCountry), CS=curC().sym.trim();
   const BANKS_LF = GEN ? null : GH ? ['Stanbic Bank Ghana','Absa Ghana','Ecobank Ghana','CalBank','FNB Ghana','Fidelity Bank Ghana','GCB Bank','Other']
                       : ['Access Bank','Zenith Bank','First Bank','GTBank','UBA','Stanbic IBTC','Fidelity','Other'];
@@ -3221,7 +3327,7 @@ function finishOffers(v,app,ok,best,dearest){
         || '<p class="tiny muted">Message Midas \u2014 we will find a car that works for your budget.</p>'}
       ${S.halal?`<div style="padding:12px 0;border-top:1px solid var(--line)"><button class="btn btn-g btn-sm" onclick="S.halal=false;save();renderOffers()">Also show interest-based banks</button></div>`:''}
       <div class="row" style="gap:10px;margin-top:14px;flex-wrap:wrap">
-        <a class="btn btn-wa btn-sm" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, no bank priced my application. Can you help?')}" target="_blank" rel="noopener">Message Midas on WhatsApp</a>
+        <a class="btn btn-wa btn-sm" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, no bank priced my application. Can you help?')}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
       </div></div>`;
   }
 }
@@ -3362,7 +3468,7 @@ function renderLiveStatus(r, apps){
           ${r.estRate?`<div class="kv"><span class="k">Indicative rate</span><span class="v">${pct(r.estRate*100)} p.a.</span></div>`:''}
           <p class="tiny faint" style="margin-top:10px">Your real monthly repayment arrives on the bank’s offer letter.</p>`}
         ${apps.length>1?`<hr class="sep"><label class="tiny muted">Another application</label><select class="inp" style="margin-top:6px;padding:9px 12px;font-size:14px" onchange="S.serverRef=this.value;save();renderStatus()">${apps.map(x=>`<option value="${esc(x.id)}" ${x.id===r.id?'selected':''}>${esc(x.vehicle)} · ${esc(x.status)}</option>`).join('')}</select>`:''}
-        <a class="btn btn-wa btn-sm" style="width:100%;margin-top:16px" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, about my application '+r.id)}" target="_blank" rel="noopener">Message Midas on WhatsApp</a>
+        <a class="btn btn-wa btn-sm" style="width:100%;margin-top:16px" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, about my application '+r.id)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
         <button class="btn btn-g btn-sm" style="width:100%;margin-top:8px" onclick="reset()">Start a new application</button>
         </div>
       </div>
@@ -3714,7 +3820,7 @@ function renderCountry(){
     <p class="tiny faint">${L.note(C.cur)}${C.banks}.</p>
     <div class="row" style="gap:10px;margin-top:18px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="startApply(); return false">${L.join} &rarr;</a>
-      <a class="btn btn-wa" href="${wa(C.wa)}" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn-wa" href="${wa(C.wa)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Chat with us</a>
       <a class="btn btn-g" href="#/market" onclick="document.getElementById('ctrySel').value='NG'">${L.nig} &rarr;</a>
     </div>
     <div class="pilotband" style="margin:30px 0 0;display:block">
@@ -3755,7 +3861,7 @@ function renderPost(){
     <div class="row" style="gap:10px;margin-top:26px;flex-wrap:wrap">
       <a class="btn btn-a" href="#/apply" onclick="startApply();return false;">Apply now &rarr;</a>
       <a class="btn btn-g" href="#/market">See the cars</a>
-      <a class="btn btn-wa" href="https://wa.me/2348058963692" target="_blank" rel="noopener">Ask on WhatsApp</a>
+      <a class="btn btn-wa" href="https://wa.me/2348058963692" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Chat with us</a>
     </div>`;
 }
 function cntUp(el){
