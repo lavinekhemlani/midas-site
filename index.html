@@ -2557,7 +2557,7 @@ function qualRender(){
   else if(step==='result'){ QS.hit=qsFind(v); track('qualify_result',{id:v.id,ok:!!QS.hit});
     if(QS.hit){ const h=QS.hit, same=h.e===QS.eq;
       body=`<div class="qs-res"><div class="qs-tick">&#10003;</div>
-        <h3>${same?'Good news. You likely qualify!':'You can get this car!'}</h3>
+        <h3>${same?'Good news. You can get this car!':'You can get this car with a bit more down.'}</h3>
         <div class="qs-big">${NGN(h.o.monthly)}<span>/month</span></div>
         <p class="qs-sub">${NGNs(v.price*h.e)} down &middot; ${h.t} months &middot; ${h.n} bank${h.n>1?'s':''} ready</p>
         <button class="btn btn-a btn-lg qs-go" onclick="qualNext()">Get my real offers &rarr;</button>
