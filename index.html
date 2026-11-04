@@ -2659,7 +2659,7 @@ function vatTxt(){ return VAT_TXT[curCountry]||'VAT'; }
 function paintVat(){ document.querySelectorAll('.vat-n').forEach(e=>e.textContent=vatTxt()); }
 function niceN(n){ const r=curC().rate, v=n*r; if(!v) return n; const p=Math.pow(10,Math.floor(Math.log10(v))-1); return Math.round(v/p)*p/r; }
 function qsBand([a,b]){ return !a?'Under '+NGNs(niceN(b)):!b?'Over '+NGNs(niceN(a)):NGNs(niceN(a))+' – '+NGNs(niceN(b)); }
-function qsSteps(){ return ['name','phone','pay','loans',...(QS.fixed?[]:['pick']),'down','result','work','bank','id','docs','agree','done']; }
+function qsSteps(){ return ['lead','pay','loans',...(QS.fixed?[]:['pick']),'down','result','work','bank','id','docs','agree','done']; }
 function qualOpen(id){ QS={id:id||null,fixed:!!id,i:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id:id||'budget'}); }
 function qualClose(){ const el=document.getElementById('qSheet'); if(el) el.hidden=true; document.body.style.overflow=''; }
 function qualNext(){ QS.i++; QS.err=''; qualRender(); }
@@ -2711,12 +2711,11 @@ function qualRender(){
         ${fit.map(c=>`<button class="qs-alt" onclick="QS.id='${c.id}';QS.i=qsSteps().indexOf('down');qualRender()"><b>${c.name}</b><span>${c.monthly}/mo</span></button>`).join('')}
         <a class="btn btn-wa btn-lg qs-go qs-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I want the '+v.make+' '+v.model+'. I take home about '+NGNs(QS.inc)+' a month. Can you help me get it?')}" target="_blank" rel="noopener" onclick="track('qualify_handoff',{id:'${v.id}'})">${QS_WA}Ask Midas to help</a>
         <button class="btn btn-g qs-go" onclick="QS.i=0;qualRender()">Change my answers</button></div>`; } }
-  else if(step==='name') body=`<h3>Nice! What’s your name?</h3><p class="qs-sub">As it appears on your ID.</p>
+  else if(step==='lead') body=`<h3>Nice! What’s your name?</h3><p class="qs-sub">As it appears on your ID.</p>
     <div class="qs-fields"><input id="qsFirst" placeholder="First name" autocomplete="given-name" value="${QS.first||''}"><input id="qsLast" placeholder="Last name" autocomplete="family-name" value="${QS.last||''}"></div>
-    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('name')">Next</button>`;
-  else if(step==='phone') body=`<h3>Your phone number</h3><p class="qs-sub">WhatsApp preferred &mdash; the bank’s offer arrives here.</p>
+    <p class="qs-sub" style="margin-top:16px">Your phone number &mdash; WhatsApp preferred. The bank’s offer arrives here.</p>
     <div class="qs-fields"><input id="qsPhone" type="tel" inputmode="tel" placeholder="${QS_PHONE[curCountry]||'0803 000 0000'}" autocomplete="tel" value="${QS.phone||''}"></div>
-    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('phone')">Next</button>`;
+    ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('lead')">Next</button>`;
   else if(step==='work') body=`<h3>Where do you work?</h3><p class="qs-sub">Or the name of your business.</p>
     <div class="qs-fields"><input id="qsEmployer" placeholder="Employer or business" autocomplete="organization" value="${QS.employer||''}"></div>
     <p class="qs-sub" style="margin:14px 0 8px">How long have you been there?</p>
@@ -2797,8 +2796,8 @@ function laLeadCheck(){
 }
 function qsSave(step){
   const bad=m=>{ QS.err=m; qualRender(); };
-  if(step==='name'){ QS.first=qsVal('qsFirst'); QS.last=qsVal('qsLast'); if(!QS.first||!QS.last) return bad('Please add your first and last name.'); }
-  if(step==='phone'){ QS.phone=qsVal('qsPhone'); if(QS.phone.replace(/\D/g,'').length<10) return bad('That number looks short. It needs at least 10 digits.');
+  if(step==='lead'){ QS.first=qsVal('qsFirst'); QS.last=qsVal('qsLast'); if(!QS.first||!QS.last) return bad('Please add your first and last name.');
+    QS.phone=qsVal('qsPhone'); if(QS.phone.replace(/\D/g,'').length<10) return bad('That number looks short. It needs at least 10 digits.');
     captureLead(); }
   if(step==='work'){ QS.employer=qsVal('qsEmployer'); if(!QS.employer) return bad('Please add where you work.'); if(QS.years==null) return; }
   if(step==='id'){ const raw=qsVal(curCountry==='NG'?'qsBvn':curCountry==='GH'?'qsGh':'qsNat'); QS.idv=raw;
