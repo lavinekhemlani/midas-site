@@ -3041,12 +3041,12 @@ function renderDeal(){
 
   const earn=incomeNeeded(v,eq,ten,S.applicant?S.applicant.obligations:0);
   const cs=document.getElementById('carSticky');
-  if(cs) cs.innerHTML = best ? `<div><b>${NGN(best.monthly)}</b><span>/month</span><small>${pct(eq*100,0)} down &middot; ${ten} months</small></div><button class="btn btn-a" onclick="qualOpen('${v.id}')">Get this car</button>` : '';
+  if(cs) cs.innerHTML = best ? `<div><b>~${NGN(best.monthly)}</b><span>/month</span><small>Indicative · ${pct(eq*100,0)} down &middot; ${ten} months</small></div><button class="btn btn-a" onclick="qualOpen('${v.id}')">Get this car</button>` : '';
   $('#carDeal').innerHTML = `
     ${best ? `
-    <div class="tiny muted" style="font-weight:550;margin-bottom:4px">Monthly repayment</div>
-    <div style="font-family:var(--display);font-size:2.3rem;font-weight:650;letter-spacing:-.025em;line-height:1">${NGN(best.monthly)}<span style="font-size:1rem;color:var(--ink-faint);font-weight:400"> /month</span></div>
-    <p class="tiny muted" style="margin-top:7px">${S.halal?pct(best.rate*100)+' fixed profit margin · non-interest bank':pct(best.rate*100)+' a year · best of our partner banks today'} · answer in ${best.hours}h</p>`
+    <div class="tiny muted" style="font-weight:550;margin-bottom:4px">Indicative monthly repayment</div>
+    <div style="font-family:var(--display);font-size:2.3rem;font-weight:650;letter-spacing:-.025em;line-height:1">~${NGN(best.monthly)}<span style="font-size:1rem;color:var(--ink-faint);font-weight:400"> /month</span></div>
+    <p class="tiny muted" style="margin-top:7px">${S.halal?'approx. '+pct(best.rate*100)+' fixed profit margin · non-interest bank':'approx. '+pct(best.rate*100)+' a year · best of our partner banks today'} · answer in ${best.hours}h</p>`
     : `
     <div style="font-family:var(--display);font-size:2.1rem;font-weight:650;letter-spacing:-.02em">${NGN(v.price)}*</div>
     <p class="tiny muted" style="margin-top:6px">Showroom price. Same for everybody.</p>`}
@@ -4833,9 +4833,9 @@ function calcPaint(sync){
   const car=VEHICLES.find(x=>x.id===CALC.car);
   const carLabel = car ? `${car.year} ${car.make} ${car.model}` : 'Car at '+NGN(CALC.price);
   out.innerHTML=`
-    <div class="tiny muted" style="font-weight:550;margin-bottom:6px">Monthly repayment to ${b.id==='other'?'the bank':b.n}</div>
-    <div class="calc-big">${NGN(q.monthly)} <em>/month × ${CALC.ten}</em></div>
-    <p class="tiny muted" style="margin-top:7px">${carLabel} · ${pct(CALC.rate,1)} a year ${CALC.method==='flat'?'flat':'reducing balance'} · ${Math.round(CALC.eq*100)}% down</p>
+    <div class="tiny muted" style="font-weight:550;margin-bottom:6px">Indicative monthly repayment to ${b.id==='other'?'the bank':b.n}</div>
+    <div class="calc-big">~${NGN(q.monthly)} <em>/month × ${CALC.ten}</em></div>
+    <p class="tiny muted" style="margin-top:7px">${carLabel} · approx. ${pct(CALC.rate,1)} a year ${CALC.method==='flat'?'flat':'reducing balance'} · ${Math.round(CALC.eq*100)}% down</p>
     ${belowFloor?`<div class="warnbox" style="margin-top:10px">${b.n} asks for at least ${Math.round(b.minEq*100)}% down. Move the slider up or pick another bank.</div>`:''}
     <div class="calc-stats">
       <div class="statcard"><div class="sv">${NGNs(q.interest)}</div><div class="sk">total interest</div></div>
