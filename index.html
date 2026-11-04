@@ -2714,7 +2714,7 @@ function qualRender(){
   else if(step==='name') body=`<h3>Nice! What’s your name?</h3><p class="qs-sub">As it appears on your ID.</p>
     <div class="qs-fields"><input id="qsFirst" placeholder="First name" autocomplete="given-name" value="${QS.first||''}"><input id="qsLast" placeholder="Last name" autocomplete="family-name" value="${QS.last||''}"></div>
     ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('name')">Next</button>`;
-  else if(step==='phone') body=`<h3>Your phone number</h3><p class="qs-sub">The bank’s offer arrives here, on WhatsApp.</p>
+  else if(step==='phone') body=`<h3>Your phone number</h3><p class="qs-sub">WhatsApp preferred &mdash; the bank’s offer arrives here.</p>
     <div class="qs-fields"><input id="qsPhone" type="tel" inputmode="tel" placeholder="${QS_PHONE[curCountry]||'0803 000 0000'}" autocomplete="tel" value="${QS.phone||''}"></div>
     ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('phone')">Next</button>`;
   else if(step==='work') body=`<h3>Where do you work?</h3><p class="qs-sub">Or the name of your business.</p>
@@ -2776,6 +2776,22 @@ function captureLead(){
   api('/api/applications',{method:'POST',body:{
     partial:true, stage:'started', country:curCountry, source:'storefront',
     applicant:{name:(QS.first+' '+QS.last).trim(),phone:QS.phone},
+    vehicleId:v?v.id:undefined, vehicle:v?`${v.year} ${v.make} ${v.model}`:undefined
+  }}).catch(()=>{});
+}
+/* Same early capture for the full loan-application flow (#/apply): the moment
+   name + a real phone number exist, send them, before the rest of the form is
+   touched — a drop-off anywhere later still leaves us able to message them. */
+function laLeadCheck(){
+  const L=S.la; if(!L||S.leadSentApply) return;
+  const first=(L.first||'').trim(), last=(L.last||'').trim(), phone=(L.phone||'').replace(/\D/g,'');
+  if(!first||!last||phone.length<10) return;
+  S.leadSentApply=true; save();
+  const v=vehicle();
+  track('lead_partial_captured',{id:v?v.id:null, source:'apply'});
+  api('/api/applications',{method:'POST',body:{
+    partial:true, stage:'started', country:curCountry, source:'apply',
+    applicant:{name:(L.first+' '+L.last).trim(),phone:L.phone},
     vehicleId:v?v.id:undefined, vehicle:v?`${v.year} ${v.make} ${v.model}`:undefined
   }}).catch(()=>{});
 }
@@ -3255,9 +3271,9 @@ function prequalMax(income, obligations){
 }
 function renderApply(){
   const v = vehicle(); if (!v){ location.hash = '#/market'; return; }
-  if(!S.la || S.la.ctry!==curCountry) S.la={ctry:curCountry,emp:'Salaried',tradeIn:'no',term:60,addons:{trk:true,ins:true},feesRoad:true,feesLic:false,
-    equityN:Math.round(v.price*0.10*curC().rate), desiredMo:'', c:{}};
-  if(S.qPre){ Object.assign(S.la,S.qPre); S.qPre=null; save(); }
+  if(!S.la || S.la.ctry!==curCountry){ S.la={ctry:curCountry,emp:'Salaried',tradeIn:'no',term:60,addons:{trk:true,ins:true},feesRoad:true,feesLic:false,
+    equityN:Math.round(v.price*0.10*curC().rate), desiredMo:'', c:{}}; S.leadSentApply=false; }
+  if(S.qPre){ Object.assign(S.la,S.qPre); S.qPre=null; save(); laLeadCheck(); }
   const GH=curCountry==='GH', GEN=!['NG','GH'].includes(curCountry), CS=curC().sym.trim();
   const BANKS_LF = GEN ? null : GH ? ['Stanbic Bank Ghana','Absa Ghana','Ecobank Ghana','CalBank','FNB Ghana','Fidelity Bank Ghana','GCB Bank','Other']
                       : ['Access Bank','Zenith Bank','First Bank','GTBank','UBA','Stanbic IBTC','Fidelity','Other'];
@@ -3276,10 +3292,10 @@ function renderApply(){
   const t=bestTeaser(v);
   const secs=['Quick Info','About Me','My Profession','Trade-in','My Loan Preferences','My Documents','Consent & Terms'];
   const CONSENT=secs.length-1;
-  const F=(k,label,ph,type,full,extra)=>`
+  const F=(k,label,ph,type,full,extra,after)=>`
     <div class="lf-field ${full?'full':''}"><label>${label} <b>*</b></label>
     <input id="lf-${k}" type="${type||'text'}" placeholder="${ph||''}" value="${(L[k]??'')}" ${extra||''}
-      oninput="S.la.${k}=this.value"></div>`;
+      oninput="S.la.${k}=this.value;${after||''}"></div>`;
   const Fo=(k,label,ph,type,full)=>F(k,label,ph,type,full).replace(' <b>*</b>','');
   const pills=(k,opts,cb)=>`<div class="lf-pills" id="lfp-${k}">`+opts.map(o=>
     `<button type="button" class="lf-pill ${L[k]===o?'sel':''}" onclick="S.la.${k}='${o}';${cb||''}save();renderApply()">${o}</button>`).join('')+`</div>`;
@@ -3296,9 +3312,9 @@ function renderApply(){
   const bodies=[
   /* 0 Quick Info */ `
     <div class="lf-grid">
-      ${F('first','First name','First name')}
-      ${F('last','Last name','Last name')}
-      ${F('phone','Phone number',GH?'024 000 0000':'0803 000 0000','tel')}
+      ${F('first','First name','First name',null,null,null,'laLeadCheck()')}
+      ${F('last','Last name','Last name',null,null,null,'laLeadCheck()')}
+      ${F('phone','Phone number (WhatsApp preferred)',GH?'024 000 0000':'0803 000 0000','tel',null,null,'laLeadCheck()')}
       ${F('email','Email address','you@example.com','email')}
       ${GEN ? F('natid','National ID number','As on your ID card','text','', 'maxlength="24"')
            : GH ? F('ghcard','Ghana Card number','GHA-123456789-0','text','', 'maxlength="16" style="text-transform:uppercase"')
