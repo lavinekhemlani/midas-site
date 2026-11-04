@@ -3129,8 +3129,10 @@ function fixStructure(quiet){
 <script>
 /* ===================== ACCOUNT ===================== */
 /* Where the pilot API lives. Same origin when the Node server serves this page;
-   the dev Cloud Run service from midascfo.com; localhost when opened off disk. */
-const MIDAS_API = window.MIDAS_API_BASE || (location.hostname.endsWith('midascfo.com') ? 'https://midas-auto-dev-t3nqqmcsxq-ew.a.run.app' : (location.protocol==='file:' ? 'http://localhost:8080' : location.origin));
+   the dev Cloud Run service from any production storefront domain (midascfo.com, gomidas.co);
+   localhost when opened off disk. */
+const MIDAS_PROD_HOSTS = ['midascfo.com', 'gomidas.co'];
+const MIDAS_API = window.MIDAS_API_BASE || (MIDAS_PROD_HOSTS.some(h => location.hostname.endsWith(h)) ? 'https://midas-auto-dev-t3nqqmcsxq-ew.a.run.app' : (location.protocol==='file:' ? 'http://localhost:8080' : location.origin));
 const AUTH_KEY='midas-auth-customer';
 let AUTH=loadAuth();
 function loadAuth(){ try{ const a=JSON.parse(localStorage.getItem(AUTH_KEY)); if(a&&a.user&&(a.token||a.offline)) return a; }catch(e){} return null; }
