@@ -540,7 +540,7 @@ html,body{overflow-x:clip}
 .person{display:flex;align-items:center;gap:15px;margin-top:24px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:var(--surface-2);max-width:380px}
 .person .pav{width:52px;height:52px;flex:none;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:18px}
 .person .pnum{font-size:1.15rem;font-weight:600;margin-top:3px;letter-spacing:.01em}
-@media(max-width:860px){#humanGrid{grid-template-columns:1fr}}
+
 .steps3{display:grid;grid-template-columns:repeat(3,1fr);gap:38px;max-width:1000px}
 .steps3 .num{font-family:var(--display);font-size:2.8rem;font-weight:650;color:var(--accent);line-height:1;letter-spacing:-.03em}
 .steps3 h4{font-size:1.18rem;margin:12px 0 6px}
@@ -1003,7 +1003,7 @@ input,select,textarea{font-size:17px}
   .fpop button{font-size:16.5px;padding:14px}
   .ftog{display:none}.fcount{margin:0 0 12px}
 }
-@media(max-width:760px){#humanGrid{grid-template-columns:1fr!important}#humanGrid>div:last-child{display:none}#humanGrid>div:first-child{padding:26px 20px!important}}
+@media(max-width:760px){#humanGrid{padding:26px 20px!important}}
 /* sheet: ID photos and the send-off */
 .qs-hint{font-size:14px;color:var(--ink-soft);margin:10px 2px 0}.qs-hint b{color:var(--ink)}
 .qs-skip{display:block;width:100%;margin-top:10px;border:0;background:none;font:inherit;font-size:15.5px;color:var(--ink-soft);padding:12px;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
@@ -1259,8 +1259,7 @@ input,select,textarea{font-size:17px}
 
   <div class="wrap sec" style="padding-top:26px">
     <div class="card" style="overflow:hidden">
-      <div class="grid" style="grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch" id="humanGrid">
-        <div style="padding:36px 34px">
+      <div id="humanGrid" style="padding:40px 34px;max-width:620px;margin:0 auto">
           <h2>Buy from people you can meet.</h2>
           <p class="muted" style="margin-top:10px;max-width:46ch">Hyundai, MG, Nissan and Honda showrooms for thirty years. Come and see the car.</p>
           <div class="person">
@@ -1275,9 +1274,7 @@ input,select,textarea{font-size:17px}
             <a class="btn btn-wa" href="https://wa.me/2348058963692?text=Hello%20Midas%2C%20I%20want%20to%20buy%20a%20car%20with%20a%20loan" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.2z"/></svg>Message Midas</a>
           </div>
           <p class="tiny faint" style="margin-top:20px">Showrooms &middot; Victoria Island &middot; Ikeja &middot; Abuja &middot; Port Harcourt &middot; Kano &middot; Enugu &middot; Ibadan</p>
-        </div>
-        <div style="min-height:320px;background:url('cars/driver-happy.jpg') center/cover;background-image:image-set(url('cars/driver-happy-w800.avif') type('image/avif'),url('cars/driver-happy-w800.webp') type('image/webp'),url('cars/driver-happy.jpg') type('image/jpeg'))"></div>
-      </div>
+        </div>      </div>
     </div>
     <p style="text-align:center;margin-top:22px;font-size:14.5px;color:var(--ink-soft)"><b style="color:var(--ink)">What you need:</b> your ID &middot; your phone &middot; your salary details. That's all.</p>
   </div>
