@@ -1228,8 +1228,8 @@ input,select,textarea{font-size:17px}
           <div class="mph"><div class="mph-in">
             <div class="mph-top"><span>Midas</span><span class="mph-live">Cars</span></div>
             <div class="mph-body">
-              <div class="mph-search">SUV &middot; under &#8358;1.2M a month</div>
-              <div class="mph-2up"><div class="mph-cc"><img src="cars/g/creta-1-w480.webp" alt="" loading="lazy" decoding="async" style="object-position:64% 50%"><div class="mph-cc-b"><b>Hyundai Creta</b><span>&#8358;1.05M<em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/navara-4-w480.webp" alt="" loading="lazy" decoding="async" style="object-fit:contain;background:#fff"><div class="mph-cc-b"><b>Nissan Navara</b><span>&#8358;938K<em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/grandi10-1-w480.webp" alt="" loading="lazy" decoding="async" style="object-position:41% 50%"><div class="mph-cc-b"><b>Grand i10</b><span>&#8358;776K<em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/tucson-1-w480.webp" alt="" loading="lazy" decoding="async" style="object-position:80% 50%"><div class="mph-cc-b"><b>Hyundai Tucson</b><span>&#8358;1.79M<em>/mo</em></span></div></div></div>
+              <div class="mph-search">SUV &middot; under <span class="mph-n" data-ngn="1200000"></span> a month</div>
+              <div class="mph-2up"><div class="mph-cc"><img src="cars/g/creta-1-w480.webp" alt="" loading="lazy" decoding="async" style="object-position:64% 50%"><div class="mph-cc-b"><b>Hyundai Creta</b><span><span class="mph-n" data-ngn="1050297"></span><em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/navara-4-w480.webp" alt="" loading="lazy" decoding="async" style="object-fit:contain;background:#fff"><div class="mph-cc-b"><b>Nissan Navara</b><span><span class="mph-n" data-ngn="938000"></span><em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/grandi10-1-w480.webp" alt="" loading="lazy" decoding="async" style="object-position:41% 50%"><div class="mph-cc-b"><b>Grand i10</b><span><span class="mph-n" data-ngn="776000"></span><em>/mo</em></span></div></div><div class="mph-cc"><img src="cars/g/tucson-1-w480.webp" alt="" loading="lazy" decoding="async" style="object-position:80% 50%"><div class="mph-cc-b"><b>Hyundai Tucson</b><span><span class="mph-n" data-ngn="1790000"></span><em>/mo</em></span></div></div></div>
             </div></div></div>
         </div>
         <div class="veh-body"><h4 style="margin:0">Choose your car</h4><p class="tiny muted" style="margin:4px 0 0">Every car shows its monthly price. Brand new, with the manufacturer&rsquo;s warranty.</p></div>
@@ -1241,9 +1241,9 @@ input,select,textarea{font-size:17px}
             <div class="mph-top"><span>Midas</span><span class="mph-live"><i></i>Estimates</span></div>
             <div class="mph-body">
               <div class="mph-car">Hyundai Creta &middot; 10% down &middot; 60 months</div>
-              <div class="offrow mph-best"><img src="brand/banks/access.svg" alt="Access Bank" class="offlogo"><b class="offamt">&#8358;1,050,297</b><span class="mph-tag">BEST</span></div>
-              <div class="offrow mph-row"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC" class="offlogo"><b class="offamt">&#8358;1,089,400</b></div>
-              <div class="offrow mph-row"><img src="brand/banks/lotus.svg" alt="Lotus Bank" class="offlogo"><b class="offamt">&#8358;1,126,800</b></div>
+              <div class="offrow mph-best"><img src="brand/banks/access.svg" alt="Access Bank" class="offlogo"><b class="offamt mph-nf" data-ngn="1050297"></b><span class="mph-tag">BEST</span></div>
+              <div class="offrow mph-row"><img src="brand/banks/stanbic.png" alt="Stanbic IBTC" class="offlogo"><b class="offamt mph-nf" data-ngn="1089400"></b></div>
+              <div class="offrow mph-row"><img src="brand/banks/lotus.svg" alt="Lotus Bank" class="offlogo"><b class="offamt mph-nf" data-ngn="1126800"></b></div>
             </div></div></div>
         </div>
         <div class="veh-body"><h4 style="margin:0">Pick the smallest monthly</h4><p class="tiny muted" style="margin:4px 0 0">See every bank’s estimate side by side. You choose.</p></div>
@@ -4901,6 +4901,7 @@ function route(){
   document.body.dataset.page=VIEW_OF[page]||page;
   try{ paintVat(); }catch(e){}
   try{ const rh=document.getElementById('rpHome'); if(rh) rh.hidden=!RP_SHOPS_BY[curCountry]; }catch(e){}
+  try{ document.querySelectorAll('.mph-n').forEach(e=>e.textContent=NGNs(+e.dataset.ngn)); document.querySelectorAll('.mph-nf').forEach(e=>e.textContent=NGN(+e.dataset.ngn)); }catch(e){}
   paintAuth();
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
   const node=$('#v-'+(VIEW_OF[page]||page)); if(node) node.classList.add('on');
