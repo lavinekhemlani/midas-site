@@ -2436,7 +2436,8 @@ const GH_BASE=[.12,.12,.13,.14,.145,.15];
    typical car-loan rates there (mid-2026). No bank is named until one signs, so
    the offer reads as a Midas estimate and the bank confirms the rate. */
 const MKT2={EG:{base:.19,lo:.15,hi:.28,name:'Egypt'},MA:{base:.075,lo:.055,hi:.11,name:'Morocco'},
-            ET:{base:.17,lo:.15,hi:.24,name:'Ethiopia'},ZA:{base:.13,lo:.105,hi:.19,name:'South Africa'},KE:{base:.14,lo:.12,hi:.2,name:'Kenya'}};
+            ET:{base:.17,lo:.15,hi:.24,name:'Ethiopia'},ZA:{base:.13,lo:.105,hi:.19,name:'South Africa'},KE:{base:.14,lo:.12,hi:.2,name:'Kenya'},
+            AE:{base:.055,lo:.04,hi:.085,name:'UAE'}};
 const _mkPanel={};
 function runPanel(v, equityPct, tenor, app){
   return panelLenders().map(l => evaluate(l, v, equityPct, tenor, app));
@@ -4154,8 +4155,9 @@ function renderCountry(){
   const w=$('#countryWrap'); if(!w) return;
   const seg=(location.hash.split('/')[2]||'').toUpperCase();
   if(COUNTRIES[seg]) curCountry=seg;
+  if(!COUNTRIES[curCountry]){ location.hash='#/market'; return; }
   const sel=document.getElementById('ctrySel'); if(sel) sel.value=curCountry;
-  const C=COUNTRIES[curCountry]||COUNTRIES.NG, L=C.l;
+  const C=COUNTRIES[curCountry], L=C.l;
   const lc=n=>C.cur+'\u00a0'+Math.round(n*C.rate).toLocaleString('en-US');
   const wa=t=>'https://wa.me/2348058963692?text='+encodeURIComponent(t);
   const picks=VEHICLES.slice(0,3);
@@ -4744,16 +4746,46 @@ function renderRepair(){
    type the rate from any offer letter. Amortisation reuses pmt(); the fee,
    tracker and insurance assumptions come from the asset-class config so the
    calculator agrees with the car page and the offers desk. */
-const CALC_BANKS=[
-  {id:'access',  n:'Access Bank',  g:'brand/banks/access.svg',  product:'Access Auto Loan',            rate:26, minEq:.10, maxTen:72, fee:.01,
-   note:'Typical terms: 10% down, interest on a reducing balance. A salary account with Access usually earns a lower rate.'},
-  {id:'stanbic', n:'Stanbic IBTC', g:'brand/banks/stanbic.png', product:'Vehicle &amp; Asset Finance', rate:26, minEq:.20, maxTen:60, fee:.01,
-   note:'Typical terms: 10% down and about 25% a year if your salary is paid into Stanbic, 20% down and about 27% a year otherwise. Up to 60 months, interest on a reducing balance.'},
-  {id:'other',   n:'Another bank', g:null,                      product:'Your own numbers',             rate:30, minEq:.10, maxTen:72, fee:.01,
-   note:'Type the rate and terms from any bank’s offer and see what it really costs over the term.'}
-];
+/* The two named cards plus "Another bank" change by market, so a Ghana visitor
+   never sees Nigerian banks and rates. No named bank yet (AE, EG, MA, ET, ZA, KE):
+   a single "Midas estimate" placeholder, same honest treatment as the rest of the site. */
+const OTHER_BANK={id:'other', n:'Another bank', g:null, product:'Your own numbers', rate:30, minEq:.10, maxTen:72, fee:.01,
+   note:'Type the rate and terms from any bank’s offer and see what it really costs over the term.'};
+const CALC_BANKS_BY={
+  NG:[
+    {id:'access',  n:'Access Bank',  g:'brand/banks/access.svg',  product:'Access Auto Loan',            rate:26, minEq:.10, maxTen:72, fee:.01,
+     note:'Typical terms: 10% down, interest on a reducing balance. A salary account with Access usually earns a lower rate.'},
+    {id:'stanbic', n:'Stanbic IBTC', g:'brand/banks/stanbic.png', product:'Vehicle &amp; Asset Finance', rate:26, minEq:.20, maxTen:60, fee:.01,
+     note:'Typical terms: 10% down and about 25% a year if your salary is paid into Stanbic, 20% down and about 27% a year otherwise. Up to 60 months, interest on a reducing balance.'},
+    OTHER_BANK
+  ],
+  GH:[
+    {id:'stanbicgh', n:'Stanbic Bank Ghana', g:'brand/banks/stanbicgh.png', product:'Vehicle Asset Finance', rate:12, minEq:.10, maxTen:72, fee:.01,
+     note:'Typical terms: 10% down, interest on a reducing balance.'},
+    {id:'absagh', n:'Absa Ghana', g:'brand/banks/absagh.png', product:'Vehicle Finance', rate:14.5, minEq:.10, maxTen:72, fee:.01,
+     note:'Typical terms: 10% down, interest on a reducing balance.'},
+    OTHER_BANK
+  ],
+  BJ:[
+    {id:'boa', n:'Bank of Africa', g:'brand/banks/boa.png', product:'Cr\u00e9dit auto', rate:10, minEq:.10, maxTen:72, fee:.01,
+     note:'Conditions types\u00a0: 10% d\u2019apport, int\u00e9r\u00eat d\u00e9gressif.'},
+    {id:'ecobankbj', n:'Ecobank B\u00e9nin', g:'brand/banks/ecobank.png', product:'Cr\u00e9dit auto', rate:10.5, minEq:.10, maxTen:72, fee:.01,
+     note:'Conditions types\u00a0: 10% d\u2019apport, int\u00e9r\u00eat d\u00e9gressif.'},
+    OTHER_BANK
+  ],
+};
+for (const c of ['AE','EG','MA','ET','ZA','KE']){ const M=MKT2[c]; if(M) CALC_BANKS_BY[c]=[
+  {id:c.toLowerCase()+'-est', n:'Midas estimate', g:null, product:'Typical terms today', rate:Math.round(M.base*1000)/10, minEq:.10, maxTen:72, fee:.01,
+   note:'No bank has signed in '+M.name+' yet. This is a typical rate for the market, not a bank\u2019s own quote.'},
+  OTHER_BANK
+]; }
+function calcBanks(){ return CALC_BANKS_BY[curCountry] || CALC_BANKS_BY.NG; }
 const CALC={bank:'access', car:'', price:0, eq:.10, ten:60, rate:26, method:'reducing', ins:true, monthly:false};
-function calcBank(){ return CALC_BANKS.find(b=>b.id===CALC.bank)||CALC_BANKS[0]; }
+function calcBank(){
+  const list=calcBanks(); let b=list.find(x=>x.id===CALC.bank);
+  if(!b){ b=list[0]; CALC.bank=b.id; CALC.rate=b.rate; if(CALC.eq<b.minEq) CALC.eq=b.minEq; if(CALC.ten>b.maxTen) CALC.ten=b.maxTen; }
+  return b;
+}
 /* Month-by-month table. Reducing balance is the ordinary annuity (pmt);
    flat rate charges interest on the opening balance every month. */
 function calcSchedule(P, ratePct, n, method){
@@ -4777,7 +4809,7 @@ function calcQuote(price, eq, ten, ratePct, method, ins, bank){
 }
 function calcSet(k,v){
   let sync=true;
-  if(k==='bank'){ const b=CALC_BANKS.find(x=>x.id===v); if(!b) return; CALC.bank=v; CALC.rate=b.rate;
+  if(k==='bank'){ const b=calcBanks().find(x=>x.id===v); if(!b) return; CALC.bank=v; CALC.rate=b.rate;
     if(CALC.eq<b.minEq) CALC.eq=b.minEq; if(CALC.ten>b.maxTen) CALC.ten=b.maxTen; }
   else if(k==='car'){ CALC.car=v; const c=VEHICLES.find(x=>x.id===v); if(c) CALC.price=c.price; }
   else if(k==='price'){ const n=parseFloat(v); CALC.price = isFinite(n)&&n>0 ? n/curC().rate : 0; CALC.car=''; const s=$('#ccCar'); if(s) s.value=''; sync=false; }
@@ -4800,7 +4832,7 @@ function calcPaint(sync){
   if(!$("#ccOut")) return;
   const b=calcBank();
   if(sync){
-    const row=$('#cbRow'); if(row) row.innerHTML=CALC_BANKS.map(x=>`
+    const row=$('#cbRow'); if(row) row.innerHTML=calcBanks().map(x=>`
       <button type="button" class="cb${x.id===CALC.bank?' on':''}" onclick="calcSet('bank','${x.id}')">
         ${x.g?`<img src="${x.g}" alt="${x.n}">`:`<span style="width:26px;height:26px;border-radius:50%;border:1.5px dashed var(--line-2);display:grid;place-items:center;font-size:16px;color:var(--ink-faint);line-height:1">+</span>`}
         <span class="cb-n">${x.n}</span><span class="cb-r">${x.id==='other'?'any rate you are quoted':x.rate+'% a year · '+Math.round(x.minEq*100)+'% down'}</span></button>`).join('');
@@ -4857,7 +4889,7 @@ function calcPaint(sync){
     <p class="tiny faint" style="margin-top:8px">* Prices exclude ${vatTxt()}. Income needed assumes repayments at 45% of net pay, the banks’ usual ceiling.</p>`;
 
   /* the two example banks side by side, each at its own typical rate */
-  const cmp=CALC_BANKS.filter(x=>x.id!=='other').map(x=>{
+  const cmp=calcBanks().filter(x=>x.id!=='other').map(x=>{
     const eq=Math.max(CALC.eq,x.minEq), ten=Math.min(CALC.ten,x.maxTen);
     const rate = x.id===CALC.bank ? CALC.rate : x.rate;
     return {x, eq, ten, rate, q:calcQuote(CALC.price, eq, ten, rate, CALC.method, CALC.ins, x), raised:eq>CALC.eq+1e-9};
@@ -4947,7 +4979,7 @@ function updateCountryUI(){
   if(hf){ if(!hf.dataset.ng) hf.dataset.ng=hf.innerHTML;
     hf.innerHTML = curCountry==='GH' ? 'Free to apply &nbsp;&middot;&nbsp; manufacturer warranty &nbsp;&middot;&nbsp; showroom in Kaneshie, Accra &nbsp;&middot;&nbsp; from 12% a year'
                  : curCountry==='BJ' ? 'Demande gratuite &nbsp;&middot;&nbsp; garantie constructeur &nbsp;&middot;&nbsp; concessions \u00e0 Cotonou'
-                 : MKT2[curCountry] ? (curCountry==='MA' ? 'Demande gratuite &nbsp;&middot;&nbsp; garantie constructeur &nbsp;&middot;&nbsp; prix en dirhams' : 'Free to apply &nbsp;&middot;&nbsp; manufacturer warranty &nbsp;&middot;&nbsp; every price in '+COUNTRIES[curCountry].cur)
+                 : MKT2[curCountry] ? (curCountry==='MA' ? 'Demande gratuite &nbsp;&middot;&nbsp; garantie constructeur &nbsp;&middot;&nbsp; prix en dirhams' : 'Free to apply &nbsp;&middot;&nbsp; manufacturer warranty &nbsp;&middot;&nbsp; every price in '+(COUNTRIES[curCountry]?COUNTRIES[curCountry].cur:curC().sym.trim()))
                  : hf.dataset.ng; }
   const tr=document.querySelector('.lgm-track');
   if(tr){ if(!tr.dataset.ng) tr.dataset.ng = tr.innerHTML;
