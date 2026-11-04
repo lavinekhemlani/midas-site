@@ -4,7 +4,7 @@
    - Photos, logos, fonts: served from the phone's cache, updated quietly.
    - Everything else (the Ask Midas API, analytics) goes straight to the network.
    Bump VERSION to drop every cached file on the next visit. */
-const VERSION = "midas-v3";   // bump whenever photos change at the same address
+const VERSION = "midas-v4";   // bumped: midascfo.com is now just a redirect to gomidas.co
 const PAGES = VERSION + "-pages";
 const MEDIA = VERSION + "-media";
 const MEDIA_MAX = 220;
