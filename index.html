@@ -970,7 +970,7 @@ input,select,textarea{font-size:17px}
 .qs-alt{display:flex;justify-content:space-between;width:100%;border:1px solid var(--line);background:#fff;border-radius:14px;padding:14px 16px;margin:8px 0;font:inherit;font-size:15.5px;cursor:pointer}.qs-alt span{color:var(--brand);font-weight:600}
 /* homepage: cars first, less noise */
 .ratesboard,.mkts{display:none!important}
-.budget-chips{display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none}.budget-chips::-webkit-scrollbar{display:none}
+.budget-chips{display:flex;gap:10px;overflow-x:auto;padding:14px 0 4px;scrollbar-width:none;mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent);-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 28px),transparent)}.budget-chips::-webkit-scrollbar{display:none}
 .budget-chips button{flex:0 0 auto;min-width:118px;border:1.5px solid var(--line-2);background:#fff;border-radius:16px;padding:12px 16px;font:inherit;font-size:16px;font-weight:650;color:var(--ink);cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:2px}
 .budget-chips button small{font-size:12.5px;font-weight:500;color:var(--ink-faint)}
 .budget-chips button.on{border-color:var(--brand);background:var(--brand);color:#fff}.budget-chips button.on small{color:#cfdbea}
@@ -1107,7 +1107,6 @@ input,select,textarea{font-size:17px}
       <option value="ET">&#127466;&#127481; Ethiopia</option>
       <option value="ZA">&#127487;&#127462; South Africa</option>
       <option value="KE">&#127472;&#127466; Kenya</option>
-      <option value="AE">&#127462;&#127466; UAE</option>
     </select>
     <a class="tlink" id="navAuth" href="#/login">Log in</a>
     <a class="btn btn-a btn-sm tapply" href="#/apply" onclick="startApply();return false;">Apply</a>
@@ -1178,7 +1177,7 @@ input,select,textarea{font-size:17px}
 
   <div class="wrap" style="padding-bottom:8px" id="inv">
     <div class="between" style="align-items:flex-end;margin-bottom:20px;flex-wrap:wrap">
-      <div class="sec-head" style="margin-bottom:0">
+      <div class="sec-head" style="margin-bottom:0;width:100%;max-width:none">
         <h2>What can you pay a month?</h2>
         <div class="budget-chips" id="budgetChips"></div>
       </div>
@@ -2045,13 +2044,13 @@ input,select,textarea{font-size:17px}
 let curCountry='NG';
 const CCY = { NG:{sym:'₦', rate:1}, GH:{sym:'GH₵ ', rate:0.0076}, BJ:{sym:'FCFA ', rate:0.39},
   EG:{sym:'E£ ', rate:0.0343}, MA:{sym:'MAD ', rate:0.0067}, ET:{sym:'Br ', rate:0.112}, ZA:{sym:'R ', rate:0.0116}, KE:{sym:'KSh ', rate:0.0921},
-  AE:{sym:'AED\u00a0', rate:0.00237} };
+ };
 /* First visit: work out the market from the browser timezone, then the language region.
    Never fall back to Nigeria silently: if neither is a market we serve, flag it so the
    market picker is shown. ?ctry= and a saved choice still win (applied further down). */
 let ctryGuessed=false;
 (function(){ try{
-  const TZ={'Asia/Dubai':'AE','Africa/Lagos':'NG','Africa/Accra':'GH','Africa/Porto-Novo':'BJ','Africa/Cairo':'EG',
+  const TZ={'Africa/Lagos':'NG','Africa/Accra':'GH','Africa/Porto-Novo':'BJ','Africa/Cairo':'EG',
     'Africa/Casablanca':'MA','Africa/Addis_Ababa':'ET','Africa/Johannesburg':'ZA','Africa/Nairobi':'KE'};
   let c=TZ[Intl.DateTimeFormat().resolvedOptions().timeZone||''];
   if(!c){ for(const l of (navigator.languages||[navigator.language||''])){ const r=(String(l).split('-')[1]||'').toUpperCase(); if(CCY[r]){ c=r; break; } } }
@@ -2436,8 +2435,7 @@ const GH_BASE=[.12,.12,.13,.14,.145,.15];
    typical car-loan rates there (mid-2026). No bank is named until one signs, so
    the offer reads as a Midas estimate and the bank confirms the rate. */
 const MKT2={EG:{base:.19,lo:.15,hi:.28,name:'Egypt'},MA:{base:.075,lo:.055,hi:.11,name:'Morocco'},
-            ET:{base:.17,lo:.15,hi:.24,name:'Ethiopia'},ZA:{base:.13,lo:.105,hi:.19,name:'South Africa'},KE:{base:.14,lo:.12,hi:.2,name:'Kenya'},
-            AE:{base:.055,lo:.04,hi:.085,name:'UAE'}};
+            ET:{base:.17,lo:.15,hi:.24,name:'Ethiopia'},ZA:{base:.13,lo:.105,hi:.19,name:'South Africa'},KE:{base:.14,lo:.12,hi:.2,name:'Kenya'}};
 const _mkPanel={};
 function runPanel(v, equityPct, tenor, app){
   return panelLenders().map(l => evaluate(l, v, equityPct, tenor, app));
@@ -2637,13 +2635,13 @@ let QS={};
 const QS_INC=[[0,300000],[300000,600000],[600000,1000000],[1000000,2000000],[2000000,4000000],[4000000,0]];
 const QS_DEBT=[[0,'None'],[60000,''],[200000,''],[450000,'']];
 const QS_BANKS={NG:['Access','GTBank','Zenith','First Bank','UBA','Stanbic IBTC','Fidelity','Other'],
-                GH:['Stanbic Ghana','Absa','Ecobank','CalBank','GCB','Fidelity Ghana','FNB','Other'],
+                GH:['Stanbic Ghana','Absa Ghana','Ecobank Ghana','CalBank','GCB','Fidelity Ghana','FNB Ghana','Other'],
                 KE:['KCB','Equity','Co-op Bank','NCBA','Absa Kenya','Stanbic Kenya','I&M','Other'],
                 ZA:['Standard Bank','FNB','Absa','Nedbank','Capitec','Investec','Other'],
                 EG:['National Bank of Egypt','Banque Misr','CIB','QNB','Banque du Caire','AAIB','Other'],
                 MA:['Attijariwafa','Banque Populaire','Bank of Africa','CIH','Crédit du Maroc','Société Générale','Other'],
                 ET:['Commercial Bank of Ethiopia','Awash','Dashen','Abyssinia','Hibret','Wegagen','Other'],
-                BJ:['Ecobank','BOA Bénin','Orabank','NSIA Banque','UBA Bénin','BIIC','Other']};
+                BJ:['Ecobank Bénin','BOA Bénin','Orabank','NSIA Banque','UBA Bénin','BIIC','Other']};
 const QS_PHONE={NG:'0803 000 0000',GH:'024 000 0000',KE:'0712 000 000',ZA:'082 000 0000',EG:'010 0000 0000',MA:'06 00 00 00 00',ET:'091 000 0000',BJ:'01 97 00 00 00'};
 /* a naira amount moved to the nearest round number in the buyer's own currency (KSh 55,260 -> KSh 55,000) */
 /* VAT note in the buyer's own market */
@@ -2653,7 +2651,7 @@ function vatTxt(){ return VAT_TXT[curCountry]||'VAT'; }
 function paintVat(){ document.querySelectorAll('.vat-n').forEach(e=>e.textContent=vatTxt()); }
 function niceN(n){ const r=curC().rate, v=n*r; if(!v) return n; const p=Math.pow(10,Math.floor(Math.log10(v))-1); return Math.round(v/p)*p/r; }
 function qsBand([a,b]){ return !a?'Under '+NGNs(niceN(b)):!b?'Over '+NGNs(niceN(a)):NGNs(niceN(a))+' – '+NGNs(niceN(b)); }
-function qsSteps(){ return ['pay','loans',...(QS.fixed?[]:['pick']),'down','result','name','phone','work','bank','id','docs','agree','done']; }
+function qsSteps(){ return ['name','phone','pay','loans',...(QS.fixed?[]:['pick']),'down','result','work','bank','id','docs','agree','done']; }
 function qualOpen(id){ QS={id:id||null,fixed:!!id,i:0}; const el=document.getElementById('qSheet'); el.hidden=false; document.body.style.overflow='hidden'; qualRender(); track('qualify_open',{id:id||'budget'}); }
 function qualClose(){ const el=document.getElementById('qSheet'); if(el) el.hidden=true; document.body.style.overflow=''; }
 function qualNext(){ QS.i++; QS.err=''; qualRender(); }
@@ -2763,10 +2761,21 @@ function qualRender(){
   b.innerHTML=head+back+body;
   const first=b.querySelector('.qs-fields input'); if(first){ first.focus({preventScroll:true}); b.querySelectorAll('.qs-fields input').forEach(x=>x.onkeydown=e=>{ if(e.key==='Enter') b.querySelector('.qs-go')&&b.querySelector('.qs-go').click(); }); }
 }
+function captureLead(){
+  if(QS.leadSent) return; QS.leadSent=true;
+  const v=QS.id?VEHICLES.find(x=>x.id===QS.id):null;
+  track('lead_partial_captured',{id:QS.id||null});
+  api('/api/applications',{method:'POST',body:{
+    partial:true, stage:'started', country:curCountry, source:'storefront',
+    applicant:{name:(QS.first+' '+QS.last).trim(),phone:QS.phone},
+    vehicleId:v?v.id:undefined, vehicle:v?`${v.year} ${v.make} ${v.model}`:undefined
+  }}).catch(()=>{});
+}
 function qsSave(step){
   const bad=m=>{ QS.err=m; qualRender(); };
   if(step==='name'){ QS.first=qsVal('qsFirst'); QS.last=qsVal('qsLast'); if(!QS.first||!QS.last) return bad('Please add your first and last name.'); }
-  if(step==='phone'){ QS.phone=qsVal('qsPhone'); if(QS.phone.replace(/\D/g,'').length<10) return bad('That number looks short. It needs at least 10 digits.'); }
+  if(step==='phone'){ QS.phone=qsVal('qsPhone'); if(QS.phone.replace(/\D/g,'').length<10) return bad('That number looks short. It needs at least 10 digits.');
+    captureLead(); }
   if(step==='work'){ QS.employer=qsVal('qsEmployer'); if(!QS.employer) return bad('Please add where you work.'); if(QS.years==null) return; }
   if(step==='id'){ const raw=qsVal(curCountry==='NG'?'qsBvn':curCountry==='GH'?'qsGh':'qsNat'); QS.idv=raw;
     if(curCountry==='NG'&&!/^\d{11}$/.test(raw.replace(/\D/g,''))) return bad('A BVN is exactly 11 digits. Dial *565*0# to get yours.');
@@ -4774,7 +4783,7 @@ const CALC_BANKS_BY={
     OTHER_BANK
   ],
 };
-for (const c of ['AE','EG','MA','ET','ZA','KE']){ const M=MKT2[c]; if(M) CALC_BANKS_BY[c]=[
+for (const c of ['EG','MA','ET','ZA','KE']){ const M=MKT2[c]; if(M) CALC_BANKS_BY[c]=[
   {id:c.toLowerCase()+'-est', n:'Midas estimate', g:null, product:'Typical terms today', rate:Math.round(M.base*1000)/10, minEq:.10, maxTen:72, fee:.01,
    note:'No bank has signed in '+M.name+' yet. This is a typical rate for the market, not a bank\u2019s own quote.'},
   OTHER_BANK
@@ -4814,7 +4823,7 @@ function calcSet(k,v){
   else if(k==='car'){ CALC.car=v; const c=VEHICLES.find(x=>x.id===v); if(c) CALC.price=c.price; }
   else if(k==='price'){ const n=parseFloat(v); CALC.price = isFinite(n)&&n>0 ? n/curC().rate : 0; CALC.car=''; const s=$('#ccCar'); if(s) s.value=''; sync=false; }
   else if(k==='eq'){ CALC.eq=clamp((parseFloat(v)||10)/100,.10,.70); }
-  else if(k==='ten'){ CALC.ten=clamp(parseInt(v,10)||60,12,60); }
+  else if(k==='ten'){ CALC.ten=clamp(parseInt(v,10)||60,12,calcBank().maxTen); }
   else if(k==='rate'){ const n=parseFloat(v); if(!(isFinite(n)&&n>=0)) return; CALC.rate=Math.min(80,n); sync=false; }
   else if(k==='method'){ CALC.method=v==='flat'?'flat':'reducing'; }
   else if(k==='ins'){ CALC.ins=!!v; }
