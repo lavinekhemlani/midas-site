@@ -2334,11 +2334,14 @@ function evaluate(lender, v, equityPct, tenor, app){
   const ltrv    = loan / rv;
   const age     = 2026 - v.year;
   const declines = [];
+  const domiciledHere = !!(app && app.bank && bankName(lender) === app.bank);
+  const minEq = lender.id === 'LP-02' ? (domiciledHere ? .10 : .20) : lender.minEq;
+  const maxTen = lender.id === 'LP-02' ? 60 : lender.maxTen;
 
   if (loan < lender.minTick)              declines.push('Below minimum ticket ' + NGNs(lender.minTick));
   if (loan > lender.maxTick)              declines.push('Above maximum ticket ' + NGNs(lender.maxTick));
-  if (equityPct < lender.minEq - 1e-9)    declines.push('Equity below ' + pct(lender.minEq*100,0) + ' floor');
-  if (tenor > lender.maxTen)              declines.push('Tenor exceeds ' + lender.maxTen + ' months');
+  if (equityPct < minEq - 1e-9)           declines.push('Equity below ' + pct(minEq*100,0) + ' floor' + (lender.id==='LP-02' && !domiciledHere ? ' (10% with a Stanbic salary account)' : ''));
+  if (tenor > maxTen)                     declines.push('Tenor exceeds ' + maxTen + ' months');
   if (age > lender.maxAge)                declines.push('Vehicle age ' + age + 'y exceeds ' + lender.maxAge + 'y cap');
   if (v.origin === 'Local' && !lender.localOk) declines.push('No appetite for locally-used units');
   if (lender.makes && !lender.makes.includes(v.make)) declines.push(v.make + ' outside manufacturer programme');
@@ -2360,7 +2363,7 @@ function evaluate(lender, v, equityPct, tenor, app){
   if (app){
     rate += ({Salaried:0,'Director/Owner':.006,Professional:.003,'Self-employed':.013,Gig:.024,Trader:.021})[app.employment] ?? .01;
     if (app.yearsEmployed >= 3) rate -= .005;
-    if (app.salaryDomiciled)    rate -= .009;                  // salary account with the lender
+    if (app.salaryDomiciled || domiciledHere) rate -= .009;     // salary account with the lender
   }
   rate *= (2 - lender.appetite);                               // hungry lenders shade the price
   rate = clamp(rate, .195, .46);
@@ -2368,7 +2371,7 @@ function evaluate(lender, v, equityPct, tenor, app){
     let g = GH_BASE[lender.ghi] ?? .16;
     g += (v.grade==='C' ? .012 : v.grade==='B' ? .004 : 0) + (age > 6 ? .006 : 0) + (tenor > 48 ? .004 : 0);
     if (app){ g += ({Salaried:0,'Director/Owner':.004,Professional:.002,'Self-employed':.009,Gig:.016,Trader:.014})[app.employment] ?? .006;
-              if (app.salaryDomiciled) g -= .005; }
+              if (app.salaryDomiciled || domiciledHere) g -= .005; }
     rate = clamp(g, .115, .24);
   }
   if (curCountry==='BJ' && lender.bji!=null){
@@ -2393,7 +2396,11 @@ function evaluate(lender, v, equityPct, tenor, app){
   const allIn = totalRepay + fees + insurance;
 
   let dti = null;
-  if (app) { dti = (monthly + app.obligations) / app.income; if (dti > lender.maxDti) declines.push('DTI ' + pct(dti*100,0) + ' over ' + pct(lender.maxDti*100,0) + ' limit'); }
+  if (app) {
+    dti = (monthly + app.obligations) / app.income;
+    if (dti > lender.maxDti) declines.push('DTI ' + pct(dti*100,0) + ' over ' + pct(lender.maxDti*100,0) + ' limit');
+    if (lender.id === 'LP-02' && monthly / app.income > 0.35) declines.push('Instalment ' + pct(monthly/app.income*100,0) + ' over Stanbic\u2019s 35% salary cap');
+  }
 
   return {
     lender, approved: declines.length === 0, declines,
@@ -4740,8 +4747,8 @@ function renderRepair(){
 const CALC_BANKS=[
   {id:'access',  n:'Access Bank',  g:'brand/banks/access.svg',  product:'Access Auto Loan',            rate:26, minEq:.10, maxTen:72, fee:.01,
    note:'Typical terms: 10% down, interest on a reducing balance. A salary account with Access usually earns a lower rate.'},
-  {id:'stanbic', n:'Stanbic IBTC', g:'brand/banks/stanbic.png', product:'Vehicle &amp; Asset Finance', rate:28, minEq:.20, maxTen:72, fee:.01,
-   note:'Typical terms: 20% down, interest on a reducing balance. Finances brand-new and certified used cars.'},
+  {id:'stanbic', n:'Stanbic IBTC', g:'brand/banks/stanbic.png', product:'Vehicle &amp; Asset Finance', rate:26, minEq:.20, maxTen:60, fee:.01,
+   note:'Typical terms: 10% down and about 25% a year if your salary is paid into Stanbic, 20% down and about 27% a year otherwise. Up to 60 months, interest on a reducing balance.'},
   {id:'other',   n:'Another bank', g:null,                      product:'Your own numbers',             rate:30, minEq:.10, maxTen:72, fee:.01,
    note:'Type the rate and terms from any bank’s offer and see what it really costs over the term.'}
 ];
