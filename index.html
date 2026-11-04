@@ -2712,7 +2712,7 @@ function qualRender(){
         <a class="btn btn-wa btn-lg qs-go qs-wa" href="https://wa.me/2348058963692?text=${encodeURIComponent('Hello Midas, I want the '+v.make+' '+v.model+'. I take home about '+NGNs(QS.inc)+' a month. Can you help me get it?')}" target="_blank" rel="noopener" onclick="track('qualify_handoff',{id:'${v.id}'})">${QS_WA}Ask Midas to help</a>
         <button class="btn btn-g qs-go" onclick="QS.i=0;qualRender()">Change my answers</button></div>`; } }
   else if(step==='lead') body=`<h3>Nice! What’s your name?</h3><p class="qs-sub">As it appears on your ID.</p>
-    <div class="qs-fields"><input id="qsFirst" placeholder="First name" autocomplete="given-name" value="${QS.first||''}"><input id="qsLast" placeholder="Last name" autocomplete="family-name" value="${QS.last||''}"></div>
+    <div class="qs-fields"><input id="qsName" placeholder="First and last name" autocomplete="name" value="${((QS.first||'')+' '+(QS.last||'')).trim()}"></div>
     <p class="qs-sub" style="margin-top:16px">Your phone number &mdash; WhatsApp preferred. The bank’s offer arrives here.</p>
     <div class="qs-fields"><input id="qsPhone" type="tel" inputmode="tel" placeholder="${QS_PHONE[curCountry]||'0803 000 0000'}" autocomplete="tel" value="${QS.phone||''}"></div>
     ${err}<button class="btn btn-a btn-lg qs-go" onclick="qsSave('lead')">Next</button>`;
@@ -2796,7 +2796,9 @@ function laLeadCheck(){
 }
 function qsSave(step){
   const bad=m=>{ QS.err=m; qualRender(); };
-  if(step==='lead'){ QS.first=qsVal('qsFirst'); QS.last=qsVal('qsLast'); if(!QS.first||!QS.last) return bad('Please add your first and last name.');
+  if(step==='lead'){ const full=qsVal('qsName').replace(/\s+/g,' ').trim(); const parts=full.split(' ');
+    if(parts.length<2||!parts[0]||!parts[1]) return bad('Please add your first and last name.');
+    QS.first=parts[0]; QS.last=parts.slice(1).join(' ');
     QS.phone=qsVal('qsPhone'); if(QS.phone.replace(/\D/g,'').length<10) return bad('That number looks short. It needs at least 10 digits.');
     captureLead(); }
   if(step==='work'){ QS.employer=qsVal('qsEmployer'); if(!QS.employer) return bad('Please add where you work.'); if(QS.years==null) return; }
