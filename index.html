@@ -1160,7 +1160,7 @@ input,select,textarea{font-size:17px}
     <div class="rp-home">
       <div class="rp-home-t"><span class="rp-home-ic">&#128295;</span><div><b>Car needs fixing?</b><span>Snap the damage. Fix it now, pay over 3 months.</span></div></div>
       <div class="rp-home-b">
-        <label class="btn btn-a"><input class="vh-in" type="file" accept="image/*" capture="environment" multiple onchange="rpHomePhoto(this)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.6"/></svg>Take a photo</label>
+        <label class="btn btn-a"><input class="vh-in" type="file" accept="image/*" capture="environment" onchange="rpHomePhoto(this)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.6"/></svg>Take a photo</label>
         <label class="btn btn-g"><input class="vh-in" type="file" accept="image/*" multiple onchange="rpHomePhoto(this)"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="M21 16l-5-5-9 9"/></svg>From my phone</label>
       </div>
       <a class="rp-home-more" href="#/repair">See repair finance &rarr;</a>
@@ -4661,7 +4661,7 @@ function renderRepair(){
     <div class="rp-photo">
       <p class="tiny muted" style="margin:0 0 10px">Up to 3 photos of the car and the problem. The workshop confirms your quote from them.</p>
       <div class="qs-docbtns">
-        <label class="qs-dbtn cam"><input type="file" accept="image/*" capture="environment" multiple onchange="rpPhoto(this)">${QS_CAM}<span>Take a photo</span></label>
+        <label class="qs-dbtn cam"><input type="file" accept="image/*" capture="environment" onchange="rpPhoto(this)">${QS_CAM}<span>Take a photo</span></label>
         <label class="qs-dbtn"><input type="file" accept="image/*" multiple onchange="rpPhoto(this)">${QS_FILE}<span>From my phone</span></label>
       </div>
       ${RP_PHOTOS.length?`<div class="rp-thumbs">${RP_PHOTOS.map((p,i)=>`<span class="rp-th"><img src="${p.data}" alt=""><button onclick="rpPhotoDel(${i})" aria-label="Remove">&times;</button></span>`).join('')}</div>`:''}
