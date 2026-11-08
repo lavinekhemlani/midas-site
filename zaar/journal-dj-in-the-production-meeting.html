@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why the DJ belongs in the production meeting | Z Productions</title>
+<meta name="description" content="Most corporate events book the music last. The best ones start with it.">
+<meta property="og:title" content="Why the DJ belongs in the production meeting | Z Productions">
+<meta property="og:description" content="Most corporate events book the music last. The best ones start with it.">
+<meta property="og:image" content="assets/video/hero.jpg">
+<link rel="icon" href="assets/img/z2-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav" class="solid fixed-solid"><div class="wrap">
+  <a class="brand" href="index.html">Z Productions</a>
+  <div class="links">
+    <a href="experiences.html">Experiences</a>
+    <a href="wellness.html">Wellness</a>
+    <a href="journal.html">Journal</a>
+    <a href="story.html">Story</a>
+    <a class="enq" href="index.html#enquire">Start a conversation</a>
+  </div>
+</div></nav>
+<section class="page-hero" style="padding-bottom:0">
+  <div class="wrap" style="max-width:900px">
+    <div class="label rv"><a href="journal.html">Journal</a> · Insights · Nov 2026</div>
+    <h1 class="rv" style="font-size:clamp(38px,5vw,68px)">Why the DJ belongs in the production meeting</h1>
+  </div>
+  <div class="wrap"><div class="cover rv"><img class="grade" src="assets/img/led-club.webp" alt=""></div></div>
+</section>
+<section style="padding-top:clamp(60px,7vw,100px)">
+  <div class="article">
+    <p class="lead">Most corporate events book the music last. The best ones start with it.</p>
+    <p>Walk into most event planning meetings in Dubai and you will find the venue, the caterer, the AV company and the decor team. The DJ is usually a name on a spreadsheet, booked once the date is fixed and briefed in a WhatsApp message the week before.</p><p>That is backwards. The music decides when people stand up, when they sit down, when the speeches land and when the room finally lets go. It shapes the lighting plan, the stage position and where the bar should be.</p><h2>What changes when the DJ is in the room</h2><p>When the person playing the night helps plan it, the run sheet gets simpler. Walk-ups are timed to the music. The lighting is cued to the drop, not to a guess. The speaker system is specified for the room, not for the last event the AV company did.</p><h2>The practical version</h2><p>Ask your DJ to walk the venue. Share the run sheet early. Tell them who is in the room, not just how many. It costs nothing, and it is the difference between background music and a night people talk about.</p>
+    <p style="margin-top:48px"><a class="textlink" href="journal.html">Back to the journal</a></p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:19px;color:var(--ink)">Z Productions</a>
+    <span><a href="experiences.html">Experiences</a> · <a href="wellness.html">Wellness</a> · <a href="journal.html">Journal</a> · <a href="story.html">Story</a></span>
+    <span>Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+  </div>
+</footer>
+<script>
+const WA = "971528725585";
+const waLink = m => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+document.querySelectorAll('.wa').forEach(a => { a.href = waLink(a.dataset.msg || "Hi Zaar"); a.target = "_blank"; a.rel = "noopener"; });
+const bf = document.getElementById('briefform');
+if (bf) bf.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), v = k => (f.get(k) || '').trim();
+  const lines = [`Hi Zaar, I'm ${v('name')}${v('company') ? ' from ' + v('company') : ''}.`, v('type') && `Occasion: ${v('type')}`,
+    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`].filter(Boolean);
+  window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+});
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+if (!nav.classList.contains('fixed-solid')) {
+  const onScroll = () => nav.classList.toggle('solid', scrollY > (hero ? hero.offsetHeight - 80 : 10));
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+}
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms`; io.observe(el); });
+document.querySelectorAll('video').forEach(v => new IntersectionObserver(([e]) => e.isIntersecting ? v.play().catch(()=>{}) : v.pause()).observe(v.parentElement));
+</script>
+</body>
+</html>

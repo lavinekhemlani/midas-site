@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baraat to last song: how a wedding day really runs | Z Productions</title>
+<meta name="description" content="A wedding is four or five events in one day. The music has to carry all of them.">
+<meta property="og:title" content="Baraat to last song: how a wedding day really runs | Z Productions">
+<meta property="og:description" content="A wedding is four or five events in one day. The music has to carry all of them.">
+<meta property="og:image" content="assets/video/hero.jpg">
+<link rel="icon" href="assets/img/z2-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav" class="solid fixed-solid"><div class="wrap">
+  <a class="brand" href="index.html">Z Productions</a>
+  <div class="links">
+    <a href="experiences.html">Experiences</a>
+    <a href="wellness.html">Wellness</a>
+    <a href="journal.html">Journal</a>
+    <a href="story.html">Story</a>
+    <a class="enq" href="index.html#enquire">Start a conversation</a>
+  </div>
+</div></nav>
+<section class="page-hero" style="padding-bottom:0">
+  <div class="wrap" style="max-width:900px">
+    <div class="label rv"><a href="journal.html">Journal</a> · Rituals · Oct 2026</div>
+    <h1 class="rv" style="font-size:clamp(38px,5vw,68px)">Baraat to last song: how a wedding day really runs</h1>
+  </div>
+  <div class="wrap"><div class="cover rv"><img class="grade" src="assets/img/baraat.webp" alt=""></div></div>
+</section>
+<section style="padding-top:clamp(60px,7vw,100px)">
+  <div class="article">
+    <p class="lead">A wedding is four or five events in one day. The music has to carry all of them.</p>
+    <p>An Indian wedding in Dubai can start with a baraat in the hotel forecourt and end with a reception that runs past two in the morning. In between there may be a ceremony, a brunch, a sangeet and a change of venue.</p><h2>The baraat</h2><p>The dhol leads, the groom's side dances him in, and timing is everything: the music has to hold the energy until the bride's side is ready. Recent baraats at Delano and Taj taught us to always plan for the wait.</p><h2>The quiet middle</h2><p>Ceremonies and lunches need music that fills the room without competing with it. This is where most weddings feel flat.</p><h2>The reception</h2><p>Then the room turns. Bollywood, commercial and Afro house in one set, read live from the floor. The best receptions feel like the whole day was building to them, because it was.</p>
+    <p style="margin-top:48px"><a class="textlink" href="journal.html">Back to the journal</a></p>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:19px;color:var(--ink)">Z Productions</a>
+    <span><a href="experiences.html">Experiences</a> · <a href="wellness.html">Wellness</a> · <a href="journal.html">Journal</a> · <a href="story.html">Story</a></span>
+    <span>Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+  </div>
+</footer>
+<script>
+const WA = "971528725585";
+const waLink = m => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+document.querySelectorAll('.wa').forEach(a => { a.href = waLink(a.dataset.msg || "Hi Zaar"); a.target = "_blank"; a.rel = "noopener"; });
+const bf = document.getElementById('briefform');
+if (bf) bf.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), v = k => (f.get(k) || '').trim();
+  const lines = [`Hi Zaar, I'm ${v('name')}${v('company') ? ' from ' + v('company') : ''}.`, v('type') && `Occasion: ${v('type')}`,
+    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`].filter(Boolean);
+  window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+});
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+if (!nav.classList.contains('fixed-solid')) {
+  const onScroll = () => nav.classList.toggle('solid', scrollY > (hero ? hero.offsetHeight - 80 : 10));
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+}
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms`; io.observe(el); });
+document.querySelectorAll('video').forEach(v => new IntersectionObserver(([e]) => e.isIntersecting ? v.play().catch(()=>{}) : v.pause()).observe(v.parentElement));
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Journal | Z Productions</title>
+<meta name="description" content="Insights, field notes and rituals from the rooms Z Productions runs.">
+<meta property="og:title" content="Journal | Z Productions">
+<meta property="og:description" content="Insights, field notes and rituals from the rooms Z Productions runs.">
+<meta property="og:image" content="assets/video/hero.jpg">
+<link rel="icon" href="assets/img/z2-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav" class="solid fixed-solid"><div class="wrap">
+  <a class="brand" href="index.html">Z Productions</a>
+  <div class="links">
+    <a href="experiences.html">Experiences</a>
+    <a href="wellness.html">Wellness</a>
+    <a href="journal.html">Journal</a>
+    <a href="story.html">Story</a>
+    <a class="enq" href="index.html#enquire">Start a conversation</a>
+  </div>
+</div></nav>
+<section class="page-hero">
+  <div class="wrap">
+    <div class="label rv">Journal</div>
+    <h1 class="rv">Notes from<br><em>behind the decks</em></h1>
+    <div class="rule rv"></div>
+    <p class="measure rv">A living archive of Insights, Field notes and Rituals: what we learn from the rooms we run.</p>
+  </div>
+</section>
+
+<section class="paper" style="padding-top:clamp(70px,8vw,120px)">
+  <div class="wrap">
+    <a class="feature rv" href="journal-dj-in-the-production-meeting.html">
+      <div class="img"><img class="grade" src="assets/img/led-club.webp" alt="" loading="lazy"></div>
+      <div><div class="label">Featured story</div><h2>Why the DJ belongs in the production meeting</h2><p class="measure">Most corporate events book the music last. The best ones start with it.</p><span class="textlink" style="margin-top:28px">Read the article</span></div>
+    </a>
+    <div class="posts">
+      <a class="post rv" href="journal-dj-in-the-production-meeting.html"><div class="img"><img class="grade" src="assets/img/led-club.webp" alt="" loading="lazy"></div><span class="label">Insights · Nov 2026</span><h3>Why the DJ belongs in the production meeting</h3><p>Most corporate events book the music last. The best ones start with it.</p></a>
+      <a class="post rv" href="journal-planning-a-corporate-night-in-dubai.html"><div class="img"><img class="grade" src="assets/img/stage-show.webp" alt="" loading="lazy"></div><span class="label">Field notes · Nov 2026</span><h3>Planning a corporate night in Dubai: what to settle first</h3><p>Five questions that save weeks of back-and-forth.</p></a>
+      <a class="post rv" href="journal-baraat-to-last-song.html"><div class="img"><img class="grade" src="assets/img/baraat.webp" alt="" loading="lazy"></div><span class="label">Rituals · Oct 2026</span><h3>Baraat to last song: how a wedding day really runs</h3><p>A wedding is four or five events in one day. The music has to carry all of them.</p></a>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:19px;color:var(--ink)">Z Productions</a>
+    <span><a href="experiences.html">Experiences</a> · <a href="wellness.html">Wellness</a> · <a href="journal.html">Journal</a> · <a href="story.html">Story</a></span>
+    <span>Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+  </div>
+</footer>
+<script>
+const WA = "971528725585";
+const waLink = m => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+document.querySelectorAll('.wa').forEach(a => { a.href = waLink(a.dataset.msg || "Hi Zaar"); a.target = "_blank"; a.rel = "noopener"; });
+const bf = document.getElementById('briefform');
+if (bf) bf.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), v = k => (f.get(k) || '').trim();
+  const lines = [`Hi Zaar, I'm ${v('name')}${v('company') ? ' from ' + v('company') : ''}.`, v('type') && `Occasion: ${v('type')}`,
+    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`].filter(Boolean);
+  window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+});
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+if (!nav.classList.contains('fixed-solid')) {
+  const onScroll = () => nav.classList.toggle('solid', scrollY > (hero ? hero.offsetHeight - 80 : 10));
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+}
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms`; io.observe(el); });
+document.querySelectorAll('video').forEach(v => new IntersectionObserver(([e]) => e.isIntersecting ? v.play().catch(()=>{}) : v.pause()).observe(v.parentElement));
+</script>
+</body>
+</html>

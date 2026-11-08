@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Wellness Collective | Z Productions</title>
+<meta name="description" content="Sunrise sessions, sound evenings and retreats, curated by Z Productions. Coming soon.">
+<meta property="og:title" content="The Wellness Collective | Z Productions">
+<meta property="og:description" content="Sunrise sessions, sound evenings and retreats, curated by Z Productions. Coming soon.">
+<meta property="og:image" content="assets/video/hero.jpg">
+<link rel="icon" href="assets/img/z2-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav" class="solid fixed-solid"><div class="wrap">
+  <a class="brand" href="index.html">Z Productions</a>
+  <div class="links">
+    <a href="experiences.html">Experiences</a>
+    <a href="wellness.html">Wellness</a>
+    <a href="journal.html">Journal</a>
+    <a href="story.html">Story</a>
+    <a class="enq" href="index.html#enquire">Start a conversation</a>
+  </div>
+</div></nav>
+<section class="page-hero">
+  <div class="wrap">
+    <div class="label rv">Curated by Z Productions</div>
+    <h1 class="rv">The Wellness<br><em>Collective</em></h1>
+    <div class="rule rv"></div>
+    <p class="measure rv">The art of the slow set. Some of the best nights are not nights at all: a sunrise over the water, a long lunch that turns into a dance, a team that needs quiet before it can celebrate. We are building a collection of slower days, designed around sound, light and space.</p>
+  </div>
+</section>
+
+<section class="paper" style="padding-top:clamp(70px,8vw,120px)">
+  <div class="wrap">
+    <div class="label rv">Z Originals</div>
+    <div class="coll">
+      <div class="item rv"><div class="img"><img class="grade" src="assets/img/dayset.webp" alt="Morning set" loading="lazy" style="object-position:center 30%"></div>
+        <div><div class="label">01 · Sunrise Sessions</div><h3>Dubai</h3><p>Early sets as the city wakes, on a beach, a terrace or a deck. Coffee, slow music building to warm house, and the day starts differently.</p><span class="soon status">Coming soon</span></div></div>
+      <div class="item rv"><div class="img"><img class="grade" src="assets/img/roast2.webp" alt="Evening gathering" loading="lazy"></div>
+        <div><div class="label">02 · Sound &amp; Stillness</div><h3>The Desert</h3><p>An evening of sound in the open desert, for leadership teams who need perspective before the next quarter.</p><span class="soon status">Coming soon</span></div></div>
+      <div class="item rv"><div class="img"><img class="grade" src="assets/img/brunch.webp" alt="Daytime retreat" loading="lazy"></div>
+        <div><div class="label">03 · Retreats</div><h3>Abroad</h3><p>Small retreats where the music is part of the programme: mornings for the mind, evenings for the team.</p><span class="soon status">Coming soon</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="enquire">
+  <div class="wrap enquire">
+    <div>
+      <div class="label rv">Start a conversation</div>
+      <h2 class="rv" style="margin-top:22px">Tell us the <em>date.</em></h2>
+      <p class="measure rv" style="margin-top:26px">Share a few details. We come back with questions, a site visit, then one plan and one quote.</p>
+      <p class="direct rv">Or message Zaar directly on WhatsApp, <a class="wa" href="#" data-msg="Hi Zaar, I'd like to talk about an event with Z Productions.">+971 52 872 5585</a>.</p>
+    </div>
+    <form id="briefform" class="rv">
+      <label><span>Name</span><input name="name" required></label>
+      <label><span>Company</span><input name="company"></label>
+      <label><span>Occasion</span><select name="type"><option>Corporate event</option><option>F1 or sporting weekend</option><option>Wedding or reception</option><option>Yacht day</option><option>Private or themed party</option><option>Wellness or retreat</option><option>Book Zaar to play</option></select></label>
+      <label><span>Date</span><input name="date"></label>
+      <label><span>Guests</span><input name="guests" inputmode="numeric"></label>
+      <label><span>City and venue</span><input name="city"></label>
+      <button class="btn" type="submit">Start a conversation</button>
+    </form>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html" style="font-size:19px;color:var(--ink)">Z Productions</a>
+    <span><a href="experiences.html">Experiences</a> · <a href="wellness.html">Wellness</a> · <a href="journal.html">Journal</a> · <a href="story.html">Story</a></span>
+    <span>Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+  </div>
+</footer>
+<script>
+const WA = "971528725585";
+const waLink = m => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+document.querySelectorAll('.wa').forEach(a => { a.href = waLink(a.dataset.msg || "Hi Zaar"); a.target = "_blank"; a.rel = "noopener"; });
+const bf = document.getElementById('briefform');
+if (bf) bf.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), v = k => (f.get(k) || '').trim();
+  const lines = [`Hi Zaar, I'm ${v('name')}${v('company') ? ' from ' + v('company') : ''}.`, v('type') && `Occasion: ${v('type')}`,
+    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`].filter(Boolean);
+  window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+});
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+if (!nav.classList.contains('fixed-solid')) {
+  const onScroll = () => nav.classList.toggle('solid', scrollY > (hero ? hero.offsetHeight - 80 : 10));
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+}
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms`; io.observe(el); });
+document.querySelectorAll('video').forEach(v => new IntersectionObserver(([e]) => e.isIntersecting ? v.play().catch(()=>{}) : v.pause()).observe(v.parentElement));
+</script>
+</body>
+</html>
