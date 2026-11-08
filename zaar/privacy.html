@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy | Z Productions</title>
+<meta name="description" content="Privacy Policy for the Z Productions website.">
+<meta property="og:title" content="Privacy Policy | Z Productions">
+<meta property="og:description" content="Privacy Policy for the Z Productions website.">
+<meta property="og:image" content="assets/video/hero.jpg">
+<link rel="icon" href="assets/img/z2-black.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<nav id="nav" class="solid fixed-solid"><div class="wrap">
+  <a class="brand" href="index.html">Z Productions</a>
+  <div class="links">
+    <a href="experiences.html">Experiences</a>
+    <a href="story.html">About</a>
+    <a href="journal.html">Journal</a>
+    <a class="enq" href="index.html#enquire">Plan your event</a>
+  </div>
+</div></nav>
+<section class="page-hero" style="padding-bottom:0">
+  <div class="wrap narrow">
+    <div class="label rv">Legal</div>
+    <h1 class="rv">Privacy Policy</h1>
+    <p class="label" style="margin-top:22px;color:var(--stone)">Last updated 8 November 2026</p>
+  </div>
+</section>
+<section style="padding-top:clamp(50px,6vw,80px)"><div class="wrap narrow legal"><h2>Who we are</h2><p>This website is run by Z Square Productions FZE LLC ("Z Productions", "we"), a company licensed in the United Arab Emirates under trade licence 2626617661888.</p><h2>What we collect</h2><p>This site does not use accounts, analytics or advertising trackers, and it does not store the details you type into it.</p><p>When you use the enquiry form, your details (name, company, occasion, date, guests, venue and budget) are put into a WhatsApp message on your own device. Nothing is sent until you press send in WhatsApp. From then on, we receive what you chose to send, and WhatsApp's own privacy policy also applies.</p><h2>How we use it</h2><p>We use your details only to reply to your enquiry, plan and quote your event, and keep records we are required to keep. We do not sell your details or use them for unrelated marketing.</p><h2>Who we share it with</h2><p>We share event details only with the venues, crew and suppliers needed to deliver your event, and only as much as they need. We may share information where the law requires it.</p><h2>Fonts and third parties</h2><p>This site loads its fonts from Google Fonts, which means your browser connects to Google's servers. Links to Instagram, YouTube and WhatsApp take you to those services, which have their own privacy policies.</p><h2>How long we keep it</h2><p>We keep enquiry and event records for as long as we need them for the event and for our legal, tax and accounting obligations, then delete them.</p><h2>Your rights</h2><p>Under UAE data protection law you can ask to see, correct or delete the personal data we hold about you, or object to how we use it. Message us on WhatsApp at +971 52 872 5585 and we will respond.</p><h2>Changes</h2><p>If we change this policy, we will update this page and the date above.</p></div></section>
+<footer>
+  <div class="wrap fcols">
+    <div class="fbrand">
+      <a class="brand" href="index.html">Z Productions</a>
+      <p>Turn moments into memories.</p>
+      <a class="textlink" href="index.html#enquire">Plan your event</a>
+    </div>
+    <div><div class="flabel">Offerings</div>
+      <a href="experiences.html#corporate">Corporate &amp; Award Nights</a><a href="experiences.html#brand">Launches &amp; Brand Nights</a><a href="experiences.html#sport">Sporting Events</a><a href="experiences.html#weddings">Weddings &amp; Receptions</a><a href="experiences.html#yacht">Yacht Days</a><a href="experiences.html#private">Private Parties</a></div>
+    <div><div class="flabel">Company</div>
+      <a href="story.html">About</a><a href="index.html#philosophy">Philosophy</a><a href="story.html#team">Team</a><a href="journal.html">Journal</a><a href="index.html#enquire">Contact</a></div>
+    <div><div class="flabel">Legal</div>
+      <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Agreement</a></div>
+  </div>
+  <div class="wrap fbase">
+    <span>&copy; 2026 Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+    <span><a href="https://www.instagram.com/djzaarx/" target="_blank" rel="noopener">Instagram</a> · <a class="wa" href="#" data-msg="Hi Zaar, I'd like to talk about an event with Z Productions.">WhatsApp</a></span>
+  </div>
+</footer>
+<script>
+const WA = "971528725585";
+const waLink = m => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+document.querySelectorAll('.wa').forEach(a => { a.href = waLink(a.dataset.msg || "Hi Zaar"); a.target = "_blank"; a.rel = "noopener"; });
+const bf = document.getElementById('briefform');
+if (bf) bf.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = new FormData(e.target), v = k => (f.get(k) || '').trim();
+  const lines = [`Hi Zaar, I'm ${v('name')}${v('company') ? ' from ' + v('company') : ''}.`, v('type') && `Occasion: ${v('type')}`,
+    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`,
+    v('budget') && `Budget: ${v('budget')}`].filter(Boolean);
+  window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+});
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+if (!nav.classList.contains('fixed-solid')) {
+  const onScroll = () => nav.classList.toggle('solid', scrollY > (hero ? hero.offsetHeight - 80 : 10));
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+}
+const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }), {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = `${(i % 3) * 90}ms`; io.observe(el); });
+document.querySelectorAll('video').forEach(v => new IntersectionObserver(([e]) => e.isIntersecting ? v.play().catch(()=>{}) : v.pause()).observe(v.parentElement));
+</script>
+</body>
+</html>

@@ -20,10 +20,9 @@
   <a class="brand" href="index.html">Z Productions</a>
   <div class="links">
     <a href="experiences.html">Experiences</a>
-    <a href="wellness.html">Wellness</a>
+    <a href="story.html">About</a>
     <a href="journal.html">Journal</a>
-    <a href="story.html">Story</a>
-    <a class="enq" href="index.html#enquire">Start a conversation</a>
+    <a class="enq" href="index.html#enquire">Plan your event</a>
   </div>
 </div></nav>
 <section class="page-hero">
@@ -49,10 +48,22 @@
   </div>
 </section>
 <footer>
-  <div class="wrap">
-    <a class="brand" href="index.html" style="font-size:19px;color:var(--ink)">Z Productions</a>
-    <span><a href="experiences.html">Experiences</a> · <a href="wellness.html">Wellness</a> · <a href="journal.html">Journal</a> · <a href="story.html">Story</a></span>
-    <span>Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+  <div class="wrap fcols">
+    <div class="fbrand">
+      <a class="brand" href="index.html">Z Productions</a>
+      <p>Turn moments into memories.</p>
+      <a class="textlink" href="index.html#enquire">Plan your event</a>
+    </div>
+    <div><div class="flabel">Offerings</div>
+      <a href="experiences.html#corporate">Corporate &amp; Award Nights</a><a href="experiences.html#brand">Launches &amp; Brand Nights</a><a href="experiences.html#sport">Sporting Events</a><a href="experiences.html#weddings">Weddings &amp; Receptions</a><a href="experiences.html#yacht">Yacht Days</a><a href="experiences.html#private">Private Parties</a></div>
+    <div><div class="flabel">Company</div>
+      <a href="story.html">About</a><a href="index.html#philosophy">Philosophy</a><a href="story.html#team">Team</a><a href="journal.html">Journal</a><a href="index.html#enquire">Contact</a></div>
+    <div><div class="flabel">Legal</div>
+      <a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Agreement</a></div>
+  </div>
+  <div class="wrap fbase">
+    <span>&copy; 2026 Z Square Productions FZE LLC · Dubai, United Arab Emirates · Trade Licence 2626617661888</span>
+    <span><a href="https://www.instagram.com/djzaarx/" target="_blank" rel="noopener">Instagram</a> · <a class="wa" href="#" data-msg="Hi Zaar, I'd like to talk about an event with Z Productions.">WhatsApp</a></span>
   </div>
 </footer>
 <script>
@@ -64,7 +75,8 @@ if (bf) bf.addEventListener('submit', e => {
   e.preventDefault();
   const f = new FormData(e.target), v = k => (f.get(k) || '').trim();
   const lines = [`Hi Zaar, I'm ${v('name')}${v('company') ? ' from ' + v('company') : ''}.`, v('type') && `Occasion: ${v('type')}`,
-    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`].filter(Boolean);
+    v('date') && `Date: ${v('date')}`, v('guests') && `Guests: ${v('guests')}`, v('city') && `Venue: ${v('city')}`,
+    v('budget') && `Budget: ${v('budget')}`].filter(Boolean);
   window.open(waLink(lines.join('\n')), '_blank', 'noopener');
 });
 const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
