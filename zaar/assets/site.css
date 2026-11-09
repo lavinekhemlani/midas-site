@@ -305,3 +305,5 @@ footer .fbase a:hover{color:var(--ivory)}
 .legal h2{font-size:clamp(24px,2.4vw,32px);margin:44px 0 14px}
 .legal h2:first-child{margin-top:0}
 .legal p{color:var(--stone);max-width:68ch;margin-bottom:14px}
+
+a.btn{display:inline-flex;align-items:center;text-decoration:none}
