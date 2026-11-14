@@ -1,0 +1,43 @@
+<!-- CALCULATOR -->
+<section id="calculator" class="band">
+  <div class="wrap">
+    <p class="eyebrow rv">Try it</p>
+    <h2 class="rv">see your monthly before you apply.</h2>
+    <div class="calc">
+      <div class="panel rv">
+        <div class="field">
+          <label for="amt">How much do you need? <output id="amtO">₦500,000</output></label>
+          <input id="amt" type="range" min="50000" max="5000000" step="50000" value="500000" aria-describedby="amtT">
+          <div class="ticks" id="amtT"><span>₦50k</span><span>₦5m</span></div>
+        </div>
+        <div class="field">
+          <label for="mo">For how long? <output id="moO">12 months</output></label>
+          <input id="mo" type="range" min="3" max="24" step="1" value="12">
+          <div class="ticks"><span>3 months</span><span>24 months</span></div>
+        </div>
+        <div class="field">
+          <label>What do you take home each month?</label>
+          <div class="pay" id="payb">
+            <button type="button" data-v="150000">₦150k</button>
+            <button type="button" data-v="300000" class="on">₦300k</button>
+            <button type="button" data-v="600000">₦600k</button>
+            <button type="button" data-v="1000000">₦1m</button>
+            <button type="button" data-v="2000000">₦2m+</button>
+          </div>
+        </div>
+      </div>
+      <div class="result rv" aria-live="polite">
+        <small>You'd pay about</small>
+        <div class="big" id="mon">₦47,510</div>
+        <div class="per">a month, taken from your salary on payday</div>
+        <div class="rrow"><span>You receive</span><b id="rRec">₦500,000</b></div>
+        <div class="rrow"><span>Total you pay back</span><b id="rTot">₦570,120</b></div>
+        <div class="rrow"><span>Hidden charges</span><b>₦0</b></div>
+        <div class="fit" id="fit">This fits your pay. You keep 84% of your salary.</div>
+        <a href="index.html#waitlist" class="btn btn-k">Hold my spot</a>
+        <p class="fine">Example only, at 2.5% a month on a reducing balance. Your real rate depends on your credit check and is shown, with every charge, before you accept. We keep repayments at or under a third of your take-home pay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+

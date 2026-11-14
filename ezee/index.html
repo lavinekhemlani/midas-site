@@ -3,548 +3,206 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ezee · credit that respects your salary</title>
-<meta name="description" content="Salary loans in minutes, repaid straight from your pay. One clear monthly amount, no hidden charges, and we never call your contacts. Launching in Lagos.">
+<title>ezee · money, made ezee</title>
+<meta name="description" content="Pay with a tap, get paid instantly and borrow fairly. Payments, loans and business banking for every Nigerian.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#FFC72C">
-<meta property="og:title" content="ezee · credit that respects your salary">
-<meta property="og:description" content="Salary loans in minutes, repaid straight from your pay. Join the waitlist.">
-<meta property="og:image" content="https://midascfo.com/ezee/img/danfo.jpg">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FFC72C'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%230E0E0C'%3Ee%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#0E0E0C">
+<meta property="og:title" content="ezee · money, made ezee">
+<meta property="og:description" content="Pay with a tap, get paid instantly and borrow fairly. Payments, loans and business banking for every Nigerian.">
+<meta property="og:image" content="https://gomidas.co/ezee/img/danfo.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 64 64' aria-hidden='true'%3E%3Crect width='64' height='64' rx='18' fill='%23FFC72C'/%3E%3Cpath d='M47 32A15 15 0 1 0 43.4 41.7' fill='none' stroke='%230E0E0C' stroke-width='7.5' stroke-linecap='round'/%3E%3Cpath d='M17.5 32H52' stroke='%230E0E0C' stroke-width='7.5' stroke-linecap='round'/%3E%3Cpath d='M46 25.5L52.5 32L46 38.5' fill='none' stroke='%230E0E0C' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/danfo-s.jpg" media="(max-width: 800px)">
-<style>
-:root{
-  --ink:#0E0E0C; --ink2:#3B3A36; --muted:#6B6962; --line:#E7E3D9;
-  --paper:#FFFFFF; --band:#F7F4EC; --yellow:#FFC72C; --yellow2:#FFE08A; --green:#0F7B4F;
-  --r:18px; --max:1180px;
-  --display:'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
-  --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.02;font-weight:800}
-h1{font-size:clamp(44px,8.4vw,104px)}
-h2{font-size:clamp(34px,5.4vw,64px)}
-h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
-.lead{font-size:clamp(18px,2vw,21px);color:var(--ink2);max-width:36ch}
-.eyebrow{font-weight:600;font-size:15px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.eyebrow:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 3px #fff3cc}
-section{padding:96px 0}
-@media(max-width:700px){section{padding:68px 0}}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 26px;border-radius:999px;font:600 17px var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease, background .15s ease}
-.btn:active{transform:scale(.98)}
-.btn-y{background:var(--yellow);color:var(--ink)}
-.btn-y:hover{background:#FFBA00}
-.btn-k{background:var(--ink);color:#fff}
-.btn-k:hover{background:#2A2925}
-.btn-o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.btn svg{width:18px;height:18px}
-
-/* nav */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
-header.scrolled{border-bottom-color:var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.logo{display:flex;align-items:center;gap:2px;font:800 30px/1 var(--display);letter-spacing:-.04em;text-decoration:none}
-.logo i{display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--yellow);margin-left:3px;transform:translateY(7px)}
-.links{display:flex;gap:28px;font-weight:500;font-size:15.5px}
-.links a{text-decoration:none;color:var(--ink2)}
-.links a:hover{color:var(--ink)}
-.nav .btn{height:44px;padding:0 20px;font-size:15.5px}
-@media(max-width:900px){.links{display:none}}
-
-/* hero */
-.hero{padding:56px 0 0;position:relative}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}}
-.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%, var(--yellow) 62%, var(--yellow) 92%, transparent 92%);padding:0 .05em}
-.hero .lead{margin:26px 0 34px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.chip{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;color:var(--ink2);background:var(--band);border-radius:999px;padding:9px 14px}
-.chip b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ink);color:var(--yellow);font-size:12px}
-
-/* phone */
-.phone-wrap{position:relative;display:flex;justify-content:center}
-.phone-wrap:before{content:"";position:absolute;inset:8% -4% -6% 6%;background:var(--yellow);border-radius:42px;transform:rotate(-4deg)}
-.phone{position:relative;width:min(330px,86vw);background:var(--ink);border-radius:44px;padding:12px;box-shadow:0 40px 80px -30px rgba(14,14,12,.45)}
-.screen{background:#fff;border-radius:34px;overflow:hidden;padding:22px 18px 20px;min-height:560px;display:flex;flex-direction:column;gap:14px}
-.s-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
-.s-top .logo{font-size:22px}
-.s-top .logo i{width:8px;height:8px;transform:translateY(5px)}
-.s-hi{font:700 22px/1.2 var(--display);letter-spacing:-.01em}
-.s-card{background:var(--ink);color:#fff;border-radius:22px;padding:18px}
-.s-card small{color:#BDBAB0;font-size:12.5px}
-.s-amt{font:800 36px/1.1 var(--display);letter-spacing:-.02em;margin:4px 0 10px}
-.s-row{display:flex;justify-content:space-between;font-size:13.5px;padding:7px 0;border-top:1px solid rgba(255,255,255,.12)}
-.s-row span:last-child{font-weight:600}
-.s-ok{display:flex;align-items:center;gap:10px;background:#E8F6EF;color:var(--green);border-radius:14px;padding:12px 14px;font-size:13.5px;font-weight:600}
-.s-ok b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;font-size:13px;flex:none}
-.s-btn{margin-top:auto;background:var(--yellow);border-radius:999px;text-align:center;font-weight:700;padding:15px;font-size:15px}
-.s-note{text-align:center;font-size:11.5px;color:var(--muted)}
-.illus{position:absolute;bottom:-28px;right:8px;font-size:12px;color:var(--muted)}
-
-/* photo band */
-.photo-band{margin-top:88px;position:relative;height:clamp(300px,52vw,620px);overflow:hidden}
-.photo-band img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
-.photo-band .cap{position:absolute;left:0;right:0;bottom:0;padding:120px 0 34px;background:linear-gradient(transparent, rgba(14,14,12,.78))}
-.photo-band .cap p{color:#fff;font:700 clamp(24px,3.6vw,44px)/1.08 var(--display);letter-spacing:-.02em;max-width:20ch}
-.credit{position:absolute;right:12px;top:10px;font-size:11px;color:rgba(255,255,255,.85);text-shadow:0 1px 2px rgba(0,0,0,.5)}
-
-/* compare */
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
-@media(max-width:760px){.compare{grid-template-columns:1fr}}
-.col{border-radius:var(--r);padding:28px}
-.col.them{background:var(--band)}
-.col.us{background:var(--ink);color:#fff}
-.col h3{margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.col.us h3 .logo{font-size:30px}
-.col ul{list-style:none;display:grid;gap:14px}
-.col li{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:start;font-size:16.5px}
-.col li .k{font-size:13.5px;color:var(--muted);display:block}
-.col.us li .k{color:#BDBAB0}
-.mark{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;margin-top:2px}
-.them .mark{background:#E9E4D8;color:#8A8577}
-.us .mark{background:var(--yellow);color:var(--ink)}
-
-/* calculator */
-.calc{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;margin-top:44px}
-@media(max-width:860px){.calc{grid-template-columns:1fr}}
-.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
-.field{margin-bottom:28px}
-.field:last-child{margin-bottom:0}
-.field label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;font-size:15.5px;margin-bottom:12px}
-.field label output{font:800 26px var(--display);letter-spacing:-.02em}
-input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:30px;margin:6px 0;padding:0;border:0;background:transparent;outline:none;display:block;cursor:pointer}
-input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:99px;border:0;background:linear-gradient(90deg,var(--ink) var(--p,30%),#E4DFD3 var(--p,30%))}
-input[type=range]::-moz-range-track{height:8px;border-radius:99px;border:0;background:linear-gradient(90deg,var(--ink) var(--p,30%),#E4DFD3 var(--p,30%))}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:30px;height:30px;margin-top:-11px;border-radius:50%;background:var(--yellow);border:3px solid var(--ink);box-shadow:0 4px 10px rgba(0,0,0,.18)}
-input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:var(--yellow);border:3px solid var(--ink)}
-input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px var(--yellow2)}
-.ticks{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:8px}
-.pay{display:flex;gap:10px;flex-wrap:wrap}
-.pay button{flex:1 1 30%;min-width:96px;height:48px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font:600 15px var(--body);cursor:pointer;color:var(--ink2)}
-.pay button.on{border-color:var(--ink);background:var(--ink);color:#fff}
-.result{background:var(--yellow);border-radius:var(--r);padding:30px;display:flex;flex-direction:column;gap:6px}
-.result small{font-weight:600;font-size:14.5px;color:#4A3B08}
-.big{font:800 clamp(48px,7vw,76px)/1 var(--display);letter-spacing:-.03em}
-.result .per{font-weight:600;font-size:16px;margin-bottom:18px}
-.rrow{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid rgba(14,14,12,.14);font-size:15.5px}
-.rrow b{font-weight:700}
-.fit{margin-top:14px;border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:600;background:rgba(255,255,255,.55)}
-.fit.bad{background:#fff;color:#9A2C10}
-.fine{font-size:13px;color:#4A3B08;margin-top:14px}
-.result .btn{margin-top:18px}
-
-/* products */
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
-@media(max-width:1000px){.products{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.products{grid-template-columns:1fr}}
-.prod{border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:12px;min-height:300px;position:relative;background:var(--band)}
-.prod.main{background:var(--ink);color:#fff}
-.prod .tag{align-self:flex-start;font-size:13px;font-weight:600;padding:6px 11px;border-radius:999px;background:#fff;color:var(--ink2)}
-.prod.main .tag{background:var(--yellow);color:var(--ink)}
-.prod p{color:var(--ink2);font-size:16px}
-.prod.main p{color:#D6D3CA}
-.prod .go{margin-top:auto;font-weight:600;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
-.prod .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#fff}
-.prod.main .ico{background:var(--yellow)}
-.prod .ico svg{width:26px;height:26px}
-
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px;counter-reset:s}
-@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.steps{grid-template-columns:1fr}}
-.step{border-top:3px solid var(--ink);padding-top:20px}
-.step:before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--yellow);font:800 19px var(--display);margin-bottom:16px}
-.step p{color:var(--ink2);font-size:16px;margin-top:8px}
-
-/* split */
-.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-@media(max-width:900px){.split{grid-template-columns:1fr;gap:36px}}
-.shot{border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--band)}
-.shot img{width:100%;height:100%;object-fit:cover}
-.list{list-style:none;display:grid;gap:14px;margin:26px 0 32px}
-.list li{display:grid;grid-template-columns:26px 1fr;gap:12px;font-size:17px}
-.list li:before{content:"✓";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--yellow);font-weight:800;font-size:13px;margin-top:1px}
-.band{background:var(--band)}
-.dark{background:var(--ink);color:#fff}
-.dark .lead{color:#D6D3CA}
-.dark .eyebrow{color:#BDBAB0}
-.dark .eyebrow:before{box-shadow:0 0 0 3px #3a3624}
-.dark .list li{color:#ECEAE3}
-
-/* trust */
-.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
-@media(max-width:860px){.trust{grid-template-columns:1fr}}
-.t{border:1px solid #2E2D29;border-radius:var(--r);padding:26px}
-.t h3{font-size:22px;margin:14px 0 8px}
-.t p{color:#BDBAB0;font-size:15.5px}
-.t .ico{width:44px;height:44px;border-radius:12px;background:var(--yellow);display:grid;place-items:center}
-.t .ico svg{width:24px;height:24px}
-
-/* faq */
-.faq{margin-top:40px;border-top:1px solid var(--line)}
-details{border-bottom:1px solid var(--line)}
-summary{list-style:none;cursor:pointer;padding:24px 44px 24px 0;font:700 clamp(19px,2vw,22px)/1.25 var(--display);letter-spacing:-.01em;position:relative}
-summary::-webkit-details-marker{display:none}
-summary:after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:var(--band);display:grid;place-items:center;font:500 22px var(--body)}
-details[open] summary:after{content:"–";background:var(--yellow)}
-details p{padding:0 0 24px;color:var(--ink2);max-width:70ch}
-
-/* waitlist */
-.wl{background:var(--yellow);border-radius:28px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:48px}
-@media(max-width:900px){.wl{grid-template-columns:1fr;gap:28px}}
-.wl .lead{color:#3D3208}
-form{display:grid;gap:14px}
-.in{display:grid;gap:7px}
-.in span{font-weight:600;font-size:14.5px}
-.in input,.in select{height:54px;border-radius:14px;border:1.5px solid rgba(14,14,12,.18);background:#fff;padding:0 16px;font:16px var(--body);color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}
-.in select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%230E0E0C' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
-.in input:focus,.in select:focus{outline:none;border-color:var(--ink)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:520px){.two{grid-template-columns:1fr}}
-.consent{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:13.5px;color:#3D3208;align-items:start}
-.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--ink)}
-form .btn{width:100%}
-.ok{display:none;background:#fff;border-radius:18px;padding:22px;font-weight:600}
-
-/* footer */
-footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:96px}
-.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
-@media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
-footer h4{font:600 14.5px var(--body);color:var(--muted);margin-bottom:12px}
-footer ul{list-style:none;display:grid;gap:8px;font-size:15.5px}
-footer ul a{text-decoration:none}
-footer ul a:hover{text-decoration:underline}
-.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:grid;gap:10px}
-
-/* whatsapp fab */
-.fab{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 28px -8px rgba(0,0,0,.35)}
-.fab svg{width:30px;height:30px;fill:#fff}
-
-/* reveal */
-.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
-.js .rv.in{opacity:1;transform:none}
-.calc>*,.compare>*,.products>*,.split>*,.hero-grid>*,.wl>*,.fgrid>*,.steps>*{min-width:0}
-h1,h2,h3,p,li{overflow-wrap:anywhere}
-@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
-.ticker{overflow:hidden;background:var(--ink);color:#fff;white-space:nowrap}
-.ticker div{display:inline-flex;gap:46px;padding:16px 0;animation:tick 40s linear infinite;font:700 19px var(--display);letter-spacing:-.01em}
-.ticker span{display:inline-flex;align-items:center;gap:46px}
-.ticker span:after{content:"";width:9px;height:9px;border-radius:50%;background:var(--yellow)}
-@keyframes tick{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion: reduce){.ticker div{animation:none}}
-</style>
+<link rel="stylesheet" href="assets/ezee.css?v=2">
 </head>
-<body>
-
-<header id="top">
+<body><header id="top" class="dk">
   <div class="wrap nav">
-    <a href="#top" class="logo" aria-label="ezee home">ezee<i></i></a>
-    <nav class="links" aria-label="Main">
-      <a href="#loans">Salary loans</a>
-      <a href="#auto">Cars</a>
-      <a href="#pay">Pay</a>
-      <a href="#employers">For employers</a>
-      <a href="#faq">Questions</a>
-    </nav>
-    <a href="#waitlist" class="btn btn-k">Join the waitlist</a>
+    <a href="./" class="logo" aria-label="ezee home"><svg viewBox="0 0 200 64" role="img" aria-label="ezee"><g><rect width="64" height="64" rx="18" fill="#FFC72C"/><path d="M47 32A15 15 0 1 0 43.4 41.7" fill="none" stroke="#0E0E0C" stroke-width="7.5" stroke-linecap="round"/><path d="M17.5 32H52" stroke="#0E0E0C" stroke-width="7.5" stroke-linecap="round"/><path d="M46 25.5L52.5 32L46 38.5" fill="none" stroke="#0E0E0C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="76" y="47" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="#FFFFFF">ezee</text></svg></a>
+    <nav class="links" aria-label="Main"><a href="pay.html">Personal</a><a href="credit.html">ezee credit</a><a href="business.html">Business</a><a href="employers.html">Employers</a><a href="government.html">Government</a><a href="about.html">About</a><a href="blog.html">Blog</a></nav>
+    <div class="nav-r"><a href="index.html#waitlist" class="btn btn-y hide-m">Get the app</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button></div>
   </div>
 </header>
-
-<main>
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="rv">
-      <p class="eyebrow">Launching in Lagos</p>
-      <h1>credit that <em>respects</em> your salary.</h1>
-      <p class="lead">Borrow from ₦50,000 to ₦5 million, get a decision in minutes and repay straight from your pay. One clear monthly amount. No hidden charges. No wahala.</p>
+<div class="drawer" id="drawer"><a href="pay.html">Personal</a><a href="credit.html">ezee credit</a><a href="business.html">Business</a><a href="employers.html">Employers</a><a href="government.html">Government</a><a href="about.html">About</a><a href="blog.html">Blog</a><a href="index.html#waitlist" class="btn btn-y">Get early access</a></div><main>
+<section class="hx">
+  <div class="wrap hx-grid">
+    <div class="rv" style="padding-bottom:70px">
+      <p class="eyebrow">Payments · Loans · Business · Nigeria</p>
+      <h1>money,<br>made <span class="y">ezee.</span></h1>
+      <p class="lead">Pay with a tap. Get paid instantly. Borrow fairly against your salary or your sales. One app for the everyday money moves of 200 million Nigerians.</p>
       <div class="cta-row">
-        <a href="#waitlist" class="btn btn-y">Get early access
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a href="#calculator" class="btn btn-o">See what you'd pay</a>
+        <a href="#waitlist" class="btn btn-y">Get early access <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="pay.html" class="btn btn-o">See ezee pay</a>
       </div>
-      <div class="chips">
-        <span class="chip"><b>✓</b>Decision in minutes</span>
-        <span class="chip"><b>✓</b>Repaid on payday, automatically</span>
-        <span class="chip"><b>✓</b>We never call your contacts</span>
-      </div>
+      <div class="stores"><a class="store" href="index.html#waitlist"><svg viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8 2.2-1.3 3.1-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><span>App Store<b><em>Coming soon</em></b></span></a><a class="store" href="index.html#waitlist"><svg viewBox="0 0 24 24"><path d="M4 2.6v18.8c0 .5.5.8.9.6l10.6-10.1L5 1.9c-.5-.2-1 .2-1 .7zm12.4 7.4L6.6 1.3l11.4 6.6-1.6 2.1zm0 4L18 16l-11.4 6.7 9.8-8.7zm4.1-3l-2.7-1.6-1.9 2.5 1.9 2.6 2.7-1.6c.8-.5.8-1.4 0-1.9z"/></svg><span>Google Play<b><em>Coming soon</em></b></span></a></div>
     </div>
-    <div class="phone-wrap rv" aria-hidden="true">
-      <div class="phone">
-        <div class="screen">
-          <div class="s-top"><span class="logo">ezee<i></i></span><span>9:41</span></div>
-          <div class="s-hi">Good morning, Tolu 👋🏾</div>
-          <div class="s-card">
-            <small>Your offer</small>
-            <div class="s-amt">₦850,000</div>
-            <div class="s-row"><span>Monthly</span><span>₦47,530</span></div>
-            <div class="s-row"><span>Months</span><span>24</span></div>
-            <div class="s-row"><span>Paid from salary on</span><span>25th</span></div>
-            <div class="s-row"><span>Extra fees</span><span>₦0</span></div>
-          </div>
-          <div class="s-ok"><b>✓</b>Fits your pay. You keep 86% of your salary.</div>
-          <div class="s-ok" style="background:#FFF6D6;color:#5C4A0B"><b style="background:#0E0E0C;color:#FFC72C">i</b>No calls to your family. Ever.</div>
-          <div class="s-btn">Accept and get paid</div>
-          <div class="s-note">Money in your account in minutes</div>
-        </div>
-      </div>
-      <span class="illus">Illustration</span>
+    <div class="rv"><div class="cluster" aria-hidden="true">
+  <div class="ph b"><div class="sc">
+    <div class="bar"><span>ezee for business</span><span>9:41</span></div>
+    <div class="hi">Mama Tobi's Kitchen</div>
+    <div class="kpi"><div><small>Today's sales</small><b>₦486,200</b></div><div><small>Payments</small><b>214</b></div></div>
+    <div class="mchart"><i style="height:30%"></i><i style="height:45%"></i><i style="height:38%"></i><i style="height:62%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:100%"></i></div>
+    <span class="pill">✓ Settled to your account instantly</span>
+    <div class="bal" style="margin-top:auto"><small>Working capital offer</small><div class="n" style="font-size:24px;margin-bottom:4px">₦3,000,000</div><small>Based on your sales. Repay a little from each day's takings.</small></div>
+  </div></div>
+  <div class="ph c"><div class="sc">
+    <div class="bar"><span>ezee loans</span><span>9:41</span></div>
+    <div class="hi">Your offer is ready</div>
+    <div class="bal"><small>Salary loan</small><div class="n">₦850,000</div>
+      <div class="s-row"><span>Monthly</span><span>₦47,530</span></div><div class="s-row"><span>From salary on</span><span>25th</span></div><div class="s-row"><span>Hidden fees</span><span>₦0</span></div></div>
+    <span class="pill">✓ Approved in 2 min 41 s</span>
+    <div class="tap" style="background:var(--ink);color:#fff;justify-content:center">Accept and get paid</div>
+  </div></div>
+  <div class="ph a"><div class="sc">
+    <div class="bar"><span><b style="font:800 17px var(--display)">ezee</b></span><span>9:41</span></div>
+    <div class="hi">Good morning, Tolu 👋🏾</div>
+    <div class="bal"><small>Balance</small><div class="n">₦248,350.00</div>
+      <div class="qa"><div><i>➜</i>Send</div><div><i>＋</i>Add</div><div><i>📱</i>Airtime</div><div><i>💡</i>Bills</div></div></div>
+    <div class="tx">
+      <div><span><i>🚌</i><span>BRT Ikorodu to TBS<small>Tap · 07:12</small></span></span><b>−₦500</b></div>
+      <div><span><i>🍲</i><span>Mama Tobi's Kitchen<small>Tap · 13:05</small></span></span><b>−₦3,200</b></div>
+      <div><span><i>💼</i><span>Salary, Lagos State<small>25 Nov</small></span></span><b style="color:var(--green)">+₦412,000</b></div>
+    </div>
+    <div class="tap"><span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#FFC72C" stroke-width="2.2" stroke-linecap="round"><path d="M8.5 8.5a5 5 0 0 1 0 7M12 6a8.5 8.5 0 0 1 0 12M15.5 3.5a12 12 0 0 1 0 17"/></svg></span><span>Tap to pay<small>Bus, shop, market. One tap.</small></span></div>
+  </div></div>
+  <span class="illus2">App screens are illustrations</span>
+</div></div>
+  </div>
+</section>
+<div class="strip" aria-hidden="true"><div><span>Tap to pay</span><span>Free transfers</span><span>Airtime and data</span><span>Bills</span><span>Salary loans</span><span>Business loans</span><span>Car finance</span><span>POS for merchants</span><span>School fees</span><span>Rent</span><span>Tap to pay</span><span>Free transfers</span><span>Airtime and data</span><span>Bills</span><span>Salary loans</span><span>Business loans</span><span>Car finance</span><span>POS for merchants</span><span>School fees</span><span>Rent</span></div></div>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">The everyday money app</p>
+    <p class="statement rv">Every ride, every sale, every salary. <span class="m">One app that moves it all, and lends against it fairly.</span></p>
+    <div class="mega">
+      <a class="tile big rv" href="pay.html"><span class="ic">⚡</span><h3>ezee pay</h3><p>Tap to pay on the bus, at the shop and in the market. Send money free to any bank. Pay bills, airtime and data in seconds.</p><span class="soon" style="color:#FFC72C">Launching</span></a>
+      <a class="tile y rv" href="credit.html"><span class="ic">💸</span><h3>Salary loans</h3><p>Up to ₦5m, repaid from your pay.</p></a>
+      <a class="tile rv" href="business.html"><span class="ic">🏪</span><h3>Business loans</h3><p>Working capital based on your sales.</p></a>
+      <a class="tile rv" href="pay.html#merchants"><span class="ic">📲</span><h3>Accept payments</h3><p>Tap, transfer or POS. Settled instantly.</p><span class="soon">Soon</span></a>
+      <a class="tile rv" href="https://gomidas.co/"><span class="ic">🚗</span><h3>Car finance</h3><p>Drive now, pay monthly.</p></a>
+      <a class="tile rv" href="credit.html#types"><span class="ic">🎓</span><h3>School fees</h3><p>Spread the term's fees over months.</p></a>
+      <a class="tile rv" href="credit.html#types"><span class="ic">🏠</span><h3>Rent</h3><p>Pay the landlord yearly, repay monthly.</p></a>
+      <a class="tile rv" href="pay.html"><span class="ic">💳</span><h3>ezee card</h3><p>Spend at home and online abroad.</p><span class="soon">Soon</span></a>
+      <a class="tile rv" href="pay.html"><span class="ic">🐷</span><h3>Savings</h3><p>Put a little aside every payday.</p><span class="soon">Soon</span></a>
+      <a class="tile rv" href="government.html"><span class="ic">🏛️</span><h3>For government</h3><p>Payroll, transport and revenue, made transparent.</p></a>
     </div>
   </div>
+</section>
 
-  <figure class="photo-band">
-    <picture>
-      <source media="(max-width: 800px)" srcset="img/danfo-s.jpg">
-      <img src="img/danfo.jpg" alt="Yellow danfo buses on a Lagos road at golden hour" fetchpriority="high">
-    </picture>
-    <figcaption class="cap"><div class="wrap"><p>Built for the people who keep Lagos moving.</p></div></figcaption>
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow rv">For you</p>
+    <h2 class="rv">six apps in one.</h2>
+    <div class="show" data-tabs><div class="tabs" role="tablist"><button type="button" data-tab="wallet" class=on>👛 ezee wallet</button><button type="button" data-tab="pay">⚡ ezee pay</button><button type="button" data-tab="save">🐷 ezee save</button><button type="button" data-tab="card">💳 ezee card</button><button type="button" data-tab="credit">💸 ezee credit</button><button type="button" data-tab="auto">🚗 ezee auto</button></div><div class="pane on" data-pane="wallet"><div><h3>your money, one tap away.</h3><p class="lead">A free account with its own account number. Send to any bank, receive instantly, buy airtime and data and pay every bill in seconds.</p><ul class="list"><li>Free transfers to any bank</li><li>Airtime, data, electricity and TV</li><li>Your own account number in minutes</li></ul><a href="index.html#waitlist" class="btn btn-y">Get early access</a></div><div class="stage"><div class="ph"><div class="sc"><div class="bar"><span><b style="font:800 17px var(--display)">ezee</b></span><span>9:41</span></div><div class="hi">Hi Amaka 👋🏾</div>
+<div class="bal"><small>ezee wallet · 01 234 5678</small><div class="n">₦184,920.50</div><div class="qa"><div><i>➜</i>Send</div><div><i>＋</i>Add</div><div><i>📱</i>Airtime</div><div><i>💡</i>Bills</div></div></div>
+<div class="tx"><div><span><i>🏦</i><span>To Chidi O.<small>Transfer · Free</small></span></span><b>−₦25,000</b></div>
+<div><span><i>⚡</i><span>Electricity<small>Prepaid token sent</small></span></span><b>−₦15,000</b></div>
+<div><span><i>📶</i><span>Data 20GB<small>Instant</small></span></span><b>−₦6,000</b></div>
+<div><span><i>💼</i><span>Salary<small>25 Nov</small></span></span><b style="color:var(--green)">+₦520,000</b></div></div></div></div></div></div><div class="pane" data-pane="pay"><div><h3>one tap. everywhere.</h3><p class="lead">Tap your phone or card on the bus, at the shop and in the market. Scan a QR. No change, no wahala, every naira recorded.</p><ul class="list"><li>Tap to pay on transport and in shops</li><li>QR payments at any merchant</li><li>Rewards on every ride</li></ul><a href="index.html#waitlist" class="btn btn-y">Get early access</a></div><div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>ezee pay</span><span>9:41</span></div><div class="hi">Ready to tap</div>
+<div style="flex:1;display:grid;place-items:center"><div style="width:160px;height:160px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 0 0 16px #FFF3CC,0 0 0 32px #FFF9E6"><svg viewBox="0 0 24 24" width="66" height="66" fill="none" stroke="#0E0E0C" stroke-width="2.2" stroke-linecap="round"><path d="M8.5 8.5a5 5 0 0 1 0 7M12 6a8.5 8.5 0 0 1 0 12M15.5 3.5a12 12 0 0 1 0 17"/></svg></div></div>
+<div class="row2"><span>🚌 Bus fare</span><b>₦500</b></div><div class="row2"><span>🎁 Ride streak</span><b>9 of 10, next ride free</b></div>
+<div class="tap" style="justify-content:center">Hold near the reader</div></div></div></div></div><div class="pane" data-pane="save"><div><h3>put a little aside, every payday.</h3><p class="lead">Automatic savings from your salary, goals for school fees and rent, and a balance you can watch grow.</p><ul class="list"><li>Auto-save a share of every salary</li><li>Goals for fees, rent and emergencies</li><li>Withdraw when you need it</li></ul><a href="index.html#waitlist" class="btn btn-y">Get early access</a></div><div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>ezee save</span><span>9:41</span></div><div class="hi">Your goals</div>
+<div class="bal"><small>Total saved</small><div class="n">₦642,000</div><small>Auto-saving 10% of every salary</small></div>
+<div style="display:grid;gap:12px;margin-top:4px">
+<div><div class="row2" style="border:0;padding:0 0 6px"><span>🎓 School fees</span><b>₦380k of ₦450k</b></div><div class="goal-bar"><i style="width:84%"></i></div></div>
+<div><div class="row2" style="border:0;padding:0 0 6px"><span>🏠 Rent</span><b>₦210k of ₦900k</b></div><div class="goal-bar"><i style="width:23%"></i></div></div>
+<div><div class="row2" style="border:0;padding:0 0 6px"><span>🛟 Emergency fund</span><b>₦52k of ₦200k</b></div><div class="goal-bar"><i style="width:26%"></i></div></div></div>
+<span class="pill" style="margin-top:auto">✓ Next auto-save on payday</span></div></div></div></div><div class="pane" data-pane="card"><div><h3>spend at home and abroad.</h3><p class="lead">A card for shops, ATMs and online, including international sites. Freeze it, set limits and see every payment in one tap.</p><ul class="list"><li>Works in shops, ATMs and online</li><li>International online payments</li><li>Freeze and set limits in the app</li></ul><a href="index.html#waitlist" class="btn btn-y">Get early access</a></div><div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>ezee card</span><span>9:41</span></div>
+<div class="cardv"><div class="chip2"></div><span>•••• •••• •••• 4821</span><b>ezee</b></div>
+<div class="row2"><span>Online payments abroad</span><span class="tog"></span></div><div class="row2"><span>ATM withdrawals</span><span class="tog"></span></div><div class="row2"><span>Freeze card</span><span class="tog off"></span></div>
+<div class="tx"><div><span><i>🎬</i><span>Streaming<small>Online · USD</small></span></span><b>−₦9,800</b></div><div><span><i>🛒</i><span>Supermarket<small>Card</small></span></span><b>−₦31,450</b></div></div></div></div></div></div><div class="pane" data-pane="credit"><div><h3>fair credit, repaid on payday.</h3><p class="lead">Salary-backed credit for school fees, rent, health and life. A decision in minutes, one clear monthly amount and never a call to your contacts.</p><ul class="list"><li>Up to ₦5m, up to 24 months</li><li>Repaid from salary automatically</li><li>Every charge shown before you accept</li></ul><a href="credit.html" class="btn btn-y">See ezee credit</a></div><div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>ezee credit</span><span>9:41</span></div><div class="hi">Your offer is ready</div>
+<div class="bal"><small>Salary-backed credit</small><div class="n">₦850,000</div><div class="s-row"><span>Monthly</span><span>₦47,530</span></div><div class="s-row"><span>Months</span><span>24</span></div><div class="s-row"><span>From salary on</span><span>25th</span></div><div class="s-row"><span>Hidden fees</span><span>₦0</span></div></div>
+<span class="pill">✓ Fits your pay. You keep 86%</span><span class="pill" style="background:#FFF6D6;color:#5C4A0B">🔒 We never contact your contacts</span>
+<div class="tap" style="background:var(--ink);color:#fff;justify-content:center;margin-top:auto">Accept and get paid</div></div></div></div></div><div class="pane" data-pane="auto"><div><h3>drive now, pay monthly.</h3><p class="lead">New cars from Nigeria's leading dealers, financed by partner banks through Midas. Apply in three minutes and drive in 48 hours.</p><ul class="list"><li>Apply in 3 minutes</li><li>Partner banks compete to finance you</li><li>New cars with manufacturer warranty</li></ul><a href="https://gomidas.co/" class="btn btn-y" rel="noopener">Browse cars on Midas</a></div><div class="stage"><div class="ph"><div class="sc"><div class="shot-img"><img src="img/midas-app.jpg" alt="The Midas car finance app" loading="lazy"></div></div></div></div></div><p style="margin-top:18px;font-size:12.5px;color:var(--muted)">App screens are illustrations. The ezee auto screen is the live Midas site, gomidas.co.</p></div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <p class="eyebrow rv">For business and employers</p>
+    <h2 class="rv">run your whole business on ezee.</h2>
+    <p class="lead rv" style="margin-top:16px;max-width:54ch">Get paid, get capital, control spending and pay your people, from the market stall to the 5,000-staff employer.</p>
+    <div class="suite">
+<div class="su rv" id="accept"><div class="nm">ezee <i>business</i></div><p>Accept every kind of payment and see your money land instantly.</p><ul><li>Tap, QR, transfer and card on your phone or an ezee POS</li><li>Instant settlement</li><li>Payment links and invoices</li><li>Every branch and staff member on one dashboard</li></ul><a href="pay.html#merchants">Accept payments →</a></div>
+<div class="su rv"><div class="nm">ezee <i>finance</i></div><p>Capital based on what you actually sell.</p><ul><li>Working capital repaid from daily sales</li><li>Invoice finance on big clients</li><li>Asset and fleet finance</li><li>Trade finance for imports</li></ul><a href="business.html#credit">Get capital →</a></div>
+<div class="su rv" id="spend"><div class="nm">ezee <i>spend</i></div><p>Company money, under control.</p><ul><li>Cards for every team member, with limits</li><li>Bulk supplier and vendor payments</li><li>Receipts captured, expenses approved in the app</li><li>Real-time spend by team and branch</li></ul><a href="business.html#spend">Control spend →</a></div>
+<div class="su rv"><div class="nm">ezee <i>payroll</i></div><p>Pay your people and look after them.</p><ul><li>Run payroll to any bank in one click</li><li>PAYE and pension schedules ready to file</li><li>Fair staff credit at no cost to you</li><li>Salary advances before payday</li></ul><a href="employers.html">For employers →</a></div>
+</div>
+  </div>
+</section>
+
+<section style="background:var(--yellow)">
+  <div class="wrap">
+    <p class="eyebrow rv" style="color:#5C4A0B">ezee rewards</p>
+    <h2 class="rv">money that gives back.</h2>
+    <p class="lead rv" style="margin-top:16px;color:#3D3208">Every tap, top-up and on-time repayment earns you something. The best apps in Nigeria are the ones people love opening.</p>
+    <div class="rw">
+      <div class="rv"><b>11th</b><span>ride on us</span><p>Tap to ride ten times and the next one is free.</p></div>
+      <div class="rv"><b>₦1,000</b><span>for every friend</span><p>When a friend you invite joins and makes their first payment.</p></div>
+      <div class="rv"><b>Cashback</b><span>on airtime and bills</span><p>A little back on the things you pay every month.</p></div>
+      <div class="rv"><b>Better rates</b><span>for paying on time</span><p>Repay on time and your next ezee credit costs less.</p></div>
+    </div>
+    <p class="rv" style="margin-top:16px;font-size:13px;color:#5C4A0B">Planned rewards. Full terms will be published at launch.</p>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <p class="eyebrow rv">Why now</p>
+    <h2 class="rv">nigeria is ready for a money app<br>that lends fairly.</h2>
+    <div class="nums">
+      <div class="num rv"><b>200m+</b><span>Nigerians, most of them under 30</span><small>UN population estimate</small></div>
+      <div class="num rv"><b>5–6m</b><span>workers on a formal payroll whose salary can secure a loan</span><small>ezee estimate</small></div>
+      <div class="num rv"><b>3.8m</b><span>transport cards already in use in Lagos</span><small>LAMATA</small></div>
+      <div class="num rv"><b>500k</b><span>paid trips a day on Lagos public transport</span><small>LAMATA</small></div>
+    </div>
+    <div class="goal rv"><div class="n">10m</div><p><b>Our goal: 10 million Nigerians on ezee.</b> We start where money already moves every day: transport fares in Lagos, salaries in the public service, and the sales of small businesses. Then we grow state by state.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">How ezee is built</p>
+    <h2 class="rv">payments in. fair credit out.</h2>
+    <p class="lead rv" style="margin-top:18px;max-width:52ch">Most lenders guess. ezee sees how money really moves, so it can lend more, charge less and lose less.</p>
+    <div class="rails">
+      <div class="rail rv"><small>1 · Everyday payments</small><h3>Tap, send, pay</h3><p>Rides, shops, bills and transfers flow through ezee pay.</p></div>
+      <div class="rail rv"><small>2 · Income you can trust</small><h3>Salary and sales</h3><p>Payroll and merchant takings show what people can really repay.</p></div>
+      <div class="rail core rv"><small>3 · The ezee engine</small><h3>Credit scoring</h3><p>Bureau data from Nigeria's credit registry, plus real cash flow.</p></div>
+      <div class="rail rv"><small>4 · Fair loans</small><h3>Lend</h3><p>Salary, business, car, school fees and rent loans at fair prices.</p></div>
+      <div class="rail rv"><small>5 · Repaid at source</small><h3>Collect</h3><p>From payroll or daily sales. No chasing, no shaming.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding:0">
+  <figure class="photo-band" style="margin-top:0">
+    <picture><source media="(max-width: 800px)" srcset="img/danfo-s.jpg"><img src="img/danfo.jpg" alt="Yellow danfo buses on a Lagos road" loading="lazy"></picture>
+    <figcaption class="cap"><div class="wrap"><p>Built for the people who keep Nigeria moving.</p></div></figcaption>
     <span class="credit">Photo: Omoeko Media, CC BY-SA 4.0</span>
   </figure>
 </section>
 
-<div class="ticker" aria-hidden="true"><div>
-  <span>Salary loans</span><span>Car finance</span><span>Pay for your daily moves</span><span>No hidden charges</span><span>Decision in minutes</span><span>We never call your contacts</span>
-  <span>Salary loans</span><span>Car finance</span><span>Pay for your daily moves</span><span>No hidden charges</span><span>Decision in minutes</span><span>We never call your contacts</span>
-</div></div>
-
-<!-- COMPARE -->
-<section id="loans">
-  <div class="wrap">
-    <p class="eyebrow rv">Why ezee</p>
-    <h2 class="rv">borrowing shouldn't feel like a fight.</h2>
-    <p class="lead rv" style="margin-top:18px">Most loan apps lend without knowing you, then chase you to get paid back. ezee lends against your salary, so the money costs less and nobody has to chase anybody.</p>
-    <div class="compare">
-      <div class="col them rv">
-        <h3>The usual loan app</h3>
-        <ul>
-          <li><span class="mark">✕</span><span><span class="k">The price</span>Small amounts, short deadlines and charges that pile up once you're late.</span></li>
-          <li><span class="mark">✕</span><span><span class="k">Paying back</span>You chase the due date, or the due date chases you.</span></li>
-          <li><span class="mark">✕</span><span><span class="k">If you're late</span>Calls and messages to the people in your phone.</span></li>
-          <li><span class="mark">✕</span><span><span class="k">The fine print</span>Fees you only see after the money lands.</span></li>
-        </ul>
-      </div>
-      <div class="col us rv">
-        <h3><span class="logo">ezee<i></i></span></h3>
-        <ul>
-          <li><span class="mark">✓</span><span><span class="k">The price</span>Lower monthly cost, because your salary secures the loan. Bigger amounts, longer to repay.</span></li>
-          <li><span class="mark">✓</span><span><span class="k">Paying back</span>Taken from your salary on payday. Nothing to remember.</span></li>
-          <li><span class="mark">✓</span><span><span class="k">If life happens</span>We talk to you, only you. We never contact anyone in your phone.</span></li>
-          <li><span class="mark">✓</span><span><span class="k">The fine print</span>One monthly amount, every charge shown before you say yes.</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CALCULATOR -->
-<section id="calculator" class="band">
-  <div class="wrap">
-    <p class="eyebrow rv">Try it</p>
-    <h2 class="rv">see your monthly before you apply.</h2>
-    <div class="calc">
-      <div class="panel rv">
-        <div class="field">
-          <label for="amt">How much do you need? <output id="amtO">₦500,000</output></label>
-          <input id="amt" type="range" min="50000" max="5000000" step="50000" value="500000" aria-describedby="amtT">
-          <div class="ticks" id="amtT"><span>₦50k</span><span>₦5m</span></div>
-        </div>
-        <div class="field">
-          <label for="mo">For how long? <output id="moO">12 months</output></label>
-          <input id="mo" type="range" min="3" max="24" step="1" value="12">
-          <div class="ticks"><span>3 months</span><span>24 months</span></div>
-        </div>
-        <div class="field">
-          <label>What do you take home each month?</label>
-          <div class="pay" id="payb">
-            <button type="button" data-v="150000">₦150k</button>
-            <button type="button" data-v="300000" class="on">₦300k</button>
-            <button type="button" data-v="600000">₦600k</button>
-            <button type="button" data-v="1000000">₦1m</button>
-            <button type="button" data-v="2000000">₦2m+</button>
-          </div>
-        </div>
-      </div>
-      <div class="result rv" aria-live="polite">
-        <small>You'd pay about</small>
-        <div class="big" id="mon">₦47,510</div>
-        <div class="per">a month, taken from your salary on payday</div>
-        <div class="rrow"><span>You receive</span><b id="rRec">₦500,000</b></div>
-        <div class="rrow"><span>Total you pay back</span><b id="rTot">₦570,120</b></div>
-        <div class="rrow"><span>Hidden charges</span><b>₦0</b></div>
-        <div class="fit" id="fit">This fits your pay. You keep 84% of your salary.</div>
-        <a href="#waitlist" class="btn btn-k">Hold my spot</a>
-        <p class="fine">Example only, at 2.5% a month on a reducing balance. Your real rate depends on your credit check and is shown, with every charge, before you accept. We keep repayments at or under a third of your take-home pay.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS -->
 <section>
   <div class="wrap">
-    <p class="eyebrow rv">One app, your whole money life</p>
-    <h2 class="rv">start with a loan. stay for everything else.</h2>
-    <div class="products">
-      <div class="prod main rv">
-        <span class="tag">First in line</span>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><rect x="3" y="6" width="18" height="13" rx="3"/><path d="M3 10h18M7 15h4"/></svg></div>
-        <h3>ezee loans</h3>
-        <p>Salary loans for civil servants and staff of trusted employers. Repaid from your pay, priced fairly.</p>
-        <a class="go" href="#calculator">See your monthly →</a>
-      </div>
-      <div class="prod rv" id="auto">
-        <span class="tag">With Midas</span>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M5 16l1.5-5.2A2 2 0 0 1 8.4 9.3h7.2a2 2 0 0 1 1.9 1.5L19 16"/><rect x="3" y="15" width="18" height="4" rx="1.5"/><circle cx="7.5" cy="19.5" r="1.5"/><circle cx="16.5" cy="19.5" r="1.5"/></svg></div>
-        <h3>ezee cars</h3>
-        <p>Drive a newer car on a monthly plan. Spend less on fuel and fixing, more on living.</p>
-        <a class="go" href="https://midascfo.com/" rel="noopener">Browse cars →</a>
-      </div>
-      <div class="prod rv" id="pay">
-        <span class="tag">Coming soon</span>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M12 3v3M12 18v3M4.5 7.5l2 2M17.5 14.5l2 2M3 12h3M18 12h3"/><circle cx="12" cy="12" r="3.2"/></svg></div>
-        <h3>ezee pay</h3>
-        <p>Tap to pay for your daily moves, from the bus to the shop down the road.</p>
-        <a class="go" href="#waitlist">Get notified →</a>
-      </div>
-      <div class="prod rv">
-        <span class="tag">Coming soon</span>
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.5"/><path d="M2.5 9.5h19"/><path d="M6 15h3"/></svg></div>
-        <h3>ezee card</h3>
-        <p>A card that works at home and online abroad, without the drama at checkout.</p>
-        <a class="go" href="#waitlist">Get notified →</a>
-      </div>
+    <p class="eyebrow rv">Our promise</p>
+    <h2 class="rv">serious about trust.</h2>
+    <div class="feat">
+      <div class="rv"><h3>Licensed lending</h3><p>ezee loans are provided by Sage Grey Finance Limited, licensed and regulated by the Central Bank of Nigeria and integrated into NIBSS.</p></div>
+      <div class="rv"><h3>No shaming. Ever.</h3><p>We will never call or message anyone in your phone about your loan. We talk to you, only you.</p></div>
+      <div class="rv"><h3>Every naira shown</h3><p>One monthly amount and every charge, before you say yes. Your data protected under the Nigeria Data Protection Act.</p></div>
     </div>
+    <div class="lic"><span class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="#FFC72C" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
+<span>ezee loans are provided by <b>Sage Grey Finance Limited</b>, licensed and regulated by the <b>Central Bank of Nigeria</b> and integrated into <b>NIBSS</b>.</span></div>
   </div>
 </section>
 
-<!-- HOW -->
 <section class="band">
   <div class="wrap">
-    <p class="eyebrow rv">How it works</p>
-    <h2 class="rv">four steps. no queue. no paper.</h2>
-    <div class="steps">
-      <div class="step rv"><h3>Apply on your phone</h3><p>A few minutes. Your BVN, your payslip, your bank. That's it.</p></div>
-      <div class="step rv"><h3>We check, fast</h3><p>We confirm your salary and credit history with Nigeria's credit bureau.</p></div>
-      <div class="step rv"><h3>Say yes</h3><p>See your exact monthly and every charge. Accept only if it works for you.</p></div>
-      <div class="step rv"><h3>Repay on payday</h3><p>Your repayment comes off your salary automatically. Done.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PEOPLE -->
-<section>
-  <div class="wrap split">
-    <div class="shot rv">
-      <img src="img/market.jpg" alt="Traders setting out peppers and tomatoes at Oshodi market, Lagos" loading="lazy" decoding="async">
-      <span class="credit">Photo: Agbebiyi Adekunle, CC BY-SA 4.0</span>
-    </div>
-    <div class="rv">
-      <p class="eyebrow">Who it's for</p>
-      <h2>for the ones who show up every day.</h2>
-      <p class="lead" style="margin-top:18px">Teachers, nurses, civil servants, bankers, oil and gas staff. If you earn a salary, you've earned better credit.</p>
-      <ul class="list">
-        <li>School fees, rent and medical bills, sorted this week, not next year</li>
-        <li>Fix the car, start the side business, help family back home</li>
-        <li>Build a credit record that opens bigger doors later</li>
-      </ul>
-      <a href="#waitlist" class="btn btn-y">Join the waitlist</a>
-    </div>
-  </div>
-</section>
-
-<!-- EZEE PAY -->
-<section class="dark">
-  <div class="wrap split">
-    <div class="rv">
-      <p class="eyebrow">ezee pay · coming soon</p>
-      <h2>your daily moves, one tap.</h2>
-      <p class="lead" style="margin-top:18px">Millions of journeys happen across Lagos every day. We're building a simpler way to pay for them, and for everything else on the way.</p>
-      <ul class="list">
-        <li>Tap to pay, no change, no scrambling for cash</li>
-        <li>See where your money goes, ride by ride</li>
-        <li>Earn rewards for paying the ezee way</li>
-      </ul>
-      <a href="#waitlist" class="btn btn-y">Tell me when it's live</a>
-    </div>
-    <div class="shot rv">
-      <img src="img/brt.jpg" alt="A blue BRT bus arriving at Mile 12 bus stop, Lagos" loading="lazy" decoding="async">
-      <span class="credit">Photo: Olatunbosun Success, CC BY-SA 4.0</span>
-    </div>
-  </div>
-</section>
-
-<!-- EMPLOYERS -->
-<section id="employers">
-  <div class="wrap split">
-    <div class="shot rv">
-      <img src="img/skyline.jpg" alt="Office towers on Lagos Island" loading="lazy" decoding="async">
-      <span class="credit">Photo: Jamie Tubers, CC BY-SA 4.0</span>
-    </div>
-    <div class="rv">
-      <p class="eyebrow">For employers and governments</p>
-      <h2>give your people better credit, at no cost to you.</h2>
-      <p class="lead" style="margin-top:18px">Staff stressed about money don't do their best work. ezee gives your team fair loans and car plans, repaid through payroll.</p>
-      <ul class="list">
-        <li>No cost to the employer. We fund the loans.</li>
-        <li>Simple payroll set-up, one deduction per staff member</li>
-        <li>Built for state and federal payroll as well as private companies</li>
-      </ul>
-      <a href="#waitlist" class="btn btn-k" data-employer>Talk to us about your staff</a>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST -->
-<section class="dark">
-  <div class="wrap">
-    <p class="eyebrow rv">Your money, your data</p>
-    <h2 class="rv">serious about trust.</h2>
-    <div class="trust">
-      <div class="t rv">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-        <h3>Licensed lending</h3>
-        <p>Every ezee loan is made by a lending partner licensed by the Central Bank of Nigeria. We'll name them right here before the first loan goes out.</p>
-      </div>
-      <div class="t rv">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-        <h3>Your data stays yours</h3>
-        <p>We follow the Nigeria Data Protection Act. We only use what we need to lend to you, and we never sell it.</p>
-      </div>
-      <div class="t rv">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg></div>
-        <h3>No shaming. Ever.</h3>
-        <p>We will never message or call anyone in your phone about your loan. If you hit a hard month, talk to us and we'll work it out with you.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="wrap">
-    <p class="eyebrow rv">Questions</p>
-    <h2 class="rv">straight answers.</h2>
-    <div class="faq">
-      <details><summary>When can I get a loan?</summary><p>We're opening in Lagos first, starting with civil servants and staff of trusted employers. Join the waitlist and we'll message you on WhatsApp the moment your spot is ready.</p></details>
-      <details><summary>Is ezee a bank?</summary><p>No. ezee is a technology company. The loans are made by a lending partner licensed by the Central Bank of Nigeria, and we'll show their name on this page before the first loan.</p></details>
-      <details><summary>Who can apply?</summary><p>Nigerians aged 18 and over with a regular salary paid into a Nigerian bank account. We start with government workers and staff of companies we partner with, then open to more people.</p></details>
-      <details><summary>What do I need?</summary><p>Your BVN, a recent payslip or bank statement, and a valid ID. No paperwork to print and no branch to visit.</p></details>
-      <details><summary>How much does it cost?</summary><p>You'll see one monthly amount and every charge before you accept. The calculator above uses 2.5% a month on a reducing balance as an example. Your real rate depends on your credit check.</p></details>
-      <details><summary>Will you call my family or contacts?</summary><p>No. Never. We only ever speak to you about your loan.</p></details>
-      <details><summary>What if I change jobs?</summary><p>Tell us early. We'll move your repayment to your new salary account or agree a plan that works for you.</p></details>
-    </div>
+    <p class="eyebrow rv">From the blog</p>
+    <h2 class="rv">read the thinking.</h2>
+    <div class="posts"><a class="post rv" href="fair-credit.html"><div class="im"><img src="img/market.jpg" alt="" loading="lazy"></div><small>Credit · 5 min read</small><h3>Why salary-backed credit costs less</h3><p>When repayment comes straight from payroll, the lender's biggest risk disappears. Here's why that should make loans cheaper for every salaried Nigerian.</p></a><a class="post rv" href="tap-to-pay.html"><div class="im"><img src="img/brt.jpg" alt="" loading="lazy"></div><small>Payments · 5 min read</small><h3>What tap-to-pay could mean for Lagos</h3><p>Millions of journeys a day, most still paid in cash. What changes when every fare is a tap?</p></a><a class="post rv" href="no-shaming.html"><div class="im"><img src="img/danfo.jpg" alt="" loading="lazy"></div><small>Our promise · 5 min read</small><h3>Our promise: we will never shame a borrower</h3><p>Debt-shaming has no place in Nigerian finance. Here's how ezee does collections differently.</p></a></div>
   </div>
 </section>
 
@@ -564,10 +222,10 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
       </div>
       <div>
         <form id="wlf" novalidate>
-          <label class="in"><span>Your name</span><input name="name" autocomplete="name" required placeholder="e.g. Tolu Adebayo"></label>
-          <label class="in"><span>WhatsApp number</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0803 123 4567"></label>
+          <label class="fld"><span>Your name</span><input name="name" autocomplete="name" required placeholder="e.g. Tolu Adebayo"></label>
+          <label class="fld"><span>WhatsApp number</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0803 123 4567"></label>
           <div class="two">
-            <label class="in"><span>Where you work</span>
+            <label class="fld"><span>Where you work</span>
               <select name="work" required>
                 <option value="">Choose one</option>
                 <option>Federal civil service</option>
@@ -576,9 +234,9 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
                 <option>Oil and gas</option>
                 <option>Bank or finance</option>
                 <option>Self-employed</option>
-                <option>I'm an employer</option>
+                <option>I'm an employer</option><option>Business owner</option><option>Government agency</option>
               </select></label>
-            <label class="in"><span>Take-home a month</span>
+            <label class="fld"><span>Take-home a month</span>
               <select name="pay" required>
                 <option value="">Choose one</option>
                 <option>Under ₦150k</option>
@@ -588,12 +246,15 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
                 <option>Above ₦1m</option>
               </select></label>
           </div>
-          <label class="in"><span>What do you want first?</span>
+          <label class="fld"><span>What do you want first?</span>
             <select name="want">
-              <option>A salary loan</option>
-              <option>A car on a monthly plan</option>
-              <option>ezee pay</option>
-              <option>Loans for my staff</option>
+              <option>ezee wallet and pay</option>
+              <option>ezee credit (salary, school fees, rent)</option>
+              <option>ezee auto (a car on a monthly plan)</option>
+              <option>ezee save</option>
+              <option>ezee business (accept payments)</option>
+              <option>ezee finance (business capital)</option>
+              <option>ezee payroll for my staff</option>
             </select></label>
           <label class="consent"><input type="checkbox" name="ok" required><span>I agree that ezee can contact me on WhatsApp about early access. I can ask to be removed at any time.</span></label>
           <button class="btn btn-k" type="submit">Join the waitlist
@@ -604,102 +265,21 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
     </div>
   </div>
 </section>
-</main>
 
-<footer>
+</main><footer>
   <div class="wrap">
     <div class="fgrid">
-      <div>
-        <a href="#top" class="logo">ezee<i></i></a>
-        <p style="color:var(--muted);margin-top:12px;max-width:30ch;font-size:15.5px">Credit that respects your salary. Made in Lagos.</p>
-      </div>
-      <div><h4>Products</h4><ul><li><a href="#loans">Salary loans</a></li><li><a href="https://midascfo.com/">Cars</a></li><li><a href="#pay">ezee pay</a></li><li><a href="#waitlist">ezee card</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="#employers">For employers</a></li><li><a href="#faq">Questions</a></li><li><a href="#waitlist">Join the waitlist</a></li></ul></div>
-      <div><h4>Talk to us</h4><ul><li><a href="#" data-wa>WhatsApp</a></li><li><a href="#privacy">Privacy</a></li></ul></div>
+      <div><a href="./" class="logo"><svg viewBox="0 0 200 64" role="img" aria-label="ezee"><g><rect width="64" height="64" rx="18" fill="#FFC72C"/><path d="M47 32A15 15 0 1 0 43.4 41.7" fill="none" stroke="#0E0E0C" stroke-width="7.5" stroke-linecap="round"/><path d="M17.5 32H52" stroke="#0E0E0C" stroke-width="7.5" stroke-linecap="round"/><path d="M46 25.5L52.5 32L46 38.5" fill="none" stroke="#0E0E0C" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="76" y="47" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="52" letter-spacing="-2" fill="#0E0E0C">ezee</text></svg></a>
+        <p style="color:var(--muted);margin-top:14px;max-width:32ch;font-size:15.5px">Payments, loans and banking for every Nigerian. Built in Lagos, for the whole of Nigeria.</p>
+        <div class="stores" style="margin-top:18px"><a class="store" href="index.html#waitlist"><svg viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8 2.2-1.3 3.1-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><span>App Store<b><em>Coming soon</em></b></span></a><a class="store" href="index.html#waitlist"><svg viewBox="0 0 24 24"><path d="M4 2.6v18.8c0 .5.5.8.9.6l10.6-10.1L5 1.9c-.5-.2-1 .2-1 .7zm12.4 7.4L6.6 1.3l11.4 6.6-1.6 2.1zm0 4L18 16l-11.4 6.7 9.8-8.7zm4.1-3l-2.7-1.6-1.9 2.5 1.9 2.6 2.7-1.6c.8-.5.8-1.4 0-1.9z"/></svg><span>Google Play<b><em>Coming soon</em></b></span></a></div></div>
+      <div><h4>Products</h4><ul><li><a href="pay.html">ezee pay</a></li><li><a href="pay.html#merchants">ezee for merchants</a></li><li><a href="credit.html">Personal loans</a></li><li><a href="business.html">Business loans</a></li><li><a href="https://gomidas.co/">Car finance</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="why-ezee.html">Why "ezee"</a></li><li><a href="government.html">Government partners</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+      <div><h4>Talk to us</h4><ul><li><a href="#" data-wa>WhatsApp</a></li><li><a href="index.html#waitlist">Join the waitlist</a></li><li><a href="legal.html">Legal and privacy</a></li></ul></div>
     </div>
-    <div class="legal" id="privacy">
-      <p><b>ezee is a technology company, not a bank.</b> ezee is not yet lending. When we launch, loans will be provided by a lending partner licensed by the Central Bank of Nigeria, named on this page. All loans are subject to eligibility, a credit check and affordability. Examples on this page are for illustration only.</p>
-      <p><b>Privacy.</b> If you join the waitlist, we use your name, WhatsApp number and the answers you choose only to contact you about ezee early access, in line with the Nigeria Data Protection Act 2023. We do not sell your data. To be removed, message us on WhatsApp.</p>
-      <p>Photos from Wikimedia Commons under CC BY-SA 4.0: Omoeko Media (danfo buses, Ijora Badia), Agbebiyi Adekunle / Tadek Photography (Oshodi market), Olatunbosun Success (Mile 12 BRT), Jamie Tubers (Lagos Island).</p>
-      <p>© 2026 ezee</p>
-    </div>
+    <div class="legal"><p><b>ezee is a technology company, not a bank.</b> ezee loans are provided by <b>Sage Grey Finance Limited</b>, which is licensed and regulated by the Central Bank of Nigeria and integrated into the Nigerian Inter-Bank Settlement System (NIBSS). ezee pay, cards and savings are not yet live; when they launch they will be provided through licensed partners, named here. All loans are subject to eligibility, a credit check and affordability. Rates, amounts and screens shown on this site are examples. Targets and market figures are goals or third-party estimates, not ezee results.</p><p><b>Privacy.</b> If you join the waitlist we use your name, WhatsApp number and the answers you choose only to contact you about ezee, in line with the Nigeria Data Protection Act 2023. We do not sell your data. To be removed, message us on WhatsApp.</p><p>Photos from Wikimedia Commons under CC BY-SA 4.0: Omoeko Media (danfo buses, Ijora Badia), Agbebiyi Adekunle / Tadek Photography (Oshodi market), Olatunbosun Success (Mile 12 BRT), Jamie Tubers (Lagos Island). App screens are illustrations.</p><p>© 2026 ezee. Made in Lagos.</p></div>
   </div>
 </footer>
-
-<a class="fab" href="#" data-wa aria-label="Chat with ezee on WhatsApp">
-  <svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.6l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.1-1.8-1.8-3.8-1.8-5.9C5 10 9.9 5.2 16 5.2S27 10 27 15.9s-4.9 10.5-11 10.5zm6-7.8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg>
-</a>
-
-<script>
-(function(){
-  // Change this one number to route every WhatsApp button and waitlist sign-up.
-  var WA = '2348058963692';
-  var naira = function(n){ return '₦' + Math.round(n).toLocaleString('en-NG'); };
-  var short = function(n){ return n >= 1e6 ? '₦' + (n/1e6).toFixed(n % 1e6 ? 1 : 0) + 'm' : '₦' + Math.round(n/1000) + 'k'; };
-
-  // header border on scroll
-  var hd = document.querySelector('header');
-  addEventListener('scroll', function(){ hd.classList.toggle('scrolled', scrollY > 8); }, {passive:true});
-
-  // reveal
-  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, {rootMargin:'0px 0px -8% 0px'}) : null;
-  document.querySelectorAll('.rv').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
-
-  // calculator: reducing-balance loan at an example 2.5% a month
-  var R = 0.025, amt = document.getElementById('amt'), mo = document.getElementById('mo'), take = 300000;
-  function fill(el){ var p = (el.value - el.min) / (el.max - el.min) * 100; el.style.setProperty('--p', p + '%'); }
-  function calc(){
-    var P = +amt.value, n = +mo.value;
-    var m = P * R / (1 - Math.pow(1 + R, -n));
-    document.getElementById('amtO').textContent = naira(P);
-    document.getElementById('moO').textContent = n + ' months';
-    document.getElementById('mon').textContent = naira(m);
-    document.getElementById('rRec').textContent = naira(P);
-    document.getElementById('rTot').textContent = naira(m * n);
-    var share = m / take, f = document.getElementById('fit');
-    if (share <= 1/3) { f.className = 'fit'; f.textContent = 'This fits a ' + short(take) + ' take-home. You keep ' + Math.round((1 - share) * 100) + '% of your salary.'; }
-    else {
-      var maxM = take / 3, maxP = maxM * (1 - Math.pow(1 + R, -n)) / R;
-      f.className = 'fit bad';
-      f.textContent = 'A bit high for a ' + short(take) + ' take-home. Try about ' + naira(Math.floor(maxP / 50000) * 50000) + ' over ' + n + ' months, or a longer term.';
-    }
-    fill(amt); fill(mo);
-  }
-  amt.addEventListener('input', calc); mo.addEventListener('input', calc);
-  document.querySelectorAll('#payb button').forEach(function(b){
-    b.addEventListener('click', function(){
-      document.querySelectorAll('#payb button').forEach(function(x){ x.classList.remove('on'); });
-      b.classList.add('on'); take = +b.dataset.v; calc();
-    });
-  });
-  calc();
-
-  // WhatsApp links
-  function wa(text){ return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text); }
-  document.querySelectorAll('[data-wa]').forEach(function(a){
-    a.href = wa('Hi ezee, I have a question.'); a.target = '_blank'; a.rel = 'noopener';
-  });
-  document.querySelectorAll('[data-employer]').forEach(function(a){
-    a.addEventListener('click', function(){ var s = document.querySelector('select[name=want]'); s.value = 'Loans for my staff'; var w = document.querySelector('select[name=work]'); w.value = "I'm an employer"; });
-  });
-
-  // waitlist: hands the sign-up to WhatsApp (no data is stored on this page)
-  var form = document.getElementById('wlf');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var d = new FormData(form), bad = null;
-    ['name','phone','work','pay'].forEach(function(k){ var el = form.elements[k]; var v = (d.get(k) || '').trim(); el.style.borderColor = v ? '' : '#9A2C10'; if(!v && !bad) bad = el; });
-    var phone = (d.get('phone') || '').replace(/[^\d+]/g, '');
-    if (phone && phone.replace(/\D/g,'').length < 10) { form.elements.phone.style.borderColor = '#9A2C10'; bad = bad || form.elements.phone; }
-    if (!form.elements.ok.checked) { bad = bad || form.elements.ok; form.elements.ok.parentNode.style.color = '#9A2C10'; }
-    if (bad) { bad.focus(); return; }
-    var msg = 'Hi ezee, please add me to the waitlist.\n\nName: ' + d.get('name') + '\nWhatsApp: ' + d.get('phone') + '\nWork: ' + d.get('work') + '\nTake-home: ' + d.get('pay') + '\nInterested in: ' + d.get('want');
-    window.open(wa(msg), '_blank', 'noopener');
-    document.getElementById('ok').style.display = 'block';
-  });
-})();
-</script>
-</body>
-</html>
+<a class="fab" href="#" data-wa aria-label="Chat with ezee on WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.6l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.1-1.8-1.8-3.8-1.8-5.9C5 10 9.9 5.2 16 5.2S27 10 27 15.9s-4.9 10.5-11 10.5zm6-7.8c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.6 5.8 5 .8.3 1.4.5 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.4z"/></svg></a>
+<script>window.EZ_WA="2348058963692";</script>
+<script src="assets/ezee.js?v=2" defer></script>
+</body></html>
