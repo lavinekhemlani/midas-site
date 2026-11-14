@@ -31,9 +31,9 @@ ICON = {
  'play': '<svg viewBox="0 0 24 24"><path d="M4 2.6v18.8c0 .5.5.8.9.6l10.6-10.1L5 1.9c-.5-.2-1 .2-1 .7zm12.4 7.4L6.6 1.3l11.4 6.6-1.6 2.1zm0 4L18 16l-11.4 6.7 9.8-8.7zm4.1-3l-2.7-1.6-1.9 2.5 1.9 2.6 2.7-1.6c.8-.5.8-1.4 0-1.9z"/></svg>',
 }
 
-LEGAL = ('<p><b>ezee is a technology company, not a bank.</b> ezee loans are provided by <b>Sage Grey Finance Limited</b>, '
-         'which is licensed and regulated by the Central Bank of Nigeria and integrated into the Nigerian Inter-Bank Settlement System (NIBSS). '
-         'ezee pay, cards and savings are not yet live; when they launch they will be provided through licensed partners, named here. '
+LEGAL = ('<p><b>ezee is a technology company, not a bank.</b> ezee credit is provided by <b>Sage Grey Finance Limited</b>, '
+         'a finance company licensed and regulated by the Central Bank of Nigeria and integrated into the Nigerian Inter-Bank Settlement System (NIBSS). '
+         'ezee wallet, pay, save and card are not yet live; when they launch they will be provided by licensed partners named here. ezee does not take deposits. '
          'All loans are subject to eligibility, a credit check and affordability. Rates, amounts and screens shown on this site are examples. '
          'Targets and market figures are goals or third-party estimates, not ezee results.</p>'
          '<p><b>Privacy.</b> If you join the waitlist we use your name, WhatsApp number and the answers you choose only to contact you about ezee, '
@@ -105,7 +105,7 @@ def page(fn, title, desc, body, active='', dark=False):
 
 def lic(dark=False):
     return f'''<div class="lic"><span class="seal">{ICON['shield'].replace('currentColor', '#0E0E0C' if dark else '#FFC72C')}</span>
-<span>ezee loans are provided by <b>Sage Grey Finance Limited</b>, licensed and regulated by the <b>Central Bank of Nigeria</b> and integrated into <b>NIBSS</b>.</span></div>'''
+<span>ezee credit is provided by <b>Sage Grey Finance Limited</b>, a finance company licensed and regulated by the <b>Central Bank of Nigeria</b> and integrated into <b>NIBSS</b>.</span></div>'''
 
 # ---------- shared pieces ----------
 def phones():
@@ -246,7 +246,7 @@ home = f'''
     <p class="eyebrow rv">Our promise</p>
     <h2 class="rv">serious about trust.</h2>
     <div class="feat">
-      <div class="rv"><h3>Licensed lending</h3><p>ezee loans are provided by Sage Grey Finance Limited, licensed and regulated by the Central Bank of Nigeria and integrated into NIBSS.</p></div>
+      <div class="rv"><h3>Licensed lending</h3><p>ezee credit is provided by Sage Grey Finance Limited, a finance company licensed and regulated by the Central Bank of Nigeria and integrated into NIBSS.</p></div>
       <div class="rv"><h3>No shaming. Ever.</h3><p>We will never call or message anyone in your phone about your loan. We talk to you, only you.</p></div>
       <div class="rv"><h3>Every naira shown</h3><p>One monthly amount and every charge, before you say yes. Your data protected under the Nigeria Data Protection Act.</p></div>
     </div>
@@ -610,10 +610,12 @@ legal = f'''
 <section class="ph-hero"><div class="wrap article" style="margin:0">
 <p class="eyebrow">Legal and privacy</p><h1>the fine print, in plain words.</h1></div></section>
 <section style="padding-top:0"><div class="wrap article">
-<h2>Who we are</h2><p>ezee is a technology company, not a bank. ezee loans are provided by Sage Grey Finance Limited, which is licensed and regulated by the Central Bank of Nigeria and integrated into the Nigerian Inter-Bank Settlement System (NIBSS).</p>
+<h2>Who we are</h2><p>ezee is a technology company, not a bank. ezee credit is provided by Sage Grey Finance Limited, a finance company licensed and regulated by the Central Bank of Nigeria and integrated into the Nigerian Inter-Bank Settlement System (NIBSS).</p>
 <p>ezee pay, the ezee card and savings are not yet live. When they launch they will be provided through payment and banking partners licensed by the Central Bank of Nigeria, and we will name them on this page.</p>
 <h2>Loans</h2><p>All loans are subject to eligibility, a credit check with a licensed credit bureau and an affordability assessment. Before you accept any loan you will see the amount, the term, the monthly repayment, the total cost and every charge. Rates, amounts, terms and app screens on this website are examples and illustrations.</p>
 <h2>Collections</h2><p>We will never contact anyone in your phone, your family, your friends or your colleagues about your loan, and we do not ask for access to your contacts.</p>
+<h2>Security</h2><p>Every payment will need your PIN or biometric approval. Data is encrypted in transit and at rest, and you will be able to freeze your card or account instantly in the app. ezee staff will never ask for your PIN, password or one-time codes.</p>
+<h2>Complaints</h2><p>Tell us on WhatsApp and we will acknowledge within one working day and aim to resolve within the timelines set by the Central Bank of Nigeria's consumer protection rules. If you are not satisfied, you can escalate to the Central Bank of Nigeria's Consumer Protection Department or the Federal Competition and Consumer Protection Commission.</p>
 <h2>Your data</h2><p>We process personal data in line with the Nigeria Data Protection Act 2023. If you join the waitlist we use your name, WhatsApp number and the answers you choose only to contact you about ezee. We do not sell personal data. To ask what we hold, to correct it or to be removed, message us on WhatsApp.</p>
 <h2>Figures on this site</h2><p>Market figures are third-party estimates (UN population estimates; LAMATA transport data) or ezee estimates, and are labelled. Targets such as "10 million Nigerians" are goals, not results.</p>
 </div></section>
