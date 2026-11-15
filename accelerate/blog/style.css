@@ -1,0 +1,37 @@
+:root{
+  --ink:#0E0E0C; --ink2:#3B3A36; --muted:#6B6962; --line:#E7E3D9;
+  --paper:#FFFFFF; --band:#F7F4EC; --yellow:#FFC72C;
+  --display:'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+  --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.08;font-weight:800}
+header{background:var(--ink);color:#fff}
+.nav{max-width:1180px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:2px;font:800 26px/1 var(--display);letter-spacing:-.03em;text-decoration:none;color:#fff}
+.logo i{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--yellow);margin-left:3px;transform:translateY(5px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 20px;border-radius:999px;font:600 15px var(--body);text-decoration:none;background:var(--yellow);color:var(--ink)}
+.hero{padding:56px 0 32px;border-bottom:1px solid var(--line)}
+.eyebrow{font-weight:600;font-size:14px;color:var(--muted);margin-bottom:10px}
+.cards{display:grid;gap:18px;padding-block:40px}
+.card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:18px;padding:24px;transition:border-color .15s}
+.card:hover{border-color:var(--ink)}
+.card h2{font-size:24px;margin-bottom:8px}
+.card p{color:var(--ink2);font-size:15.5px}
+.card .meta{color:var(--muted);font-size:13px;margin-top:10px}
+article{padding-block:48px}
+article .meta{color:var(--muted);font-size:14px;margin-bottom:10px}
+article h1{font-size:clamp(28px,4.4vw,42px);margin-bottom:18px}
+article h2{font-size:clamp(20px,2.6vw,26px);margin:36px 0 12px}
+article p{margin-bottom:16px;color:var(--ink2);max-width:68ch}
+article ul{margin:0 0 16px 22px;color:var(--ink2)}
+article li{margin-bottom:8px}
+article .lead{font-size:19px;color:var(--ink);max-width:66ch}
+.back{display:inline-block;margin-bottom:24px;color:var(--muted);text-decoration:none;font-size:14.5px}
+.back:hover{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--muted);font-size:13.5px}

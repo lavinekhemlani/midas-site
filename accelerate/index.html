@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Live, hands-on AI cohorts across the US, Hong Kong and Southeast Asia — build a real AI-powered offer or automate your actual job, in 8 live sessions.">
+<meta property="og:title" content="Accelerate — get genuinely good at AI">
+<meta property="og:description" content="Live, hands-on AI cohorts across the US, Hong Kong and Southeast Asia — build a real AI-powered offer or automate your actual job, in 8 live sessions.">
+<meta property="og:url" content="https://midascfo.com/accelerate/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Accelerate">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Accelerate — get genuinely good at AI">
+<meta name="twitter:description" content="Live, hands-on AI cohorts across the US, Hong Kong and Southeast Asia — build a real AI-powered offer or automate your actual job, in 8 live sessions.">
+<link rel="canonical" href="https://midascfo.com/accelerate/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23FFC72C'/%3E%3Cpath d='M20 20L36 32L20 44' fill='none' stroke='%230E0E0C' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M34 20L44 32L34 44' fill='none' stroke='%230E0E0C' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>Accelerate — get genuinely good at AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0E0C; --ink2:#3B3A36; --muted:#6B6962; --line:#E7E3D9;
+  --paper:#FFFFFF; --band:#F7F4EC; --yellow:#FFC72C; --yellow2:#FFE08A; --green:#0F7B4F;
+  --r:18px; --max:1180px;
+  --display:'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
+  --body:'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden;
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px));}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.02em;line-height:1.02;font-weight:800}
+h2{font-size:clamp(34px,5.4vw,64px)}
+h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--ink2);max-width:36ch}
+.eyebrow{font-weight:600;font-size:15px;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.eyebrow:before{content:"";width:10px;height:10px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 3px #fff3cc}
+section{padding-block:96px}
+@media(max-width:700px){section{padding-block:68px}}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:56px;padding:0 26px;border-radius:999px;font:600 17px var(--body);text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease, background .15s ease}
+.btn:active{transform:scale(.98)}
+.btn-y{background:var(--yellow);color:var(--ink)}
+.btn-y:hover{background:#FFBA00}
+.btn-k{background:var(--ink);color:#fff}
+.btn-k:hover{background:#2A2925}
+.btn-o{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn svg{width:18px;height:18px}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(14,14,12,.86);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:2px;font:800 28px/1 var(--display);letter-spacing:-.03em;text-decoration:none;color:#fff}
+.logo i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--yellow);margin-left:3px;transform:translateY(6px)}
+.links{display:flex;gap:24px;font-weight:500;font-size:15px}
+.links a{text-decoration:none;color:#CFCCC3}
+.links a:hover{color:#fff}
+.nav .btn{height:44px;padding:0 20px;font-size:15.5px}
+@media(max-width:980px){.links{display:none}}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:0;background:#23221E;align-items:center;justify-content:center;cursor:pointer;color:#fff}
+.menu-btn span,.menu-btn span:before,.menu-btn span:after{display:block;width:18px;height:2px;background:currentColor;position:relative;border-radius:2px}
+.menu-btn span:before,.menu-btn span:after{content:"";position:absolute;left:0}
+.menu-btn span:before{top:-6px}.menu-btn span:after{top:6px}
+.nav-r{display:flex;gap:10px;align-items:center}
+@media(max-width:980px){.menu-btn{display:inline-flex}.nav .btn.hide-m{display:none}}
+.drawer{position:fixed;inset:68px 0 0 0;background:var(--ink);color:#fff;z-index:49;padding:24px 20px 40px;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.2s;overflow:auto}
+.drawer.open{opacity:1;transform:none;pointer-events:auto}
+.drawer a{display:block;font:800 26px/1.2 var(--display);letter-spacing:-.02em;text-decoration:none;padding:11px 0;border-bottom:1px solid #2A2925;color:#fff}
+.drawer .btn{margin-top:24px;width:100%;font:600 17px var(--body);border:0;padding:0}
+
+.hx{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding-top:72px}
+.hx:before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,rgba(255,199,44,.32),rgba(255,199,44,0) 62%);right:-260px;top:-180px;pointer-events:none}
+.hx .eyebrow{color:#BDBAB0}.hx .eyebrow:before{box-shadow:0 0 0 3px #3a3624}
+.hx h1{font-size:clamp(46px,8.6vw,110px);line-height:.96;letter-spacing:-.03em}
+.hx h1 .y{color:var(--yellow)}
+.hx .lead{color:#D6D3CA;max-width:40ch;margin:26px 0 10px}
+.hx .hrs{color:#8E8B82;font-size:14.5px;margin-bottom:28px}
+.hx .btn-o{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+.hx-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end;position:relative;padding-bottom:70px}
+@media(max-width:960px){.hx-grid{grid-template-columns:1fr}}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;color:#D6D3CA;background:#1E1D1A;border-radius:999px;padding:9px 14px}
+.chip b{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:12px;padding:2px 8px}
+
+.cluster{position:relative;height:620px}
+@media(max-width:960px){.cluster{height:560px;margin-top:10px}}
+@media(max-width:560px){.cluster{height:520px}}
+.ph{position:absolute;width:268px;background:#000;border-radius:40px;padding:10px;box-shadow:0 50px 90px -30px rgba(0,0,0,.7),0 0 0 1px #2c2b27}
+.ph .sc{background:#fff;color:var(--ink);border-radius:31px;overflow:hidden;height:540px;padding:18px 15px;display:flex;flex-direction:column;gap:11px;font-size:13px}
+.ph.a{left:50%;transform:translateX(-50%);top:0;z-index:3}
+.ph.b{left:4%;top:70px;transform:rotate(-8deg) scale(.88);z-index:2;opacity:.96}
+.ph.c{right:4%;top:70px;transform:rotate(8deg) scale(.88);z-index:2;opacity:.96}
+@media(max-width:560px){.ph.b{left:-70px}.ph.c{right:-70px}}
+.sc .bar{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11.5px}
+.sc .hi{font:700 18px/1.2 var(--display)}
+.bal{background:var(--ink);color:#fff;border-radius:20px;padding:16px}
+.bal small{color:#BDBAB0;font-size:11.5px}
+.bal .n{font:800 28px/1.1 var(--display);letter-spacing:-.02em;margin:3px 0 12px}
+.qa{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.qa div{text-align:center;font-size:10.5px;color:#D6D3CA}
+.qa i{display:grid;place-items:center;width:38px;height:38px;margin:0 auto 5px;border-radius:12px;background:#2A2925;font-style:normal;font-size:16px}
+.qa div:first-child i{background:var(--yellow)}
+.tx{display:grid;gap:2px}
+.tx div{display:flex;justify-content:space-between;align-items:center;padding:8px 2px;border-bottom:1px solid #EFEBE2}
+.tx span{display:flex;gap:9px;align-items:center;min-width:0}
+.tx i{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--band);font-style:normal;font-size:14px;flex:none}
+.tx small{display:block;color:var(--muted);font-size:10.5px}
+.tx b{font-weight:600;white-space:nowrap}
+.tap{margin-top:auto;border-radius:20px;background:var(--yellow);padding:16px;display:flex;align-items:center;gap:12px;font-weight:700}
+.tap .w{width:44px;height:44px;border-radius:50%;background:var(--ink);display:grid;place-items:center;flex:none}
+.tap .w svg{width:24px;height:24px}
+.tap small{display:block;font-weight:500;font-size:11.5px}
+.kpi{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi div{background:var(--band);border-radius:14px;padding:11px}
+.kpi small{color:var(--muted);font-size:10.5px;display:block}
+.kpi b{font:800 18px var(--display)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:#E8F6EF;color:var(--green);font-weight:600;font-size:11.5px;padding:6px 10px;border-radius:999px}
+.prog{height:10px;border-radius:99px;background:#2A2925;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--yellow);border-radius:99px}
+.illus2{position:absolute;bottom:14px;right:16px;font-size:11.5px;color:#8E8B82;z-index:4}
+
+.strip{background:var(--yellow);overflow:hidden;white-space:nowrap}
+.strip div{display:inline-flex;gap:40px;padding:18px 0;animation:tick 45s linear infinite;font:800 22px var(--display);letter-spacing:-.01em}
+.strip span{display:inline-flex;align-items:center;gap:40px}
+.strip span:after{content:"✦";font-size:16px}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion: reduce){.strip div{animation:none}}
+
+.proof{background:var(--ink);color:#fff;padding-block:30px;border-bottom:1px solid #2E2D29}
+.proof .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center;text-align:center}
+.proof p{color:#D6D3CA;font-size:15.5px;max-width:64ch}
+.proof b{color:#fff}
+
+.statement{font:800 clamp(34px,5.6vw,76px)/1.02 var(--display);letter-spacing:-.03em;max-width:18ch}
+.statement .m{color:#A8A498}
+.mega{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
+@media(max-width:1000px){.mega{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.mega{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--band);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;min-height:180px;text-decoration:none;transition:transform .2s, background .2s;position:relative;min-width:0}
+.tile:hover{transform:translateY(-3px);background:#F1ECDF}
+.tile .ic{width:44px;height:44px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:20px;margin-bottom:6px}
+.tile h3{font-size:19px}
+.tile p{font-size:14.5px;color:var(--ink2)}
+.tile .soon{position:absolute;top:16px;right:16px;font-size:11.5px;font-weight:600;color:var(--muted)}
+.tile.big{grid-column:span 2;background:var(--ink);color:#fff}
+.tile.big p{color:#D6D3CA}.tile.big .ic{background:var(--yellow)}
+.tile.big:hover{background:#1c1b18}
+.tile.y{background:var(--yellow)}
+.tile.y:hover{background:#FFBA00}
+@media(max-width:700px){.tile.big{grid-column:span 2}}
+.toolrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.toolrow span{font-size:12px;font-weight:600;background:rgba(14,14,12,.06);border-radius:999px;padding:4px 10px}
+.tile.big .toolrow span{background:rgba(255,255,255,.1)}
+
+.band{background:var(--band)}
+.dark{background:var(--ink);color:#fff}
+.dark .lead{color:#D6D3CA}
+.dark .eyebrow{color:#BDBAB0}
+.dark .eyebrow:before{box-shadow:0 0 0 3px #3a3624}
+
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;border-top:1px solid #2E2D29}
+@media(max-width:860px){.nums{grid-template-columns:1fr 1fr}}
+.num{padding:28px 20px 10px 0;border-right:1px solid #2E2D29;min-width:0}
+.num:last-child{border-right:0}
+@media(max-width:860px){.num:nth-child(2){border-right:0}}
+.num b{display:block;font:800 clamp(26px,5vw,48px)/1.1 var(--display);letter-spacing:-.02em;color:var(--yellow)}
+.num span{display:block;margin-top:10px;color:#D6D3CA;font-size:15.5px}
+.num small{display:block;margin-top:6px;color:#8E8B82;font-size:12.5px}
+
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+@media(max-width:860px){.trust{grid-template-columns:1fr}}
+.t{border:1px solid #2E2D29;border-radius:var(--r);padding:26px}
+.t h3{font-size:22px;margin:14px 0 8px}
+.t p{color:#BDBAB0;font-size:15.5px}
+.t .ico{width:44px;height:44px;border-radius:12px;background:var(--yellow);display:grid;place-items:center}
+.t .ico svg{width:24px;height:24px}
+.lic{background:#1E1D1A;border-radius:18px;padding:18px 20px;font-size:14.5px;color:#BDBAB0;margin-top:26px;max-width:72ch}
+.lic b{color:#fff}
+
+.show{margin-top:40px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;height:46px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:600 15px var(--body);color:var(--ink2);cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.tabs button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pane{display:none;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:30px}
+.pane.on{display:grid;animation:fadeup .4s ease}
+@keyframes fadeup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(max-width:860px){.pane{grid-template-columns:1fr;gap:28px}}
+.pane h3{font-size:clamp(30px,4vw,48px);line-height:1.02;letter-spacing:-.02em}
+.pane .lead{margin:16px 0 22px}
+.pane .stage{display:flex;justify-content:center;position:relative;min-height:580px}
+.pane .stage:before{content:"";position:absolute;inset:6% 8%;border-radius:40px;background:var(--yellow);transform:rotate(-3deg)}
+.pane .ph{position:relative;left:auto;top:auto;transform:none}
+.list{list-style:none;display:grid;gap:14px;margin:26px 0 32px}
+.list li{display:grid;grid-template-columns:26px 1fr;gap:12px;font-size:17px}
+.list li:before{content:"✓";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--yellow);font-weight:800;font-size:13px;margin-top:1px}
+.dark .list li{color:#ECEAE3}
+.notsub{display:inline-flex;align-items:center;gap:8px;background:#1E1D1A;border:1px solid #2E2D29;border-radius:999px;padding:9px 14px;font-size:13.5px;color:#D6D3CA;margin-top:4px}
+.notsub b{color:var(--yellow)}
+
+.rw{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+@media(max-width:900px){.rw{grid-template-columns:1fr 1fr}}
+.rw div{background:#fff;border-radius:20px;padding:22px;border:1px solid rgba(14,14,12,.08);min-width:0}
+.rw b{display:block;font:800 30px var(--display);letter-spacing:-.02em}
+.rw span{display:block;font-weight:600;margin-top:4px}
+.rw p{font-size:14.5px;color:var(--ink2);margin-top:6px}
+
+.suite{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px}
+@media(max-width:760px){.suite{grid-template-columns:1fr}}
+.su{border-radius:24px;padding:28px;background:#1E1D1A;border:1px solid #2E2D29;display:flex;flex-direction:column;gap:10px;min-height:220px}
+.su .nm{font:800 26px var(--display);letter-spacing:-.02em;color:#fff}
+.su .nm i{font-style:normal;color:var(--yellow)}
+.su p{color:#BDBAB0}
+.su ul{list-style:none;display:grid;gap:7px;margin-top:6px}
+.su li{color:#ECEAE3;font-size:15.5px;padding-left:22px;position:relative}
+.su li:before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;border-radius:50%;background:var(--yellow)}
+.su a{margin-top:auto;color:var(--yellow);font-weight:600;text-decoration:none}
+
+/* pricing */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:44px}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+.pc{border:1.5px solid var(--line);border-radius:24px;padding:28px;background:#fff;display:flex;flex-direction:column;gap:14px}
+.pc.on{border-color:var(--ink);box-shadow:0 20px 50px -20px rgba(14,14,12,.25)}
+.pc .tag{display:inline-flex;align-self:flex-start;background:var(--yellow);color:var(--ink);font-weight:700;font-size:12.5px;padding:5px 12px;border-radius:999px}
+.pc .pr{font:800 48px var(--display);letter-spacing:-.02em;margin-top:6px}
+.pc .pr small{font:600 16px var(--body);color:var(--muted)}
+.pc .was{color:var(--muted);font-size:15px;text-decoration:line-through}
+.pc ul{list-style:none;display:grid;gap:10px;margin:8px 0}
+.pc li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15.5px}
+.pc li:before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--band);font-weight:800;font-size:11px}
+.guarantee{display:flex;gap:12px;align-items:flex-start;background:var(--band);border-radius:16px;padding:16px;margin-top:8px;font-size:14.5px}
+.guarantee b{display:block;margin-bottom:2px}
+
+/* faq */
+.faq{margin-top:40px;display:grid;gap:10px;max-width:860px}
+.q{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.q summary{list-style:none;cursor:pointer;padding:20px 22px;font-weight:700;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.q summary::-webkit-details-marker{display:none}
+.q summary:after{content:"+";font:800 22px var(--display);color:var(--muted);flex:none}
+.q[open] summary:after{content:"–"}
+.q p{padding:0 22px 20px;color:var(--ink2);font-size:15.5px;max-width:70ch}
+
+.wl{background:var(--yellow);border-radius:28px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:900px){.wl{grid-template-columns:1fr;gap:28px}}
+.wl .lead{color:#3D3208}
+form{display:grid;gap:14px}
+.fld{display:grid;gap:7px}
+.fld span{font-weight:600;font-size:14.5px}
+.fld input,.fld select{height:54px;border-radius:14px;border:1.5px solid rgba(14,14,12,.18);background:#fff;padding:0 16px;font:16px var(--body);color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%230E0E0C' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--ink)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){.two{grid-template-columns:1fr}}
+.consent{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:13.5px;color:#3D3208;align-items:start}
+.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--ink)}
+form .btn{width:100%}
+.ok{display:none;background:#fff;border-radius:18px;padding:22px;font-weight:600}
+.hp{position:absolute;left:-9999px;top:-9999px}
+
+/* mobile-first apply stepper */
+.stepper{background:#fff;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:18px;min-height:420px}
+.st-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.st-count{font-size:13px;font-weight:600;color:var(--muted)}
+.st-close{width:34px;height:34px;border-radius:50%;background:var(--band);border:0;display:grid;place-items:center;cursor:pointer;color:var(--ink);font-size:15px;line-height:1}
+.st-bar{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.st-bar i{display:block;height:100%;background:var(--ink);border-radius:99px;transition:width .35s ease}
+.step{display:none;flex-direction:column;gap:16px;flex:1}
+.step.on{display:flex;animation:fadeup .35s ease}
+.step h3{font-family:var(--display);font-size:clamp(24px,3.4vw,30px);letter-spacing:-.01em;line-height:1.1}
+.step .sub{color:var(--muted);font-size:14.5px;margin-top:-8px}
+.bigfld input{height:58px;border-radius:16px;border:1.5px solid var(--line);padding:0 18px;font:17px var(--body);width:100%}
+.bigfld input:focus{outline:none;border-color:var(--ink)}
+.choices{display:grid;gap:10px}
+.choice{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;background:#fff;font-weight:600;font-size:16px;transition:border-color .15s, background .15s}
+.choice:hover{border-color:#C9C4B4}
+.choice.sel{border-color:var(--ink);background:var(--band)}
+.choice .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex:none;position:relative}
+.choice.sel .dot{border-color:var(--ink)}
+.choice.sel .dot:after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--ink)}
+.step-actions{margin-top:auto;display:flex;gap:10px}
+.step-actions .btn{flex:1}
+.btn-back{background:var(--band);color:var(--ink)}
+.err{color:#9A2C10;font-size:13.5px;display:none}
+.err.show{display:block}
+
+footer{padding:64px 0 40px;border-top:1px solid var(--line);margin-top:0}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+@media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr}}
+footer h4{font:600 14.5px var(--body);color:var(--muted);margin-bottom:12px}
+footer ul{list-style:none;display:grid;gap:8px;font-size:15.5px}
+footer ul a{text-decoration:none}
+footer ul a:hover{text-decoration:underline}
+.legal{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:grid;gap:10px}
+
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease, transform .7s ease}
+html.js .rv.in{opacity:1;transform:none}
+html:not(.js) .rv{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+.hx-grid,.mega>*,.wl>*,.fgrid>*{min-width:0}
+h1,h2,h3,p,li{overflow-wrap:anywhere}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Accelerate home">Accelerate<i></i></a>
+    <nav class="links" aria-label="Main"><a href="#tracks">Tracks</a><a href="#regions">Regions</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#enterprise">For teams</a><a href="blog/">Blog</a></nav>
+    <div class="nav-r"><a href="#apply" class="btn btn-y hide-m">Apply now</a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button></div>
+  </div>
+</header>
+<div class="drawer" id="drawer"><a href="#tracks">Tracks</a><a href="#regions">Regions</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#enterprise">For teams</a><a href="blog/">Blog</a><a href="#apply" class="btn btn-y">Apply now</a></div>
+
+<main>
+<section class="hx">
+  <div class="wrap hx-grid">
+    <div class="rv" style="padding-bottom:30px">
+      <p class="eyebrow">Live cohorts · US · Hong Kong · Southeast Asia</p>
+      <h1>get <span class="y">genuinely good</span><br>at AI.</h1>
+      <p class="lead">Not another "intro to AI" deck. Live, hands-on cohorts that teach you to build, automate and earn with AI — taught by practitioners who've actually shipped, not read about it.</p>
+      <p class="hrs">~3–4 hrs/week: one live session, one optional AMA, plus build time on your own project.</p>
+      <div class="cta-row">
+        <a href="#apply" class="btn btn-y">Apply — November 2026 cohort <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#sample" class="btn btn-o">Watch a sample session</a>
+      </div>
+      <div class="chips">
+        <span class="chip"><b>2</b>live tracks</span>
+        <span class="chip"><b>3</b>regions, one curriculum</span>
+        <span class="chip"><b>8</b>live sessions per cohort</span>
+      </div>
+    </div>
+    <div class="rv"><div class="cluster" aria-hidden="true">
+      <div class="ph b"><div class="sc">
+        <div class="bar"><span>AI for Automation</span><span>9:41</span></div>
+        <div class="hi">Session 5 of 8</div>
+        <div class="kpi"><div><small>Workflows built</small><b>6</b></div><div><small>Hours saved / wk</small><b>11</b></div></div>
+        <div class="prog"><i style="width:62%"></i></div>
+        <span class="pill">✓ Automation live in your actual job</span>
+        <div class="bal" style="margin-top:auto"><small>Next live session</small><div class="n" style="font-size:22px;margin-bottom:4px">Tue · 7:00pm</div><small>Office hours Thu, optional</small></div>
+      </div></div>
+      <div class="ph c"><div class="sc">
+        <div class="bar"><span>Certificate</span><span>9:41</span></div>
+        <div class="hi">You did it 🎓</div>
+        <div class="bal"><small>AI for Entrepreneurs</small><div class="n">Completed</div>
+          <div class="tx"><div><span><i>📦</i><span>Cohort<small>Nov 2026 · US</small></span></span><b>8/8</b></div><div><span><i>🚀</i><span>Shipped<small>Live AI offer</small></span></span><b>✓</b></div></div></div>
+        <span class="pill">✓ Shareable certificate</span>
+      </div></div>
+      <div class="ph a"><div class="sc">
+        <div class="bar"><span><b style="font:800 17px var(--display)">Accelerate</b></span><span>9:41</span></div>
+        <div class="hi">Good evening 👋</div>
+        <div class="bal"><small>Your cohort</small><div class="n">AI for Entrepreneurs</div>
+          <div class="qa"><div><i>▶</i>Join live</div><div><i>📂</i>Replays</div><div><i>💬</i>Skool</div></div></div>
+        <div class="tx">
+          <div><span><i>🧠</i><span>Session 4<small>Building your offer</small></span></span><b>Live now</b></div>
+          <div><span><i>🤝</i><span>24 in this room</small></span></span><b style="color:var(--green)">●</b></div>
+        </div>
+        <div class="tap"><span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#FFC72C" stroke-width="2.2" stroke-linecap="round"><path d="M8 5v14l11-7z"/></svg></span><span>Join the live room<small>24 people here now</small></span></div>
+      </div></div>
+      <span class="illus2">App screens are illustrations</span>
+    </div></div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true"><div><span>Prompting that actually works</span><span>Building AI agents</span><span>Automating busywork</span><span>AI for content &amp; copy</span><span>Data &amp; analysis</span><span>No-code AI tools</span><span>Client &amp; freelance work</span><span>Prompting that actually works</span><span>Building AI agents</span><span>Automating busywork</span><span>AI for content &amp; copy</span><span>Data &amp; analysis</span><span>No-code AI tools</span><span>Client &amp; freelance work</span></div></div>
+
+<div class="proof"><div class="wrap"><p>Built by a team that previously ran a tech-education program training <b>20,000+ people</b>, with graduates going on to work at <b>500+ companies</b> — relaunched here for the AI era, from scratch, as Accelerate.</p></div></div>
+
+<section id="tracks">
+  <div class="wrap">
+    <p class="eyebrow rv">Two tracks</p>
+    <p class="statement rv">Build something. Automate something. <span class="m">Leave with proof, not a PDF.</span></p>
+    <div class="mega">
+      <a class="tile big rv" href="#apply"><span class="ic">🚀</span><h3>AI for Entrepreneurs</h3><p>Go from idea to a working, AI-powered offer in 8 live sessions — fixed scope, fixed price, AI doing the delivery.</p><div class="toolrow"><span>Claude</span><span>ChatGPT</span><span>no-code builders</span></div></a>
+      <a class="tile y rv" href="#automation" id="automation"><span class="ic">⚙️</span><h3>AI for Automation</h3><p>Kill the busywork in your actual job, step by step.</p><div class="toolrow"><span>n8n</span><span>Zapier</span><span>Make</span><span>Claude Cowork</span></div></a>
+      <a class="tile rv" href="#apply"><span class="ic">🎓</span><h3>Shareable certificate</h3><p>Finish with proof you can put on LinkedIn or a client pitch.</p></a>
+      <a class="tile rv" href="#apply"><span class="ic">💬</span><h3>Thursday AMAs</h3><p>Optional live office hours to get unstuck.</p></a>
+      <a class="tile rv" href="#enterprise"><span class="ic">🏢</span><h3>Private cohorts</h3><p>Run either track just for your team.</p></a>
+      <a class="tile rv" href="#apply"><span class="ic">🤝</span><h3>Taught live, by practitioners</h3><p>Instructors who've actually built and shipped with AI — including today's agent tooling, not last year's.</p></a>
+      <a class="tile rv" href="#regions"><span class="ic">🌍</span><h3>Three regions</h3><p>US, Hong Kong and Southeast Asia, live every cohort.</p></a>
+      <a class="tile rv" href="#apply"><span class="ic">📂</span><h3>Replays included</h3><p>Miss a live session? It's recorded, forever.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="regions">
+  <div class="wrap">
+    <p class="eyebrow rv">Three programs</p>
+    <h2 class="rv">one curriculum, run live in three regions.</h2>
+    <div class="show" data-tabs><div class="tabs" role="tablist"><button type="button" data-tab="us" class="on">🇺🇸 United States</button><button type="button" data-tab="hk">🇭🇰 Hong Kong</button><button type="button" data-tab="sea">🌏 Southeast Asia</button></div>
+      <div class="pane on" data-pane="us"><div><h3>fully remote, after work.</h3><p class="lead">Tuesday evenings and Saturday mornings, built around a real workweek — not another thing you have to take a day off for.</p><ul class="list"><li>Tue evening + Sat 10:00–12:00 ET</li><li>Thu optional office hours / AMA</li><li>Both tracks: Entrepreneurs + Automation</li></ul><a href="#apply" class="btn btn-y">Apply — US cohort</a></div>
+      <div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>Accelerate · US</span><span>9:41</span></div><div class="hi">This week</div>
+      <div class="bal"><small>Tue</small><div class="n" style="font-size:22px">7:00 PM ET</div><small>Live session · remote</small></div>
+      <div class="tx"><div><span><i>📅</i><span>Thu<small>Office hours · optional</small></span></span><b>Remote</b></div><div><span><i>📅</i><span>Sat<small>10:00–12:00 ET</small></span></span><b>Remote</b></div></div>
+      <div class="tap" style="justify-content:center">Join Tuesday's session</div></div></div></div></div>
+      <div class="pane" data-pane="hk"><div><h3>the only in-person room.</h3><p class="lead">Saturday mornings, in person in Hong Kong — the rest of the week runs remote alongside everyone else.</p><span class="notsub">Paid, founder-led, run independently — <b>not</b> a government-subsidized programme.</span><ul class="list" style="margin-top:18px"><li>Sat 10:00–12:00 in person, HKT</li><li>Tue evening remote + Thu optional AMA</li><li>Both tracks: Entrepreneurs + Automation</li></ul><a href="#apply" class="btn btn-y">Apply — Hong Kong cohort</a></div>
+      <div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>Accelerate · HK</span><span>9:41</span></div><div class="hi">This week</div>
+      <div class="bal"><small>Sat</small><div class="n" style="font-size:22px">10:00 AM HKT</div><small>In person</small></div>
+      <div class="tx"><div><span><i>📅</i><span>Tue<small>Evening · remote</small></span></span><b>Remote</b></div><div><span><i>📅</i><span>Thu<small>Office hours · optional</small></span></span><b>Remote</b></div></div>
+      <div class="tap" style="justify-content:center">See Saturday's venue</div></div></div></div></div>
+      <div class="pane" data-pane="sea"><div><h3>fully remote, SGT evenings.</h3><p class="lead">Same curriculum, same instructors, timed for Singapore and the wider region.</p><span class="notsub">Paid, founder-led, run independently — <b>not</b> a government-subsidized programme.</span><ul class="list" style="margin-top:18px"><li>Tue evening + Sat 10:00–12:00 SGT</li><li>Thu optional office hours / AMA</li><li>Both tracks: Entrepreneurs + Automation</li></ul><a href="#apply" class="btn btn-y">Apply — SEA cohort</a></div>
+      <div class="stage"><div class="ph"><div class="sc"><div class="bar"><span>Accelerate · SEA</span><span>9:41</span></div><div class="hi">This week</div>
+      <div class="bal"><small>Tue</small><div class="n" style="font-size:22px">7:00 PM SGT</div><small>Live session · remote</small></div>
+      <div class="tx"><div><span><i>📅</i><span>Thu<small>Office hours · optional</small></span></span><b>Remote</b></div><div><span><i>📅</i><span>Sat<small>10:00–12:00 SGT</small></span></span><b>Remote</b></div></div>
+      <div class="tap" style="justify-content:center">Join Tuesday's session</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <p class="eyebrow rv">Why now</p>
+    <h2 class="rv">everyone's using AI. almost no one's actually good at it.</h2>
+    <div class="nums">
+      <div class="num rv"><b>2</b><span>live tracks this cohort</span><small>Entrepreneurs · Automation</small></div>
+      <div class="num rv"><b>8</b><span>live sessions per track</span><small>across 4–5 weeks</small></div>
+      <div class="num rv"><b>24</b><span>seats per track, per region</span><small>capped on purpose, no exceptions</small></div>
+      <div class="num rv"><b>3</b><span>regions running live this November</span><small>US · Hong Kong · Southeast Asia</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <p class="eyebrow rv">Our promise</p>
+    <h2 class="rv">built by people who've actually shipped.</h2>
+    <div class="trust">
+      <div class="rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M8 5v14l11-7z"/></svg></div><h3>Live, not recorded</h3><p>Every core session runs live with real instructors. Recordings are the backup, not the product.</p></div>
+      <div class="rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/></svg></div><h3>Practitioners, not theorists</h3><p>You're taught by people who've built and shipped with AI — including today's agent tooling, not read about it.</p></div>
+      <div class="rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Proof, not vanity metrics</h3><p>You leave with something shipped and a certificate that means something — not a completion badge.</p></div>
+    </div>
+    <p class="lic rv">Accelerate is a new, independent program. Its team previously built and ran a separate tech-education company that trained <b>20,000+ people</b> over 7+ years, with graduates placed at <b>500+ companies</b> — that earlier company was acquired in 2025 and is not affiliated with Accelerate. We're starting this one from zero cohorts, on purpose.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow rv">What you leave with</p>
+    <h2 class="rv">more than a certificate.</h2>
+    <div class="rw">
+      <div class="rv"><b>1</b><span>shipped project</span><p>A real AI-powered offer or automated workflow, not a slide deck.</p></div>
+      <div class="rv"><b>8</b><span>live sessions</span><p>Across 4–5 weeks, plus optional Thursday office hours.</p></div>
+      <div class="rv"><b>Skool</b><span>community access</span><p>A private Skool space built from scratch with this cohort, alongside instructors who've done it before.</p></div>
+      <div class="rv"><b>∞</b><span>replay access</span><p>Every session recorded and yours to keep.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="pricing">
+  <div class="wrap">
+    <p class="eyebrow rv">Pricing</p>
+    <h2 class="rv">one price, either track.</h2>
+    <p class="lead rv" style="margin-top:16px">Both tracks are priced the same. No tiers to decode, no hidden add-ons.</p>
+    <div class="pgrid">
+      <div class="pc on rv">
+        <span class="tag">November 2026 cohort · early-bird</span>
+        <div class="pr">$897<small>/ track</small></div>
+        <ul>
+          <li>8 live sessions + Thursday AMAs</li>
+          <li>Either track — Entrepreneurs or Automation</li>
+          <li>Private Skool community access</li>
+          <li>Lifetime replay access</li>
+          <li>Shareable certificate on completion</li>
+        </ul>
+        <div class="guarantee"><span>🎯</span><div><b>Automation track guarantee:</b> ship one real automation live in your job by session 8, or your money back.</div></div>
+        <a href="#apply" class="btn btn-k">Apply at early-bird price</a>
+      </div>
+      <div class="pc rv">
+        <span class="tag" style="background:var(--band)">Standard, after early-bird closes</span>
+        <div class="pr">$1,200<small>/ track</small></div>
+        <ul>
+          <li>Same 8 live sessions + AMAs</li>
+          <li>Same Skool community + replays</li>
+          <li>Same certificate on completion</li>
+        </ul>
+        <div class="guarantee"><span>🎯</span><div><b>Entrepreneurs track guarantee:</b> leave with a working AI-powered offer and your first outreach sent, or your money back.</div></div>
+        <a href="#apply" class="btn btn-o" style="box-shadow:inset 0 0 0 1.5px var(--ink)">Apply at standard price</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="enterprise">
+  <div class="wrap">
+    <p class="eyebrow rv">For companies</p>
+    <h2 class="rv">bring your whole team.</h2>
+    <p class="lead rv" style="margin-top:16px;max-width:54ch">Private cohorts, either track, run just for your company — built for teams that want to be genuinely good at AI, not just "aware" of it. A separate flow from individual applications below.</p>
+    <div class="suite">
+      <div class="su rv"><div class="nm">Private <i>cohorts</i></div><p>Either track, run exclusively for your team, in any of our three regions.</p><ul><li>Same live format, your people only</li><li>Curriculum lightly tailored to your business</li><li>Volume pricing per seat — talk to us for a quote</li></ul><a href="mailto:lavine@zenith-grp.co?subject=Accelerate%20—%20team%20cohort">Talk to us about a team cohort →</a></div>
+      <div class="su rv"><div class="nm">Dedicated <i>success manager</i></div><p>One point of contact handling scheduling, reporting and renewals.</p><ul><li>Attendance and completion reporting</li><li>Procurement-ready invoicing</li><li>Renewal built in for new hires</li></ul><a href="mailto:lavine@zenith-grp.co?subject=Accelerate%20—%20enterprise">Talk to us about enterprise →</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <p class="eyebrow rv">Questions</p>
+    <h2 class="rv">before you apply.</h2>
+    <div class="faq">
+      <details class="q rv"><summary>Is this actually live, or am I watching recordings?</summary><p>Every core session runs live with a real instructor, in your region's scheduled time. Replays exist so you never lose a session you miss — they're the backup, not the format.</p></details>
+      <details class="q rv"><summary>What if I miss a live session?</summary><p>It's recorded and yours to keep, with lifetime access. You can also bring questions on it to the optional Thursday AMA.</p></details>
+      <details class="q rv"><summary>Is this subsidized or free through a government program?</summary><p>No. Accelerate is paid, independently run, and founder-led — not a subsidized scheme. That's a deliberate choice: it's how we keep cohorts small and live.</p></details>
+      <details class="q rv"><summary>What will I actually learn to use?</summary><p>Automation track: n8n, Zapier, Make, and Claude's Cowork agent, building real workflows for your own job. Entrepreneurs track: building and launching a fixed-scope, fixed-price AI-powered offer using tools like Claude and ChatGPT plus no-code builders — not abstract "AI strategy."</p></details>
+      <details class="q rv"><summary>I'm not technical. Can I still do this?</summary><p>Yes — both tracks are built for operators and entrepreneurs, not engineers. No coding background required; mentors are there specifically to unblock you.</p></details>
+      <details class="q rv"><summary>What's the refund policy?</summary><p>Each track has its own outcome-based guarantee (see Pricing above) — ship the stated deliverable by session 8, or you get your money back.</p></details>
+      <details class="q rv"><summary>What happens after the cohort ends?</summary><p>You keep lifetime replay access, your certificate, and your seat in the private Skool community — the cohort ends, the access doesn't.</p></details>
+      <details class="q rv"><summary>How many seats are there, really?</summary><p>24 per track, per region, per cohort. That's a real operating cap, not a marketing number — once a cohort is full, you're offered the next one.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="sample" style="padding-top:0">
+  <div class="wrap">
+    <div style="background:var(--band);border-radius:28px;padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+      <p class="eyebrow" style="margin-bottom:0">Not ready to apply yet?</p>
+      <h3 style="font-size:clamp(26px,3.4vw,38px)">Watch a real session before you commit.</h3>
+      <p class="lead">We'll send you a full replay of a past live session — same format, same instructors, no sales pitch attached.</p>
+      <a href="mailto:lavine@zenith-grp.co?subject=Accelerate%20—%20send%20me%20a%20sample%20session" class="btn btn-k">Email us for a sample session</a>
+    </div>
+  </div>
+</section>
+
+<section id="apply" style="padding-top:0">
+  <div class="wrap">
+    <div class="wl rv">
+      <div>
+        <p class="eyebrow" style="color:#5C4A0B">November 2026 cohort</p>
+        <h2>apply now.</h2>
+        <p class="lead" style="margin-top:18px">Seats are capped at 24 per track, per region. It takes 30 seconds.</p>
+        <ul class="list" style="margin-top:26px">
+          <li>We'll follow up by email before the cohort opens</li>
+          <li>No payment needed to apply</li>
+          <li>Leave the list anytime, no questions</li>
+        </ul>
+      </div>
+      <div>
+        <form id="wlf" name="accelerate-apply" novalidate>
+          <p class="hp" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <input type="hidden" name="name"><input type="hidden" name="email"><input type="hidden" name="track"><input type="hidden" name="region"><input type="hidden" name="ok">
+
+          <div class="stepper">
+            <div class="st-top"><span class="st-count">4 taps</span><button type="button" class="st-close" data-reset aria-label="Start over">↺</button></div>
+            <div class="st-bar"><i id="stBar" style="width:25%"></i></div>
+
+            <div class="step on" data-step="1">
+              <h3>Nice! What's your name?</h3>
+              <p class="sub">So we know who to welcome into the cohort.</p>
+              <label class="bigfld"><input id="in-name" autocomplete="name" placeholder="First and last name"></label>
+              <p class="err" id="err-1">Enter your name to continue.</p>
+              <div class="step-actions"><button type="button" class="btn btn-k" data-next>Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+
+            <div class="step" data-step="2">
+              <h3>What's your email?</h3>
+              <p class="sub">We'll send cohort details here before it opens.</p>
+              <label class="bigfld"><input id="in-email" type="email" autocomplete="email" placeholder="you@company.com"></label>
+              <p class="err" id="err-2">Enter a valid email to continue.</p>
+              <div class="step-actions"><button type="button" class="btn btn-back" data-back>Back</button><button type="button" class="btn btn-k" data-next>Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+
+            <div class="step" data-step="3">
+              <h3>Which track?</h3>
+              <p class="sub">Pick one — you can always ask more in session one.</p>
+              <div class="choices" data-group="track">
+                <div class="choice" data-value="AI for Entrepreneurs"><span>AI for Entrepreneurs</span><span class="dot"></span></div>
+                <div class="choice" data-value="AI for Automation"><span>AI for Automation</span><span class="dot"></span></div>
+                <div class="choice" data-value="Not sure yet"><span>Not sure yet</span><span class="dot"></span></div>
+              </div>
+              <p class="err" id="err-3">Pick one to continue.</p>
+              <div class="step-actions"><button type="button" class="btn btn-back" data-back>Back</button><button type="button" class="btn btn-k" data-next>Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+
+            <div class="step" data-step="4">
+              <h3>Which region?</h3>
+              <p class="sub">Last one — where should we schedule you?</p>
+              <div class="choices" data-group="region">
+                <div class="choice" data-value="United States (remote)"><span>🇺🇸 United States (remote)</span><span class="dot"></span></div>
+                <div class="choice" data-value="Hong Kong (in person)"><span>🇭🇰 Hong Kong (in person)</span><span class="dot"></span></div>
+                <div class="choice" data-value="Southeast Asia (remote)"><span>🌏 Southeast Asia (remote)</span><span class="dot"></span></div>
+              </div>
+              <p class="err" id="err-4">Pick a region, and check the box below, to finish.</p>
+              <label class="consent" style="margin-top:4px"><input id="f-ok" type="checkbox"><span>I agree Accelerate can email me about the November 2026 cohort. I can unsubscribe anytime.</span></label>
+              <div class="step-actions"><button type="button" class="btn btn-back" data-back>Back</button><button class="btn btn-k" type="submit">Apply for the cohort <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+            </div>
+          </div>
+          <p class="ok" id="ok">You're in. We'll email you before the cohort opens. 🎉</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><a href="#top" class="logo" style="color:var(--ink)">Accelerate<i></i></a>
+        <p style="color:var(--muted);margin-top:14px;max-width:32ch;font-size:15.5px">Live AI skills training for entrepreneurs and operators. Built in the US, Hong Kong and Southeast Asia.</p></div>
+      <div><h4>Tracks</h4><ul><li><a href="#tracks">AI for Entrepreneurs</a></li><li><a href="#automation">AI for Automation</a></li><li><a href="#enterprise">Private cohorts</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#regions">Where we run</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="blog/">Blog</a></li></ul></div>
+      <div><h4>Talk to us</h4><ul><li><a href="#apply">Apply</a></li><li><a href="#enterprise">Enterprise</a></li></ul></div>
+    </div>
+    <div class="legal"><p>© 2026 Accelerate. Accelerate is a new, independently run program with no completed cohorts yet. References above to a prior track record (people trained, companies graduates work at) describe a separate company its team previously ran, now majority-owned by a different, unrelated acquirer — not Accelerate itself. Program dates, pricing and seat counts shown here reflect current plans and are subject to change before a cohort opens.</p></div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var $ = function(s){ return document.querySelector(s); }, $$ = function(s){ return document.querySelectorAll(s); };
+  var mb = $('.menu-btn'), dr = $('#drawer');
+  if (mb && dr) {
+    mb.addEventListener('click', function(){ var o = dr.classList.toggle('open'); mb.setAttribute('aria-expanded', o); document.body.style.overflow = o ? 'hidden' : ''; });
+    dr.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', function(){ dr.classList.remove('open'); document.body.style.overflow=''; }); });
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -6% 0px'}) : null;
+  $$('.rv').forEach(function(el){ io ? io.observe(el) : el.classList.add('in'); });
+  $$('[data-tabs]').forEach(function(box){
+    var btns = box.querySelectorAll('[data-tab]'), panes = box.querySelectorAll('[data-pane]');
+    btns.forEach(function(b){ b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.classList.toggle('on', x === b); });
+      panes.forEach(function(p){ p.classList.toggle('on', p.dataset.pane === b.dataset.tab); });
+    }); });
+  });
+  var form = $('#wlf');
+  if (form) (function(){
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+    var bar = $('#stBar');
+    var state = { name:'', email:'', track:'', region:'' };
+    var cur = 1;
+
+    function show(n){
+      cur = n;
+      steps.forEach(function(s){ s.classList.toggle('on', +s.dataset.step === n); });
+      bar.style.width = (n/steps.length*100) + '%';
+    }
+    function err(n, on){ var e = $('#err-' + n); if (e) e.classList.toggle('show', !!on); }
+
+    form.querySelectorAll('[data-group]').forEach(function(group){
+      var key = group.dataset.group;
+      group.querySelectorAll('.choice').forEach(function(c){
+        c.addEventListener('click', function(){
+          group.querySelectorAll('.choice').forEach(function(x){ x.classList.remove('sel'); });
+          c.classList.add('sel');
+          state[key] = c.dataset.value;
+        });
+      });
+    });
+
+    form.querySelectorAll('[data-next]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (cur === 1){
+          state.name = $('#in-name').value.trim();
+          if (!state.name){ err(1, true); $('#in-name').focus(); return; }
+          err(1, false);
+        } else if (cur === 2){
+          state.email = $('#in-email').value.trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)){ err(2, true); $('#in-email').focus(); return; }
+          err(2, false);
+        } else if (cur === 3){
+          if (!state.track){ err(3, true); return; }
+          err(3, false);
+        }
+        show(cur + 1);
+      });
+    });
+    form.querySelectorAll('[data-back]').forEach(function(btn){
+      btn.addEventListener('click', function(){ show(cur - 1); });
+    });
+    form.querySelectorAll('[data-reset]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        state = { name:'', email:'', track:'', region:'' };
+        form.querySelectorAll('.choice.sel').forEach(function(c){ c.classList.remove('sel'); });
+        $('#in-name').value = ''; $('#in-email').value = ''; $('#f-ok').checked = false;
+        [1,2,3,4].forEach(function(n){ err(n, false); });
+        show(1);
+      });
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (!state.region){ err(4, true); return; }
+      if (!$('#f-ok').checked){ err(4, true); return; }
+      err(4, false);
+      var submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      var o = { name: state.name, email: state.email, track: state.track, region: state.region, _subject:'midascfo.com/accelerate — cohort application' };
+      fetch('https://formsubmit.co/ajax/lavine@zenith-grp.co', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(o)
+      }).then(function(res){
+        if (!res.ok) throw new Error('bad status');
+        form.querySelector('.stepper').style.display = 'none';
+        $('#ok').style.display = 'block';
+      }).catch(function(){
+        if (submitBtn) submitBtn.disabled = false;
+        $('#ok').textContent = "Something went wrong sending that — please email us directly instead.";
+        $('#ok').style.background = '#FBE0D6';
+        $('#ok').style.display = 'block';
+      });
+    });
+  })();
+})();
+</script>
+
+</body></html>
