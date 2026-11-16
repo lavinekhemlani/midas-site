@@ -236,6 +236,25 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rg
 .guarantee b{display:block;margin-bottom:2px}
 
 /* faq */
+.photo-banner{border-radius:24px;overflow:hidden;max-height:340px}
+.photo-banner img{width:100%;height:340px;object-fit:cover}
+
+.quiz{background:#fff;border-radius:24px;padding:clamp(24px,4vw,40px);margin-top:36px;max-width:640px}
+.quiz-q{display:none;flex-direction:column;gap:14px}
+.quiz-q.on{display:flex;animation:fadeup .35s ease}
+.qtitle{font:800 clamp(20px,2.6vw,26px) var(--display);letter-spacing:-.01em}
+.quiz .choices{display:grid;gap:10px}
+.quiz .choice{border:1.5px solid var(--line);border-radius:16px;padding:16px 18px;cursor:pointer;font-weight:600;font-size:16px}
+.quiz .choice:hover{border-color:var(--ink);background:var(--band)}
+.quiz-result{display:none;flex-direction:column}
+.quiz-result.on{display:flex;animation:fadeup .35s ease}
+
+.wa-card{display:flex;align-items:center;gap:20px;background:var(--band);border-radius:28px;padding:clamp(24px,4vw,40px);flex-wrap:wrap}
+.wa-ava{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:800 22px var(--display);flex:none}
+.wa-text{flex:1;min-width:220px}
+.wa-text h3{font-size:22px;margin-bottom:4px}
+.wa-text p{color:var(--ink2);font-size:15px}
+
 .faq{margin-top:40px;display:grid;gap:10px;max-width:860px}
 .q{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
 .q summary{list-style:none;cursor:pointer;padding:20px 22px;font-weight:700;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:16px}
@@ -323,7 +342,7 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
       <p class="eyebrow">Live cohorts · US · Hong Kong · Southeast Asia</p>
       <h1>get <span class="y">genuinely good</span><br>at AI.</h1>
       <p class="lead">Not another "intro to AI" deck. Live, hands-on cohorts that teach you to build, automate and earn with AI — taught by practitioners who've actually shipped, not read about it.</p>
-      <p class="hrs">~3–4 hrs/week: one live session, one optional AMA, plus build time on your own project.</p>
+      <p class="hrs">~3 hrs/week of live sessions, both tracks — plus build time that varies by track (breakdown below).</p>
       <div class="cta-row">
         <a href="#apply" class="btn btn-y">Apply — November 2026 cohort <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="#sample" class="btn btn-o">Watch a sample session</a>
@@ -374,9 +393,10 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
   <div class="wrap">
     <p class="eyebrow rv">Two tracks</p>
     <p class="statement rv">Build something. Automate something. <span class="m">Leave with proof, not a PDF.</span></p>
-    <div class="mega">
-      <a class="tile big rv" href="#apply"><span class="ic">🚀</span><h3>AI for Entrepreneurs</h3><p>Go from idea to a working, AI-powered offer in 8 live sessions — fixed scope, fixed price, AI doing the delivery.</p><div class="toolrow"><span>Claude</span><span>ChatGPT</span><span>no-code builders</span></div></a>
-      <a class="tile y rv" href="#automation" id="automation"><span class="ic">⚙️</span><h3>AI for Automation</h3><p>Kill the busywork in your actual job, step by step.</p><div class="toolrow"><span>n8n</span><span>Zapier</span><span>Make</span><span>Claude Cowork</span></div></a>
+    <div class="photo-banner rv" style="margin-top:32px"><img src="img/tracks-1.jpg" alt="A small group learning together at computers" loading="lazy"></div>
+    <div class="mega" style="margin-top:32px">
+      <a class="tile big rv" href="#apply"><span class="ic">🚀</span><h3>AI for Entrepreneurs</h3><p>Go from idea to a working, AI-powered offer in 8 live sessions — fixed scope, fixed price, AI doing the delivery.</p><div class="toolrow"><span>Claude</span><span>ChatGPT</span><span>no-code builders</span></div><p style="margin-top:8px;font-size:13.5px;color:#D6D3CA">~3 hrs live/week + ~2 hrs building your offer = ~5 hrs/week</p></a>
+      <a class="tile y rv" href="#automation" id="automation"><span class="ic">⚙️</span><h3>AI for Automation</h3><p>Kill the busywork in your actual job, step by step.</p><div class="toolrow"><span>n8n</span><span>Zapier</span><span>Make</span><span>Claude Cowork</span></div><p style="margin-top:8px;font-size:13.5px;color:#5C4A0B">~3 hrs live/week + ~1 hr building inside your actual job = ~4 hrs/week</p></a>
       <a class="tile rv" href="#apply"><span class="ic">🎓</span><h3>Shareable certificate</h3><p>Finish with proof you can put on LinkedIn or a client pitch.</p></a>
       <a class="tile rv" href="#apply"><span class="ic">💬</span><h3>Thursday AMAs</h3><p>Optional live office hours to get unstuck.</p></a>
       <a class="tile rv" href="#enterprise"><span class="ic">🏢</span><h3>Private cohorts</h3><p>Run either track just for your team.</p></a>
@@ -428,12 +448,57 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
   <div class="wrap">
     <p class="eyebrow rv">Our promise</p>
     <h2 class="rv">built by people who've actually shipped.</h2>
+    <div class="photo-banner rv"><img src="img/promise-1.jpg" alt="A live training session, instructor presenting to a small room" loading="lazy"></div>
     <div class="trust">
       <div class="rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M8 5v14l11-7z"/></svg></div><h3>Live, not recorded</h3><p>Every core session runs live with real instructors. Recordings are the backup, not the product.</p></div>
       <div class="rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/></svg></div><h3>Practitioners, not theorists</h3><p>You're taught by people who've built and shipped with AI — including today's agent tooling, not read about it.</p></div>
       <div class="rv"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#0E0E0C" stroke-width="2" stroke-linecap="round"><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><h3>Proof, not vanity metrics</h3><p>You leave with something shipped and a certificate that means something — not a completion badge.</p></div>
     </div>
     <p class="lic rv">Accelerate is a new, independent program. Its team previously built and ran a separate tech-education company that trained <b>20,000+ people</b> over 7+ years, with graduates placed at <b>500+ companies</b> — that earlier company was acquired in 2025 and is not affiliated with Accelerate. We're starting this one from zero cohorts, on purpose.</p>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <p class="eyebrow rv">How it works</p>
+    <h2 class="rv">the Accelerate Method.</h2>
+    <p class="lead rv" style="margin-top:16px">Six parts, built around actually finishing — not six vague promises.</p>
+    <div class="mega" style="margin-top:36px">
+      <div class="tile big rv" style="padding:0;overflow:hidden;display:block"><img src="img/live-1.jpg" alt="A professional in a live video call session" loading="lazy" style="width:100%;height:220px;object-fit:cover"><div style="padding:20px"><h3>Live mentorship</h3><p>Real instructors, live, every core session — not a pre-recorded library.</p></div></div>
+      <div class="tile rv"><span class="ic">💬</span><h3>A community that pushes you</h3><p>A private Skool space built from scratch with this cohort, not a side perk.</p></div>
+      <div class="tile rv"><span class="ic">📅</span><h3>Weekly accountability</h3><p>A fixed 4–5 week arc, plus optional Thursday AMAs to stay unstuck.</p></div>
+      <div class="tile y rv" style="padding:0;overflow:hidden;display:block"><img src="img/build-1.jpg" alt="Hands typing on a laptop, building a project" loading="lazy" style="width:100%;height:220px;object-fit:cover"><div style="padding:20px"><h3>Ship something real</h3><p>A working offer or automation by session 8 — not a slide deck.</p></div></div>
+      <div class="tile rv"><span class="ic">🎓</span><h3>Certification</h3><p>A shareable certificate on completion — proof, not a badge.</p></div>
+      <div class="tile rv"><span class="ic">🎯</span><h3>An outcome guarantee</h3><p>Ship the stated deliverable by session 8, or your money back.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <p class="eyebrow rv">Not sure which track?</p>
+    <h2 class="rv" style="font-size:clamp(28px,4vw,44px)">take the 30-second quiz.</h2>
+    <div class="quiz rv" id="quizBox">
+      <div class="quiz-q on" data-q="1">
+        <p class="qtitle">What are you actually trying to do right now?</p>
+        <div class="choices">
+          <div class="choice" data-pt="e">Build something new I can sell or earn from</div>
+          <div class="choice" data-pt="a">Spend less time on repetitive work in my current job</div>
+        </div>
+      </div>
+      <div class="quiz-q" data-q="2">
+        <p class="qtitle">When this is done, what do you want to have?</p>
+        <div class="choices">
+          <div class="choice" data-pt="e">A real offer I can pitch to a client</div>
+          <div class="choice" data-pt="a">A workflow that runs without me touching it</div>
+        </div>
+      </div>
+      <div class="quiz-result" id="quizResult">
+        <p class="qtitle" id="quizAnswer">—</p>
+        <p class="lead" id="quizSub" style="margin:10px 0 20px"></p>
+        <a href="#apply" class="btn btn-k" id="quizCta">Apply for this track</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -509,6 +574,20 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
       <details class="q rv"><summary>What's the refund policy?</summary><p>Each track has its own outcome-based guarantee (see Pricing above) — ship the stated deliverable by session 8, or you get your money back.</p></details>
       <details class="q rv"><summary>What happens after the cohort ends?</summary><p>You keep lifetime replay access, your certificate, and your seat in the private Skool community — the cohort ends, the access doesn't.</p></details>
       <details class="q rv"><summary>How many seats are there, really?</summary><p>24 per track, per region, per cohort. That's a real operating cap, not a marketing number — once a cohort is full, you're offered the next one.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow rv" style="margin-bottom:24px">Still have questions?</p>
+    <div class="wa-card rv">
+      <div class="wa-ava" id="waAva">?</div>
+      <div class="wa-text">
+        <h3 id="waName">Message us on WhatsApp</h3>
+        <p>Real answers, no bot — ask about tracks, timing, or anything on this page.</p>
+      </div>
+      <a href="#" id="waLink" class="btn btn-k" style="pointer-events:none;opacity:.5">Open WhatsApp</a>
     </div>
   </div>
 </section>
@@ -604,7 +683,7 @@ h1,h2,h3,p,li{overflow-wrap:anywhere}
       <div><h4>Company</h4><ul><li><a href="#regions">Where we run</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="blog/">Blog</a></li></ul></div>
       <div><h4>Talk to us</h4><ul><li><a href="#apply">Apply</a></li><li><a href="#enterprise">Enterprise</a></li></ul></div>
     </div>
-    <div class="legal"><p>© 2026 Accelerate. Accelerate is a new, independently run program with no completed cohorts yet. References above to a prior track record (people trained, companies graduates work at) describe a separate company its team previously ran, now majority-owned by a different, unrelated acquirer — not Accelerate itself. Program dates, pricing and seat counts shown here reflect current plans and are subject to change before a cohort opens.</p></div>
+    <div class="legal"><p>© 2026 Accelerate. Accelerate is a brand-new program — our first cohort hasn't run yet. The track record mentioned above belongs to a separate company our team ran previously (since acquired by an unrelated company), not to Accelerate itself. Dates, pricing and seat counts reflect current plans and may change before a cohort opens.</p></div>
   </div>
 </footer>
 
@@ -628,6 +707,36 @@ document.documentElement.classList.add('js');
       panes.forEach(function(p){ p.classList.toggle('on', p.dataset.pane === b.dataset.tab); });
     }); });
   });
+  var quiz = $('#quizBox');
+  if (quiz) (function(){
+    var qs = Array.prototype.slice.call(quiz.querySelectorAll('.quiz-q'));
+    var score = { e:0, a:0 };
+    var cur = 0;
+    qs.forEach(function(q, i){
+      q.querySelectorAll('.choice').forEach(function(c){
+        c.addEventListener('click', function(){
+          score[c.dataset.pt]++;
+          cur++;
+          if (cur < qs.length){ qs[cur-1].classList.remove('on'); qs[cur].classList.add('on'); }
+          else {
+            qs[cur-1].classList.remove('on');
+            var track = score.e >= score.a ? 'AI for Entrepreneurs' : 'AI for Automation';
+            $('#quizAnswer').textContent = 'We\'d recommend: ' + track;
+            $('#quizSub').textContent = track === 'AI for Entrepreneurs'
+              ? 'Based on your answers — you\'re building something new, not just automating what you already do.'
+              : 'Based on your answers — you\'re optimizing your current job, not starting something new.';
+            var cta = $('#quizCta');
+            cta.addEventListener('click', function(){
+              var target = form.querySelector('[data-group="track"] [data-value="' + track + '"]');
+              if (target) target.click();
+            });
+            $('#quizResult').classList.add('on');
+          }
+        });
+      });
+    });
+  })();
+
   var form = $('#wlf');
   if (form) (function(){
     var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
