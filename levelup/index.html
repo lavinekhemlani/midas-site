@@ -670,7 +670,7 @@ window.ACC_GA4_ID = '';          // GA4 > Admin > Data streams > Measurement ID 
       </div>
       <div class="ic-card rv"><span class="av">RH</span><p class="role">Co-founder · Programmes and people</p><h3>Resham Hemlani-Nathani</h3><p>Designs the programmes and runs the people side. Resham was on the founding team of one of Hong Kong's leading tech education companies as Chief People Officer, and went on to found UNTAP, a talent business across Hong Kong, Dubai, India and Manila.</p></div>
       <div class="ic-card rv"><span class="av">KH</span><p class="role">CMO and co-founder</p><h3>Kay Hui</h3><p>Runs marketing and the cohort community, so every session has people in it who show up.</p></div>
-      <div class="ic-card rv"><span class="av">K</span><p class="role">Chief Commercial Officer and co-founder</p><h3>Kaka</h3><p>Runs admissions. Message him on WhatsApp any time for a straight answer on fit, timing and price.</p></div>
+      <div class="ic-card rv"><span class="av">A</span><p class="role">Chief Commercial Officer and co-founder</p><h3>Aka</h3><p>Runs admissions. Message her on WhatsApp any time for a straight answer on fit, timing and price.</p></div>
 </div>
     <p class="rv" style="margin-top:22px;color:var(--muted);max-width:760px"><b style="color:var(--ink)">Plus practitioner instructors.</b> Each track is co-taught by people who build with these tools every week. The full line-up goes to enrolled students before session 1.</p>
   </div>
@@ -911,7 +911,7 @@ window.ACC_GA4_ID = '';          // GA4 > Admin > Data streams > Measurement ID 
       <div class="rv" style="display:flex;flex-direction:column;gap:14px">
         <div class="guarantee" style="background:#fff;margin:0"><span>🏢</span><div><b>Bring your team.</b> Run AI at Work privately for 8 or more colleagues, at your office. <a href="#enterprise">Ask about team rates</a>.</div></div>
         <div class="guarantee" style="background:#fff;margin:0"><span>↩️</span><div><b>Full refund up to the halfway point</b> (end of session 2), no questions asked.</div></div>
-        <div class="guarantee" style="background:#fff;margin:0"><span>💬</span><div><b>Questions first?</b> <a href="#" data-wa="short">Message Kaka on WhatsApp</a>.</div></div>
+        <div class="guarantee" style="background:#fff;margin:0"><span>💬</span><div><b>Questions first?</b> <a href="#" data-wa="short">Message Aka on WhatsApp</a>.</div></div>
       </div>
     </div>
   </div>
@@ -1033,7 +1033,7 @@ Thanks,
       <div class="wa-text">
         <p class="eyebrow" style="margin-bottom:6px">Still have questions?</p>
         <h3>Chat with us on WhatsApp</h3>
-        <p>Real answers from Kaka, our Chief Commercial Officer. Tracks, timing, pricing, anything.</p>
+        <p>Real answers from Aka, our Chief Commercial Officer. Tracks, timing, pricing, anything.</p>
       </div>
       <a href="#" class="btn wa-btn" data-wa="general"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#wa-ico"/></svg><span>Chat on WhatsApp</span></a>
     </div>
@@ -1184,12 +1184,12 @@ document.documentElement.classList.add('js');
     }); });
   });
 
-  /* ---------- WhatsApp (Kaka, Chief Commercial Officer) ---------- */
+  /* ---------- WhatsApp (Aka, Chief Commercial Officer) ---------- */
   var WA_NUMBER = '16728553515';
   var WA_MSG = {
-    general: "Hi Kaka! I have a question about Level Up's January 2027 AI cohort.",
-    trial: "Hi Kaka! I'd like a seat at the free Level Up live workshop. My name is ",
-    short: "Hi Kaka! I'm interested in Level Up's AI at Work short course in Hong Kong (HK$3,880)."
+    general: "Hi Aka! I have a question about Level Up's January 2027 AI cohort.",
+    trial: "Hi Aka! I'd like a seat at the free Level Up live workshop. My name is ",
+    short: "Hi Aka! I'm interested in Level Up's AI at Work short course in Hong Kong (HK$3,880)."
   };
   $$('[data-wa]').forEach(function(a){
     a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MSG[a.dataset.wa] || WA_MSG.general);
@@ -1206,7 +1206,13 @@ document.documentElement.classList.add('js');
   var SHORT_HKD = 3880;
   function money(ccy, n){ return FMT[ccy] + n.toLocaleString('en-US'); }
   var ccy = 'USD';
-  try { if (Intl.DateTimeFormat().resolvedOptions().timeZone === 'Asia/Hong_Kong') ccy = 'HKD'; } catch(e){}
+  // Default currency from the visitor's time zone; anything unknown stays USD.
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    var TZ = { 'Asia/Hong_Kong':'HKD', 'Asia/Macau':'HKD', 'Asia/Singapore':'SGD', 'Asia/Dubai':'AED', 'Asia/Manila':'PHP', 'Europe/London':'GBP',
+               'America/Toronto':'CAD', 'America/Vancouver':'CAD', 'America/Edmonton':'CAD', 'America/Winnipeg':'CAD', 'America/Halifax':'CAD' };
+    if (TZ[tz]) ccy = TZ[tz];
+  } catch(e){}
   function setCcy(c){
     ccy = c;
     $$('.ccy-toggle button').forEach(function(b){ b.classList.toggle('on', b.dataset.ccy === c); });
@@ -1271,15 +1277,25 @@ document.documentElement.classList.add('js');
     $('#coLabel').textContent = short ? 'Short course, 4 evenings' : ({full:'Early-bird price, per track', plan:'Per month, for 3 months', deposit:'Deposit today, holds the early-bird price'})[coPlan.value];
     $('#coWas').textContent = short ? 'Priced in HKD' : 'Standard ' + money(c, PRICES.standard[c]);
   }
-  [coTrack, coRegion, coCcy, coPlan].forEach(function(s){ s.addEventListener('change', coUpdate); });
+  // The checkout currency follows the region the buyer picks (US -> USD, SEA -> SGD, HK -> HKD)
+  // until they choose a currency themselves.
+  var REGION_CCY = { 'Hong Kong (in person)':'HKD', 'United States (remote)':'USD', 'Southeast Asia (remote)':'SGD' };
+  var coCcyPicked = false;
+  function ccyForRegion(){ return REGION_CCY[coRegion.value] || ccy; }
+  coCcy.addEventListener('change', function(){ coCcyPicked = true; coUpdate(); });
+  coRegion.addEventListener('change', function(){ if (!coCcyPicked) coCcy.value = ccyForRegion(); coUpdate(); });
+  coTrack.addEventListener('change', function(){ if (coTrack.value !== 'short' && !coCcyPicked) coCcy.value = ccyForRegion(); coUpdate(); });
+  coPlan.addEventListener('change', coUpdate);
   var lastFocus = null;
   function openMo(opts){
     lastFocus = document.activeElement;
-    coCcy.value = ccy;
+    coCcyPicked = false;
     if (opts.track) coTrack.value = opts.track;
     else if (coTrack.value === 'short') coTrack.value = 'entrepreneurs';
     if (opts.region) coRegion.value = opts.region;
-    else if (ccy === 'HKD') coRegion.value = 'Hong Kong (in person)';
+    else coRegion.value = ({ HKD:'Hong Kong (in person)', USD:'United States (remote)', CAD:'United States (remote)', SGD:'Southeast Asia (remote)', PHP:'Southeast Asia (remote)' })[ccy] || coRegion.value;
+    // A region button (e.g. "Reserve: US cohort") sets the currency; otherwise keep the one shown on the page.
+    coCcy.value = opts.region ? ccyForRegion() : ccy;
     $('#coDone').style.display = 'none'; $('#coErr').classList.remove('show');
     $('#coPay').disabled = false; $('#coLater').disabled = false;
     coUpdate();
