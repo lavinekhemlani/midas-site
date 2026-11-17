@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your first n8n automation: a step-by-step walkthrough | Accelerate</title>
+<meta name="description" content="Build a real n8n workflow from scratch: email trigger, AI classification, an IF branch, a Google Sheets log and a Slack alert. Every step explained.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://midascfo.com/accelerate/blog/first-n8n-automation/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Accelerate">
+<meta property="og:title" content="Your first n8n automation: a step-by-step walkthrough">
+<meta property="og:description" content="Build a real n8n workflow from scratch: email trigger, AI classification, an IF branch, a Google Sheets log and a Slack alert. Every step explained.">
+<meta property="og:url" content="https://midascfo.com/accelerate/blog/first-n8n-automation/">
+<meta property="og:image" content="https://midascfo.com/accelerate/og.jpg">
+<meta property="article:published_time" content="2026-11-16">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "Your first n8n automation: a step-by-step walkthrough", "description": "Build a real n8n workflow from scratch: email trigger, AI classification, an IF branch, a Google Sheets log and a Slack alert. Every step explained.", "datePublished": "2026-11-16", "dateModified": "2026-11-16", "author": {"@type": "Person", "name": "Lavine Hemlani"}, "publisher": {"@type": "Organization", "name": "Accelerate", "url": "https://midascfo.com/accelerate/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://midascfo.com/accelerate/blog/first-n8n-automation/"}, "url": "https://midascfo.com/accelerate/blog/first-n8n-automation/", "inLanguage": "en-US", "wordCount": 2490, "articleSection": "Automation"}
+</script>
+</head>
+<body>
+<header><div class="nav"><a href="../../" class="logo">Accelerate<i></i></a><a href="../../#apply" class="btn">Apply now</a></div></header>
+<div class="wrap"><article>
+<a href="../" class="back">← Back to blog</a>
+<p class="meta">Automation · 11 min read · 16 Nov 2026</p>
+<h1>Your first n8n automation: a step-by-step walkthrough</h1>
+<p class="lead">Most n8n tutorials either stop at "hello world" or jump straight to a 40-node agent. This one builds a single useful workflow end to end: invoices arrive by email, AI reads them, the important ones get logged and flagged. By the end you will understand triggers, credentials, test runs, expressions, branching and activation well enough to build the next one on your own.</p>
+<h2>What we are building</h2>
+<p>Here is the workflow in one sentence: when an email arrives in a Gmail inbox, an AI model decides whether it is an invoice and pulls out the supplier, amount and due date; if it is an invoice, the details are added as a row in a Google Sheet and a message goes to a Slack channel.</p>
+<p>That is five nodes. It is small enough to finish in an afternoon and real enough that you could switch it on at work next week. The same shape (trigger, AI step, decision, record, notify) covers a surprising share of office automation, so once you have built it, you have a template for dozens of others.</p>
+<p>Not on Gmail or Slack? n8n has Outlook, Teams and Excel nodes. The steps are the same.</p>
+
+<h2>Before you start: Cloud or self-hosted?</h2>
+<p>n8n comes in two main forms. You can use the hosted version, n8n Cloud, which runs in your browser with nothing to install. Or you can run n8n yourself, on your laptop or a server, because it is open source (under a "fair-code" license; check the current terms if you plan to use it commercially).</p>
+<div class="tbl"><table>
+<thead><tr><th></th><th>n8n Cloud</th><th>Self-hosted</th></tr></thead>
+<tbody>
+<tr><td>Setup time</td><td>Minutes. Sign up and open the editor.</td><td>Longer. You install and maintain it.</td></tr>
+<tr><td>Cost</td><td>Paid plans after any trial. Check current pricing.</td><td>Software is free to run; you pay for the server.</td></tr>
+<tr><td>Maintenance</td><td>Handled for you.</td><td>Updates, backups and uptime are your job.</td></tr>
+<tr><td>Data location</td><td>On n8n's infrastructure.</td><td>On your machine or your company's server.</td></tr>
+<tr><td>Best for</td><td>Your first workflows, small teams.</td><td>Strict data rules, heavy volume, tinkerers.</td></tr>
+</tbody>
+</table></div>
+<p>For a first build, Cloud is the faster path. If you want to try self-hosting on your own computer and you have Docker installed, the n8n documentation gives a one-line command that looks roughly like this (check the docs for the current version, because flags and image names can change):</p>
+<pre><code>docker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n</code></pre>
+<p>Then open <code>http://localhost:5678</code> in your browser. Keep in mind that a workflow running on your laptop stops when your laptop sleeps. For anything that has to run while you are away, use Cloud or a proper server.</p>
+
+<h2>The nodes we will use</h2>
+<p>In n8n, every step is a "node." Data flows from left to right, from one node to the next, as a list of items. Each item is a small JSON object, which is just a set of named fields like <code>subject</code> or <code>from</code>.</p>
+<div class="tbl"><table>
+<thead><tr><th>Step</th><th>Node</th><th>What it does here</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Gmail Trigger</td><td>Checks the inbox on a schedule and starts the workflow for each new email.</td></tr>
+<tr><td>2</td><td>AI step (for example a Basic LLM Chain with a chat model attached, or a direct OpenAI or Anthropic node)</td><td>Reads the email and returns structured fields: is it an invoice, supplier, amount, due date.</td></tr>
+<tr><td>3</td><td>IF</td><td>Sends invoices down the "true" branch and everything else down "false."</td></tr>
+<tr><td>4</td><td>Google Sheets</td><td>Appends a row with the extracted details.</td></tr>
+<tr><td>5</td><td>Slack</td><td>Posts a short message to a channel so a person knows it arrived.</td></tr>
+</tbody>
+</table></div>
+<p>Node names shift a little between n8n versions. If you cannot find one by the exact name above, open the node panel (the plus button on the canvas) and search for the app name instead.</p>
+
+<h2>Step by step</h2>
+<ol>
+<li><b>Create a new workflow.</b> From the n8n home screen, create a workflow and give it a clear name, such as "Invoice inbox to sheet." Good names matter once you have twenty of these.</li>
+<li><b>Add the trigger.</b> Click the plus button and search for "Gmail." Choose the Gmail Trigger and the event for a new message received. Set the poll interval to something sensible, like every five or fifteen minutes. Every workflow needs exactly one way to start; this is it.</li>
+<li><b>Connect your credentials.</b> The trigger will ask for a Gmail credential. On n8n Cloud this is usually a sign-in button that walks you through Google's permission screen. On a self-hosted install you may need to create OAuth credentials in Google Cloud first; the n8n docs have a page for each app. Credentials are saved once and reused by any node that needs them.</li>
+<li><b>Narrow the trigger.</b> You do not want every newsletter going through an AI model. Use the trigger's filter options (or a Gmail search query, if your version offers one) to limit it, for example to emails with attachments or emails sent to a specific invoices address.</li>
+<li><b>Fetch a test event.</b> Send yourself a sample invoice email, then click the button on the trigger node to fetch a test event. Depending on your version it may be labeled "Fetch test event," "Test step" or "Execute step." You should see the email appear in the output panel on the right, with fields like <code>subject</code>, <code>from</code> and the text of the message.</li>
+<li><b>Pin the test data.</b> In the output panel, look for the pin icon and click it. Pinning saves this sample so later test runs reuse it instead of checking the inbox again. This makes testing faster and stops you from needing a fresh email each time.</li>
+<li><b>Add the AI step.</b> Add a node after the trigger. A common choice is the Basic LLM Chain node with a chat model sub-node attached (OpenAI, Anthropic and others are available). Add the credential for your chosen model provider, which normally means pasting an API key. Then write the prompt (see the next section).</li>
+<li><b>Ask for structured output.</b> Turn on the option that requires a specific output format if your node offers it, or attach a Structured Output Parser, so the model returns clean fields rather than a paragraph. If neither is available, ask for JSON in the prompt and parse it in the next step.</li>
+<li><b>Test the AI step.</b> Run just this node. Check the output. Does it correctly say this is an invoice? Did it get the amount right? Change the prompt and rerun until it is reliable on your sample. Then try two or three different emails, including one that is clearly not an invoice.</li>
+<li><b>Add the IF node.</b> Add an IF node after the AI step. Set the condition to check the field the model returned, for example that <code>is_invoice</code> is true. The IF node now has two outputs: true and false.</li>
+<li><b>Add Google Sheets on the true branch.</b> Drag from the true output and add a Google Sheets node with the operation to append a row. Pick your spreadsheet and sheet. Map each column to a value from the AI step using expressions (explained below).</li>
+<li><b>Add Slack after the sheet.</b> Add a Slack node to send a message to a channel. Write a short message using expressions, such as the supplier and amount, plus a link to the sheet.</li>
+<li><b>Decide what happens on false.</b> You can leave the false branch empty, which means non-invoices are ignored. Or add a small step that labels the email in Gmail so you can review what was skipped.</li>
+<li><b>Run the whole workflow.</b> Use the main button at the bottom of the canvas. It may be labeled "Test workflow" or "Execute workflow" depending on your version. Each node shows a green check or a red warning. Click any node to see exactly what went in and what came out.</li>
+<li><b>Activate it.</b> When it works, unpin the test data, save, and switch the workflow on with the active toggle at the top of the editor (newer versions may use a publish or activate button instead). From now on it runs on its own, and every run appears in the Executions list.</li>
+</ol>
+
+<h2>The prompt</h2>
+<p>The AI step is only as good as its instructions. Be specific, give it the exact fields you want back, and tell it what to do when information is missing. Here is a prompt you can adapt:</p>
+<pre><code>You read incoming business emails and decide if they are supplier invoices.
+
+Email subject: {{ $json.subject }}
+Email from: {{ $json.from }}
+Email body:
+{{ $json.text }}
+
+Return JSON only, with these fields:
+- is_invoice: true or false
+- supplier: the company name sending the invoice, or "" if unknown
+- amount: the total amount due as a number, no currency symbol, or null
+- currency: three-letter code such as USD or HKD, or ""
+- due_date: in YYYY-MM-DD format, or "" if not stated
+- confidence: "high", "medium" or "low"
+
+Rules:
+- Do not guess numbers. If the amount is not clearly stated, use null.
+- Receipts for payments already made are not invoices.
+- Marketing emails are not invoices.</code></pre>
+<p>The field names in your email data may differ slightly, such as <code>text</code> versus <code>textPlain</code> or <code>snippet</code>. Look at the pinned trigger output and use whatever names you see there.</p>
+
+<h2>Expressions, explained</h2>
+<p>The double curly braces in that prompt are n8n expressions. They let you drop data from earlier nodes into any field.</p>
+<ul>
+<li><code>{{ $json.subject }}</code> means "the <code>subject</code> field of the item coming into this node."</li>
+<li><code>{{ $('Gmail Trigger').item.json.from }}</code> means "the <code>from</code> field from the node named Gmail Trigger," which is useful when you need data from a node further back.</li>
+<li><code>{{ $now }}</code> gives the current date and time, handy for a "logged at" column.</li>
+</ul>
+<p>You rarely need to type these from memory. In most fields you can switch to expression mode and drag a field from the input panel on the left straight into the box. n8n writes the expression for you and shows a live preview of the result underneath, which is the fastest way to catch mistakes.</p>
+<p>Note on the AI output: depending on how your AI node returns data, the fields may sit directly on <code>$json</code> or inside a wrapper such as <code>$json.output</code>. Check the output panel and adjust your expressions in the IF, Sheets and Slack nodes to match.</p>
+
+<h2>Handling errors</h2>
+<p>An automation that fails silently is worse than no automation, because people stop checking the thing it replaced. Three habits fix most of this:</p>
+<ul>
+<li><b>Set an error workflow.</b> Build a second small workflow that starts with the Error Trigger node and sends you a Slack message or email with the workflow name and error. Then, in your main workflow's settings, choose it as the error workflow. Any failure now reaches you.</li>
+<li><b>Use the low-confidence path.</b> Add a second condition so that invoices with <code>confidence</code> set to "low" go to a person for review instead of straight into the sheet.</li>
+<li><b>Check Executions weekly.</b> The Executions list shows every run. A two-minute weekly look catches drift, such as a supplier who changed their email format.</li>
+</ul>
+
+<h2>Common errors and fixes</h2>
+<div class="tbl"><table>
+<thead><tr><th>What you see</th><th>Likely cause</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Credential or authorization error</td><td>Expired sign-in, missing permission scope, or a wrong API key.</td><td>Reconnect the credential. Check that the account has access to the specific sheet or channel.</td></tr>
+<tr><td>Expression shows as empty or undefined</td><td>The field name does not match the actual data, or it is nested one level deeper.</td><td>Open the input panel, find the real field, and drag it in rather than typing.</td></tr>
+<tr><td>AI returns text instead of JSON</td><td>No output format enforced.</td><td>Use a structured output option or parser, and say "Return JSON only" in the prompt.</td></tr>
+<tr><td>IF node sends everything to false</td><td>Comparing the text "true" to a boolean true, or the wrong field path.</td><td>Match the data types in the condition, or convert the value first.</td></tr>
+<tr><td>Workflow ran in testing but not live</td><td>Still pinned data, or the workflow is not active.</td><td>Unpin, save, and confirm it is switched on.</td></tr>
+<tr><td>Duplicate rows in the sheet</td><td>The same email processed twice after edits or restarts.</td><td>Add a message ID column and check for it before appending.</td></tr>
+</tbody>
+</table></div>
+
+<h2>A note on privacy</h2>
+<p>This workflow sends email content to an AI provider. Before you switch it on with work data, check three things: your company's policy on using AI tools with internal and supplier data, the data-handling terms of the model provider and plan you are using, and who in your organization needs to approve new connections to company accounts. Where possible, use a company-approved account rather than a personal API key, and avoid sending more data than the task needs. If your rules are strict, self-hosting n8n and choosing a provider your IT team has approved is often the path that gets a yes.</p>
+
+<h2>Where to go next</h2>
+<p>Swap the Gmail Trigger for a form trigger or a schedule and the same pattern handles expense claims or a weekly report. Use a Switch node instead of IF to sort emails into several categories.</p>
+<p>If you are still deciding which platform to learn, our comparison of <a href="../n8n-vs-zapier-vs-make/">n8n, Zapier and Make</a> covers when each one fits best.</p>
+
+<h2>FAQ</h2>
+<div class="faq">
+<h3>Do I need to know how to code to use n8n?</h3>
+<p>No. Everything in this walkthrough is point and click, plus short expressions you can create by dragging fields. Code nodes exist for when you want them, but they are optional.</p>
+<h3>Which AI model should I connect?</h3>
+<p>Use whichever one your company has approved. For extraction tasks like this one, most current models from the major providers do well when the prompt is specific. Test with your own emails and compare.</p>
+<h3>How much does running this cost?</h3>
+<p>It depends on your n8n plan or server, plus the AI provider's usage charges, which scale with how many emails go through the AI step. Filtering the trigger so only likely invoices reach the model keeps this down. Check each provider's current pricing.</p>
+<h3>Can I use Outlook and Teams instead?</h3>
+<p>Yes. n8n has Microsoft Outlook, Excel and Teams nodes. The workflow shape is identical; only the trigger, sheet and notification nodes change.</p>
+<h3>What if the AI gets a number wrong?</h3>
+<p>Assume it sometimes will. That is why the prompt says not to guess, why there is a confidence field, and why low-confidence results go to a person. Treat the sheet as a draft that saves typing, not as the final ledger, until you have checked a few weeks of results.</p>
+</div>
+
+<div class="cta">
+<h2>Build this on your own work, live</h2>
+<p>In the AI for Automation track, session 4 goes deeper with n8n: branching, error handling and schedules, built on your real tools rather than a demo inbox. Eight live sessions over four weeks, about 3 hours a week live, starting January 2027 in Hong Kong, the US and Southeast Asia. Not sure yet? Try a free 60-minute live session first.</p>
+<a href="../../#apply" class="btn">Apply for January 2027</a><a href="../../#trial" class="btn ghost">Book a free 60-min session</a>
+</div>
+<p class="related">Related: <a href="../n8n-vs-zapier-vs-make/">n8n vs Zapier vs Make: which one should you actually learn first</a> · <a href="../ai-automation-tasks-by-role/">20 tasks you can automate at work with AI this month</a></p>
+</article></div>
+<footer><div class="wrap">© 2026 Accelerate.</div></footer>
+</body>
+</html>
