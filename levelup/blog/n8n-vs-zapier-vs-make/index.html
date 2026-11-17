@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8n vs Zapier vs Make: which one should you actually learn first | Level Up</title>
+<meta name="description" content="Three automation platforms, three different kinds of problems they suit best. A practical way to pick, with a worked example and a side-by-side table.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://midascfo.com/levelup/blog/n8n-vs-zapier-vs-make/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Level Up">
+<meta property="og:title" content="n8n vs Zapier vs Make: which one should you actually learn first">
+<meta property="og:description" content="Three automation platforms, three different kinds of problems they suit best. A practical way to pick, with a worked example and a side-by-side table.">
+<meta property="og:url" content="https://midascfo.com/levelup/blog/n8n-vs-zapier-vs-make/">
+<meta property="og:image" content="https://midascfo.com/levelup/og.jpg">
+<meta property="article:published_time" content="2026-11-16">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Article", "headline": "n8n vs Zapier vs Make: which one should you actually learn first", "description": "Three automation platforms, three different kinds of problems they suit best. A practical way to pick, with a worked example and a side-by-side table.", "datePublished": "2026-11-16", "dateModified": "2026-11-16", "author": {"@type": "Person", "name": "Lavine Hemlani"}, "publisher": {"@type": "Organization", "name": "Level Up", "url": "https://midascfo.com/levelup/"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://midascfo.com/levelup/blog/n8n-vs-zapier-vs-make/"}, "url": "https://midascfo.com/levelup/blog/n8n-vs-zapier-vs-make/", "inLanguage": "en-US", "wordCount": 1875, "articleSection": "Automation"}
+</script>
+</head>
+<body>
+<header><div class="nav"><a href="../../" class="logo">Level Up<i></i></a><a href="../../#apply" class="btn">Apply now</a></div></header>
+<div class="wrap"><article>
+<a href="../" class="back">← Back to blog</a>
+<p class="meta">Automation · 8 min read · 16 Nov 2026</p>
+<h1>n8n vs Zapier vs Make: which one should you actually learn first</h1>
+<p class="lead">All three will let you connect apps and move data between them without writing a backend. They are not interchangeable, though. Each one suits a different kind of problem, and picking the wrong one first is one of the most common reasons people bounce off automation entirely.</p>
+<p>This guide is for people who have a real job, a list of repetitive tasks, and limited patience for tutorials. By the end you should know which tool to open first, what to build in your first week, and when it makes sense to switch.</p>
+<p>One note before we start. Pricing plans, task limits and feature names on all three platforms change often. We describe how each one is structured and what that means for you, not exact prices. Check each vendor's current pricing page before you commit.</p>
+
+<h2>The 30-second version</h2>
+<ul>
+<li><b>Zapier</b> is the fastest way to connect two mainstream apps if you are non-technical and the job runs occasionally.</li>
+<li><b>Make</b> is a visual, flowchart-style builder that handles branching and loops well and is often cheaper once volumes climb.</li>
+<li><b>n8n</b> is the deepest of the three, can be self-hosted, and is a natural home for workflows that call an AI model in the middle of the process.</li>
+</ul>
+<p>If you only read one section, read "A simple decision rule" below.</p>
+
+<h2>What these tools actually do</h2>
+<p>Every automation platform works the same way at its core. Something happens (a trigger), then a series of steps run (actions). A new form submission arrives, so you add a row to a spreadsheet, send a Slack message and create a task. That is it.</p>
+<p>The differences are in four places:</p>
+<ol>
+<li><b>How you build.</b> A linear list of steps, or a canvas where you can see branches.</li>
+<li><b>How you pay.</b> Per step executed, per operation, per workflow run, or by hosting it yourself.</li>
+<li><b>How far you can go.</b> Whether you can drop into code, handle errors properly, and call AI models with real control.</li>
+<li><b>Where your data lives.</b> On the vendor's cloud, or on a server you control.</li>
+</ol>
+
+<h2>Zapier: broadest reach, simplest start</h2>
+<p>Zapier's real advantage is integration coverage. It connects to a very large number of apps, and most connections take a few clicks. If the tool you need is niche, there is a good chance Zapier already supports it.</p>
+<p>The builder is a linear list: trigger, then step one, step two, step three. That makes it easy to read and hard to get lost in. It has added branching ("paths"), filters, formatters and AI steps over time, so it can handle more than people expect.</p>
+<p>The tradeoff is the pricing model. Zapier generally charges by "tasks", which roughly means each action step that runs. A workflow that runs hundreds of times a day, or has many steps, can get expensive quickly. For a handful of workflows that run a few times a day, it is usually fine.</p>
+<h3>Zapier is a good first choice when</h3>
+<ul>
+<li>You are non-technical and want something working today.</li>
+<li>Your tools are mainstream SaaS: Gmail, Google Sheets, Slack, HubSpot, Calendly, Typeform and similar.</li>
+<li>The job runs occasionally, not continuously.</li>
+<li>Your company already pays for it. Many do, and that removes the procurement question.</li>
+</ul>
+
+<h2>Make: the visual middle ground</h2>
+<p>Make (formerly Integromat) gives you a canvas. Each step is a circle, and you connect them with lines. Branches, loops over lists, and error routes are visible on screen, which makes complicated logic easier to reason about.</p>
+<p>It usually has fewer native integrations than Zapier, but it has a solid generic HTTP module, so you can reach almost any app with an API. Its pricing is based on "operations", and for workflows with many steps or high volume, people often find it cheaper than Zapier. Do your own math with your real volumes.</p>
+<h3>Make is a good choice when</h3>
+<ul>
+<li>Your workflow has real branching: "if the invoice is over a threshold, route it here, otherwise there".</li>
+<li>You need to loop over a list, such as every line item in an order or every attachment in an email.</li>
+<li>You are starting to feel per-task costs on Zapier.</li>
+<li>You think visually and want to see the whole flow at once.</li>
+</ul>
+
+<h2>n8n: the deepest, and the most AI-friendly</h2>
+<p>n8n uses a node-based canvas like Make, but goes further. You can drop a Code node into any workflow and write JavaScript (or Python, in recent versions) when the no-code blocks run out. You can self-host it on your own server, or use n8n's hosted cloud version.</p>
+<p>It has also become a popular home for AI workflows. n8n ships a set of AI nodes: chat model connections, agent nodes that can call tools, memory, and document loaders. That makes it a natural fit when you want a model to read, classify or draft something in the middle of a process, not just move data from A to B.</p>
+<p>The costs are real too. The learning curve is steeper. Self-hosting means you are responsible for updates, backups and uptime. And the licensing model has specific terms for commercial use, so read them if you plan to resell n8n-based services to clients.</p>
+<h3>n8n is a good choice when</h3>
+<ul>
+<li>You want AI inside the workflow: summarizing, classifying, extracting, drafting.</li>
+<li>Your data is sensitive and you or your IT team prefer to keep it on infrastructure you control.</li>
+<li>Your workflows run at high volume and per-step pricing would be painful.</li>
+<li>You are comfortable reading a little JSON, or willing to learn.</li>
+</ul>
+
+<h2>Side-by-side comparison</h2>
+<div class="tbl"><table>
+<thead><tr><th></th><th>Zapier</th><th>Make</th><th>n8n</th></tr></thead>
+<tbody>
+<tr><td>Builder style</td><td>Linear step list</td><td>Visual canvas</td><td>Visual canvas plus code</td></tr>
+<tr><td>Learning curve</td><td>Lowest</td><td>Medium</td><td>Highest</td></tr>
+<tr><td>App coverage</td><td>Very broad</td><td>Broad, plus HTTP</td><td>Good, plus HTTP and code</td></tr>
+<tr><td>Pricing model</td><td>Per task (step)</td><td>Per operation</td><td>Per execution on cloud, or self-host</td></tr>
+<tr><td>Branching and loops</td><td>Available, less visual</td><td>Strong</td><td>Strong</td></tr>
+<tr><td>AI inside workflows</td><td>Built-in AI steps</td><td>AI modules available</td><td>Dedicated AI and agent nodes</td></tr>
+<tr><td>Self-hosting</td><td>No</td><td>No</td><td>Yes</td></tr>
+<tr><td>Best first project</td><td>Form to sheet to Slack</td><td>Invoice routing with branches</td><td>Inbox triage with an AI model</td></tr>
+</tbody>
+</table></div>
+<p>Treat this table as a starting point. All three tools ship updates constantly, and the gaps between them shift.</p>
+
+<h2>A worked example: the same job in all three</h2>
+<p>Here is one workflow built three ways, so you can see the difference rather than read about it.</p>
+<p><b>The job:</b> when a new lead fills in your website form, add them to a Google Sheet, decide whether they are a good fit, and alert the sales channel in Slack only for good fits.</p>
+<h3>In Zapier</h3>
+<ol>
+<li>Trigger: new form submission (Typeform, Google Forms, Webflow or similar).</li>
+<li>Action: create a row in Google Sheets.</li>
+<li>Filter: only continue if company size is above your threshold.</li>
+<li>Action: send a Slack message to #sales with the lead's name and company.</li>
+</ol>
+<p>Time to build for a beginner: often under an hour. Easy to hand to a colleague.</p>
+<h3>In Make</h3>
+<ol>
+<li>Watch form responses module.</li>
+<li>Google Sheets: add a row.</li>
+<li>Router with two routes: "good fit" goes to Slack, "not a fit" goes to an email autoresponder.</li>
+</ol>
+<p>You see both outcomes on the canvas, which helps when someone asks "what happens to the leads we don't call?"</p>
+<h3>In n8n</h3>
+<ol>
+<li>Webhook or form trigger node.</li>
+<li>AI node: send the lead's free-text answer to a model with a prompt that scores fit from 1 to 5 and returns JSON.</li>
+<li>IF node: score of 4 or above goes to Slack, the rest to a nurture list.</li>
+<li>Google Sheets node: log every lead with its score and the model's one-line reason.</li>
+</ol>
+<p>This version judges the free-text answer, not just a dropdown. That is where n8n's AI nodes earn their place. Our <a href="../first-n8n-automation/">step-by-step n8n walkthrough</a> builds a similar flow from scratch.</p>
+
+<h2>A simple decision rule</h2>
+<ul>
+<li><b>You are automating a handful of mainstream apps, occasionally, and don't want to think about servers:</b> start with Zapier.</li>
+<li><b>Your workflow has real branching logic and per-task pricing is starting to hurt:</b> move to Make.</li>
+<li><b>You want AI models inside the workflow itself, making decisions mid-process, or you need to self-host:</b> go to n8n.</li>
+</ul>
+<p>And one tiebreaker: if your company already pays for one of them, start there. A tool you are allowed to use beats a better tool that needs three approvals.</p>
+
+<h2>Your first week, whichever tool you pick</h2>
+<ol>
+<li><b>Day 1:</b> list every task you did this week that involved copying something from one place to another. Aim for ten.</li>
+<li><b>Day 2:</b> pick the one that is boring, frequent and low risk if it goes wrong. Not the most important one.</li>
+<li><b>Day 3:</b> build it with test data only. Run it ten times.</li>
+<li><b>Day 4:</b> add one check: a filter, a notification on failure, or a log row.</li>
+<li><b>Day 5:</b> turn it on for real and watch it for a week before building the next one.</li>
+</ol>
+<p>If you need ideas for that list, see <a href="../ai-automation-tasks-by-role/">20 tasks you can automate at work with AI this month</a>.</p>
+
+<h2>Mistakes that make people quit</h2>
+<ul>
+<li><b>Starting with the hardest workflow.</b> Your first automation should be almost boring.</li>
+<li><b>Skipping error handling.</b> A workflow that fails silently is worse than no workflow. Get an alert when something breaks.</li>
+<li><b>Ignoring data rules.</b> Check what your company allows before sending customer or employee data to any third-party tool, including AI models.</li>
+<li><b>Tool hopping.</b> Switching platforms every week means you never learn one properly. Pick one for a month.</li>
+<li><b>Automating a broken process.</b> If the manual process is messy, the automation will be messy faster.</li>
+</ul>
+
+<h2>FAQ</h2>
+<div class="faq">
+<h3>Do I need to know how to code?</h3>
+<p>No, not for Zapier or Make, and not for most n8n workflows. Being able to read simple JSON helps a lot with n8n, and you can pick that up in a session or two.</p>
+<h3>Which one is cheapest?</h3>
+<p>It depends on your volume and number of steps. Self-hosted n8n can be very cheap in software cost, but you pay in setup and maintenance time. Model your real workflows against each vendor's current pricing page.</p>
+<h3>Can I switch later?</h3>
+<p>Yes. There is no clean export between platforms, so you will rebuild, but the thinking transfers. Triggers, actions, branching and error handling work the same way everywhere.</p>
+<h3>Is it safe to put company data through these tools?</h3>
+<p>That is a question for your IT or security team, and it depends on the data. Ask before you connect anything containing customer, financial or personal data. Self-hosting n8n is one option some teams prefer for sensitive work.</p>
+<h3>Where does Claude Cowork fit?</h3>
+<p>Workflow tools are best for repeatable, rule-based jobs. Agent tools like Claude Cowork are suited to multi-step tasks that need judgment. In practice you will use both, and the Automation track covers each in its own session.</p>
+</div>
+
+<div class="cta">
+<h2>Learn it on your own work, live</h2>
+<p>The AI for Automation track runs 8 live sessions over 4 weeks. You build in Zapier or Make in session 3, go deeper with n8n in session 4, and ship one real automation in your job by session 8. Hong Kong starts Sat 9 Jan 2027 in person in Central. US and Southeast Asia start online Tue 12 Jan 2027.</p>
+<a href="../../#apply" class="btn">Apply for January 2027</a><a href="../../#trial" class="btn ghost">Book a free 60-min session</a>
+</div>
+<p class="related">Related: <a href="../first-n8n-automation/">Your first n8n automation: a step-by-step walkthrough</a> · <a href="../ai-automation-tasks-by-role/">20 tasks you can automate at work with AI this month</a></p>
+</article></div>
+<footer><div class="wrap">© 2026 Level Up.</div></footer>
+</body>
+</html>
