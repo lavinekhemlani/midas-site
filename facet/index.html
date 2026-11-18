@@ -71,7 +71,8 @@ header.solid{background:rgba(244,240,232,.86);backdrop-filter:blur(14px);-webkit
 .sachet.b2 .s-sub{color:var(--ink)}.sachet.b2 .s-meta{color:#3a2f1c}.sachet.b2 .s-top svg{color:var(--ink)}
 .sachet.f{z-index:2;transform:translateY(-14px)}
 .stage:hover .b1{transform:translate(-100px,20px) rotate(-18deg)}.stage:hover .b2{transform:translate(100px,14px) rotate(15deg)}.stage:hover .f{transform:translateY(-30px)}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.stage{height:470px}.gem{width:400px;height:400px}.sachet{transform-origin:center;scale:.78}}
+.hero-grid>*,.formula>*,.stack>*,.phases>*,.index-grid>*,.founders>*{min-width:0}
+@media(max-width:900px){.hero{min-height:0;padding-top:110px}.hero-grid{grid-template-columns:1fr}.stage{height:470px}.gem{width:min(400px,100%);height:auto;aspect-ratio:1}.sachet{transform-origin:center;scale:.78}}
 
 .marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--paper)}
 .track{display:flex;gap:56px;padding:22px 0;width:max-content;animation:mq 46s linear infinite;font:italic 400 24px var(--serif);color:var(--ink2)}
