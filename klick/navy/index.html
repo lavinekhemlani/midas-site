@@ -139,6 +139,14 @@ table.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:15px;bo
 .cmp th.o{text-align:center}
 .cmp td:first-child{font-weight:600}
 
+.hero .proof{font:600 15px var(--sans);color:var(--acc);margin-top:12px}
+.taste{background:var(--ink);color:#fff;text-align:center;padding:56px 0}
+.taste p{font:800 clamp(32px,5vw,60px)/1 var(--serif);letter-spacing:-.035em}
+.taste em{font-style:normal;color:var(--acc)}
+.taste small{display:block;margin-top:14px;font:600 16px var(--sans);opacity:.85}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:28px;font:600 15px var(--sans);color:#d9d5e8;text-align:center}
+.trust span::before{content:"✓";color:var(--acc);margin-right:7px}
+.trust b{color:var(--acc)}
 /* standards */
 .std{background:var(--ink);color:#fff;padding:44px 0}
 .std .row{display:grid;grid-template-columns:1fr 1fr;gap:22px 14px}
@@ -255,11 +263,12 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
       <span class="pill rv"><i></i>Launching in the US</span>
       <h1 class="rv">Let your mind <em>click.</em></h1>
       <p class="line rv">Energy, calm focus and brain defence. One sachet a day.</p>
+      <p class="proof rv">5 g creatine. Zero caffeine. Every dose on the label.</p>
       <div class="cta rv" id="heroCta">
         <a href="#reserve" class="btn btn-acc">Reserve your founding box <svg><use href="#arr"/></svg></a>
-        <div class="micro"><span>No payment now</span><span>100-day promise</span></div>
+        <div class="micro"><span>No payment now</span><span>100-day promise</span><span>Price locked for life</span></div>
       </div>
-      <div class="chips rv"><span><b>5 g</b> creatine</span><span>No caffeine</span><span>No sugar</span><span>Every dose disclosed</span></div>
+      <div class="chips rv"><span>Replaces <b>5+ bottles</b></span><span>Zero sugar</span><span>No proprietary blends</span></div>
     </div>
     <div class="stage" aria-hidden="true">
       <svg class="gem" viewBox="0 0 400 400">
@@ -316,6 +325,13 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
     <div class="no rv"><span>No caffeine</span><span>No sugar</span><span>No proprietary blends</span></div>
   </div>
 </section>
+
+<div class="taste">
+  <div class="wrap">
+    <p class="rv">Tastes like <em>yuzu.</em><br>Works like a <em>whole shelf.</em></p>
+    <small class="rv">Yuzu and white tea. Tart, not sweet. Zero sugar.</small>
+  </div>
+</div>
 
 <section id="replaces">
   <div class="wrap rep">
@@ -374,7 +390,7 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
     </div>
     <div class="plans">
       <div class="plan hp rv">
-        <span class="badge">Founding member</span>
+        <span class="badge">Founding member · Save $30/mo</span>
         <h3>The Membership</h3>
         <div class="price">$89<small> / month</small></div>
         <div class="per">30 sachets · under $3 a day</div>
@@ -403,7 +419,7 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
         <p class="ok" id="ok"></p>
       </div>
     </div>
-    <p class="promise rv"><b>100-day promise.</b> Feel it, or your money back.</p>
+    <div class="trust rv"><span><b>100-day promise.</b> Feel it or your money back.</span><span>No return needed</span><span>Pause or cancel any time</span></div>
     <p class="note">Proposed launch pricing in USD.</p>
   </div>
 </section>
