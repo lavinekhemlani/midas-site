@@ -156,6 +156,33 @@ section{padding:120px 0}
 .fd h3{font-size:26px;margin:8px 0 12px}
 .fd p{margin:0;color:var(--ink2);font-size:16px}
 
+.port{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-left:1px solid var(--line)}
+@media(max-width:860px){.port{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.port{grid-template-columns:1fr}}
+.pc{display:flex;flex-direction:column;justify-content:space-between;gap:22px;min-height:170px;padding:30px 26px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:background .25s}
+a.pc:hover{background:#fff}
+.wm{display:flex;align-items:center;height:48px;filter:grayscale(1);opacity:.85;transition:opacity .25s,filter .25s}
+.pc:hover .wm{filter:none;opacity:1}
+.wm img{height:30px;width:auto}
+.wm-lu{font:800 30px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.04em}
+.wm-x{font:600 28px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.02em}
+.wm-cb{font:700 30px/1 'IBM Plex Sans',sans-serif;letter-spacing:-.03em;text-transform:lowercase}
+.wm-ct{font:500 26px/1 'IBM Plex Mono',monospace;letter-spacing:-.02em}
+.wm-fc{font:italic 400 28px/1 'Libre Baskerville',serif}
+.pd{font:500 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bhead{margin:56px 0 0;border-top:1px solid var(--ink);padding-top:18px}
+.bhead .mono{color:var(--muted)}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+@media(max-width:860px){.board{grid-template-columns:1fr}}
+.bd{padding:26px 28px 30px 0;border-right:1px solid var(--line)}
+.bd+.bd{padding-left:28px}
+.bd:last-child{border-right:0}
+@media(max-width:860px){.bd,.bd+.bd{padding:26px 0;border-right:0;border-bottom:1px solid var(--line)}}
+.bd img,.bd .ini{width:72px;height:72px;border-radius:50%;object-fit:cover;filter:grayscale(1);display:block;margin-bottom:16px}
+.bd .ini{display:grid;place-items:center;background:var(--navy);color:var(--brass);font:700 22px var(--serif);filter:none}
+.bd .mono{color:var(--brass)}
+.bd h3{font-size:22px;margin:8px 0 8px}
+.bd p{margin:0;color:var(--ink2);font-size:15.5px}
 /* contact */
 .contact{background:var(--navy);color:#fff;position:relative;overflow:hidden}
 .contact h2{font-size:clamp(40px,6vw,84px);line-height:1.02;max-width:14ch}
@@ -186,7 +213,7 @@ footer .mono{font-size:11px}
     <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8L54 54H44.5L32 26.5L19.5 54H10Z" fill="#C8A96A"/><path d="M22 44H42" stroke="currentColor" stroke-width="3"/></svg>
     <b>Admiralty Capital</b>
   </a>
-  <div class="navl"><a href="#thesis">Thesis</a><a href="#pillars">Pillars</a><a href="#approach">Approach</a><a href="#mandate">Mandate</a><a href="#founders">Founders</a><a href="#contact">Contact</a></div>
+  <div class="navl"><a href="#thesis">Thesis</a><a href="#pillars">Pillars</a><a href="#approach">Approach</a><a href="#mandate">Mandate</a><a href="#portfolio">Portfolio</a><a href="#founders">Team</a><a href="#contact">Contact</a></div>
 </div></nav>
 
 <header class="hero" id="top">
@@ -251,7 +278,7 @@ footer .mono{font-size:11px}
 
 <section class="dark" id="approach">
   <div class="wrap">
-    <div class="head rv"><p class="mono">03 — Approach</p><h2>Impact investing, <em>not philanthropy.</em></h2><p>Grants end when the money runs out. Good investments keep working. We hold impact capital to the same discipline as every other dollar on the balance sheet.</p></div>
+    <div class="head rv"><p class="mono">03 — Approach</p><h2>Impact investing, <em>not philanthropy.</em></h2><p>We want to do real good in the world, at scale, for decades. Grants end when the money runs out. Good investments keep working, keep hiring and keep compounding. So we hold impact capital to the same discipline as every other dollar on the balance sheet, and we measure what changes for real people: jobs created, homes built, people trained, emissions avoided.</p></div>
     <div class="not rv">
       <div>
         <span class="mono">What we do</span>
@@ -322,19 +349,39 @@ footer .mono{font-size:11px}
   </div>
 </section>
 
+<section id="portfolio" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><p class="mono">07 — Portfolio</p><h2>Companies we have <em>built and backed.</em></h2><p>Ventures founded, operated or backed by the founders, across education, finance, climate and community.</p></div>
+    <div class="port rv">
+      <a class="pc" href="https://levellup.co" target="_blank" rel="noopener"><span class="wm wm-lu">LevelUp</span><span class="pd">AI and cyber training · Impact</span></a>
+      <a class="pc" href="https://midascfo.com" target="_blank" rel="noopener"><span class="wm"><img src="../brand/wordmark.svg" alt="Midas"></span><span class="pd">Vehicle finance · Technology</span></a>
+      <div class="pc"><span class="wm wm-x">Xccelerate</span><span class="pd">Tech education · Exited 2025</span></div>
+      <div class="pc"><span class="wm wm-cb">clearbot</span><span class="pd">Ocean-cleaning robotics · Impact</span></div>
+      <div class="pc"><span class="wm wm-ct">Cap Table</span><span class="pd">Founder equity software · Technology</span></div>
+      <div class="pc"><span class="wm wm-fc">Founders Circle</span><span class="pd">Founder community · Network</span></div>
+    </div>
+  </div>
+</section>
+
 <section id="founders" style="padding-top:0">
   <div class="wrap">
-    <div class="head rv"><p class="mono">07 — Founders</p><h2>Built by operators.</h2></div>
+    <div class="head rv"><p class="mono">08 — Team</p><h2>Built by operators.</h2></div>
     <div class="founders">
       <div class="fd rv"><img src="../lavine.jpeg" alt="Lavine Hemlani" loading="lazy"><div><span class="mono">Founder</span><h3>Lavine Hemlani</h3><p>Lavine founded and scaled Xccelerate, a Hong Kong technology education company that trained 20,000+ people before its acquisition in 2025. He started his career in M&amp;A at Lazard in New York, studied at the University of Chicago, and is Managing Partner of Zenith, a capital markets and advisory firm across Hong Kong, Dubai and New York.</p></div></div>
       <div class="fd rv"><img src="../shreyas.jpg" alt="Shreyas Manchanda" loading="lazy"><div><span class="mono">Founder</span><h3>Shreyas Manchanda</h3><p>Shreyas is a Partner at Zenith, where he leads capital markets mandates across private credit, structured finance and growth equity for companies and funds in Asia, the Gulf and Africa. He brings the deal execution and lender relationships behind the office's credit and real estate positions.</p></div></div>
+    </div>
+    <div class="bhead rv"><span class="mono">Board</span></div>
+    <div class="board">
+      <div class="bd rv"><img src="../evan.jpg" alt="Evan Meagher" loading="lazy"><span class="mono">Board member</span><h3>Evan Meagher</h3><p>Former chief financial officer of CoreWeave, which he helped take public. Now a seed investor at FOG Ventures.</p></div>
+      <div class="bd rv"><img src="../richard.jpg" alt="Richard Pattle" loading="lazy"><span class="mono">Board member</span><h3>Richard Pattle</h3><p>Co-founder of Indian asset manager True Beacon. Former vice chairman of Standard Chartered Private Bank.</p></div>
+      <div class="bd rv"><span class="ini">RO</span><span class="mono">Board member</span><h3>Ray O'Leary</h3><p>Ran fixed income at Deutsche Bank and has spent most of his career in the global and US high yield markets.</p></div>
     </div>
   </div>
 </section>
 
 <section class="contact" id="contact">
   <div class="wrap">
-    <p class="mono" style="color:var(--brass)">08 — Contact</p>
+    <p class="mono" style="color:var(--brass)">09 — Contact</p>
     <h2>Present an <em>opportunity.</em></h2>
     <p>We read everything. Send a short note on the asset or company, the raise and the structure. If it fits the mandate, we come back within two weeks.</p>
     <form id="f">
