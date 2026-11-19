@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Klick · Every facet of your mind</title>
+<meta name="description" content="Klick is one daily sachet for the brain. Fewer ingredients, every one at a dose that matters, built with pharmaceutical formulation science.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0F1D3A">
+<meta property="og:title" content="Klick · Every facet of your mind">
+<meta property="og:description" content="One sachet. Every ingredient at a dose that matters. Measured, not promised.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%230F1D3A'/%3E%3Cpath d='M20 7l11 6.5v13L20 33 9 26.5v-13z' fill='none' stroke='%23F4F0E8' stroke-width='2'/%3E%3Cpath d='M20 13l5.5 3.2v6.6L20 26l-5.5-3.2v-6.6z' fill='%23E8C27A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#FFFFFF; --paper:#F3F1EC; --ink:#0F1D3A; --ink2:#3B3A36; --mute:#6B6962; --line:#E7E3D9;
+  --gold:#E8C27A; --gold2:#F4DDB0;
+  --serif:'Bricolage Grotesque','Arial Black',system-ui,sans-serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bone);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+@media(max-width:700px){.wrap{padding:0 16px}}
+em{font-style:normal;color:var(--gold)}
+.eyebrow{font:500 11px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--serif);font-weight:800;letter-spacing:-.03em;line-height:.98}
+h2{font-size:clamp(40px,6vw,76px)}
+h2 em{color:var(--gold)}
+.lead{font-size:19px;color:var(--ink2);max-width:540px;font-weight:300}
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 28px;border-radius:999px;font:500 14px var(--sans);letter-spacing:.02em;transition:all .3s ease;cursor:pointer;border:0}
+.btn-ink{background:var(--ink);color:var(--bone)}.btn-ink:hover{background:#2c2a25;transform:translateY(-1px)}
+.btn-line{border:1px solid var(--ink);color:var(--ink);background:transparent}.btn-line:hover{background:var(--ink);color:var(--bone)}
+.btn svg{width:16px;height:16px}
+
+header{position:fixed;inset:0 0 auto;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+header.solid{background:rgba(244,240,232,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font:800 30px/1 var(--serif)}
+.logo svg{width:24px;height:24px}
+.links{display:flex;gap:30px;font-size:13px;letter-spacing:.04em;color:var(--ink2)}
+.links a:hover{color:var(--ink)}
+.nav .btn{height:40px;padding:0 20px;font-size:13px}
+@media(max-width:960px){.links{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:grid;align-items:center;padding:120px 0 60px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(58px,9.2vw,138px);line-height:.92;margin:22px 0 28px}
+.hero h1 em{color:var(--gold)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.hero-note{margin-top:28px;font-size:13px;color:var(--mute);display:flex;gap:18px;flex-wrap:wrap}
+.hero-note span::before{content:"";display:inline-block;width:6px;height:6px;transform:rotate(45deg);background:var(--gold);margin-right:9px;vertical-align:middle}
+.stage{position:relative;height:640px}
+.gem{position:absolute;inset:0;margin:auto;width:580px;height:580px;animation:spin 100s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sachet{position:absolute;left:50%;top:50%;width:190px;height:360px;margin:-180px 0 0 -95px;border-radius:5px;background:linear-gradient(160deg,#1f1d19,#0d0c0a 70%);color:var(--bone);padding:28px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 50px 90px -30px rgba(19,18,15,.6),inset 0 0 0 1px rgba(255,255,255,.06);transition:transform 1s cubic-bezier(.2,.8,.2,1);
+  -webkit-mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,#0000 0) 0 0/10px 10px repeat-x;
+  mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,#0000 0) 0 0/10px 10px repeat-x}
+.sachet::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.14),transparent 35%,transparent 72%,rgba(255,255,255,.05));pointer-events:none}
+.sachet .s-top{font:800 36px/1 var(--serif);display:flex;align-items:center;gap:8px}
+.sachet .s-top svg{width:18px;height:18px;color:var(--gold)}
+.sachet .s-line{height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:16px 0}
+.sachet .s-sub{font:800 22px/1.15 var(--serif);color:var(--gold2)}
+.sachet .s-meta{font:500 8.5px/1.7 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:#a49e91}
+.sachet.b1{transform:translate(-70px,26px) rotate(-14deg);background:linear-gradient(160deg,#2a2722,#141310 70%);opacity:.95}
+.sachet.b2{transform:translate(70px,20px) rotate(11deg);background:linear-gradient(160deg,#E8C27A,#9c7a3a);color:var(--ink)}
+.sachet.b2 .s-sub{color:var(--ink)}.sachet.b2 .s-meta{color:#3a2f1c}.sachet.b2 .s-top svg{color:var(--ink)}
+.sachet.f{z-index:2;transform:translateY(-14px)}
+.stage:hover .b1{transform:translate(-100px,20px) rotate(-18deg)}.stage:hover .b2{transform:translate(100px,14px) rotate(15deg)}.stage:hover .f{transform:translateY(-30px)}
+.hero-grid>*,.formula>*,.stack>*,.phases>*,.index-grid>*,.founders>*{min-width:0}
+@media(max-width:900px){.hero{min-height:0;padding-top:110px}.hero-grid{grid-template-columns:1fr}.stage{height:470px}.gem{width:min(400px,100%);height:auto;aspect-ratio:1}.sachet{transform-origin:center;scale:.78}}
+
+.marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--paper)}
+.track{display:flex;gap:56px;padding:22px 0;width:max-content;animation:mq 46s linear infinite;font:800 24px var(--serif);color:var(--ink2)}
+.track span{display:flex;align-items:center;gap:56px;white-space:nowrap}
+.track span::after{content:"";width:9px;height:9px;transform:rotate(45deg);border:1px solid var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:140px 0}
+@media(max-width:700px){section{padding:90px 0}}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:70px}
+.sec-head p{color:var(--ink2);font-weight:300;font-size:18px;max-width:470px;justify-self:end}
+@media(max-width:800px){.sec-head{grid-template-columns:1fr}.sec-head p{justify-self:start}}
+
+.manifesto{text-align:center;padding:170px 0}
+.manifesto p.big{font:800 clamp(32px,4.6vw,60px)/1.12 var(--serif);max-width:1040px;margin:0 auto;letter-spacing:-.01em}
+.manifesto p.big em{color:var(--gold)}
+
+/* facets */
+.facets{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fc{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:30px 26px;min-height:380px;display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
+.fc:hover{transform:translateY(-6px);box-shadow:0 40px 80px -40px rgba(19,18,15,.35)}
+.fc .ic{width:54px;height:54px;color:var(--gold)}
+.fc .k{margin-top:auto;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.fc h3{font-size:40px;margin:10px 0 12px}
+.fc p{color:var(--ink2);font-weight:300;font-size:15px}
+.fc .dose{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink);display:flex;justify-content:space-between;gap:10px}
+.fc .dose b{font-weight:500}
+@media(max-width:1000px){.facets{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.facets{grid-template-columns:1fr}.fc{min-height:0}}
+
+/* problem / compare */
+.dark{background:var(--ink);color:var(--bone)}
+.dark .eyebrow{color:#9a958a}
+.dark .lead,.dark .sec-head p{color:#bdb7aa}
+.compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.cmp{border:1px solid #2e2b25;border-radius:22px;padding:32px;background:#191814}
+.cmp.us{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.cmp .tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9a958a}
+.cmp.us .tag{color:var(--mute)}
+.cmp h3{font-size:36px;margin:12px 0 22px}
+.cmp h3 em{color:var(--gold)}
+.meter{margin:16px 0}
+.meter .lb{display:flex;justify-content:space-between;font-size:13px;color:#bdb7aa;margin-bottom:7px}
+.cmp.us .meter .lb{color:var(--ink2)}
+.meter .tr{height:6px;border-radius:9px;background:#2a2823;overflow:hidden}
+.cmp.us .meter .tr{background:#e3ddd0}
+.meter .tr i{display:block;height:100%;width:0;background:#7d786d;border-radius:9px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.cmp.us .meter .tr i{background:var(--gold)}
+.cmp ul{list-style:none;margin-top:22px;display:grid;gap:9px;font-size:14px;color:#bdb7aa;font-weight:300}
+.cmp.us ul{color:var(--ink2)}
+.cmp li{display:flex;gap:10px}
+.cmp li::before{content:"—";color:#5c584f}
+.cmp.us li::before{content:"";flex:0 0 7px;height:7px;margin-top:8px;transform:rotate(45deg);background:var(--gold)}
+.src{margin-top:26px;font-size:12px;color:#7d786d}
+@media(max-width:900px){.compare{grid-template-columns:1fr}}
+
+/* science */
+.phases{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+.cutaway{aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+.ph-list{display:grid;gap:0;border-top:1px solid var(--ink)}
+.ph{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:26px 0;border-bottom:1px solid var(--line);cursor:default;transition:background .3s}
+.ph .n{font:800 40px/1 var(--serif);color:var(--gold)}
+.ph h4{font:800 28px/1.1 var(--serif);margin-bottom:6px}
+.ph p{color:var(--ink2);font-weight:300;font-size:15px}
+.ph:hover h4{color:var(--gold)}
+@media(max-width:900px){.phases{grid-template-columns:1fr;gap:40px}}
+
+/* formula */
+.formula{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.f-side{position:sticky;top:110px}
+.f-side h3{font-size:64px}
+.f-side h3 em{color:var(--gold)}
+.f-side p{color:var(--ink2);font-weight:300;margin-top:16px}
+.f-side .when{margin-top:26px;display:grid;gap:10px;font-size:14px}
+.f-side .when div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.f-side .when span{color:var(--mute)}
+.f-side .when b{font-weight:500;text-align:right}
+.ing{border-top:1px solid var(--ink)}
+.ing-row{display:grid;grid-template-columns:1.15fr .45fr 1.4fr;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.ing-row b{font:800 25px/1.1 var(--serif)}
+.ing-row b small{display:block;font:400 12px/1.4 var(--sans);color:var(--mute);margin-top:6px;letter-spacing:.02em}
+.ing-row .dose{font:500 15px var(--sans);font-variant-numeric:tabular-nums}
+.ing-row p{color:var(--ink2);font-weight:300;font-size:15px}
+.sub-h{display:flex;justify-content:space-between;align-items:center;margin:46px 0 0;padding-bottom:14px;border-bottom:1px solid var(--ink)}
+.sub-h h4{font:800 30px var(--serif)}
+.pill{font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--bone)}
+.pill.o{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.pipe{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.pipe div{padding:18px 0;border-bottom:1px solid var(--line)}
+.pipe b{font:800 22px var(--serif);display:block}
+.pipe span{font-size:14px;color:var(--ink2);font-weight:300}
+.f-foot{margin-top:22px;font-size:13px;color:var(--mute)}
+.also{margin-top:16px;font-size:14px;color:var(--ink2);font-weight:300}
+@media(max-width:900px){.formula{grid-template-columns:1fr}.f-side{position:static}.ing-row{grid-template-columns:1fr auto}.ing-row p{grid-column:1/-1}.pipe{grid-template-columns:1fr}}
+
+/* stack */
+.stack{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.bottles{display:flex;flex-wrap:wrap;gap:10px}
+.bt{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 16px;font-size:14px;cursor:pointer;user-select:none;transition:all .25s;display:flex;align-items:center;gap:8px}
+.bt::before{content:"";width:12px;height:12px;border-radius:50%;border:1px solid var(--mute);transition:all .25s}
+.bt.on{background:var(--ink);color:var(--bone);border-color:var(--ink)}
+.bt.on::before{background:var(--gold);border-color:var(--gold)}
+.tally{background:var(--ink);color:var(--bone);border-radius:26px;padding:42px}
+.tally .row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid #2e2b25}
+.tally .row:last-of-type{border-bottom:0}
+.tally .row span{color:#bdb7aa;font-size:15px}
+.tally .row b{font:800 46px/1 var(--serif)}
+.tally .row b.g{color:var(--gold)}
+.tally p{margin-top:18px;font-size:13px;color:#8c877c}
+@media(max-width:900px){.stack{grid-template-columns:1fr}}
+
+/* index test */
+.index-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:center}
+.index-grid h2 em{color:var(--gold)}
+.index-points{margin-top:36px;display:grid;gap:18px}
+.index-points div{display:grid;grid-template-columns:42px 1fr;gap:14px;color:#cfc9bc;font-weight:300}
+.index-points b{font:800 26px/1 var(--serif);color:var(--gold)}
+.test{aspect-ratio:1.25;border-radius:26px;border:1px solid #2e2b25;background:#1b1a16;position:relative;overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;transition:background .15s;touch-action:manipulation}
+.test.go{background:var(--gold);color:var(--ink)}
+.test.wait{background:#24221d}
+.test.early{background:#4a2a20}
+.test .big{font:800 clamp(44px,6vw,80px)/1 var(--serif)}
+.test .small{font-size:14px;color:#a8a296;margin-top:14px;max-width:360px}
+.test.go .small{color:#3a3020}
+.test .dots{position:absolute;bottom:26px;display:flex;gap:8px}
+.test .dots i{width:8px;height:8px;border-radius:50%;background:#3a372f}
+.test .dots i.on{background:var(--gold)}
+.test.go .dots i.on{background:var(--ink)}
+.test .gemw{width:72px;height:72px;margin-bottom:22px;color:var(--gold)}
+.results{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.results span{font-size:12px;padding:5px 11px;border-radius:999px;border:1px solid #3a372f;color:#cfc9bc}
+@media(max-width:900px){.index-grid{grid-template-columns:1fr}.test{aspect-ratio:1}}
+
+/* ritual */
+.ritual{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink)}
+.step{padding:40px 34px 10px 0;border-right:1px solid var(--line)}
+.step+.step{padding-left:34px}
+.step:last-child{border-right:0}
+.step .n{font:800 90px/1 var(--serif);color:var(--gold)}
+.step h3{font-size:38px;margin:20px 0 12px}
+.step p{color:var(--ink2);font-weight:300}
+@media(max-width:800px){.ritual{grid-template-columns:1fr}.step,.step+.step{padding:34px 0;border-right:0;border-bottom:1px solid var(--line)}}
+
+.std{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.std div{background:var(--paper);padding:34px 28px;min-height:230px;display:flex;flex-direction:column}
+.std svg{width:34px;height:34px;margin-bottom:auto;color:var(--gold)}
+.std h4{font:800 26px/1.1 var(--serif);margin:30px 0 8px}
+.std p{font-size:14px;color:var(--ink2);font-weight:300}
+@media(max-width:900px){.std{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.std{grid-template-columns:1fr}}
+
+.plans{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;max-width:1000px;margin:0 auto}
+.plan{border:1px solid var(--line);background:var(--bone);border-radius:26px;padding:42px;display:flex;flex-direction:column}
+.plan.hp{background:var(--ink);color:var(--bone);border-color:var(--ink);position:relative}
+.plan .badge{position:absolute;top:24px;right:24px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:var(--gold);color:var(--ink);font-weight:600}
+.plan h3{font-size:44px}
+.plan h3 em{color:var(--gold)}
+.plan .price{font:800 76px/1 var(--serif);margin:26px 0 4px}
+.plan .price small{font:400 16px var(--sans);color:var(--mute)}
+.plan .per{font-size:14px;color:var(--mute)}
+.plan ul{list-style:none;margin:30px 0 36px;display:grid;gap:12px}
+.plan li{display:flex;gap:12px;font-weight:300;font-size:15px}
+.plan li::before{content:"";flex:0 0 8px;height:8px;margin-top:8px;transform:rotate(45deg);border:1px solid var(--gold)}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan.hp .btn-ink{background:var(--bone);color:var(--ink)}
+.plan-note{text-align:center;margin-top:28px;font-size:14px;color:var(--mute);max-width:700px;margin-inline:auto}
+@media(max-width:800px){.plans{grid-template-columns:1fr}}
+
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.counter{font:800 clamp(90px,14vw,190px)/.9 var(--serif);letter-spacing:-.03em}
+.counter em{color:var(--gold)}
+form.wl{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
+form.wl input{flex:1;min-width:220px;height:52px;border-radius:999px;border:1px solid var(--ink);background:transparent;padding:0 22px;font:400 15px var(--sans);color:var(--ink);outline:none}
+form.wl input:focus{background:var(--paper)}
+.ok{margin-top:14px;font-size:14px;color:var(--ink2);min-height:22px}
+@media(max-width:800px){.founders{grid-template-columns:1fr;gap:30px}}
+
+.faq{max-width:860px;margin:0 auto;border-top:1px solid var(--ink)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:26px 0;font:800 26px/1.2 var(--serif);gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 28px var(--sans);transition:transform .3s;color:var(--mute)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 0 26px;color:var(--ink2);font-weight:300;max-width:700px}
+
+footer{background:var(--ink);color:#bdb7aa;padding:90px 0 40px;font-size:14px}
+.f-big{font:800 clamp(70px,16vw,240px)/.85 var(--serif);color:var(--bone);letter-spacing:-.03em;display:flex;align-items:center;gap:.12em}
+.f-big svg{width:.55em;height:.55em;color:var(--gold)}
+.f-row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-top:60px;padding-top:30px;border-top:1px solid #2e2b25}
+.disclaimer{margin-top:30px;font-size:12px;line-height:1.7;color:#7d786d;max-width:920px}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.gem,.track{animation:none}}
+
+/* Level Up look */
+body{font-size:17px}
+.eyebrow{font:600 13px/1 var(--sans);letter-spacing:.08em;color:var(--mute);display:inline-flex;align-items:center;gap:9px}
+.eyebrow::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(232,194,122,.25)}
+.lead,.sec-head p,.fc p,.ph p,.ing-row p,.step p,.std p,.plan li,details p,.pipe span,.f-side p,.also{font-weight:400}
+.btn{font:600 16px var(--sans);letter-spacing:0;height:56px}
+.btn-ink{background:var(--gold);color:var(--ink)}.btn-ink:hover{background:#F4DDB0;transform:translateY(-1px)}
+.btn-line{border:1.5px solid currentColor}
+header{background:rgba(14,14,12,.86);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+header.solid{background:rgba(14,14,12,.92);border-color:rgba(255,255,255,.08)}
+.logo{color:#fff;font-size:28px;letter-spacing:-.03em}
+.logo svg{color:var(--gold)}
+.links a{color:#CFCCC3;font-weight:500;font-size:15px;letter-spacing:0}.links a:hover{color:#fff}
+.nav .btn{height:44px;font-size:15px}
+.hero{background:var(--ink);color:#fff}
+.hero::before{content:"";position:absolute;width:1000px;height:1000px;border-radius:50%;background:radial-gradient(circle,rgba(232,194,122,.38),rgba(232,194,122,0) 62%);right:-280px;top:-200px;pointer-events:none}
+.hero .wrap{position:relative}
+.hero h1{letter-spacing:-.04em;line-height:.92}
+.hero .lead{color:#D6D3CA}
+.hero .eyebrow,.hero-note{color:#BDBAB0}
+.hero .btn-line{color:#fff;border-color:rgba(255,255,255,.5)}.hero .btn-line:hover{background:#fff;color:var(--ink)}
+.hero-note span::before{transform:none;border-radius:50%}
+.sachet{border-radius:8px}
+.sachet.f{background:linear-gradient(160deg,#E8C27A,#C9A15A 70%);color:var(--ink)}
+.sachet.f .s-sub{color:var(--ink)}.sachet.f .s-meta{color:#5B4313}.sachet.f .s-top svg{color:var(--ink)}
+.sachet.f .s-line{background:linear-gradient(90deg,var(--ink),transparent)}
+.sachet.b2{background:linear-gradient(160deg,#FFFFFF,#ECE8DE);color:var(--ink)}
+.sachet.b2 .s-top svg{color:var(--gold)}
+.sachet .s-sub{font-size:24px;line-height:1.05}
+.marquee{background:var(--gold);border:0}
+.track{font:800 24px var(--serif);color:var(--ink);letter-spacing:-.01em;padding:18px 0}
+.track span::after{content:"✦";width:auto;height:auto;transform:none;border:0;font-size:16px}
+.manifesto p.big{letter-spacing:-.03em;line-height:1.05}
+.fc{background:var(--paper);border:0;border-radius:24px}
+.fc:hover{background:#F1ECDF}
+.fc:nth-child(2){background:var(--gold)}.fc:nth-child(2) .ic,.fc:nth-child(2) .k{color:var(--ink)}.fc:nth-child(2) p{color:var(--ink)}.fc:nth-child(2) .dose{border-color:rgba(14,14,12,.2)}
+.fc:nth-child(4){background:var(--ink);color:#fff}.fc:nth-child(4) p,.fc:nth-child(4) .dose{color:#D6D3CA}.fc:nth-child(4) .dose{border-color:#2E2D29}
+.cmp.us{background:var(--gold);border-color:var(--gold)}
+.cmp.us .tag,.cmp.us ul,.cmp.us .meter .lb{color:var(--ink)}
+.cmp.us h3 em{color:#fff}
+.cmp.us .meter .tr{background:rgba(14,14,12,.18)}.cmp.us .meter .tr i{background:var(--ink)}
+.cmp.us li::before{background:var(--ink);border-radius:50%;transform:none}
+.ph .n,.step .n{font-weight:800}
+.pill{background:var(--gold);color:var(--ink);font-weight:600;letter-spacing:.06em}
+.bt{background:#fff;font-weight:500}
+.bt.on{background:var(--gold);color:var(--ink);border-color:var(--gold)}.bt.on::before{background:var(--ink);border-color:var(--ink)}
+.tally .row b.g,.counter em{color:var(--gold)}
+.test.go{background:var(--gold)}
+.plan{background:#fff}
+.plan.hp{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.plan.hp h3 em{color:#fff}
+.plan.hp .badge{background:var(--ink);color:#fff}
+.plan.hp .per,.plan.hp .price small{color:#5B4313}
+.plan.hp li::before{border-color:var(--ink)}
+.plan.hp .btn-ink{background:var(--ink);color:#fff}
+.plan li::before{border-radius:50%;transform:none;background:var(--gold);border-color:var(--gold)}
+form.wl input{border-width:1.5px}
+footer{background:var(--ink)}
+.f-big{color:#fff;letter-spacing:-.05em}
+
+.oneaday{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#BDBAB0}
+.oneaday span{background:var(--gold);color:var(--ink);font:800 15px/1 var(--serif);letter-spacing:-.01em;text-transform:none;padding:9px 14px;border-radius:999px}
+.swap{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:30px;padding:16px 20px;border-radius:22px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);width:fit-content;max-width:100%}
+.swap b{display:block;font:800 22px/1 var(--serif);color:#fff;letter-spacing:-.02em}
+.swap small{display:block;font-size:12.5px;color:#BDBAB0;margin-top:4px}
+.sw-one,.sw-many{display:flex;align-items:center;gap:12px;min-width:0}
+.ms{width:22px;height:40px;border-radius:4px;background:var(--gold);flex:none;box-shadow:0 8px 20px -6px var(--gold)}
+.sw-eq{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.bots{display:flex;gap:4px;flex:none}
+.bots i{width:12px;height:30px;border-radius:4px 4px 3px 3px;background:#3B3A36;position:relative;opacity:.9}
+.bots i::before{content:"";position:absolute;left:2px;right:2px;top:-5px;height:5px;border-radius:2px 2px 0 0;background:#55534D}
+.sw-many{opacity:.75;text-decoration:line-through;text-decoration-color:var(--gold)}
+.sw-many b{text-decoration:line-through;text-decoration-color:var(--gold);text-decoration-thickness:3px}
+@media(max-width:560px){.swap{gap:12px;padding:14px}.swap b{font-size:19px}}
+
+.cpick{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:99;background:#0F1D3A;color:#fff;font:500 13px var(--sans);padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px -8px rgba(0,0,0,.4);display:flex;gap:10px;align-items:center;white-space:nowrap;max-width:calc(100% - 24px);overflow-x:auto}
+.cpick a{color:#cfcabd;text-decoration:underline}.cpick b{color:#E8C27A}
+header,header.solid{background:#0F1D3AE6}</style>
+</head>
+<body><div class="cpick">Colour option: <b>Navy</b> <a href="../cream/">Cream</a> <a href="../matcha/">Matcha</a> <a href="../purple/">Purple</a> <a href="../">Orange</a></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mark" viewBox="0 0 40 40"><path d="M20 3l14.7 8.5v17L20 37 5.3 28.5v-17z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 12l7 4v8l-7 4-7-4v-8z" fill="currentColor"/><path d="M20 3v9M34.7 11.5l-7.7 4.5M34.7 28.5L27 24M20 37v-9M5.3 28.5L13 24M5.3 11.5L13 16" stroke="currentColor" stroke-width="1.4"/></symbol>
+</defs></svg>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="logo"><svg><use href="#mark"/></svg>Klick</a>
+    <nav class="links"><a href="#facets">Facets</a><a href="#science">Science</a><a href="#formula">Formula</a><a href="#stack">Your stack</a><a href="#index">The Index</a><a href="#membership">Membership</a></nav>
+    <a href="#founders" class="btn btn-ink">Reserve</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="oneaday rv"><span>One sachet a day</span> Daily brain health · Launching in the US</p>
+      <h1 class="rv">Every facet<br>of your <em>mind.</em></h1>
+      <p class="lead rv">One sachet a day for energy, calm focus and long-term brain defence. Fewer ingredients, every one at a dose that actually matters, built by pharmaceutical formulation scientists.</p>
+      <div class="cta rv">
+        <a href="#founders" class="btn btn-ink">Reserve a founding box <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#formula" class="btn btn-line">See the full formula</a>
+      </div>
+      <div class="swap rv">
+        <div class="sw-one"><i class="ms"></i><div><b>1 sachet</b><small>a day</small></div></div>
+        <div class="sw-eq">replaces</div>
+        <div class="sw-many"><div class="bots"><i></i><i></i><i></i><i></i><i></i></div><div><b>5+ bottles</b><small>creatine, theanine, multi, omega, nootropic</small></div></div>
+      </div>
+      <div class="hero-note rv"><span>5 g creatine per sachet</span><span>No proprietary blends</span><span>Pharma-grade delivery</span><span>100-day promise</span></div>
+    </div>
+    <div class="stage rv" aria-hidden="true">
+      <svg class="gem" viewBox="0 0 400 400">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F4DDB0"/><stop offset="1" stop-color="#E8C27A"/></linearGradient></defs>
+        <g fill="none" stroke="#E8C27A" stroke-width="1" opacity=".55">
+          <polygon points="200,18 357,109 357,291 200,382 43,291 43,109"/>
+          <polygon points="200,92 293,146 293,254 200,308 107,254 107,146"/>
+          <polygon points="200,150 243,175 243,225 200,250 157,225 157,175"/>
+          <path d="M200 18L200 92M357 109L293 146M357 291L293 254M200 382L200 308M43 291L107 254M43 109L107 146"/>
+          <path d="M200 92L357 109M293 146L357 291M293 254L200 382M200 308L43 291M107 254L43 109M107 146L200 18"/>
+          <path d="M200 92L243 175M293 146L243 225M293 254L200 250M200 308L157 225M107 254L157 175M107 146L200 150"/>
+        </g>
+        <g fill="url(#g1)">
+          <polygon points="200,18 357,109 293,146 200,92" opacity=".10"/>
+          <polygon points="357,109 357,291 293,254 293,146" opacity=".18"/>
+          <polygon points="200,382 43,291 107,254 200,308" opacity=".14"/>
+          <polygon points="43,109 107,146 107,254 43,291" opacity=".06"/>
+          <polygon points="200,92 293,146 243,175 200,150" opacity=".22"/>
+          <polygon points="107,254 157,225 200,250 200,308" opacity=".26"/>
+        </g>
+      </svg>
+      <div class="sachet b1"><div class="s-top"><svg><use href="#mark"/></svg>Klick</div><div><div class="s-sub">Every facet<br>of your mind.</div><div class="s-line"></div><div class="s-meta">One daily sachet · 7.5 g</div></div></div>
+      <div class="sachet b2"><div class="s-top"><svg><use href="#mark"/></svg>Klick</div><div><div class="s-sub">Every facet<br>of your mind.</div><div class="s-line" style="background:linear-gradient(90deg,#0F1D3A,transparent)"></div><div class="s-meta">Founders edition</div></div></div>
+      <div class="sachet f"><div class="s-top"><svg><use href="#mark"/></svg>Klick</div><div><div class="s-sub">Every facet<br>of your mind.</div><div class="s-line"></div><div class="s-meta">Creatine · Sulforaphane<br>L-theanine · Ergothioneine<br>Yuzu &amp; white tea</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track">
+  <span>Every dose disclosed</span><span>Fewer ingredients, real doses</span><span>Measured, not promised</span><span>One sachet replaces the stack</span><span>Pharmaceutical formulation science</span><span>No proprietary blends</span>
+  <span>Every dose disclosed</span><span>Fewer ingredients, real doses</span><span>Measured, not promised</span><span>One sachet replaces the stack</span><span>Pharmaceutical formulation science</span><span>No proprietary blends</span>
+</div></div>
+
+<section class="manifesto">
+  <div class="wrap">
+    <p class="eyebrow rv" style="margin-bottom:34px">Why Klick</p>
+    <p class="big rv">The best-selling daily sachets list <em>ninety</em> ingredients. Most are there for the label, at doses too small to do anything. We did the opposite: the few ingredients with real evidence for the brain, each at the dose used in the research, in <em>one sachet.</em></p>
+  </div>
+</section>
+
+<section id="facets" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow rv">Four facets, one sachet</p><h2 class="rv" style="margin-top:18px">Why choose<br><em>only one?</em></h2></div>
+      <p class="rv">Other brands sell you a focus product, a calm product and a longevity product. Your brain needs all of them, every day. So we put them in one.</p>
+    </div>
+    <div class="facets">
+      <article class="fc rv">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M27 4L11 27h12l-2 17 16-23H25z"/></svg>
+        <p class="k">Klick i · Energy</p><h3>Fuel</h3>
+        <p>Your brain burns a fifth of your energy. Creatine helps keep its energy reserves topped up, especially when you're short on sleep or under pressure.*</p>
+        <div class="dose"><span>Creatine monohydrate</span><b>5,000 mg</b></div>
+      </article>
+      <article class="fc rv">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="2.5" fill="currentColor"/></svg>
+        <p class="k">Klick ii · Focus</p><h3>Calm focus</h3>
+        <p>The amino acid from green tea that smooths the mind into alert, unhurried attention. Focus without jitters, and no caffeine in the sachet.*</p>
+        <div class="dose"><span>L-theanine</span><b>200 mg</b></div>
+      </article>
+      <article class="fc rv">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10z"/><path d="M17 24l5 5 9-10"/></svg>
+        <p class="k">Klick iii · Defence</p><h3>Resilience</h3>
+        <p>Sulforaphane from broccoli sprouts and ergothioneine from mushrooms switch on and support the body's own antioxidant defences, the long game for a sharp mind.*</p>
+        <div class="dose"><span>Glucoraphanin + myrosinase</span><b>615 mg</b></div>
+      </article>
+      <article class="fc rv">
+        <svg class="ic" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 4l17 10v20L24 44 7 34V14z"/><path d="M7 14l17 10 17-10M24 24v20"/></svg>
+        <p class="k">Klick iv · Foundation</p><h3>Foundation</h3>
+        <p>A full vitamin and mineral base in active forms, so the essentials your brain depends on are never the weak link.*</p>
+        <div class="dose"><span>Vitamin &amp; mineral premix</span><b>1,100 mg</b></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow rv">The problem with the category</p><h2 class="rv" style="margin-top:18px;color:var(--bone)">More on the label.<br><em>Less in the glass.</em></h2></div>
+      <p class="rv">We bought and read the labels of the leading brain and daily-nutrition products. Two patterns kept showing up.</p>
+    </div>
+    <div class="compare">
+      <div class="cmp rv">
+        <p class="tag">Pattern one</p><h3>The 90-ingredient sachet</h3>
+        <div class="meter"><div class="lb"><span>Ingredients listed</span><b>~90</b></div><div class="tr"><i data-w="100%"></i></div></div>
+        <div class="meter"><div class="lb"><span>Superfood blend, per ingredient</span><b>~160 mg</b></div><div class="tr"><i data-w="6%"></i></div></div>
+        <div class="meter"><div class="lb"><span>Creatine</span><b>0 g</b></div><div class="tr"><i data-w="0%"></i></div></div>
+        <ul><li>Dozens of greens and herbs share one 4 g "complex"</li><li>Impressive label, homeopathic doses</li><li>Nothing chosen specifically for the brain</li></ul>
+      </div>
+      <div class="cmp rv">
+        <p class="tag">Pattern two</p><h3>The proprietary blend</h3>
+        <div class="meter"><div class="lb"><span>Actives hidden in one "blend"</span><b>4 to 6</b></div><div class="tr"><i data-w="55%"></i></div></div>
+        <div class="meter"><div class="lb"><span>Doses you can verify</span><b>0</b></div><div class="tr"><i data-w="0%"></i></div></div>
+        <div class="meter"><div class="lb"><span>Total blend in one brain sachet we read</span><b>360 mg</b></div><div class="tr"><i data-w="8%"></i></div></div>
+        <ul><li>You can't tell if anything is at a working dose</li><li>Usually leans on caffeine so you "feel" it</li><li>The label is designed to hide, not inform</li></ul>
+      </div>
+      <div class="cmp us rv">
+        <p class="tag">The Klick way</p><h3>Fewer, <em>fully dosed.</em></h3>
+        <div class="meter"><div class="lb"><span>Active ingredients</span><b>15 to 20</b></div><div class="tr"><i data-w="22%"></i></div></div>
+        <div class="meter"><div class="lb"><span>Disclosed at a research-backed dose</span><b>100%</b></div><div class="tr"><i data-w="100%"></i></div></div>
+        <div class="meter"><div class="lb"><span>Creatine</span><b>5 g</b></div><div class="tr"><i data-w="100%"></i></div></div>
+        <ul><li>Every ingredient chosen for the brain</li><li>Every milligram printed on the box</li><li>Delivery engineered so each one survives</li></ul>
+      </div>
+    </div>
+    <p class="src rv">Based on our review of 70 brain, focus and daily-nutrition brands sold in the US, and the supplement-facts panels of the leading products, Sept to Nov 2026.</p>
+  </div>
+</section>
+
+<section id="science">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow rv">The science of the sachet</p><h2 class="rv" style="margin-top:18px">Formulated like<br><em>a medicine.</em></h2></div>
+      <p class="rv">Most powders are a scoop of everything mixed together. Some ingredients fight each other, some dissolve away, some never get absorbed. Klick is built by pharmaceutical formulation scientists, phase by phase.</p>
+    </div>
+    <div class="phases">
+      <svg class="cutaway rv" viewBox="0 0 400 400" aria-label="Cutaway of a Klick sachet showing three phases">
+        <defs>
+          <radialGradient id="bead" cx=".35" cy=".35"><stop offset="0" stop-color="#F4DDB0"/><stop offset="1" stop-color="#E8C27A"/></radialGradient>
+          <radialGradient id="gran" cx=".35" cy=".35"><stop offset="0" stop-color="#6d665a"/><stop offset="1" stop-color="#0F1D3A"/></radialGradient>
+        </defs>
+        <circle cx="200" cy="200" r="186" fill="#FBF9F4" stroke="#E2DCCF"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#E2DCCF" stroke-dasharray="2 6"/>
+        <g fill="#E7DFCD">
+          <circle cx="120" cy="140" r="5"/><circle cx="160" cy="110" r="4"/><circle cx="250" cy="120" r="5"/><circle cx="290" cy="170" r="4"/><circle cx="300" cy="240" r="5"/><circle cx="250" cy="300" r="4"/><circle cx="160" cy="300" r="5"/><circle cx="110" cy="250" r="4"/><circle cx="200" cy="80" r="4"/><circle cx="200" cy="330" r="4"/><circle cx="80" cy="200" r="4"/><circle cx="330" cy="200" r="4"/><circle cx="140" cy="190" r="4"/><circle cx="260" cy="210" r="4"/><circle cx="210" cy="250" r="4"/><circle cx="190" cy="150" r="4"/>
+        </g>
+        <g><circle cx="170" cy="175" r="18" fill="url(#bead)"/><circle cx="235" cy="160" r="14" fill="url(#bead)"/><circle cx="215" cy="230" r="20" fill="url(#bead)"/><circle cx="150" cy="245" r="12" fill="url(#bead)"/><circle cx="275" cy="255" r="12" fill="url(#bead)"/></g>
+        <g><rect x="110" y="95" width="22" height="22" rx="6" fill="url(#gran)" transform="rotate(18 121 106)"/><rect x="262" y="96" width="20" height="20" rx="6" fill="url(#gran)" transform="rotate(-12 272 106)"/><rect x="300" y="200" width="18" height="18" rx="5" fill="url(#gran)"/><rect x="95" y="205" width="18" height="18" rx="5" fill="url(#gran)" transform="rotate(30 104 214)"/><rect x="190" y="290" width="22" height="22" rx="6" fill="url(#gran)" transform="rotate(-20 201 301)"/></g>
+        <g font-family="Inter, sans-serif" font-size="11" letter-spacing="1.6" fill="#8C877C">
+          <text x="200" y="38" text-anchor="middle">I · DRINK BASE</text>
+          <text x="200" y="372" text-anchor="middle">III · ENTERIC GRANULES</text>
+          <text x="345" y="140" text-anchor="end">II · MICROBEADS</text>
+        </g>
+      </svg>
+      <div class="ph-list">
+        <div class="ph rv"><span class="n">i.</span><div><h4>The drink base</h4><p>Water-soluble actives like creatine, L-theanine and the vitamin and mineral premix dissolve into a clean, lightly sparkling base that tastes like yuzu and white tea.</p></div></div>
+        <div class="ph rv"><span class="n">ii.</span><div><h4>Protected microbeads</h4><p>Fat-soluble actives that powders usually waste, like vitamins D3 and K2, are carried in tiny lipid microbeads that disperse when you stir and help your body absorb them.</p></div></div>
+        <div class="ph rv"><span class="n">iii.</span><div><h4>Enteric granules</h4><p>Glucoraphanin and its activating enzyme are coated separately so they survive your stomach and only meet in the gut, where they form sulforaphane. Kept apart until the moment they're needed.</p></div></div>
+        <div class="ph rv"><span class="n">iv.</span><div><h4>Proven as a finished product</h4><p>We don't just cite studies on single ingredients. We're planning human absorption data on the finished Klick sachet itself, the study most supplement brands never pay for.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formula" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow rv">The Formula</p><h2 class="rv" style="margin-top:18px">Nothing hidden.<br><em>Every milligram.</em></h2></div>
+      <p class="rv">This is the working formula from our formulation lab, ingredient by ingredient. When the final version is locked, this table is exactly what will be on the box.</p>
+    </div>
+    <div class="formula">
+      <div class="f-side rv">
+        <p class="eyebrow">One stick · Formula v1</p>
+        <h3 style="margin-top:10px">Klick <em>Daily</em></h3>
+        <p>Tear, pour into cold water, stir. One a day, every day.</p>
+        <div class="when">
+          <div><span>Serving</span><b>1 stick pack, ~7.5 g</b></div>
+          <div><span>When</span><b>Morning, with or without food</b></div>
+          <div><span>Mix with</span><b>250 ml cold water</b></div>
+          <div><span>Flavour</span><b>Yuzu &amp; white tea</b></div>
+          <div><span>Caffeine</span><b>None</b></div>
+          <div><span>Sugar</span><b>None, sweetened with stevia Reb M</b></div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="ing">
+          <div class="ing-row"><b>Creatine monohydrate<small>Micronised, 200 mesh</small></b><span class="dose">5,000 mg</span><p>The most researched sports and brain supplement there is. Supports energy for brain cells, with the strongest effects when you're tired or sleep-deprived.*</p></div>
+          <div class="ing-row"><b>Glucoraphanin<small>Enteric-coated granule</small></b><span class="dose">435 mg</span><p>The broccoli-sprout precursor to sulforaphane, which activates the body's own antioxidant and detox pathways (Nrf2).*</p></div>
+          <div class="ing-row"><b>Myrosinase<small>Enteric-coated granule</small></b><span class="dose">180 mg</span><p>The enzyme that turns glucoraphanin into sulforaphane. Coated separately so the two only meet in the gut.</p></div>
+          <div class="ing-row"><b>L-theanine</b><span class="dose">200 mg</span><p>The calming amino acid from green tea, studied for relaxed alertness and attention.*</p></div>
+          <div class="ing-row"><b>L-ergothioneine<small>As a 10% trituration</small></b><span class="dose">30 mg</span><p>A rare antioxidant from mushrooms that the body actively transports into the brain, studied for healthy cognitive ageing.*</p></div>
+          <div class="ing-row"><b>Vitamin &amp; mineral premix<small>Active forms</small></b><span class="dose">1,100 mg</span><p>The essentials your brain runs on, including B vitamins and key minerals. Full breakdown published with the final formula.*</p></div>
+        </div>
+        <p class="also">Also in the stick: natural flavour 250 mg, citric and malic acid 150 / 50 mg, stevia Reb M 60 mg, silicon dioxide 50 mg. Nothing else.</p>
+
+        <div class="sub-h"><h4>In formulation now</h4><span class="pill o">Phase ii candidates</span></div>
+        <div class="pipe">
+          <div><b>Omega-3 DHA</b><span>The brain's main structural fat, protected in lipid microbeads</span></div>
+          <div><b>Vitamin D3 + K2</b><span>Fat-soluble pair, microencapsulated for absorption</span></div>
+          <div><b>Magnesium L-threonate</b><span>The form of magnesium studied for crossing into the brain</span></div>
+          <div><b>Lion's mane</b><span>Fruiting-body extract, studied for nerve growth factor</span></div>
+          <div><b>Vitamin B12</b><span>Methylcobalamin, for normal nerve function</span></div>
+          <div><b>NAD+ precursor</b><span>Cellular energy and healthy ageing</span></div>
+          <div><b>Ashwagandha</b><span>Under evaluation for stress resilience</span></div>
+          <div><b>Citicoline</b><span>Under evaluation for attention and memory</span></div>
+        </div>
+        <p class="f-foot">Working formula v1 from our formulation partner. Doses and candidates may change after stability, taste and absorption testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap stack">
+    <div>
+      <p class="eyebrow rv">Your stack</p>
+      <h2 class="rv" style="margin-top:18px">One sachet.<br><em>Not seven bottles.</em></h2>
+      <p class="lead rv" style="margin-top:24px">Tap what's in your cupboard right now. Most people we spoke to were taking five or more separate products and forgetting half of them.</p>
+      <div class="bottles rv" id="bottles" style="margin-top:30px"></div>
+    </div>
+    <div class="tally rv">
+      <div class="row"><span>Bottles on your shelf</span><b id="tB">0</b></div>
+      <div class="row"><span>Pills and scoops a day</span><b id="tP">0</b></div>
+      <div class="row"><span>With Klick</span><b class="g">1 sachet</b></div>
+      <p>Klick covers creatine, L-theanine, sulforaphane, ergothioneine and a full multivitamin today, with omega-3, magnesium and lion's mane in development.</p>
+    </div>
+  </div>
+</section>
+
+<section id="index" class="dark">
+  <div class="wrap index-grid">
+    <div>
+      <p class="eyebrow rv">The Klick Index</p>
+      <h2 class="rv" style="margin-top:18px;color:var(--bone)">Measured,<br>not <em>promised.</em></h2>
+      <p class="lead rv" style="margin-top:26px">Every brain supplement says it works. Klick asks you to check. Take the 60-second Index on day one, then again on day 30, and see your own numbers move.</p>
+      <div class="index-points rv">
+        <div><b>01</b><span>Reaction speed over five rounds, a simple marker of processing speed and alertness.</span></div>
+        <div><b>02</b><span>Your baseline is saved on this device. Come back in 30 days and compare.</span></div>
+        <div><b>03</b><span>Members get the full Index in the app: memory, attention and sleep, tracked over time.</span></div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="test" id="test" role="button" tabindex="0" aria-live="polite">
+        <svg class="gemw"><use href="#mark"/></svg>
+        <div class="big" id="tBig">Tap to begin</div>
+        <div class="small" id="tSmall">When the panel turns orange, tap as fast as you can. Five rounds, about 60 seconds.</div>
+        <div class="results" id="tRes"></div>
+        <div class="dots" id="tDots"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ritual">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow rv">The Ritual</p><h2 class="rv" style="margin-top:18px">Thirty seconds.<br><em>Once a day.</em></h2></div>
+      <p class="rv">No capsules to count, no tubs to scoop, nothing to remember beyond one stick in the morning.</p>
+    </div>
+    <div class="ritual">
+      <div class="step rv"><div class="n">i.</div><h3>Tear</h3><p>Each stick is one exact serving, sealed against air, light and moisture so it's as potent on day 30 as day one.</p></div>
+      <div class="step rv"><div class="n">ii.</div><h3>Pour</h3><p>Into a glass of cold water. Stir for ten seconds while the microbeads disperse. Yuzu and white tea, lightly tart, not sweet.</p></div>
+      <div class="step rv"><div class="n">iii.</div><h3>Track</h3><p>Take the Klick Index once a month. Watch your baseline move. That's how you know it's working.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow rv">The Klick Standard</p><h2 class="rv" style="margin-top:18px">Built like it<br><em>matters.</em></h2></div>
+      <p class="rv">What goes into your brain should be held to a higher bar. These are the standards every Klick batch is built to.</p>
+    </div>
+    <div class="std rv">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5M8 11h6M11 8v6"/></svg><h4>Full disclosure</h4><p>Every ingredient and every milligram on the label. No proprietary blends, ever.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 001.3 2h11.4A1.5 1.5 0 0019 19l-5-10V3"/></svg><h4>Pharma formulation</h4><p>Designed by pharmaceutical scientists for stability, absorption, taste and an easy stomach.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l8.7 5v10L12 22l-8.7-5V7z"/><path d="M8 12l3 3 5-6"/></svg><h4>Tested by others</h4><p>Every batch independently tested for purity, potency and heavy metals before it ships.</p></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c4 4 6 7 6 10a6 6 0 01-12 0c0-3 2-6 6-10z"/></svg><h4>Clean by design</h4><p>No sugar, no artificial colours or sweeteners, no caffeine. Made in a cGMP-certified facility.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="membership" style="background:var(--paper);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:64px">
+      <p class="eyebrow rv">Membership</p>
+      <h2 class="rv" style="margin-top:18px">One sachet.<br><em>Every morning.</em></h2>
+    </div>
+    <div class="plans">
+      <div class="plan rv">
+        <h3>Single <em>box</em></h3>
+        <div class="price">$119</div>
+        <div class="per">30 sachets · one-time purchase</div>
+        <ul><li>A month of Klick Daily</li><li>The Klick Index</li><li>Free US shipping</li></ul>
+        <a href="#founders" class="btn btn-line">Reserve a box</a>
+      </div>
+      <div class="plan hp rv">
+        <span class="badge">Founding member</span>
+        <h3>The <em>Membership</em></h3>
+        <div class="price">$89<small> / month</small></div>
+        <div class="per">30 sachets a month · under $3 a day</div>
+        <ul><li>Founding box with a solid brass sachet tray and glass</li><li>Full Index in the app: memory, attention and sleep</li><li>Every new formula upgrade, first</li><li>Founding members lock this price for life</li><li>Pause, skip or cancel any time</li></ul>
+        <a href="#founders" class="btn btn-ink">Become a founding member</a>
+      </div>
+    </div>
+    <p class="plan-note rv">Proposed launch pricing in USD. The Klick promise: 100 days to feel it and see it in your Index. If you don't, you get your money back, and you don't need to send anything back.</p>
+  </div>
+</section>
+
+<section id="founders">
+  <div class="wrap founders">
+    <div class="rv">
+      <p class="eyebrow">Founding members</p>
+      <div class="counter" style="margin-top:20px">1,000<em>.</em></div>
+      <p class="lead" style="margin-top:10px">The first thousand members get the founding box, the brass tray and launch pricing locked for life.</p>
+    </div>
+    <div class="rv">
+      <h2 style="font-size:clamp(38px,4.6vw,58px)">Reserve your <em>place.</em></h2>
+      <p class="lead" style="margin-top:18px">No payment now. We'll write once, when the first boxes are ready to ship.</p>
+      <form class="wl" id="wl">
+        <label for="em" style="position:absolute;left:-9999px">Email</label>
+        <input id="em" type="email" required placeholder="Your email address" autocomplete="email">
+        <button class="btn btn-ink" type="submit">Reserve</button>
+      </form>
+      <p class="ok" id="ok"></p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:56px"><p class="eyebrow rv">Questions</p><h2 class="rv" style="margin-top:18px">Good <em>questions.</em></h2></div>
+    <div class="faq rv">
+      <details><summary>Why not 90 ingredients like the big brands?</summary><p>Because a long label isn't the same as a working formula. A single sachet only holds so much, so 90 ingredients means most are present in tiny amounts. We'd rather give you fewer ingredients at the doses used in research, and show you every number.</p></details>
+      <details><summary>Why is there 5 g of creatine in a brain product?</summary><p>Creatine isn't just for the gym. Your brain uses it to buffer energy, and research suggests the benefits for thinking show up most when you're tired, stressed or short on sleep. 5 g a day is the dose used in most of that research.</p></details>
+      <details><summary>Is there caffeine?</summary><p>No. Klick is designed to sit alongside your coffee, not replace it. L-theanine pairs especially well with your morning cup.</p></details>
+      <details><summary>How soon will I notice a difference?</summary><p>Some people notice calmer focus within days. Creatine and the defence ingredients build over weeks, which is exactly why we built the Index: so you can measure it rather than guess.</p></details>
+      <details><summary>What does "pharmaceutical formulation" actually mean?</summary><p>Instead of blending powders together, each ingredient is handled the way it needs to be: dissolved, protected in a lipid microbead, or coated so it survives your stomach. That's how drugs are formulated, and it's rare in supplements.</p></details>
+      <details><summary>Is Klick safe for me?</summary><p>Klick is a dietary supplement, not a medicine. If you're pregnant, nursing, under 18, taking medication or have a medical condition, speak to your doctor before starting.</p></details>
+      <details><summary>When does Klick launch?</summary><p>We're finishing the formula and first production run now. Founding members will be the first to know and the first to ship.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-big"><svg><use href="#mark"/></svg>Klick</div>
+    <div class="f-row"><span>Every facet of your mind.</span><span><a href="#facets">Facets</a> &nbsp;·&nbsp; <a href="#science">Science</a> &nbsp;·&nbsp; <a href="#formula">Formula</a> &nbsp;·&nbsp; <a href="#founders">Reserve</a></span><span>© 2026 Klick</span></div>
+    <p class="disclaimer">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease. Klick is a pre-launch concept: the brand name is subject to trademark clearance, and the formula, flavour, packaging and pricing shown are working proposals that may change before launch. Planned studies are described as plans, not completed results. The Klick Index on this page is a simple reaction-time game for personal interest, not a medical or diagnostic test.</p>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>30),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.tr i').forEach(i=>i.style.width=i.dataset.w);io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*80+'ms';io.observe(el)});
+
+// stack builder
+const S=[['Creatine',1],['Multivitamin',2],['L-theanine',1],['Omega-3',2],['Magnesium',2],['Vitamin D3',1],['B12',1],["Lion's mane",2],['Broccoli sprout / sulforaphane',2],['Ergothioneine',1],['Ashwagandha',2],['Greens powder',1]];
+const box=document.getElementById('bottles'),tB=document.getElementById('tB'),tP=document.getElementById('tP');
+S.forEach(([n,p])=>{const b=document.createElement('span');b.className='bt';b.textContent=n;b.dataset.p=p;b.tabIndex=0;b.setAttribute('role','checkbox');b.setAttribute('aria-checked','false');
+ const t=()=>{b.classList.toggle('on');b.setAttribute('aria-checked',b.classList.contains('on'));const on=[...box.querySelectorAll('.on')];tB.textContent=on.length;tP.textContent=on.reduce((a,x)=>a+ +x.dataset.p,0)};
+ b.onclick=t;b.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();t()}};box.appendChild(b)});
+
+// Klick Index
+const T=document.getElementById('test'),big=document.getElementById('tBig'),small=document.getElementById('tSmall'),res=document.getElementById('tRes'),dots=[...document.querySelectorAll('#tDots i')];
+let state='idle',times=[],timer=null,t0=0;
+function getS(){try{return localStorage.getItem('facetIndex')}catch(e){return null}}
+function setS(v){try{localStorage.setItem('facetIndex',v)}catch(e){}}
+function cls(c){T.className='test'+(c?' '+c:'')}
+function arm(){state='wait';cls('wait');big.textContent='Wait for orange…';small.textContent='Round '+(times.length+1)+' of 5';
+ timer=setTimeout(()=>{state='go';cls('go');big.textContent='Tap!';small.textContent='';t0=performance.now()},1400+Math.random()*2200)}
+function finish(){state='done';const avg=Math.round(times.reduce((a,b)=>a+b)/times.length);const prev=getS();setS(String(avg));
+ cls('');big.innerHTML=avg+'<span style="font-size:.4em"> ms</span>';
+ let msg='Your Klick Index baseline. Most people land between 220 and 320 ms.';
+ if(prev){const d=prev-avg;msg='Last time you scored '+prev+' ms. '+(d>0?'That’s '+d+' ms faster.':d<0?'That’s '+(-d)+' ms slower. Sleep, stress and caffeine all move it.':'Exactly the same.')}
+ small.textContent=msg+' Tap to run it again.';res.innerHTML=times.map(t=>'<span>'+Math.round(t)+' ms</span>').join('')}
+function tap(){
+ if(state==='idle'||state==='done'){times=[];res.innerHTML='';dots.forEach(d=>d.classList.remove('on'));arm();return}
+ if(state==='wait'){clearTimeout(timer);state='early';cls('early');big.textContent='Too soon';small.textContent='Wait for the orange. Tap to retry this round.';return}
+ if(state==='early'){arm();return}
+ if(state==='go'){const t=performance.now()-t0;times.push(t);dots[times.length-1].classList.add('on');
+  if(times.length>=5){finish()}else{state='between';cls('');big.innerHTML=Math.round(t)+'<span style="font-size:.4em"> ms</span>';small.textContent='Nice. Next round starting…';setTimeout(arm,900)}}}
+T.addEventListener('pointerdown',e=>{e.preventDefault();tap()});
+T.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();tap()}});
+(()=>{const p=getS();if(p)small.textContent='Your last Index was '+p+' ms. Tap to see if you’ve moved.'})();
+
+document.getElementById('wl').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('em').value.trim();
+ location.href='mailto:lavine@zenith-grp.co?subject='+encodeURIComponent('Klick founding member')+'&body='+encodeURIComponent('Please reserve a founding Klick box for '+v);
+ document.getElementById('ok').textContent='Thank you. Your email app will open to confirm your reservation.'});
+</script>
+</body>
+</html>
