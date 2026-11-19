@@ -378,15 +378,12 @@ body.show-xlr span.xlr:after{top:-12px;right:0}
 .trcap{color:#8E8B82;font-size:13px;margin-top:22px}
 .lmarq{overflow:hidden;margin-top:26px;padding-block:18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .lmarq-t{display:flex;width:max-content;align-items:center;animation:lmarq 45s linear infinite}
-.lmarq-t span{flex:none;margin-right:88px;display:flex;align-items:center;animation:lbob 4s ease-in-out infinite}
-.lmarq-t span:nth-child(3n+2){animation-delay:-1.3s}
-.lmarq-t span:nth-child(3n){animation-delay:-2.6s}
+.lmarq-t span{flex:none;margin-right:88px;display:flex;align-items:center}
 .lmarq-t img{height:58px;width:auto;max-width:240px;object-fit:contain}
 .lmarq-t img.g{filter:brightness(0) invert(1);opacity:.9}
 @keyframes lmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes lbob{0%,100%{transform:translateY(-7px)}50%{transform:translateY(7px)}}
 @media(max-width:620px){.lmarq-t img{height:42px;max-width:170px}.lmarq-t span{margin-right:56px}}
-@media (prefers-reduced-motion: reduce){.lmarq-t,.lmarq-t span{animation:none}.lmarq-t{flex-wrap:wrap;width:auto;row-gap:24px}}
+@media (prefers-reduced-motion: reduce){.lmarq-t{animation:none}.lmarq-t{flex-wrap:wrap;width:auto;row-gap:24px}}
 .trnums.tr2{grid-template-columns:repeat(2,minmax(0,260px))}
 
 .press{display:flex;flex-wrap:wrap;gap:20px 34px;align-items:center;margin-top:22px}
