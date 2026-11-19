@@ -376,6 +376,12 @@ body.show-xlr span.xlr:after{top:-12px;right:0}
 .logos img.g{filter:brightness(0) invert(1);opacity:.85}
 .logos.more img{height:22px;opacity:.75}
 .trcap{color:#8E8B82;font-size:13px;margin-top:22px}
+.lmarq{overflow:hidden;margin-top:18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.lmarq-t{display:flex;width:max-content;align-items:center;animation:lmarq 60s linear infinite}
+.lmarq-t img{height:30px;width:auto;flex:none;margin-right:64px}
+.lmarq-t img.g{filter:brightness(0) invert(1);opacity:.85}
+@keyframes lmarq{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media (prefers-reduced-motion: reduce){.lmarq-t{animation:none;flex-wrap:wrap;width:auto;gap:24px}}
 .trnums.tr2{grid-template-columns:repeat(2,minmax(0,260px))}
 
 .press{display:flex;flex-wrap:wrap;gap:20px 34px;align-items:center;margin-top:22px}
@@ -393,6 +399,7 @@ body.show-xlr span.xlr:after{top:-12px;right:0}
 @media(max-width:960px){.ic-card.lead-c{grid-column:span 2}}
 @media(max-width:620px){.ic-card.lead-c{grid-column:span 1;grid-template-columns:1fr}}
 .ic-card .av{width:72px;height:72px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font:800 26px var(--display);flex:none}
+.ic-card img.av{object-fit:cover;width:88px;height:88px}
 .ic-card .av.ph2{background:var(--band);color:var(--muted)}
 .ic-card.lead-c img{width:100%;max-width:220px;aspect-ratio:1/1;object-fit:cover;border-radius:20px}
 .ic-card h3{font-size:22px}
@@ -647,20 +654,7 @@ window.ACC_GA4_ID = '';          // GA4 > Admin > Data streams > Measurement ID 
       <div><b>500+</b><span>companies trained</span></div>
     </div>
     <p class="trcap">Top companies our founders have trained</p>
-    <div class="logos" style="margin-top:14px">
-      <img class="g" src="img/logos/logo-hsbc.svg" alt="HSBC" loading="lazy">
-      <img class="g" src="img/logos/logo-goldmansachs.svg" alt="Goldman Sachs" loading="lazy">
-      <img class="g" src="img/logos/logo-jpm.svg" alt="JPMorgan" loading="lazy">
-      <img class="g" src="img/logos/logo-boa.svg" alt="Bank of America" loading="lazy">
-      <img class="g" src="img/logos/logo-pccw.svg" alt="PCCW" loading="lazy">
-      <img class="g" src="img/logos/logo-cathaypacific.svg" alt="Cathay Pacific" loading="lazy">
-      <img class="g" src="img/logos/logo2-ubs.svg" alt="UBS" loading="lazy">
-      <img class="g" src="img/logos/logo2-morganstanley.svg" alt="Morgan Stanley" loading="lazy">
-      <img class="g" src="img/logos/logo2-citi.svg" alt="Citi" loading="lazy">
-      <img class="g" src="img/logos/logo2-hangseng.svg" alt="Hang Seng Bank" loading="lazy">
-      <img class="g" src="img/logos/logo2-manulife.svg" alt="Manulife" loading="lazy">
-      <img class="g" src="img/logos/logo2-klook.svg" alt="Klook" loading="lazy">
-    </div>
+    <div class="lmarq" aria-label="Top companies our founders have trained"><div class="lmarq-t"><img class="g" src="img/logos/logo-hsbc.svg" alt="HSBC" loading="lazy"><img class="g" src="img/logos/logo-goldmansachs.svg" alt="Goldman Sachs" loading="lazy"><img class="g" src="img/logos/logo-jpm.svg" alt="JPMorgan" loading="lazy"><img class="g" src="img/logos/logo-boa.svg" alt="Bank of America" loading="lazy"><img class="g" src="img/logos/logo-pccw.svg" alt="PCCW" loading="lazy"><img class="g" src="img/logos/logo-cathaypacific.svg" alt="Cathay Pacific" loading="lazy"><img class="g" src="img/logos/logo2-ubs.svg" alt="UBS" loading="lazy"><img class="g" src="img/logos/logo2-morganstanley.svg" alt="Morgan Stanley" loading="lazy"><img class="g" src="img/logos/logo2-citi.svg" alt="Citi" loading="lazy"><img class="g" src="img/logos/logo2-socgen.svg" alt="Societe Generale" loading="lazy"><img class="g" src="img/logos/logo2-hangseng.svg" alt="Hang Seng Bank" loading="lazy"><img class="g" src="img/logos/logo2-boc.svg" alt="Bank of China" loading="lazy"><img class="g" src="img/logos/logo2-manulife.svg" alt="Manulife" loading="lazy"><img class="g" src="img/logos/logo2-scmp.svg" alt="South China Morning Post" loading="lazy"><img class="g" src="img/logos/logo2-klook.svg" alt="Klook" loading="lazy"><img class="g" src="img/logos/logo2-lalamove.svg" alt="Lalamove" loading="lazy"><img class="g" src="img/logos/logo2-animoca.svg" alt="Animoca Brands" loading="lazy"><img class="g" src="img/logos/logo2-hm.svg" alt="H&amp;M" loading="lazy"><img class="g" src="img/logos/logo2-deliveroo.svg" alt="Deliveroo" loading="lazy"><img class="g" src="img/logos/logo2-foodpanda.svg" alt="foodpanda" loading="lazy"><img class="g" src="img/logos/logo2-easyship.svg" alt="Easyship" loading="lazy"><img class="g" src="img/logos/logo2-astri.svg" alt="ASTRI" loading="lazy"><img class="g" src="img/logos/logo-hsbc.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo-goldmansachs.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo-jpm.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo-boa.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo-pccw.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo-cathaypacific.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-ubs.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-morganstanley.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-citi.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-socgen.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-hangseng.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-boc.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-manulife.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-scmp.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-klook.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-lalamove.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-animoca.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-hm.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-deliveroo.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-foodpanda.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-easyship.svg" alt="" aria-hidden="true" loading="lazy"><img class="g" src="img/logos/logo2-astri.svg" alt="" aria-hidden="true" loading="lazy"></div></div>
   </div>
 </section>
 
@@ -696,9 +690,9 @@ window.ACC_GA4_ID = '';          // GA4 > Admin > Data streams > Measurement ID 
           <ul class="creds" style="margin-top:14px"><li>Managing Partner, Zenith Group (Dubai)</li><li>Former Lazard M&amp;A, New York · University of Chicago</li><li>Interviewed live on CNN on training workers for the AI era</li></ul>
         </div>
       </div>
-      <div class="ic-card rv"><span class="av">RH</span><p class="role">Co-founder · Programmes and people</p><h3>Resham Hemlani-Nathani</h3><p>Designs the programmes and runs the people side. Resham was on the founding team of one of Hong Kong's leading tech education companies as Chief People Officer, and went on to found UNTAP, a talent business across Hong Kong, Dubai, India and Manila.</p></div>
-      <div class="ic-card rv"><span class="av">KH</span><p class="role">CMO and co-founder</p><h3>Kay Hui</h3><p>Runs marketing and the cohort community, so every session has people in it who show up.</p></div>
-      <div class="ic-card rv"><span class="av">A</span><p class="role">Chief Commercial Officer and co-founder</p><h3>Aka</h3><p>Runs admissions. Message her on WhatsApp any time for a straight answer on fit, timing and price.</p></div>
+      <div class="ic-card rv"><img class="av" src="img/team-resham.jpg" alt="Resham Hemlani-Nathani" loading="lazy"><p class="role">CEO and co-founder</p><h3>Resham Hemlani-Nathani</h3><p>Runs LevelUp and designs the programmes. Resham was on the founding team of one of Hong Kong's leading tech education companies as Chief People Officer, and went on to found UNTAP, a talent business across Hong Kong, Dubai, India and Manila.</p></div>
+      <div class="ic-card rv"><img class="av" src="img/team-kay.jpg" alt="Kay Hui" loading="lazy"><p class="role">CMO and co-founder</p><h3>Kay Hui</h3><p>Runs marketing and the cohort community, so every session has people in it who show up.</p></div>
+      <div class="ic-card rv"><img class="av" src="img/team-aka.jpg" alt="Aka" loading="lazy"><p class="role">Chief Growth Officer and co-founder</p><h3>Aka</h3><p>Leads growth and admissions. Message her on WhatsApp any time for a straight answer on fit, timing and price.</p></div>
 </div>
     <p class="rv" style="margin-top:22px;color:var(--muted);max-width:760px"><b style="color:var(--ink)">Plus practitioner instructors.</b> Each track is co-taught by people who build with these tools every week. The full line-up goes to enrolled students before session 1.</p>
   </div>
