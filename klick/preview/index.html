@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Klick · Let your mind click</title>
+<meta name="description" content="One sachet a day for energy, calm focus and brain defence. Reserve your founding box.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E1535">
+<meta property="og:title" content="Klick · Let your mind click">
+<meta property="og:description" content="One sachet. Energy, calm focus, brain defence. Reserve your founding box.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%231E1535'/%3E%3Cpath d='M20 7l11 6.5v13L20 33 9 26.5v-13z' fill='none' stroke='%23F4F0E8' stroke-width='2'/%3E%3Cpath d='M20 13l5.5 3.2v6.6L20 26l-5.5-3.2v-6.6z' fill='%23B9A3FF'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1E1535;--ink2:#2A1F4A;--acc:#B9A3FF;--acc2:#DCD1FF;--deep:#7E62E8;--onacc:#1E1535;--glow:rgba(185,163,255,.45);
+  --paper:#F4F1FB;--bone:#fff;--text:#1b1a22;--mute:#6b6975;--line:#e7e4ee;
+  --serif:'Bricolage Grotesque','Arial Black',system-ui,sans-serif;--sans:'Inter',system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bone);color:var(--text);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+@media(min-width:800px){.wrap{padding:0 32px}}
+h1,h2,h3{font-family:var(--serif);font-weight:800;letter-spacing:-.035em;line-height:.95}
+h2{font-size:clamp(38px,6.4vw,72px)}
+h2 em,h1 em{font-style:normal;color:var(--acc)}
+.sub{font-size:18px;color:var(--mute);margin-top:14px}
+section{padding:72px 0}
+@media(min-width:800px){section{padding:110px 0}}
+.center{text-align:center}
+.center .sub{margin-left:auto;margin-right:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;font:700 16px var(--sans);border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-acc{background:var(--acc);color:var(--onacc);box-shadow:0 14px 34px -12px var(--glow)}
+.btn-acc:hover{transform:translateY(-2px);background:var(--acc2)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{transform:translateY(-2px)}
+.micro{font-size:13.5px;color:var(--mute);margin-top:12px;display:flex;gap:14px;flex-wrap:wrap}
+.micro span::before{content:"✓";color:var(--acc);font-weight:700;margin-right:6px}
+
+/* top bar + header */
+.bar{background:var(--acc);color:var(--onacc);text-align:center;font:600 13.5px/1.3 var(--sans);padding:9px 16px}
+header{position:sticky;top:0;z-index:50;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:9px;font:800 27px/1 var(--serif);color:#fff;letter-spacing:-.03em}
+.logo svg{width:22px;height:22px;color:var(--acc)}
+.nav .links{display:none;gap:28px;font:500 15px var(--sans);color:#cfcbe0}
+.nav .links a:hover{color:#fff}
+.nav .btn{height:42px;padding:0 20px;font-size:14.5px}
+@media(min-width:960px){.nav .links{display:flex}}
+
+/* hero */
+.hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:44px 0 56px}
+.hero::before{content:"";position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 62%);right:-320px;top:-260px;pointer-events:none;opacity:.7}
+.hero-grid{display:grid;gap:12px;position:relative}
+.hero-grid>*{min-width:0}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);border-radius:999px;padding:8px 14px;font:600 13px var(--sans);color:#e8e5f2}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(255,255,255,.08)}
+.hero h1{font-size:clamp(56px,10vw,128px);line-height:.9;margin:20px 0 18px}
+.hero .line{font-size:clamp(19px,2vw,23px);color:#d9d5e8;max-width:470px}
+.hero .cta{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start}
+.hero .micro{color:#bcb8cc}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips span{font:600 13px var(--sans);padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.06);color:#e8e5f2}
+.chips b{color:var(--acc)}
+@media(max-width:519px){.hero .btn{width:100%}.hero .cta{align-items:stretch}}
+@media(min-width:900px){.hero{padding:70px 0 90px}.hero-grid{grid-template-columns:1.05fr 1fr;align-items:center;gap:30px}}
+
+.stage{position:relative;height:380px;order:-1}
+@media(min-width:900px){.stage{height:600px;order:0}}
+.gem{position:absolute;inset:0;margin:auto;width:min(360px,100%);height:auto;aspect-ratio:1;animation:spin 100s linear infinite}
+@media(min-width:900px){.gem{width:560px}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sachet{position:absolute;left:50%;top:50%;width:190px;height:360px;margin:-180px 0 0 -95px;border-radius:8px;color:#fff;padding:28px 22px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 50px 90px -30px rgba(0,0,0,.65),inset 0 0 0 1px rgba(255,255,255,.06);transition:transform 1s cubic-bezier(.2,.8,.2,1);scale:.68;
+  -webkit-mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,#0000 0) 0 0/10px 10px repeat-x;
+  mask:linear-gradient(#000,#000) 0 10px/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at 50% 100%,#000 90deg,#0000 0) 0 0/10px 10px repeat-x}
+@media(min-width:900px){.sachet{scale:1}}
+.sachet::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.16),transparent 35%,transparent 72%,rgba(255,255,255,.05));pointer-events:none}
+.s-top{font:800 36px/1 var(--serif);display:flex;align-items:center;gap:8px}
+.s-top svg{width:18px;height:18px}
+.s-line{height:1px;margin:16px 0}
+.s-sub{font:800 24px/1.05 var(--serif)}
+.s-meta{font:500 8.5px/1.7 var(--sans);letter-spacing:.2em;text-transform:uppercase}
+.sachet.b1{transform:translate(-70px,26px) rotate(-14deg);background:linear-gradient(160deg,#2a2833,#121118 70%)}
+.sachet.b1 .s-top svg{color:var(--acc)}.sachet.b1 .s-sub{color:var(--acc2)}.sachet.b1 .s-line{background:linear-gradient(90deg,var(--acc),transparent)}.sachet.b1 .s-meta{color:#a5a1b3}
+.sachet.b2{transform:translate(70px,20px) rotate(11deg);background:linear-gradient(160deg,#fff,#ECE8DE);color:var(--ink)}
+.sachet.b2 .s-top svg{color:var(--acc)}.sachet.b2 .s-line{background:linear-gradient(90deg,var(--ink),transparent)}.sachet.b2 .s-meta{color:#5a5866}
+.sachet.f{z-index:2;transform:translateY(-14px);background:linear-gradient(160deg,var(--acc),var(--deep) 70%);color:var(--ink)}
+.sachet.f .s-line{background:linear-gradient(90deg,var(--ink),transparent)}.sachet.f .s-meta{color:var(--onacc)}
+.stage:hover .b1{transform:translate(-100px,20px) rotate(-18deg)}.stage:hover .b2{transform:translate(100px,14px) rotate(15deg)}.stage:hover .f{transform:translateY(-30px)}
+
+/* benefits */
+.ben{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:36px}
+@media(min-width:900px){.ben{grid-template-columns:repeat(4,1fr);gap:18px}}
+.ben>div{background:var(--paper);border-radius:22px;padding:24px 18px;text-align:center}
+.ben svg{width:44px;height:44px;margin:0 auto 14px;color:var(--ink)}
+.ben .ico{width:72px;height:72px;border-radius:50%;background:var(--acc);display:grid;place-items:center;margin:0 auto 16px}
+.ben .ico svg{margin:0;width:34px;height:34px;color:var(--onacc)}
+.ben h3{font-size:clamp(22px,2.4vw,28px);letter-spacing:-.02em}
+.ben p{font-size:14.5px;color:var(--mute);margin-top:6px}
+
+/* inside */
+.inside{background:var(--paper)}
+.ing{display:grid;grid-template-columns:1fr;gap:12px;margin-top:40px}
+@media(min-width:600px){.ing{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.ing{grid-template-columns:repeat(3,1fr);gap:16px}}
+.ing>div{background:#fff;border-radius:20px;padding:22px;display:flex;gap:16px;align-items:center;border:1px solid var(--line)}
+.ing .dot{flex:none;width:52px;height:52px;border-radius:16px;background:var(--ink);color:var(--acc);display:grid;place-items:center;font:800 15px var(--serif);letter-spacing:-.02em}
+.ing h3{font-size:21px;letter-spacing:-.02em;line-height:1.05}
+.ing p{font-size:14.5px;color:var(--mute);margin-top:4px}
+.no{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.no span{font:700 14px var(--sans);padding:10px 16px;border-radius:999px;background:var(--ink);color:#fff}
+.no span::before{content:"✕";color:var(--acc);margin-right:8px}
+
+/* replaces */
+.rep{display:grid;gap:28px;align-items:center}
+@media(min-width:900px){.rep{grid-template-columns:1fr 1.1fr;gap:56px}}
+.rep>*{min-width:0}
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-top:30px}
+.vs .many{display:flex;flex-direction:column;gap:6px}
+.vs .many span{font:600 14px var(--sans);padding:9px 12px;border-radius:10px;background:var(--paper);color:var(--mute);text-decoration:line-through;text-decoration-color:var(--acc);text-decoration-thickness:2px}
+.vs .eq{font:800 28px var(--serif);color:var(--acc)}
+.vs .one{background:var(--ink);color:#fff;border-radius:22px;padding:24px 14px;text-align:center}
+.vs .one b{display:block;font:800 clamp(34px,5vw,52px)/1 var(--serif);color:var(--acc);letter-spacing:-.03em}
+.vs .one small{display:block;margin-top:8px;font-size:14px;color:#d9d5e8}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:15px;border-radius:22px;overflow:hidden;border:1px solid var(--line)}
+.cmp th,.cmp td{padding:15px 12px;text-align:left;border-bottom:1px solid var(--line)}
+.cmp tr:last-child td{border-bottom:0}
+.cmp th{font:700 13px var(--sans);text-transform:uppercase;letter-spacing:.06em;color:var(--mute);background:var(--paper)}
+.cmp th.k,.cmp td.k{background:var(--ink);color:#fff;text-align:center}
+.cmp th.k{color:var(--acc)}
+.cmp td.k{font-weight:700}
+.cmp td.o{color:var(--mute);text-align:center}
+.cmp th.o{text-align:center}
+.cmp td:first-child{font-weight:600}
+
+.hero .proof{font:600 15px var(--sans);color:var(--acc);margin-top:12px}
+.taste{background:var(--ink);color:#fff;text-align:center;padding:56px 0}
+.taste p{font:800 clamp(32px,5vw,60px)/1 var(--serif);letter-spacing:-.035em}
+.taste em{font-style:normal;color:var(--acc)}
+.taste small{display:block;margin-top:14px;font:600 16px var(--sans);opacity:.85}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:28px;font:600 15px var(--sans);color:#d9d5e8;text-align:center}
+.trust span::before{content:"✓";color:var(--acc);margin-right:7px}
+.trust b{color:var(--acc)}
+/* standards */
+.std{background:var(--ink);color:#fff;padding:44px 0}
+.std .row{display:grid;grid-template-columns:1fr 1fr;gap:22px 14px}
+@media(min-width:900px){.std .row{grid-template-columns:repeat(4,1fr)}}
+.std .row div{display:flex;align-items:center;gap:12px;font:700 16px/1.2 var(--sans)}
+.std svg{flex:none;width:30px;height:30px;color:var(--acc)}
+.std p.t{font:800 clamp(24px,3vw,34px)/1.05 var(--serif);letter-spacing:-.02em;margin-bottom:28px;text-align:center}
+.std p.t em{font-style:normal;color:var(--acc)}
+
+/* how */
+.how{display:grid;gap:14px;margin-top:40px}
+@media(min-width:800px){.how{grid-template-columns:repeat(3,1fr);gap:18px}}
+.how>div{border-radius:22px;padding:28px 24px;background:var(--paper);display:flex;gap:18px;align-items:center}
+@media(min-width:800px){.how>div{flex-direction:column;align-items:flex-start;padding:34px 28px}}
+.how .n{flex:none;width:54px;height:54px;border-radius:50%;background:var(--acc);color:var(--onacc);display:grid;place-items:center;font:800 24px var(--serif)}
+.how h3{font-size:30px;letter-spacing:-.03em}
+.how p{font-size:15px;color:var(--mute);margin-top:4px}
+
+/* offer */
+.offer{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.offer::before{content:"";position:absolute;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 62%);left:-300px;bottom:-400px;opacity:.6;pointer-events:none}
+.offer .wrap{position:relative}
+.offer .sub{color:#c9c5d8}
+.count{display:inline-flex;align-items:baseline;gap:10px;margin-top:18px;font:800 15px var(--sans);color:var(--acc);letter-spacing:.04em;text-transform:uppercase}
+.plans{display:grid;gap:16px;margin-top:40px}
+@media(min-width:860px){.plans{grid-template-columns:1.25fr 1fr;align-items:stretch}}
+.plan{border-radius:26px;padding:30px 24px;background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);display:flex;flex-direction:column}
+.plan.hp{background:var(--acc);color:var(--onacc);box-shadow:0 30px 70px -30px var(--glow)}
+.plan .badge{align-self:flex-start;font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px;background:var(--ink);color:#fff;margin-bottom:16px}
+.plan h3{font-size:28px;letter-spacing:-.02em}
+.price{font:800 54px/1 var(--serif);letter-spacing:-.04em;margin-top:14px}
+.price small{font:600 16px var(--sans);letter-spacing:0;opacity:.8}
+.per{font-size:14px;opacity:.8;margin-top:6px}
+.plan ul{list-style:none;margin:20px 0 24px;display:grid;gap:10px;font-weight:600;font-size:15.5px}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li::before{content:"✓";flex:none;width:22px;height:22px;border-radius:50%;background:var(--ink);color:var(--acc);display:grid;place-items:center;font-size:12px;margin-top:1px}
+.plan:not(.hp) li::before{background:rgba(255,255,255,.12)}
+.plan .btn{margin-top:auto;width:100%}
+.plan:not(.hp) .btn{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+.plan.hp .btn{background:var(--ink);color:#fff}
+.form{margin-top:44px;background:#fff;color:var(--text);border-radius:26px;padding:28px 22px}
+@media(min-width:800px){.form{padding:40px;display:grid;grid-template-columns:1fr 1.2fr;gap:30px;align-items:center}}
+.form h3{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.03em}
+.form h3 em{font-style:normal;color:var(--deep)}
+.form .sub{font-size:15.5px;margin-top:8px}
+form.wl{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+@media(min-width:800px){form.wl{margin-top:0}}
+@media(min-width:520px){form.wl{flex-direction:row}}
+form.wl input{flex:1;min-width:0;height:58px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper);padding:0 22px;font:500 16px var(--sans);color:var(--text);outline:none}
+form.wl input:focus{border-color:var(--ink)}
+.ok{font:600 14px var(--sans);color:var(--deep);margin-top:10px;min-height:1px}
+.form .micro{margin-top:12px}
+.promise{display:flex;gap:12px;align-items:center;justify-content:center;margin-top:28px;font:600 15px var(--sans);color:#d9d5e8;text-align:center;flex-wrap:wrap}
+.promise b{color:var(--acc)}
+.note{font-size:12.5px;color:#9a96aa;text-align:center;margin-top:10px}
+
+/* faq */
+.faq{max-width:780px;margin:40px auto 0}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 0;font:700 clamp(18px,2vw,21px)/1.25 var(--sans);letter-spacing:-.01em}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";flex:none;width:34px;height:34px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font:500 22px/1 var(--sans);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg);background:var(--acc);color:var(--onacc)}
+details p{padding:0 0 22px;color:var(--mute);max-width:660px}
+
+/* final */
+.final{background:var(--acc);color:var(--onacc);text-align:center}
+.final h2 em{color:#fff}
+.final .sub{color:var(--onacc);opacity:.85}
+.final .btn{margin-top:28px}
+footer{background:var(--ink);color:#bcb8cc;padding:40px 0 140px;font-size:14px}
+@media(min-width:800px){footer{padding-bottom:90px}}
+footer .row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-height:1.5}
+
+/* sticky mobile CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--ink);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;gap:12px;align-items:center;box-shadow:0 -10px 30px -10px rgba(0,0,0,.4);transform:translateY(110%);transition:transform .35s}
+.sticky.show{transform:none}
+.sticky .t{color:#fff;font:700 14px/1.2 var(--sans);flex:none}
+.sticky .t small{display:block;font-weight:500;color:#bcb8cc;font-size:12px}
+.sticky .btn{flex:1;height:50px;padding:0 16px;font-size:15px}
+@media(min-width:800px){.sticky{display:none}}
+
+.cpick{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:70;background:var(--ink);color:#fff;font:500 13px var(--sans);padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px -8px rgba(0,0,0,.4),inset 0 0 0 1px rgba(255,255,255,.15);display:flex;gap:10px;align-items:center;white-space:nowrap;max-width:calc(100% - 24px);overflow-x:auto;transition:bottom .35s}
+.cpick a{color:#cfcabd;text-decoration:underline}.cpick b{color:var(--acc)}
+@media(max-width:799px){.cpick{font-size:12px;padding:8px 12px;bottom:12px}body.st .cpick{bottom:84px}}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.gem{animation:none}}
+
+.moments{padding:96px 0;background:var(--paper,#fff)}
+.moments h2,.renders h2{font-size:clamp(34px,5vw,58px);text-align:center;letter-spacing:-.03em;margin:0}
+.moments h2 em,.renders h2 em{font-style:normal;color:var(--acc,#b79cff)}
+.moments .sub,.renders .sub{text-align:center;opacity:.7;margin:10px 0 34px}
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:820px){.mgrid{grid-template-columns:1fr}}
+.mgrid figure{margin:0;border-radius:22px;overflow:hidden;position:relative;aspect-ratio:4/5;background:#1b1530}
+.mgrid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.mgrid figure:hover img{transform:scale(1.05)}
+.mgrid figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(0deg,rgba(18,10,40,.85),rgba(18,10,40,0));color:#fff;display:flex;flex-direction:column;gap:2px}
+.mgrid figcaption b{font-size:22px;letter-spacing:-.01em}
+.mgrid figcaption span{opacity:.85;font-size:14px}
+.renders{padding:96px 0;background:#f4f0ff}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:820px){.rgrid{grid-template-columns:1fr}}
+.rcard{background:#fff;border-radius:22px;padding:22px 22px 26px;display:flex;flex-direction:column;gap:4px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.rcard b{font-size:20px;margin-top:14px}
+.rcard>span{opacity:.65;font-size:14px}
+.stage{height:300px;border-radius:16px;background:radial-gradient(circle at 50% 40%,#ffffff,#e6dcff 75%);display:grid;place-items:center;overflow:hidden;perspective:900px}
+.r-sachet{width:150px;height:240px;border-radius:8px;background:linear-gradient(160deg,#c6b2ff,#8f6cf0 60%,#6f4fd8);color:#1a1033;position:relative;padding:34px 16px 16px;display:flex;flex-direction:column;gap:14px;transform:rotate(-6deg);box-shadow:0 30px 40px -18px rgba(60,30,140,.55),inset 0 0 0 1px rgba(255,255,255,.25)}
+.r-sachet .tear{position:absolute;top:0;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,#6f4fd8 0 6px,transparent 6px 10px);opacity:.7}
+.r-logo{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.r-tag{font-weight:800;font-size:17px;line-height:1.05;margin-top:auto}
+.r-ing{font-size:7px;letter-spacing:.14em;opacity:.8;border-top:1px solid rgba(26,16,51,.35);padding-top:8px}
+.r-box{position:relative;width:170px;height:210px;transform:rotate(4deg)}
+.r-front{position:absolute;inset:0;background:linear-gradient(170deg,#2a1d55,#1a1033);color:#fff;border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:14px 14px 0 #8f6cf0,0 34px 44px -18px rgba(30,15,80,.6)}
+.r-front .r-logo{color:#c6b2ff}
+.r-front .r-tag{font-size:15px;color:#fff}
+.r-ct{font-size:9px;letter-spacing:.14em;opacity:.7;margin-top:auto}
+.r-side{display:none;position:absolute;top:0;right:-45px;width:90px;height:200px;background:linear-gradient(180deg,#8f6cf0,#5c3fc4);transform:rotateY(90deg) translateZ(0);transform-origin:left;border-radius:0 6px 6px 0}
+.r-top{display:none;position:absolute;left:0;top:-45px;width:170px;height:90px;background:#3b2a74;transform:rotateX(90deg) translateZ(0);transform-origin:bottom}
+.r-tray{width:220px;height:150px;border-radius:14px;background:linear-gradient(150deg,#e9c98a,#b8893e 55%,#8a6324);padding:14px;box-shadow:0 30px 40px -18px rgba(90,60,10,.55),inset 0 2px 0 rgba(255,255,255,.4);transform:rotateX(38deg) rotateZ(-8deg);position:relative}
+.r-tray-in{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;height:100%;background:#2a1d55;border-radius:8px;padding:10px 8px}
+.r-tray-in i{display:block;border-radius:3px;background:linear-gradient(180deg,#c6b2ff,#8f6cf0)}
+.r-brass{position:absolute;bottom:-26px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:.24em;color:#8a6324;font-weight:700}
+
+</style>
+</head>
+<body>
+<div class="cpick">Colour option: <b>Purple</b> <a href="./navy/">Navy</a> <a href="./cream/">Cream</a> <a href="./matcha/">Matcha</a> <a href="./orange/">Orange</a></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="mark" viewBox="0 0 40 40"><path d="M20 3l14.7 8.5v17L20 37 5.3 28.5v-17z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M20 12l7 4v8l-7 4-7-4v-8z" fill="currentColor"/><path d="M20 3v9M34.7 11.5l-7.7 4.5M34.7 28.5L27 24M20 37v-9M5.3 28.5L13 24M5.3 11.5L13 16" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="arr" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+
+<div class="bar">Founding boxes: first 1,000 only. Launch price locked for life.</div>
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><svg><use href="#mark"/></svg>Klick</a>
+    <nav class="links"><a href="#benefits">Benefits</a><a href="#inside">What's inside</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav>
+    <a href="#reserve" class="btn btn-acc">Reserve</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill rv"><i></i>Launching in the US</span>
+      <h1 class="rv">Let your mind <em>click.</em></h1>
+      <p class="line rv">Energy, calm focus and brain defence. One sachet a day.</p>
+      <p class="proof rv">5 g creatine. Zero caffeine. Every dose on the label.</p>
+      <div class="cta rv" id="heroCta">
+        <a href="#reserve" class="btn btn-acc">Reserve your founding box <svg><use href="#arr"/></svg></a>
+        <div class="micro"><span>No payment now</span><span>100-day promise</span><span>Price locked for life</span></div>
+      </div>
+      <div class="chips rv"><span>Replaces <b>5+ bottles</b></span><span>Zero sugar</span><span>No proprietary blends</span></div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <svg class="gem" viewBox="0 0 400 400">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#DCD1FF"/><stop offset="1" stop-color="#B9A3FF"/></linearGradient></defs>
+        <g fill="none" stroke="#B9A3FF" stroke-width="1" opacity=".5">
+          <polygon points="200,18 357,109 357,291 200,382 43,291 43,109"/>
+          <polygon points="200,92 293,146 293,254 200,308 107,254 107,146"/>
+          <polygon points="200,150 243,175 243,225 200,250 157,225 157,175"/>
+          <path d="M200 18L200 92M357 109L293 146M357 291L293 254M200 382L200 308M43 291L107 254M43 109L107 146"/>
+          <path d="M200 92L357 109M293 146L357 291M293 254L200 382M200 308L43 291M107 254L43 109M107 146L200 18"/>
+          <path d="M200 92L243 175M293 146L243 225M293 254L200 250M200 308L157 225M107 254L157 175M107 146L200 150"/>
+        </g>
+        <g fill="url(#g1)">
+          <polygon points="200,18 357,109 293,146 200,92" opacity=".10"/>
+          <polygon points="357,109 357,291 293,254 293,146" opacity=".18"/>
+          <polygon points="200,382 43,291 107,254 200,308" opacity=".14"/>
+          <polygon points="43,109 107,146 107,254 43,291" opacity=".06"/>
+          <polygon points="200,92 293,146 243,175 200,150" opacity=".22"/>
+          <polygon points="107,254 157,225 200,250 200,308" opacity=".26"/>
+        </g>
+      </svg>
+      <div class="sachet b1"><div class="s-top"><svg><use href="#mark"/></svg>Klick</div><div><div class="s-sub">Let your<br>mind click.</div><div class="s-line"></div><div class="s-meta">One daily sachet · 7.5 g</div></div></div>
+      <div class="sachet b2"><div class="s-top"><svg><use href="#mark"/></svg>Klick</div><div><div class="s-sub">Let your<br>mind click.</div><div class="s-line"></div><div class="s-meta">Founders edition</div></div></div>
+      <div class="sachet f"><div class="s-top"><svg><use href="#mark"/></svg>Klick</div><div><div class="s-sub">Let your<br>mind click.</div><div class="s-line"></div><div class="s-meta">Creatine · Sulforaphane<br>L-theanine · Ergothioneine<br>Yuzu &amp; white tea</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="moments" id="moments">
+  <div class="wrap">
+    <h2 class="rv">Mornings that <em>click.</em></h2>
+    <p class="sub rv">One sachet. Then get on with your day.</p>
+    <div class="mgrid">
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1100&q=75" alt="Woman stretching at sunrise" loading="lazy"><figcaption><b>Wake up clear</b><span>Energy without the jitters</span></figcaption></figure>
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1100&q=75" alt="Person focused on laptop work" loading="lazy"><figcaption><b>Lock in</b><span>Calm, steady focus</span></figcaption></figure>
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1100&q=75" alt="Colleagues high-fiving at work" loading="lazy"><figcaption><b>Ship it</b><span>Sharp all afternoon</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="benefits">
+  <div class="wrap center">
+    <h2 class="rv">One sachet. <em>Four wins.</em></h2>
+    <p class="sub rv">Everything your brain needs before 9am.</p>
+    <div class="ben">
+      <div class="rv"><span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M27 4L11 27h12l-2 17 16-23H25z"/></svg></span><h3>Energy</h3><p>Fuel for busy brains</p></div>
+      <div class="rv"><span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="24" cy="24" r="18"/><circle cx="24" cy="24" r="10"/><circle cx="24" cy="24" r="3" fill="currentColor"/></svg></span><h3>Calm focus</h3><p>Alert, never jittery</p></div>
+      <div class="rv"><span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10z"/><path d="M17 24l5 5 9-10"/></svg></span><h3>Brain defence</h3><p>Play the long game</p></div>
+      <div class="rv"><span class="ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M16 6h16v36H16z"/><path d="M16 12h16M20 22h8M20 28h8"/></svg></span><h3>One sachet</h3><p>Thirty seconds, done</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="inside" id="inside">
+  <div class="wrap center">
+    <h2 class="rv">What's <em>inside.</em></h2>
+    <p class="sub rv">Few ingredients. Real doses. Nothing hidden.</p>
+    <div class="ing" style="text-align:left">
+      <div class="rv"><span class="dot">5 g</span><div><h3>Creatine</h3><p>Fuel for brain cells</p></div></div>
+      <div class="rv"><span class="dot">Sf</span><div><h3>Sulforaphane</h3><p>Switches on defences</p></div></div>
+      <div class="rv"><span class="dot">200</span><div><h3>L-theanine</h3><p>Calm, clear attention</p></div></div>
+      <div class="rv"><span class="dot">Eg</span><div><h3>Ergothioneine</h3><p>Rare mushroom antioxidant</p></div></div>
+      <div class="rv"><span class="dot">B+</span><div><h3>Vitamins &amp; minerals</h3><p>Covers the essentials</p></div></div>
+      <div class="rv"><span class="dot">Yz</span><div><h3>Yuzu &amp; white tea</h3><p>Tart, not sweet</p></div></div>
+    </div>
+    <div class="no rv"><span>No caffeine</span><span>No sugar</span><span>No proprietary blends</span></div>
+  </div>
+</section>
+
+<div class="taste">
+  <div class="wrap">
+    <p class="rv">Tastes like <em>yuzu.</em><br>Works like a <em>whole shelf.</em></p>
+    <small class="rv">Yuzu and white tea. Tart, not sweet. Zero sugar.</small>
+  </div>
+</div>
+
+
+<section class="renders" id="renders">
+  <div class="wrap">
+    <h2 class="rv">Meet the <em>box.</em></h2>
+    <p class="sub rv">Product renderings. Final packaging may change before launch.</p>
+    <div class="rgrid">
+      <div class="rcard rv"><div class="stage">
+        <div class="r-sachet"><i class="tear"></i><span class="r-logo">&#x2B22; Klick</span><span class="r-tag">Let your<br>mind click.</span><span class="r-ing">CREATINE · SULFORAPHANE<br>L-THEANINE · ERGOTHIONEINE</span></div>
+      </div><b>The sachet</b><span>One exact serving. 7.5 g.</span></div>
+      <div class="rcard rv"><div class="stage">
+        <div class="r-box"><div class="r-top"></div><div class="r-front"><span class="r-logo">&#x2B22; Klick</span><span class="r-tag">Let your mind click.</span><span class="r-ct">30 sachets · 30 days</span></div><div class="r-side"></div></div>
+      </div><b>The monthly box</b><span>30 sachets. Fits on any shelf.</span></div>
+      <div class="rcard rv"><div class="stage">
+        <div class="r-tray"><div class="r-tray-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="r-brass">FOUNDERS EDITION</span></div>
+      </div><b>The founding box</b><span>With a brass sachet tray.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="replaces">
+  <div class="wrap rep">
+    <div>
+      <h2 class="rv">1 sachet.<br><em>Not 5+ bottles.</em></h2>
+      <p class="sub rv">Clear the shelf. Keep the benefits.</p>
+      <div class="vs rv">
+        <div class="many"><span>Creatine</span><span>L-theanine</span><span>Multivitamin</span><span>Broccoli sprout</span><span>Ergothioneine</span></div>
+        <div class="eq">=</div>
+        <div class="one"><b>1</b><small>sachet a day</small></div>
+      </div>
+    </div>
+    <div class="rv">
+      <table class="cmp">
+        <thead><tr><th></th><th class="o">Your stack</th><th class="k">Klick</th></tr></thead>
+        <tbody>
+          <tr><td>Products</td><td class="o">5+</td><td class="k">1</td></tr>
+          <tr><td>Every dose shown</td><td class="o">Rarely</td><td class="k">Always</td></tr>
+          <tr><td>Proprietary blends</td><td class="o">Common</td><td class="k">Never</td></tr>
+          <tr><td>Morning routine</td><td class="o">Pills and scoops</td><td class="k">30 seconds</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="std">
+  <div class="wrap">
+    <p class="t rv">Built by <em>pharmaceutical formulation scientists.</em></p>
+    <div class="row rv">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5M8 11h6M11 8v6"/></svg>Every dose disclosed</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 3h6M10 3v6L5 19a1.5 1.5 0 001.3 2h11.4A1.5 1.5 0 0019 19l-5-10V3"/></svg>Pharma-grade delivery</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l8.7 5v10L12 22l-8.7-5V7z"/><path d="M8 12l3 3 5-6"/></svg>Every batch tested</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c4 4 6 7 6 10a6 6 0 01-12 0c0-3 2-6 6-10z"/></svg>cGMP facility</div>
+    </div>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap center">
+    <h2 class="rv">Tear. Pour. <em>Click.</em></h2>
+    <p class="sub rv">Thirty seconds, once a day.</p>
+    <div class="how" style="text-align:left">
+      <div class="rv"><span class="n">1</span><div><h3>Tear</h3><p>One exact serving.</p></div></div>
+      <div class="rv"><span class="n">2</span><div><h3>Pour</h3><p>Cold water. Ten-second stir.</p></div></div>
+      <div class="rv"><span class="n">3</span><div><h3>Click</h3><p>Every morning. Same ritual.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="reserve">
+  <div class="wrap">
+    <div class="center">
+      <h2 class="rv">Become a <em>founding member.</em></h2>
+      <p class="sub rv">First 1,000 lock launch pricing for life.</p>
+    </div>
+    <div class="plans">
+      <div class="plan hp rv">
+        <span class="badge">Founding member · Save $30/mo</span>
+        <h3>The Membership</h3>
+        <div class="price">$89<small> / month</small></div>
+        <div class="per">30 sachets · under $3 a day</div>
+        <ul><li>Founding box with brass sachet tray</li><li>Price locked for life</li><li>New formula upgrades first</li><li>Pause or cancel any time</li></ul>
+        <a href="#wl" class="btn js-focus">Reserve your founding box</a>
+      </div>
+      <div class="plan rv">
+        <h3>Single box</h3>
+        <div class="price">$119</div>
+        <div class="per">30 sachets · one-time</div>
+        <ul><li>A month of Klick</li><li>Free US shipping</li></ul>
+        <a href="#wl" class="btn js-focus">Reserve a box</a>
+      </div>
+    </div>
+    <div class="form rv">
+      <div>
+        <h3>Reserve your <em>founding box.</em></h3>
+        <p class="sub">No payment now. We email once, when boxes ship.</p>
+      </div>
+      <div>
+        <form class="wl" id="wl">
+          <label for="em" style="position:absolute;left:-9999px">Email</label>
+          <input id="em" type="email" required placeholder="Your email address" autocomplete="email">
+          <button class="btn btn-acc" type="submit">Reserve</button>
+        </form>
+        <p class="ok" id="ok"></p>
+      </div>
+    </div>
+    <div class="trust rv"><span><b>100-day promise.</b> Feel it or your money back.</span><span>No return needed</span><span>Pause or cancel any time</span></div>
+    <p class="note">Proposed launch pricing in USD.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="rv center">Quick <em>answers.</em></h2>
+    <div class="faq rv">
+      <details><summary>Is there caffeine?</summary><p>No. Klick sits happily next to your morning coffee.</p></details>
+      <details><summary>Why creatine in a brain product?</summary><p>Your brain uses creatine for energy. 5 g is the dose used in most of the research.</p></details>
+      <details><summary>Do I pay now?</summary><p>No. Reserve with your email and we'll write once, when boxes are ready.</p></details>
+      <details><summary>What's the 100-day promise?</summary><p>Not feeling it in 100 days? You get your money back. No need to send anything back.</p></details>
+      <details><summary>Is Klick safe for me?</summary><p>Klick is a supplement, not a medicine. Pregnant, nursing, under 18 or on medication? Check with your doctor first.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="rv">Ready to <em>click?</em></h2>
+    <p class="sub rv">One sachet. Every morning. Launch price for life.</p>
+    <a href="#reserve" class="btn btn-ink rv">Reserve your founding box <svg><use href="#arr"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row"><a href="#top" class="logo"><svg><use href="#mark"/></svg>Klick</a><span>Let your mind click.</span><span>© 2026 Klick</span></div>
+    <p class="disc">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure or prevent any disease. Klick is a pre-launch concept: the brand name is subject to trademark clearance, and the formula, flavour, packaging and pricing shown are working proposals that may change before launch.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <div class="t">Founding box<small>From $89/mo</small></div>
+  <a href="#reserve" class="btn btn-acc">Reserve your founding box</a>
+</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%4)*70+'ms';io.observe(el)});
+
+// sticky CTA: show after hero CTA scrolls away, hide while the reservation block is on screen
+const st=document.getElementById('sticky'),heroCta=document.getElementById('heroCta'),res=document.getElementById('reserve');
+let pastHero=false,atRes=false;
+function upd(){const on=pastHero&&!atRes;st.classList.toggle('show',on);document.body.classList.toggle('st',on)}
+new IntersectionObserver(es=>{pastHero=!es[0].isIntersecting&&es[0].boundingClientRect.top<0;upd()}).observe(heroCta);
+new IntersectionObserver(es=>{atRes=es[0].isIntersecting;upd()},{threshold:.15}).observe(res);
+
+document.querySelectorAll('.js-focus').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();document.getElementById('wl').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>document.getElementById('em').focus({preventScroll:true}),500)}));
+
+document.getElementById('wl').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('em').value.trim();
+ const fd=new FormData();fd.append('email',v);fd.append('_subject','Klick founding member reservation');fd.append('page',location.href);
+ fetch('https://formsubmit.co/ajax/a74db2f5833568f84a0825ec24a15a8f',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+  .then(()=>{document.getElementById('ok').textContent="You're on the list. We'll email you once, when founding boxes ship.";e.target.reset()})
+  .catch(()=>{document.getElementById('ok').textContent='Something went wrong. Please try again in a minute.'});});
+</script>
+</body>
+</html>
