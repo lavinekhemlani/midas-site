@@ -237,6 +237,43 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.gem{animation:none}}
+
+.moments{padding:96px 0;background:var(--paper,#fff)}
+.moments h2,.renders h2{font-size:clamp(34px,5vw,58px);text-align:center;letter-spacing:-.03em;margin:0}
+.moments h2 em,.renders h2 em{font-style:normal;color:var(--acc,#b79cff)}
+.moments .sub,.renders .sub{text-align:center;opacity:.7;margin:10px 0 34px}
+.mgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:820px){.mgrid{grid-template-columns:1fr}}
+.mgrid figure{margin:0;border-radius:22px;overflow:hidden;position:relative;aspect-ratio:4/5;background:#1b1530}
+.mgrid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.mgrid figure:hover img{transform:scale(1.05)}
+.mgrid figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px;background:linear-gradient(0deg,rgba(18,10,40,.85),rgba(18,10,40,0));color:#fff;display:flex;flex-direction:column;gap:2px}
+.mgrid figcaption b{font-size:22px;letter-spacing:-.01em}
+.mgrid figcaption span{opacity:.85;font-size:14px}
+.renders{padding:96px 0;background:#f4f0ff}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:820px){.rgrid{grid-template-columns:1fr}}
+.rcard{background:#fff;border-radius:22px;padding:22px 22px 26px;display:flex;flex-direction:column;gap:4px;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+.rcard b{font-size:20px;margin-top:14px}
+.rcard>span{opacity:.65;font-size:14px}
+.stage{height:300px;border-radius:16px;background:radial-gradient(circle at 50% 40%,#ffffff,#e6dcff 75%);display:grid;place-items:center;overflow:hidden;perspective:900px}
+.r-sachet{width:150px;height:240px;border-radius:8px;background:linear-gradient(160deg,#c6b2ff,#8f6cf0 60%,#6f4fd8);color:#1a1033;position:relative;padding:34px 16px 16px;display:flex;flex-direction:column;gap:14px;transform:rotate(-6deg);box-shadow:0 30px 40px -18px rgba(60,30,140,.55),inset 0 0 0 1px rgba(255,255,255,.25)}
+.r-sachet .tear{position:absolute;top:0;left:0;right:0;height:10px;background:repeating-linear-gradient(90deg,#6f4fd8 0 6px,transparent 6px 10px);opacity:.7}
+.r-logo{font-weight:800;font-size:20px;letter-spacing:-.02em}
+.r-tag{font-weight:800;font-size:17px;line-height:1.05;margin-top:auto}
+.r-ing{font-size:7px;letter-spacing:.14em;opacity:.8;border-top:1px solid rgba(26,16,51,.35);padding-top:8px}
+.r-box{position:relative;width:170px;height:210px;transform:rotate(4deg)}
+.r-front{position:absolute;inset:0;background:linear-gradient(170deg,#2a1d55,#1a1033);color:#fff;border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:8px;box-shadow:14px 14px 0 #8f6cf0,0 34px 44px -18px rgba(30,15,80,.6)}
+.r-front .r-logo{color:#c6b2ff}
+.r-front .r-tag{font-size:15px;color:#fff}
+.r-ct{font-size:9px;letter-spacing:.14em;opacity:.7;margin-top:auto}
+.r-side{display:none;position:absolute;top:0;right:-45px;width:90px;height:200px;background:linear-gradient(180deg,#8f6cf0,#5c3fc4);transform:rotateY(90deg) translateZ(0);transform-origin:left;border-radius:0 6px 6px 0}
+.r-top{display:none;position:absolute;left:0;top:-45px;width:170px;height:90px;background:#3b2a74;transform:rotateX(90deg) translateZ(0);transform-origin:bottom}
+.r-tray{width:220px;height:150px;border-radius:14px;background:linear-gradient(150deg,#e9c98a,#b8893e 55%,#8a6324);padding:14px;box-shadow:0 30px 40px -18px rgba(90,60,10,.55),inset 0 2px 0 rgba(255,255,255,.4);transform:rotateX(38deg) rotateZ(-8deg);position:relative}
+.r-tray-in{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;height:100%;background:#2a1d55;border-radius:8px;padding:10px 8px}
+.r-tray-in i{display:block;border-radius:3px;background:linear-gradient(180deg,#c6b2ff,#8f6cf0)}
+.r-brass{position:absolute;bottom:-26px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:.24em;color:#8a6324;font-weight:700}
+
 </style>
 </head>
 <body>
@@ -297,6 +334,19 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
   </div>
 </section>
 
+
+<section class="moments" id="moments">
+  <div class="wrap">
+    <h2 class="rv">Mornings that <em>click.</em></h2>
+    <p class="sub rv">One sachet. Then get on with your day.</p>
+    <div class="mgrid">
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1100&q=75" alt="Woman stretching at sunrise" loading="lazy"><figcaption><b>Wake up clear</b><span>Energy without the jitters</span></figcaption></figure>
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1100&q=75" alt="Person focused on laptop work" loading="lazy"><figcaption><b>Lock in</b><span>Calm, steady focus</span></figcaption></figure>
+      <figure class="rv"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1100&q=75" alt="Colleagues high-fiving at work" loading="lazy"><figcaption><b>Ship it</b><span>Sharp all afternoon</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section id="benefits">
   <div class="wrap center">
     <h2 class="rv">One sachet. <em>Four wins.</em></h2>
@@ -332,6 +382,25 @@ footer .disc{font-size:12px;color:#8d899c;margin-top:22px;max-width:900px;line-h
     <small class="rv">Yuzu and white tea. Tart, not sweet. Zero sugar.</small>
   </div>
 </div>
+
+
+<section class="renders" id="renders">
+  <div class="wrap">
+    <h2 class="rv">Meet the <em>box.</em></h2>
+    <p class="sub rv">Product renderings. Final packaging may change before launch.</p>
+    <div class="rgrid">
+      <div class="rcard rv"><div class="stage">
+        <div class="r-sachet"><i class="tear"></i><span class="r-logo">&#x2B22; Klick</span><span class="r-tag">Let your<br>mind click.</span><span class="r-ing">CREATINE · SULFORAPHANE<br>L-THEANINE · ERGOTHIONEINE</span></div>
+      </div><b>The sachet</b><span>One exact serving. 7.5 g.</span></div>
+      <div class="rcard rv"><div class="stage">
+        <div class="r-box"><div class="r-top"></div><div class="r-front"><span class="r-logo">&#x2B22; Klick</span><span class="r-tag">Let your mind click.</span><span class="r-ct">30 sachets · 30 days</span></div><div class="r-side"></div></div>
+      </div><b>The monthly box</b><span>30 sachets. Fits on any shelf.</span></div>
+      <div class="rcard rv"><div class="stage">
+        <div class="r-tray"><div class="r-tray-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="r-brass">FOUNDERS EDITION</span></div>
+      </div><b>The founding box</b><span>With a brass sachet tray.</span></div>
+    </div>
+  </div>
+</section>
 
 <section id="replaces">
   <div class="wrap rep">
