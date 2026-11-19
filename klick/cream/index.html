@@ -757,8 +757,10 @@ T.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefau
 (()=>{const p=getS();if(p)small.textContent='Your last Index was '+p+' ms. Tap to see if you’ve moved.'})();
 
 document.getElementById('wl').addEventListener('submit',e=>{e.preventDefault();const v=document.getElementById('em').value.trim();
- location.href='mailto:lavine@zenith-grp.co?subject='+encodeURIComponent('Klick founding member')+'&body='+encodeURIComponent('Please reserve a founding Klick box for '+v);
- document.getElementById('ok').textContent='Thank you. Your email app will open to confirm your reservation.'});
+ const fd=new FormData();fd.append('email',v);fd.append('_subject','Klick founding member reservation');fd.append('page',location.href);
+ fetch('https://formsubmit.co/ajax/a74db2f5833568f84a0825ec24a15a8f',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+  .then(()=>{document.getElementById('ok').textContent="You're on the list. We'll email you once, when founding boxes ship.";e.target.reset()})
+  .catch(()=>{document.getElementById('ok').textContent='Something went wrong. Please try again in a minute.'});});
 </script>
 </body>
 </html>
