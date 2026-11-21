@@ -269,7 +269,8 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
   <div>© 2026 Midas</div>
 </div></footer>
 
-<script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));if(window.caches)caches.keys().then(ks=>ks.forEach(k=>caches.delete(k)))}
+
 const REG={
  uae:{f:'🇦🇪',n:'UAE',full:'the UAE',cur:'dirham',chk:'UAE corporate tax &amp; VAT ready',hq:'"Corporate tax is 9%. Are we ready to file?"',hp:'Taxable profit, VAT positions and FTA deadlines tracked all year, not in a panic.',
   tax:['UAE corporate tax tracking','VAT returns and FTA deadlines','E-invoicing readiness'],plan:'UAE corporate tax and VAT tracking',
