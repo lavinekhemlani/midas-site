@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Midas AI CFO</title>
+<meta name="description" content="Midas is the AI CFO for growing businesses in the UAE and the US. Books closed faster, cash and runway in real time, forecasts, board packs and tax readiness, with a human CFO when you need one.">
+<meta property="og:title" content="Midas, your AI CFO">
+<meta property="og:description" content="Books, cash, forecasts, board packs and tax readiness for growing businesses in the UAE and the US.">
+<meta property="og:image" content="https://midascfo.com/cfo-preview/img/dashboard.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF8F3;--paper:#fff;--ink:#1C1915;--mute:#6B6359;--line:#ECE4D8;--gold:#D9A21B;--gold2:#E8B638;--orange:#E07A10;--orange2:#C9640A;--soft:#F6EEE2;--green:#1F9D6B;--red:#D9473A}
+*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.serif{font-family:"EB Garamond",Georgia,serif;font-weight:500;letter-spacing:-.02em}
+.gold{background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 26px;font-weight:600;font-size:16px;cursor:pointer;border:0;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-dark{background:var(--ink);color:#fff;box-shadow:0 10px 30px -12px rgba(28,25,21,.5)}
+.btn-orange{background:var(--orange);color:#fff}
+.btn-ghost{border:1px solid var(--line);background:#fff}
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(251,248,243,.86);backdrop-filter:blur(12px);border-bottom:1px solid transparent}
+nav.sc{border-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav img{height:30px;display:block}
+.links{display:flex;gap:28px;font-size:15px;font-weight:500}
+.links a:hover{color:var(--orange)}
+.nav .btn{padding:10px 18px;font-size:14px;border-radius:10px}
+@media(max-width:860px){.links{display:none}}
+/* hero */
+.hero{position:relative;padding:72px 0 0;text-align:center;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 0%,#F8E7C9 0%,rgba(251,248,243,0) 70%),linear-gradient(rgba(217,162,27,.06) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(217,162,27,.06) 1px,transparent 1px) 0 0/44px 44px;mask:linear-gradient(#000 55%,transparent);z-index:-1}
+.pill{display:inline-flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--mute)}
+.pill b{color:var(--orange)}
+h1{font-size:clamp(46px,8vw,96px);line-height:.98;margin:22px 0 18px}
+.sub{font-size:clamp(17px,2vw,21px);color:var(--mute);max-width:720px;margin:0 auto 30px}
+.sub em{font-style:normal;color:var(--orange);font-weight:600}
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.checks{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:22px 0 46px;font-size:14px;color:var(--mute)}
+.checks span:before{content:"✓";color:var(--green);font-weight:700;margin-right:7px}
+.shot{max-width:1120px;margin:0 auto;border-radius:18px;border:1px solid #F0D9B5;box-shadow:0 40px 90px -40px rgba(150,95,20,.45);overflow:hidden;background:#fff}
+.shot img{display:block;width:100%;height:auto}
+/* hooks */
+section{padding:96px 0}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+h2{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:10px 0 14px}
+.lead{color:var(--mute);font-size:18px;max-width:640px}
+.center{text-align:center}.center .lead{margin:0 auto}
+.hooks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.hook{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}
+.hook q{display:block;font-family:"EB Garamond",serif;font-size:25px;line-height:1.15;quotes:none;margin-bottom:12px}
+.hook p{margin:0;color:var(--mute);font-size:15px}
+@media(max-width:980px){.hooks{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hooks{grid-template-columns:1fr}}
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;position:relative;overflow:hidden}
+.mod .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--soft);font-size:20px;margin-bottom:16px}
+.mod h3{margin:0 0 8px;font-size:20px}
+.mod p{margin:0 0 14px;color:var(--mute);font-size:15px}
+.mod ul{margin:0;padding:0;list-style:none;font-size:14px}
+.mod li{padding:6px 0;border-top:1px dashed var(--line)}
+@media(max-width:980px){.mods{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.mods{grid-template-columns:1fr}}
+/* markets */
+.mk{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px}
+.mkt{border-radius:24px;padding:36px;border:1px solid var(--line);background:#fff}
+.mkt.uae{background:linear-gradient(160deg,#fff 40%,#FCF1DE)}
+.mkt.us{background:linear-gradient(160deg,#fff 40%,#EEF3FB)}
+.flag{font-size:30px}
+.mkt h3{font-family:"EB Garamond",serif;font-size:34px;font-weight:500;margin:8px 0 6px}
+.mkt>p{color:var(--mute);margin:0 0 18px}
+.mkt ul{list-style:none;padding:0;margin:0}
+.mkt li{padding:11px 0;border-top:1px solid var(--line);display:flex;gap:10px}
+.mkt li:before{content:"→";color:var(--orange);font-weight:700}
+@media(max-width:820px){.mk{grid-template-columns:1fr}}
+/* ask */
+.ask{background:var(--ink);color:#F4EDE2;border-radius:28px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.ask h2{color:#fff}.ask .lead{color:#BDB3A5}
+.chat{background:#26221D;border:1px solid #3A342C;border-radius:20px;padding:20px;font-size:15px}
+.msg{padding:12px 16px;border-radius:14px;margin:10px 0;max-width:88%}
+.msg.me{background:var(--orange);color:#fff;margin-left:auto}
+.msg.ai{background:#332D26}
+.msg.ai b{color:var(--gold2)}
+@media(max-width:860px){.ask{grid-template-columns:1fr;padding:32px}}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
+.step:before{counter-increment:s;content:"0" counter(s);font-family:"EB Garamond",serif;font-size:44px;color:var(--gold);display:block;line-height:1;margin-bottom:12px}
+.step h3{margin:0 0 6px;font-size:19px}.step p{margin:0;color:var(--mute);font-size:15px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+/* integrations */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:30px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-weight:600;font-size:14px}
+/* human */
+.human{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.human .card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px}
+.human .card div{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:15px}
+.human .card div:first-child{border:0}
+.human .card b{color:var(--orange)}
+@media(max-width:860px){.human{grid-template-columns:1fr}}
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column}
+.plan.hot{border:2px solid var(--orange);box-shadow:0 30px 60px -36px rgba(224,122,16,.6)}
+.plan .tag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
+.plan h3{font-family:"EB Garamond",serif;font-weight:500;font-size:32px;margin:6px 0}
+.plan .for{color:var(--mute);font-size:15px;margin:0 0 18px}
+.plan ul{list-style:none;padding:0;margin:0 0 24px;font-size:15px;flex:1}
+.plan li{padding:8px 0;border-top:1px solid var(--line)}
+.plan li:before{content:"✓";color:var(--green);margin-right:8px;font-weight:700}
+.plan .btn{justify-content:center}
+@media(max-width:900px){.plans{grid-template-columns:1fr}}
+/* faq */
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:10px 0}
+summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between}
+summary:after{content:"+";color:var(--orange);font-size:22px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{color:var(--mute);margin:12px 0 0}
+/* final cta */
+.final{background:radial-gradient(70% 90% at 50% 0%,#F8E3BF,#FBF8F3 70%);border:1px solid #F0D9B5;border-radius:32px;padding:64px 28px;text-align:center}
+form.demo{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px auto 0;max-width:640px}
+form.demo input{flex:1 1 200px;border:1px solid var(--line);border-radius:999px;padding:14px 20px;font:inherit;background:#fff}
+#ok{margin-top:14px;font-weight:600;color:var(--green);min-height:1.5em}
+footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
+.foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
+.foot a{margin-right:18px}.foot a:hover{color:var(--orange)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="wrap nav">
+  <a href="#top"><img src="img/logo.svg" alt="Midas"></a>
+  <div class="links"><a href="#product">Product</a><a href="#markets">UAE &amp; US</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="/vaults/">Midas Vaults</a></div>
+  <a class="btn btn-orange" href="#demo">Book a demo</a>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <span class="pill"><b>New</b> The AI CFO for the UAE and the US</span>
+  <h1 class="serif">Turn data<br><span class="gold">into gold.</span></h1>
+  <p class="sub">Midas is your AI CFO. It connects your bank, accounting and sales data, closes your books faster, shows your cash and runway every day and <em>keeps you ready for tax season</em>, with a real CFO on call when it matters.</p>
+  <div class="cta-row"><a class="btn btn-dark" href="#demo">Book a 20-min demo ↗</a><a class="btn btn-ghost" href="#product">See what it does</a></div>
+  <div class="checks"><span>Live in days, not months</span><span>Every number traced to source</span><span>UAE corporate tax &amp; VAT ready</span><span>Human CFO on call</span></div>
+  <div class="shot rv"><img src="img/dashboard.jpg" alt="Midas dashboard with profit and loss, balance sheet, cash flow, financial health score and the Ask Midas assistant" width="2560" height="1270"></div>
+</div></header>
+
+<section><div class="wrap center">
+  <span class="eyebrow">Sound familiar?</span>
+  <h2 class="serif">Finance shouldn't be <span class="gold">a guessing game.</span></h2>
+  <div class="hooks">
+    <div class="hook rv"><q>"Your P&amp;L is three weeks late."</q><p>Midas closes the month from live data, so you see last month in the first week.</p></div>
+    <div class="hook rv"><q>"How much runway do we actually have?"</q><p>Cash, burn and runway update every day, across every bank and entity.</p></div>
+    <div class="hook rv"><q>"Corporate tax is 9%. Are we ready to file?"</q><p>Taxable profit, VAT positions and deadlines tracked all year, not in a panic.</p></div>
+    <div class="hook rv"><q>"The board pack takes four days."</q><p>Board and investor packs generated in minutes, in your format.</p></div>
+  </div>
+</div></section>
+
+<section id="product" style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">One platform</span><h2 class="serif">Total <span class="gold">visibility.</span></h2><p class="lead">Everything a finance team does, run by AI and checked by people who have sat in the CFO seat.</p></div>
+  <div class="mods">
+    <div class="mod rv"><div class="ic">📒</div><h3>Close &amp; reporting</h3><p>Bookkeeping, reconciliations and a clean monthly close.</p><ul><li>P&amp;L, balance sheet and cash flow</li><li>Anomaly flags before they become problems</li><li>Management and board packs</li></ul></div>
+    <div class="mod rv"><div class="ic">💧</div><h3>Cash &amp; runway</h3><p>Know where every dirham and dollar is, every day.</p><ul><li>13-week cash forecast</li><li>Burn rate and runway alerts</li><li>Receivables and payables tracking</li></ul></div>
+    <div class="mod rv"><div class="ic">📈</div><h3>Forecasting &amp; scenarios</h3><p>Plan the next hire, the next market or the next raise.</p><ul><li>Budget vs actuals</li><li>What-if scenarios in plain English</li><li>Unit economics and margins</li></ul></div>
+    <div class="mod rv"><div class="ic">🧾</div><h3>Tax &amp; compliance</h3><p>Stay ahead of the tax authority instead of chasing it.</p><ul><li>UAE corporate tax and VAT tracking</li><li>E-invoicing readiness</li><li>US year-end and tax-ready books</li></ul></div>
+    <div class="mod rv"><div class="ic">🏢</div><h3>Multi-entity &amp; FX</h3><p>One view across free zone, mainland and US companies.</p><ul><li>Consolidation and intercompany</li><li>AED, USD and multi-currency</li><li>Group and per-entity reporting</li></ul></div>
+    <div class="mod rv"><div class="ic">✨</div><h3>Ask Midas</h3><p>Your CFO in a chat box, on web or WhatsApp.</p><ul><li>"Why did margins drop in March?"</li><li>"Can we afford two more hires?"</li><li>Answers that link back to the numbers</li></ul></div>
+  </div>
+</div></section>
+
+<section id="markets" style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">Built for two markets</span><h2 class="serif">Dubai to <span class="gold">Delaware.</span></h2><p class="lead">The same AI CFO, tuned for the rules, banks and tools of each market.</p></div>
+  <div class="mk">
+    <div class="mkt uae rv"><span class="flag">🇦🇪</span><h3>United Arab Emirates</h3><p>For founders and SMEs on the mainland and in the free zones.</p><ul>
+      <li>Corporate tax: taxable profit tracked against the 9% rate and AED 375,000 threshold</li>
+      <li>VAT returns prepared from your books, deadlines tracked</li>
+      <li>E-invoicing readiness as the new rules phase in</li>
+      <li>Free zone and mainland entities consolidated in one view</li>
+      <li>Audit-ready books for banks, investors and licensing</li></ul></div>
+    <div class="mkt us rv"><span class="flag">🇺🇸</span><h3>United States</h3><p>For startups and growing businesses that have outgrown spreadsheets.</p><ul>
+      <li>Works on top of QuickBooks, Xero or NetSuite</li>
+      <li>Investor updates and board decks in minutes</li>
+      <li>Burn, runway and fundraising readiness</li>
+      <li>Tax-ready books handed to your CPA at year end</li>
+      <li>SaaS, e-commerce and services metrics built in</li></ul></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap"><div class="ask rv">
+  <div><span class="eyebrow">Ask Midas</span><h2 class="serif">A CFO that answers <span class="gold">in seconds.</span></h2><p class="lead">Ask in plain English. Midas reads your live numbers and shows its working, so you can trust the answer and share it.</p></div>
+  <div class="chat">
+    <div class="msg me">Compare this month to the same month last year.</div>
+    <div class="msg ai">Revenue is <b>down 9.6%</b> and expenses are <b>down 33%</b>, so net income improved. The drop is mostly one large client from last February.</div>
+    <div class="msg me">Can we afford two more hires in Q1?</div>
+    <div class="msg ai">Yes, if receivables come in on time. Runway goes from <b>14 to 11 months</b>. Want me to model a slower collections case?</div>
+  </div>
+</div></div></section>
+
+<section id="how" style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">How it works</span><h2 class="serif">Live in <span class="gold">days.</span></h2></div>
+  <div class="steps">
+    <div class="step rv"><h3>Connect</h3><p>Link your accounting software, banks and sales tools. Read-only access, nothing to install.</p></div>
+    <div class="step rv"><h3>Clean up</h3><p>Midas maps your chart of accounts, catches errors and fixes the history so the numbers tie out.</p></div>
+    <div class="step rv"><h3>Run</h3><p>Daily cash, a monthly close, tax tracking and board packs, with your CFO reviewing what matters.</p></div>
+  </div>
+  <div class="center" style="margin-top:56px"><span class="eyebrow">Connects to the tools you already use</span>
+    <div class="chips"><span class="chip">Xero</span><span class="chip">QuickBooks</span><span class="chip">Zoho Books</span><span class="chip">NetSuite</span><span class="chip">Shopify</span><span class="chip">Stripe</span><span class="chip">Amazon</span><span class="chip">HubSpot</span><span class="chip">Google Sheets</span><span class="chip">Your banks</span></div></div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap human">
+  <div><span class="eyebrow">AI plus people</span><h2 class="serif">Software for speed. <span class="gold">A CFO for judgment.</span></h2><p class="lead">AI does the heavy lifting. When you need a decision, a negotiation or a raise, our finance team steps in. We have structured and raised debt and equity for companies across the Gulf, Asia, Africa and the US.</p><p style="margin-top:24px"><a class="btn btn-dark" href="#demo">Talk to a CFO ↗</a></p></div>
+  <div class="card rv">
+    <div><span>Monthly close</span><b>AI + reviewed</b></div>
+    <div><span>Cash and runway</span><b>Daily</b></div>
+    <div><span>Board and investor packs</span><b>Minutes</b></div>
+    <div><span>Tax readiness</span><b>All year</b></div>
+    <div><span>Fundraising and debt</span><b>Human CFO</b></div>
+  </div>
+</div></section>
+
+<section id="pricing" style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">Pricing</span><h2 class="serif">Less than a <span class="gold">junior accountant.</span></h2><p class="lead">Priced by the number of entities and how much support you want. Get your exact price on a 20-minute call.</p></div>
+  <div class="plans">
+    <div class="plan rv"><span class="tag">Software</span><h3>AI CFO</h3><p class="for">For founders who want clarity now.</p><ul><li>Dashboards, cash and runway</li><li>Monthly close and reports</li><li>Ask Midas on web and WhatsApp</li><li>UAE tax and VAT tracking</li></ul><a class="btn btn-ghost" href="#demo">Get pricing</a></div>
+    <div class="plan hot rv"><span class="tag">Most popular</span><h3>AI CFO + Controller</h3><p class="for">For growing SMEs that need it done for them.</p><ul><li>Everything in AI CFO</li><li>Bookkeeping and reconciliations done for you</li><li>VAT and corporate tax prep</li><li>Monthly review call</li></ul><a class="btn btn-orange" href="#demo">Book a demo</a></div>
+    <div class="plan rv"><span class="tag">Strategic</span><h3>Fractional CFO</h3><p class="for">For companies raising, expanding or preparing to exit.</p><ul><li>Everything in Controller</li><li>A named senior CFO</li><li>Board meetings and investor relations</li><li>Debt and equity raising support</li></ul><a class="btn btn-ghost" href="#demo">Talk to us</a></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap" style="max-width:820px">
+  <div class="center"><span class="eyebrow">FAQ</span><h2 class="serif">Questions, <span class="gold">answered.</span></h2></div>
+  <details><summary>Does Midas replace my accountant?</summary><p>It replaces most of the manual work. On the Controller and Fractional CFO plans our team does the bookkeeping, reconciliations and tax prep for you. If you already have an accountant or auditor, Midas gives them clean books to work from.</p></details>
+  <details><summary>Do I have to switch accounting software?</summary><p>No. Midas sits on top of Xero, QuickBooks, Zoho Books or NetSuite and reads your bank data. You keep what you use today.</p></details>
+  <details><summary>Does it handle UAE corporate tax and VAT?</summary><p>Midas tracks taxable profit, VAT positions and filing deadlines all year and prepares the numbers for your returns. Filings are reviewed by qualified professionals before submission.</p></details>
+  <details><summary>How fast can we get started?</summary><p>Most companies connect their systems in a day. Cleaning up past months depends on the state of your books, usually one to three weeks.</p></details>
+  <details><summary>Is my data safe?</summary><p>Connections are read-only, data is encrypted in transit and at rest, and you control who on your team can see what.</p></details>
+  <details><summary>Can Midas help us raise capital?</summary><p>Yes. On the Fractional CFO plan our team prepares the model and materials and introduces you to debt and equity investors.</p></details>
+</div></section>
+
+<section id="demo" style="padding-top:20px"><div class="wrap"><div class="final rv">
+  <span class="eyebrow">Book a demo</span>
+  <h2 class="serif">See your numbers <span class="gold">turn to gold.</span></h2>
+  <p class="lead" style="margin:0 auto">Leave your details and we'll set up a 20-minute demo on your own data.</p>
+  <form class="demo" id="demoForm">
+    <input name="name" placeholder="Your name" required>
+    <input name="email" type="email" placeholder="Work email" required>
+    <input name="company" placeholder="Company and country">
+    <button class="btn btn-orange" type="submit">Book my demo</button>
+  </form>
+  <div id="ok"></div>
+</div></div></section>
+
+<footer><div class="wrap foot">
+  <div><img src="img/logo.svg" alt="Midas" style="height:26px"><p style="margin:10px 0 0">The AI CFO for the UAE and the US.</p></div>
+  <div><a href="#product">Product</a><a href="#pricing">Pricing</a><a href="/vaults/">Midas Vaults</a><a href="/tech/privacy/">Privacy</a><a href="/tech/terms/">Terms</a></div>
+  <div>© 2026 Midas</div>
+</div></footer>
+
+<script>
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>10));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>{if(location.search.includes('static')||!('IntersectionObserver' in window))el.classList.add('vis');else io.observe(el)});
+document.getElementById('demoForm').addEventListener('submit',e=>{
+  e.preventDefault();const fd=new FormData(e.target);fd.append('_subject','Midas AI CFO demo request');fd.append('page',location.href);
+  const ok=document.getElementById('ok');ok.textContent='Sending...';
+  fetch('https://formsubmit.co/ajax/a74db2f5833568f84a0825ec24a15a8f',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+   .then(()=>{ok.textContent="Thanks. We'll be in touch within one business day to book your demo.";e.target.reset()})
+   .catch(()=>{ok.textContent='Something went wrong. Please try again in a minute.'});
+});
+</script>
+</body>
+</html>
