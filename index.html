@@ -34,6 +34,23 @@ nav.sc{border-color:var(--line)}
 .links a:hover{color:var(--orange)}
 .nav .btn{padding:10px 18px;font-size:14px;border-radius:10px}
 @media(max-width:860px){.links{display:none}}
+/* region */
+.reg{position:relative;margin-left:auto;margin-right:12px}
+.regbtn{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:600 14px "DM Sans",sans-serif;cursor:pointer;color:var(--ink)}
+.regbtn:after{content:"▾";color:var(--mute);font-size:11px}
+.regmenu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px -20px rgba(60,40,10,.35);padding:6px;min-width:200px;display:none}
+.reg.open .regmenu{display:block}
+.regmenu button{display:flex;width:100%;gap:10px;align-items:center;background:none;border:0;padding:10px 12px;border-radius:9px;font:500 15px "DM Sans",sans-serif;cursor:pointer;text-align:left;color:var(--ink)}
+.regmenu button:hover,.regmenu button.on{background:var(--soft)}
+.regmenu button.on:after{content:"✓";margin-left:auto;color:var(--orange);font-weight:700}
+.links{margin-left:auto}
+.tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 16px;font:600 14px "DM Sans",sans-serif;cursor:pointer;color:var(--ink)}
+.tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.mkt.one{max-width:880px;margin:28px auto 0;background:linear-gradient(160deg,#fff 40%,#FCF1DE)}
+.mkt.one ul{columns:2;column-gap:32px}
+.mkt.one li{break-inside:avoid}
+@media(max-width:700px){.mkt.one ul{columns:1}.nav .btn-orange{display:none}.reg{margin-right:0}}
 /* hero */
 .hero{position:relative;padding:72px 0 0;text-align:center;overflow:hidden}
 .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 0%,#F8E7C9 0%,rgba(251,248,243,0) 70%),linear-gradient(rgba(217,162,27,.06) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(217,162,27,.06) 1px,transparent 1px) 0 0/44px 44px;mask:linear-gradient(#000 55%,transparent);z-index:-1}
@@ -139,16 +156,17 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 <body>
 <nav id="nav"><div class="wrap nav">
   <a href="#top"><img src="cfo-preview/img/logo.svg" alt="Midas"></a>
-  <div class="links"><a href="#product">Product</a><a href="#markets">UAE &amp; US</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div>
+  <div class="links"><a href="#product">Product</a><a href="#markets">Your market</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div>
+  <div class="reg" id="reg"><button class="regbtn" id="regBtn" aria-haspopup="true" aria-label="Choose your region"></button><div class="regmenu" id="regMenu"></div></div>
   <a class="btn btn-orange" href="#demo">Book a demo</a>
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <span class="pill"><b>New</b> The AI CFO for the UAE and the US</span>
+  <span class="pill"><b>New</b> <span id="pillTxt">The AI CFO for growing businesses</span></span>
   <h1 class="serif">Turn data<br><span class="gold">into gold.</span></h1>
   <p class="sub">Midas is your AI CFO. It connects your bank, accounting and sales data, closes your books faster, shows your cash and runway every day and <em>keeps you ready for tax season</em>, with a real CFO on call when it matters.</p>
   <div class="cta-row"><a class="btn btn-dark" href="#demo">Book a 20-min demo ↗</a><a class="btn btn-ghost" href="#product">See what it does</a></div>
-  <div class="checks"><span>Live in days, not months</span><span>Every number traced to source</span><span>UAE corporate tax &amp; VAT ready</span><span>Human CFO on call</span></div>
+  <div class="checks"><span>Live in days, not months</span><span>Every number traced to source</span><span id="chkTax">Tax ready all year</span><span>Human CFO on call</span></div>
   <div class="shot rv"><img src="cfo-preview/img/dashboard.jpg" alt="Midas dashboard with profit and loss, balance sheet, cash flow, financial health score and the Ask Midas assistant" width="2560" height="1270"></div>
 </div></header>
 
@@ -158,7 +176,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
   <div class="hooks">
     <div class="hook rv"><q>"Your P&amp;L is three weeks late."</q><p>Midas closes the month from live data, so you see last month in the first week.</p></div>
     <div class="hook rv"><q>"How much runway do we actually have?"</q><p>Cash, burn and runway update every day, across every bank and entity.</p></div>
-    <div class="hook rv"><q>"Corporate tax is 9%. Are we ready to file?"</q><p>Taxable profit, VAT positions and deadlines tracked all year, not in a panic.</p></div>
+    <div class="hook rv"><q id="hookQ">"Are we ready to file?"</q><p id="hookP">Taxable profit, VAT positions and deadlines tracked all year, not in a panic.</p></div>
     <div class="hook rv"><q>"The board pack takes four days."</q><p>Board and investor packs generated in minutes, in your format.</p></div>
   </div>
 </div></section>
@@ -167,30 +185,18 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
   <div class="center"><span class="eyebrow">One platform</span><h2 class="serif">Total <span class="gold">visibility.</span></h2><p class="lead">Everything a finance team does, run by AI and checked by people who have sat in the CFO seat.</p></div>
   <div class="mods">
     <div class="mod rv"><div class="ic">📒</div><h3>Close &amp; reporting</h3><p>Bookkeeping, reconciliations and a clean monthly close.</p><ul><li>P&amp;L, balance sheet and cash flow</li><li>Anomaly flags before they become problems</li><li>Management and board packs</li></ul></div>
-    <div class="mod rv"><div class="ic">💧</div><h3>Cash &amp; runway</h3><p>Know where every dirham and dollar is, every day.</p><ul><li>13-week cash forecast</li><li>Burn rate and runway alerts</li><li>Receivables and payables tracking</li></ul></div>
+    <div class="mod rv"><div class="ic">💧</div><h3>Cash &amp; runway</h3><p id="cashLine">Know where every dollar is, every day.</p><ul><li>13-week cash forecast</li><li>Burn rate and runway alerts</li><li>Receivables and payables tracking</li></ul></div>
     <div class="mod rv"><div class="ic">📈</div><h3>Forecasting &amp; scenarios</h3><p>Plan the next hire, the next market or the next raise.</p><ul><li>Budget vs actuals</li><li>What-if scenarios in plain English</li><li>Unit economics and margins</li></ul></div>
-    <div class="mod rv"><div class="ic">🧾</div><h3>Tax &amp; compliance</h3><p>Stay ahead of the tax authority instead of chasing it.</p><ul><li>UAE corporate tax and VAT tracking</li><li>E-invoicing readiness</li><li>US year-end and tax-ready books</li></ul></div>
-    <div class="mod rv"><div class="ic">🏢</div><h3>Multi-entity &amp; FX</h3><p>One view across free zone, mainland and US companies.</p><ul><li>Consolidation and intercompany</li><li>AED, USD and multi-currency</li><li>Group and per-entity reporting</li></ul></div>
+    <div class="mod rv"><div class="ic">🧾</div><h3>Tax &amp; compliance</h3><p>Stay ahead of the tax authority instead of chasing it.</p><ul id="taxList"></ul></div>
+    <div class="mod rv"><div class="ic">🏢</div><h3>Multi-entity &amp; FX</h3><p>One view across every company and country you operate in.</p><ul><li>Consolidation and intercompany</li><li>USD, GBP, EUR, AED, AUD and more</li><li>Group and per-entity reporting</li></ul></div>
     <div class="mod rv"><div class="ic">✨</div><h3>Ask Midas</h3><p>Your CFO in a chat box, on web or WhatsApp.</p><ul><li>"Why did margins drop in March?"</li><li>"Can we afford two more hires?"</li><li>Answers that link back to the numbers</li></ul></div>
   </div>
 </div></section>
 
 <section id="markets" style="padding-top:20px"><div class="wrap">
-  <div class="center"><span class="eyebrow">Built for two markets</span><h2 class="serif">Dubai to <span class="gold">Delaware.</span></h2><p class="lead">The same AI CFO, tuned for the rules, banks and tools of each market.</p></div>
-  <div class="mk">
-    <div class="mkt uae rv"><span class="flag">🇦🇪</span><h3>United Arab Emirates</h3><p>For founders and SMEs on the mainland and in the free zones.</p><ul>
-      <li>Corporate tax: taxable profit tracked against the 9% rate and AED 375,000 threshold</li>
-      <li>VAT returns prepared from your books, deadlines tracked</li>
-      <li>E-invoicing readiness as the new rules phase in</li>
-      <li>Free zone and mainland entities consolidated in one view</li>
-      <li>Audit-ready books for banks, investors and licensing</li></ul></div>
-    <div class="mkt us rv"><span class="flag">🇺🇸</span><h3>United States</h3><p>For startups and growing businesses that have outgrown spreadsheets.</p><ul>
-      <li>Works on top of QuickBooks, Xero or NetSuite</li>
-      <li>Investor updates and board decks in minutes</li>
-      <li>Burn, runway and fundraising readiness</li>
-      <li>Tax-ready books handed to your CPA at year end</li>
-      <li>SaaS, e-commerce and services metrics built in</li></ul></div>
-  </div>
+  <div class="center"><span class="eyebrow">Built for your market</span><h2 class="serif">Local rules. <span class="gold">One AI CFO.</span></h2><p class="lead">Pick where you operate and Midas adapts to its tax rules, currency, deadlines and tools.</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="mkt one rv" id="mktCard"><span class="flag" id="mkFlag"></span><h3 id="mkName"></h3><p id="mkFor"></p><ul id="mkList"></ul></div>
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap"><div class="ask rv">
@@ -211,7 +217,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
     <div class="step rv"><h3>Run</h3><p>Daily cash, a monthly close, tax tracking and board packs, with your CFO reviewing what matters.</p></div>
   </div>
   <div class="center" style="margin-top:56px"><span class="eyebrow">Connects to the tools you already use</span>
-    <div class="chips"><span class="chip">Xero</span><span class="chip">QuickBooks</span><span class="chip">Zoho Books</span><span class="chip">NetSuite</span><span class="chip">Shopify</span><span class="chip">Stripe</span><span class="chip">Amazon</span><span class="chip">HubSpot</span><span class="chip">Google Sheets</span><span class="chip">Your banks</span></div></div>
+    <div class="chips" id="chips"><span class="chip">Xero</span><span class="chip">QuickBooks</span><span class="chip">Zoho Books</span><span class="chip">NetSuite</span><span class="chip">Shopify</span><span class="chip">Stripe</span><span class="chip">Amazon</span><span class="chip">HubSpot</span><span class="chip">Google Sheets</span><span class="chip">Your banks</span></div></div>
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap human">
@@ -228,7 +234,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 <section id="pricing" style="padding-top:20px"><div class="wrap">
   <div class="center"><span class="eyebrow">Pricing</span><h2 class="serif">Less than a <span class="gold">junior accountant.</span></h2><p class="lead">Priced by the number of entities and how much support you want. Get your exact price on a 20-minute call.</p></div>
   <div class="plans">
-    <div class="plan rv"><span class="tag">Software</span><h3>AI CFO</h3><p class="for">For founders who want clarity now.</p><ul><li>Dashboards, cash and runway</li><li>Monthly close and reports</li><li>Ask Midas on web and WhatsApp</li><li>UAE tax and VAT tracking</li></ul><a class="btn btn-ghost" href="#demo">Get pricing</a></div>
+    <div class="plan rv"><span class="tag">Software</span><h3>AI CFO</h3><p class="for">For founders who want clarity now.</p><ul><li>Dashboards, cash and runway</li><li>Monthly close and reports</li><li>Ask Midas on web and WhatsApp</li><li id="planTax">Tax and VAT tracking</li></ul><a class="btn btn-ghost" href="#demo">Get pricing</a></div>
     <div class="plan hot rv"><span class="tag">Most popular</span><h3>AI CFO + Controller</h3><p class="for">For growing SMEs that need it done for them.</p><ul><li>Everything in AI CFO</li><li>Bookkeeping and reconciliations done for you</li><li>VAT and corporate tax prep</li><li>Monthly review call</li></ul><a class="btn btn-orange" href="#demo">Book a demo</a></div>
     <div class="plan rv"><span class="tag">Strategic</span><h3>Fractional CFO</h3><p class="for">For companies raising, expanding or preparing to exit.</p><ul><li>Everything in Controller</li><li>A named senior CFO</li><li>Board meetings and investor relations</li><li>Debt and equity raising support</li></ul><a class="btn btn-ghost" href="#demo">Talk to us</a></div>
   </div>
@@ -238,7 +244,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
   <div class="center"><span class="eyebrow">FAQ</span><h2 class="serif">Questions, <span class="gold">answered.</span></h2></div>
   <details><summary>Does Midas replace my accountant?</summary><p>It replaces most of the manual work. On the Controller and Fractional CFO plans our team does the bookkeeping, reconciliations and tax prep for you. If you already have an accountant or auditor, Midas gives them clean books to work from.</p></details>
   <details><summary>Do I have to switch accounting software?</summary><p>No. Midas sits on top of Xero, QuickBooks, Zoho Books or NetSuite and reads your bank data. You keep what you use today.</p></details>
-  <details><summary>Does it handle UAE corporate tax and VAT?</summary><p>Midas tracks taxable profit, VAT positions and filing deadlines all year and prepares the numbers for your returns. Filings are reviewed by qualified professionals before submission.</p></details>
+  <details><summary id="faqTaxQ">Does it handle my taxes?</summary><p id="faqTaxA"></p></details>
   <details><summary>How fast can we get started?</summary><p>Most companies connect their systems in a day. Cleaning up past months depends on the state of your books, usually one to three weeks.</p></details>
   <details><summary>Is my data safe?</summary><p>Connections are read-only, data is encrypted in transit and at rest, and you control who on your team can see what.</p></details>
   <details><summary>Can Midas help us raise capital?</summary><p>Yes. On the Fractional CFO plan our team prepares the model and materials and introduces you to debt and equity investors.</p></details>
@@ -258,17 +264,67 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 </div></div></section>
 
 <footer><div class="wrap foot">
-  <div><img src="cfo-preview/img/logo.svg" alt="Midas" style="height:26px"><p style="margin:10px 0 0">The AI CFO for the UAE and the US.</p></div>
+  <div><img src="cfo-preview/img/logo.svg" alt="Midas" style="height:26px"><p style="margin:10px 0 0">The AI CFO for the UAE, US, UK, Europe and Australia.</p></div>
   <div><a href="#product">Product</a><a href="#pricing">Pricing</a><a href="/vaults/">Midas Vaults</a><a href="/tech/privacy/">Privacy</a><a href="/tech/terms/">Terms</a></div>
   <div>© 2026 Midas</div>
 </div></footer>
 
 <script>
+const REG={
+ uae:{f:'🇦🇪',n:'UAE',full:'the UAE',cur:'dirham',chk:'UAE corporate tax &amp; VAT ready',hq:'"Corporate tax is 9%. Are we ready to file?"',hp:'Taxable profit, VAT positions and FTA deadlines tracked all year, not in a panic.',
+  tax:['UAE corporate tax tracking','VAT returns and FTA deadlines','E-invoicing readiness'],plan:'UAE corporate tax and VAT tracking',
+  fr:'For founders and SMEs on the mainland and in the free zones.',
+  li:['Corporate tax: taxable profit tracked against the 9% rate and AED 375,000 threshold','VAT returns prepared from your books, FTA deadlines tracked','E-invoicing readiness as the new rules phase in','Free zone and mainland entities consolidated in one view','Audit-ready books for banks, investors and licensing','AED, USD and multi-currency reporting'],
+  tools:['Zoho Books','Wafeq'],fq:'Does it handle UAE corporate tax and VAT?',fa:'Midas tracks taxable profit, VAT positions and FTA deadlines all year and prepares the numbers for your returns. Filings are reviewed by qualified professionals before submission.'},
+ us:{f:'🇺🇸',n:'US',full:'the US',cur:'dollar',chk:'Tax-ready books for your CPA',hq:'"Will our books be ready for the CPA?"',hp:'Clean, reconciled books all year, so tax season and due diligence are not a fire drill.',
+  tax:['Tax-ready books for your CPA','Sales tax exposure tracking','1099 and year-end prep'],plan:'Tax-ready books and year-end prep',
+  fr:'For startups and growing businesses that have outgrown spreadsheets.',
+  li:['Works on top of QuickBooks, Xero or NetSuite','Investor updates and board decks in minutes','Burn, runway and fundraising readiness','Sales tax exposure tracked by state','Tax-ready books handed to your CPA at year end','SaaS, e-commerce and services metrics built in'],
+  tools:['Gusto','Ramp','Brex'],fq:'Does it handle US taxes?',fa:'Midas keeps your books reconciled and tax-ready all year, tracks sales tax exposure and prepares year-end packs for your CPA, who files your returns.'},
+ uk:{f:'🇬🇧',n:'UK',full:'the UK',cur:'pound',chk:'Making Tax Digital ready',hq:'"Is the VAT return ready for this quarter?"',hp:'VAT, corporation tax and Companies House deadlines tracked all year, not the night before.',
+  tax:['VAT returns under Making Tax Digital','Corporation tax tracking','Companies House deadlines'],plan:'VAT and corporation tax tracking',
+  fr:'For founders and SMEs across England, Scotland, Wales and Northern Ireland.',
+  li:['VAT returns prepared from your books, ready for Making Tax Digital','Corporation tax tracked through the year at the 19% to 25% rates','Companies House and HMRC deadlines in one calendar','R&amp;D and EIS-ready numbers for your adviser','Works on top of Xero, QuickBooks or Sage','GBP and multi-currency reporting'],
+  tools:['Sage','Dext'],fq:'Does it handle UK VAT and corporation tax?',fa:'Midas tracks VAT and corporation tax all year, keeps your records Making Tax Digital ready and prepares the numbers for your returns. Filings are reviewed by qualified professionals before submission.'},
+ eu:{f:'🇪🇺',n:'Europe',full:'Europe',cur:'euro',chk:'Multi-country VAT tracked',hq:'"VAT in five countries. Who owns it?"',hp:'VAT positions, e-invoicing rules and filing deadlines tracked for every country you sell into.',
+  tax:['VAT across EU countries and OSS','E-invoicing readiness','Corporate tax by entity'],plan:'Multi-country VAT tracking',
+  fr:'For companies operating or selling across more than one European country.',
+  li:['VAT positions tracked by country, including OSS for cross-border sales','E-invoicing readiness as national mandates roll out','Entities in several countries consolidated in EUR','Intercompany and transfer pricing support for your advisers','Works on top of Xero, QuickBooks, Exact or your local ledger','Exports your local accountant can file from'],
+  tools:['Exact','Holded'],fq:'Does it handle VAT across Europe?',fa:'Midas tracks VAT by country, including OSS, follows e-invoicing rules as they roll out and prepares the numbers for your local accountants to file.'},
+ au:{f:'🇦🇺',n:'Australia',full:'Australia',cur:'dollar',chk:'BAS and GST ready',hq:'"Is the BAS ready this quarter?"',hp:'GST, BAS and ATO deadlines tracked all year, with books your accountant can lodge from.',
+  tax:['GST and quarterly BAS','PAYG and Single Touch Payroll ready books','ATO deadlines tracked'],plan:'GST and BAS tracking',
+  fr:'For founders and SMEs across Australia.',
+  li:['GST and BAS figures prepared from your books every quarter','PAYG withholding and Single Touch Payroll ready records','ATO deadlines in one calendar','R&amp;D tax incentive ready numbers for your adviser','Works on top of Xero, MYOB or QuickBooks','AUD and multi-currency reporting'],
+  tools:['MYOB','Employment Hero'],fq:'Does it handle GST and BAS?',fa:'Midas keeps GST and BAS figures ready every quarter, tracks ATO deadlines and prepares the numbers for your registered agent to lodge.'}
+};
+const ORDER=['uae','us','uk','eu','au'];
+function guess(){try{const q=new URLSearchParams(location.search).get('region');if(q&&REG[q])return q;const s=localStorage.getItem('midasRegion');if(s&&REG[s])return s}catch(e){}
+ const tz=(Intl.DateTimeFormat().resolvedOptions().timeZone||'');if(/Dubai|Muscat|Qatar|Riyadh|Bahrain|Kuwait/.test(tz))return'uae';if(/London|Dublin/.test(tz))return tz.includes('Dublin')?'eu':'uk';if(/^Europe\//.test(tz))return'eu';if(/^Australia\//.test(tz))return'au';if(/^America\//.test(tz))return'us';return'uae'}
+let R=guess();const BASE_CHIPS=document.getElementById('chips').innerHTML;
+function setRegion(r){R=r;const d=REG[r];try{localStorage.setItem('midasRegion',r)}catch(e){}
+ document.getElementById('regBtn').innerHTML=d.f+' '+d.n;
+ document.getElementById('regMenu').innerHTML=ORDER.map(k=>`<button data-r="${k}" class="${k===r?'on':''}">${REG[k].f} ${REG[k].n}</button>`).join('');
+ document.getElementById('tabs').innerHTML=ORDER.map(k=>`<button class="tab ${k===r?'on':''}" data-r="${k}">${REG[k].f} ${REG[k].n}</button>`).join('');
+ document.getElementById('pillTxt').textContent='The AI CFO for '+d.full;
+ document.getElementById('chkTax').innerHTML=d.chk;
+ document.getElementById('hookQ').textContent=d.hq.replace(/&amp;/g,'&');document.getElementById('hookP').textContent=d.hp;
+ document.getElementById('cashLine').textContent='Know where every '+d.cur+' is, every day.';
+ document.getElementById('taxList').innerHTML=d.tax.map(x=>'<li>'+x+'</li>').join('');
+ document.getElementById('planTax').textContent=d.plan;
+ document.getElementById('mkFlag').textContent=d.f;document.getElementById('mkName').textContent=d.full.replace(/^the /,'The ');
+ document.getElementById('mkFor').textContent=d.fr;document.getElementById('mkList').innerHTML=d.li.map(x=>'<li>'+x+'</li>').join('');
+ document.getElementById('chips').innerHTML=d.tools.map(t=>'<span class="chip">'+t+'</span>').join('')+BASE_CHIPS;
+ document.getElementById('faqTaxQ').textContent=d.fq;document.getElementById('faqTaxA').textContent=d.fa;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-r]');const reg=document.getElementById('reg');
+ if(b){setRegion(b.dataset.r);reg.classList.remove('open');return}
+ if(e.target.closest('#regBtn')){reg.classList.toggle('open');return}reg.classList.remove('open')});
+setRegion(R);
 const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>10));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>{if(location.search.includes('static')||!('IntersectionObserver' in window))el.classList.add('vis');else io.observe(el)});
 document.getElementById('demoForm').addEventListener('submit',e=>{
-  e.preventDefault();const fd=new FormData(e.target);fd.append('_subject','Midas AI CFO demo request');fd.append('page',location.href);
+  e.preventDefault();const fd=new FormData(e.target);fd.append('_subject','Midas AI CFO demo request');fd.append('page',location.href);fd.append('region',R);
   const ok=document.getElementById('ok');ok.textContent='Sending...';
   fetch('https://formsubmit.co/ajax/a74db2f5833568f84a0825ec24a15a8f',{method:'POST',body:fd,headers:{'Accept':'application/json'}})
    .then(()=>{ok.textContent="Thanks. We'll be in touch within one business day to book your demo.";e.target.reset()})
