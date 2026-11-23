@@ -94,10 +94,11 @@ section{padding:80px 0}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:40px 0 56px;color:var(--mute);font-size:13px}
 .rv{opacity:0;transform:translateY(16px);transition:.7s}.rv.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+.sublinks{display:flex;gap:26px;margin-left:auto;margin-right:22px;font-size:15px;font-weight:500}.sublinks a:hover,.sublinks a.on{color:var(--orange)}@media(max-width:860px){.nav{flex-wrap:wrap;height:auto;padding:12px 0 0}.sublinks{order:3;width:100%;margin:8px 0 0;padding:6px 0 10px;gap:20px;font-size:14px;overflow-x:auto;white-space:nowrap}}
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><a href="/"><img src="/cfo-preview/img/logo.svg" alt="Midas"></a><a class="btn btn-dark" href="/#demo" style="padding:10px 20px;font-size:15px">Book a demo</a></div></nav>
+<nav><div class="wrap nav"><a href="/"><img src="/cfo-preview/img/logo.svg" alt="Midas"></a><div class="sublinks"><a href="/#who">Who it's for</a><a href="/from-tally/" class="on">From Tally</a><a href="/vs-power-bi/">vs Power BI</a><a href="/#pricing">Pricing</a></div><a class="btn btn-dark" href="/#demo" style="padding:10px 20px;font-size:15px">Book a demo</a></div></nav>
 
 <header style="padding:72px 0 30px"><div class="wrap center">
   <span class="eyebrow">For established businesses</span>

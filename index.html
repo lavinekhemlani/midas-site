@@ -33,7 +33,9 @@ nav.sc{border-color:var(--line)}
 .links{display:flex;gap:28px;font-size:15px;font-weight:500}
 .links a:hover{color:var(--orange)}
 .nav .btn{padding:10px 18px;font-size:14px;border-radius:10px}
-@media(max-width:860px){.links{display:none}}
+.links a.new{color:var(--orange)}
+@media(max-width:860px){.nav{flex-wrap:wrap;height:auto;padding-top:12px}.links{order:3;width:100%;margin:8px 0 0;padding:6px 0 10px;gap:20px;font-size:14px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}.links::-webkit-scrollbar{display:none}}
+.xlinks{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}.xl{display:block;background:linear-gradient(160deg,#fff 40%,#FCF1DE);border:1px solid var(--line);border-radius:20px;padding:28px;transition:transform .2s,box-shadow .2s}.xl:hover{transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(60,40,10,.4)}.xl h3{font-size:26px;margin:8px 0 6px}.xl p{margin:0 0 14px;color:var(--mute)}.xl b{color:var(--orange)}@media(max-width:760px){.xlinks{grid-template-columns:1fr}}
 /* region */
 .reg{position:relative;margin-left:auto;margin-right:12px}
 .regbtn{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;font:600 14px "DM Sans",sans-serif;cursor:pointer;color:var(--ink)}
@@ -156,7 +158,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 <body>
 <nav id="nav"><div class="wrap nav">
   <a href="#top"><img src="cfo-preview/img/logo.svg" alt="Midas"></a>
-  <div class="links"><a href="#product">Product</a><a href="#who">Who it's for</a><a href="#markets">Your market</a><a href="#how">How it works</a><a href="#pricing">Pricing</a></div>
+  <div class="links"><a href="#product">Product</a><a href="#who">Who it's for</a><a href="/from-tally/">From Tally</a><a href="/vs-power-bi/">vs Power BI</a><a href="#pricing">Pricing</a></div>
   <div class="reg" id="reg"><button class="regbtn" id="regBtn" aria-haspopup="true" aria-label="Choose your region"></button><div class="regmenu" id="regMenu"></div></div>
   <a class="btn btn-orange" href="#demo">Book a demo</a>
 </div></nav>
@@ -202,6 +204,10 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
     <div class="mod rv"><div class="ic">🚚</div><h3>Logistics &amp; supply chain</h3><p>Know your margin on every route, client and shipment.</p><ul><li>Cost per lane, trip and customer</li><li>Receivables and fuel cost tracking</li><li>Working capital and fleet planning</li></ul></div>
     <div class="mod rv"><div class="ic">⚖️</div><h3>Trading companies</h3><p>Margin and cash visibility on every deal.</p><ul><li>Profit per trade and counterparty</li><li>FX, letters of credit and trade finance</li><li>Cash cycle from purchase to payment</li></ul></div>
     <div class="mod rv" style="background:var(--soft)"><div class="ic" style="background:#fff">💬</div><h3>Not sure if it fits?</h3><p>Tell us how your business runs and we'll show you Midas on your own numbers.</p><p style="margin:18px 0 0"><a class="btn btn-dark" href="#demo">Talk to a CFO ↗</a></p></div>
+  </div>
+  <div class="xlinks">
+    <a class="xl rv" href="/from-tally/"><span class="eyebrow">Still on Tally?</span><h3 class="serif">From Tally and spreadsheets to total clarity</h3><p>See how Midas connects your disconnected data into one live view.</p><b>See the transformation →</b></a>
+    <a class="xl rv" href="/vs-power-bi/"><span class="eyebrow">Weighing Power BI?</span><h3 class="serif">Midas vs a Power BI build</h3><p>Compare cost, time to go live and what you actually get.</p><b>Run the cost calculator →</b></a>
   </div>
 </div></section>
 
@@ -277,7 +283,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 
 <footer><div class="wrap foot">
   <div><img src="cfo-preview/img/logo.svg" alt="Midas" style="height:26px"><p style="margin:10px 0 0">The AI CFO for the UAE, US, UK, Europe and Australia.</p></div>
-  <div><a href="#product">Product</a><a href="#pricing">Pricing</a><a href="/tech/privacy/">Privacy</a><a href="/tech/terms/">Terms</a></div>
+  <div><a href="#product">Product</a><a href="#who">Who it's for</a><a href="/from-tally/">From Tally</a><a href="/vs-power-bi/">vs Power BI</a><a href="#pricing">Pricing</a><a href="/tech/privacy/">Privacy</a><a href="/tech/terms/">Terms</a></div>
   <div>© 2026 Midas</div>
 </div></footer>
 
