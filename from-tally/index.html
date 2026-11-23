@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>From Tally to Clarity</title>
+<meta name="description" content="Still running on Tally, Excel and bank PDFs? Midas AI CFO connects your disconnected finance data and turns it into live group reporting, cash visibility and answers.">
+<meta property="og:title" content="From Tally to clarity, with Midas AI CFO">
+<meta property="og:description" content="Keep Tally. Lose the spreadsheets. Get live numbers and a CFO you can ask.">
+<meta property="og:image" content="https://midascfo.com/cfo-preview/img/dashboard.jpg">
+<link rel="canonical" href="https://midascfo.com/from-tally/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FBF8F3;--ink:#1C1915;--mute:#6B6359;--line:#ECE4D8;--gold:#D9A21B;--orange:#E07A10;--soft:#F6EEE2;--green:#1F9D6B;--red:#D9473A}
+*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+@media(max-width:600px){.wrap{padding:0 16px}}
+.serif{font-family:"EB Garamond",Georgia,serif;font-weight:500;letter-spacing:-.02em}
+.gold{background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 26px;font-weight:600;font-size:16px;border:0;cursor:pointer}
+.btn-dark{background:var(--ink);color:#fff;box-shadow:0 10px 30px -12px rgba(28,25,21,.5)}
+nav{position:sticky;top:0;z-index:50;background:rgba(251,248,243,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}.nav img{height:28px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+h1{font-size:clamp(40px,7vw,84px);line-height:1;margin:18px 0 16px}
+h2{font-size:clamp(32px,4.6vw,52px);line-height:1.05;margin:10px 0 14px}
+.lead{color:var(--mute);font-size:18px;max-width:660px}
+.center{text-align:center}.center .lead{margin:0 auto}
+section{padding:80px 0}
+/* hero stage */
+.stage{position:relative;height:520px;margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.stage svg.wires{position:absolute;inset:0;width:100%;height:100%}
+.wire{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:6 8;opacity:0;transition:opacity .6s}
+.stage.go .wire{opacity:.85;animation:flow 1.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-28}}
+.src{position:absolute;text-align:left;width:150px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 30px -18px rgba(28,25,21,.35);font-size:13px;transition:all 1.4s cubic-bezier(.2,.8,.2,1);animation:wob 3.2s ease-in-out infinite}
+.src b{display:block;font-size:14px}.src span{color:var(--mute)}
+.src .warn{color:var(--red);font-size:12px;font-weight:600}
+@keyframes wob{0%,100%{transform:rotate(var(--r)) translateY(0)}50%{transform:rotate(calc(var(--r) * -1)) translateY(-6px)}}
+.stage.go .src{animation:none;transform:none}
+.src .warn{max-height:20px;overflow:hidden;transition:max-height .6s,opacity .6s}
+.stage.go .src .warn{opacity:0;max-height:0}
+.src .ok{color:var(--green);font-size:12px;font-weight:600;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s .8s,opacity .6s .8s}
+.stage.go .src .ok{max-height:20px;opacity:1}
+.stage.go .src{border-color:rgba(31,157,107,.45)}
+.hub{position:absolute;left:50%;top:50%;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:30px;background:var(--ink);display:grid;place-items:center;transform:scale(.4);opacity:0;transition:all .9s cubic-bezier(.2,1.4,.3,1) .5s;box-shadow:0 0 0 0 rgba(217,162,27,.5)}
+.hub img{width:62px;filter:brightness(0) invert(1)}
+.stage.go .hub{transform:scale(1);opacity:1;animation:pulse 2.4s ease-out 1.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(217,162,27,.55)}100%{box-shadow:0 0 0 34px rgba(217,162,27,0)}}
+.toggle{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:3}
+.cap{position:absolute;left:0;right:0;top:16px;text-align:center;font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);transition:color .5s}
+.stage.go .cap{color:var(--green)}
+@media(max-width:700px){.stage{height:600px}.src{width:118px;font-size:11.5px;padding:9px}.src b{font-size:13px}.hub{width:88px;height:88px;margin:-44px 0 0 -44px;border-radius:24px}.hub img{width:48px}}
+/* pain */
+.pains{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.pain{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+.pain .ic{font-size:26px}.pain h3{margin:10px 0 6px;font-size:18px}.pain p{margin:0;color:var(--mute);font-size:15px}
+@media(max-width:900px){.pains{grid-template-columns:1fr 1fr}}@media(max-width:520px){.pains{grid-template-columns:1fr}}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;position:relative}
+.step .n{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;margin-bottom:14px}
+.step h3{margin:0 0 6px;font-size:20px}.step p{margin:0;color:var(--mute);font-size:15px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+/* before / after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.pane{border-radius:22px;padding:24px;border:1px solid var(--line);background:#fff;min-height:330px}
+.pane h3{margin:0 0 14px;font-size:18px}
+.sheet{font:12px/1.5 ui-monospace,Menlo,monospace;border:1px solid #ddd;border-radius:8px;overflow:hidden}
+.sheet div{display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid #eee}
+.sheet div span{padding:5px 8px;border-left:1px solid #eee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sheet div span:first-child{border-left:0}
+.sheet .err{background:#FDECEA;color:var(--red)}
+.sheet .hd{background:#F3F3F3;font-weight:700}
+.dash{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--soft);border-radius:14px;padding:14px}
+.kpi small{color:var(--mute);font-size:12px}.kpi b{display:block;font-size:22px;font-family:"EB Garamond",serif}
+.kpi .up{color:var(--green);font-size:12px;font-weight:600}
+.chart{grid-column:1/-1;background:var(--soft);border-radius:14px;padding:14px;height:130px;display:flex;align-items:flex-end;gap:8px}
+.chart i{flex:1;background:linear-gradient(var(--gold),var(--orange));border-radius:6px 6px 2px 2px;height:0;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.on .chart i{height:var(--h)}
+@media(max-width:820px){.ba{grid-template-columns:1fr}}
+.count{font-variant-numeric:tabular-nums}
+/* outcomes */
+.outs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.out{background:var(--ink);color:#fff;border-radius:22px;padding:26px}
+.out b{display:block;font-family:"EB Garamond",serif;font-size:44px;line-height:1;color:var(--gold)}
+.out span{color:#CFC6B8;font-size:15px}
+@media(max-width:820px){.outs{grid-template-columns:1fr}}
+.final{background:#fff;border:1px solid var(--line);border-radius:28px;padding:52px 32px;text-align:center}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:40px 0 56px;color:var(--mute);font-size:13px}
+.rv{opacity:0;transform:translateY(16px);transition:.7s}.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav><div class="wrap nav"><a href="/"><img src="/cfo-preview/img/logo.svg" alt="Midas"></a><a class="btn btn-dark" href="/#demo" style="padding:10px 20px;font-size:15px">Book a demo</a></div></nav>
+
+<header style="padding:72px 0 30px"><div class="wrap center">
+  <span class="eyebrow">For established businesses</span>
+  <h1 class="serif">From Tally and spreadsheets<br>to <span class="gold">total clarity.</span></h1>
+  <p class="lead">Your business runs on Tally, a dozen Excel files, bank PDFs and invoices on WhatsApp. Midas connects all of it, keeps the systems your team already knows and gives you one live view of the group.</p>
+  <div class="stage" id="stage">
+    <div class="cap" id="cap">Today: disconnected</div>
+    <svg class="wires" id="wires" preserveAspectRatio="none"></svg>
+    <div class="src" data-a="8,14" data-b="6,12" style="--r:-4deg"><b>📒 Tally Prime</b><span>3 company files</span><div class="warn">Closed 6 weeks late</div><div class="ok">✓ Connected</div></div>
+    <div class="src" data-a="70,10" data-b="74,10" style="--r:5deg"><b>📊 Excel</b><span>Group_PL_v7_FINAL.xlsx</span><div class="warn">#REF! in 14 cells</div><div class="ok">✓ Connected</div></div>
+    <div class="src" data-a="4,62" data-b="6,46" style="--r:3deg"><b>🏦 Bank PDFs</b><span>4 banks, AED and USD</span><div class="warn">Downloaded by hand</div><div class="ok">✓ Connected</div></div>
+    <div class="src" data-a="76,58" data-b="74,46" style="--r:-5deg"><b>💬 WhatsApp</b><span>Supplier invoices</span><div class="warn">Not in the books</div><div class="ok">✓ Connected</div></div>
+    <div class="src" data-a="22,80" data-b="6,78" style="--r:-3deg"><b>📧 Email</b><span>Customer remittances</span><div class="warn">Unmatched</div><div class="ok">✓ Connected</div></div>
+    <div class="src" data-a="58,82" data-b="74,78" style="--r:4deg"><b>🧾 VAT returns</b><span>FTA portal</span><div class="warn">Rebuilt every quarter</div><div class="ok">✓ Connected</div></div>
+    <div class="hub" id="hub"><img src="/cfo-preview/img/logo.svg" alt="Midas"></div>
+    <button class="btn btn-dark toggle" id="tog">Connect with Midas ⚡</button>
+  </div>
+</div></header>
+
+<section style="padding-top:40px"><div class="wrap">
+  <div class="center"><span class="eyebrow">Sound familiar?</span><h2 class="serif">Busy finance team. <span class="gold">No clear answers.</span></h2></div>
+  <div class="pains">
+    <div class="pain rv"><div class="ic">⏳</div><h3>Month-end takes weeks</h3><p>Numbers arrive when it's too late to act on them.</p></div>
+    <div class="pain rv"><div class="ic">🧮</div><h3>Group view lives in Excel</h3><p>One person builds it by hand, and one broken link ruins it.</p></div>
+    <div class="pain rv"><div class="ic">❓</div><h3>"How much cash do we have?"</h3><p>The answer takes a day and three phone calls.</p></div>
+    <div class="pain rv"><div class="ic">🧾</div><h3>VAT and CT stress</h3><p>Every filing is a scramble to rebuild the same numbers.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">How Midas fixes it</span><h2 class="serif">Keep Tally. <span class="gold">Lose the chaos.</span></h2><p class="lead">No migration, no new accounting system, no retraining your accountants.</p></div>
+  <div class="steps">
+    <div class="step rv"><div class="n">1</div><h3>Connect</h3><p>Midas plugs into Tally, your banks and your files. Your team keeps working the way they do today.</p></div>
+    <div class="step rv"><div class="n">2</div><h3>Clean and match</h3><p>AI maps every ledger, matches bank lines to invoices and flags what doesn't add up, checked by our finance team.</p></div>
+    <div class="step rv"><div class="n">3</div><h3>See and ask</h3><p>Group P&amp;L, cash and VAT update every day. Ask questions in plain English on web or WhatsApp.</p></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">Before and after</span><h2 class="serif">Same business. <span class="gold">Different view.</span></h2></div>
+  <div class="ba">
+    <div class="pane rv"><h3 style="color:var(--red)">Before: Group_PL_v7_FINAL.xlsx</h3>
+      <div class="sheet">
+        <div class="hd"><span>Account</span><span>Entity A</span><span>Entity B</span></div>
+        <div><span>Revenue</span><span>4,210,330</span><span>1,980,115</span></div>
+        <div><span>COGS</span><span>(3,105,220)</span><span class="err">#REF!</span></div>
+        <div><span>Intercompany</span><span class="err">check w/ Ravi</span><span>?</span></div>
+        <div><span>Salaries</span><span>(402,000)</span><span>(188,500)</span></div>
+        <div><span>Bank charges</span><span class="err">missing Oct</span><span>(4,120)</span></div>
+        <div><span>Cash (bank)</span><span>as of 3 Oct</span><span class="err">PDF pending</span></div>
+        <div><span>VAT payable</span><span class="err">recalc</span><span class="err">recalc</span></div>
+      </div>
+      <p style="color:var(--mute);font-size:14px;margin:14px 0 0">Last updated 6 weeks ago. Nobody is sure which version is right.</p>
+    </div>
+    <div class="pane rv" id="after"><h3 style="color:var(--green)">After: Midas, live today</h3>
+      <div class="dash">
+        <div class="kpi"><small>Group revenue (MTD)</small><b>AED <span class="count" data-to="6190">0</span>K</b><span class="up">▲ 8% vs last month</span></div>
+        <div class="kpi"><small>Cash across 4 banks</small><b>AED <span class="count" data-to="2840">0</span>K</b><span class="up">Updated this morning</span></div>
+        <div class="kpi"><small>Gross margin</small><b><span class="count" data-to="24">0</span>.6%</b><span class="up">▲ 1.2 pts</span></div>
+        <div class="kpi"><small>VAT due 28 Jan</small><b>AED <span class="count" data-to="86">0</span>K</b><span class="up">Ready to file</span></div>
+        <div class="chart"><i style="--h:42%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:63%"></i><i style="--h:70%"></i><i style="--h:66%"></i><i style="--h:82%"></i><i style="--h:91%"></i></div>
+      </div>
+    </div>
+  </div>
+  <p class="center" style="color:var(--mute);font-size:13px;margin-top:14px">Illustrative figures.</p>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="outs">
+    <div class="out rv"><b>Days</b><span>to go live, with no system migration</span></div>
+    <div class="out rv"><b>Daily</b><span>group numbers instead of a month-end scramble</span></div>
+    <div class="out rv"><b>1 view</b><span>across every entity, bank and currency</span></div>
+  </div>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+  <div class="final rv"><span class="eyebrow">See it on your own numbers</span><h2 class="serif">Bring your Tally. <span class="gold">We'll bring clarity.</span></h2><p class="lead" style="margin:0 auto 24px">A 20-minute call, then your group view live in days.</p><a class="btn btn-dark" href="/#demo">Book a demo ↗</a><p style="margin:18px 0 0;font-size:14px;color:var(--mute)">Comparing options? See <a href="/vs-power-bi/" style="text-decoration:underline">Midas vs Power BI</a>.</p></div>
+</div></section>
+
+<div class="wrap foot"><span>© 2026 Midas</span><span><a href="/">midascfo.com</a> · <a href="/vs-power-bi/">Midas vs Power BI</a> · <a href="/tech/privacy/">Privacy</a></span></div>
+
+<script>
+const stage=document.getElementById('stage'),wires=document.getElementById('wires'),tog=document.getElementById('tog'),cap=document.getElementById('cap');
+const srcs=[...stage.querySelectorAll('.src')];
+function place(state){
+  const W=stage.clientWidth,H=stage.clientHeight,mob=W<700;
+  srcs.forEach((s,i)=>{let [x,y]=s.dataset[state].split(',').map(Number);
+    if(mob){ // stack into two columns on phones
+      const col=i%2, row=Math.floor(i/2);
+      x= state==='a' ? [4,50][col]+(row%2?6:0) : [3,97][col]; y= state==='a' ? 12+row*28 : 10+row*30;
+      if(state==='b'&&col===1){s.style.left='auto';s.style.right='3%';s.style.top=y+'%';return}
+      s.style.right='auto';
+    }
+    s.style.left=x+'%';s.style.top=y+'%';});
+}
+function drawWires(){
+  wires.setAttribute('viewBox',`0 0 ${stage.clientWidth} ${stage.clientHeight}`);
+  const sr=stage.getBoundingClientRect(),cx=sr.width/2,cy=sr.height/2;
+  wires.innerHTML=srcs.map(s=>{const r=s.getBoundingClientRect();const x=r.left-sr.left+r.width/2,y=r.top-sr.top+r.height/2;
+    return `<path class="wire" d="M${x},${y} C${(x+cx)/2},${y} ${(x+cx)/2},${cy} ${cx},${cy}"/>`}).join('');
+}
+let on=false;
+function trackWires(){const t0=performance.now();(function f(n){drawWires();if(n-t0<1600)requestAnimationFrame(f)})(t0)}
+function setState(v){on=v;stage.classList.toggle('go',on);place(on?'b':'a');cap.textContent=on?'With Midas: one live view':'Today: disconnected';tog.textContent=on?'Show before':'Connect with Midas ⚡';trackWires()}
+tog.addEventListener('click',()=>setState(!on));
+place('a');
+addEventListener('resize',()=>{place(on?'b':'a');setTimeout(drawWires,50)});
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){o.disconnect();setTimeout(()=>setState(true),1800)}},{threshold:.5}).observe(stage);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const t=e.target;t.classList.add('on');
+  t.querySelectorAll('.count').forEach(c=>{const to=+c.dataset.to,t0=performance.now();(function f(n){const p=Math.min(1,(n-t0)/1200);c.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('en-US');if(p<1)requestAnimationFrame(f)})(t0)});
+  io.unobserve(t)}),{threshold:.2});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>
