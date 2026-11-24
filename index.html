@@ -153,9 +153,88 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 .foot a{margin-right:18px}.foot a:hover{color:var(--orange)}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .rv.vis{opacity:1;transform:none}
+/* ===== glassmorphism ===== */
+:root{--line:rgba(190,145,80,.2);--glass:rgba(255,255,255,.46);--glass2:rgba(255,255,255,.7);--gedge:rgba(255,255,255,.75);--gblur:blur(18px) saturate(160%);--gshadow:inset 0 1px 0 rgba(255,255,255,.85),0 14px 40px -24px rgba(120,78,18,.35)}
+/* ambient light behind the glass */
+.amb{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
+.amb i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.9;animation:drift 26s ease-in-out infinite alternate}
+.amb i:nth-child(1){width:46vw;height:46vw;left:-12vw;top:-8vw;background:radial-gradient(circle,#F7C873,transparent 68%)}
+.amb i:nth-child(2){width:40vw;height:40vw;right:-10vw;top:18vh;background:radial-gradient(circle,#F4A261,transparent 68%);animation-duration:32s;animation-delay:-8s;opacity:.65}
+.amb i:nth-child(3){width:38vw;height:38vw;left:22vw;bottom:-14vw;background:radial-gradient(circle,#F9DFA8,transparent 68%);animation-duration:38s;animation-delay:-16s}
+.amb i:nth-child(4){width:26vw;height:26vw;right:18vw;bottom:8vh;background:radial-gradient(circle,#C9DDF5,transparent 68%);animation-duration:30s;opacity:.6}
+@keyframes drift{to{transform:translate(6vw,5vh) scale(1.12)}}
+@media(max-width:700px){.amb i{filter:blur(50px)}.amb i:nth-child(1){width:90vw;height:90vw}.amb i:nth-child(2){width:80vw;height:80vw}.amb i:nth-child(3){width:80vw;height:80vw}.amb i:nth-child(4){width:60vw;height:60vw}}
+@media(prefers-reduced-motion:reduce){.amb i{animation:none}}
+/* frosted panels */
+.hook,.mod,.mkt,.step,.plan,.human .card,details,.xl,.chip,.pill,.tab,.regbtn,.regmenu,.btn-ghost,form.demo input,.shot{background:var(--glass);-webkit-backdrop-filter:var(--gblur);backdrop-filter:var(--gblur);border:1px solid var(--gedge);box-shadow:var(--gshadow)}
+.hook,.mod,.step,.xl,.plan{transition:opacity .7s ease,transform .25s,box-shadow .25s,background .25s}
+.hook:hover,.mod:hover,.step:hover,.plan:hover{transform:translateY(-3px);background:var(--glass2);box-shadow:inset 0 1px 0 #fff,0 24px 50px -26px rgba(120,78,18,.45)}
+.mkt.one,.mkt.uae,.xl{background:linear-gradient(160deg,rgba(255,255,255,.62) 35%,rgba(252,236,206,.42))}
+.mkt.us{background:linear-gradient(160deg,rgba(255,255,255,.62) 35%,rgba(226,236,250,.42))}
+.mod .ic{background:var(--glass2);border:1px solid var(--gedge);box-shadow:inset 0 1px 0 #fff}
+.mod.alt{background:rgba(246,232,206,.5)}
+.regmenu{background:rgba(255,255,255,.78);box-shadow:inset 0 1px 0 #fff,0 24px 60px -20px rgba(60,40,10,.35)}
+.regmenu button:hover,.regmenu button.on{background:rgba(246,238,226,.8)}
+.tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.plan.hot{border:2px solid rgba(224,122,16,.75);background:linear-gradient(170deg,rgba(255,255,255,.72),rgba(253,232,200,.5));box-shadow:inset 0 1px 0 #fff,0 30px 60px -32px rgba(224,122,16,.6)}
+.shot{padding:10px;border-radius:24px}.shot img{border-radius:15px}
+nav{background:rgba(251,248,243,.55);-webkit-backdrop-filter:var(--gblur);backdrop-filter:var(--gblur)}
+nav.sc{border-color:var(--gedge);box-shadow:0 10px 30px -20px rgba(120,78,18,.3)}
+.btn-orange{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 26px -12px rgba(224,122,16,.7)}
+.final{background:radial-gradient(70% 90% at 50% 0%,rgba(248,227,191,.7),rgba(255,255,255,.35) 70%);-webkit-backdrop-filter:var(--gblur);backdrop-filter:var(--gblur);border:1px solid var(--gedge);box-shadow:var(--gshadow)}
+form.demo input{background:rgba(255,255,255,.65)}form.demo input:focus{outline:none;border-color:rgba(224,122,16,.6);background:rgba(255,255,255,.85)}
+/* dark glass */
+.ask{position:relative;overflow:hidden;background:rgba(28,25,21,.86);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 40px 80px -40px rgba(28,25,21,.6)}
+.ask:before{content:"";position:absolute;inset:0;background:radial-gradient(40% 60% at 85% 20%,rgba(224,122,16,.28),transparent 70%),radial-gradient(40% 60% at 10% 100%,rgba(217,162,27,.2),transparent 70%);pointer-events:none}
+.ask>*{position:relative}
+.chat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+.msg.ai{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)}
+/* ===== v2 content sections ===== */
+h1{font-size:clamp(42px,6.6vw,84px);line-height:1.02;max-width:1000px;margin-left:auto;margin-right:auto}
+.pill{flex-wrap:wrap;justify-content:center;column-gap:8px;row-gap:0}.pill b{white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.stat{border-radius:22px;padding:30px 24px;text-align:center}
+.stat b{display:block;font:500 clamp(48px,6vw,68px)/1 "EB Garamond",serif;background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
+.stat span{color:var(--mute);font-size:15px}
+@media(max-width:760px){.stats{grid-template-columns:1fr}}
+.diff{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+.dif{grid-column:span 2;border-radius:22px;padding:30px}
+.dif:nth-child(-n+2){grid-column:span 3}
+.dif .n{font:500 40px/1 "EB Garamond",serif;color:var(--gold)}
+.dif h3{font-size:21px;margin:12px 0 8px}.dif p{margin:0;color:var(--mute);font-size:15px}
+@media(max-width:900px){.diff{grid-template-columns:1fr 1fr}.dif,.dif:nth-child(-n+2){grid-column:span 1}.dif:last-child{grid-column:span 2}}
+@media(max-width:620px){.diff{grid-template-columns:1fr}.dif:last-child{grid-column:span 1}}
+.runs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.run{border-radius:20px;padding:26px;display:flex;flex-direction:column}
+.run h3{font-size:19px;margin:0 0 6px}.run p{color:var(--mute);font-size:15px;margin:0 0 16px;flex:1}
+.aq{font-size:14px;line-height:1.45;background:rgba(224,122,16,.08);border:1px solid rgba(224,122,16,.2);border-radius:14px 14px 14px 4px;padding:10px 14px}
+.aq:before{content:"Ask Midas";display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:3px}
+.run.you{border-style:dashed;border-color:rgba(224,122,16,.45)}
+.run.you a{font-weight:600;color:var(--orange)}
+@media(max-width:980px){.runs{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.runs{grid-template-columns:1fr}}
+.stack{max-width:900px;margin:44px auto 0;display:flex;flex-direction:column;gap:12px;counter-reset:l}
+.layer{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:start;border-radius:20px;padding:24px 28px;text-align:left}
+.layer:before{counter-increment:l;content:"0" counter(l);font:500 40px/1 "EB Garamond",serif;color:var(--gold)}
+.layer h3{margin:0 0 6px;font-size:20px}.layer p{margin:0 0 12px;color:var(--mute);font-size:15px}
+.layer .tg{display:flex;flex-wrap:wrap;gap:6px}.layer .tg span{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--line)}
+.layer:nth-child(2){background:rgba(255,250,240,.55)}.layer:nth-child(3){background:rgba(253,240,218,.55)}.layer:nth-child(4){background:rgba(250,228,196,.6)}
+.stack-note{font:italic 500 24px/1.3 "EB Garamond",serif;margin:26px 0 0}
+@media(max-width:560px){.layer{grid-template-columns:1fr;gap:6px;padding:22px}}
+.steps.four{grid-template-columns:repeat(4,1fr)}
+@media(max-width:980px){.steps.four{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps.four{grid-template-columns:1fr}}
+.sec{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+.sec span{border-radius:999px;padding:11px 18px;font-size:14px;font-weight:500}
+.stat,.dif,.run,.layer,.sec span{background:var(--glass);-webkit-backdrop-filter:var(--gblur);backdrop-filter:var(--gblur);border:1px solid var(--gedge);box-shadow:var(--gshadow)}
+.run.you{border:1px dashed rgba(224,122,16,.45)}
+.dif,.run{transition:opacity .7s ease,transform .25s,box-shadow .25s,background .25s}
+.dif:hover,.run:hover{transform:translateY(-3px);background:var(--glass2);box-shadow:inset 0 1px 0 #fff,0 24px 50px -26px rgba(120,78,18,.45)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){:root{--glass:rgba(255,255,255,.88);--glass2:#fff}nav{background:rgba(251,248,243,.95)}}
 </style>
 </head>
 <body>
+<div class="amb" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 <nav id="nav"><div class="wrap nav">
   <a href="#top"><img src="cfo-preview/img/logo.svg" alt="Midas"></a>
   <div class="links"><a href="#product">Product</a><a href="#who">Who it's for</a><a href="/from-tally/">From Tally</a><a href="/vs-power-bi/">vs Power BI</a><a href="#pricing">Pricing</a></div>
@@ -164,13 +243,23 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <span class="pill"><b>New</b> <span id="pillTxt">The AI CFO for growing businesses</span></span>
-  <h1 class="serif">Turn data<br><span class="gold">into gold.</span></h1>
-  <p class="sub">Midas is your AI CFO. It connects your bank, accounting and sales data, closes your books faster, shows your cash and runway every day and <em>keeps you ready for tax season</em>, with a real CFO on call when it matters.</p>
-  <div class="cta-row"><a class="btn btn-dark" href="#demo">Book a 20-min demo ↗</a><a class="btn btn-ghost" href="#product">See what it does</a></div>
-  <div class="checks"><span>Live in days, not months</span><span>Every number traced to source</span><span id="chkTax">Tax ready all year</span><span>Human CFO on call</span></div>
+  <span class="pill"><b>The AI CFO for growing businesses</b> UAE · US · UK · Europe · Australia</span>
+  <h1 class="serif">Stop chasing your numbers. <span class="gold">Let Midas run them.</span></h1>
+  <p class="sub">Midas connects to your bank, accounting and sales tools. It closes your books, watches your cash every day and flags what needs you. <em>A senior CFO is on call</em> for the decisions software shouldn't make alone.</p>
+  <div class="cta-row"><a class="btn btn-dark" href="#demo">Book a 20-min demo ↗</a><a class="btn btn-ghost" href="#run">See what Midas would run first →</a></div>
+  <div class="checks"><span>Live in days, not quarters</span><span>Every number links back to its source</span><span>Keep Xero, Zoho, QuickBooks, NetSuite or Tally</span><span id="chkTax">VAT and corporate tax tracked all year</span></div>
   <div class="shot rv"><img src="cfo-preview/img/dashboard.jpg" alt="Midas dashboard with profit and loss, balance sheet, cash flow, financial health score and the Ask Midas assistant" width="2560" height="1270"></div>
 </div></header>
+
+<section id="outcomes" style="padding-bottom:20px"><div class="wrap center">
+  <span class="eyebrow">What changes</span>
+  <h2 class="serif">Closed faster. Cash seen daily. <span class="gold">Tax never a surprise.</span></h2>
+  <div class="stats">
+    <div class="stat rv"><b>~1 day</b><span>to connect your systems</span></div>
+    <div class="stat rv"><b>0</b><span>accounting systems replaced</span></div>
+    <div class="stat rv"><b>1–3 weeks</b><span>to clean up your history and go fully live</span></div>
+  </div>
+</div></section>
 
 <section><div class="wrap center">
   <span class="eyebrow">Sound familiar?</span>
@@ -184,14 +273,28 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 </div></section>
 
 <section id="product" style="padding-top:20px"><div class="wrap">
-  <div class="center"><span class="eyebrow">One platform</span><h2 class="serif">Total <span class="gold">visibility.</span></h2><p class="lead">Everything a finance team does, run by AI and checked by people who have sat in the CFO seat.</p></div>
-  <div class="mods">
-    <div class="mod rv"><div class="ic">📒</div><h3>Close &amp; reporting</h3><p>Bookkeeping, reconciliations and a clean monthly close.</p><ul><li>P&amp;L, balance sheet and cash flow</li><li>Anomaly flags before they become problems</li><li>Management and board packs</li></ul></div>
-    <div class="mod rv"><div class="ic">💧</div><h3>Cash &amp; runway</h3><p id="cashLine">Know where every dollar is, every day.</p><ul><li>13-week cash forecast</li><li>Burn rate and runway alerts</li><li>Receivables and payables tracking</li></ul></div>
-    <div class="mod rv"><div class="ic">📈</div><h3>Forecasting &amp; scenarios</h3><p>Plan the next hire, the next market or the next raise.</p><ul><li>Budget vs actuals</li><li>What-if scenarios in plain English</li><li>Unit economics and margins</li></ul></div>
-    <div class="mod rv"><div class="ic">🧾</div><h3>Tax &amp; compliance</h3><p>Stay ahead of the tax authority instead of chasing it.</p><ul id="taxList"></ul></div>
-    <div class="mod rv"><div class="ic">🏢</div><h3>Multi-entity &amp; FX</h3><p>One view across every company and country you operate in.</p><ul><li>Consolidation and intercompany</li><li>USD, GBP, EUR, AED, AUD and more</li><li>Group and per-entity reporting</li></ul></div>
-    <div class="mod rv"><div class="ic">✨</div><h3>Ask Midas</h3><p>Your CFO in a chat box, on web or WhatsApp.</p><ul><li>"Why did margins drop in March?"</li><li>"Can we afford two more hires?"</li><li>Answers that link back to the numbers</li></ul></div>
+  <div class="center"><span class="eyebrow">What makes Midas different</span><h2 class="serif">Most finance tools show you the problem. <span class="gold">Midas fixes it.</span></h2></div>
+  <div class="diff">
+    <div class="dif rv"><div class="n">01</div><h3>It does the work, not just the dashboard.</h3><p>Midas reconciles your bank, categorises transactions, chases the gaps and closes the month. Then it tells you what changed and why. Your team reviews the work instead of doing it.</p></div>
+    <div class="dif rv"><div class="n">02</div><h3>Every number has a receipt.</h3><p>Click any figure in your P&amp;L, cash forecast or board pack to see the invoice, bank line or entry behind it. No black boxes, and no "trust me" spreadsheets.</p></div>
+    <div class="dif rv"><div class="n">03</div><h3>Built for how the Gulf does business.</h3><p>AED, USD, GBP, EUR and more in one view. UAE VAT and corporate tax tracked all year. Letters of credit, intercompany and family-office structures handled from day one. Questions answered on WhatsApp.</p></div>
+    <div class="dif rv"><div class="n">04</div><h3>Nothing gets ripped out.</h3><p>Midas sits on top of Xero, Zoho Books, QuickBooks, NetSuite, Shopify, Stripe and your banks, and works with your current accountant. Moving off Tally? We handle that too.</p></div>
+    <div class="dif rv"><div class="n">05</div><h3>A real CFO, when it matters.</h3><p>Software handles speed. A senior CFO handles judgment: board meetings, lender conversations and raising capital.</p></div>
+  </div>
+</div></section>
+
+<section id="run" style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">Start where it hurts</span><h2 class="serif">What should Midas <span class="gold">run first?</span></h2><p class="lead">Pick the job that costs you the most time each month. We'll have it running within days.</p></div>
+  <div class="runs">
+    <div class="run rv"><h3>13-week cash forecast</h3><p>Know your cash position for the next quarter, updated daily.</p><div class="aq">Can we pay the March supplier run and still keep 60 days of runway?</div></div>
+    <div class="run rv"><h3>Group consolidation</h3><p>Every entity and currency in one P&amp;L, with intercompany eliminated.</p><div class="aq">Which entity dragged group margin down last month?</div></div>
+    <div class="run rv"><h3>Profit per order, SKU and channel</h3><p>Shopify, Amazon and Stripe matched to real costs.</p><div class="aq">Which products lose money after returns and fees?</div></div>
+    <div class="run rv"><h3>Margin per route and shipment</h3><p>For logistics teams that need to know which clients actually pay.</p><div class="aq">What's our margin on the Jebel Ali–Riyadh lane?</div></div>
+    <div class="run rv"><h3>Profit per trade and LC tracker</h3><p>FX, counterparties and the cash cycle in one place.</p><div class="aq">How much cash is tied up in open LCs?</div></div>
+    <div class="run rv"><h3>Family office net worth</h3><p>Every entity, account and asset, consolidated.</p><div class="aq">What's our total liquid position across all banks today?</div></div>
+    <div class="run rv"><h3>VAT and corporate tax tracker</h3><p>Taxable profit, VAT position and deadlines, with no year-end surprises.</p><div class="aq">What's our estimated VAT payable this quarter?</div></div>
+    <div class="run rv"><h3>Board pack in a click</h3><p>Management accounts, KPIs and commentary, ready before the meeting.</p></div>
+    <div class="run you rv"><h3>Your messiest spreadsheet</h3><p>Tell us the one you dread every month.</p><a href="#demo">Show us →</a></div>
   </div>
 </div></section>
 
@@ -203,7 +306,7 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
     <div class="mod rv"><div class="ic">🛒</div><h3>E-commerce</h3><p>See true profit per order, product and channel.</p><ul><li>Shopify, Amazon and Stripe synced</li><li>Contribution margin after ads and fees</li><li>Inventory and cash planning</li></ul></div>
     <div class="mod rv"><div class="ic">🚚</div><h3>Logistics &amp; supply chain</h3><p>Know your margin on every route, client and shipment.</p><ul><li>Cost per lane, trip and customer</li><li>Receivables and fuel cost tracking</li><li>Working capital and fleet planning</li></ul></div>
     <div class="mod rv"><div class="ic">⚖️</div><h3>Trading companies</h3><p>Margin and cash visibility on every deal.</p><ul><li>Profit per trade and counterparty</li><li>FX, letters of credit and trade finance</li><li>Cash cycle from purchase to payment</li></ul></div>
-    <div class="mod rv" style="background:var(--soft)"><div class="ic" style="background:#fff">💬</div><h3>Not sure if it fits?</h3><p>Tell us how your business runs and we'll show you Midas on your own numbers.</p><p style="margin:18px 0 0"><a class="btn btn-dark" href="#demo">Talk to a CFO ↗</a></p></div>
+    <div class="mod alt rv"><div class="ic">💬</div><h3>Not sure if it fits?</h3><p>Tell us how your business runs and we'll show you Midas on your own numbers.</p><p style="margin:18px 0 0"><a class="btn btn-dark" href="#demo">Talk to a CFO ↗</a></p></div>
   </div>
   <div class="xlinks">
     <a class="xl rv" href="/from-tally/"><span class="eyebrow">Still on Tally?</span><h3 class="serif">From Tally and spreadsheets to total clarity</h3><p>See how Midas connects your disconnected data into one live view.</p><b>See the transformation →</b></a>
@@ -228,18 +331,31 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
 </div></div></section>
 
 <section id="how" style="padding-top:20px"><div class="wrap">
-  <div class="center"><span class="eyebrow">How it works</span><h2 class="serif">Live in <span class="gold">days.</span></h2></div>
-  <div class="steps">
-    <div class="step rv"><h3>Connect</h3><p>Link your accounting software, banks and sales tools. Read-only access, nothing to install.</p></div>
-    <div class="step rv"><h3>Clean up</h3><p>Midas maps your chart of accounts, catches errors and fixes the history so the numbers tie out.</p></div>
-    <div class="step rv"><h3>Run</h3><p>Daily cash, a monthly close, tax tracking and board packs, with your CFO reviewing what matters.</p></div>
+  <div class="center"><span class="eyebrow">How it works</span><h2 class="serif">One engine under <span class="gold">every number.</span></h2>
+  <div class="stack">
+    <div class="layer rv"><div><h3>Connect</h3><p>Read-only links to your banks, accounting system, e-commerce and CRM. Most companies are connected in about a day.</p><div class="tg"><span>Banks</span><span>Accounting</span><span>E-commerce</span><span>CRM</span></div></div></div>
+    <div class="layer rv"><div><h3>One clean ledger</h3><p>Midas maps every entity, currency and chart of accounts into a single source of truth. Historical clean-up usually takes 1–3 weeks.</p><div class="tg"><span>Entities</span><span>Currencies</span><span>Chart of accounts</span></div></div></div>
+    <div class="layer rv"><div><h3>Always-on finance agents</h3><p>Reconciliation, anomaly detection, cash watch and tax watch run every day, not just at month-end.</p><div class="tg"><span>Reconciliation</span><span>Anomaly detection</span><span>Cash watch</span><span>Tax watch</span></div></div></div>
+    <div class="layer rv"><div><h3>Your CFO workspace</h3><p>Dashboards, board packs and Ask Midas on web and WhatsApp. Every change is logged, and people approve anything that matters.</p><div class="tg"><span>Dashboards</span><span>Board packs</span><span>Ask Midas</span><span>Audit log</span></div></div></div>
   </div>
+  <p class="stack-note">The AI does the busywork. <span class="gold">Your people sign off on the numbers.</span></p></div>
   <div class="center" style="margin-top:56px"><span class="eyebrow">Connects to the tools you already use</span>
     <div class="chips" id="chips"><span class="chip">Xero</span><span class="chip">QuickBooks</span><span class="chip">Zoho Books</span><span class="chip">NetSuite</span><span class="chip">Shopify</span><span class="chip">Stripe</span><span class="chip">Amazon</span><span class="chip">HubSpot</span><span class="chip">Google Sheets</span><span class="chip">Your banks</span></div></div>
 </div></section>
 
-<section style="padding-top:20px"><div class="wrap human">
-  <div><span class="eyebrow">AI plus people</span><h2 class="serif">Software for speed. <span class="gold">A CFO for judgment.</span></h2><p class="lead">AI does the heavy lifting. When you need a decision, a negotiation or a raise, our finance team steps in. We have structured and raised debt and equity for companies across the Gulf, Asia, Africa and the US.</p><p style="margin-top:24px"><a class="btn btn-dark" href="#demo">Talk to a CFO ↗</a></p></div>
+<section id="pilot" style="padding-top:20px"><div class="wrap">
+  <div class="center"><span class="eyebrow">See it working before you commit</span><h2 class="serif">See your own numbers <span class="gold">before you sign.</span></h2></div>
+  <div class="steps four">
+    <div class="step rv"><h3>20-minute call</h3><p>Tell us how finance runs today and where it hurts.</p></div>
+    <div class="step rv"><h3>Finance health check</h3><p>We review your setup and show you what Midas would automate, what you'd save and how long it takes. We agree the ROI before any contract.</p></div>
+    <div class="step rv"><h3>Your numbers, live</h3><p>Connect read-only and see your own cash, P&amp;L and tax position in Midas within days.</p></div>
+    <div class="step rv"><h3>Run and refine</h3><p>Go live, then get a monthly review call to keep improving.</p></div>
+  </div>
+  <div class="center" style="margin-top:32px"><a class="btn btn-orange" href="#demo">Get my free finance health check</a></div>
+</div></section>
+
+<section id="team" style="padding-top:20px"><div class="wrap human">
+  <div><span class="eyebrow">The people behind Midas</span><h2 class="serif">Built by people who've <span class="gold">sat in the CFO seat.</span></h2><p class="lead">Our team has run finance for growing companies and has structured and raised debt and equity across the Gulf, Asia, Africa and the US. We built Midas because we were tired of watching good businesses make big decisions on stale spreadsheets.</p><p style="margin-top:24px"><a class="btn btn-dark" href="#demo">Talk to a CFO ↗</a></p></div>
   <div class="card rv">
     <div><span>Monthly close</span><b>AI + reviewed</b></div>
     <div><span>Cash and runway</span><b>Daily</b></div>
@@ -268,9 +384,14 @@ footer{padding:48px 0 60px;color:var(--mute);font-size:14px}
   <details><summary>Can Midas help us raise capital?</summary><p>Yes. On the Fractional CFO plan our team prepares the model and materials and introduces you to debt and equity investors.</p></details>
 </div></section>
 
+<section id="security" style="padding:20px 0 40px"><div class="wrap center">
+  <span class="eyebrow">Trust and security</span>
+  <div class="sec"><span>🔒 Read-only connections, so Midas can't move your money</span><span>🛡️ Encrypted in transit and at rest</span><span>👥 Access control for each team member</span><span>🧾 A full audit trail of every change</span></div>
+</div></section>
+
 <section id="demo" style="padding-top:20px"><div class="wrap"><div class="final rv">
   <span class="eyebrow">Book a demo</span>
-  <h2 class="serif">See your numbers <span class="gold">turn to gold.</span></h2>
+  <h2 class="serif">Spend less time finding the numbers <span class="gold">and more time using them.</span></h2>
   <p class="lead" style="margin:0 auto">Leave your details and we'll set up a 20-minute demo on your own data.</p>
   <form class="demo" id="demoForm">
     <input name="name" placeholder="Your name" required>
@@ -324,11 +445,8 @@ function setRegion(r){R=r;const d=REG[r];try{localStorage.setItem('midasRegion',
  document.getElementById('regBtn').innerHTML=d.f+' '+d.n;
  document.getElementById('regMenu').innerHTML=ORDER.map(k=>`<button data-r="${k}" class="${k===r?'on':''}">${REG[k].f} ${REG[k].n}</button>`).join('');
  document.getElementById('tabs').innerHTML=ORDER.map(k=>`<button class="tab ${k===r?'on':''}" data-r="${k}">${REG[k].f} ${REG[k].n}</button>`).join('');
- document.getElementById('pillTxt').textContent='The AI CFO for '+d.full;
  document.getElementById('chkTax').innerHTML=d.chk;
  document.getElementById('hookQ').textContent=d.hq.replace(/&amp;/g,'&');document.getElementById('hookP').textContent=d.hp;
- document.getElementById('cashLine').textContent='Know where every '+d.cur+' is, every day.';
- document.getElementById('taxList').innerHTML=d.tax.map(x=>'<li>'+x+'</li>').join('');
  document.getElementById('planTax').textContent=d.plan;
  document.getElementById('mkFlag').textContent=d.f;document.getElementById('mkName').textContent=d.full.replace(/^the /,'The ');
  document.getElementById('mkFor').textContent=d.fr;document.getElementById('mkList').innerHTML=d.li.map(x=>'<li>'+x+'</li>').join('');
