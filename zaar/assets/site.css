@@ -453,3 +453,5 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .person span{display:block;margin-top:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
 @media(max-width:760px){.crew{grid-template-columns:1fr}}
 .person p{margin-top:14px;color:var(--stone);font-size:15px;line-height:1.65;text-align:center}
+.hero.sky .tag{font-size:clamp(14px,1.6vw,22px);letter-spacing:.26em;margin-top:32px;font-weight:500}
+.hero.sky .mark{width:clamp(140px,15vw,220px)}
