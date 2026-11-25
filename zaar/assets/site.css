@@ -349,3 +349,13 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .places span:not(:last-child)::after{content:"·";margin-left:34px;color:var(--brass)}
 .team.t3{grid-template-columns:repeat(3,1fr)}
 @media (max-width:760px){.team.t3{grid-template-columns:1fr}}
+
+/* v8: sliding hero */
+.hero .slides{position:absolute;inset:0;overflow:hidden}
+.hero .slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:translateX(6%) scale(1.06);transition:opacity 1.2s ease,transform 6s ease}
+.hero .slide.on{opacity:1;transform:translateX(0) scale(1)}
+.hero .dots{position:absolute;bottom:28px;left:0;right:0;z-index:3;display:flex;gap:8px;justify-content:center}
+.hero .dots i{width:22px;height:2px;background:rgba(237,231,220,.35);transition:background .4s}
+.hero .dots i.on{background:var(--gold)}
+@media (prefers-reduced-motion:reduce){.hero .slide{transition:none;transform:none}}
+.svc p{margin-top:4px}
