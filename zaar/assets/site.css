@@ -376,3 +376,15 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 #maptip b{display:block;font-family:var(--serif);font-weight:400;font-size:17px}
 #map .places{margin-top:30px}
 #map .places span{font-size:clamp(17px,1.7vw,22px)}
+/* one floating strip: clients + venues, bigger */
+.set img{height:calc(58px * var(--h,1));opacity:.62}
+.set img.cl{filter:grayscale(1) contrast(1.1);mix-blend-mode:multiply;opacity:.9}
+.set .wm{font-family:var(--serif);font-weight:400;font-size:38px;letter-spacing:.16em;opacity:.85}
+@media(max-width:760px){.set img{height:calc(40px * var(--h,1))}.set .wm{font-size:26px}}
+.marquee .track{background:var(--paper)}
+/* light map, bigger */
+.mapbox{background:#fff;border:1px solid var(--hair);width:min(1360px,calc(100vw - 32px));margin-left:calc(50% - min(680px,50vw - 16px))}
+#worldmap .land{fill:#E9E4DB;stroke:#fff;stroke-width:.6}
+#worldmap .dot{fill:var(--ink)}
+#worldmap .halo{fill:var(--ink);opacity:.18}
+#maptip{background:var(--ink);color:var(--ivory)}
