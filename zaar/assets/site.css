@@ -488,3 +488,18 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .g-show{stroke:var(--brass);stroke-width:1.5;stroke-dasharray:4 4}
 .gnote{margin-top:18px;color:var(--stone);font-size:15px}
 .sico{width:34px;height:34px;fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round;display:block;margin-top:14px}
+
+/* About: statement + photo timeline */
+.statement .big{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.4vw,50px);line-height:1.22;max-width:30ch}
+.statement .big em{font-style:italic;color:var(--brass)}
+.tlwrap{overflow-x:auto;margin-top:48px;padding:0 var(--gutter) 30px;scroll-snap-type:x mandatory}
+.tline{display:flex;gap:28px;width:max-content;position:relative;padding-top:58px}
+.tline:before{content:"";position:absolute;left:0;right:0;top:40px;height:1px;background:var(--hair)}
+.tl{scroll-snap-align:start;position:relative;width:250px}
+.tl .yr{position:absolute;top:-58px;left:0;font-family:var(--serif);font-style:italic;font-size:28px}
+.tl:before{content:"";position:absolute;top:-22px;left:4px;width:9px;height:9px;border-radius:50%;background:var(--brass)}
+.tl .card{background:#fff;padding:10px 10px 16px;box-shadow:0 6px 24px rgba(20,18,15,.08);transform:rotate(-1deg)}
+.tl:nth-child(even) .card{transform:rotate(1.2deg);margin-top:26px}
+.tl img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.tl p{margin-top:12px;font-size:14px;line-height:1.45;color:var(--ink);font-weight:500}
+.tlwrap{padding-left:max(var(--gutter),calc((100vw - var(--max))/2 + var(--gutter)))}
