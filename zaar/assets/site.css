@@ -382,9 +382,15 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .set .wm{font-family:var(--serif);font-weight:400;font-size:38px;letter-spacing:.16em;opacity:.85}
 @media(max-width:760px){.set img{height:calc(40px * var(--h,1))}.set .wm{font-size:26px}}
 .marquee .track{background:var(--paper)}
-/* light map, bigger */
-.mapbox{background:#fff;border:1px solid var(--hair);width:min(1360px,calc(100vw - 32px));margin-left:calc(50% - min(680px,50vw - 16px))}
-#worldmap .land{fill:#E9E4DB;stroke:#fff;stroke-width:.6}
-#worldmap .dot{fill:var(--ink)}
-#worldmap .halo{fill:var(--ink);opacity:.18}
-#maptip{background:var(--ink);color:var(--ivory)}
+/* destinations map, full bleed: white land on light grey sea */
+#map{padding-bottom:0}
+.dest-title{font-family:var(--serif);font-weight:400;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(30px,3.4vw,46px)}
+.mapbox{position:relative;width:100vw;margin-left:calc(50% - 50vw);margin-top:44px;background:#EBEBEB;border:0;border-radius:0;overflow:hidden}
+#worldmap .land{fill:#fff;stroke:none}
+#worldmap .dot{fill:#111;stroke:none}
+#worldmap .halo{display:none}
+#worldmap .plabel{font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:11px;letter-spacing:1.6px;fill:#111}
+#worldmap .pin{cursor:pointer}
+#maptip{background:#111;color:#fff}
+#maptip b{color:#fff}
+@media(max-width:760px){#worldmap .plabel{font-size:15px}}
