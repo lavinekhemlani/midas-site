@@ -436,3 +436,19 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .hero.sky .slide{transform:scale(1.04)}.hero.sky .slide.on{transform:scale(1)}
 @media(min-width:700px){.hero.sky .tag{white-space:nowrap}}
 .results b .ph{display:inline;font-size:inherit;letter-spacing:0;text-transform:none;color:inherit;margin:0}
+
+/* About page, Sky style */
+.about-banner{position:relative;padding:0;height:min(48vh,460px);margin-top:72px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.about-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.78)}
+.about-banner h1{position:relative;color:#fff;font-weight:300;font-size:clamp(40px,5.6vw,80px);text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.about-banner h1 em{font-style:italic}
+.wrap.narrow{max-width:720px}
+.caps{font-family:var(--serif);font-weight:400;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(28px,3vw,40px)}
+.about-copy p,.wrap.narrow p{margin-top:24px;color:var(--stone);line-height:1.75;font-size:17px;letter-spacing:.01em}
+.crew{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,64px);margin-top:56px}
+.person{text-align:center}
+.person img,.person .ph-img{width:100%;aspect-ratio:1/1;object-fit:cover;filter:grayscale(1)}
+.person .ph-img{display:flex;align-items:center;justify-content:center;background:var(--night);color:var(--gold);font-family:var(--serif);font-size:48px}
+.person h3{margin-top:20px;font-family:var(--serif);font-weight:400;text-transform:uppercase;letter-spacing:.08em;font-size:20px}
+.person span{display:block;margin-top:6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+@media(max-width:760px){.crew{grid-template-columns:1fr}}
