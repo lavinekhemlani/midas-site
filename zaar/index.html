@@ -19,9 +19,12 @@
 <nav id="nav"><div class="wrap">
   <a class="brand" href="index.html">Z&sup2; Productions</a>
   <div class="links">
-    <a href="index.html#services">Services</a>
+    <a href="index.html#services">Events</a>
+    <a href="index.html#services">AV &amp; Production</a>
+    <a href="index.html#services">Fabrication</a>
+    <a href="index.html#services">Artists</a>
     <a href="index.html#work">Case studies</a>
-    <a href="story.html">About</a>
+    <a href="index.html#map">Where</a>
     <a class="enq" href="index.html#enquire">Plan your event</a>
   </div>
 </div></nav>
@@ -63,8 +66,16 @@
 
 <section class="paper" id="work">
   <div class="wrap">
-    <div class="center"><h2 class="rv">Selected <em>work.</em></h2></div>
-    <div class="cases"><div class="case cs rv"><div class="img tile"><span>Images on request</span></div><span class="label">Corporate · Dubai</span><h3>Standard Chartered Diwali Ball</h3><p>Full production, artwork and live artists.</p></div><div class="case cs rv"><div class="img"><img class="grade" src="assets/img/rooftop.webp" alt="" loading="lazy"></div><span class="label">Luxury · Dubai Marina</span><h3>A rooftop stage above the Marina</h3><p>Truss, LED, lighting and sound.</p></div><div class="case cs rv"><div class="img"><img class="grade" src="assets/img/f1-wedding.webp" alt="" loading="lazy"></div><span class="label">Celebration · Taj Dubai</span><h3>From the Fast Lane to Forever</h3><p>An F1 night, themed end to end.</p></div></div>
+    <div class="center"><div class="label rv">Case studies</div><h2 class="rv" style="margin-top:18px">Nights we&rsquo;ve <em>produced.</em></h2></div>
+    <div class="cases"><div class="case cs rv"><div class="img tile"><span>Images on request</span></div><span class="label">Corporate · Dubai</span><h3>Standard Chartered Diwali Ball</h3><p>Arch, floral artwork, stage, AV and live artists.</p></div><div class="case cs rv"><div class="img tile"><span>Images on request</span></div><span class="label">Exhibition · Dec 2026</span><h3>Immersive LED stand, Dubai economic zone</h3><p>Every LED surface and the tech inside.</p></div><div class="case cs rv"><div class="img"><img class="grade" src="assets/img/stage-show.webp" alt="" loading="lazy"></div><span class="label">Leadership networks</span><h3>YPO, EO and OPM evenings</h3><p>Rooms built for founders and CEOs.</p></div><div class="case cs rv"><div class="img"><img class="grade" src="assets/img/rooftop.webp" alt="" loading="lazy"></div><span class="label">Luxury · Dubai Marina</span><h3>A rooftop stage above the Marina</h3><p>Truss, LED, lighting and sound.</p></div><div class="case cs rv"><div class="img"><img class="grade" src="assets/img/f1-wedding.webp" alt="" loading="lazy"></div><span class="label">Celebration · Taj Dubai</span><h3>From the Fast Lane to Forever</h3><p>An F1 night, themed end to end.</p></div><div class="case cs rv"><div class="img"><img class="grade" src="assets/img/baraat-delano.webp" alt="" loading="lazy"></div><span class="label">Weddings · UAE &amp; abroad</span><h3>Delano to Phu Quoc</h3><p>Baraats and receptions in five countries.</p></div></div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="wrap">
+    <div class="center"><div class="label rv">Where we&rsquo;ve worked</div><h2 class="rv" style="margin-top:18px">Thirteen countries. <em>One standard.</em></h2></div>
+    <div class="mapbox rv"><svg id="worldmap" viewBox="0 0 960 470" role="img" aria-label="Map of Z² Productions event locations"></svg><div id="maptip" hidden></div></div>
+    <div class="places rv"><span>Dubai</span><span>Abu Dhabi</span><span>Mumbai</span><span>Delhi</span><span>Colombo</span><span>Phu Quoc</span><span>Bangkok</span><span>Jakarta</span><span>Cannes</span><span>Antibes</span><span>Italy</span><span>Mykonos</span><span>Montenegro</span><span>Türkiye</span></div>
   </div>
 </section>
 
@@ -136,6 +147,23 @@ document.querySelectorAll('video').forEach(v => new IntersectionObserver(([e]) =
 (function(){const sl=[...document.querySelectorAll('.hero .slide')],d=[...document.querySelectorAll('.hero .dots i')];let i=0;if(!sl.length)return;d[0]&&d[0].classList.add('on');
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 setInterval(()=>{sl[i].classList.remove('on');d[i]&&d[i].classList.remove('on');i=(i+1)%sl.length;sl[i].classList.add('on');d[i]&&d[i].classList.add('on');},4500);})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+(function(){const PINS=[["Dubai", "UAE", 25.2, 55.27, "Standard Chartered Diwali Ball, Taj, St. Regis, Delano, HIKARI, Opal Room DIFC, J1, Slate, Atrangi"], ["Abu Dhabi", "UAE", 24.45, 54.38, "Wedding baraat, The Ritz-Carlton"], ["Mumbai", "India", 19.08, 72.88, "Ocho"], ["Delhi", "India", 28.61, 77.21, "International show, Dec 2026"], ["Colombo", "Sri Lanka", 6.93, 79.86, "Destination wedding"], ["Phu Quoc", "Vietnam", 10.23, 103.96, "Destination wedding baraat"], ["Bangkok", "Thailand", 13.76, 100.5, "Private celebrations"], ["Jakarta", "Indonesia", -6.21, 106.85, "International show, Dec 2026"], ["Cannes", "France", 43.55, 7.02, "Wedding"], ["Antibes", "France", 43.58, 7.12, "Private dinner party"], ["Italy", "Italy", 41.9, 12.5, "Bar mitzvah celebration"], ["Mykonos", "Greece", 37.45, 25.33, "Private celebration"], ["Montenegro", "Montenegro", 42.43, 18.77, "International show, 2027"], ["T\u00fcrkiye", "T\u00fcrkiye", 41.01, 28.98, "International show, 2027"]];
+const svg=d3.select('#worldmap'),tip=document.getElementById('maptip');if(svg.empty())return;
+const proj=d3.geoNaturalEarth1().center([45,22]).scale(330).translate([480,235]),path=d3.geoPath(proj);
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(r=>r.json()).then(w=>{
+ const land=topojson.feature(w,w.objects.countries);
+ svg.append('g').selectAll('path').data(land.features).join('path').attr('d',path).attr('class','land');
+ const g=svg.append('g');
+ PINS.forEach(p=>{const [x,y]=proj([p[3],p[2]]);
+  const c=g.append('g').attr('class','pin').attr('transform',`translate(${x},${y})`);
+  c.append('circle').attr('r',11).attr('class','halo');c.append('circle').attr('r',4.5).attr('class','dot');
+  c.on('mouseenter',e=>{tip.hidden=false;tip.innerHTML=`<b>${p[0]}</b><span>${p[4]}</span>`;const b=document.querySelector('.mapbox').getBoundingClientRect();tip.style.left=(e.clientX-b.left+12)+'px';tip.style.top=(e.clientY-b.top-10)+'px'}).on('mouseleave',()=>tip.hidden=true);
+ });
+}).catch(()=>{});})();
 </script>
 </body>
 </html>

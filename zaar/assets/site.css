@@ -359,3 +359,20 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .hero .dots i.on{background:var(--gold)}
 @media (prefers-reduced-motion:reduce){.hero .slide{transition:none;transform:none}}
 .svc p{margin-top:4px}
+
+/* v9 map + nav */
+#nav .links{gap:22px}
+#nav .links a{font-size:10.5px}
+@media (max-width:1100px){#nav .links a:not(.enq){display:none}}
+.mapbox{position:relative;margin-top:40px;background:var(--night);border-radius:2px;overflow:hidden}
+#worldmap{display:block;width:100%;height:auto}
+#worldmap .land{fill:#2a2723;stroke:#14120f;stroke-width:.5}
+#worldmap .dot{fill:var(--gold)}
+#worldmap .halo{fill:var(--gold);opacity:.25;animation:pulse 2.6s ease-out infinite}
+#worldmap .pin{cursor:pointer}
+@keyframes pulse{0%{r:5;opacity:.45}100%{r:16;opacity:0}}
+@media (prefers-reduced-motion:reduce){#worldmap .halo{animation:none}}
+#maptip{position:absolute;background:var(--ivory);color:var(--ink);padding:10px 14px;font-size:13px;line-height:1.4;max-width:260px;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#maptip b{display:block;font-family:var(--serif);font-weight:400;font-size:17px}
+#map .places{margin-top:30px}
+#map .places span{font-size:clamp(17px,1.7vw,22px)}
