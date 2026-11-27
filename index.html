@@ -192,11 +192,21 @@ form.demo input{background:rgba(255,255,255,.65)}form.demo input:focus{outline:n
 /* ===== v2 content sections ===== */
 h1{font-size:clamp(42px,6.6vw,84px);line-height:1.02;max-width:1000px;margin-left:auto;margin-right:auto}
 .pill{flex-wrap:wrap;justify-content:center;column-gap:8px;row-gap:0}.pill b{white-space:nowrap}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.stat{border-radius:22px;padding:30px 24px;text-align:center}
+/* ===== four-roles repositioning: phase 1 ===== */
+:root{--orange-ink:#A8520A}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--orange-ink);outline-offset:3px;border-radius:8px}
+.tcwrap{margin:-22px 0 40px}
+time-compare:not(:defined){display:inline-block;min-height:46px;min-width:320px}
+.claim{margin:12px 0 0;font-size:13px;color:var(--mute)}
+.claim a,.stat a.note{color:var(--orange-ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.stat a.note{display:inline-block;margin-top:6px;font-size:13px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:40px}
+.stats .stat{padding:26px 16px}
+.stats .stat b{font-size:clamp(34px,3.4vw,44px);white-space:nowrap}
+@media(max-width:980px){.stats{grid-template-columns:repeat(6,1fr)}.stats .stat{grid-column:span 2}.stats .stat:nth-child(n+4){grid-column:span 3}}
+@media(max-width:560px){.stats{grid-template-columns:1fr 1fr}.stats .stat,.stats .stat:nth-child(n+4){grid-column:span 1}.stats .stat:first-child{grid-column:span 2}}.stat{border-radius:22px;padding:30px 24px;text-align:center}
 .stat b{display:block;font:500 clamp(48px,6vw,68px)/1 "EB Garamond",serif;background:linear-gradient(90deg,var(--gold),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px}
 .stat span{color:var(--mute);font-size:15px}
-@media(max-width:760px){.stats{grid-template-columns:1fr}}
 .diff{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
 .dif{grid-column:span 2;border-radius:22px;padding:30px}
 .dif:nth-child(-n+2){grid-column:span 3}
@@ -243,11 +253,13 @@ h1{font-size:clamp(42px,6.6vw,84px);line-height:1.02;max-width:1000px;margin-lef
 </div></nav>
 
 <header class="hero" id="top"><div class="wrap">
-  <span class="pill"><b>The AI CFO for growing businesses</b> UAE · US · UK · Europe · Australia</span>
-  <h1 class="serif">Stop chasing your numbers. <span class="gold">Let Midas run them.</span></h1>
-  <p class="sub">Midas closes your books, watches your cash daily and flags what needs you, with <em>a senior CFO on call.</em></p>
-  <div class="cta-row"><a class="btn btn-dark" href="#demo">Book a 20-min demo ↗</a><a class="btn btn-ghost" href="#run">See what Midas would run first →</a></div>
-  <div class="checks"><span>Live in days, not quarters</span><span>Every number links back to its source</span><span id="chkTax">VAT and corporate tax tracked all year</span></div>
+  <span class="pill">AI CFO for growing and multi-entity businesses</span>
+  <h1 class="serif">Four finance roles. Seven days of work. <span class="gold">Two minutes.</span></h1>
+  <p class="sub">Midas does the work of your accountant, analyst, IT lead and CFO, from closing the books to the board pack, on top of the systems you already use. <em>Every number links back to its source.</em></p>
+  <div class="cta-row"><a class="btn btn-dark" href="#demo">Book a demo ↗</a><a class="btn btn-ghost" href="/benchmark#run">See a 2-minute run →</a></div>
+  <div class="checks"><span>Live in about 1 day</span><span>Every figure source-linked</span><span id="chkTax">UAE VAT and corporate tax tracked all year</span></div>
+  <div class="tcwrap"><time-compare before="4 people · ~7 working days" after="~2 minutes"></time-compare>
+  <p class="claim">In our internal benchmark on <span class="todo">{{TODO: task definition}}</span>. <a href="/benchmark">See the benchmark →</a></p></div>
   <div class="shot rv"><img src="cfo-preview/img/dashboard.jpg" alt="Midas dashboard with profit and loss, balance sheet, cash flow, financial health score and the Ask Midas assistant" width="2560" height="1270"></div>
 </div></header>
 
@@ -255,6 +267,8 @@ h1{font-size:clamp(42px,6.6vw,84px);line-height:1.02;max-width:1000px;margin-lef
   <span class="eyebrow">What changes</span>
   <h2 class="serif">Closed faster. Cash seen daily. <span class="gold">Tax never a surprise.</span></h2>
   <div class="stats">
+    <div class="stat rv"><b>4</b><span>finance roles covered</span></div>
+    <div class="stat rv"><b>~2 min</b><span>vs ~7 days for a typical team<br><a class="note" href="/benchmark">per benchmark →</a></span></div>
     <div class="stat rv"><b>~1 day</b><span>to connect your systems</span></div>
     <div class="stat rv"><b>0</b><span>accounting systems replaced</span></div>
     <div class="stat rv"><b>1–3 weeks</b><span>to clean up your history and go fully live</span></div>
@@ -408,10 +422,11 @@ h1{font-size:clamp(42px,6.6vw,84px);line-height:1.02;max-width:1000px;margin-lef
   <div>© 2026 Midas</div>
 </div></footer>
 
+<script src="assets/midas.js"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister()));if(window.caches)caches.keys().then(ks=>ks.forEach(k=>caches.delete(k)))}
 
 const REG={
- uae:{f:'🇦🇪',n:'UAE',full:'the UAE',cur:'dirham',chk:'UAE corporate tax &amp; VAT ready',hq:'"Corporate tax is 9%. Are we ready to file?"',hp:'Taxable profit, VAT positions and FTA deadlines tracked all year, not in a panic.',
+ uae:{f:'🇦🇪',n:'UAE',full:'the UAE',cur:'dirham',chk:'UAE VAT and corporate tax tracked all year',hq:'"Corporate tax is 9%. Are we ready to file?"',hp:'Taxable profit, VAT positions and FTA deadlines tracked all year, not in a panic.',
   tax:['UAE corporate tax tracking','VAT returns and FTA deadlines','E-invoicing readiness'],plan:'UAE corporate tax and VAT tracking',
   fr:'For founders and SMEs on the mainland and in the free zones.',
   li:['Corporate tax: taxable profit tracked against the 9% rate and AED 375,000 threshold','VAT returns prepared from your books, FTA deadlines tracked','E-invoicing readiness as the new rules phase in','Free zone and mainland entities consolidated in one view','Audit-ready books for banks, investors and licensing','AED, USD and multi-currency reporting'],
