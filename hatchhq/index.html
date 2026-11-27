@@ -371,7 +371,7 @@ async function loadStatic() {
     $('lock-p').textContent = 'Dubai commercial units for the family office. The live board unlocks with the passphrase once it is set up.';
     $('unlock').disabled = true; $('pw').disabled = true; $('pw').placeholder = 'Passphrase not set up yet';
     const e = await fetch('examples.json', { cache: 'no-store' });
-    if (e.ok) { const ex = await e.json(); $('see-ex').classList.remove('hide'); $('see-ex').onclick = () => { $('lock').classList.add('hide'); render(ex); }; }
+    if (e.ok) { const ex = await e.json(); $('see-ex').classList.remove('hide'); $('see-ex').onclick = () => { $('lock').classList.add('hide'); render(ex); }; if (location.hash === '#examples') return render(ex); }
     return lock();
   }
   ENV = await r.json();
