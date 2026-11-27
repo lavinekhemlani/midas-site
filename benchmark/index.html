@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!-- noindex until real benchmark data replaces the placeholders. Remove this tag and add the page to sitemap.xml then. -->
 <meta name="robots" content="noindex">
-<title>Midas benchmark: how "7 days to 2 minutes" is measured</title>
+<title>Midas benchmark: how "7 days to 2 minutes" is estimated</title>
 <meta name="description" content="The method, timings and caveats behind the Midas benchmark: the work of four finance roles compared with one Midas run.">
 <link rel="canonical" href="https://midascfo.com/benchmark/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,26 +29,24 @@
 <main id="main">
 <header class="hero"><div class="wrap">
   <span class="pill">Benchmark</span>
-  <h1 class="serif">How "7 days to 2 minutes" <span class="gold">is measured.</span></h1>
+  <h1 class="serif">How "7 days to 2 minutes" <span class="gold">is estimated.</span></h1>
   <p class="sub">The same month-end task, done once by a four-person finance team and once by Midas. This page sets out what was measured, how, and what the result does not include.</p>
-  <p class="notice"><b>Draft page.</b> The benchmark data has not been published yet. Every highlighted <span class="todo">{{TODO}}</span> below is waiting for real figures, and this page is hidden from search engines until they are in.</p>
+  <p class="notice" style="background:rgba(255,255,255,.6);border:1px solid rgba(190,145,80,.3);color:#6B6359"><b>This is an estimate, not an audited benchmark.</b> The figures below are our estimates for a typical multi-entity month-end. We measure the real numbers on your own data in a pilot.</p>
 </div></header>
 
 <section style="padding-top:30px"><div class="wrap center">
   <span class="eyebrow">Summary</span>
   <h2 class="serif">The headline <span class="gold">result.</span></h2>
   <p style="margin:22px 0 0"><time-compare before="4 people · ~7 working days" after="~2 minutes"></time-compare></p>
-  <p class="lead" style="margin-top:18px">Task: <span class="todo">{{TODO: plain-language task definition, e.g. month-end close to board pack for N entities}}</span>. Midas time excludes your own review, which comes on top.</p>
+  <p class="lead" style="margin-top:18px">Task: a monthly close through to the board pack for a multi-entity business. Midas time excludes your own review, which comes on top.</p>
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap prose">
-  <div class="center"><span class="eyebrow">Method</span><h2 class="serif">What was <span class="gold">measured.</span></h2></div>
+  <div class="center"><span class="eyebrow">Method</span><h2 class="serif">How we <span class="gold">estimate it.</span></h2></div>
   <ul>
-    <li><b>Dataset:</b> <span class="todo">{{TODO: entities, stores, transactions, period}}</span></li>
-    <li><b>What the human team did:</b> <span class="todo">{{TODO: steps per role}}</span></li>
-    <li><b>Who timed it:</b> <span class="todo">{{TODO: who, and how}}</span></li>
-    <li><b>What Midas did:</b> <span class="todo">{{TODO: the run, from which starting state}}</span></li>
-    <li><b>What "done" means:</b> <span class="todo">{{TODO: the deliverable both sides had to produce}}</span></li>
+    <li><b>The human side:</b> typical time for each of the four roles to do its part of a month-end by hand, including the hand-offs between them.</li>
+    <li><b>The Midas side:</b> one run, from connected systems to a drafted close and board pack.</li>
+    <li><b>What "done" means:</b> reconciled books, variance analysis, a cash forecast and a board pack ready for review.</li>
   </ul>
 </div></section>
 
@@ -56,25 +54,15 @@
   <div class="center"><span class="eyebrow">Results</span><h2 class="serif">Task by <span class="gold">task.</span></h2></div>
   <div class="tblwrap"><table class="tbl">
     <caption class="skip">Benchmark results by role</caption>
-    <thead><tr><th scope="col">Role and task</th><th scope="col">Human time</th><th scope="col">Midas time</th><th scope="col">Accuracy (if measured)</th></tr></thead>
+    <thead><tr><th scope="col">Role and task</th><th scope="col">Human time</th><th scope="col">Midas time</th></tr></thead>
     <tbody>
-      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">Chartered Accountant: reconciliations, accruals, VAT workings, close</th><td><span class="todo">{{TODO: ~3 days}}</span></td><td><span class="todo">{{TODO}}</span></td><td><span class="todo">{{TODO}}</span></td></tr>
-      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">Analyst: variance analysis, margins, cash forecast</th><td><span class="todo">{{TODO: ~2 days}}</span></td><td><span class="todo">{{TODO}}</span></td><td><span class="todo">{{TODO}}</span></td></tr>
-      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">IT / data: exports, mappings, spreadsheets</th><td><span class="todo">{{TODO: ~1.5 days}}</span></td><td><span class="todo">{{TODO}}</span></td><td><span class="todo">{{TODO}}</span></td></tr>
-      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">CFO: review, commentary, board pack</th><td><span class="todo">{{TODO: ~0.5 day}}</span></td><td><span class="todo">{{TODO}}</span></td><td><span class="todo">{{TODO}}</span></td></tr>
-      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)"><b>Total</b></th><td><b><span class="todo">{{TODO: ~7 working days}}</span></b></td><td><b><span class="todo">{{TODO: ~2 minutes}}</span></b></td><td><span class="todo">{{TODO}}</span></td></tr>
+      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">Chartered Accountant: reconciliations, accruals, VAT workings, close</th><td>~3 days</td><td>Part of one run</td></tr>
+      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">Analyst: variance analysis, margins, cash forecast</th><td>~2 days</td><td>Part of one run</td></tr>
+      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">IT / data: exports, mappings, spreadsheets</th><td>~1.5 days</td><td>Part of one run</td></tr>
+      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)">CFO: review, commentary, board pack</th><td>~0.5 day</td><td>Part of one run</td></tr>
+      <tr><th scope="row" style="background:none;text-transform:none;letter-spacing:0;font-size:15px;color:var(--ink)"><b>Total</b></th><td><b>~7 working days</b></td><td><b>~2 minutes</b></td></tr>
     </tbody>
   </table></div>
-</div></section>
-
-<section id="run" style="padding-top:20px"><div class="wrap center">
-  <span class="eyebrow">The run</span>
-  <h2 class="serif">Watch the full <span class="gold">2-minute run.</span></h2>
-  <p class="lead">A screen recording of one complete run, with a visible timer.</p>
-  <!-- When the recording is ready, replace the inner <p> with:
-       <video controls preload="none" poster="…"><source src="…" type="video/mp4"><track kind="captions" src="…" srclang="en" label="English"></video>
-       Plays are tracked as video_benchmark_play. -->
-  <div class="run" data-track-play="video_benchmark_play"><p><span class="todo">{{TODO: video file, screen recording of a full run with a visible timer}}</span></p></div>
 </div></section>
 
 <section style="padding-top:20px"><div class="wrap prose">
@@ -82,8 +70,8 @@
   <ul>
     <li>Your review and approval time. Midas prepares the work; people still sign it off.</li>
     <li>First-time setup: connecting systems (about a day) and cleaning up history (usually one to three weeks).</li>
-    <li>Data cleanliness: <span class="todo">{{TODO: assumptions about the state of the books}}</span></li>
-    <li><span class="todo">{{TODO: any other limits of the benchmark}}</span></li>
+    <li>Books that are already connected and cleaned up. Messy history takes longer the first time.</li>
+    <li>These are estimates. Your own figures will differ, which is why we measure them in a pilot.</li>
   </ul>
 </div></section>
 

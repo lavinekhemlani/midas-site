@@ -159,11 +159,11 @@
       rows.forEach(function (r, i) {
         h += '<article class="fr-card"><div class="fr-n">0' + (i + 1) + '</div><h3>' + esc(r[0]) + '</h3><dl>' +
           '<div class="fr-do"><dt>What they usually do</dt><dd>' + esc(r[1]) + '</dd></div>' +
-          '<div><dt>Typical time*</dt><dd>' + todo(r[2]) + '</dd></div>' +
+          '<div><dt>Typical time*</dt><dd>' + esc(r[2]) + '</dd></div>' +
           '<div class="fr-mid"><dt>What Midas does</dt><dd>' + esc(r[3]) + '</dd></div></dl></article>';
       });
-      h += '</div><p class="fr-foot">*Typical times are from ' + todo('source, e.g. customer interviews or our benchmark') +
-        '. <a href="' + esc(bm) + '">See the full benchmark →</a></p>';
+      h += '</div><p class="fr-foot">*Typical times are our estimates for a multi-entity month-end and vary by business' +
+        '. <a href="' + esc(bm) + '">See how we estimate it →</a></p>';
       if (!this.hasAttribute('no-bars')) {
         h += '<div class="fr-bars" role="img" aria-label="Typical team: about 7 working days. Midas: about 2 minutes, plus your review time.">' +
           '<span class="lb" aria-hidden="true">Typical team</span><span class="tr" aria-hidden="true"><span class="bar b1"></span><span class="v">~7 working days</span></span>' +
@@ -186,10 +186,10 @@
         '<p>Pick one entity or a group of stores. We connect read-only, run Midas alongside your team and measure the time saved on your own close. If it doesn’t prove itself, you walk away.</p>' +
         (compact ? '' : '<p class="po-cta"><a class="btn btn-dark" href="' + esc(href) + '" data-intent="pilot" data-loc="' + esc(loc) + '">Discuss a pilot →</a></p>') + '</div>';
       var list = '<ul>' +
-        '<li><b>Scope</b><span>' + todo('e.g. 1 entity or up to 10 stores') + '</span></li>' +
+        '<li><b>Scope</b><span>One entity or a group of stores, agreed on the first call</span></li>' +
         '<li><b>Setup</b><span>~1 day, read-only</span></li>' +
         '<li><b>Deliverable</b><span>Side-by-side close + a time-saved report</span></li>' +
-        '<li><b>Commercials</b><span>' + todo('free / fixed fee credited against the contract') + '</span></li></ul>' +
+        '<li><b>Commercials</b><span>Agreed up front, before any work starts</span></li></ul>' +
         (compact && !this.hasAttribute('no-cta') ? '<p class="po-cta" style="margin-top:12px"><a class="btn btn-dark" href="' + esc(href) + '" data-intent="pilot" data-loc="' + esc(loc) + '">Discuss a pilot →</a></p>' : '');
       this.innerHTML = '<div class="po">' + intro + list + '</div>';
       var t = this.querySelector('.po-t'); if (compact && t) t.style.cssText = 'font:500 22px/1.15 "EB Garamond",Georgia,serif;margin:0 0 6px';
