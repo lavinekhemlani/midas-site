@@ -1,2 +1,20 @@
 [build]
   publish = "."
+
+# Internal working docs are in the repo but must not be served.
+[[redirects]]
+  from = "/docs/*"
+  to = "/"
+  status = 302
+  force = true
+
+# Private pitch pages and the placeholder-only benchmark stay out of search engines.
+[[headers]]
+  for = "/for/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/benchmark/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
