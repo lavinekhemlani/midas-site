@@ -206,6 +206,30 @@ textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba
 .map .pin{position:absolute;left:50%;top:50%;width:34px;height:34px;margin:-34px 0 0 -17px;z-index:2}
 .map .halo{position:absolute;left:50%;top:50%;width:90px;height:90px;margin:-45px 0 0 -45px;border-radius:50%;background:rgba(200,134,42,.18);z-index:1}
 .map .attr{position:absolute;right:6px;bottom:4px;font-size:9.5px;color:#5b6577;background:rgba(255,255,255,.75);padding:1px 5px;border-radius:4px;z-index:2}
+/* priority building (Silver Tower) */
+.pin-wrap{margin-top:-64px}
+.pin-wrap:not(.hide)+.fin{margin-top:14px}
+.pinc{position:relative;display:block;border-radius:22px;overflow:hidden;cursor:pointer;color:#fff;background:var(--brand-3);box-shadow:0 18px 40px rgba(11,42,74,.3);border:1.5px solid rgba(240,192,96,.55);-webkit-tap-highlight-color:transparent}
+.pinc .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5}
+.pinc .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,20,38,.35) 0%,rgba(6,20,38,.88) 70%,#061426 100%)}
+.pinc .in{position:relative;padding:14px 16px 14px}
+.pinc .top{display:flex;gap:6px;align-items:center}
+.pinc .lbl{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--brand);background:var(--gold);padding:5px 9px;border-radius:7px;white-space:nowrap}
+.pinc .go{margin-left:auto;font-size:12px;font-weight:600;color:var(--gold);white-space:nowrap}
+.pinc h2{font-size:1.85rem;font-weight:500;color:#fff;margin-top:34px}
+.pinc .sb{font-size:12.5px;color:#c8d6e6;margin-top:3px}
+.pinc .nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.16)}
+.pinc .nums .n{font-size:1.3rem;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pinc .nums .n.g{color:var(--gold)}.pinc .nums .n.dim{font-size:.95rem;color:#b8cbe0;font-weight:600;padding-top:4px}
+.pinc .nums .k{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#9fb5cd;margin-top:3px;font-weight:600}
+.pinc .rule{font-size:11.5px;color:#f3d79e;margin-top:10px;display:flex;gap:6px;align-items:flex-start;line-height:1.4}
+.xtag.pri{background:var(--brand);color:var(--gold);border-color:rgba(240,192,96,.6)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.tbl th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;text-align:right;padding:9px 0 6px}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td{text-align:right;padding:8px 0;border-top:1px solid var(--line)}
+.waitd{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.waitd .ic{width:30px;height:30px;border-radius:9px;background:var(--warn-soft);color:var(--warn);display:grid;place-items:center;flex:none;font-weight:700}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
 /* tab bar */
@@ -266,6 +290,7 @@ textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba
 
 <main>
 <section id="today">
+  <div class="pin-wrap" id="pin"></div>
   <div class="fin" id="fin-today"></div>
   <div class="step">Best deal today <span class="c" id="best-c"></span></div>
   <div id="best"></div>
@@ -379,7 +404,8 @@ function finBar(el, dark) {
 function setLtv(l) { F.ltv = l; saveFin(); rerender(); }
 function setF(k, v) { if (isNaN(v) || v < 0) return; F[k] = v; saveFin(); rerender(); }
 function openFinEdit() { const c = D && (D.examples || [])[0]; if (c) openListing(bestCard().id, true); }
-function rerender() { renderToday(); if (OPEN) renderListing(OPEN, true); }
+function rerender() { renderToday(); if (OPEN) reopen(); }
+function reopen() { if (OPEN.startsWith('b:')) renderBuilding(OPEN.slice(2), true); else renderListing(OPEN, true); }
 
 /* ---------- Today ---------- */
 const FOCUSSTORE = 'hatch_focus_v1';
@@ -398,7 +424,7 @@ const LISTS = {
 };
 function bestCard() { return pool().slice().sort(ffirst(LISTS.irr.sort))[0]; }
 function tags(c, cls = 'xtag') {
-  return [c.example ? `<span class="${cls} ex">Example</span>` : '', `<span class="${cls}">${c.tenanted ? 'Tenanted' : 'Vacant'}</span>`].join('');
+  return [c.priority ? `<span class="${cls} pri">★ ${esc(priName(c.priority))}</span>` : '', c.example ? `<span class="${cls} ex">Example</span>` : '', `<span class="${cls}">${c.tenanted ? 'Tenanted' : 'Vacant'}</span>`].join('');
 }
 function photoOf(c) { return (c.photos || [])[0]; }
 function bestHTML(c) {
@@ -420,8 +446,69 @@ function cardHTML(c, i, mode) {
     <div><div class="n ${m.coc < 0 ? 'neg' : ''}">${pct(m.coc)}</div><div class="k">Cash on cash</div></div>
     <div><div class="n ${third[2]}">${third[0]}</div><div class="k">${third[1]}</div></div></div></div></div>`;
 }
+/* ---------- priority building (Lavine 27 Nov 2026: "especially Silver Tower") ---------- */
+function priList() { return (D && D.priority) || []; }
+function priB(k) { return priList().find(b => b.key === k); }
+function priName(k) { const b = priB(k); return b ? b.name : 'Priority'; }
+function pinHTML(b) {
+  const p = (b.photos || [])[0], nl = (b.listings || []).length;
+  return `<div class="pinc" onclick="openBuilding('${esc(b.key)}')">${p ? `<img class="ph" src="${esc(src(p))}" alt="" loading="eager">` : ''}<div class="ov"></div>
+    <div class="in"><div class="top"><span class="lbl">★ Watching by name</span><span class="go">Building page ›</span></div>
+    <h2>${esc(b.name)}</h2><div class="sb">${esc(b.sub)}</div>
+    <div class="nums"><div><div class="n g">${nl}</div><div class="k">Listings now</div></div>
+      <div>${b.data_flowing ? `<div class="n">${b.n_sales}</div>` : '<div class="n dim">awaiting DLD</div>'}<div class="k">Sales, 12 mo</div></div>
+      <div>${b.median_sale_psf ? `<div class="n">${num(b.median_sale_psf)}</div>` : '<div class="n dim">awaiting DLD</div>'}<div class="k">AED / sq ft</div></div></div>
+    <div class="rule"><span>●</span><span>${esc(b.rule)}</span></div></div></div>`;
+}
+function trendSVG(pts, color, label) {
+  if (!pts || !pts.length) return '';
+  const W = 340, H = 150, L = 40, R = 10, T = 14, B = 22;
+  const vals = pts.map(p => p.psf); let lo = Math.min(...vals), hi = Math.max(...vals); const pad = (hi - lo) * .2 || hi * .08 || 10; lo -= pad; hi += pad;
+  const X = i => pts.length === 1 ? (L + W - R) / 2 : L + i / (pts.length - 1) * (W - L - R), Y = v => T + (1 - (v - lo) / (hi - lo)) * (H - T - B);
+  const line = pts.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)},${Y(p.psf).toFixed(1)}`).join('');
+  const ticks = [0, 1, 2].map(i => lo + (hi - lo) * (i + .5) / 3);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(label)}">
+    ${ticks.map(v => `<line x1="${L}" x2="${W - R}" y1="${Y(v)}" y2="${Y(v)}" stroke="#e2e6ee"/><text x="${L - 6}" y="${Y(v) + 3.5}" text-anchor="end" font-size="9.5" fill="#7c889e">${num(v)}</text>`).join('')}
+    <path d="${line}" fill="none" stroke="${color}" stroke-width="2.5" stroke-linejoin="round"/>
+    ${pts.map((p, i) => `<circle cx="${X(i).toFixed(1)}" cy="${Y(p.psf).toFixed(1)}" r="3.5" fill="${color}"/>`).join('')}
+    ${pts.map((p, i) => (pts.length <= 6 || i % 2 === 0) ? `<text x="${X(i)}" y="${H - 6}" text-anchor="middle" font-size="9.5" fill="#7c889e">${new Date(p.m + '-01').toLocaleString('en', { month: 'short' })}</text>` : '').join('')}
+  </svg>`;
+}
+function waitHTML(t) { return `<div class="card"><div class="waitd"><span class="ic">!</span><span>${t}</span></div></div>`; }
+function openBuilding(k) { OPEN = 'b:' + k; history.replaceState(null, '', '#b=' + encodeURIComponent(k)); renderBuilding(k); $('lp').classList.remove('hide'); $('tabs').classList.add('hide'); $('lp').scrollTop = 0; document.body.style.overflow = 'hidden'; }
+function renderBuilding(k, keep) {
+  const b = priB(k); if (!b) return closeListing();
+  const st = $('lp').scrollTop, ph = b.photos || [], live = b.listings || [], ex = b.examples || [];
+  const wait = 'Waiting on the DLD feed (data.dubai API key, or the CSVs dropped in hatch-hq/inbox). Every sale and Ejari lease in ' + esc(b.name) + ' shows here the day it lands.';
+  const salesT = b.sales.length ? `<div class="card pad" style="padding-top:2px"><table class="tbl"><tr><th>Date</th><th>Sq ft</th><th>AED</th><th>AED/sq ft</th></tr>${b.sales.slice(0, 15).map(r => `<tr><td>${esc(r.d)}</td><td>${num(r.sqft)}</td><td>${aedk(r.price)}</td><td><b>${num(r.psf)}</b></td></tr>`).join('')}</table>${b.n_sales > 15 ? `<p class="tiny" style="margin:6px 0 4px">Latest 15 of ${b.n_sales}.</p>` : ''}</div>` : waitHTML(wait);
+  const rentsT = b.rents.length ? `<div class="card pad" style="padding-top:2px"><table class="tbl"><tr><th>Start</th><th>Sq ft</th><th>AED/yr</th><th>AED/sq ft</th></tr>${b.rents.slice(0, 15).map(r => `<tr><td>${esc(r.d)}</td><td>${num(r.sqft)}</td><td>${aedk(r.annual)}</td><td><b>${num(r.psf)}</b></td></tr>`).join('')}</table>${b.n_rents > 15 ? `<p class="tiny" style="margin:6px 0 4px">Latest 15 of ${b.n_rents}.</p>` : ''}</div>` : waitHTML('No Ejari leases loaded yet for ' + esc(b.name) + '. Same feed as the sales.');
+  const trend = (b.trend_sales.length || b.trend_rents.length) ? `<div class="card chartc">${trendSVG(b.trend_sales, '#0b2a4a', 'Sale price per sq ft by month')}<div class="legend"><span><i style="background:#0b2a4a"></i>Sales, monthly median AED/sq ft</span></div>
+      ${b.trend_rents.length ? `<div style="height:10px"></div>${trendSVG(b.trend_rents, '#c8862a', 'Rent per sq ft by month')}<div class="legend"><span><i style="background:#c8862a"></i>Ejari rents, monthly median AED/sq ft a year</span></div>` : ''}</div>` : waitHTML('The AED/sq ft trend draws itself from the DLD sales and Ejari rents in the tower once they flow.');
+  $('lp').innerHTML = `<div class="gal">${ph.length ? `<div class="gal-s" id="gal-s">${ph.map(p => `<figure><img src="${esc(src(p))}" alt=""><figcaption>${esc(p.credit || '')}</figcaption></figure>`).join('')}</div>` : '<div style="height:220px"></div>'}
+      <button class="back" onclick="closeListing()" aria-label="Back">‹</button></div>
+    <div class="lp-in">
+    <div class="lp-head"><div style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag a">★ Priority building</span><span class="tag">${esc(b.area)}</span></div>
+      <h1>${esc(b.name)}</h1><div class="sb">${esc(b.sub)}</div>
+      <div class="kpis"><div><div class="n g">${live.length}</div><div class="k">Listings now</div></div>
+        <div><div class="n">${b.median_sale_psf ? num(b.median_sale_psf) : '–'}</div><div class="k">Sale AED/sq ft, 12 mo</div></div>
+        <div><div class="n">${b.median_rent_psf ? num(b.median_rent_psf) : '–'}</div><div class="k">Rent AED/sq ft, 12 mo</div></div>
+        <div><div class="n">${b.implied_gross_yield != null ? pct(b.implied_gross_yield) : '–'}</div><div class="k">Gross yield, implied</div></div></div>
+      <div class="exnote" style="margin-top:12px"><span>●</span><span>${esc(b.rule)}</span></div></div>
+
+    <div class="sec"><h3>Listings in the tower now · ${live.length}</h3>${live.length ? live.map((c, i) => cardHTML(c, i, 'irr')).join('') : `<div class="card"><div class="empty"><div class="ic">◇</div>No live ${esc(b.name)} listings yet. Alerts, broker forwards and the paste box all feed this list.</div></div>`}</div>
+    ${ex.length ? `<div class="sec"><h3>Worked example</h3>${ex.map((c, i) => cardHTML(c, i, 'irr')).join('')}</div>` : ''}
+    <div class="sec"><h3>AED per sq ft, 12 months</h3>${trend}</div>
+    <div class="sec"><h3>DLD sales in the tower · ${b.n_sales}</h3>${salesT}</div>
+    <div class="sec"><h3>Ejari rents in the tower · ${b.n_rents}</h3>${rentsT}</div>
+    <div class="sec"><h3>Location</h3>${mapHTML(b.geo, b.name + ', ' + b.area)}</div>
+    </div>`;
+  if (keep) $('lp').scrollTop = st;
+}
+
 function renderToday() {
   if (!D) return;
+  $('pin').innerHTML = priList().map(pinHTML).join('');
+  $('pin').classList.toggle('hide', !priList().length);
   finBar($('fin-today'));
   const b = bestCard();
   $('best').innerHTML = b ? bestHTML(b) : '<div class="card"><div class="empty"><div class="ic">◇</div>No listings yet.</div></div>';
@@ -468,7 +555,7 @@ function chartHTML(c) {
     ${med ? `<rect x="${L + 4}" y="${Y(med) + 4}" width="96" height="16" rx="4" fill="#0b2a4a"/><text x="${L + 52}" y="${Y(med) + 15}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#fff">Median ${num(med)}</text>` : ''}
   </svg>`;
   return `<div class="card chartc">${svg}<div class="legend"><span><i style="background:#123f6e;opacity:.55"></i>${c.comp_illustrative ? 'Example sales' : 'DLD sales'} (${pts.length})</span><span><i style="background:#0b2a4a"></i>12-month median</span><span><i style="background:#c8862a"></i>This unit</span></div>
-    <p class="tiny" style="margin:8px 4px 0">AED per sq ft, last 12 months, ${esc(c.comps.level)}.${c.comp_illustrative ? ' <b style="color:var(--warn)">Illustrative points scattered around the public Business Bay median, not DLD records.</b> Real sales replace them once the data.dubai feed is on.' : ''}</p></div>`;
+    <p class="tiny" style="margin:8px 4px 0">AED per sq ft, last 12 months, ${esc(c.comps.level)}.${c.comp_illustrative ? ' <b style="color:var(--warn)">Illustrative points scattered around the test comp, not DLD records.</b> Real sales replace them once the data.dubai feed is on.' : ''}</p></div>`;
 }
 function cfBars(m) {
   const vals = [-m.equity, ...m.cfs.map((cf, i) => cf + (i === m.cfs.length - 1 ? m.exitEq : 0))];
@@ -476,7 +563,7 @@ function cfBars(m) {
   return `<div class="cfbars">${vals.map((v, i) => `<div><i class="${v < 0 ? 'out' : i === vals.length - 1 ? 'ex' : ''}" style="height:${Math.max(2, Math.abs(v) / mx * 70)}px"></i><span style="margin-top:4px">${i === 0 ? 'In' : 'Y' + i}</span></div>`).join('')}</div>`;
 }
 function openListing(id, keepScroll) { OPEN = id; history.replaceState(null, '', '#l=' + id); renderListing(id); $('lp').classList.remove('hide'); $('tabs').classList.add('hide'); if (!keepScroll) $('lp').scrollTop = 0; document.body.style.overflow = 'hidden'; }
-function closeListing() { OPEN = null; $('lp').classList.add('hide'); $('tabs').classList.remove('hide'); document.body.style.overflow = ''; if (location.hash.startsWith('#l=')) history.replaceState(null, '', location.pathname + location.search); }
+function closeListing() { OPEN = null; $('lp').classList.add('hide'); $('tabs').classList.remove('hide'); document.body.style.overflow = ''; if (/^#[lb]=/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search); }
 function renderListing(id, keep) {
   const c = find(id); if (!c) return closeListing();
   const st = $('lp').scrollTop, gx = keep && $('gal-s') ? $('gal-s').scrollLeft : 0;
@@ -529,8 +616,9 @@ function renderListing(id, keep) {
       <div class="kv"><div class="k">Score<small>income ${c.score_parts.income} · value ${c.score_parts.value} · pressure ${c.score_parts.pressure} · fit ${c.score_parts.fit} · thin data ${c.score_parts.thin_data}</small></div><div class="v">${c.score}/100</div></div>
     </div></div>
 
+    ${c.priority && priB(c.priority) ? `<button class="btn btn-g btn-w" style="margin-top:14px" onclick="openBuilding('${esc(c.priority)}')">★ ${esc(priName(c.priority))}: building page, DLD sales and rents</button>` : ''}
     <div class="sec"><h3>Location</h3>${mapHTML(c.geo, c.building || c.area)}</div>
-    ${c.example ? `<div class="exnote"><span>◆</span><span>Worked example: a real building with a test asking price, size and rent. Photos are of the building itself (credits on each photo). Live listings carry their own photos.</span></div>` : ''}
+    ${c.example ? `<div class="exnote"><span>◆</span><span>Worked example: a real building with a test asking price, size and rent. Photos are the building's own where licensed, otherwise JLT area photos (credit on each photo). Live listings carry their own photos.</span></div>` : ''}
     ${c.url ? `<a class="btn btn-g btn-w" style="margin-top:14px" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Open the listing</a>` : ''}
     ${acts}
     </div>`;
@@ -565,7 +653,7 @@ function render(d) {
   $('needs').innerHTML = needs.length ? needs.map(n => `<div class="need"><div class="ic ${n.tag === 'broken' ? 'b' : ''}">!</div><div style="min-width:0"><div class="t">${esc(n.title)}</div><div class="s">${esc(n.sub)}</div></div></div>`).join('')
     : `<div class="allgood"><span class="ic">✓</span>${d.examples_only ? 'Unlock the live board to see what needs you.' : 'Nothing. Feeds healthy, no stuck deals.'}</div>`;
   $('nb').textContent = needs.length; $('nb').classList.toggle('hide', !needs.length);
-  $('exnote').innerHTML = ex ? `<div class="exnote"><span>◆</span><span>Examples, not listings: three real JLT office towers (Mazaya Business Avenue, Almas Tower, Jumeirah Business Centre) with test prices, test sale comps and the public JLT office rent of about AED 135/sq ft. Almas shows its own photos; Mazaya and JBC show JLT area photos. Live listings replace them as soon as alerts and broker forwards come in.</span></div>` : '';
+  $('exnote').innerHTML = ex ? `<div class="exnote"><span>◆</span><span>Examples, not listings: four real JLT office towers (Silver Tower, Mazaya Business Avenue, Almas Tower, Jumeirah Business Centre) with test prices, test sale comps and the public JLT office rent of about AED 135/sq ft. Almas shows its own photos; Silver Tower, Mazaya and JBC have no licensed photo, so they show JLT area photos. Live listings replace them as soon as alerts and broker forwards come in.</span></div>` : '';
   renderToday();
   $('feeds-wrap').classList.toggle('hide', !(d.feeds || []).length);
   $('feeds').innerHTML = (d.feeds || []).map(f => `<div class="feed"><div class="top"><span class="dot ${f.state}"></span>${esc(f.name)}<span class="tag ${f.state}">${f.last_new ? 'new ' + f.last_new.slice(5) : f.state === 'ok' ? 'ok' : f.state}</span></div><div class="note">${esc(f.how)}${f.note ? ' · ' + esc(f.note) : ''}</div><div class="bars">${f.bars.map(x => `<span class="${x.state}"></span>`).join('')}</div></div>`).join('');
@@ -577,7 +665,8 @@ function render(d) {
   $('bb').innerHTML = bb ? [bb.focus_area ? `<span class="chip" style="border-color:var(--gold);background:#fff8e8">Focus <b>${esc(bb.focus_area)} offices ${num(bb.size_sqft_min)} to ${num(bb.size_sqft_max)} sq ft</b></span>` : '', `<span class="chip"><b>${bb.types.join(', ')}</b></span>`, `<span class="chip">AED <b>${bb.price_min_aed / 1e6}M</b> to <b>${bb.price_max_aed / 1e6}M</b></span>`,
     `<span class="chip">Net yield <b>${pct(bb.target_net_yield, 0)}+</b></span>`, `<span class="chip">or <b>${pct(bb.target_under_comps, 0)}</b> under comps</span>`, ...bb.areas.map(a => `<span class="chip">${esc(a)}</span>`)].join('')
     : '<span class="tiny">Shown once the live board is unlocked.</span>';
-  const h = location.hash.match(/^#l=(.+)$/); if (h && find(h[1])) openListing(h[1]); else if (OPEN) renderListing(OPEN, true);
+  const h = location.hash.match(/^#l=(.+)$/), hb = location.hash.match(/^#b=(.+)$/);
+  if (h && find(h[1])) openListing(h[1]); else if (hb && priB(decodeURIComponent(hb[1]))) openBuilding(decodeURIComponent(hb[1])); else if (OPEN) reopen();
 }
 
 /* ---------- cockpit mode ---------- */
@@ -611,7 +700,7 @@ async function loadStatic() {
     $('lock-p').textContent = 'Dubai commercial units for the family office. The live board unlocks with the passphrase once it is set up.';
     $('unlock').disabled = true; $('pw').disabled = true; $('pw').placeholder = 'Passphrase not set up yet';
     const e = await fetch('examples.json', { cache: 'no-store' });
-    if (e.ok) { const ex = await e.json(); $('see-ex').classList.remove('hide'); $('see-ex').onclick = () => { $('lock').classList.add('hide'); render(ex); }; if (/^#(examples|l=)/.test(location.hash)) return render(ex); }
+    if (e.ok) { const ex = await e.json(); $('see-ex').classList.remove('hide'); $('see-ex').onclick = () => { $('lock').classList.add('hide'); render(ex); }; if (/^#(examples|l=|b=)/.test(location.hash)) return render(ex); }
     return lock();
   }
   ENV = await r.json();
