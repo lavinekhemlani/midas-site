@@ -141,6 +141,11 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .feed .note{font-size:12px;color:var(--ink-faint);margin:3px 0 8px 16px;overflow-wrap:anywhere}
 .bars{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;margin-left:16px;height:20px;align-items:end}
 .bars span{display:block;border-radius:3px}.bars .ok{background:var(--green);height:100%}.bars .empty{background:var(--warn);height:50%}.bars .fail{background:var(--bad);height:4px}.bars .none{background:var(--line);height:4px}
+.fchips{display:flex;gap:8px;margin:0 0 10px;overflow-x:auto;scrollbar-width:none}.fchips::-webkit-scrollbar{display:none}
+.fchip{flex:none;display:flex;align-items:center;gap:7px;border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;min-height:44px;background:var(--surface);font-weight:700;font-size:14px;color:var(--ink-soft);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fchip span:last-child{font-weight:500;font-size:12px;color:var(--ink-faint)}
+.fchip .bx{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:12px;line-height:1}
+.fchip.on{border-color:var(--gold);background:#fff8e8;color:var(--ink)}.fchip.on .bx{background:var(--gold);border-color:var(--gold);color:var(--brand)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:12.5px;padding:6px 11px;border-radius:99px;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft)}
 .chip b{color:var(--ink);font-weight:600}
@@ -265,6 +270,7 @@ textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba
   <div class="step">Best deal today <span class="c" id="best-c"></span></div>
   <div id="best"></div>
   <div class="step">The lists</div>
+  <div class="fchips" id="fchips"></div>
   <div class="seg" id="seg"></div>
   <div id="list"></div>
   <div id="exnote"></div>
@@ -376,6 +382,12 @@ function openFinEdit() { const c = D && (D.examples || [])[0]; if (c) openListin
 function rerender() { renderToday(); if (OPEN) renderListing(OPEN, true); }
 
 /* ---------- Today ---------- */
+const FOCUSSTORE = 'hatch_focus_v1';
+let FOCUS = localStorage.getItem(FOCUSSTORE) !== '0';   // JLT chip, on by default (Lavine 27 Nov 2026: JLT first)
+function setFocus(on) { FOCUS = on; localStorage.setItem(FOCUSSTORE, on ? '1' : '0'); renderToday(); }
+function focusName() { const f = (D && D.focus) || {}; return f.area || 'JLT'; }
+function ffirst(sort) { return (a, b) => (!a.focus - !b.focus) || sort(a, b); }
+function shown() { const all = pool(); if (!FOCUS) return all; return all.filter(c => c.focus); }
 function pool() { const d = D || {}; const seen = {}, out = []; [...(d.income || []), ...(d.value || []), ...(d.pressure || []), ...(d.deals || []), ...(d.using_examples ? d.examples || [] : [])].forEach(c => { if (c && !seen[c.id]) { seen[c.id] = 1; out.push(c); } }); return out; }
 function find(id) { return pool().find(c => c.id === id) || (D.examples || []).find(c => c.id === id); }
 const LISTS = {
@@ -384,7 +396,7 @@ const LISTS = {
   value: { t: 'Value', s: 'under comps', filter: c => c.vs_comps != null, sort: (a, b) => a.vs_comps - b.vs_comps },
   pressure: { t: 'Pressure', s: 'time, cuts', sort: (a, b) => b.pressure - a.pressure },
 };
-function bestCard() { return pool().slice().sort(LISTS.irr.sort)[0]; }
+function bestCard() { return pool().slice().sort(ffirst(LISTS.irr.sort))[0]; }
 function tags(c, cls = 'xtag') {
   return [c.example ? `<span class="${cls} ex">Example</span>` : '', `<span class="${cls}">${c.tenanted ? 'Tenanted' : 'Vacant'}</span>`].join('');
 }
@@ -393,7 +405,7 @@ function bestHTML(c) {
   const m = model(c), p = photoOf(c);
   return `<div class="best" onclick="openListing('${esc(c.id)}')">
     ${p ? `<img class="ph" src="${esc(src(p))}" alt="" loading="eager">` : '<div class="ph"></div>'}<div class="ov"></div>
-    <div class="top"><span class="lbl">Best today</span>${tags(c)}<span class="scorep">${c.score}/100</span></div>
+    <div class="top"><span class="lbl">${c.focus ? 'Best in ' + esc(focusName()) : 'Best today'}</span>${tags(c)}<span class="scorep">${c.score}/100</span></div>
     <div class="bot"><h2>${esc(c.building || c.title)}</h2><div class="sb">${esc(c.area)} · ${num(c.size_sqft)} sq ft · ${aed(c.price)} · ${c.vs_comps != null ? pct(Math.abs(c.vs_comps), 0) + (c.vs_comps < 0 ? ' under' : ' over') + ' comps' : 'no comps yet'}</div>
     <div class="nums"><div><div class="n g">${pct(m.irr)}</div><div class="k">Levered IRR</div></div><div><div class="n">${pct(m.coc)}</div><div class="k">Cash on cash</div></div><div><div class="n">${aedk(m.equity)}</div><div class="k">Equity in</div></div></div></div></div>`;
 }
@@ -413,10 +425,13 @@ function renderToday() {
   finBar($('fin-today'));
   const b = bestCard();
   $('best').innerHTML = b ? bestHTML(b) : '<div class="card"><div class="empty"><div class="ic">◇</div>No listings yet.</div></div>';
-  $('best-c').textContent = b ? `ranked by IRR at ${Math.round(F.ltv * 100)}% LTV` : '';
+  $('best-c').textContent = b ? `${b.focus ? focusName() + ' first · ' : ''}IRR at ${Math.round(F.ltv * 100)}% LTV` : '';
+  const f = (D && D.focus) || {}, nf = pool().filter(c => c.focus).length;
+  $('fchips').innerHTML = `<button class="fchip ${FOCUS ? 'on' : ''}" onclick="setFocus(${!FOCUS})"><span class="bx">${FOCUS ? '✓' : ''}</span>${esc(focusName())} offices<span>${num(f.size_min || 1000)} to ${num(f.size_max || 1600)} sq ft · ${nf}</span></button>`
+    + `<button class="fchip ${FOCUS ? '' : 'on'}" onclick="setFocus(false)">All areas<span>${pool().length}</span></button>`;
   $('seg').innerHTML = Object.entries(LISTS).map(([k, v]) => `<button class="${k === LIST ? 'sel' : ''}" onclick="LIST='${k}';renderToday()">${v.t}<span>${v.s}</span></button>`).join('');
-  const L = pool().filter(LISTS[LIST].filter || (() => true)).sort(LISTS[LIST].sort).slice(0, 6);
-  $('list').innerHTML = L.length ? L.map((c, i) => cardHTML(c, i, LIST)).join('') : `<div class="card" style="margin-top:12px"><div class="empty"><div class="ic">◇</div>${LIST === 'value' ? 'Needs DLD comps to rank by value.' : 'No listings yet.'}</div></div>`;
+  const L = shown().filter(LISTS[LIST].filter || (() => true)).sort(ffirst(LISTS[LIST].sort)).slice(0, 8);
+  $('list').innerHTML = L.length ? L.map((c, i) => cardHTML(c, i, LIST)).join('') : `<div class="card" style="margin-top:12px"><div class="empty"><div class="ic">◇</div>${FOCUS && !nf ? 'No ' + esc(focusName()) + ' offices of ' + num(f.size_min || 1000) + ' to ' + num(f.size_max || 1600) + ' sq ft yet. Tap All areas to see the rest.' : LIST === 'value' ? 'Needs DLD comps to rank by value.' : 'No listings yet.'}</div></div>`;
 }
 
 /* ---------- listing page ---------- */
@@ -550,7 +565,7 @@ function render(d) {
   $('needs').innerHTML = needs.length ? needs.map(n => `<div class="need"><div class="ic ${n.tag === 'broken' ? 'b' : ''}">!</div><div style="min-width:0"><div class="t">${esc(n.title)}</div><div class="s">${esc(n.sub)}</div></div></div>`).join('')
     : `<div class="allgood"><span class="ic">✓</span>${d.examples_only ? 'Unlock the live board to see what needs you.' : 'Nothing. Feeds healthy, no stuck deals.'}</div>`;
   $('nb').textContent = needs.length; $('nb').classList.toggle('hide', !needs.length);
-  $('exnote').innerHTML = ex ? `<div class="exnote"><span>◆</span><span>Worked examples: real buildings and their real photos, with test asking prices, so you can see how the desk reads. Live listings replace them as soon as alerts and broker forwards come in.</span></div>` : '';
+  $('exnote').innerHTML = ex ? `<div class="exnote"><span>◆</span><span>Examples, not listings: three real JLT office towers (Mazaya Business Avenue, Almas Tower, Jumeirah Business Centre) with test prices, test sale comps and the public JLT office rent of about AED 135/sq ft. Almas shows its own photos; Mazaya and JBC show JLT area photos. Live listings replace them as soon as alerts and broker forwards come in.</span></div>` : '';
   renderToday();
   $('feeds-wrap').classList.toggle('hide', !(d.feeds || []).length);
   $('feeds').innerHTML = (d.feeds || []).map(f => `<div class="feed"><div class="top"><span class="dot ${f.state}"></span>${esc(f.name)}<span class="tag ${f.state}">${f.last_new ? 'new ' + f.last_new.slice(5) : f.state === 'ok' ? 'ok' : f.state}</span></div><div class="note">${esc(f.how)}${f.note ? ' · ' + esc(f.note) : ''}</div><div class="bars">${f.bars.map(x => `<span class="${x.state}"></span>`).join('')}</div></div>`).join('');
@@ -559,7 +574,7 @@ function render(d) {
   const inLane = (d.deals || []).filter(c => c.stage === LANE);
   $('board').innerHTML = inLane.length ? inLane.map((c, i) => cardHTML(c, i, 'irr')).join('') : `<div class="card" style="margin-top:10px"><div class="empty"><div class="ic">◇</div>Nothing in ${LANE} yet.${STATIC ? '' : ' Open a listing and tap ' + LANE + '.'}</div></div>`;
   const bb = d.buybox;
-  $('bb').innerHTML = bb ? [`<span class="chip"><b>${bb.types.join(', ')}</b></span>`, `<span class="chip">AED <b>${bb.price_min_aed / 1e6}M</b> to <b>${bb.price_max_aed / 1e6}M</b></span>`,
+  $('bb').innerHTML = bb ? [bb.focus_area ? `<span class="chip" style="border-color:var(--gold);background:#fff8e8">Focus <b>${esc(bb.focus_area)} offices ${num(bb.size_sqft_min)} to ${num(bb.size_sqft_max)} sq ft</b></span>` : '', `<span class="chip"><b>${bb.types.join(', ')}</b></span>`, `<span class="chip">AED <b>${bb.price_min_aed / 1e6}M</b> to <b>${bb.price_max_aed / 1e6}M</b></span>`,
     `<span class="chip">Net yield <b>${pct(bb.target_net_yield, 0)}+</b></span>`, `<span class="chip">or <b>${pct(bb.target_under_comps, 0)}</b> under comps</span>`, ...bb.areas.map(a => `<span class="chip">${esc(a)}</span>`)].join('')
     : '<span class="tiny">Shown once the live board is unlocked.</span>';
   const h = location.hash.match(/^#l=(.+)$/); if (h && find(h[1])) openListing(h[1]); else if (OPEN) renderListing(OPEN, true);
