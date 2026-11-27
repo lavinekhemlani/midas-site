@@ -18,3 +18,11 @@
   for = "/benchmark/*"
   [headers.values]
     X-Robots-Tag = "noindex"
+
+# Hatch HQ (private family-office board, data AES-GCM encrypted): never indexed, never cached
+[[headers]]
+  for = "/hatchhq/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-cache"
+    Referrer-Policy = "no-referrer"

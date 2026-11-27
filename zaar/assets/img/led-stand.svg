@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#07080c"/><stop offset="1" stop-color="#121520"/></linearGradient>
+<linearGradient id="scr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b3b8f"/><stop offset=".45" stop-color="#6b3fd1"/><stop offset=".75" stop-color="#e0a64a"/><stop offset="1" stop-color="#f3d48a"/></linearGradient>
+<linearGradient id="scr2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#0f6b7a"/><stop offset=".6" stop-color="#3a62d6"/><stop offset="1" stop-color="#b07ae8"/></linearGradient>
+<linearGradient id="refl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b3fd1" stop-opacity=".35"/><stop offset="1" stop-color="#6b3fd1" stop-opacity="0"/></linearGradient>
+<pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="none" stroke="#000" stroke-opacity=".22" stroke-width="1"/></pattern>
+</defs>
+<rect width="800" height="1000" fill="url(#bg)"/>
+<!-- overhead truss -->
+<g stroke="#5b5f6b" stroke-width="2" fill="none"><rect x="60" y="120" width="680" height="34"/><path d="M60 154 L94 120 L128 154 L162 120 L196 154 L230 120 L264 154 L298 120 L332 154 L366 120 L400 154 L434 120 L468 154 L502 120 L536 154 L570 120 L604 154 L638 120 L672 154 L706 120 L740 154"/></g>
+<g fill="#f3d48a"><circle cx="150" cy="166" r="7"/><circle cx="300" cy="166" r="7"/><circle cx="500" cy="166" r="7"/><circle cx="650" cy="166" r="7"/></g>
+<g fill="#f3d48a" opacity=".07"><path d="M150 166 L80 760 L220 760Z"/><path d="M300 166 L240 760 L360 760Z"/><path d="M500 166 L440 760 L560 760Z"/><path d="M650 166 L580 760 L720 760Z"/></g>
+<!-- back wall LED -->
+<rect x="130" y="230" width="540" height="420" fill="url(#scr)"/>
+<rect x="130" y="230" width="540" height="420" fill="url(#px)"/>
+<g fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"><path d="M130 520 C260 420 360 600 480 470 S640 380 670 420"/><path d="M130 560 C260 470 360 640 480 520 S640 430 670 470" stroke-opacity=".2"/></g>
+<!-- side LED wing (perspective) -->
+<path d="M670 230 L760 200 L760 690 L670 650Z" fill="url(#scr2)"/>
+<path d="M670 230 L760 200 L760 690 L670 650Z" fill="url(#px)"/>
+<path d="M40 200 L130 230 L130 650 L40 690Z" fill="url(#scr2)"/>
+<path d="M40 200 L130 230 L130 650 L40 690Z" fill="url(#px)"/>
+<!-- LED floor -->
+<path d="M40 690 L130 650 L670 650 L760 690 L800 820 L0 820Z" fill="#1a1d2a"/>
+<path d="M130 650 L670 650 L760 690 L40 690Z" fill="url(#refl)"/>
+<g stroke="#3a62d6" stroke-opacity=".35"><line x1="40" y1="690" x2="760" y2="690"/><line x1="20" y1="750" x2="780" y2="750"/><line x1="0" y1="815" x2="800" y2="815"/></g>
+<!-- counter / plinth -->
+<rect x="300" y="700" width="200" height="110" fill="#0b0c11" stroke="#f3d48a" stroke-opacity=".6" stroke-width="2"/>
+<rect x="300" y="700" width="200" height="8" fill="#f3d48a" opacity=".8"/>
+<!-- floor -->
+<rect y="820" width="800" height="180" fill="#07080c"/>
+<g fill="#3a62d6" opacity=".18"><ellipse cx="400" cy="860" rx="360" ry="22"/></g>
+</svg>
