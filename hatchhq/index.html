@@ -84,7 +84,7 @@ main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inse
 .ring span{width:36px;height:36px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:13px}
 .deal-m{min-width:0;flex:1}
 .deal-m .nm{font-weight:600;font-size:14.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.deal-m .sb{font-size:12.5px;color:var(--ink-faint);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.deal-m .sb{font-size:12.5px;color:var(--ink-faint);margin-top:3px;line-height:1.35}
 .deal-m .tg{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
 .deal-r{text-align:right;flex:none}
 .deal-r .v{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:-.5px}
@@ -156,7 +156,7 @@ textarea:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 
 .lock p{color:#b8cbe0;font-size:14.5px;margin:0 0 22px}
 .lock input{width:100%;padding:15px 16px;border-radius:13px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-size:16px}
 .lock input::placeholder{color:#8aa3bf}
-.lock .btn-w{margin-top:10px}
+.lock .btn-w{margin-top:10px}.lock .btn-a:disabled{opacity:.4}
 .lock .err{color:#ffb4a8;font-size:13px;min-height:20px;margin-top:10px}
 .lock .alt{display:block;width:100%;margin-top:8px;background:none;border:1px solid rgba(255,255,255,.22);color:#dbe6f3}
 .lock .foot{color:#7f98b6;font-size:12px;margin-top:22px;line-height:1.5}
@@ -176,7 +176,7 @@ textarea:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 
     <button class="btn btn-a btn-w" id="unlock" type="submit">Unlock</button></form>
   <div class="err" id="err"></div>
   <button class="btn btn-w alt hide" id="see-ex" type="button">See the example cards</button>
-  <div class="foot" id="lock-foot">Encrypted on the server side with AES-256. Decrypted only on this device.</div>
+  <div class="foot" id="lock-foot">Encrypted with AES-256. Only this device decrypts it, the passphrase never leaves it.</div>
 </div></div>
 
 <header class="topbar"><div class="topbar-in">
