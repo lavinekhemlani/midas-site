@@ -1,0 +1,404 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive"><meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0b2a4a"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Hatch HQ</title>
+<!-- Hatch HQ (27 Nov 2026). One file, two homes: the cockpit's /hatch (live API, paste + deal moves) and midascfo.com/hatchhq
+     (static, data decrypted in the browser from data.enc.json). Design system from gomidas-site: tokens, Fraunces + Instrument Sans, rp-* mobile components. -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#0e1420;--ink-soft:#49556b;--ink-faint:#7c889e;
+  --ground:#f7f8fa;--surface:#fff;--surface-2:#f1f3f7;--line:#e2e6ee;--line-2:#cdd4e0;
+  --brand:#0b2a4a;--brand-2:#123f6e;--accent:#c8862a;--accent-soft:#fdf5e8;--gold:#f0c060;
+  --good:#0b2a4a;--good-soft:#e8eef6;--green:#1f8a5b;--green-soft:#e6f4ec;--warn:#b4721c;--warn-soft:#fdf3e3;--bad:#b03c31;--bad-soft:#fcecea;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;--body:'Instrument Sans',system-ui,-apple-system,sans-serif;
+  --mono:ui-monospace,'SF Mono','Roboto Mono',Menlo,Consolas,monospace;
+  --shadow:0 1px 2px rgba(14,20,32,.04),0 8px 24px rgba(14,20,32,.06);--r:16px
+}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}html,body{overflow-x:clip}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.025em;line-height:1.1;margin:0}
+button,input,textarea{font:inherit;color:inherit}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.hide{display:none!important}
+
+/* chrome */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(11,42,74,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:env(safe-area-inset-top)}
+.topbar-in{max-width:560px;margin:0 auto;height:56px;padding:0 16px;display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em;color:#fff;text-decoration:none}
+.mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(150deg,var(--gold),var(--accent));color:var(--brand);display:grid;place-items:center;font-family:var(--display);font-size:16px;font-weight:700;flex:none}
+.logo .sub{color:#9fb5cd;font-family:var(--body);font-weight:450;font-size:13px;letter-spacing:0}
+.tsp{flex:1}
+.pill{font-size:11.5px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.1);color:#dbe6f3;font-weight:500;white-space:nowrap;border:1px solid rgba(255,255,255,.14)}
+.pill.ex{background:rgba(240,192,96,.16);color:var(--gold);border-color:rgba(240,192,96,.35)}
+.iconbtn{border:0;background:none;color:#9fb5cd;font-size:13px;padding:6px 4px;cursor:pointer}
+
+/* hero */
+.hero{background:linear-gradient(170deg,#0b2a4a 0%,#0e3358 50%,#123f6e 100%);color:#fff;position:relative;overflow:hidden;border-radius:0 0 26px 26px}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 90% 80% at 80% 0%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse 90% 80% at 80% 0%,#000 30%,transparent 75%);pointer-events:none}
+.hero-in{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:22px 20px 22px}
+.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.hero h1{font-size:2.1rem;margin:8px 0 10px;color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#b8cbe0;font-size:14.5px;line-height:1.5;margin:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14);border-radius:14px;overflow:hidden}
+.stat{background:rgba(11,42,74,.72);padding:12px 12px 11px;min-width:0}
+.stat .n{font-family:var(--display);font-size:1.55rem;font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.stat .n.low{color:#ffb4a8}
+.stat .k{font-size:11.5px;color:#9fb5cd;margin-top:3px;line-height:1.3}
+
+/* page */
+main{max-width:560px;margin:0 auto;padding:0 16px calc(96px + env(safe-area-inset-bottom))}
+.step{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin:26px 2px 10px;display:flex;align-items:center;gap:8px}
+.step .c{margin-left:auto;letter-spacing:0;text-transform:none;font-weight:500;color:var(--ink-soft)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.pad{padding:14px 16px}
+.tiny{font-size:12.5px;color:var(--ink-faint)}
+.muted{color:var(--ink-soft)}
+
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;background:var(--surface-2);color:var(--ink-soft);white-space:nowrap}
+.tag.ok{background:var(--green-soft);color:var(--green)}.tag.w,.tag.pending,.tag.stalled{background:var(--warn-soft);color:var(--warn)}.tag.b,.tag.broken{background:var(--bad-soft);color:var(--bad)}.tag.a{background:var(--accent-soft);color:var(--accent)}
+
+.need{display:flex;gap:12px;padding:13px 16px;border-top:1px solid var(--line)}.need:first-child{border-top:0}
+.need .ic{width:30px;height:30px;border-radius:9px;background:var(--warn-soft);color:var(--warn);display:grid;place-items:center;flex:none;font-weight:700;font-size:14px}
+.need .ic.b{background:var(--bad-soft);color:var(--bad)}
+.need .t{font-weight:600;font-size:14px;line-height:1.3}.need .s{font-size:12.5px;color:var(--ink-soft);margin-top:3px;overflow-wrap:anywhere}
+.allgood{display:flex;gap:10px;align-items:center;padding:14px 16px;font-size:14px;color:var(--ink-soft)}
+.allgood .ic{width:28px;height:28px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center}
+
+/* segmented control (rp-term) */
+.seg{display:flex;gap:8px}
+.seg button{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:9px 4px 8px;text-align:center;cursor:pointer;background:var(--surface);transition:.15s}
+.seg button .m{font-weight:600;font-size:14px}.seg button .p{font-size:11px;color:var(--ink-faint);margin-top:1px}
+.seg button.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px rgba(200,134,42,.1)}
+.seg button.sel .p{color:var(--accent)}
+
+/* deal card */
+.deal{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);margin-top:10px;overflow:hidden;box-shadow:var(--shadow);transition:border-color .15s}
+.deal.open{border-color:var(--line-2)}
+.deal-h{display:flex;gap:12px;align-items:center;padding:14px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.deal-h:active{background:var(--surface-2)}
+.ring{--s:0;width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;background:conic-gradient(var(--rc,var(--accent)) calc(var(--s)*1%),var(--surface-2) 0)}
+.ring span{width:36px;height:36px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-family:var(--mono);font-weight:600;font-size:13px}
+.deal-m{min-width:0;flex:1}
+.deal-m .nm{font-weight:600;font-size:14.5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.deal-m .sb{font-size:12.5px;color:var(--ink-faint);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.deal-m .tg{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap}
+.deal-r{text-align:right;flex:none}
+.deal-r .v{font-family:var(--mono);font-size:17px;font-weight:600;letter-spacing:-.5px}
+.deal-r .v.pos{color:var(--green)}
+.deal-r .l{font-size:11px;color:var(--ink-faint);margin-top:1px}
+.deal-b{display:none;padding:0 14px 14px}.deal.open .deal-b{display:block}
+.big{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:6px}
+.big>div{background:var(--surface-2);padding:10px 8px;text-align:center}
+.big .n{font-family:var(--mono);font-size:16px;font-weight:600}.big .s{font-size:10.5px;color:var(--ink-faint);margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
+.kv{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;border-bottom:1px solid var(--line)}
+.kv:last-child{border-bottom:0}
+.kv .k{font-size:13.5px;color:var(--ink-soft);min-width:0}.kv .k small{display:block;font-size:11.5px;color:var(--ink-faint);margin-top:1px;line-height:1.35}
+.kv .v{font-family:var(--mono);font-size:13.5px;font-weight:600;text-align:right;white-space:nowrap}
+.kv.hl .k{color:var(--ink);font-weight:600}.kv.hl .v{font-size:15px}
+.lever{background:var(--brand);color:#fff;border-radius:14px;padding:14px;margin-top:10px}
+.lever h4{font-size:12px;margin:0 0 2px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;font-family:var(--body)}
+.lever p{font-size:12px;color:#9fb5cd;margin:0 0 10px;line-height:1.45}
+.ladder{display:flex;gap:6px}
+.rung{flex:1;text-align:center;padding:9px 4px;border-radius:10px;background:rgba(255,255,255,.07);font-size:11px;line-height:1.3;color:#c3d3e6}
+.rung b{display:block;font-family:var(--mono);font-size:15px;color:#fff;margin-bottom:1px}
+.rung.on{background:rgba(240,192,96,.18);color:var(--gold)}.rung.on b{color:var(--gold)}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:11px;border:1px solid transparent;font-weight:500;font-size:14px;cursor:pointer;text-decoration:none;transition:transform .16s ease,background .16s ease}
+.btn:active{transform:scale(.98)}
+.btn-p{background:var(--brand);color:#fff}.btn-a{background:var(--accent);color:#fff}.btn-g{background:var(--surface);color:var(--ink);border-color:var(--line-2)}
+.btn-sm{padding:8px 12px;font-size:13px;border-radius:9px;flex:1;min-height:40px;text-transform:capitalize}
+.btn-sm.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.btn-w{width:100%;padding:15px;font-size:15.5px;border-radius:13px}
+.exnote{display:flex;gap:10px;align-items:flex-start;background:var(--accent-soft);border:1px solid #f1dcb8;color:#7a5418;border-radius:12px;padding:10px 12px;font-size:12.5px;line-height:1.45;margin-top:14px}
+
+/* board */
+.lanes{display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:2px 16px 6px;scrollbar-width:none}.lanes::-webkit-scrollbar{display:none}
+.lane{flex:none;min-width:104px;background:var(--surface);border:1.5px solid var(--line);border-radius:13px;padding:10px 12px;cursor:pointer;text-align:left}
+.lane.sel{border-color:var(--accent);background:var(--accent-soft)}
+.lane .n{font-family:var(--display);font-size:1.5rem;font-weight:600;line-height:1}.lane .k{font-size:12px;color:var(--ink-faint);margin-top:4px;text-transform:capitalize}
+.empty{text-align:center;padding:28px 16px;color:var(--ink-faint);font-size:13.5px}
+.empty .ic{font-size:22px;margin-bottom:6px;color:var(--line-2)}
+
+/* feeds */
+.feed{padding:12px 16px;border-top:1px solid var(--line)}.feed:first-child{border-top:0}
+.feed .top{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500}
+.dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--warn)}.dot.ok{background:var(--green)}.dot.broken{background:var(--bad)}
+.feed .top .tag{margin-left:auto}
+.feed .note{font-size:12px;color:var(--ink-faint);margin:3px 0 8px 16px;overflow-wrap:anywhere}
+.bars{display:grid;grid-template-columns:repeat(14,1fr);gap:3px;margin-left:16px;height:20px;align-items:end}
+.bars span{display:block;border-radius:3px}.bars .ok{background:var(--green);height:100%}.bars .empty{background:var(--warn);height:50%}.bars .fail{background:var(--bad);height:4px}.bars .none{background:var(--line);height:4px}
+
+/* find */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;padding:6px 11px;border-radius:99px;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft)}
+.chip b{color:var(--ink);font-weight:600}
+textarea{width:100%;min-height:120px;border:1.5px solid var(--line);border-radius:12px;padding:12px;background:var(--ground);resize:vertical;font-size:14.5px}
+textarea:focus,input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,134,42,.12)}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+.tabs-in{max-width:560px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tabs button{border:0;background:none;padding:6px 0 4px;display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--ink-faint);font-size:11.5px;font-weight:500;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tabs svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tabs button.on{color:var(--brand)}.tabs button.on svg{stroke:var(--accent)}
+.badge{position:absolute;margin:-2px 0 0 18px;min-width:16px;height:16px;border-radius:8px;background:var(--bad);color:#fff;font-size:10px;display:grid;place-items:center;padding:0 4px}
+
+/* lock */
+.lock{position:fixed;inset:0;z-index:100;background:linear-gradient(170deg,#0b2a4a 0%,#0e3358 50%,#123f6e 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:24px 24px calc(24px + env(safe-area-inset-bottom))}
+.lock::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,#000 20%,transparent 75%);pointer-events:none}
+.lock-in{position:relative;z-index:1;max-width:380px;width:100%;margin:0 auto}
+.lock .mark{width:52px;height:52px;border-radius:15px;font-size:26px;margin-bottom:22px}
+.lock h1{font-size:2.2rem;margin:10px 0 10px}
+.lock p{color:#b8cbe0;font-size:14.5px;margin:0 0 22px}
+.lock input{width:100%;padding:15px 16px;border-radius:13px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;font-size:16px}
+.lock input::placeholder{color:#8aa3bf}
+.lock .btn-w{margin-top:10px}
+.lock .err{color:#ffb4a8;font-size:13px;min-height:20px;margin-top:10px}
+.lock .alt{display:block;width:100%;margin-top:8px;background:none;border:1px solid rgba(255,255,255,.22);color:#dbe6f3}
+.lock .foot{color:#7f98b6;font-size:12px;margin-top:22px;line-height:1.5}
+.spin{width:22px;height:22px;border:2.5px solid rgba(255,255,255,.25);border-top-color:#fff;border-radius:50%;animation:sp 1s linear infinite;margin:0 auto}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (min-width:700px){.hero-in{padding:34px 20px 30px}.hero h1{font-size:2.6rem}}
+</style></head><body>
+
+<div class="lock hide" id="lock"><div class="lock-in">
+  <div class="mark">H</div>
+  <div class="eyebrow">Hatch · Private</div>
+  <h1>The deal desk</h1>
+  <p id="lock-p">Dubai commercial units for the family office. Enter the passphrase once and this phone remembers it.</p>
+  <form id="lock-f" autocomplete="on"><input type="text" name="username" value="hatch" autocomplete="username" hidden>
+    <input id="pw" type="password" name="password" placeholder="Passphrase" autocomplete="current-password" enterkeyhint="go">
+    <button class="btn btn-a btn-w" id="unlock" type="submit">Unlock</button></form>
+  <div class="err" id="err"></div>
+  <button class="btn btn-w alt hide" id="see-ex" type="button">See the example cards</button>
+  <div class="foot" id="lock-foot">Encrypted on the server side with AES-256. Decrypted only on this device.</div>
+</div></div>
+
+<header class="topbar"><div class="topbar-in">
+  <a class="logo" href="#" onclick="tab('today');return false"><span class="mark">H</span>Hatch <span class="sub">HQ</span></a>
+  <span class="tsp"></span><span class="pill" id="pill">Loading</span>
+  <button class="iconbtn hide" id="lockbtn" title="Lock this device">Lock</button>
+</div></header>
+
+<section class="hero" id="hero"><div class="hero-in">
+  <div class="eyebrow" id="date">&nbsp;</div>
+  <h1 id="h1">Today</h1>
+  <p id="summary">Loading the desk…</p>
+  <div class="stats">
+    <div class="stat"><div class="n" id="k-live">–</div><div class="k">on the desk</div></div>
+    <div class="stat"><div class="n" id="k-new">–</div><div class="k" id="k-norm">new this week</div></div>
+    <div class="stat"><div class="n" id="k-board">–</div><div class="k" id="k-bought">on the board</div></div>
+  </div>
+</div></section>
+
+<main>
+<section id="today">
+  <div class="step">Needs you <span class="c" id="needs-c"></span></div>
+  <div class="card" id="needs"></div>
+  <div class="step">The lists</div>
+  <div class="seg" id="seg">
+    <button data-l="income" class="sel"><div class="m">Income</div><div class="p">net yield</div></button>
+    <button data-l="value"><div class="m">Value</div><div class="p">under comps</div></button>
+    <button data-l="pressure"><div class="m">Pressure</div><div class="p">time, cuts</div></button>
+  </div>
+  <div id="list"></div>
+  <div id="exnote"></div>
+  <div id="feeds-wrap"><div class="step">Feed health <span class="c">last 14 days</span></div>
+  <div class="card" id="feeds"></div>
+  <p class="tiny" style="margin:8px 2px 0">One bar per daily run. Green: data came in. Amber: ran but empty. Red: failed.</p></div>
+</section>
+
+<section id="deals" class="hide">
+  <div class="step">The board</div>
+  <div class="lanes" id="lanes"></div>
+  <div id="board"></div>
+</section>
+
+<section id="find" class="hide">
+  <div class="step">Buy box</div>
+  <div class="card pad"><div class="chips" id="bb"></div></div>
+  <div class="step">Paste a listing</div>
+  <div class="card pad" id="paste-card">
+    <textarea id="paste" placeholder="Paste a broker message or listing: building, area, size, AED price, rent if tenanted"></textarea>
+    <button class="btn btn-p btn-w" id="pgo" style="margin-top:10px">Underwrite it</button>
+    <div id="pout"></div>
+  </div>
+  <div class="card pad hide" id="paste-static"><p class="muted" style="margin:0;font-size:14px">Forward a broker listing to your WhatsApp self-chat, or paste it on the cockpit. It is underwritten and shows up here the next morning.</p></div>
+</section>
+
+<section id="brokers" class="hide">
+  <div class="step">Brokers</div>
+  <div class="card"><div class="empty"><div class="ic">◎</div>Dubai commercial brokers from WhatsApp and LinkedIn, with last contact and a touch every 30 days. Coming in build step 5.</div></div>
+</section>
+</main>
+
+<nav class="tabs"><div class="tabs-in">
+  <button data-t="today" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Today<span class="badge hide" id="nb"></span></button>
+  <button data-t="deals"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg>Deals</button>
+  <button data-t="find"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Find</button>
+  <button data-t="brokers"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.8c1.9.6 3.1 2.4 3.5 5.2"/></svg>Brokers</button>
+</div></nav>
+
+<script>
+const STATIC = location.protocol === 'file:' || location.pathname.startsWith('/hatchhq');
+const KEYSTORE = 'hatchhq.key.v1';
+const $ = id => document.getElementById(id);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const aed = n => !n ? '–' : n >= 1e6 ? 'AED ' + (n / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'M' : 'AED ' + Math.round(n / 1e3) + 'K';
+const pct = (x, d = 1) => x == null ? '–' : (x * 100).toFixed(d) + '%';
+const num = n => Number(n || 0).toLocaleString('en-US');
+let D = null, LIST = 'income', LANE = 'watching';
+
+function tab(t) {
+  document.querySelectorAll('.tabs button').forEach(b => b.classList.toggle('on', b.dataset.t === t));
+  document.querySelectorAll('main>section').forEach(s => s.classList.toggle('hide', s.id !== t));
+  $('hero').classList.toggle('hide', t !== 'today'); scrollTo(0, 0);
+}
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => tab(b.dataset.t));
+document.querySelectorAll('#seg button').forEach(b => b.onclick = () => { LIST = b.dataset.l; document.querySelectorAll('#seg button').forEach(x => x.classList.toggle('sel', x === b)); renderList(); });
+
+/* ---------- cards ---------- */
+function ring(score) { const c = score >= 80 ? 'var(--green)' : score >= 55 ? 'var(--accent)' : 'var(--line-2)'; return `<div class="ring" style="--s:${score};--rc:${c}"><span>${score}</span></div>`; }
+function right(c, mode) {
+  if (mode === 'value') return c.vs_comps == null ? `<div class="v">–</div><div class="l">no comps</div>` : `<div class="v ${c.vs_comps < 0 ? 'pos' : ''}">${c.vs_comps < 0 ? '−' : '+'}${pct(Math.abs(c.vs_comps), 0)}</div><div class="l">vs comps</div>`;
+  if (mode === 'pressure') return `<div class="v">${c.days_on_market}d</div><div class="l">${c.cuts} cut${c.cuts == 1 ? '' : 's'}${c.cut_pct ? ' · −' + pct(c.cut_pct, 0) : ''}</div>`;
+  return `<div class="v">${pct(c.net_yield)}</div><div class="l">net yield</div>`;
+}
+function card(c, mode) {
+  const tags = [c.example ? '<span class="tag a">Example</span>' : '', c.tenanted ? '<span class="tag ok">Tenanted</span>' : '<span class="tag">Vacant</span>',
+    c.meets_buybox ? '<span class="tag ok">In buy box</span>' : '', c.distressed ? '<span class="tag b">Distressed</span>' : '', c.stage ? `<span class="tag w" style="text-transform:capitalize">${esc(c.stage)}</span>` : ''].join('');
+  const coc = (c.coc || []).map(x => `<div class="rung"><b>${pct(x.coc)}</b>${Math.round(x.ltv * 100)}% LTV</div>`).join('');
+  const acts = (!c.example && !STATIC) ? `<div class="acts">${['watching', 'viewing', 'offer', 'bought', 'drop'].map(s => `<button class="btn btn-g btn-sm ${c.stage === s ? 'on' : ''}" onclick="deal('${esc(c.id)}','${s}')">${s}</button>`).join('')}</div>` : '';
+  return `<div class="deal" id="c-${esc(c.id)}"><div class="deal-h" onclick="this.parentNode.classList.toggle('open')">
+    ${ring(c.score)}
+    <div class="deal-m"><div class="nm">${esc(c.building || c.title)}</div><div class="sb">${esc(c.area || '–')} · ${esc(c.type)} · ${num(c.size_sqft)} sq ft · ${aed(c.price)}</div><div class="tg">${tags}</div></div>
+    <div class="deal-r">${right(c, mode)}</div></div>
+  <div class="deal-b">
+    <div class="big"><div><div class="n">${pct(c.gross_yield)}</div><div class="s">Gross</div></div><div><div class="n">${pct(c.net_yield)}</div><div class="s">Net</div></div><div><div class="n">${num(c.psf)}</div><div class="s">AED/sq ft</div></div></div>
+    <div class="kv"><div class="k">Asking<small>${num(c.size_sqft)} sq ft</small></div><div class="v">${aed(c.price)}</div></div>
+    <div class="kv"><div class="k">DLD comps, 12 months<small>${esc(c.comps.level)}${c.comps.n ? ', ' + c.comps.n + ' sales' : ''}${c.comps.src ? ' · ' + esc(c.comps.src) : ''}</small></div><div class="v">${c.comps.psf ? 'AED ' + num(c.comps.psf) + '/sq ft' : 'not yet'}</div></div>
+    <div class="kv"><div class="k">Rent<small>${esc(c.rent_basis)}</small></div><div class="v">${c.rent ? aed(c.rent) + '/yr' : '–'}</div></div>
+    <div class="kv"><div class="k">Service charge<small>AED ${c.service_charge_psf}/sq ft · ${esc(c.sc_basis)}</small></div><div class="v">${aed(c.service_charge)}/yr</div></div>
+    <div class="kv hl"><div class="k">Net yield<small>on all-in cost ${pct(c.net_yield_allin)}</small></div><div class="v">${pct(c.net_yield)}</div></div>
+    <div class="kv"><div class="k">All-in cost<small>price + 4% DLD + 2% agent + AED 4.2K admin</small></div><div class="v">${aed(c.all_in)}</div></div>
+    <div class="kv"><div class="k">On market</div><div class="v">${c.days_on_market} days · ${c.cuts} cut${c.cuts == 1 ? '' : 's'}</div></div>
+    <div class="kv"><div class="k">Score<small>income ${c.score_parts.income} · value ${c.score_parts.value} · pressure ${c.score_parts.pressure} · fit ${c.score_parts.fit} · thin data ${c.score_parts.thin_data}</small></div><div class="v">${c.score}/100</div></div>
+    ${coc ? `<div class="lever"><h4>Cash on cash</h4><p>Mortgage at ${pct(c.mortgage_rate)} over ${c.years} years. ${esc(c.rate_note)}</p><div class="ladder">${coc}</div></div>` : ''}
+    ${c.url ? `<a class="btn btn-g btn-w" style="margin-top:10px" href="${esc(c.url)}" target="_blank" rel="noopener noreferrer">Open the listing</a>` : ''}
+    ${acts}
+  </div></div>`;
+}
+
+function renderList() {
+  const L = (D && D[LIST]) || [];
+  $('list').innerHTML = L.length ? L.map(c => card(c, LIST)).join('') : `<div class="card" style="margin-top:10px"><div class="empty"><div class="ic">◇</div>${LIST === 'value' ? 'Needs DLD comps to rank by value.' : 'No listings yet.'}</div></div>`;
+}
+
+function render(d) {
+  D = d;
+  const ex = !!d.using_examples;
+  $('pill').textContent = d.examples_only ? 'Examples only' : ex ? 'Example cards' : 'Live';
+  $('pill').classList.toggle('ex', ex);
+  $('date').textContent = d.today;
+  $('h1').innerHTML = d.examples_only ? 'Hatch <em>HQ</em>' : 'Today';
+  $('summary').textContent = d.summary;
+  $('k-live').textContent = d.live; $('k-new').textContent = d.new_week;
+  $('k-new').classList.toggle('low', !!(d.normal_week && d.new_week < d.normal_week / 3));
+  $('k-norm').textContent = 'new this week' + (d.normal_week ? ` · ~${d.normal_week} usual` : '');
+  const b = d.board || {}, nb = (b.watching || 0) + (b.viewing || 0) + (b.offer || 0) + (b.bought || 0);
+  $('k-board').textContent = nb; $('k-bought').textContent = `on the board · ${b.bought || 0} bought`;
+
+  const needs = d.needs || [];
+  $('needs-c').textContent = needs.length ? needs.length + (needs.length == 1 ? ' item' : ' items') : '';
+  $('needs').innerHTML = needs.length ? needs.map(n => `<div class="need"><div class="ic ${n.tag === 'broken' ? 'b' : ''}">!</div><div style="min-width:0"><div class="t">${esc(n.title)}</div><div class="s">${esc(n.sub)}</div></div></div>`).join('')
+    : `<div class="allgood"><span class="ic">✓</span>${d.examples_only ? 'Unlock the live board to see what needs you.' : 'Nothing. Feeds healthy, no stuck deals.'}</div>`;
+  $('nb').textContent = needs.length; $('nb').classList.toggle('hide', !needs.length);
+  renderList();
+  $('exnote').innerHTML = ex ? `<div class="exnote"><span>◆</span><span>These are worked examples: real buildings with test asking prices, so you can see how a card reads. Live listings replace them as soon as alerts and broker forwards come in.</span></div>` : '';
+
+  $('feeds-wrap').classList.toggle('hide', !(d.feeds || []).length);
+  $('feeds').innerHTML = (d.feeds || []).map(f => `<div class="feed"><div class="top"><span class="dot ${f.state}"></span>${esc(f.name)}<span class="tag ${f.state}">${f.last_new ? 'new ' + f.last_new.slice(5) : f.state === 'ok' ? 'ok' : f.state}</span></div><div class="note">${esc(f.how)}${f.note ? ' · ' + esc(f.note) : ''}</div><div class="bars">${f.bars.map(x => `<span class="${x.state}"></span>`).join('')}</div></div>`).join('');
+
+  const st = ['watching', 'viewing', 'offer', 'bought'];
+  $('lanes').innerHTML = st.map(s => `<button class="lane ${s === LANE ? 'sel' : ''}" onclick="LANE='${s}';render(D)"><div class="n">${b[s] || 0}</div><div class="k">${s}</div></button>`).join('');
+  const inLane = (d.deals || []).filter(c => c.stage === LANE);
+  $('board').innerHTML = inLane.length ? inLane.map(c => card(c, 'income')).join('') : `<div class="card" style="margin-top:10px"><div class="empty"><div class="ic">◇</div>Nothing in ${LANE} yet.${STATIC ? '' : ' Open a card on Today and tap ' + LANE + '.'}</div></div>`;
+
+  const bb = d.buybox;
+  $('bb').innerHTML = bb ? [`<span class="chip"><b>${bb.types.join(', ')}</b></span>`, `<span class="chip">AED <b>${bb.price_min_aed / 1e6}M</b> to <b>${bb.price_max_aed / 1e6}M</b></span>`,
+    `<span class="chip">Net yield <b>${pct(bb.target_net_yield, 0)}+</b></span>`, `<span class="chip">or <b>${pct(bb.target_under_comps, 0)}</b> under comps</span>`, ...bb.areas.map(a => `<span class="chip">${esc(a)}</span>`)].join('')
+    : '<span class="tiny">Shown once the live board is unlocked.</span>';
+}
+
+/* ---------- cockpit mode ---------- */
+async function deal(id, stage) { await fetch('/api/hatch/deal', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id, stage }) }); loadLive(); }
+$('pgo').onclick = async () => {
+  $('pgo').textContent = 'Underwriting…';
+  const r = await (await fetch('/api/hatch/paste', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text: $('paste').value }) })).json();
+  $('pgo').textContent = 'Underwrite it';
+  $('pout').innerHTML = r.card ? card(r.card, 'income') : '<p class="tiny" style="margin-top:10px">Could not read that listing. Include a size in sq ft and an AED price.</p>';
+  const el = $('pout').querySelector('.deal'); if (el) el.classList.add('open');
+  loadLive();
+};
+async function loadLive() { render(await (await fetch('/api/hatch')).json()); }
+
+/* ---------- static mode: AES-GCM envelope, key from passphrase via PBKDF2 ---------- */
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const ub64 = a => btoa(String.fromCharCode(...new Uint8Array(a)));
+let ENV = null;
+async function derive(pass, env) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', hash: 'SHA-256', salt: b64(env.salt), iterations: env.iter }, base, { name: 'AES-GCM', length: 256 }, true, ['decrypt']);
+}
+async function openEnv(key, env) {
+  const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(env.iv) }, key, b64(env.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+function lock(msg) {
+  $('lock').classList.remove('hide'); if (msg) $('err').textContent = msg;
+  setTimeout(() => $('pw').focus(), 50);
+}
+async function loadStatic() {
+  $('paste-card').classList.add('hide'); $('paste-static').classList.remove('hide');
+  const r = await fetch('data.enc.json', { cache: 'no-store' });
+  if (!r.ok) {
+    // no passphrase set yet: passphrase screen + the clearly-marked examples
+    $('lock-p').textContent = 'Dubai commercial units for the family office. The live board unlocks with the passphrase once it is set up.';
+    $('unlock').disabled = true; $('pw').disabled = true; $('pw').placeholder = 'Passphrase not set up yet';
+    const e = await fetch('examples.json', { cache: 'no-store' });
+    if (e.ok) { const ex = await e.json(); $('see-ex').classList.remove('hide'); $('see-ex').onclick = () => { $('lock').classList.add('hide'); render(ex); }; }
+    return lock();
+  }
+  ENV = await r.json();
+  const saved = localStorage.getItem(KEYSTORE);
+  if (saved) {
+    try {
+      const s = JSON.parse(saved);
+      if (s.salt === ENV.salt) {
+        const key = await crypto.subtle.importKey('raw', b64(s.k), 'AES-GCM', false, ['decrypt']);
+        render(await openEnv(key, ENV)); $('lockbtn').classList.remove('hide'); return;
+      }
+    } catch (e) { localStorage.removeItem(KEYSTORE); }
+  }
+  lock();
+}
+$('lock-f').onsubmit = async ev => {
+  ev.preventDefault(); if (!ENV) return;
+  $('err').textContent = ''; $('unlock').innerHTML = '<div class="spin"></div>';
+  try {
+    const key = await derive($('pw').value, ENV);
+    const d = await openEnv(key, ENV);
+    localStorage.setItem(KEYSTORE, JSON.stringify({ salt: ENV.salt, k: ub64(await crypto.subtle.exportKey('raw', key)) }));
+    $('lock').classList.add('hide'); $('pw').value = ''; render(d); $('lockbtn').classList.remove('hide');
+  } catch (e) { $('err').textContent = 'That passphrase did not open it. Try again.'; }
+  $('unlock').textContent = 'Unlock';
+};
+$('lockbtn').onclick = () => { localStorage.removeItem(KEYSTORE); location.reload(); };
+
+(STATIC ? loadStatic() : loadLive()).catch(e => { $('summary').textContent = 'Could not load the desk: ' + e.message; });
+</script></body></html>
